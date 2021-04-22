@@ -137,20 +137,14 @@ def generate_characters():
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
     points_maximum = generation_data[BASIC_INFO.get('Generation')]
-
     clan_disciplines = default_data.default_clan_disciplines_data()
-
-    # point distribution
     weights = calculate_weights()
-    
     xp = calculate_xp_points(BASIC_INFO.get('Age'), 
                                 BASIC_INFO.get('Generation'))
-
     xp_costs = default_data.default_costs_data()
     clan = CHARACTER_SHEET['Basic Information']['Clan']
-
-    didnt_spend_xp = [1]
-    while xp > 2 and len(didnt_spend_xp) < 50:
+    xp_stagnation_counter = [1]
+    while xp > 2 and len(xp_stagnation_counter) < 50:
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
         current_stat = random.choice(list(CHARACTER_SHEET[current_category][current_type].keys()))
@@ -158,7 +152,7 @@ def generate_characters():
 
         # check is stat can be developed
         if current_level == points_maximum:
-            didnt_spend_xp.append(1)
+            xp_stagnation_counter.append(1)
             continue
         
         # special case for discipline development
@@ -176,7 +170,7 @@ def generate_characters():
         if expense < xp:
             CHARACTER_SHEET[current_category][current_type][current_stat] = current_level + 1
             xp = xp - expense
-            didnt_spend_xp.clear()
+            xp_stagnation_counter.clear()
         else:
             didnt_spend_xp.append(1)
         
