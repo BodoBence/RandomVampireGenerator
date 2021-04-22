@@ -64,17 +64,17 @@ SELECTED_SEX = select_from_list(options=default_data.default_sexes_data(),
 def create_name(sex, male_names, female_names, surnames):
     default_name_surname = ''
     name_surname = select_from_list(options=surnames,
-                                    condition=False,
+                                    condition=MANUAL_NAME_SELECTION,
                                     user_defined=default_name_surname)
     
     default_name_christian = ''
     if sex == 'Female':
         name_christian = select_from_list(options=female_names,
-                                          condition=False,
+                                          condition=MANUAL_NAME_SELECTION,
                                           user_defined=default_name_christian)
     else:
         name_christian = select_from_list(options=male_names,
-                                          condition=False,
+                                          condition=MANUAL_NAME_SELECTION,
                                           user_defined=default_name_christian)
     name_full = name_christian + ', ' + name_surname
     return name_full
@@ -182,8 +182,9 @@ def clean_up_character():
         CHARACTER_SHEET['Disciplines'][discipline_type] = {discipline:discipline_level for discipline,discipline_level in disciplines_details.items() if discipline_level != 0}
 
 # fill charactersheet with stats and xp,send xp
-setup_character_sheet()
-generate_characters()
-clean_up_character()
-
-pprint.pprint(CHARACTER_SHEET)
+def generate():
+    setup_character_sheet()
+    generate_characters()
+    clean_up_character()
+    return CHARACTER_SHEET
+#pprint.pprint(CHARACTER_SHEET)
