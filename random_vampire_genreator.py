@@ -144,6 +144,7 @@ def generate_characters():
     xp_costs = default_data.default_costs_data()
     clan = CHARACTER_SHEET['Basic Information']['Clan']
     xp_stagnation_counter = [1]
+
     while xp > 2 and len(xp_stagnation_counter) < 50:
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
@@ -172,7 +173,7 @@ def generate_characters():
             xp = xp - expense
             xp_stagnation_counter.clear()
         else:
-            didnt_spend_xp.append(1)
+            xp_stagnation_counter.append(1)
         
         CHARACTER_SHEET['XP Left'] = xp
 
