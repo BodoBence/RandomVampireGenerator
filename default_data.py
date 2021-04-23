@@ -1,51 +1,63 @@
-def basic_info_request_scrpit_data():
-    start_variables = {'MANUAL_CLAN_SELECTION': 'checkbox',
-                       'MANUAL_GENERATION_SELECTION': 'checkbox',
-                       'MANUAL_AGE_SELECTION' : 'checkbox',
-                       'MANUAL_SEX_SELECTION' : 'checkbox',
-                       'MANUAL_NAME_SELECTION' : 'checkbox',
-                       'CHOSEN_CLAN' : 'text',
-                       'CHOSEN_GENERATION' : 'number',
-                       'CHOSEN_AGE' : 'number',
-                       'CHOSEN_SEX' : 'text',
-                       'CHOSEN_NAME' : 'text',
-                       'SUBMIT': 'submit',}
-    return start_variables
+def vampire_generator_simulated_input():
+    input_values = {'manual_clan_condition': False,
+                    'manual_generation_condition': False,
+                    'manual_age_condition': False,
+                    'manual_sex_condition': False,
+                    'manual_name_condition': False,
+                    'manual_age': 300,
+                    'manual_clan': 'Malkavian',
+                    'manual_sex': 'Female',
+                    'manual_generation': 10,
+                    'manual_name': "Fruzsi"}
+   
+    weight_values = {'Categories': {'Attributes': 30,
+                                    'Skills': 30,
+                                    'Disciplines': 30},
+                     'Attributes': {'Physical Attributes':30,
+                                    'Social Attributes': 30, 
+                                    'Mental Attributes': 30},
+                     'Skills': {'Physical Skills': 30, 
+                                'Social Skills': 30, 
+                                'Mental Skills': 30},
+                     'Disciplines': {'Clan Disciplines': 70, 
+                                     'Non-clan Disciplines': 20}}
+
+    return input_values, weight_values
 
 def basic_info_request_web_data():
-    manual_clan_selection_details = {'type': 'checkbox',
+    manual_clan_condition_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Select clan manually?'}
-    manual_age_selection_details = {'type': 'checkbox',
+    manual_age_condition_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Select age manually?'}
-    manual_generation_selection_details = {'type': 'checkbox',
+    manual_generation_condition_details = {'type': 'checkbox',
                                            'default_value': 'false',
                                            'field_text': 'Select generation manually?'}
-    manual_sex_selection_details = {'type': 'checkbox',
+    manual_sex_condition_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Select sex manually?'}
-    manual_name_selection_details = {'type': 'checkbox',
+    manual_name_condition_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Give name manually?'}
-    chosen_age_details = {'type': 'number',
+    manual_age_details = {'type': 'number',
                           'default_value': 300,
                           'field_text': 'Age:'}
-    chosen_generation_details = {'type': 'number',
+    manual_generation_details = {'type': 'number',
                                  'default_value': 10,
                                  'field_text': 'Generation:'}
-    chosen_name_details = {'type': 'text',
+    manual_name_details = {'type': 'text',
                            'default_value': 'Default Daniel',
                            'field_text': 'Name:'}
 
-    start_variables = {'MANUAL_CLAN_SELECTION': manual_clan_selection_details,
-                       'MANUAL_GENERATION_SELECTION': manual_age_selection_details,
-                       'MANUAL_AGE_SELECTION' : manual_generation_selection_details,
-                       'MANUAL_SEX_SELECTION' : manual_sex_selection_details,
-                       'MANUAL_NAME_SELECTION' : manual_name_selection_details,
-                       'CHOSEN_GENERATION' : chosen_age_details,
-                       'CHOSEN_AGE' : chosen_generation_details,
-                       'CHOSEN_NAME' : chosen_name_details}
+    start_variables = {'manual_clan_condition': manual_clan_condition_details,
+                       'manua_age_condition': manual_age_condition_details,
+                       'manual_age_condition' : manual_generation_condition_details,
+                       'manual_sex_condition' : manual_sex_condition_details,
+                       'manual_name_condition' : manual_name_condition_details,
+                       'manual_age' : manual_age_details,
+                       'manual_generation' : manual_generation_details,
+                       'manual_name' : manual_name_details}
     return start_variables
 
 def default_attibute_data():
@@ -58,9 +70,9 @@ def default_attibute_data():
     attributes_mental = {'Intelligence': 1,
                          'Wits': 1,
                          'Resolve': 1}
-    attributes = {'Physical': attributes_physical,
-                  'Social': attributes_social,
-                  'Mental': attributes_mental}
+    attributes = {'Physical Attributes': attributes_physical,
+                  'Social Attributes': attributes_social,
+                  'Mental Attributes': attributes_mental}
     return attributes
 
 def default_skill_data():
@@ -91,9 +103,9 @@ def default_skill_data():
                         'Politics': 0,
                         'Science': 0,
                         'Technology': 0}
-    skills = {'Physical': skills_physical,
-              'Social': skills_social,
-              'Mental': skills_mental}
+    skills = {'Physical Skills': skills_physical,
+              'Social Skills': skills_social,
+              'Mental Skills': skills_mental}
     
     return skills
 
@@ -135,15 +147,15 @@ def default_generation_based_point_data():
 def default_costs_data():
     xp_costs = {'Attributes': 5, 
                  'Skills': 3,
-                 'Disciplines': {'clan': 5,
-                                 'non_clan': 7}}
+                 'Disciplines': {'Clan Disciplines': 5,
+                                 'Non-clan Disciplines': 7}}
     return xp_costs
 
 def default_weights_data():
     weight_categories = {'Attributes': 20, 'Skills': 40, 'Disciplines': 10}
-    weight_attributes = {'Physical': 10, 'Social': 25, 'Mental': 10}
-    weight_skills = {'Physical': 20, 'Social': 20, 'Mental': 10}
-    weight_disciplines =  {'Clan': 4, 'Non-clan': 1}
+    weight_attributes = {'Physical Attributes': 10, 'Social Attributes': 25, 'Mental Attributes': 10}
+    weight_skills = {'Physical Skills': 20, 'Social Skills': 20, 'Mental Skills': 10}
+    weight_disciplines =  {'Clan Disciplines': 4, 'Non-clan Disciplines': 1}
 
     weight_values = {'Categories': weight_categories,
                      'Attributes': weight_attributes,

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from random_vampire_genreator import generate
+from random_vampire_genreator_web import generate
 #from default_data import basic_info_request_data
 from default_data import basic_info_request_web_data, default_clans_data, default_weights_data
 
@@ -23,16 +23,8 @@ def home():
 def result():
    if request.method == 'POST':
       result = request.form
+      #generated_vampire = generate(result)
       return render_template('vampire_result.html', result = result)    
-
-@app.route('/<name>')
-def user(name):
-    return f'hello {name}, i vuv ya!'
-
-@app.route('/generator')
-def generator():
-    char_sheet = generate()
-    return char_sheet
 
 if __name__ == '__main__':
     app.run(debug=True)
