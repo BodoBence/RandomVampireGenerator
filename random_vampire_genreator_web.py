@@ -55,8 +55,8 @@ def setup_character_sheet(basic_info):
             character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = 0
     return character_sheet
 
-def calculate_xp_points (age, gen):
-    xp_points = round(age * (1/gen+2))
+def calculate_xp_points (age):
+    xp_points = max(300, (age * 2))
     return xp_points
 
 def calculate_xp_cost(current_level, cost):
@@ -81,8 +81,7 @@ def generate_characters(character_sheet, weight_values):
     points_maximum = generation_data[character_sheet['Basic Information'].get('Generation')]
     clan_disciplines = default_data.default_clan_disciplines_data()
     weights = calculate_weights(weight_values)
-    xp = calculate_xp_points(character_sheet['Basic Information'].get('Age'), 
-                                character_sheet['Basic Information'].get('Generation'))
+    xp = calculate_xp_points(character_sheet['Basic Information'].get('Age'))
     xp_costs = default_data.default_costs_data()
     clan = character_sheet['Basic Information']['Clan']
     xp_stagnation_counter = []
