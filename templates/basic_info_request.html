@@ -5,6 +5,9 @@
             {% for key1, val1 in requested_non_slider_data.items() %}
                 <p> {{ val1['field_text'] }} <input type = {{ val1['type'] }} name = {{ key1 }} /></p>
             {% endfor %}
+            {% for clan in requested_clan_data %}
+                <p>{{ clan }}</p>
+            {% endfor %}
             {% for key1, val1 in requested_slider_data.items() %}
                 <p> {{ key1 }} </p>
                 {% for key2, val2 in val1.items() %}
