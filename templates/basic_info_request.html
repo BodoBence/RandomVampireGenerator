@@ -1,0 +1,10 @@
+<!doctype html>
+<html>
+   <body>
+        <form action = "http://localhost:5000/">
+            {% for key1, val1 in requested_data.items()%}
+                <p> {{ val1['field_text'] }} <input type = {{ val1['type'] }} name = {{ key1 }} /></p>
+            {% endfor %}
+        </form>
+   </body>
+</html>

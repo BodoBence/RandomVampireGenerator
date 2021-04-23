@@ -1,12 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from random_vampire_genreator import generate
+#from default_data import basic_info_request_data
+from default_data import basic_info_request_data_lists
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'wawu'
 
 @app.route('/')
 def home():
-    return 'Welcome to the <h1>BODO-ZSOLYOMI VAMPCHARGEN 2021 ALL RIGHTS RESERVED<h1>'
+    #default_inputs = basic_info_request_data()
+    default_inputs = basic_info_request_data_lists()
+    return render_template('basic_info_request.html',  requested_data = default_inputs)
+
+@app.route('/result',methods = ['POST', 'GET'])
+def result():
+   if request.method == 'POST':
+      result = request.form
+      return render_template('vampire_result.html', result = result)    
 
 @app.route('/<name>')
 def user(name):
@@ -18,5 +27,5 @@ def generator():
     return char_sheet
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
     
