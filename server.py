@@ -19,12 +19,42 @@ def home():
                            requested_clan_data = clan_inputs,
                            requested_slider_data = weight_inputs)
 
+def results_post_care(gathered_user_input):
+    input_values = {'manual_clan_condition': True if 'manual_clan_condition' in gathered_user_input.keys() else False,
+                    'manual_generation_condition': True if 'manual_generation_condition' in gathered_user_input.keys() else False,
+                    'manual_age_condition': True if 'manual_age_condition' in gathered_user_input.keys() else False,
+                    'manual_sex_condition': True if 'manual_sex_condition' in gathered_user_input.keys() else False,
+                    'manual_name_condition': True if 'manual_name_condition' in gathered_user_input.keys() else False,
+                    'manual_age': int(gathered_user_input['manual_age']),
+                    'manual_clan': gathered_user_input['manual_clan'],
+                    'manual_sex': gathered_user_input['manual_sex'],
+                    'manual_generation': int(gathered_user_input['manual_generation']),
+                    'manual_name': gathered_user_input['manual_name']}
+   
+    weight_values = {'Categories': {'Attributes': int(gathered_user_input['Attributes']),
+                                    'Skills': int(gathered_user_input['Skills']),
+                                    'Disciplines': int(gathered_user_input['Disciplines'])},
+                     'Attributes': {'Physical_Attributes': int(gathered_user_input['Physical_Attributes']),
+                                    'Social_Attributes': int(gathered_user_input['Social_Attributes']), 
+                                    'Mental_Attributes': int(gathered_user_input['Mental_Attributes'])},
+                     'Skills': {'Physical_Skills': int(gathered_user_input['Physical_Skills']), 
+                                'Social_Skills': int(gathered_user_input['Social_Skills']), 
+                                'Mental_Skills': int(gathered_user_input['Mental_Skills'])},
+                     'Disciplines': {'Clan_Disciplines': int(gathered_user_input['Clan_Disciplines']), 
+                                     'Non-Clan_Disciplines': int(gathered_user_input['Non-Clan_Disciplines'])}}
+
+    return input_values, weight_values
+
+
+
+
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
       result = request.form
-      #generated_vampire = generate(result)
-      return render_template('vampire_result.html', result = result)    
+      input_values, weight_values = results_post_care(result)
+      character = generate(input_values, weight_values)
+      return render_template('vampire_result.html', result = character)    
 
 if __name__ == '__main__':
     app.run(debug=True)

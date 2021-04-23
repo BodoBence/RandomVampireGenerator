@@ -42,17 +42,17 @@ def setup_character_sheet(basic_info):
     character_sheet['XP Left'] = 0
 
     character_sheet['Disciplines'] = {}
-    character_sheet['Disciplines']['Clan Disciplines'] = {}
-    character_sheet['Disciplines']['Non-clan Disciplines'] = {}
+    character_sheet['Disciplines']['Clan_Disciplines'] = {}
+    character_sheet['Disciplines']['Non-Clan_Disciplines'] = {}
     clan_disciplines = default_data.default_clan_disciplines_data()
     current_clan_disciplines = clan_disciplines[basic_info['Clan']]
     disciplines = default_data.default_discipline_data()
 
     for discipline in disciplines:
         if discipline in current_clan_disciplines:
-            character_sheet['Disciplines']['Clan Disciplines'][discipline] = 0
+            character_sheet['Disciplines']['Clan_Disciplines'][discipline] = 0
         else:
-            character_sheet['Disciplines']['Non-clan Disciplines'][discipline] = 0
+            character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = 0
     return character_sheet
 
 def calculate_xp_points (age, gen):
@@ -103,9 +103,9 @@ def generate_characters(character_sheet, weight_values):
         # special case for discipline development
         if current_category == 'Disciplines':
             if current_stat in clan_disciplines[clan]:
-                cost = xp_costs[current_category]['Clan Disciplines']
+                cost = xp_costs[current_category]['Clan_Disciplines']
             else:
-                cost = xp_costs[current_category]['Non-clan Disciplines']
+                cost = xp_costs[current_category]['Non-Clan_Disciplines']
         else:
             cost = xp_costs[current_category]
         

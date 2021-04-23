@@ -13,14 +13,14 @@ def vampire_generator_simulated_input():
     weight_values = {'Categories': {'Attributes': 30,
                                     'Skills': 30,
                                     'Disciplines': 30},
-                     'Attributes': {'Physical Attributes':30,
-                                    'Social Attributes': 30, 
-                                    'Mental Attributes': 30},
-                     'Skills': {'Physical Skills': 30, 
-                                'Social Skills': 30, 
-                                'Mental Skills': 30},
-                     'Disciplines': {'Clan Disciplines': 70, 
-                                     'Non-clan Disciplines': 20}}
+                     'Attributes': {'Physical_Attributes': 30,
+                                    'Social_Attributes': 30, 
+                                    'Mental_Attributes': 30},
+                     'Skills': {'Physical_Skills': 30, 
+                                'Social_Skills': 30, 
+                                'Mental_Skills': 30},
+                     'Disciplines': {'Clan_Disciplines': 70, 
+                                     'Non-Clan_Disciplines': 20}}
 
     return input_values, weight_values
 
@@ -51,8 +51,8 @@ def basic_info_request_web_data():
                            'field_text': 'Name:'}
 
     start_variables = {'manual_clan_condition': manual_clan_condition_details,
-                       'manua_age_condition': manual_age_condition_details,
-                       'manual_age_condition' : manual_generation_condition_details,
+                       'manual_age_condition': manual_age_condition_details,
+                       'manual_generation_condition' : manual_generation_condition_details,
                        'manual_sex_condition' : manual_sex_condition_details,
                        'manual_name_condition' : manual_name_condition_details,
                        'manual_age' : manual_age_details,
@@ -70,9 +70,9 @@ def default_attibute_data():
     attributes_mental = {'Intelligence': 1,
                          'Wits': 1,
                          'Resolve': 1}
-    attributes = {'Physical Attributes': attributes_physical,
-                  'Social Attributes': attributes_social,
-                  'Mental Attributes': attributes_mental}
+    attributes = {'Physical_Attributes': attributes_physical,
+                  'Social_Attributes': attributes_social,
+                  'Mental_Attributes': attributes_mental}
     return attributes
 
 def default_skill_data():
@@ -103,9 +103,9 @@ def default_skill_data():
                         'Politics': 0,
                         'Science': 0,
                         'Technology': 0}
-    skills = {'Physical Skills': skills_physical,
-              'Social Skills': skills_social,
-              'Mental Skills': skills_mental}
+    skills = {'Physical_Skills': skills_physical,
+              'Social_Skills': skills_social,
+              'Mental_Skills': skills_mental}
     
     return skills
 
@@ -147,15 +147,15 @@ def default_generation_based_point_data():
 def default_costs_data():
     xp_costs = {'Attributes': 5, 
                  'Skills': 3,
-                 'Disciplines': {'Clan Disciplines': 5,
-                                 'Non-clan Disciplines': 7}}
+                 'Disciplines': {'Clan_Disciplines': 5,
+                                 'Non-Clan_Disciplines': 7}}
     return xp_costs
 
 def default_weights_data():
     weight_categories = {'Attributes': 20, 'Skills': 40, 'Disciplines': 10}
-    weight_attributes = {'Physical Attributes': 10, 'Social Attributes': 25, 'Mental Attributes': 10}
-    weight_skills = {'Physical Skills': 20, 'Social Skills': 20, 'Mental Skills': 10}
-    weight_disciplines =  {'Clan Disciplines': 4, 'Non-clan Disciplines': 1}
+    weight_attributes = {'Physical_Attributes': 10, 'Social_Attributes': 25, 'Mental_Attributes': 10}
+    weight_skills = {'Physical_Skills': 20, 'Social_Skills': 20, 'Mental_Skills': 10}
+    weight_disciplines =  {'Clan_Disciplines': 4, 'Non-Clan_Disciplines': 1}
 
     weight_values = {'Categories': weight_categories,
                      'Attributes': weight_attributes,
