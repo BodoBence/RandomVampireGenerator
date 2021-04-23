@@ -28,31 +28,23 @@ def basic_info_request_web_data():
     manual_name_selection_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Give name manually?'}
-    chosen_clan_details = {'type': 'text',
-                           'default_value': 'Malkavian',
-                           'field_text': 'Clan:'}
     chosen_age_details = {'type': 'number',
                           'default_value': 300,
                           'field_text': 'Age:'}
     chosen_generation_details = {'type': 'number',
                                  'default_value': 10,
                                  'field_text': 'Generation:'}
-    chosen_sex_details = {'type': 'text',
-                          'default_value': 'male',
-                          'field_text': 'Sex:'}
     chosen_name_details = {'type': 'text',
                            'default_value': 'Default Daniel',
-                           'field_text': 'Clan:'}
+                           'field_text': 'Name:'}
 
     start_variables = {'MANUAL_CLAN_SELECTION': manual_clan_selection_details,
                        'MANUAL_GENERATION_SELECTION': manual_age_selection_details,
                        'MANUAL_AGE_SELECTION' : manual_generation_selection_details,
                        'MANUAL_SEX_SELECTION' : manual_sex_selection_details,
                        'MANUAL_NAME_SELECTION' : manual_name_selection_details,
-                       'CHOSEN_CLAN' : chosen_clan_details,
                        'CHOSEN_GENERATION' : chosen_age_details,
                        'CHOSEN_AGE' : chosen_generation_details,
-                       'CHOSEN_SEX' : chosen_sex_details,
                        'CHOSEN_NAME' : chosen_name_details}
     return start_variables
 
