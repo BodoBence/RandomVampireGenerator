@@ -5,7 +5,7 @@ from default_data import basic_info_request_web_data, default_clans_data, defaul
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', )
 def home():
     # for getting input from script
     #default_inputs = basic_info_request_data()
@@ -19,7 +19,7 @@ def home():
                            requested_clan_data = clan_inputs,
                            requested_slider_data = weight_inputs)
 
-@app.route('/result',methods = ['POST', 'GET'])
+@app.route('/result', methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
       result = request.form
