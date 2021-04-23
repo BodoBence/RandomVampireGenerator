@@ -2,9 +2,16 @@
 <html>
    <body>
         <form action = "http://localhost:5000/">
-            {% for key1, val1 in requested_data.items()%}
+            {% for key1, val1 in requested_non_slider_data.items() %}
                 <p> {{ val1['field_text'] }} <input type = {{ val1['type'] }} name = {{ key1 }} /></p>
             {% endfor %}
+            {% for key1, val1 in requested_slider_data.items() %}
+                <p> {{ key1 }} </p>
+                {% for key2, val2 in val1.items() %}
+                <p> {{ key2 }} <input type="range" name={{ key2 }} min="0" max="100"> </p>
+                {% endfor %}
+            {% endfor %}
+            <p><input type="submit" value="Generate !"></p>
         </form>
    </body>
 </html>

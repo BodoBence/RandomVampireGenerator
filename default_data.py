@@ -1,4 +1,4 @@
-def basic_info_request_data():
+def basic_info_request_scrpit_data():
     start_variables = {'MANUAL_CLAN_SELECTION': 'checkbox',
                        'MANUAL_GENERATION_SELECTION': 'checkbox',
                        'MANUAL_AGE_SELECTION' : 'checkbox',
@@ -12,7 +12,7 @@ def basic_info_request_data():
                        'SUBMIT': 'submit',}
     return start_variables
 
-def basic_info_request_data_lists():
+def basic_info_request_web_data():
     manual_clan_selection_details = {'type': 'checkbox',
                                      'default_value': 'false',
                                      'field_text': 'Select clan manually?'}
@@ -43,9 +43,6 @@ def basic_info_request_data_lists():
     chosen_name_details = {'type': 'text',
                            'default_value': 'Default Daniel',
                            'field_text': 'Clan:'}
-    submit_details = {'type': 'submit',
-                      'default_value': 'submit',
-                      'field_text': 'Generate!'}
 
     start_variables = {'MANUAL_CLAN_SELECTION': manual_clan_selection_details,
                        'MANUAL_GENERATION_SELECTION': manual_age_selection_details,
@@ -56,8 +53,7 @@ def basic_info_request_data_lists():
                        'CHOSEN_GENERATION' : chosen_age_details,
                        'CHOSEN_AGE' : chosen_generation_details,
                        'CHOSEN_SEX' : chosen_sex_details,
-                       'CHOSEN_NAME' : chosen_name_details,
-                       'SUBMIT': submit_details}
+                       'CHOSEN_NAME' : chosen_name_details}
     return start_variables
 
 def default_attibute_data():
