@@ -56,7 +56,7 @@ def setup_character_sheet(basic_info):
     return character_sheet
 
 def calculate_xp_points (age, gen):
-    xp_points = max(300, round(age * (1/gen) * 22))
+    xp_points = round(age * (1/gen+2))
     return xp_points
 
 def calculate_xp_cost(current_level, cost):
