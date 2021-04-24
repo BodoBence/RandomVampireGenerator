@@ -19,7 +19,7 @@ def home():
                            requested_clan_data = clan_inputs,
                            requested_slider_data = weight_inputs)
 
-def results_post_care(gathered_user_input):
+def input_form_results_post_care(gathered_user_input):
     input_values = {'manual_clan_condition': True if 'manual_clan_condition' in gathered_user_input.keys() else False,
                     'manual_generation_condition': True if 'manual_generation_condition' in gathered_user_input.keys() else False,
                     'manual_age_condition': True if 'manual_age_condition' in gathered_user_input.keys() else False,
@@ -52,9 +52,9 @@ def results_post_care(gathered_user_input):
 def result():
    if request.method == 'POST':
       result = request.form
-      input_values, weight_values = results_post_care(result)
+      input_values, weight_values = input_form_results_post_care(result)
       character = generate(input_values, weight_values)
-      return render_template('vampire_result.html', result = character)    
+      return render_template('vampire_result.html', generated_character=character)    
 
 if __name__ == '__main__':
     app.run(debug=True)

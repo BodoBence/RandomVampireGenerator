@@ -36,11 +36,13 @@ def create_name(sex, male_names, female_names, surnames, name_selection_critera,
     
 def setup_character_sheet(basic_info):
     character_sheet = {}
-    character_sheet['Basic Information'] = basic_info
+    character_sheet['Character_Details'] = {}
+    character_sheet['Character_Details']['Basic_Information'] = basic_info
+    character_sheet['Character_Details']['Trackers'] = {'XP_Left': 0,
+                                                        'Health': 0,
+                                                        'Willpower': 0}
     character_sheet['Attributes'] = default_data.default_attibute_data()
     character_sheet['Skills'] = default_data.default_skill_data()
-    character_sheet['XP Left'] = 0
-
     character_sheet['Disciplines'] = {}
     character_sheet['Disciplines']['Clan_Disciplines'] = {}
     character_sheet['Disciplines']['Non-Clan_Disciplines'] = {}
@@ -78,12 +80,12 @@ def calculate_weights(weight_values):
 def generate_characters(character_sheet, weight_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
-    points_maximum = generation_data[character_sheet['Basic Information'].get('Generation')]
+    points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information'].get('Generation')]
     clan_disciplines = default_data.default_clan_disciplines_data()
     weights = calculate_weights(weight_values)
-    xp = calculate_xp_points(character_sheet['Basic Information'].get('Age'))
+    xp = calculate_xp_points(character_sheet['Character_Details']['Basic_Information'].get('Age'))
     xp_costs = default_data.default_costs_data()
-    clan = character_sheet['Basic Information']['Clan']
+    clan = character_sheet['Character_Details']['Basic_Information']['Clan']
     xp_stagnation_counter = []
 
     while xp > 2 and len(xp_stagnation_counter) < 50:
@@ -118,7 +120,7 @@ def generate_characters(character_sheet, weight_values):
         else:
             xp_stagnation_counter.append(1)
         
-        character_sheet['XP Left'] = xp
+        character_sheet['Character_Details']['Trackers']['XP_Left']= xp
 
 def clean_up_character(character_sheet):
     for discipline_type, disciplines_details in character_sheet['Disciplines'].items():

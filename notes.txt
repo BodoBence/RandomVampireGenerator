@@ -1,0 +1,7 @@
+            <tr> </tr>
+               <td> {{ level_1 }} </td>
+               {% for level_2, level_2_value in generated_character[level_1].items() %}
+               <tr> </tr>
+               <td> {{ level_2 }} </td>
+               {% endfor %}
+         {% endfor %}
