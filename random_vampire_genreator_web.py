@@ -4,6 +4,11 @@ import random
 import default_data
 import pprint
 
+def calculate_metrics(character_sheet):
+    character_sheet['Character_Details']['Trackers']['Health'] = character_sheet['Attributes']['Physical_Attributes']['Stamina'] + 3
+    character_sheet['Character_Details']['Trackers']['Willpower'] = character_sheet['Attributes']['Social_Attributes']['Composure'] + character_sheet['Attributes']['Mental_Attributes']['Resolve']
+    return character_sheet
+
 def convert_txt_to_string_list(filename, listname):
     with open(filename) as inf:
         listname = inf.readlines()
@@ -128,21 +133,6 @@ def clean_up_character(character_sheet):
 
 # fill charactersheet with stats and xp,send xp
 def generate(input_data, weights_data):
-    # Manual / Random imput data
-    # MANUAL_CLAN_SELECTION = input_data['MANUAL_CLAN_SELECTION']
-    # MANUAL_GENERATION_SELECTION = input_data['MANUAL_GENERATION_SELECTION']
-    # MANUAL_AGE_SELECTION = input_data['MANUAL_AGE_SELECTION']
-    # MANUAL_SEX_SELECTION = input_data['MANUAL_SEX_SELECTION']
-    # MANUAL_NAME_SELECTION = input_data['MANUAL_NAME_SELECTION']
-
-    # # Manual input data
-    # CHOSEN_CLAN = input_data['CHOSEN_CLAN']
-    # CHOSEN_GENERATION = input_data['CHOSEN_GENERATION']
-    # CHOSEN_AGE = input_data['CHOSEN_AGE']
-    # CHOSEN_SEX = input_data['CHOSEN_SEX']
-    # CHOSEN_NAME = input_data['CHOSEN_NAME']
-
-    # Acessing name lists
     file_names_male = 'names_male.txt'
     file_names_female = 'names_female.txt'
     file_names_surname = 'names_interesting.txt'
@@ -186,8 +176,9 @@ def generate(input_data, weights_data):
   
     character_sheet = setup_character_sheet(basic_info)
     generate_characters(character_sheet, weights_data)
+    calculate_metrics(character_sheet)
     clean_up_character(character_sheet)
     return character_sheet
 
 input_values, weight_values = default_data.vampire_generator_simulated_input()
-pprint.pprint(generate(input_values, weight_values))
+#pprint.pprint(generate(input_values, weight_values))
