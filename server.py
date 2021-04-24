@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from random_vampire_genreator_web import generate
 #from default_data import basic_info_request_data
 from default_data import basic_info_request_web_data, default_clans_data, default_weights_data
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -45,16 +46,31 @@ def input_form_results_post_care(gathered_user_input):
 
     return input_values, weight_values
 
+# def convert_to_pandas_df(character_dict):
+#     columns = ['main', 'category_type', 'category', 'value']
+#     character_df = pd.DataFrame(columns=columns)
 
+#     i = 0
+#     for main, main_details in character_dict.items():
+#         count_space = 0
+#         for category_type, category_details in main_details.items():
+#             for category
+
+#         character_df.loc[i,'main'] = main
+#     return character_df
 
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
-   if request.method == 'POST':
-      result = request.form
-      input_values, weight_values = input_form_results_post_care(result)
-      character = generate(input_values, weight_values)
-      return render_template('vampire_result.html', generated_character=character)    
+    if request.method == 'POST':
+        result = request.form
+        input_values, weight_values = input_form_results_post_care(result)
+        character = generate(input_values, weight_values)
+
+        #character_df = convert_to_pandas_df(character)
+        #character_df.to_csv('character.csv', sep='\t')
+        
+        return render_template('vampire_result.html', generated_character=character)    
 
 if __name__ == '__main__':
     app.run(debug=True)
