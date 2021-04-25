@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from random_vampire_genreator_web import generate
 #from default_data import basic_info_request_data
 from default_data import basic_info_request_web_data, default_clans_data, default_weights_data
-import pandas as pd
+
 
 app = Flask(__name__)
 
