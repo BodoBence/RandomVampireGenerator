@@ -58,10 +58,22 @@ def stat_block_for_flask_table(number_of_stat_key_value_pairs,
 
             if current_col % 2 != 0:
                 print('current_col',current_col)
-                row_stat_block['col' + str(current_col)] = stat_lists_container['keys' + str(current_value_pair)][current_row-1]
-                row_stat_block['col' + str(current_col + 1)] = stat_lists_container['values' + str(current_value_pair)][current_row-1]
+
+                if current_row > len(stat_lists_container['keys' + str(current_value_pair)]):
+                    stat_1 = ''
+                else:
+                    stat_1 = stat_lists_container['keys' + str(current_value_pair)][current_row-1]
+                row_stat_block['col' + str(current_col)] = stat_1
+                
+                if current_row > len(stat_lists_container['values' + str(current_value_pair)]):
+                    stat_2 = ''
+                else:
+                    stat_2 = stat_lists_container['values' + str(current_value_pair)][current_row-1]
+                row_stat_block['col' + str(current_col + 1)] = stat_2
+                
                 current_value_pair = current_value_pair + 1
                 print('row_stat_block',row_stat_block)
+
         while len(row_stat_block) < number_of_cols:
             row_stat_block['col' + str(len(row_stat_block) + 1)] = ''
             
