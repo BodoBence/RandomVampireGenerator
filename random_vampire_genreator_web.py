@@ -1,5 +1,4 @@
 # Random Vampire Generator
-
 import random
 import default_data
 import pprint
