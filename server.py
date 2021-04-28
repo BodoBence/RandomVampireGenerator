@@ -15,10 +15,12 @@ def home():
     # for getting input from user
     default_inputs = default_data.basic_info_request_web_data()
     clan_inputs = default_data.default_clans_data()
+    generation_inputs = default_data.default_generations_data()
     weight_inputs = default_data.default_weights_data() 
-    return render_template('basic_info_request.html',
+    return render_template('basic_info_requestt_prescribed.html',
                            requested_non_slider_data = default_inputs,
                            requested_clan_data = clan_inputs,
+                           requested_generation_data = generation_inputs,
                            requested_slider_data = weight_inputs)
 
 
@@ -31,10 +33,9 @@ def result():
         #character_df.to_csv('character.csv', sep='\t')
         start_table = generate(input_values, weight_values)
         usable_table = server_functions.dictionary_to_flask_table(start_table)
-        table = ItemTable(usable_table)
-        print(table)
+        converted_to_flask_table = ItemTable(usable_table)
         #return render_template('vampire_result.html', generated_character=character)    
-        return table.__html__()
+        return converted_to_flask_table.__html__()
 
 # Declare your table
 class ItemTable(Table):

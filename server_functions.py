@@ -4,11 +4,11 @@ def input_form_results_post_care(gathered_user_input):
                     'manual_age_condition': True if 'manual_age_condition' in gathered_user_input.keys() else False,
                     'manual_sex_condition': True if 'manual_sex_condition' in gathered_user_input.keys() else False,
                     'manual_name_condition': True if 'manual_name_condition' in gathered_user_input.keys() else False,
-                    'manual_age': int(gathered_user_input['manual_age']),
-                    'manual_clan': gathered_user_input['manual_clan'],
-                    'manual_sex': gathered_user_input['manual_sex'],
-                    'manual_generation': int(gathered_user_input['manual_generation']),
-                    'manual_name': gathered_user_input['manual_name']}
+                    'manual_age': int(gathered_user_input['manual_age']) if gathered_user_input['manual_age'] != '' else 300,
+                    'manual_clan': gathered_user_input['manual_clan'] if gathered_user_input['manual_clan'] != '' else "Malkavian",
+                    'manual_sex': gathered_user_input['manual_sex'] if gathered_user_input['manual_sex'] != '' else "Female",
+                    'manual_generation': int(gathered_user_input['manual_generation']) if gathered_user_input['manual_generation'] != '' else 10,
+                    'manual_name': gathered_user_input['manual_name'] if gathered_user_input['manual_name'] != '' else "Default Dampire"}
    
     weight_values = {'Categories': {'Attributes': int(gathered_user_input['Attributes']),
                                     'Skills': int(gathered_user_input['Skills']),
@@ -51,10 +51,6 @@ def stat_block_for_flask_table(number_of_stat_key_value_pairs,
             longest_sub_dictinary = dictionary_container[sub_dictionary_key]
     number_of_rows = len(longest_sub_dictinary)
 
-    print('stat_lists_container', stat_lists_container)
-    print('number_of_rows', number_of_rows)
-    print('number_of_stat_key_value_pairs', number_of_stat_key_value_pairs)
-
     for current_row in range(1, number_of_rows + 1):
         row_stat_block = {}
         current_value_pair = 1
@@ -62,8 +58,6 @@ def stat_block_for_flask_table(number_of_stat_key_value_pairs,
         for current_col in range(1, (number_of_stat_key_value_pairs * 2) + 1):
 
             if current_col % 2 != 0:
-                print('current_col',current_col)
-
                 if current_row > len(stat_lists_container['keys' + str(current_value_pair)]):
                     stat_1 = ''
                 else:
@@ -77,13 +71,10 @@ def stat_block_for_flask_table(number_of_stat_key_value_pairs,
                 row_stat_block['col' + str(current_col + 1)] = stat_2
                 
                 current_value_pair = current_value_pair + 1
-                print('row_stat_block',row_stat_block)
 
         while len(row_stat_block) < number_of_cols:
             row_stat_block['col' + str(len(row_stat_block) + 1)] = ''
-            
-        print('row_stat_block', row_stat_block)
-
+        
         current_table.append(row_stat_block)
     
 def dictionary_to_flask_table(character_dictionary):

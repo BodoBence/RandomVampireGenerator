@@ -179,5 +179,6 @@ def generate(input_data, weights_data):
     clean_up_character(character_sheet)
     return character_sheet
 
-input_values, weight_values = default_data.vampire_generator_simulated_input()
-pprint.pprint(generate(input_values, weight_values))
+# uncomment for simluation input testing
+# input_values, weight_values = default_data.vampire_generator_simulated_input()
+# pprint.pprint(generate(input_values, weight_values))
