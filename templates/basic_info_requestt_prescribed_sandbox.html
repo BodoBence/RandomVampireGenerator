@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+   <body>
+        <form action = "http://localhost:5000/result" method='POST'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class='input_group_clan'>
+                                <p> Select clan manually?
+                                    <input type="checkbox"
+                                        name="manual_clan_condition"
+                                        unchecked>
+                                </p>
+                                <p> Clan: 
+                                    <input list="clans" name="manual_clan">
+                                    <datalist id="clans">
+                                        {% for clan in requested_clan_data %}
+                                        <option value={{ clan }}></option>
+                                        {% endfor %}
+                                    </datalist>
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='input_group_sex'>
+                                <p> Select sex manually?
+                                    <input type="checkbox"
+                                        name="manual_sex_condition"
+                                        unchecked>
+                                </p>
+                                <p> Sex: 
+                                    <input list="sexes" 
+                                        name="manual_sex">
+                                    <datalist id="sexes">
+                                        <option value="Female"></option>
+                                        <option value="Male"></option>
+                                    </datalist>
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='input_group_generation'>
+                                <p> Select generation manually?
+                                    <input type="checkbox"
+                                        name="manual_generation_condition"
+                                        unchecked>
+                                </p>
+                                <p> Generation:
+                                    <input list="gens" 
+                                        name="manual_generation">
+                                    <datalist id="gens">
+                                        {% for gen in requested_generation_data %}
+                                        <option value={{ gen }}></option>
+                                        {% endfor %}
+                                    </datalist>
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='input_group_age'>
+                                <p> Select age manually?
+                                    <input type="checkbox"
+                                        name="manual_age_condition"
+                                        unchecked>
+                                </p>
+                                <p> Age:
+                                    <input type="number"
+                                        name="manual_age"
+                                        min="1"
+                                        max="3000">
+                                </p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='input_group_name'>
+                                <p> Select name manually?
+                                    <input type="checkbox"
+                                        name="manual_name_condition"
+                                        unchecked>
+                                </p>
+                                <p> Name:
+                                    <input type="text"
+                                        name="manual_name"
+                                        placeholder="Random">
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                        {% for key1, val1 in requested_slider_data.items() %}
+                            <tr>
+                                <td>
+                                    <p> {{ key1 }} </p>
+                                </td>
+                            {% for key2, val2 in val1.items() %}
+                            <td> {{ key2 }}
+
+                            </td> 
+                            <td> <input type="range" 
+                                name={{ key2 }} 
+                                min="0" 
+                                max="100">
+                            </td> 
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    <tr>
+                        <td>
+                            <input type="submit" value="Generate !">
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </form>
+        <div>
+            {{ tStrToLoad | safe }}
+        </div>
+   </body>
+</html>
+

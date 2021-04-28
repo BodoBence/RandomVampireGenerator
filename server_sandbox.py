@@ -11,14 +11,13 @@ app = Flask(__name__)
 def home():
     # for getting input from script
     #default_inputs = basic_info_request_data()
-
-    # for getting input from user
     default_inputs = default_data.basic_info_request_web_data()
     clan_inputs = default_data.default_clans_data()
     generation_inputs = default_data.default_generations_data()
-    weight_inputs = default_data.default_weights_data() 
-    return render_template('basic_info_requestt_prescribed.html',
-                           #requested_non_slider_data = default_inputs,
+    weight_inputs = default_data.default_weights_data()
+
+    return render_template('basic_info_requestt_prescribed_sandbox.html',
+                           requested_non_slider_data = default_inputs,
                            requested_clan_data = clan_inputs,
                            requested_generation_data = generation_inputs,
                            requested_slider_data = weight_inputs)
@@ -27,6 +26,13 @@ def home():
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     if request.method == 'POST':
+        # for the basic input gather segment    
+        default_inputs = default_data.basic_info_request_web_data()
+        clan_inputs = default_data.default_clans_data()
+        generation_inputs = default_data.default_generations_data()
+        weight_inputs = default_data.default_weights_data()
+            
+        # for the character generation based on the gatehred values
         result = request.form
         input_values, weight_values = server_functions.input_form_results_post_care(result)
  
@@ -35,7 +41,12 @@ def result():
         usable_table = server_functions.dictionary_to_flask_table(start_table)
         converted_to_flask_table = ItemTable(usable_table)
         #return render_template('vampire_result.html', generated_character=character)
-        return converted_to_flask_table.__html__()
+        return render_template("basic_info_requestt_prescribed_sandbox.html",
+                                   requested_non_slider_data = default_inputs,
+                                   requested_clan_data = clan_inputs,
+                                   requested_generation_data = generation_inputs,
+                                   requested_slider_data = weight_inputs,
+                                   tStrToLoad = converted_to_flask_table.__html__())
 
 # Declare your table
 class ItemTable(Table):

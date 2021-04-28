@@ -166,3 +166,4 @@ def dictionary_to_flask_table(character_dictionary):
                             number_of_cols=6)   
 
     return table
+
