@@ -3,7 +3,8 @@ from flask_table import Table, Col
 from random_vampire_genreator_web import generate
 #from default_data import basic_info_request_data
 import default_data  
-import server_functions  
+import server_functions
+import pprint
 
 app = Flask(__name__)
 
@@ -15,12 +16,14 @@ def home():
     clan_inputs = default_data.default_clans_data()
     generation_inputs = default_data.default_generations_data()
     weight_inputs = default_data.default_weights_data()
+    starting_field_deails = server_functions.start_field_values()
 
     return render_template('basic_info_requestt_prescribed_sandbox.html',
                            requested_non_slider_data = default_inputs,
                            requested_clan_data = clan_inputs,
                            requested_generation_data = generation_inputs,
-                           requested_slider_data = weight_inputs)
+                           requested_slider_data = weight_inputs,
+                           detail = starting_field_deails)
 
 
 @app.route('/result', methods = ['POST', 'GET'])
@@ -34,7 +37,9 @@ def result():
             
         # for the character generation based on the gatehred values
         result = request.form
-        input_values, weight_values = server_functions.input_form_results_post_care(result)
+
+        starting_field_details =  server_functions.input_form_to_field(result)
+        input_values, weight_values = server_functions.input_form_to_generator(result)
  
         #character_df.to_csv('character.csv', sep='\t')
         start_table = generate(input_values, weight_values)
@@ -46,6 +51,7 @@ def result():
                                    requested_clan_data = clan_inputs,
                                    requested_generation_data = generation_inputs,
                                    requested_slider_data = weight_inputs,
+                                   detail = starting_field_details,
                                    tStrToLoad = converted_to_flask_table.__html__())
 
 # Declare your table

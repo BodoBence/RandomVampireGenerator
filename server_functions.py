@@ -1,4 +1,4 @@
-def input_form_results_post_care(gathered_user_input):
+def input_form_to_generator(gathered_user_input):
     input_values = {'manual_clan_condition': True if 'manual_clan_condition' in gathered_user_input.keys() else False,
                     'manual_generation_condition': True if 'manual_generation_condition' in gathered_user_input.keys() else False,
                     'manual_age_condition': True if 'manual_age_condition' in gathered_user_input.keys() else False,
@@ -22,6 +22,18 @@ def input_form_results_post_care(gathered_user_input):
                      'Disciplines': {'Clan_Disciplines': int(gathered_user_input['Clan_Disciplines']), 
                                      'Non-Clan_Disciplines': int(gathered_user_input['Non-Clan_Disciplines'])}}
     return input_values, weight_values
+
+def input_form_to_field(input_data):
+    result = {}
+
+    for main_property, detail in input_data.items():
+        if isinstance(detail, dict):
+            for sub_property, sub_detail in detail.items():
+                result[sub_property] = sub_detail
+        else:
+            result[main_property] = detail
+
+    return result
 
 def stat_block_for_flask_table(number_of_stat_key_value_pairs,
                                dictionary_container,
@@ -166,4 +178,29 @@ def dictionary_to_flask_table(character_dictionary):
                             number_of_cols=6)   
 
     return table
+
+def start_field_values():
+    details = { 'manual_age': 100,
+                'manual_age_condition': False,
+                'manual_clan': 'Malkavian',
+                'manual_clan_condition': False,
+                'manual_generation': 10,
+                'manual_generation_condition': False,
+                'manual_name': 'Default Dampire',
+                'manual_name_condition': False,
+                'manual_sex': 'Female',
+                'manual_sex_condition': False,
+                'Mental_Attributes': 100,
+                'Physical_Attributes': 50,
+                'Social_Attributes': 50,
+                'Attributes': 50, 
+                'Disciplines': 50,
+                'Skills': 50,
+                'Clan_Disciplines': 50, 
+                'Non-Clan_Disciplines': 50,
+                'Mental_Skills': 50,
+                'Physical_Skills': 50, 
+                'Social_Skills': 50}
+
+    return details
 
