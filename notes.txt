@@ -53,3 +53,20 @@ form result:
   'Categories': {'Attributes': 50, 'Disciplines': 50, 'Skills': 50},
   'Disciplines': {'Clan_Disciplines': 50, 'Non-Clan_Disciplines': 50},
   'Skills': {'Mental_Skills': 50, 'Physical_Skills': 50, 'Social_Skills': 50}})
+
+  {'Attributes': '50',
+ 'Clan_Disciplines': '85',
+ 'Disciplines': '50',
+ 'Mental_Attributes': '100',
+ 'Mental_Skills': '50',
+ 'Non-Clan_Disciplines': '17',
+ 'Physical_Attributes': '100',
+ 'Physical_Skills': '23',
+ 'Skills': '50',
+ 'Social_Attributes': '50',
+ 'Social_Skills': '50',
+ 'manual_age': '600',
+ 'manual_clan': 'Random',
+ 'manual_generation': 'Random',
+ 'manual_name': 'Fii',
+ 'manual_sex': 'Random'}
