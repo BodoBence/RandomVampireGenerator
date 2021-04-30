@@ -1,3 +1,5 @@
+import default_data
+
 def flatten_dictionary(input_dictionary):
     result = {}
     for main_property, detail in input_dictionary.items():
@@ -13,93 +15,6 @@ def merge_dictionaries(dictionary_a, dictionary_b):
     merged_dictionary = {**dictionary_a, **dictionary_b}
     return merged_dictionary
 
-def option_conversion(input_key,
-                      default_value,
-                      connected_boolean,
-                      output_dictionary,
-                      input_dictionary,
-                      convert_to_int):
-    
-    if input_dictionary[input_key] == 'Random':
-        output_dictionary[connected_boolean] = False
-        output_dictionary[input_key] = default_value
-    else:
-        if input_dictionary[input_key] == '':
-            output_dictionary[input_key] = default_value
-        else:
-            output_dictionary[connected_boolean] = True
-            if convert_to_int == True:
-                output_dictionary[input_key] = int(input_dictionary[input_key])
-            else:
-                output_dictionary[input_key] = input_dictionary[input_key]
-
-
-    return output_dictionary
-
-def weight_value_restucturing(gathered_user_input):
-    weight_values = {    'Categories': {'Attributes': int(gathered_user_input['Attributes']),
-                                        'Skills': int(gathered_user_input['Skills']),
-                                        'Disciplines': int(gathered_user_input['Disciplines'])},
-                        'Attributes': {'Physical_Attributes': int(gathered_user_input['Physical_Attributes']),
-                                       'Social_Attributes': int(gathered_user_input['Social_Attributes']), 
-                                       'Mental_Attributes': int(gathered_user_input['Mental_Attributes'])},
-                        'Skills': {'Physical_Skills': int(gathered_user_input['Physical_Skills']), 
-                                   'Social_Skills': int(gathered_user_input['Social_Skills']), 
-                                   'Mental_Skills': int(gathered_user_input['Mental_Skills'])},
-                        'Disciplines': {'Clan_Disciplines': int(gathered_user_input['Clan_Disciplines']), 
-                                        'Non-Clan_Disciplines': int(gathered_user_input['Non-Clan_Disciplines'])}}
-    return weight_values
-
-def field_value_restucturing(gathered_user_input):
-    input_values = {'manual_clan_condition': None,
-                    'manual_generation_condition': None,
-                    'manual_age_condition': None,
-                    'manual_sex_condition': None,
-                    'manual_name_condition': None,
-                    'manual_age': None,
-                    'manual_clan': None,
-                    'manual_sex': None,
-                    'manual_generation': None,
-                    'manual_name': None}
-
-    option_conversion(input_key='manual_age',
-                      default_value=300,
-                      connected_boolean='manual_age_condition',
-                      output_dictionary=input_values,
-                      input_dictionary=gathered_user_input,
-                      convert_to_int=True)
-
-    option_conversion(input_key='manual_clan',
-                      default_value='Malkavian',
-                      connected_boolean='manual_clan_condition',
-                      output_dictionary=input_values,
-                      input_dictionary=gathered_user_input,
-                      convert_to_int=False)    
-
-
-    option_conversion(input_key='manual_generation',
-                      default_value=10,
-                      connected_boolean='manual_generation_condition',
-                      output_dictionary=input_values,
-                      input_dictionary=gathered_user_input,
-                      convert_to_int=True)
-
-    option_conversion(input_key='manual_sex',
-                      default_value='Female',
-                      connected_boolean='manual_sex_condition',
-                      output_dictionary=input_values,
-                      input_dictionary=gathered_user_input,
-                      convert_to_int=False)
-
-    option_conversion(input_key='manual_name',
-                      default_value='Default Dampire',
-                      connected_boolean='manual_name_condition',
-                      output_dictionary=input_values,
-                      input_dictionary=gathered_user_input,
-                      convert_to_int=False)
-
-    
-    return input_values
 
 def stat_block_for_flask_table(number_of_stat_key_value_pairs,
                                dictionary_container,
@@ -245,28 +160,31 @@ def dictionary_to_flask_table(character_dictionary):
 
     return table
 
-def start_field_values():
-    details = { 'manual_age': 100,
-                'manual_age_condition': False,
-                'manual_clan': 'Random',
-                'manual_clan_condition': False,
-                'manual_generation': 10,
-                'manual_generation_condition': False,
-                'manual_name': 'Default_Dampire',
-                'manual_name_condition': False,
-                'manual_sex': 'Female',
-                'manual_sex_condition': False,
-                'Mental_Attributes': 50,
-                'Physical_Attributes': 50,
-                'Social_Attributes': 50,
-                'Attributes': 50, 
-                'Disciplines': 50,
-                'Skills': 50,
-                'Clan_Disciplines': 50, 
-                'Non-Clan_Disciplines': 50,
-                'Mental_Skills': 50,
-                'Physical_Skills': 50, 
-                'Social_Skills': 50}
+def form_structuring(gathered_form_data):
+ 
+    gathered_values = {'manual_age': int(gathered_form_data['manual_age']),
+                       'manual_clan': 'Malkavian' if gathered_form_data['manual_clan'] == 'Random' else gathered_form_data['manual_clan'],
+                       'manual_sex': 'Female' if gathered_form_data['manual_sex'] == 'Random' else gathered_form_data['manual_sex'],
+                       'manual_generation': 10 if gathered_form_data['manual_generation'] == 'Random' else int(gathered_form_data['manual_generation']),
+                       'manual_name': gathered_form_data['manual_name']}
 
-    return details
+    gathered_weights = {'Attributes': int(gathered_form_data['Attributes']),
+                        'Clan_Disciplines': int(gathered_form_data['Clan_Disciplines']),
+                        'Disciplines': int(gathered_form_data['Disciplines']),
+                        'Mental_Attributes': int(gathered_form_data['Mental_Attributes']),
+                        'Mental_Skills': int(gathered_form_data['Mental_Skills']),
+                        'Non-Clan_Disciplines': int(gathered_form_data['Non-Clan_Disciplines']),
+                        'Physical_Attributes': int(gathered_form_data['Physical_Attributes']),
+                        'Physical_Skills': int(gathered_form_data['Physical_Skills']),
+                        'Skills': int(gathered_form_data['Skills']),
+                        'Social_Attributes': int(gathered_form_data['Social_Attributes']),
+                        'Social_Skills': int(gathered_form_data['Social_Skills'])}
 
+    gathered_condition = {'manual_clan_condition': False if gathered_form_data['manual_clan']=='Random' else True,
+                          'manual_generation_condition': False if gathered_form_data['manual_generation']=='Random' else True,
+                          'manual_age_condition': False if gathered_form_data['manual_age_selection']=='Random' else True,
+                          'manual_sex_condition': False if gathered_form_data['manual_sex']=='Random' else True,
+                          'manual_name_condition': False if gathered_form_data['manual_name_selection']=='Random' else True}
+
+
+    return gathered_condition, gathered_values, gathered_weights

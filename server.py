@@ -11,43 +11,49 @@ app = Flask(__name__)
 # slider values come from: server_functions.start_field_values()
 # this way actual values are in a flat dictionary, and slider grouping are represented in a nested dictionary
 
-startup_input_field_details = {'weight_structure': default_data.default_weights_data(),
-                               'generator_inputs': server_functions.start_field_values()}
+startup_input_field_details = {'weight_structure': default_data.default_weights_structure(),
+                               'input_conditions': default_data.start_conditions(),
+                               'input_values': default_data.start_values(),
+                               'input_weights': default_data.start_weights()}
 
 @app.route('/', )
 def home():
     return render_template('basic_info_request_default.html',
-                           requested_slider_structure = startup_input_field_details['weight_structure'],
-                           field_detail = startup_input_field_details['generator_inputs'])
+                           slider_structure = startup_input_field_details['weight_structure'],
+                           field_conditions = startup_input_field_details['input_conditions'],
+                           field_values = startup_input_field_details['input_values'],
+                           slider_values = startup_input_field_details['input_weights'])
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     gathered_input = request.form
 
-    # get user input
-    input_values = server_functions.field_value_restucturing(gathered_input)
-    input_weights = server_functions.weight_value_restucturing(gathered_input)
+    # pprint.pprint(gathered_input)
 
-    # generate character
-    generated_character = generate(input_values, input_weights)
+    resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
+    
+    generated_character = generate(input_values=restructured_values,
+                                   input_conditions=resutrctured_conditions,
+                                   input_weights=restructured_weights)
 
     # overwrite the input field and slider valies
-    new_input = server_functions.merge_dictionaries(input_values, 
-                                                    server_functions.flatten_dictionary(input_weights))
-    startup_input_field_details['generator_inputs'] = new_input
+    startup_input_field_details['input_conditions'] = resutrctured_conditions
+    startup_input_field_details['input_values'] = restructured_values
+    startup_input_field_details['input_weights'] = restructured_weights
 
-    pprint.pprint(gathered_input)
-    pprint.pprint(new_input
-    )
+    # pprint.pprint(gathered_input)
+    # pprint.pprint(new_input)
 
     # format
     generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
     converted_to_flask_table = ItemTable(generated_character_flask_table_input) 
     
-    return startup_input_field_details, render_template("generated_characters.html",
-                                                        requested_slider_structure = startup_input_field_details['weight_structure'],
-                                                        field_detail = startup_input_field_details['generator_inputs'],
-                                                        generated_vampire = converted_to_flask_table.__html__())
+    return render_template("generated_characters.html",
+                           slider_structure = startup_input_field_details['weight_structure'],
+                           field_conditions = startup_input_field_details['input_conditions'],
+                           field_values = startup_input_field_details['input_values'],
+                           slider_values = startup_input_field_details['input_weights'],
+                           generated_vampire = converted_to_flask_table.__html__())
 
 # Declare your table
 class ItemTable(Table):

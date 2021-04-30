@@ -75,15 +75,15 @@ def start_values():
     return start_values
 
 def start_weights():
-    start_weights = {'Attributes': 30,
-                     'Skills': 30,
-                     'Disciplines': 30,
-                     'Physical_Attributes': 30,
-                     'Social_Attributes': 30, 
-                     'Mental_Attributes': 30,
-                     'Physical_Skills': 30, 
-                     'Social_Skills': 30, 
-                     'Mental_Skills': 30,
+    start_weights = {'Attributes': 50,
+                     'Skills': 50,
+                     'Disciplines': 50,
+                     'Physical_Attributes': 50,
+                     'Social_Attributes': 50, 
+                     'Mental_Attributes': 50,
+                     'Physical_Skills': 50, 
+                     'Social_Skills': 50, 
+                     'Mental_Skills': 50,
                      'Clan_Disciplines': 70, 
                      'Non-Clan_Disciplines': 20}
     return start_weights
@@ -215,7 +215,7 @@ def default_costs_data():
                                  'Non-Clan_Disciplines': 7}}
     return xp_costs
 
-def default_weights_data():
+def default_weights_structure():
     weight_categories = {'Attributes': 50, 'Skills': 50, 'Disciplines': 50}
     weight_attributes = {'Physical_Attributes': 50, 'Social_Attributes': 50, 'Mental_Attributes': 50}
     weight_skills = {'Physical_Skills': 50, 'Social_Skills': 50, 'Mental_Skills': 50}
