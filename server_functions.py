@@ -1,15 +1,73 @@
+def option_conversion(input_key,
+                      default_value,
+                      connected_boolean,
+                      main_dictionary,
+                      source_dictionary,
+                      need_number):
+    
+    if source_dictionary[input_key] == 'Random':
+        main_dictionary[connected_boolean] = False
+        main_dictionary[input_key] = default_value
+    else:
+        if source_dictionary[input_key] == '':
+            main_dictionary[input_key] = default_value
+        else:
+            if need_number == True:
+                main_dictionary[input_key] = int(source_dictionary[input_key])
+            else:
+                main_dictionary[input_key] = source_dictionary[input_key]
+
+
+    return main_dictionary
+
 def input_form_to_generator(gathered_user_input):
-    input_values = {'manual_clan_condition': True if 'manual_clan_condition' in gathered_user_input.keys() else False,
-                    'manual_generation_condition': True if 'manual_generation_condition' in gathered_user_input.keys() else False,
-                    'manual_age_condition': True if 'manual_age_condition' in gathered_user_input.keys() else False,
-                    'manual_sex_condition': True if 'manual_sex_condition' in gathered_user_input.keys() else False,
-                    'manual_name_condition': True if 'manual_name_condition' in gathered_user_input.keys() else False,
-                    'manual_age': int(gathered_user_input['manual_age']) if gathered_user_input['manual_age'] != '' else 300,
-                    'manual_clan': gathered_user_input['manual_clan'] if gathered_user_input['manual_clan'] != '' else "Malkavian",
-                    'manual_sex': gathered_user_input['manual_sex'] if gathered_user_input['manual_sex'] != '' else "Female",
-                    'manual_generation': int(gathered_user_input['manual_generation']) if gathered_user_input['manual_generation'] != '' else 10,
-                    'manual_name': gathered_user_input['manual_name'] if gathered_user_input['manual_name'] != '' else "Default Dampire"}
-   
+    input_values = {'manual_clan_condition': None,
+                    'manual_generation_condition': None,
+                    'manual_age_condition': None,
+                    'manual_sex_condition': None,
+                    'manual_name_condition': None,
+                    'manual_age': None,
+                    'manual_clan': None,
+                    'manual_sex': None,
+                    'manual_generation': None,
+                    'manual_name': None}
+
+    option_conversion(input_key='manual_age',
+                      default_value=300,
+                      connected_boolean='manual_age_condition',
+                      main_dictionary=input_values,
+                      source_dictionary=gathered_user_input,
+                      need_number=True)
+
+    option_conversion(input_key='manual_clan',
+                      default_value='Malkavian',
+                      connected_boolean='manual_clan_condition',
+                      main_dictionary=input_values,
+                      source_dictionary=gathered_user_input,
+                      need_number=False)    
+
+
+    option_conversion(input_key='manual_generation',
+                      default_value=10,
+                      connected_boolean='manual_generation_condition',
+                      main_dictionary=input_values,
+                      source_dictionary=gathered_user_input,
+                      need_number=True)
+
+    option_conversion(input_key='manual_sex',
+                      default_value='Female',
+                      connected_boolean='manual_sex_condition',
+                      main_dictionary=input_values,
+                      source_dictionary=gathered_user_input,
+                      need_number=False)
+
+    option_conversion(input_key='manual_name',
+                      default_value='Default Dampire',
+                      connected_boolean='manual_name_condition',
+                      main_dictionary=input_values,
+                      source_dictionary=gathered_user_input,
+                      need_number=False)
+
     weight_values = {'Categories': {'Attributes': int(gathered_user_input['Attributes']),
                                     'Skills': int(gathered_user_input['Skills']),
                                     'Disciplines': int(gathered_user_input['Disciplines'])},
@@ -22,18 +80,6 @@ def input_form_to_generator(gathered_user_input):
                      'Disciplines': {'Clan_Disciplines': int(gathered_user_input['Clan_Disciplines']), 
                                      'Non-Clan_Disciplines': int(gathered_user_input['Non-Clan_Disciplines'])}}
     return input_values, weight_values
-
-def input_form_to_field(input_data):
-    result = {}
-
-    for main_property, detail in input_data.items():
-        if isinstance(detail, dict):
-            for sub_property, sub_detail in detail.items():
-                result[sub_property] = sub_detail
-        else:
-            result[main_property] = detail
-
-    return result
 
 def stat_block_for_flask_table(number_of_stat_key_value_pairs,
                                dictionary_container,
@@ -182,11 +228,11 @@ def dictionary_to_flask_table(character_dictionary):
 def start_field_values():
     details = { 'manual_age': 100,
                 'manual_age_condition': False,
-                'manual_clan': 'Malkavian',
+                'manual_clan': 'Random',
                 'manual_clan_condition': False,
                 'manual_generation': 10,
                 'manual_generation_condition': False,
-                'manual_name': 'Default Dampire',
+                'manual_name': 'Default_Dampire',
                 'manual_name_condition': False,
                 'manual_sex': 'Female',
                 'manual_sex_condition': False,
