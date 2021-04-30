@@ -140,7 +140,7 @@ def level_up(character_sheet, weight_values):
     clan = character_sheet['Character_Details']['Basic_Information']['Clan']
     xp_stagnation_counter = []
 
-    while xp > 2 and len(xp_stagnation_counter) < 50:
+    while xp > 2 and len(xp_stagnation_counter) < 30:
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
         current_stat = random.choice(list(character_sheet[current_category][current_type].keys()))
@@ -218,7 +218,7 @@ def generate(input_values, input_conditions, input_weights):
                   'Sex': sex,
                   'Generation': generation,
                   'Clan': clan,
-                  'Sire': 'Older Random Vampire',
+                  'Sire': 'Older Vampire',
                   'Age': age }
   
     character_sheet = setup_character_sheet(basic_info)

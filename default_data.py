@@ -13,7 +13,7 @@ def sample_character_sheet():
                                                                         'Generation': 8,
                                                                         'Name': 'Clay, Nanie',
                                                                         'Sex': 'Male',
-                                                                        'Sire': 'Older Random Vampire'},
+                                                                        'Sire': 'Older Vampire'},
                                                 'Trackers': {   'Health': 8,
                                                                 'Willpower': 10,
                                                                 'XP_Left': 1741}},
@@ -271,3 +271,10 @@ def default_ages_data():
 def default_sexes_data():
     sexes = ['Male', 'Female']
     return sexes
+
+def blood_potency_data():
+    blood_potency_correspondencies = {'1': [10, 10],
+                                      '2': [9, 10],
+                                      '3': [8, 10],
+                                      '4': [5, 10]}
+    return blood_potency_correspondencies

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request
 from flask_table import Table, Col
 from random_vampire_genreator_web import generate
 import default_data  
@@ -24,6 +24,7 @@ def home():
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'])
+
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():

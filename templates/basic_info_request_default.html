@@ -5,11 +5,6 @@
             <table>
                 <tbody>
                     <tr style="height:40px">
-                        <th colspan="6" style="height:80px">
-                            Basic Information
-                        </th>
-                    </tr>
-                    <tr style="height:40px">
                         <td>
                              Clan:
                         </td>
@@ -80,7 +75,7 @@
                                 </datalist>
                         </td>
                         <td>
-                            <input type="number" name="manual_age" value={{ field_values['manual_age'] }}>
+                            <input type="number" min=1 max=5000 name="manual_age" value={{ field_values['manual_age'] }}>
                         </td>
                         <td>
                            Name:
@@ -95,11 +90,6 @@
                         <td>
                             <input type="text" name="manual_name" value={{ field_values['manual_name'] }}> 
                         </td>
-                    </tr>
-                    <tr>
-                        <th colspan="6" style="height:80px">
-                            Weights
-                        </th>
                     </tr>
                         {% for key1, val1 in slider_structure.items() %}
                     <tr style="height:40px">
