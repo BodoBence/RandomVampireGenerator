@@ -1,3 +1,4 @@
+
 {'Attributes': 50,
  'Clan_Disciplines': 50,
  'Disciplines': 50,
@@ -6,7 +7,7 @@
  'Non-Clan_Disciplines': 50,
  'Physical_Attributes': 50,
  'Physical_Skills': 50,
- 'Skills': 89,
+ 'Skills': 50,
  'Social_Attributes': 50,
  'Social_Skills': 50,
  'manual_age': 300,
