@@ -26,16 +26,18 @@ def create_name(sex, male_names, female_names, surnames, name_selection_critera,
     name_surname = select_from_list(options=surnames,
                                     condition=name_selection_critera,
                                     user_defined=manual_name)
-    
-    if sex == 'Female':
-        name_christian = select_from_list(options=female_names,
-                                          condition=name_selection_critera,
-                                          user_defined=manual_name)
+    if name_selection_critera == True:
+        name_full = manual_name
     else:
-        name_christian = select_from_list(options=male_names,
-                                          condition=name_selection_critera,
-                                          user_defined=manual_name)
-    name_full = name_christian + ', ' + name_surname
+        if sex == 'Female':
+            name_christian = select_from_list(options=female_names,
+                                            condition=name_selection_critera,
+                                            user_defined=manual_name)
+        else:
+            name_christian = select_from_list(options=male_names,
+                                            condition=name_selection_critera,
+                                            user_defined=manual_name)
+        name_full = name_christian + ', ' + name_surname
     return name_full
     
 def setup_character_sheet(basic_info):
@@ -61,7 +63,7 @@ def setup_character_sheet(basic_info):
             character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = 0
     return character_sheet
 
-def calculate_xp_points (age):
+def calculate_xp_points(age):
     xp_points = max(300, (age * 2))
     return xp_points
 
@@ -69,19 +71,65 @@ def calculate_xp_cost(current_level, cost):
     xp_cost = (current_level + 1) * cost
     return xp_cost
 
+def fill_list_n_times_with_input(input_list, n, custom_input):
+    for i in range(1, n):
+        input_list.append(custom_input)
+    return input_list
+
 def calculate_weights(weight_values):
-    weights = {}
-    for weight_group_type in weight_values.keys():
-        weights[weight_group_type] = []
-    
-    for weight_group_type, weight_group_details in weight_values.items():
-        for stat_type, weight in weight_group_details.items():
-            for i in range(weight):
-                weights[weight_group_type].append(stat_type)
+    weights = {'Categories': [],
+               'Attributes': [],
+               'Skills': [],
+               'Disciplines': []}
 
-    return weights
+    fill_list_n_times_with_input(input_list=weights['Categories'],
+                                 n=weight_values['Attributes'],
+                                 custom_input='Attributes')
 
-def generate_characters(character_sheet, weight_values):
+    fill_list_n_times_with_input(input_list=weights['Categories'],
+                                 n=weight_values['Skills'],
+                                 custom_input='Skills')
+
+    fill_list_n_times_with_input(input_list=weights['Categories'],
+                                 n=weight_values['Disciplines'],
+                                 custom_input='Disciplines')
+
+
+    fill_list_n_times_with_input(input_list=weights['Attributes'],
+                                 n=weight_values['Physical_Attributes'],
+                                 custom_input='Physical_Attributes')
+
+    fill_list_n_times_with_input(input_list=weights['Attributes'],
+                                 n=weight_values['Social_Attributes'],
+                                 custom_input='Social_Attributes')
+
+    fill_list_n_times_with_input(input_list=weights['Attributes'],
+                                 n=weight_values['Mental_Attributes'],
+                                 custom_input='Mental_Attributes')  
+
+
+    fill_list_n_times_with_input(input_list=weights['Skills'],
+                                 n=weight_values['Physical_Skills'],
+                                 custom_input='Physical_Skills')
+    fill_list_n_times_with_input(input_list=weights['Skills'],
+                                 n=weight_values['Social_Skills'],
+                                 custom_input='Social_Skills')
+    fill_list_n_times_with_input(input_list=weights['Skills'],
+                                 n=weight_values['Mental_Skills'],
+                                 custom_input='Mental_Skills')
+
+
+    fill_list_n_times_with_input(input_list=weights['Disciplines'],
+                                 n=weight_values['Clan_Disciplines'],
+                                 custom_input='Clan_Disciplines')
+
+    fill_list_n_times_with_input(input_list=weights['Disciplines'],
+                                 n=weight_values['Non-Clan_Disciplines'],
+                                 custom_input='Non-Clan_Disciplines')
+
+    return weights    
+
+def level_up(character_sheet, weight_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
     points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information'].get('Generation')]
@@ -131,7 +179,7 @@ def clean_up_character(character_sheet):
         character_sheet['Disciplines'][discipline_type] = {discipline:discipline_level for discipline,discipline_level in disciplines_details.items() if discipline_level != 0}
 
 # fill charactersheet with stats and xp,send xp
-def generate(input_data, weights_data):
+def generate(input_values, input_conditions, input_weights):
     file_names_male = 'names_male.txt'
     file_names_female = 'names_female.txt'
     file_names_surname = 'names_interesting.txt'
@@ -144,41 +192,43 @@ def generate(input_data, weights_data):
     names_surname = convert_txt_to_string_list(file_names_surname, names_surname)
 
     clan = select_from_list(options=default_data.default_clans_data(),
-                            condition=input_data['manual_clan_condition'],
-                            user_defined=input_data['manual_clan'])
+                            condition=input_conditions['manual_clan_condition'],
+                            user_defined=input_values['manual_clan'])
   
     generation = select_from_list(options=default_data.default_generations_data(),
-                                  condition=input_data['manual_generation_condition'],
-                                  user_defined=input_data['manual_generation'])
+                                  condition=input_conditions['manual_generation_condition'],
+                                  user_defined=input_values['manual_generation'])
 
     age = select_from_list(options=default_data.default_ages_data(),
-                           condition=input_data['manual_age_condition'] ,
-                           user_defined=input_data['manual_age'])
+                           condition=input_conditions['manual_age_condition'] ,
+                           user_defined=input_values['manual_age'])
 
     sex = select_from_list(options=default_data.default_sexes_data(),
-                           condition=input_data['manual_sex_condition'] ,
-                           user_defined=input_data['manual_sex'])
+                           condition=input_conditions['manual_sex_condition'] ,
+                           user_defined=input_values['manual_sex'])
 
     name = create_name(sex=sex,
                        male_names=names_male,
                        female_names=names_female,
                        surnames=names_surname,
-                       name_selection_critera=input_data['manual_name_condition'],
-                       manual_name=input_data['manual_name'])
+                       name_selection_critera=input_conditions['manual_name_condition'],
+                       manual_name=input_values['manual_name'])
 
     basic_info = {'Name': name,
-                'Sex': sex,
-                'Generation': generation,
-                'Clan': clan,
-                'Sire': 'Older Random Vampire',
-                'Age': age }
+                  'Sex': sex,
+                  'Generation': generation,
+                  'Clan': clan,
+                  'Sire': 'Older Random Vampire',
+                  'Age': age }
   
     character_sheet = setup_character_sheet(basic_info)
-    generate_characters(character_sheet, weights_data)
+    level_up(character_sheet, input_weights)
     calculate_metrics(character_sheet)
     clean_up_character(character_sheet)
     return character_sheet
 
 # uncomment for simluation input testing
-# input_values, weight_values = default_data.vampire_generator_simulated_input()
-# pprint.pprint(generate(input_values, weight_values))
+input_values = default_data.start_values()
+input_conditions = default_data.start_conditions()
+input_weights = default_data.start_weights()
+pprint.pprint(generate(input_values, input_conditions, input_weights))

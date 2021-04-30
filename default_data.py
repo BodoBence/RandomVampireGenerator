@@ -58,31 +58,35 @@ def sample_character_sheet():
                                                         'Subterfuge': 5}}}
     return character_sheet
 
-def vampire_generator_simulated_input():
-    input_values = {'manual_clan_condition': False,
-                    'manual_generation_condition': False,
-                    'manual_age_condition': False,
-                    'manual_sex_condition': False,
-                    'manual_name_condition': False,
-                    'manual_age': 300,
+def start_conditions():
+    start_conditions = {'manual_clan_condition': False,
+                        'manual_generation_condition': False,
+                        'manual_age_condition': False,
+                        'manual_sex_condition': False,
+                        'manual_name_condition': False}
+    return start_conditions
+
+def start_values():
+    start_values = {'manual_age': 300,
                     'manual_clan': 'Malkavian',
                     'manual_sex': 'Female',
                     'manual_generation': 10,
                     'manual_name': "Fruzsi"}
-   
-    weight_values = {'Categories': {'Attributes': 30,
-                                    'Skills': 30,
-                                    'Disciplines': 30},
-                     'Attributes': {'Physical_Attributes': 30,
-                                    'Social_Attributes': 30, 
-                                    'Mental_Attributes': 30},
-                     'Skills': {'Physical_Skills': 30, 
-                                'Social_Skills': 30, 
-                                'Mental_Skills': 30},
-                     'Disciplines': {'Clan_Disciplines': 70, 
-                                     'Non-Clan_Disciplines': 20}}
+    return start_values
 
-    return input_values, weight_values
+def start_weights():
+    start_weights = {'Attributes': 30,
+                     'Skills': 30,
+                     'Disciplines': 30,
+                     'Physical_Attributes': 30,
+                     'Social_Attributes': 30, 
+                     'Mental_Attributes': 30,
+                     'Physical_Skills': 30, 
+                     'Social_Skills': 30, 
+                     'Mental_Skills': 30,
+                     'Clan_Disciplines': 70, 
+                     'Non-Clan_Disciplines': 20}
+    return start_weights
 
 def basic_info_request_web_data():
     manual_clan_condition_details = {'type': 'checkbox',
@@ -225,7 +229,7 @@ def default_weights_data():
     return weight_values
 
 def default_clan_disciplines_data():
-    clan_disciplines = {'Banu Haqim': ['Celerity', 'Obfuscate', 'Blood Sorcery'],
+    clan_disciplines = {'Banu_Haqim': ['Celerity', 'Obfuscate', 'Blood Sorcery'],
                         'Brujah': ['Potence', 'Celerity', 'Presence'],
                         'Gangrel': ['Fortitude', 'Animalism', 'Protean'],
                         'Lasombra': ['Domnaite', 'Potence', 'Oblivion'],
@@ -241,7 +245,7 @@ def default_clan_disciplines_data():
     return clan_disciplines
 
 def default_clans_data():
-    clans = ['Banu Haqim',
+    clans = ['Banu_Haqim',
              'Brujah',
              'Gangrel',
              'Lasombra',
