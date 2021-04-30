@@ -1,115 +1,21 @@
-         {% for level_1_key, level_1_value in generated_character.items() %}
-            {% for level_2_key, level_2_value in generated_character[level_1_key].items() %}
-               {% for level_3_key, level_3_value in generated_character[level_1_key][level_2_key].items() %}
-               <tr></tr>
-               <td> {{ level_3_key }} </td>
-               <td> {{ level_3_value }} </td>
-               {% endfor %}
-            {% endfor %}
-         {% endfor %}
-
-
-         or
-
-               <table border = 1>
-         <h1> Generated Vampire </h1>
-         <tr>
-            {% for level_1_key, level_1_value in generated_character.items() %}
-               {% for level_2_key, level_2_value in generated_character[level_1_key].items() %}
-                  <th colspan="19"> {{ level_2_key }} </th>
-                  <tr>
-                     {% for level_3_key, level_3_value in generated_character[level_1_key][level_2_key].items() %}
-                        <td> {{ level_3_key }} </td>
-                        <td> {{ level_3_value }} </td>
-                     {% endfor %}
-                  </tr>
-               {% endfor %}
-            {% endfor %}
-         </tr>
-      </table>
-
-
-  [{'col1': 'Character_Details', 'col2': '', 'col3': '', 'col4': '', 'col5': '', 'col6': ''}, 
-  {'col1': 'Basic_Information', 'col2': '', 'col3': 'Trackers', 'col4': '', 'col5': '', 'col6': ''}, 
-  {'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}, {'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}, 
-  {'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}, {'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}, {
-   'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}, {'col1': ['Health', 'Willpower', 'XP_Left'], 'col2': [8, 10, 1741]}] 
-
-form result:
-
-({'manual_age': 300,
-  'manual_age_condition': False,
-  'manual_clan': 'Malkavian',
-  'manual_clan_condition': True,
-  'manual_generation': 10,
-  'manual_generation_condition': False,
-  'manual_name': 'Default Dampire',
-  'manual_name_condition': False,
-  'manual_sex': 'Female',
-  'manual_sex_condition': False},
- {'Attributes': {'Mental_Attributes': 50,
-                 'Physical_Attributes': 50,
-                 'Social_Attributes': 50},
-  'Categories': {'Attributes': 50, 'Disciplines': 50, 'Skills': 50},
-  'Disciplines': {'Clan_Disciplines': 50, 'Non-Clan_Disciplines': 50},
-  'Skills': {'Mental_Skills': 50, 'Physical_Skills': 50, 'Social_Skills': 50}})
-
-  {'Attributes': '50',
- 'Clan_Disciplines': '85',
- 'Disciplines': '50',
- 'Mental_Attributes': '100',
- 'Mental_Skills': '50',
- 'Non-Clan_Disciplines': '17',
- 'Physical_Attributes': '100',
- 'Physical_Skills': '23',
- 'Skills': '50',
- 'Social_Attributes': '50',
- 'Social_Skills': '50',
- 'manual_age': '600',
- 'manual_clan': 'Random',
- 'manual_generation': 'Random',
- 'manual_name': 'Fii',
- 'manual_sex': 'Random'}
-
-
-
-
-
-
-
-
-
- {'Attributes': '50',
- 'Clan_Disciplines': '50',
- 'Disciplines': '50',
- 'Mental_Attributes': '100',
- 'Mental_Skills': '50',
- 'Non-Clan_Disciplines': '50',
- 'Physical_Attributes': '50',
- 'Physical_Skills': '50',
- 'Skills': '50',
- 'Social_Attributes': '50',
- 'Social_Skills': '50',
- 'manual_age': '100',
- 'manual_clan': 'Random',
- 'manual_generation': 'Random',
- 'manual_name': 'Default_Dampire',
- 'manual_sex': 'Female'}
-
-
-{'Attributes': '50',
- 'Clan_Disciplines': '50',
- 'Disciplines': '50',
- 'Mental_Attributes': '100',
- 'Mental_Skills': '50',
- 'Non-Clan_Disciplines': '50',
- 'Physical_Attributes': '50',
- 'Physical_Skills': '50',
- 'Skills': '50',
- 'Social_Attributes': '50',
- 'Social_Skills': '50',
- 'manual_age': '100',
- 'manual_clan': 'Random',
- 'manual_generation': 'Random',
- 'manual_name': 'Default_Dampire',
- 'manual_sex': 'Female'}
+{'Attributes': 50,
+ 'Clan_Disciplines': 50,
+ 'Disciplines': 50,
+ 'Mental_Attributes': 50,
+ 'Mental_Skills': 50,
+ 'Non-Clan_Disciplines': 50,
+ 'Physical_Attributes': 50,
+ 'Physical_Skills': 50,
+ 'Skills': 89,
+ 'Social_Attributes': 50,
+ 'Social_Skills': 50,
+ 'manual_age': 300,
+ 'manual_age_condition': None,
+ 'manual_clan': 'Malkavian',
+ 'manual_clan_condition': False,
+ 'manual_generation': 10,
+ 'manual_generation_condition': False,
+ 'manual_name': 'Default_Dhampire',
+ 'manual_name_condition': None,
+ 'manual_sex': 'Female',
+ 'manual_sex_condition': None}
