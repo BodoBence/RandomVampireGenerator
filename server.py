@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from flask_table import Table, Col
 from random_vampire_genreator_web import generate
 import default_data  
