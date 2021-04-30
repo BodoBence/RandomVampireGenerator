@@ -236,7 +236,7 @@ def start_field_values():
                 'manual_name_condition': False,
                 'manual_sex': 'Female',
                 'manual_sex_condition': False,
-                'Mental_Attributes': 100,
+                'Mental_Attributes': 50,
                 'Physical_Attributes': 50,
                 'Social_Attributes': 50,
                 'Attributes': 50, 

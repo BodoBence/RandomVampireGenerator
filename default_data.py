@@ -212,10 +212,10 @@ def default_costs_data():
     return xp_costs
 
 def default_weights_data():
-    weight_categories = {'Attributes': 20, 'Skills': 40, 'Disciplines': 10}
-    weight_attributes = {'Physical_Attributes': 10, 'Social_Attributes': 25, 'Mental_Attributes': 10}
-    weight_skills = {'Physical_Skills': 20, 'Social_Skills': 20, 'Mental_Skills': 10}
-    weight_disciplines =  {'Clan_Disciplines': 4, 'Non-Clan_Disciplines': 1}
+    weight_categories = {'Attributes': 50, 'Skills': 50, 'Disciplines': 50}
+    weight_attributes = {'Physical_Attributes': 50, 'Social_Attributes': 50, 'Mental_Attributes': 50}
+    weight_skills = {'Physical_Skills': 50, 'Social_Skills': 50, 'Mental_Skills': 50}
+    weight_disciplines =  {'Clan_Disciplines': 80, 'Non-Clan_Disciplines': 20}
 
     weight_values = {'Categories': weight_categories,
                      'Attributes': weight_attributes,

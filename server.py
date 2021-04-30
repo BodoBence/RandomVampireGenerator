@@ -7,16 +7,18 @@ import pprint
 
 app = Flask(__name__)
 
+# default_data.default_weights_data() only gives slider names and grouping
+# slider values come from: server_functions.start_field_values()
+# this way actual values are ina flat dictionary, and slider grouping are represented in a nested dictionary
+
+input_field_details = {'weight_inputs': default_data.default_weights_data(),
+                       'generator_inputs': server_functions.start_field_values()}
+
 @app.route('/', )
 def home():
-    default_inputs = default_data.basic_info_request_web_data()
-    weight_inputs = default_data.default_weights_data()
-    starting_field_details = server_functions.start_field_values()
-
     return render_template('basic_info_request_default.html',
-                           requested_non_slider_data = default_inputs,
-                           requested_slider_data = weight_inputs,
-                           detail = starting_field_details)
+                           requested_slider_data = input_field_details['weight_inputs'],
+                           field_detail = input_field_details['generator_inputs'])
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
