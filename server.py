@@ -16,6 +16,7 @@ startup_input_field_details = {'weight_structure': default_data.default_weights_
                                'input_values': default_data.start_values(),
                                'input_weights': default_data.start_weights()}
 
+
 @app.route('/', )
 def home():
     return render_template('basic_info_request_default.html',
@@ -46,14 +47,15 @@ def result():
 
     # format
     generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
-    converted_to_flask_table = ItemTable(generated_character_flask_table_input) 
+    converted_to_flask_table = ItemTable(generated_character_flask_table_input)
+ 
     
     return render_template("generated_characters.html",
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'],
-                           generated_vampire = converted_to_flask_table.__html__())
+                           generated_character = converted_to_flask_table.__html__())
 
 # Declare your table
 class ItemTable(Table):
