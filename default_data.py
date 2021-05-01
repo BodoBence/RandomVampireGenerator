@@ -59,7 +59,7 @@ def sample_character_sheet():
     return character_sheet
 
 def start_conditions():
-    start_conditions = {'manual_clan_condition': False,
+    start_conditions = {'manual_clan_condition': True,
                         'manual_generation_condition': False,
                         'manual_age_condition': False,
                         'manual_sex_condition': False,
