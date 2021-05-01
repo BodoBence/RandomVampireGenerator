@@ -6,6 +6,8 @@ import pprint
 def calculate_metrics(character_sheet):
     character_sheet['Character_Details']['Trackers']['Health'] = character_sheet['Attributes']['Physical_Attributes']['Stamina'] + 3
     character_sheet['Character_Details']['Trackers']['Willpower'] = character_sheet['Attributes']['Social_Attributes']['Composure'] + character_sheet['Attributes']['Mental_Attributes']['Resolve']
+    current_blood_potency_pool = default_data.blood_potency_data()[str(character_sheet['Character_Details']['Basic_Information']['Generation'])]
+    character_sheet['Character_Details']['Trackers']['Blood_Potency'] = random.choice(current_blood_potency_pool)
     return character_sheet
 
 def convert_txt_to_string_list(filename, listname):
@@ -46,7 +48,8 @@ def setup_character_sheet(basic_info):
     character_sheet['Character_Details']['Basic_Information'] = basic_info
     character_sheet['Character_Details']['Trackers'] = {'XP_Left': 0,
                                                         'Health': 0,
-                                                        'Willpower': 0}
+                                                        'Willpower': 0,
+                                                        'Blood_Potency': 0}
     character_sheet['Attributes'] = default_data.default_attibute_data()
     character_sheet['Skills'] = default_data.default_skill_data()
     character_sheet['Disciplines'] = {}
@@ -228,7 +231,8 @@ def generate(input_values, input_conditions, input_weights):
     return character_sheet
 
 # uncomment for simluation input testing
+
 # input_values = default_data.start_values()
 # input_conditions = default_data.start_conditions()
 # input_weights = default_data.start_weights()
-# pprint.pprint(generate(input_values, input_conditions, input_weights))
+# pprint.pprint(generate(input_values, input_conditions, input_weights))      
