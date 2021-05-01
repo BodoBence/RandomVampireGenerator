@@ -2,6 +2,22 @@
 import random
 import default_data
 import pprint
+import csv
+from csv import reader
+
+def get_derangement():
+    derengements = 'derengements_curated.csv'
+
+    with open(derengements) as chosen_file:
+        reader = csv.reader(chosen_file)
+        current_derangement = random.choice(list(reader))
+    return current_derangement
+
+def derangement_check(basic_info):
+    if basic_info['Clan'] == 'Malkavian':
+        basic_info['Derangement'] = get_derangement()
+    return basic_info
+
 
 def calculate_metrics(character_sheet):
     character_sheet['Character_Details']['Trackers']['Health'] = character_sheet['Attributes']['Physical_Attributes']['Stamina'] + 3
@@ -222,7 +238,10 @@ def generate(input_values, input_conditions, input_weights):
                   'Generation': generation,
                   'Clan': clan,
                   'Sire': 'Older Vampire',
-                  'Age': age }
+                  'Age': age, 
+                  'Derangement': 'N/A'}
+
+    basic_info = derangement_check(basic_info)
   
     character_sheet = setup_character_sheet(basic_info)
     level_up(character_sheet, input_weights)
