@@ -1,8 +1,8 @@
 import csv
 import pprint
 
-pipe_shit_filename = 'discipline_related_skills_2.tsv'
-output_shit_filename = 'discipline_related_skills_sorted_2.csv'
+pipe_shit_filename = 'scraped_discipline_skills_and_rituals.tsv'
+output_shit_filename = 'discipline_skills_and_rituals_1.csv'
 
 with open(pipe_shit_filename) as tsvfile:
     tsvreader = csv.reader(tsvfile, delimiter = '\t')
@@ -16,19 +16,18 @@ with open(pipe_shit_filename) as tsvfile:
         veriation = line[2]
         level = line[3]
         skill = line[4]
-
-        row_name = 'row' + str(counter)
-
         split_skills = skill.split('|')
+        
         for i in range(0, len(split_skills)):
+            row_name = 'row' + str(counter)
             storage[row_name] = [url, discipline, veriation, level, split_skills[i]]
-            print('row', counter, storage[row_name])
             counter = counter + 1
 
 with open(output_shit_filename, "w") as outfile:
-    writer = csv.writer(outfile)
-    writer.writerow(storage.keys())
-    writer.writerows(zip(*storage.values()))
+    for i in range(1, counter):
+        row_name = f'row{i}'
+        row = '\t'.join(storage[row_name])
+        outfile.write(f'{row}\n')
 
-pprint.pprint(storage)
+# pprint.pprint(storage)
 

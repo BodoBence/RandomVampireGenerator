@@ -1,18 +1,85 @@
-{'Attributes': '50',
- 'Clan_Disciplines': '70',
- 'Disciplines': '50',
- 'Mental_Attributes': '50',
- 'Mental_Skills': '50',
- 'Non-Clan_Disciplines': '20',
- 'Physical_Attributes': '50',
- 'Physical_Skills': '50',
- 'Skills': '50',
- 'Social_Attributes': '50',
- 'Social_Skills': '50',
- 'manual_age': '300',
- 'manual_age_selection': 'Random',
- 'manual_clan': 'Random',
- 'manual_generation': 'Random',
- 'manual_name': 'Fruzsi',
- 'manual_name_selection': 'Random',
- 'manual_sex': 'Random'}
+{'Attributes': {'Mental_Attributes': {'Intelligence': 5,
+                                      'Resolve': 5,
+                                      'Wits': 5},
+                'Physical_Attributes': {'Dexterity': 5,
+                                        'Stamina': 5,
+                                        'Strength': 5},
+                'Social_Attributes': {'Charisma': 5,
+                                      'Composure': 5,
+                                      'Manipulation': 5}},
+ 'Character_Details': {'Basic_Information': {'Age': 1364,
+                                             'Clan': 'Malkavian',
+                                             'Derangement': ['Regression: '
+                                                             'Characters that '
+                                                             'suffer from '
+                                                             'Regression tend '
+                                                             'to revert back '
+                                                             'into a childlike '
+                                                             'state in '
+                                                             'stressful '
+                                                             'situations. In '
+                                                             'such a state, '
+                                                             'the character '
+                                                             'rarely thinks of '
+                                                             'himself as a '
+                                                             'child, but '
+                                                             'instead exhibits '
+                                                             'poor sense for '
+                                                             'cause and '
+                                                             'effect, fear of '
+                                                             'the unknown, a '
+                                                             'tendency to '
+                                                             'avoid '
+                                                             'confrontation, '
+                                                             'and reliance on '
+                                                             'a strong '
+                                                             '"parent" '
+                                                             'figure.[18]'],
+                                             'Generation': 8,
+                                             'Name': 'Harry, Bilbo',
+                                             'Sex': 'Male',
+                                             'Sire': 'Older Vampire'},
+                       'Trackers': {'Blood_Potency': 4,
+                                    'Health': 8,
+                                    'Willpower': 10,
+                                    'XP_Left': 63}},
+ 'Disciplines': {'Clan_Disciplines': {'Auspex': {'level': 5,
+                                                'discipline_skills': ['sense of the unseen', 'share the senses']}
+                                      'Dominate': 5,
+                                      'Obfuscate': 5},
+                 'Non-Clan_Disciplines': {'Animalism': 3,
+                                          'Blood Sorcery': 3,
+                                          'Celerity': 5,
+                                          'Fortitude': 5,
+                                          'Oblivion': 4,
+                                          'Potence': 3,
+                                          'Presence': 5,
+                                          'Protean': 3,
+                                          'Thinblood Alchemy': 3}},
+ 'Skills': {'Mental_Skills': {'Academics': 5,
+                              'Awareness': 5,
+                              'Finance': 5,
+                              'Investigation': 5,
+                              'Medicine': 5,
+                              'Occult': 5,
+                              'Politics': 5,
+                              'Science': 5,
+                              'Technology': 5},
+            'Physical_Skills': {'Athletics': 5,
+                                'Brawl': 5,
+                                'Craft': 5,
+                                'Drive': 5,
+                                'Firearms': 5,
+                                'Larceny': 5,
+                                'Melee': 5,
+                                'Stealth': 5,
+                                'Survival': 5},
+            'Social_Skills': {'Animal Ken': 5,
+                              'Etiquette': 5,
+                              'Insight': 5,
+                              'Intimidation': 5,
+                              'Leadership': 5,
+                              'Performance': 5,
+                              'Persuasion': 5,
+                              'Streetwise': 5,
+                              'Subterfuge': 5}}}

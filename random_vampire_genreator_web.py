@@ -251,7 +251,7 @@ def generate(input_values, input_conditions, input_weights):
 
 # uncomment for simluation input testing
 
-# input_values = default_data.start_values()
-# input_conditions = default_data.start_conditions()
-# input_weights = default_data.start_weights()
-# pprint.pprint(generate(input_values, input_conditions, input_weights))      
+input_values = default_data.start_values()
+input_conditions = default_data.start_conditions()
+input_weights = default_data.start_weights()
+pprint.pprint(generate(input_values, input_conditions, input_weights))      
