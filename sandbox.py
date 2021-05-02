@@ -1,19 +1,38 @@
-
 import csv
-from csv import reader
-import random
+import pprint
 
-with open('derengements_curated.csv') as chosen_file:
-    reader = csv.reader(chosen_file)
-    chosen_row = random.choice(list(reader))
+pipe_shit_filename = 'discipline_related_skills.tsv'
+output_shit_filename = 'discipline_related_skills_sorted.csv'
 
-print(chosen_row)
+with open(pipe_shit_filename) as tsvfile:
+    tsvreader = csv.reader(tsvfile, delimiter = '\t')
+    
+    storage = {}
+    counter = 1
 
-# # open file in read mode
-# with open('Derengements.csv', 'r') as read_obj:
-#     # pass the file object to reader() to get the reader object
-#     csv_reader = reader(read_obj)
-#     # Iterate over each row in the csv using reader object
-#     for row in csv_reader:
-#         # row variable is a list that represents a row in csv
-#         print(row)
+    for line in tsvreader:
+
+        url = line[0] 
+        discipline = line[1] 
+        level = line[2]
+        skill = line[3]
+
+        row_name = 'row' + str(counter)
+        storage[row_name] = [url, discipline, level, skill]
+
+        while '|' in storage[row_name][3]:
+
+            split_skills = skill.split('|')
+            for i in range(0, len(split_skills)):
+                counter = counter + 1
+                storage[row_name] = [url, discipline, level, split_skills[i]]
+
+        counter = counter + 1
+
+with open(output_shit_filename, "w") as outfile:
+    writer = csv.writer(outfile)
+    writer.writerow(storage.keys())
+    writer.writerows(zip(*storage.values()))
+
+#pprint.pprint(storage)
+
