@@ -47,11 +47,12 @@ def result():
     # pprint.pprint(new_input)
 
     # format
-    generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
+    #generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
     #converted_to_flask_table = ItemTable(generated_character_flask_table_input)
-    pprint.pprint(generated_character_flask_table_input)
- 
     #pprint.pprint(generated_character_flask_table_input)
+
+    details, attributes, skills, disciplines = server_functions.dictionary_to_html_table(generated_character)
+    
 
     return render_template("generated_characters_designed.html",
                            slider_structure = startup_input_field_details['weight_structure'],
@@ -59,7 +60,10 @@ def result():
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'],
                            #generated_character = converted_to_flask_table.__html__())
-                           complete_character = generated_character_flask_table_input)
+                           details = details, 
+                           attributes = attributes, 
+                           skills = skills, 
+                           disciplines = disciplines)
 
 # Declare your table
 class ItemTable(Table):

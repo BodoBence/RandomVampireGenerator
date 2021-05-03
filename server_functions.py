@@ -159,6 +159,34 @@ def dictionary_to_flask_table(character_dictionary):
 
     return table
 
+def dictionary_to_html_table(character_dictionary):
+    table_character_details = []
+    table_attributes = []
+    table_skills = []
+    table_disciplines = []
+
+    stat_block_for_flask_table(number_of_stat_key_value_pairs=2,
+                               dictionary_container=character_dictionary['Character_Details'],
+                               current_table=table_character_details,
+                               number_of_cols=6)
+    
+    stat_block_for_flask_table(number_of_stat_key_value_pairs=3,
+                            dictionary_container=character_dictionary['Attributes'],
+                            current_table=table_attributes,
+                            number_of_cols=6)        
+
+    stat_block_for_flask_table(number_of_stat_key_value_pairs=3,
+                            dictionary_container=character_dictionary['Skills'],
+                            current_table=table_skills,
+                            number_of_cols=6)   
+
+    stat_block_for_flask_table(number_of_stat_key_value_pairs=2,
+                            dictionary_container=character_dictionary['Disciplines'],
+                            current_table=table_disciplines,
+                            number_of_cols=6)   
+
+    return table_character_details, table_attributes, table_skills, table_disciplines
+
 def form_structuring(gathered_form_data):
  
     gathered_values = {'manual_age': int(gathered_form_data['manual_age']),

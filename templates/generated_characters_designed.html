@@ -3,22 +3,60 @@
     {% block generated_characters %}
         <table>
             <tr>
-                <td colspan="6"> Basic Information </td>
+                <th colspan="6"> Basic Information </th>
             </tr>
-            <tr>
-                <td> Data </td>
-                <td></td>
-                <td> Trackers </td>
-                <td></td>
-            </tr>
-            {% for row in complete_character %}
+            {% for row in details %}
                 <tr>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col1'] }} </td>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col2'] }} </td>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col3'] }} </td>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col4'] }} </td>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col5'] }} </td>
-                    <td style="vertical-align:top" style="width:40%"> {{ row['col6'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:30%"> {{ row['col2'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="2"> Physical Attribute </th>
+                <th colspan="2"> Social Attribute </th>
+                <th colspan="2"> Mental Attribute </th>
+            </tr>
+            {% for row in attributes %}
+                <tr>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col2'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="2"> Physical Skill </th>
+                <th colspan="2"> Social Skill </th>
+                <th colspan="2"> Mental Skill </th>
+            </tr>
+            {% for row in skills %}
+                <tr>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col2'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="2"> Clan Disciplines </th>
+                <th colspan="2"> Non Clan Disciplines </th>
+            </tr>
+            {% for row in disciplines %}
+                <tr>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:10%"> {{ row['col2'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
                 </tr>
             {% endfor %}
         </table>
