@@ -51,12 +51,12 @@
             </tr>
             {% for row in disciplines %}
                 <tr>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
-                    <td style="vertical-align:top" style="width:10%"> {{ row['col2'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col2'] == '' else row['col2']['Level'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col2'] == '' else row['col2']['Level']['Skills'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
+                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col4']['Level']['Skills'] }} </td>
                 </tr>
             {% endfor %}
         </table>

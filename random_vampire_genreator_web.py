@@ -234,7 +234,6 @@ def clean_up_character(character_sheet):
             if character_sheet['Disciplines'][discipline_type][discipline]['Level'] == 0:
                 keys_to_remove.append(discipline)
 
-    print(keys_to_remove)
     for i in range(0, len(keys_to_remove)):
         del character_sheet['Disciplines'][discipline_type][keys_to_remove[i]]
 
