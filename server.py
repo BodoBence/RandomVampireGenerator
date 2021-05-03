@@ -48,15 +48,18 @@ def result():
 
     # format
     generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
-    converted_to_flask_table = ItemTable(generated_character_flask_table_input)
+    #converted_to_flask_table = ItemTable(generated_character_flask_table_input)
+    pprint.pprint(generated_character_flask_table_input)
  
-    
-    return render_template("generated_characters.html",
+    #pprint.pprint(generated_character_flask_table_input)
+
+    return render_template("generated_characters_designed.html",
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'],
-                           generated_character = converted_to_flask_table.__html__())
+                           #generated_character = converted_to_flask_table.__html__())
+                           complete_character = generated_character_flask_table_input)
 
 # Declare your table
 class ItemTable(Table):

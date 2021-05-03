@@ -227,10 +227,16 @@ def level_up(character_sheet, weight_values):
                 continue
 
 def clean_up_character(character_sheet):
+    keys_to_remove = []
+
     for discipline_type, disciplines_type_details in character_sheet['Disciplines'].items():
         for discipline in disciplines_type_details.keys():
             if character_sheet['Disciplines'][discipline_type][discipline]['Level'] == 0:
-                del character_sheet['Disciplines'][discipline_type][discipline]
+                keys_to_remove.append(discipline)
+
+    print(keys_to_remove)
+    for i in range(0, len(keys_to_remove)):
+        del character_sheet['Disciplines'][discipline_type][keys_to_remove[i]]
 
 
         
@@ -293,4 +299,4 @@ def generate(input_values, input_conditions, input_weights):
 # input_conditions = default_data.start_conditions()
 # input_weights = default_data.start_weights()
 # character_sheet = generate(input_values, input_conditions, input_weights)
-# pprint.pprint(character_sheet)      
+# print(character_sheet)      

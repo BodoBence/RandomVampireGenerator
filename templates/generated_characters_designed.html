@@ -1,0 +1,25 @@
+<!doctype html>
+{% extends "basic_info_request_default.html" %}
+    {% block generated_characters %}
+        <table>
+            <tr>
+                <td colspan="6"> Basic Information </td>
+            </tr>
+            <tr>
+                <td> Data </td>
+                <td></td>
+                <td> Trackers </td>
+                <td></td>
+            </tr>
+            {% for row in complete_character %}
+                <tr>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col1'] }} </td>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col2'] }} </td>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col3'] }} </td>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col4'] }} </td>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col5'] }} </td>
+                    <td style="vertical-align:top" style="width:40%"> {{ row['col6'] }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

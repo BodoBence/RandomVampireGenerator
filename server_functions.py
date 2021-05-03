@@ -15,7 +15,6 @@ def merge_dictionaries(dictionary_a, dictionary_b):
     merged_dictionary = {**dictionary_a, **dictionary_b}
     return merged_dictionary
 
-
 def stat_block_for_flask_table(number_of_stat_key_value_pairs,
                                dictionary_container,
                                current_table,
