@@ -5,11 +5,11 @@ import json
 def create_discipline_skill_and_ritual_dictionary():
     # read in the csv file
    
-    source_file =  'discipline_skills_and_rituals_3.csv'
+    source_file =  'discipline_skills_and_rituals_2.csv'
     discipline_skills_and_rituals = {}
 
     with open(source_file) as my_data:
-        csvreader = csv.reader(my_data, delimiter = '\t')
+        csvreader = csv.reader(my_data, delimiter = ',')
         # fill up a working dicitonary
 
         for line in csvreader:

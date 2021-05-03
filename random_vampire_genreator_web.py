@@ -78,14 +78,10 @@ def setup_character_sheet(basic_info):
     for discipline in disciplines:
         if discipline in current_clan_disciplines:
             character_sheet['Disciplines']['Clan_Disciplines'][discipline] = {'Level': 0,
-                                                                              'Skills': {'': ''},
-                                                                              'Rituals': {'': ''},
-                                                                              'Ceremonies': {'': ''}}
+                                                                              'Skills': {'': ''}}
         else:
             character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = {'Level': 0,
-                                                                                  'Skills': {'': ''},
-                                                                                  'Rituals': {'': ''},
-                                                                                  'Ceremonies': {'': ''}}
+                                                                                  'Skills': {'': ''}}
     return character_sheet
 
 def calculate_xp_points(age):
@@ -158,11 +154,9 @@ def level_up(character_sheet, weight_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
     points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information'].get('Generation')]
-    clan_disciplines = default_data.default_clan_disciplines_data()
     weights = calculate_weights(weight_values)
     xp = int(calculate_xp_points(character_sheet['Character_Details']['Basic_Information'].get('Age')))
     xp_costs = default_data.default_costs_data()
-    clan = character_sheet['Character_Details']['Basic_Information']['Clan']
     xp_stagnation_counter = []
     
     while xp > 2 and len(xp_stagnation_counter) < 30:
@@ -182,21 +176,27 @@ def level_up(character_sheet, weight_values):
                 clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
 
             for level in range(0, current_level + 1 ):
-                if (level + 1) * clan_multiplier <= xp:
-                    most_expensive_viable_level = level + 1
-
-            print(current_stat, most_expensive_viable_level)
+                if level == points_maximum:
+                    most_expensive_viable_level = level
+                else:
+                    if (level + 1) * clan_multiplier <= xp:
+                        most_expensive_viable_level = level + 1
             
             if most_expensive_viable_level != 0:
                 # get potential upgrade skills
                 current_discipline_skills = list(character_sheet[current_category][current_type][current_stat]['Skills'].keys())
                 potential_discipline_skills = []
-                for skill_level in default_data.get_discipline_skills_and_rituals()[current_stat].keys():
+                discipline_skill_dictionary = default_data.get_discipline_skills_and_rituals()[current_stat]['skill']
+                for skill_level in discipline_skill_dictionary.keys():
                     if int(skill_level) <= most_expensive_viable_level:
-                        for skill, description in default_data.get_discipline_skills_and_rituals()[current_stat]['Skill'][skill_level].items():
+                        for skill, description in discipline_skill_dictionary[skill_level].items():
                             if skill not in current_discipline_skills:
-                                skill_info = (skill_level, skill, description)
+                                skill_info = (int(skill_level), skill, description)
                                 potential_discipline_skills.append(skill_info)
+
+                if len(potential_discipline_skills) == 0:
+                    xp_stagnation_counter.append(1)
+                    continue                                    
 
                 future_level, future_skill, future_skill_description = random.choice(potential_discipline_skills)
 
@@ -226,38 +226,14 @@ def level_up(character_sheet, weight_values):
                 xp_stagnation_counter.append(1)
                 continue
 
-"""         # check is stat can be developed
-        if current_level == points_maximum:
-            xp_stagnation_counter.append(1)
-            continue
-        else:
-            xp_stagnation_counter = []
-
-
-        # special case for discipline development
-        if current_category == 'Disciplines':
-            if current_stat in clan_disciplines[clan]:
-                cost = xp_costs[current_category]['Clan_Disciplines']
-            else:
-                cost = xp_costs[current_category]['Non-Clan_Disciplines']
-        else:
-            cost = xp_costs[current_category]
-        
-        expense = calculate_xp_cost(current_level, cost)
-
-        # spend xp if there is enough
-        if expense < xp:
-            character_sheet[current_category][current_type][current_stat] = current_level + 1
-            xp = xp - expense
-            xp_stagnation_counter.clear()
-        else:
-            xp_stagnation_counter.append(1)
-        
-        character_sheet['Character_Details']['Trackers']['XP_Left']= xp """
-
 def clean_up_character(character_sheet):
-    for discipline_type, disciplines_details in character_sheet['Disciplines'].items():
-        character_sheet['Disciplines'][discipline_type] = {discipline:discipline_level for discipline,discipline_level in disciplines_details.items() if discipline_level != 0}
+    for discipline_type, disciplines_type_details in character_sheet['Disciplines'].items():
+        for discipline in disciplines_type_details.keys():
+            if character_sheet['Disciplines'][discipline_type][discipline]['Level'] == 0:
+                del character_sheet['Disciplines'][discipline_type][discipline]
+
+
+        
 
 # fill charactersheet with stats and xp,send xp
 def generate(input_values, input_conditions, input_weights):
@@ -313,8 +289,8 @@ def generate(input_values, input_conditions, input_weights):
 
 # uncomment for simluation input testing
 
-input_values = default_data.start_values()
-input_conditions = default_data.start_conditions()
-input_weights = default_data.start_weights()
-character_sheet = generate(input_values, input_conditions, input_weights)
-#pprint.pprint(character_sheet)      
+# input_values = default_data.start_values()
+# input_conditions = default_data.start_conditions()
+# input_weights = default_data.start_weights()
+# character_sheet = generate(input_values, input_conditions, input_weights)
+# pprint.pprint(character_sheet)      

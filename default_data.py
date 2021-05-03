@@ -186,8 +186,8 @@ def default_discipline_data():
                    'Obfuscate': 0,
                    'Presence': 0,
                    'Auspex': 0,
-                   'Blood Sorcery': 0,
-                   'Thinblood Alchemy': 0,
+                   'Blood_Sorcery': 0,
+                   'Thin_Blood_Alchemy': 0,
                    'Oblivion': 0,
                    'Animalism': 0,
                    'Protean': 0}
