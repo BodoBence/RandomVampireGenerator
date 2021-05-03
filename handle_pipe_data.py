@@ -1,11 +1,11 @@
 import csv
 import pprint
 
-pipe_shit_filename = 'scraped_discipline_skills_and_rituals.tsv'
-output_shit_filename = 'discipline_skills_and_rituals_1.csv'
+pipe_shit_filename = 'discipline_skills_and_rituals_2.csv'
+output_shit_filename = 'discipline_skills_and_rituals_3.csv'
 
 with open(pipe_shit_filename) as tsvfile:
-    tsvreader = csv.reader(tsvfile, delimiter = '\t')
+    tsvreader = csv.reader(tsvfile, delimiter = ',')
     
     storage = {}
     counter = 1

@@ -1,4 +1,7 @@
-def sample_character_sheet():
+import csv
+import json
+
+""" def sample_character_sheet():
     character_sheet = { 'Attributes': { 'Mental_Attributes': {  'Intelligence': 5,
                                                                 'Resolve': 5,
                                                                 'Wits': 5},
@@ -17,7 +20,9 @@ def sample_character_sheet():
                                                 'Trackers': {   'Health': 8,
                                                                 'Willpower': 10,
                                                                 'XP_Left': 1741}},
-                        'Disciplines': {'Clan_Disciplines': {   'Animalism': 5,
+                        'Disciplines': {'Clan_Disciplines': {   'Animalism': {'Level': 5,
+                                                                              'Skills': {'Feral whisper': 'talk to animals'},
+                                                                                        {'bond Famolous': 'have a pet'}},
                                                                 'Obfuscate': 5,
                                                                 'Potence': 5},
                                         'Non-Clan_Disciplines': {   'Auspex': 5,
@@ -56,7 +61,7 @@ def sample_character_sheet():
                                                         'Persuasion': 5,
                                                         'Streetwise': 5,
                                                         'Subterfuge': 5}}}
-    return character_sheet
+    return character_sheet """
 
 def start_conditions():
     start_conditions = {'manual_clan_condition': True,
@@ -212,7 +217,9 @@ def default_costs_data():
     xp_costs = {'Attributes': 5, 
                  'Skills': 3,
                  'Disciplines': {'Clan_Disciplines': 5,
-                                 'Non-Clan_Disciplines': 7}}
+                                 'Non-Clan_Disciplines': 7},
+                 'Rituals': 3,
+                 'Ceremonies': 3}
     return xp_costs
 
 def default_weights_structure():
@@ -271,6 +278,11 @@ def default_ages_data():
 def default_sexes_data():
     sexes = ['Male', 'Female']
     return sexes
+
+def get_discipline_skills_and_rituals():
+    with open('WORKINGDICT.json') as json_file:
+        discipline_skills_and_rituals = json.load(json_file)
+    return discipline_skills_and_rituals
 
 def blood_potency_data():
     blood_potency_correspondencies = {'1': [10],

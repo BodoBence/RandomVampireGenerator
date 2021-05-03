@@ -77,16 +77,22 @@ def setup_character_sheet(basic_info):
 
     for discipline in disciplines:
         if discipline in current_clan_disciplines:
-            character_sheet['Disciplines']['Clan_Disciplines'][discipline] = 0
+            character_sheet['Disciplines']['Clan_Disciplines'][discipline] = {'Level': 0,
+                                                                              'Skills': {'': ''},
+                                                                              'Rituals': {'': ''},
+                                                                              'Ceremonies': {'': ''}}
         else:
-            character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = 0
+            character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = {'Level': 0,
+                                                                                  'Skills': {'': ''},
+                                                                                  'Rituals': {'': ''},
+                                                                                  'Ceremonies': {'': ''}}
     return character_sheet
 
 def calculate_xp_points(age):
     xp_points = max(300, (age * 2))
     return xp_points
 
-def calculate_xp_cost(current_level, cost):
+def calculate_xp_cost_for_non_disciplines(current_level, cost):
     xp_cost = (current_level + 1) * cost
     return xp_cost
 
@@ -146,7 +152,7 @@ def calculate_weights(weight_values):
                                  n=weight_values['Non-Clan_Disciplines'],
                                  custom_input='Non-Clan_Disciplines')
 
-    return weights    
+    return weights      
 
 def level_up(character_sheet, weight_values):
     # Variable setup
@@ -154,24 +160,80 @@ def level_up(character_sheet, weight_values):
     points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information'].get('Generation')]
     clan_disciplines = default_data.default_clan_disciplines_data()
     weights = calculate_weights(weight_values)
-    xp = calculate_xp_points(character_sheet['Character_Details']['Basic_Information'].get('Age'))
+    xp = int(calculate_xp_points(character_sheet['Character_Details']['Basic_Information'].get('Age')))
     xp_costs = default_data.default_costs_data()
     clan = character_sheet['Character_Details']['Basic_Information']['Clan']
     xp_stagnation_counter = []
-
+    
     while xp > 2 and len(xp_stagnation_counter) < 30:
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
         current_stat = random.choice(list(character_sheet[current_category][current_type].keys()))
-        current_level = character_sheet[current_category][current_type][current_stat]
+        if current_category == 'Disciplines':
+            # Discipline track
+            current_level = int(character_sheet[current_category][current_type][current_stat]['Level'])
 
-        # check is stat can be developed
+            # get most expensive potential discipline skill level
+            most_expensive_viable_level = 0 
+
+            if current_type == 'Clan_Disciplines':
+                clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
+            else:
+                clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
+
+            for level in range(0, current_level + 1 ):
+                if (level + 1) * clan_multiplier <= xp:
+                    most_expensive_viable_level = level + 1
+
+            print(current_stat, most_expensive_viable_level)
+            
+            if most_expensive_viable_level != 0:
+                # get potential upgrade skills
+                current_discipline_skills = list(character_sheet[current_category][current_type][current_stat]['Skills'].keys())
+                potential_discipline_skills = []
+                for skill_level in default_data.get_discipline_skills_and_rituals()[current_stat].keys():
+                    if int(skill_level) <= most_expensive_viable_level:
+                        for skill, description in default_data.get_discipline_skills_and_rituals()[current_stat]['Skill'][skill_level].items():
+                            if skill not in current_discipline_skills:
+                                skill_info = (skill_level, skill, description)
+                                potential_discipline_skills.append(skill_info)
+
+                future_level, future_skill, future_skill_description = random.choice(potential_discipline_skills)
+
+                if future_level > current_level:
+                    character_sheet[current_category][current_type][current_stat]['Level'] += 1
+                
+                character_sheet[current_category][current_type][current_stat]['Skills'][future_skill] = future_skill_description
+                xp = xp - (clan_multiplier * future_level)
+                
+            else:
+                xp_stagnation_counter.append(1)
+                continue
+
+        else:
+            current_level = character_sheet[current_category][current_type][current_stat]
+            # Non discipline track
+            if current_level < points_maximum:
+                expense = calculate_xp_cost_for_non_disciplines(current_level, xp_costs[current_category])
+                if expense < xp:
+                    character_sheet[current_category][current_type][current_stat] = current_level + 1
+                    xp = xp - expense
+                    xp_stagnation_counter.clear()
+                else:
+                    xp_stagnation_counter.append(1)
+                    continue
+            else:
+                xp_stagnation_counter.append(1)
+                continue
+
+"""         # check is stat can be developed
         if current_level == points_maximum:
             xp_stagnation_counter.append(1)
             continue
         else:
-             xp_stagnation_counter = []
-        
+            xp_stagnation_counter = []
+
+
         # special case for discipline development
         if current_category == 'Disciplines':
             if current_stat in clan_disciplines[clan]:
@@ -191,7 +253,7 @@ def level_up(character_sheet, weight_values):
         else:
             xp_stagnation_counter.append(1)
         
-        character_sheet['Character_Details']['Trackers']['XP_Left']= xp
+        character_sheet['Character_Details']['Trackers']['XP_Left']= xp """
 
 def clean_up_character(character_sheet):
     for discipline_type, disciplines_details in character_sheet['Disciplines'].items():
@@ -254,4 +316,5 @@ def generate(input_values, input_conditions, input_weights):
 input_values = default_data.start_values()
 input_conditions = default_data.start_conditions()
 input_weights = default_data.start_weights()
-pprint.pprint(generate(input_values, input_conditions, input_weights))      
+character_sheet = generate(input_values, input_conditions, input_weights)
+#pprint.pprint(character_sheet)      

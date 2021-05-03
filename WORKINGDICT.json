@@ -1,0 +1,695 @@
+{
+    "Animalism": {
+        "skill": {
+            "1": {
+                "Bound Famulus": "N/A",
+                "Sense the Beast": "N/A"
+            },
+            "2": {
+                "Atavism": "N/A",
+                "Feral Whispers": "N/A"
+            },
+            "3": {
+                "Animal Succulence": "N/A",
+                "Quell the Beast": "N/A",
+                "Unliving Hive": "N/A"
+            },
+            "4": {
+                "Subsume the Spirit": "N/A"
+            },
+            "5": {
+                "Animal Dominion": "N/A",
+                "Drawing Out the Beast": "N/A"
+            },
+            "6": {
+                "Beast Walk": "N/A",
+                "Deep Song": "N/A",
+                "Eye of the Szlachta": "N/A",
+                "Gap of Ages": "N/A",
+                "Pact with Animals": "N/A",
+                "Quell the Herd": "N/A",
+                "Sense the Savage Way": "N/A",
+                "Shared Soul": "N/A",
+                "Shepherd's Innocence": "N/A",
+                "Song in the Dark": "N/A",
+                "Species Speech": "N/A",
+                "Tainted Oasis": "N/A",
+                "Tier of Souls": "N/A"
+            },
+            "7": {
+                "Beast Shard": "N/A",
+                "Conquer the Beast": "N/A",
+                "Master's Voice": "N/A",
+                "Send the Eighth Plague": "N/A",
+                "Stampede": "N/A",
+                "Twist the Feral Will": "N/A"
+            },
+            "8": {
+                "Crimson Fury": "N/A",
+                "Mass Summons": "N/A",
+                "Taunt the Caged Beast": "N/A",
+                "Twin Spirits": "N/A",
+                "Unchain the Ferocious Beast": "N/A"
+            },
+            "9": {
+                "Eyes of the Forest": "N/A",
+                "Flesh Bond": "N/A",
+                "Free the Beast Within": "N/A",
+                "Unchain the Beast": "N/A"
+            },
+            "10": {
+                "Army of Beasts": "N/A",
+                "Plot Device": "N/A"
+            }
+        }
+    },
+    "Auspex": {
+        "skill": {
+            "1": {
+                "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                "Sense the Unseen": " The vampire can detect things that are supernaturally invisible, like Obfuscate users, ghosts, or dormant Blood Sorcery spells."
+            },
+            "2": {
+                "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                "Premonition": " The vampire can receive visions and hints about what is about to happen."
+            },
+            "3": {
+                "Scry the Soul": " The vampire can read auras.",
+                "Share the Senses": " The vampire can sense through the senses of another kindred or mortal."
+            },
+            "4": {
+                "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used, or the ground of their present location from past visitors."
+            },
+            "5": {
+                "Clairvoyance": " The vampire can gather information from an entire city-block at once.",
+                "Possession": "\u00c2\u00a0Amalgam of Dominate 3. The vampire can take over the body of a mortal.",
+                "Telepathy": "\u00c2\u00a0The vampire can project their thoughts into the mind of another kindred or mortal or read surface level thoughts and emotions.",
+                "Unburdening the Bestial Soul": " Shares the vampire's own sense of moral peace of mind with another Kindred willing to repent of their sins. Amalgam: Dominate 3. Requires  Obeah."
+            },
+            "6": {
+                "Celestial Harmony": " Open your mind to the thoughts and emotions of a crowd",
+                "Cipher": " Gain the ability to read any non-supernatural language or code",
+                "Clairvoyance": " See what is happening in a distant location",
+                "Crocodile's Tongue": " Know what someone wants to hear in order to get the best reaction",
+                "Discern the Aura": " Scan a group of people with one particular trait in their aura",
+                "Eagle's Sight": " Gain a bird's eye view of your area",
+                "Genius Loci": " Gain insight by meditating at places of high resonance",
+                "Horoscopic Forecast": " Gain a glimpse of the target's future",
+                "Insight of the Talespinner": " Draw out detailed characters and stories quickly from your mind",
+                "Prediction": " Socially outwit someone by knowing what they are going to say ahead of time",
+                "Sense Emotion": " Learn the emotions of the people around you",
+                "Spirit Bond": " Create a connection to something so you can find its geographical location",
+                "Telepathic Communication": " Mentally speak with someone, even if they are a great distance away",
+                "The Dreaming": " Be somewhat aware of events concerning you while in torpor",
+                "The Mind Revealed": " Continuously read someone's thoughts to know what they are thinking and about to do"
+            },
+            "7": {
+                "Anima Gathering": " Take other people with you to travel astrally",
+                "Ecstatic Agony": " The pain from wounds makes you act stronger, not weaker",
+                "Karmic Sight": " View someone's aura, personality, morality, and other karmic qualities",
+                "Melange": " See the truths behind reality in metaphor",
+                "Mirror Reflex": " React quickly to an opponent in combat by reading their mind",
+                "Personality Metamorph": " Take on fictitious personalities as your own",
+                "Pluck the Secret": " Learn what a target knows about a specific subject",
+                "Repression of the Obvious": " Learn about the most directly repressing thought a target has at the moment.",
+                "Spirit Link": " Speak with multiple people telepathically at once",
+                "Stealing the Mind's Eye": " See and hear what a target does and even use some Disciplines through them",
+                "Supernal Awareness": " Sense events and deeds anywhere in the world"
+            },
+            "8": {
+                "Omniscience": " Learn the personalities and identities of all creatures around you",
+                "Psychic Assault": " Make a powerful mental attack against a target's psyche",
+                "The Call (also known as Malkavian Madness Network)": " a Malkavian-exclusive ability that enables the vampire to summon a clan gathering.",
+                "The Oracle's Sight": " Hear and see the thoughts of everyone around you"
+            },
+            "9": {
+                "False Slumber": " Astrally project while in torpor",
+                "Master of the Dom": " Merge with a land and know everything that transpires on it while gaining power over the land and its residents",
+                "Precognition": " Gain some insight as to what may happen at a particular time and place",
+                "Sight of the Oracle": " Always know what is happening around you, gain visions of past and future events, and increase other supernatural senses"
+            },
+            "10": {
+                "Plot Device": "N/A",
+                "Pulse of the Canaille": " Sense the attitudes, directions, and trends of groups of mortals, as well as those who may be controlling them"
+            }
+        }
+    },
+    "Blood_Sorcery": {
+        "blood_sorcery_ritual": {
+            "1": {
+                "Bloody Message": "N/A",
+                "Clinging of the Insect": "N/A",
+                "Coax the Garden": "N/A",
+                "Craft Bloodstone": "N/A",
+                "Dampen the Fear": "N/A",
+                "Herd Ward": "N/A",
+                "Letter Ward": "N/A",
+                "Unseen Underground": "N/A",
+                "Wake with Evening's Freshness": "N/A",
+                "Ward Against Ghouls": "N/A"
+            },
+            "2": {
+                "Calling the Aura's Remnant": "N/A",
+                "Communicate with Kindred Sire": "N/A",
+                "Eyes of Babel": "N/A",
+                "Illuminate the Trail of Prey": "N/A",
+                "Ishtar's Touch": "N/A",
+                "Truth of Blood": "N/A",
+                "Ward against Spirits": "N/A",
+                "Warding Circle against Ghouls": "N/A"
+            },
+            "3": {
+                "Bladed Hands": "N/A",
+                "Dagon's Call": "N/A",
+                "Deflection of Wooden Doom": "N/A",
+                "Essence of Air": "N/A",
+                "Eyes of the Past": "N/A",
+                "Fire in the Blood": "N/A",
+                "Firewalker": "N/A",
+                "Gentle Mind": "N/A",
+                "Haunted House": "N/A",
+                "Illusion of Peaceful Death": "N/A",
+                "Illusion of Perfection": "N/A",
+                "One with the Blade": "N/A",
+                "Sanguine Watcher": "N/A",
+                "Sleep of Judas": "N/A",
+                "The Unseen Change": "N/A",
+                "Ward Against Lupines": "N/A",
+                "Warding Circle against Spirits": "N/A"
+            },
+            "4": {
+                "Defense of the Sacred Haven": "N/A",
+                "Eyes of the Nighthawk": "N/A",
+                "Incorporeal Passage": "N/A",
+                "Innocence of the Child's Heart": "N/A",
+                "Protean Curse": "N/A",
+                "Rending the Sweet Earth": "N/A",
+                "Ward Against Cainites": "N/A",
+                "Warding Circle against Lupines": "N/A",
+                "Web of Hunger": "N/A"
+            },
+            "5": {
+                "Creatio Ignis": "N/A",
+                "Eden's Bounty": "N/A",
+                "Escape to True Sanctuary": "N/A",
+                "Heart of Stone": "N/A",
+                "Shaft of Belated Dissolution": "N/A",
+                "The Ritual of Transferring the Soul": "N/A",
+                "Warding Circle against Cainites": "N/A"
+            }
+        },
+        "skill": {
+            "1": {
+                "A Taste for Blood": "N/A",
+                "Shape of the Sanguine Sacrament": "N/A"
+            },
+            "2": {
+                "Extinguish Vitae": "N/A"
+            },
+            "3": {
+                "Blood of Potency": "N/A",
+                "Scorpion\u00e2\u20ac\u2122s Touch": "N/A"
+            },
+            "4": {
+                "Theft of Vitae": "N/A"
+            },
+            "5": {
+                "Baal\u00e2\u20ac\u2122s Caress": "N/A",
+                "Cauldron of Blood": "N/A"
+            }
+        }
+    },
+    "Celerity": {
+        "skill": {
+            "1": {
+                "Rapid Reflexes": "N/A"
+            },
+            "2": {
+                "Fleetness": "N/A"
+            },
+            "3": {
+                "Blink": "N/A",
+                "Traversal": "N/A"
+            },
+            "4": {
+                "Draught of Elegance": "N/A",
+                "Unerring Aim": "N/A"
+            },
+            "5": {
+                "Lightning Strike": "N/A",
+                "Split Second": "N/A"
+            },
+            "6": {
+                "Flawless Parry": "N/A",
+                "Momentum": "N/A",
+                "Precision": "N/A",
+                "Projectile": "N/A",
+                "Quickness": "N/A",
+                "Tireless Tread": "N/A"
+            },
+            "7": {
+                "Celerity Refinement": "N/A",
+                "Flower of Death": "N/A",
+                "Quickness": "N/A",
+                "Stutter-Step": "N/A"
+            },
+            "8": {
+                "Physical Defiance": "N/A",
+                "The Unseen Storm": "N/A",
+                "Time out of Time": "N/A",
+                "Zephyr": "N/A"
+            },
+            "9": {
+                "Between the Ticks": "N/A",
+                "Paragon of Motion": "N/A"
+            }
+        }
+    },
+    "Dominate": {
+        "skill": {
+            "1": {
+                "Cloud Memory": "N/A",
+                "Compel": "N/A"
+            },
+            "2": {
+                "Dementation": "N/A",
+                "Domitor's Favor": "N/A",
+                "Mesmerize": "N/A",
+                "Slavish Devotion": "N/A"
+            },
+            "3": {
+                "Submerged Directive": "N/A",
+                "The Forgetful Mind": "N/A"
+            },
+            "4": {
+                "Ancestral Dominion": "N/A",
+                "Rationalize": "N/A"
+            },
+            "5": {
+                "Mass Manipulation": "N/A",
+                "Terminal Decree": "N/A"
+            },
+            "6": {
+                "Chain the Psyche": "N/A",
+                "Command Obedience": "N/A",
+                "Fealty": "N/A",
+                "Implanted Opinion": "N/A",
+                "Loyalty": "N/A",
+                "Memory Block": "N/A",
+                "Obedience": "N/A",
+                "Oberon's Grail": "N/A",
+                "Rationalize": "N/A",
+                "Tranquility": "N/A"
+            },
+            "7": {
+                "Chain of Command": "N/A",
+                "Dynastic Power": "N/A",
+                "Mass Manipulation": "N/A",
+                "Repression of the Obvious": "N/A",
+                "Still the Mortal Flesh": "N/A",
+                "Strings of the Marionette": "N/A",
+                "Tyrant's Gaze": "N/A"
+            },
+            "8": {
+                "Carry the Master's Voice": "N/A",
+                "Far Mastery": "N/A"
+            },
+            "9": {
+                "Best Intentions": "N/A",
+                "Speak Through the Blood": "N/A"
+            },
+            "10": {
+                "Plot Device": "N/A",
+                "Puppet Master": "N/A"
+            }
+        }
+    },
+    "Fortitude": {
+        "skill": {
+            "1": {
+                "Unswayable Mind": "N/A"
+            },
+            "2": {
+                "Enduring Beasts": "N/A",
+                "Obdurate": "N/A",
+                "Toughness": "N/A",
+                "Valeren": "N/A"
+            },
+            "3": {
+                "Defy Bane": "N/A",
+                "Fortify the Inner Facade": "N/A"
+            },
+            "4": {
+                "Draught of Endurance": "N/A",
+                "Shatter": "N/A"
+            },
+            "5": {
+                "Flesh of Marble": "N/A",
+                "Prowess of Pain": "N/A"
+            },
+            "6": {
+                "Alabastard": "N/A",
+                "Personal Armor": "N/A",
+                "Sensory Shield": "N/A",
+                "Stand Against All Foes": "N/A"
+            },
+            "7": {
+                "Armor of Kings": "N/A",
+                "Curse the Laurel": "N/A",
+                "Resilient Mind": "N/A",
+                "Shared Strength": "N/A"
+            },
+            "8": {
+                "Adamantine": "N/A",
+                "Armored Flesh": "N/A",
+                "Eternal Vigilance": "N/A",
+                "King of the Mountain": "N/A",
+                "Repair the Undead Flesh": "N/A"
+            },
+            "9": {
+                "Arm of Prometheus": "N/A"
+            },
+            "10": {
+                "Plot Device": "N/A"
+            }
+        }
+    },
+    "Obfuscate": {
+        "skill": {
+            "1": {
+                "Cloak of Shadows": "N/A",
+                "Silence of Death": "N/A"
+            },
+            "2": {
+                "Chimerstry": "N/A",
+                "Unseen Passage": "N/A"
+            },
+            "3": {
+                "Fata Morgana": "N/A",
+                "Ghost in the Machine": "N/A",
+                "Mask of a Thousand Faces": "N/A",
+                "Mental Maze[4]": "N/A"
+            },
+            "4": {
+                "Conceal": "N/A",
+                "Vanish": "N/A"
+            },
+            "5": {
+                "Cloak the Gathering": "N/A",
+                "Imposter's Guise": "N/A"
+            },
+            "6": {
+                "Busy Doing Nothing": "N/A",
+                "Conceal": "N/A",
+                "Confusion of the Eye": "N/A",
+                "Diastatsis": "N/A",
+                "Displacement": "N/A",
+                "Gemini's Mirror": "N/A",
+                "Invisible Weapon": "N/A",
+                "Manifold Guise": "N/A",
+                "Mask of Janus": "N/A",
+                "Mental Maze": "N/A",
+                "Mind Blank": "N/A",
+                "Scrawl": "N/A",
+                "Soul Mask": "N/A"
+            },
+            "7": {
+                "Cache": "N/A",
+                "Cloak": "N/A",
+                "Fortress of Silence": "N/A",
+                "Veil of Blissful Ignorance": "N/A",
+                "Veil the Legions": "N/A",
+                "Visit Faerieland": "N/A"
+            },
+            "8": {
+                "Horrid Countenance": "N/A",
+                "Old Friend": "N/A",
+                "Phantom Haunter": "N/A"
+            },
+            "9": {
+                "Create Name": "N/A",
+                "Obscure God's Creation": "N/A"
+            },
+            "10": {
+                "Memories Fading Glimpse": "N/A",
+                "Plot Device": "N/A"
+            }
+        }
+    },
+    "Oblivion": {
+        "ceremony": {
+            "1": {
+                "Summon Spirit": "N/A",
+                "The Knowing Stone": "N/A",
+                "Traveller's Call": "N/A"
+            },
+            "2": {
+                "Awaken the Homuncular Servant": "N/A",
+                "Compel Spirit": "N/A"
+            },
+            "3": {
+                "Host Spirit": "N/A",
+                "Name of the Father": "N/A",
+                "Shambling Hordes": "N/A"
+            },
+            "4": {
+                "Bind the Spirit": "N/A",
+                "Split the Shroud": "N/A"
+            },
+            "5": {
+                "Ex Nihilo": "N/A",
+                "Lazarene Blessing": "N/A",
+                "Pit of Contemplation": "N/A"
+            }
+        },
+        "skill": {
+            "1": {
+                "Ashes to Ashes": "N/A",
+                "Oblivion's Sight": "N/A",
+                "The Binding Fetter": "N/A"
+            },
+            "2": {
+                "Arms of Ahriman": "N/A",
+                "Fatal Precognition": "N/A",
+                "Shadow Cast": "N/A",
+                "Where the Shroud Thins": "N/A"
+            },
+            "3": {
+                "Aura of Decay": "N/A",
+                "Passion Feast": "N/A",
+                "Shadow Perspective": "N/A",
+                "Touch of Oblivion": "N/A"
+            },
+            "4": {
+                "Necrotic Plague": "N/A",
+                "Stygian Shroud": "N/A"
+            },
+            "5": {
+                "Shadow Step": "N/A",
+                "Skuld Fulfilled": "N/A",
+                "Tenebrous Avatar": "N/A",
+                "Withering Spirit": "N/A"
+            }
+        }
+    },
+    "Potence": {
+        "skill": {
+            "1": {
+                "Lethal Body": "N/A",
+                "Soaring Leap": "N/A"
+            },
+            "2": {
+                "Prowess": "N/A"
+            },
+            "3": {
+                "Brutal Feed": "N/A",
+                "Spark of Rage": "N/A",
+                "Uncanny Grip": "N/A"
+            },
+            "4": {
+                "Draught of Might": "N/A"
+            },
+            "5": {
+                "Earthshock": "N/A",
+                "Fist of Caine": "N/A"
+            },
+            "6": {
+                "Crush": "N/A",
+                "Master of the Forge": "N/A",
+                "Relentless Pursuit": "N/A",
+                "The Fist of Caine": "N/A",
+                "The Gentle Rebuke": "N/A"
+            },
+            "7": {
+                "Brutality": "N/A",
+                "Earthshock": "N/A",
+                "Fist of the Titans": "N/A",
+                "Immovable Object": "N/A",
+                "The Forger's Hammer": "N/A"
+            },
+            "8": {
+                "Aftershock": "N/A",
+                "Flick": "N/A",
+                "Lend the Supernatural Vigor": "N/A",
+                "Touch of Pain": "N/A"
+            },
+            "9": {
+                "Might of the Heroes": "N/A"
+            }
+        }
+    },
+    "Presence": {
+        "skill": {
+            "1": {
+                "Awe": "N/A",
+                "Daunt": "N/A",
+                "Eyes of the Serpent": "N/A"
+            },
+            "2": {
+                "Lingering Kiss": "N/A"
+            },
+            "3": {
+                "Dread Gaze": "N/A",
+                "Entrancement": "N/A",
+                "True Love's Face": "N/A"
+            },
+            "4": {
+                "Irresistible Voice": "N/A",
+                "Magnum Opus": "N/A",
+                "Summon": "N/A"
+            },
+            "5": {
+                "Majesty": "N/A",
+                "Star Magnetism": "N/A"
+            },
+            "6": {
+                "Capture Reality": "N/A",
+                "Force of Personality": "N/A",
+                "Intensification": "N/A",
+                "Love": "N/A",
+                "Melusine's Song": "N/A",
+                "Paralyzing Glance": "N/A",
+                "Passion": "N/A",
+                "Renew the Earthly Pleasures": "N/A",
+                "Siren's Song": "N/A",
+                "Spark of Rage": "N/A",
+                "Star Magnetism": "N/A",
+                "Two-Tiered Communication": "N/A",
+                "Vengeance of the Martyr's Legacy": "N/A"
+            },
+            "7": {
+                "Cooperation": "N/A",
+                "Fires of Conviction": "N/A",
+                "Mask Empathy": "N/A",
+                "Mind Numb": "N/A",
+                "Phobia": "N/A",
+                "Scourging the Instinct": "N/A",
+                "Unholy Penance": "N/A",
+                "Vengeance of the Martyr's Legacy": "N/A"
+            },
+            "8": {
+                "Bloodlust": "N/A",
+                "Corruption": "N/A",
+                "Invoke Frenzy": "N/A",
+                "Ironclad Command": "N/A",
+                "Perfect Paragon": "N/A"
+            },
+            "9": {
+                "A Perfect World": "N/A",
+                "Pulse of the City": "N/A"
+            },
+            "10": {
+                "Dream World": "N/A",
+                "Plot Device": "N/A"
+            }
+        }
+    },
+    "Protean": {
+        "skill": {
+            "1": {
+                "Eyes of the Beast": "N/A",
+                "Weight of the Feather": "N/A"
+            },
+            "2": {
+                "Feral Weapons": "N/A",
+                "Vicissitude": "N/A"
+            },
+            "3": {
+                "Earth Meld": "N/A",
+                "Fleshcrafting": "N/A",
+                "Shapechange": "N/A"
+            },
+            "4": {
+                "Horrid Form": "N/A",
+                "Metamorphosis": "N/A"
+            },
+            "5": {
+                "Mist Form": "N/A",
+                "One with the Land": "N/A",
+                "The Heart of Darkness": "N/A",
+                "The Unfettered Heart": "N/A"
+            },
+            "6": {
+                "Adaptation": "N/A",
+                "Blissful Slumber": "N/A",
+                "Earth Control": "N/A",
+                "Flesh of Marble": "N/A",
+                "Loki's Gift": "N/A",
+                "Shape Mastery": "N/A",
+                "Smoke and Mirrors": "N/A"
+            },
+            "7": {
+                "Animal Swarm": "N/A",
+                "Death's Hidden Crawl": "N/A",
+                "Homunculus": "N/A",
+                "Restore the Mortal Visage": "N/A",
+                "Shape of the Beast's Wrath": "N/A",
+                "Spectral Body": "N/A",
+                "Turnabout": "N/A"
+            },
+            "8": {
+                "Movement of the Slowed Body": "N/A",
+                "Mythic Form": "N/A",
+                "Purify the Impaled Breast": "N/A",
+                "Shape of the Inner Beast": "N/A"
+            },
+            "9": {
+                "Adaptation": "N/A",
+                "Draught of Phoenix Blood": "N/A",
+                "Dual Form": "N/A",
+                "Inward Focus": "N/A"
+            },
+            "10": {
+                "Body of the Sun": "N/A",
+                "Plot Device": "N/A"
+            }
+        }
+    },
+    "Thin_Blood_Alchemy": {
+        "skill": {
+            "1": {
+                "Haze": "N/A"
+            },
+            "2": {
+                "Envelop": "N/A",
+                "User can develop\u00c2\u00a0formulae to\u00c2\u00a0counterfeit level 1 Disciplines": "N/A"
+            },
+            "3": {
+                "Chemically Induced Flashback": "N/A",
+                "Concoct Ashe": "N/A",
+                "Defractionate": "N/A",
+                "Profane Hieros Gamos": "N/A",
+                "User can develop\u00c2\u00a0formulae to\u00c2\u00a0counterfeit level 2\u00c2\u00a0Disciplines": "N/A"
+            },
+            "4": {
+                "Airborne Momentum": "N/A",
+                "Discipline Channeling": "N/A",
+                "User can develop\u00c2\u00a0formulae to\u00c2\u00a0counterfeit level 3\u00c2\u00a0Disciplines": "N/A"
+            },
+            "5": {
+                "Awaken the Sleeper": "N/A",
+                "User can develop formulae to\u00c2\u00a0counterfeit level 4\u00c2\u00a0Disciplines": "N/A"
+            }
+        }
+    }
+}
