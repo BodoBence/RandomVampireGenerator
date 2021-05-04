@@ -14,7 +14,7 @@
                     text-align: left;
                     max-width: 350px;}
 
-                #myDIV {display: none;}
+                #myDIV {visibility: visible;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
@@ -64,17 +64,17 @@
                 <th colspan="3"> Non Clan Disciplines </th>
             </tr>
             {% for row in disciplines %}
-                <tr>
+                <tr>s
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td> <button onclick="myFunction()"> Hide/Show Skills </button> </td>
+                    <td> <button id="button1" onclick="myFunction(this.id)"> Hide/Show Skills </button> </td>
                     <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td></td>
                 </tr>
                 <tr id="myDIV">
                         <td colspan="3">
-                            <table class="center">
+                            <table>
                                 {% for skill in row['col2']['Skills'] %}
                                 <tr>
                                     <td> {{ '' if row['col1'] == '' else skill }} </td>
@@ -84,7 +84,7 @@
                             </table>
                         </td>
                     <td colspan="3">
-                        <table class="center">
+                        <table>
                             {% for skill in row['col4']['Skills'] %}
                                 <tr>
                                     <td> {{ '' if row['col3'] == '' else skill }} </td>
@@ -99,10 +99,10 @@
         <script>
             function myFunction() {
               var x = document.getElementById("myDIV");
-              if (x.style.display === "none") {
-                x.style.display = "inline";
+              if (x.style.visibility === "collapse") {
+                x.style.visibility = "visible";
               } else {
-                x.style.display = "none";
+                x.style.visibility = "collapse";
               }
             }
         </script>
