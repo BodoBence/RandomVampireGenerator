@@ -1,29 +1,29 @@
 <!doctype html>
 {% extends "basic_info_request_default.html" %}
     {% block generated_characters %}
-        <table>
+        <table class="center">
             <style>
                 th {display: table-cell;
-                    vertical-align: inherit;
+                    vertical-align: top;
                     font-weight: bold;
-                    text-align: center;}
+                    text-align: left;}
                 td {display: table-cell;
-                    vertical-align: inherit;
+                    vertical-align: top;
                     font-weight: normal;
                     text-align: left;
-                    max-width: 400px;}
+                    max-width: 300px;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
             </tr>
             {% for row in details %}
                 <tr>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
-                    <td style="vertical-align:top" style="width:30%"> {{ row['col2'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                    <td> {{ row['col1'] }} </td>
+                    <td> {{ row['col2'] }} </td>
+                    <td> {{ row['col3'] }} </td>
+                    <td> {{ row['col4'] }} </td>
+                    <td> {{ row['col5'] }} </td>
+                    <td> {{ row['col6'] }} </td>
                 </tr>
             {% endfor %}
             <tr>
@@ -33,12 +33,12 @@
             </tr>
             {% for row in attributes %}
                 <tr>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col2'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                    <td> {{ row['col1'] }} </td>
+                    <td> {{ row['col2'] }} </td>
+                    <td> {{ row['col3'] }} </td>
+                    <td> {{ row['col4'] }} </td>
+                    <td> {{ row['col5'] }} </td>
+                    <td> {{ row['col6'] }} </td>
                 </tr>
             {% endfor %}
             <tr>
@@ -48,12 +48,12 @@
             </tr>
             {% for row in skills %}
                 <tr>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col1'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col2'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col3'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col4'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col5'] }} </td>
-                    <td style="vertical-align:top" style="width:100%"> {{ row['col6'] }} </td>
+                    <td> {{ row['col1'] }} </td>
+                    <td> {{ row['col2'] }} </td>
+                    <td> {{ row['col3'] }} </td>
+                    <td> {{ row['col4'] }} </td>
+                    <td> {{ row['col5'] }} </td>
+                    <td> {{ row['col6'] }} </td>
                 </tr>
             {% endfor %}
             <tr>
@@ -62,26 +62,26 @@
             </tr>
             {% for row in disciplines %}
                 <tr>
-                    <th style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col1'] }} </th>
-                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
+                    <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
+                    <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
                     <td>
-                        <table>
+                        <table class="center">
                             {% for skill in row['col2']['Skills'] %}
                             <tr>
-                                <td style="vertical-align:top" style="width:200px"> {{ '' if row['col1'] == '' else skill }} </td>
-                                <td style="vertical-align:top" style="width:100"> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
+                                <td> {{ '' if row['col1'] == '' else skill }} </td>
+                                <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
                             </tr>
                         {% endfor %}  
                         </table>
                     </td> 
-                    <th style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col3'] }} </th>
-                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
+                    <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
+                    <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td>
-                        <table>
+                        <table class="center">
                             {% for skill in row['col4']['Skills'] %}
                                 <tr>
-                                    <td style="vertical-align:top" style="width:200px"> {{ '' if row['col3'] == '' else skill }} </td>
-                                    <td style="vertical-align:top" style="width:200px"> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                    <td> {{ '' if row['col3'] == '' else skill }} </td>
+                                    <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
                                 </tr>
                             {% endfor %}   
                         </table>
