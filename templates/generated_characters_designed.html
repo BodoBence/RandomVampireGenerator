@@ -1,13 +1,18 @@
 <!doctype html>
 {% extends "basic_info_request_default.html" %}
     {% block generated_characters %}
-        <style>
-            th {display: table-cell;
-                vertical-align: inherit;
-                font-weight: bold;
-                text-align: center;}
-        </style>
         <table>
+            <style>
+                th {display: table-cell;
+                    vertical-align: inherit;
+                    font-weight: bold;
+                    text-align: center;}
+                td {display: table-cell;
+                    vertical-align: inherit;
+                    font-weight: normal;
+                    text-align: left;
+                    max-width: 400px;}
+            </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
             </tr>
@@ -57,39 +62,27 @@
             </tr>
             {% for row in disciplines %}
                 <tr>
-                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col1'] }} </td>
+                    <th style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
                     <td>
                         <table>
                             {% for skill in row['col2']['Skills'] %}
-                            <style>
-                                th {display: table-cell;
-                                    vertical-align: inherit;
-                                    font-weight: bold;
-                                    text-align: left;}
-                            </style>
-                                <tr>
-                                    <th style="vertical-align:top" style="width:100%"> {{ '' if row['col1'] == '' else skill }} </th>
-                                    <td style="vertical-align:top" style="width:50%"> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
-                                </tr>
+                            <tr>
+                                <td style="vertical-align:top" style="width:200px"> {{ '' if row['col1'] == '' else skill }} </td>
+                                <td style="vertical-align:top" style="width:100"> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
+                            </tr>
                         {% endfor %}  
                         </table>
                     </td> 
-                    <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col3'] }} </td>
+                    <th style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td>
                         <table>
                             {% for skill in row['col4']['Skills'] %}
-                                <style>
-                                    th {display: table-cell;
-                                        vertical-align: inherit;
-                                        font-weight: bold;
-                                        text-align: left;}
-                                </style>
-                                    <tr>
-                                        <th style="vertical-align:top" style="width:100%"> {{ '' if row['col3'] == '' else skill }} :</th>
-                                        <td style="vertical-align:top" style="width:50%"> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
-                                    </tr>
+                                <tr>
+                                    <td style="vertical-align:top" style="width:200px"> {{ '' if row['col3'] == '' else skill }} </td>
+                                    <td style="vertical-align:top" style="width:200px"> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                </tr>
                             {% endfor %}   
                         </table>
                     </td>
