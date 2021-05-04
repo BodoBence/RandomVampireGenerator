@@ -67,16 +67,16 @@
                 <tr>s
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td> <button id="button1" onclick="myFunction(this.id)"> Hide/Show Skills </button> </td>
+                    <td> <button id="button1" onclick="myFunction(this.)"> Hide/Show Skills </button> </td>
                     <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td></td>
                 </tr>
-                <tr id="myDIV">
+                <tr>
                         <td colspan="3">
                             <table>
                                 {% for skill in row['col2']['Skills'] %}
-                                <tr>
+                                <tr id={{ skill }}>
                                     <td> {{ '' if row['col1'] == '' else skill }} </td>
                                     <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
                                 </tr>
@@ -86,7 +86,7 @@
                     <td colspan="3">
                         <table>
                             {% for skill in row['col4']['Skills'] %}
-                                <tr>
+                                <tr id={{ skill }}>
                                     <td> {{ '' if row['col3'] == '' else skill }} </td>
                                     <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
                                 </tr>
