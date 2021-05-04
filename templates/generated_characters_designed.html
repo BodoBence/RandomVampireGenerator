@@ -64,7 +64,13 @@
                 <tr>
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td>
+                    <td></td>
+                    <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
+                    <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <table class="center">
                             {% for skill in row['col2']['Skills'] %}
                             <tr>
@@ -73,10 +79,8 @@
                             </tr>
                         {% endfor %}  
                         </table>
-                    </td> 
-                    <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
-                    <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
-                    <td>
+                    </td>
+                    <td colspan="2">
                         <table class="center">
                             {% for skill in row['col4']['Skills'] %}
                                 <tr>
@@ -85,7 +89,7 @@
                                 </tr>
                             {% endfor %}   
                         </table>
-                    </td>
+                    </td>                            
                 </tr>
             {% endfor %}
         </table>
