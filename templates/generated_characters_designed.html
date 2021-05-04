@@ -3,15 +3,22 @@
     {% block generated_characters %}
         <table class="center">
             <style>
-                th {display: table-cell;
+                th {
                     vertical-align: top;
                     font-weight: bold;
                     text-align: left;}
-                td {display: table-cell;
+
+                td {
                     vertical-align: top;
                     font-weight: normal;
                     text-align: left;
-                    max-width: 300px;}
+                    max-width: 350px;}
+
+                #myDIV {display: inline;
+                        width: 100%;
+                        text-align: center;
+                        background-color: lightblue;
+                        margin-top: 20px;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
@@ -64,33 +71,45 @@
                 <tr>
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td></td>
+                    <td> <button onclick="myFunction()"> Hide/Show Skills </button> </td>
                     <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <table class="center">
-                            {% for skill in row['col2']['Skills'] %}
-                            <tr>
-                                <td> {{ '' if row['col1'] == '' else skill }} </td>
-                                <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
-                            </tr>
-                        {% endfor %}  
-                        </table>
-                    </td>
-                    <td colspan="2">
-                        <table class="center">
-                            {% for skill in row['col4']['Skills'] %}
+                <div id="myDIV">
+                    <tr>
+                        <td colspan="3">
+                            <table class="center">
+                                {% for skill in row['col2']['Skills'] %}
                                 <tr>
-                                    <td> {{ '' if row['col3'] == '' else skill }} </td>
-                                    <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                    <td> {{ '' if row['col1'] == '' else skill }} </td>
+                                    <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
                                 </tr>
-                            {% endfor %}   
-                        </table>
-                    </td>                            
-                </tr>
+                            {% endfor %}  
+                            </table>
+                        </td>
+                        <td colspan="3">
+                            <table class="center">
+                                {% for skill in row['col4']['Skills'] %}
+                                    <tr>
+                                        <td> {{ '' if row['col3'] == '' else skill }} </td>
+                                        <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                    </tr>
+                                {% endfor %}   
+                            </table>
+                        </td>                            
+                    </tr>
+                </div>                
             {% endfor %}
         </table>
+        <script>
+            function myFunction() {
+              var x = document.getElementById("myDIV");
+              if (x.style.display === "none") {
+                x.style.display = "inline";
+              } else {
+                x.style.display = "none";
+              }
+            }
+        </script>
     {% endblock %}
