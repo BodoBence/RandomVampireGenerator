@@ -14,11 +14,7 @@
                     text-align: left;
                     max-width: 350px;}
 
-                #myDIV {display: inline;
-                        width: 100%;
-                        text-align: center;
-                        background-color: lightblue;
-                        margin-top: 20px;}
+                #myDIV {display: none;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
@@ -76,8 +72,7 @@
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td></td>
                 </tr>
-                <div id="myDIV">
-                    <tr>
+                <tr id="myDIV">
                         <td colspan="3">
                             <table class="center">
                                 {% for skill in row['col2']['Skills'] %}
@@ -88,18 +83,17 @@
                             {% endfor %}  
                             </table>
                         </td>
-                        <td colspan="3">
-                            <table class="center">
-                                {% for skill in row['col4']['Skills'] %}
-                                    <tr>
-                                        <td> {{ '' if row['col3'] == '' else skill }} </td>
-                                        <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
-                                    </tr>
-                                {% endfor %}   
-                            </table>
-                        </td>                            
-                    </tr>
-                </div>                
+                    <td colspan="3">
+                        <table class="center">
+                            {% for skill in row['col4']['Skills'] %}
+                                <tr>
+                                    <td> {{ '' if row['col3'] == '' else skill }} </td>
+                                    <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                </tr>
+                            {% endfor %}   
+                        </table>
+                    </td>                            
+                </tr>            
             {% endfor %}
         </table>
         <script>
