@@ -67,10 +67,10 @@
                 <tr>
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td> <button id="0" onclick="myFunction(this.id)"> Hide/Show Skills </button> </td>
+                    <td> <button id={{ row['col2']['discipline_number'] }} onclick="myFunction(this.id)"> Hide/Show Skills </button> </td>
                     <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
-                    <td></td>
+                    <td> <button id={{ row['col4']['discipline_number'] }} onclick="myFunction(this.id)"> Hide/Show Skills </button> </td></td>
                 </tr>
                 <tr>
                         <td colspan="3">

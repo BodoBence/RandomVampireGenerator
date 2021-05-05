@@ -159,6 +159,17 @@ def dictionary_to_flask_table(character_dictionary):
 
     return table
 
+def add_row_number(discipline_table):
+    i = 0
+    for discipline in discipline_table:
+        if discipline['col1'] != "":
+            discipline['col2']['discipline_number']  = i
+            i = i + 1
+        if discipline['col3'] != "":
+            discipline['col4']['discipline_number']  = i
+            i = i + 1
+    return discipline_table
+
 def dictionary_to_html_table(character_dictionary):
     table_character_details = []
     table_attributes = []
@@ -183,7 +194,9 @@ def dictionary_to_html_table(character_dictionary):
     stat_block_for_flask_table(number_of_stat_key_value_pairs=2,
                             dictionary_container=character_dictionary['Disciplines'],
                             current_table=table_disciplines,
-                            number_of_cols=6)   
+                            number_of_cols=6)
+
+    table_disciplines = add_row_number(table_disciplines)   
 
     return table_character_details, table_attributes, table_skills, table_disciplines
 
