@@ -14,7 +14,7 @@
                     text-align: left;
                     max-width: 350px;}
 
-                #myDIV {visibility: visible;}
+                .discipline_skills {visibility: visible;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
@@ -64,19 +64,19 @@
                 <th colspan="3"> Non Clan Disciplines </th>
             </tr>
             {% for row in disciplines %}
-                <tr>s
+                <tr>
                     <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
                     <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
-                    <td> <button id="button1" onclick="myFunction(this.)"> Hide/Show Skills </button> </td>
+                    <td> <button id="0" onclick="myFunction(this.id)"> Hide/Show Skills </button> </td>
                     <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
                     <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
                     <td></td>
                 </tr>
                 <tr>
                         <td colspan="3">
-                            <table>
+                            <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
                                 {% for skill in row['col2']['Skills'] %}
-                                <tr id={{ skill }}>
+                                <tr>
                                     <td> {{ '' if row['col1'] == '' else skill }} </td>
                                     <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
                                 </tr>
@@ -84,9 +84,9 @@
                             </table>
                         </td>
                     <td colspan="3">
-                        <table>
+                        <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
                             {% for skill in row['col4']['Skills'] %}
-                                <tr id={{ skill }}>
+                                <tr>
                                     <td> {{ '' if row['col3'] == '' else skill }} </td>
                                     <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
                                 </tr>
@@ -97,12 +97,13 @@
             {% endfor %}
         </table>
         <script>
-            function myFunction() {
-              var x = document.getElementById("myDIV");
-              if (x.style.visibility === "collapse") {
-                x.style.visibility = "visible";
+            function myFunction(button_id) {
+              var skill_tables = document.getElementsByClassName("discipline_skills");
+              var specific_disciplines_skills = skill_tables[button_id];
+              if (specific_disciplines_skills.style.visibility === "collapse") {
+                specific_disciplines_skills.style.visibility = "visible";
               } else {
-                x.style.visibility = "collapse";
+                specific_disciplines_skills.style.visibility = "collapse";
               }
             }
         </script>
