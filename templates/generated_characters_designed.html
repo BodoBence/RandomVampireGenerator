@@ -3,9 +3,13 @@
     {% block generated_characters %}
         <table class="center">
             <style>
+                :root {
+                --black: rgb(29, 27, 27);
+                --grey: rgb(172, 164, 164);}
+
                 th {vertical-align: top;
                     font-weight: bold;
-                    text-align: left;}
+                    text-align: center;}
 
                 td {vertical-align: top;
                     font-weight: normal;
@@ -16,24 +20,26 @@
 
                 .dot_filled {height: 10px;
                              width: 10px;
-                             background-color: rgb(29, 27, 27);
+                             background-color: var(--black);
                              border-radius: 50%;
                              display: inline-block;}
 
                 .dot_unfilled {height: 10px;
                                width: 10px;
-                               background-color: rgb(172, 164, 164);
+                               background-color: var(--grey);
                                border-radius: 50%;
                                display: inline-block;}
 
-                .button {background-color: rgb(29, 27, 27);
+                .button {background-color: var(--black);
                          border: none;
-                         color: rgb(172, 164, 164);
+                         color: var(--grey);
                          padding: 10px 10px;
                          text-align: center;
                          text-decoration: none;
                          display: inline-block;
                          font-size: 10px;}
+
+                .discipline_name {text-align: left;}
             </style>
             <tr>
                 <th colspan="6"> Basic Information </th>
@@ -49,9 +55,9 @@
                 </tr>
             {% endfor %}
             <tr>
-                <th colspan="2"> Physical Attribute </th>
-                <th colspan="2"> Social Attribute </th>
-                <th colspan="2"> Mental Attribute </th>
+                <th colspan="2"> Physical Attributes </th>
+                <th colspan="2"> Social Attributes </th>
+                <th colspan="2"> Mental Attributes </th>
             </tr>
             {% for row in attributes %}
                 <tr>
@@ -92,9 +98,9 @@
                 </tr>
             {% endfor %}
             <tr>
-                <th colspan="2"> Physical Skill </th>
-                <th colspan="2"> Social Skill </th>
-                <th colspan="2"> Mental Skill </th>
+                <th colspan="2"> Physical Skills </th>
+                <th colspan="2"> Social Skills </th>
+                <th colspan="2"> Mental Skills </th>
             </tr>
             {% for row in skills %}
                 <tr>
@@ -140,8 +146,17 @@
             </tr>
             {% for row in disciplines %}
                 <tr>
-                    <th > {{ '' if row['col1'] == '' else row['col1'] }} </th>
-                    <td> {{ '' if row['col1'] == '' else row['col2']['Level'] }} </td>
+                    <th class="discipline_name"> {{ '' if row['col1'] == '' else row['col1'] }} </th>
+                    <td>
+                        {% if row['col1'] != '' %}
+                            {% for i in range(0, row['col2']['Level']) %}
+                                <span class="dot_filled"></span>
+                            {% endfor %}
+                            {% for i in range(0, max_level - row['col2']['Level']) %}
+                                <span class="dot_unfilled"></span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
                     <td>
                         {% if row['col1'] != '' %}
                             <button
@@ -152,8 +167,17 @@
                             </button>
                         {% endif %}
                     </td>
-                    <th > {{ '' if row['col3'] == '' else row['col3'] }} </th>
-                    <td> {{ '' if row['col3'] == '' else row['col4']['Level'] }} </td>
+                    <th class="discipline_name"> {{ '' if row['col3'] == '' else row['col3'] }} </th>
+                    <td>
+                        {% if row['col3'] != '' %}
+                            {% for i in range(0, row['col4']['Level']) %}
+                                <span class="dot_filled"></span>
+                            {% endfor %}
+                            {% for i in range(0, max_level - row['col4']['Level']) %}
+                                <span class="dot_unfilled"></span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
                     <td>
                         {% if row['col3'] != '' %}
                             <button
@@ -167,24 +191,28 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
-                            {% for skill in row['col2']['Skills'] %}
-                            <tr>
-                                <td> {{ '' if row['col1'] == '' else skill }} </td>
-                                <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
-                            </tr>
-                            {% endfor %}  
-                        </table>
+                        {% if row['col1'] != '' %}
+                            <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
+                                {% for skill in row['col2']['Skills'] %}
+                                <tr>
+                                    <td> {{ '' if row['col1'] == '' else skill }} </td>
+                                    <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
+                                </tr>
+                                {% endfor %}  
+                            </table>
+                        {% endif %}
                     </td>
                     <td colspan="3">
-                        <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
-                            {% for skill in row['col4']['Skills'] %}
-                                <tr>
-                                    <td> {{ '' if row['col3'] == '' else skill }} </td>
-                                    <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
-                                </tr>
-                            {% endfor %}   
-                        </table>
+                        {% if row['col3'] != '' %}
+                            <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
+                                {% for skill in row['col4']['Skills'] %}
+                                    <tr>
+                                        <td> {{ '' if row['col3'] == '' else skill }} </td>
+                                        <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
+                                    </tr>
+                                {% endfor %}   
+                            </table>
+                        {%  endif %}
                     </td>                            
                 </tr>            
             {% endfor %}
@@ -193,6 +221,8 @@
             function toggle_visibility(button_id) {
                 var skill_tables = document.getElementsByClassName("discipline_skills");
                 var specific_disciplines_skills = skill_tables[button_id];
+                console.log(skill_tables);
+                console.log(specific_disciplines_skills);
                 // var specific_disciplines_skills = document.getElementById("Dominate");
                 if (specific_disciplines_skills.style.visibility === "collapse") {
                     specific_disciplines_skills.style.visibility = "visible";
