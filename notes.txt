@@ -1,3 +1,16 @@
+{
+                // var skill_tables = document.getElementsByClassName("discipline_skills");
+                // var specific_disciplines_skills = skill_tables[button_id];
+                var specific_disciplines_skills = document.getElementById(button_id);
+                if (specific_disciplines_skills.style.visibility === "collapse") {
+                    specific_disciplines_skills.style.visibility = "visible";
+                } else {
+                    specific_disciplines_skills.style.visibility = "collapse";
+                }
+            }
+
+
+
 {'Attributes': {'Mental_Attributes': {'Intelligence': 5,
                                       'Resolve': 5,
                                       'Wits': 5},
@@ -351,7 +364,8 @@
 
 
 [{'col1': 'Dominate',
-  'col2': {'Level': 5,
+  'col2': {'
+  ': 5,
            'Skills': {'': '',
                       'Ancestral Dominion': 'The vampire can makeÂ\xa0'
                                             'theirÂ\xa0Kindred descendants to '
