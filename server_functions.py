@@ -1,4 +1,5 @@
 import default_data
+import pprint
 
 def flatten_dictionary(input_dictionary):
     result = {}
@@ -159,7 +160,7 @@ def dictionary_to_flask_table(character_dictionary):
 
     return table
 
-def add_row_number(discipline_table):
+def add_discipline_number(discipline_table):
     i = 0
     for discipline in discipline_table:
         if discipline['col1'] != "":
@@ -196,9 +197,13 @@ def dictionary_to_html_table(character_dictionary):
                             current_table=table_disciplines,
                             number_of_cols=6)
 
-    table_disciplines = add_row_number(table_disciplines)   
+    table_disciplines = add_discipline_number(table_disciplines)
+    pprint.pprint(table_disciplines)
 
-    return table_character_details, table_attributes, table_skills, table_disciplines
+    generation = character_dictionary['Character_Details']['Basic_Information']['Generation']
+    maximum_skill_level = default_data.default_generation_based_point_data()[generation]   
+
+    return table_character_details, table_attributes, table_skills, table_disciplines, maximum_skill_level
 
 def form_structuring(gathered_form_data):
  

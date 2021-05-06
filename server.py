@@ -51,7 +51,7 @@ def result():
     #converted_to_flask_table = ItemTable(generated_character_flask_table_input)
     #pprint.pprint(generated_character_flask_table_input)
 
-    details, attributes, skills, disciplines = server_functions.dictionary_to_html_table(generated_character)
+    details, attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
     
 
     return render_template("generated_characters_designed.html",
@@ -63,7 +63,8 @@ def result():
                            details = details, 
                            attributes = attributes, 
                            skills = skills, 
-                           disciplines = disciplines)
+                           disciplines = disciplines,
+                           max_level = max_level)
 
 # Declare your table
 class ItemTable(Table):
