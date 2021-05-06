@@ -1,3 +1,13 @@
+                        {% if row['col1'] != '' %}
+                            <button
+                                class="button"
+                                id={{ row['col2']['discipline_number'] }} 
+                                onclick="toggle_visibility(this.id)"> 
+                                Hide/Show Skills 
+                            </button>
+                        {% endif %}
+
+
 {
                 // var skill_tables = document.getElementsByClassName("discipline_skills");
                 // var specific_disciplines_skills = skill_tables[button_id];
@@ -8,6 +18,8 @@
                     specific_disciplines_skills.style.visibility = "collapse";
                 }
             }
+
+
 
 
 
