@@ -4,7 +4,7 @@ import pprint
 pipe_shit_filename = 'discipline_skills_and_rituals_auspex_2.csv'
 output_shit_filename = 'discipline_skills_and_rituals_4.csv'
 
-with open(pipe_shit_filename) as csvfile:
+with open(pipe_shit_filename, encoding='utf8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')
     print(csvreader)
     
@@ -12,7 +12,6 @@ with open(pipe_shit_filename) as csvfile:
     counter = 1
 
     for line in csvreader:
-        print("hello")
         url = line[0] 
         discipline = line[1] 
         veriation = line[2]

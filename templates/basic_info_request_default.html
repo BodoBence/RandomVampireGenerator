@@ -1,11 +1,50 @@
 <!doctype html>
 <html lang="en">
    <head>
+    <style>
+        :root {
+            --black: rgb(29, 27, 27);
+            --grey: rgb(172, 164, 164);}
+
+        .center {margin-left: auto;
+                 margin-right: auto;}
+
+        .slider {-webkit-appearance: none;
+                width: 90%;
+                height: 5px;
+                border-radius: 5px;  
+                background: var(--grey);
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;}
+
+        .slider::-webkit-slider-thumb {-webkit-appearance: none;
+                                        appearance: none;
+                                        width: 10px;
+                                        height: 10px;
+                                        border-radius: 50%; 
+                                        background: var(--black);
+                                        cursor: pointer;}
+
+        .slider::-moz-range-thumb {width: 10px;
+                                    height: 10px;
+                                    border-radius: 50%;
+                                    background: var(--black);
+                                    cursor: pointer;}
+
+        .button {background-color: var(--black);
+                 border: none;
+                 color: var(--grey);
+                 padding: 10px 10px;
+                 text-align: center;
+                 text-decoration: none;
+                 display: inline-block;
+                 font-size: 10px;
+                 cursor: pointer;}
+
+        </style>
         <form action = "http://localhost:5000/result" method='POST'>
-            <style>
-                .center {margin-left: auto;
-                         margin-right: auto;}
-            </style>
             <table class="center">
                 <tbody>
                     <tr style="height:40px">
@@ -13,7 +52,7 @@
                              Clan:
                         </td>
                         <td>
-                            <select list="clans" name="manual_clan">
+                            <select class="dropdown_selectors" list="clans" name="manual_clan">
                                 <datalist id="clans">
                                     <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
                                     <option value='Banu_Haqim' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == 'Banu_Haqim' %} selected="selected" {% endif %}> Banu_Haqim </option>
@@ -100,18 +139,19 @@
                             {% for key2, val2 in val1.items() %}
                             <td> {{ key2 }}
                             </td> 
-                            <td> <input type="range" 
-                                name={{ key2 }} 
-                                min="0" 
-                                max="100"
-                                value= {{ slider_values[key2] }}>
+                            <td> <input class="slider"
+                                        type="range" 
+                                        name={{ key2 }} 
+                                        min="0" 
+                                        max="100"
+                                        value= {{ slider_values[key2] }}>
                             </td> 
                             {% endfor %}
                     </tr>
                         {% endfor %}
                     <tr style="height:40px">
-                        <th colspan="6" style="height:80px">
-                            <input type="submit" value="Generate !">
+                        <th colspan="6">
+                            <input class="button" style="width: 800px;"  type="submit" value="Generate !">
                         </th>
                     </tr>
                 </tbody>
