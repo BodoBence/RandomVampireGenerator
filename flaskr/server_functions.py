@@ -198,7 +198,6 @@ def dictionary_to_html_table(character_dictionary):
                             number_of_cols=6)
 
     table_disciplines = add_discipline_number(table_disciplines)
-    pprint.pprint(table_disciplines)
 
     generation = character_dictionary['Character_Details']['Basic_Information']['Generation']
     maximum_skill_level = default_data.default_generation_based_point_data()[generation]   
