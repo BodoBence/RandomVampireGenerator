@@ -27,9 +27,12 @@ def home():
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     gathered_input = request.form
+    pprint.pprint(gathered_input)
 
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
-
+    print('restructured')
+    pprint.pprint(resutrctured_conditions)
+    pprint.pprint(restructured_values)
     generated_character = generate(input_values=restructured_values,
                                    input_conditions=resutrctured_conditions,
                                    input_weights=restructured_weights)
@@ -40,7 +43,6 @@ def result():
     startup_input_field_details['input_weights'] = restructured_weights
 
     details = generated_character['Character_Details']
-    pprint.pprint(details)
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
     
     return render_template('generated_characters_designed.html',

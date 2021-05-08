@@ -22,11 +22,38 @@
             </tr>
             <tr>
                 <td> Health </td>
-                <td> {{ details['Trackers']['Health'] }} </td>
+                <td>
+                    <table>
+                        {% for i in range(0, details['Trackers']['Health']) %}
+                            <td> <span class="dot_filled"></span> </td>    
+                        {% endfor %}
+                        {% for i in range(0, 10 - details['Trackers']['Health']) %}
+                            <td> <span class="dot_unfilled"></span> </td>    
+                        {% endfor %}
+                    </table>
+                </td>
                 <td> Willpower </td>
-                <td> {{ details['Trackers']['Willpower'] }} </td>
+                <td>
+                    <table>
+                        {% for i in range(0, details['Trackers']['Willpower']) %}
+                            <td> <span class="dot_filled"></span> </td>    
+                        {% endfor %}
+                        {% for i in range(0, 10 - details['Trackers']['Willpower']) %}
+                            <td> <span class="dot_unfilled"></span> </td>    
+                        {% endfor %}
+                    </table>
+                </td>
                 <td> Blood Potency </td>
-                <td>{{ details['Trackers']['Blood_Potency'] }} </td>
+                <td>
+                    <table>
+                        {% for i in range(0, details['Trackers']['Blood_Potency']) %}
+                            <td> <span class="dot_filled"></span> </td>    
+                        {% endfor %}
+                        {% for i in range(0, 10 - details['Trackers']['Blood_Potency']) %}
+                            <td> <span class="dot_unfilled"></span> </td>    
+                        {% endfor %}
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td> Derangement </td>
