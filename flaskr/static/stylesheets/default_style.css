@@ -19,11 +19,14 @@ li a {display: block;
 /* Change the link color to #111 (black) on hover */
 li a:hover {background-color: var(--fg);}
 
-select{
-    background-color: var(--bg);
-    width: 140px;
-    color: var(--fg);
-}
+select {background-color: var(--bg);
+        width: 140px;
+        height: 30px;
+        color: var(--fg);}
+input {width: 90%;
+       height: 24px;
+       background-color: var(--bg);
+       color: var(--fg);}
 
 .something {padding: 30px;
             background-color: var(--bg);}
@@ -43,10 +46,10 @@ select{
 
 .slider::-webkit-slider-thumb {-webkit-appearance: none;
                                appearance: none;
-                               width: 10px;
-                               height: 10px;
+                               width: 12px;
+                               height: 12px;
                                border-radius: 50%; 
-                               background: var(--bg);
+                               background: var(--fg);
                                cursor: pointer;}
 
 .slider::-moz-range-thumb {width: 10px;
@@ -56,14 +59,15 @@ select{
                            cursor: pointer;}
 
 .my_button {background-color: var(--bg);
-         border: none;
-         color: var(--fg);
-         padding: 10px 10px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 10px;
-         cursor: pointer;}
+            border: none;
+            color: var(--fg);
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            cursor: pointer;
+            height: 30px;}
 
 th {vertical-align: top;
     font-weight: bold;

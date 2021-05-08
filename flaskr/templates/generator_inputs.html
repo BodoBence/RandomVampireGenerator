@@ -81,7 +81,11 @@
                         </datalist>
                 </td>
                 <td>
-                    <input type="number" min=1 max=5000 name="manual_age" value={{ field_values['manual_age'] }}>
+                    <input type="number"
+                           min=1 
+                           max=5000 
+                           name="manual_age" 
+                           value={{ field_values['manual_age'] }}>
                 </td>
                 <td>
                     Name:
@@ -94,7 +98,9 @@
                         </datalist>
                 </td>
                 <td>
-                    <input type="text" name="manual_name" value={{ field_values['manual_name'] }}> 
+                    <input type="text"
+                           name="manual_name"
+                           value={{ field_values['manual_name'] }}> 
                 </td>
             </tr>
                 {% for key1, val1 in slider_structure.items() %}
@@ -121,7 +127,7 @@
                         style="width: 800px;">
                 </th>
             </tr>
-            <tr style="height:40px">
+            <tr>
                 <th colspan="6">
                     <input class="my_button"
                            style="width: 800px;"
