@@ -22,7 +22,8 @@ def home():
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
-                           slider_values = startup_input_field_details['input_weights'])
+                           slider_values = startup_input_field_details['input_weights'],
+                           default_input_weights=startup_input_field_details['input_weights'])
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
@@ -50,6 +51,7 @@ def result():
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'],
+                           default_input_weights=startup_input_field_details['input_weights'],
                            details = details, 
                            attributes = attributes, 
                            skills = skills, 
