@@ -19,6 +19,12 @@ li a {display: block;
 /* Change the link color to #111 (black) on hover */
 li a:hover {background-color: var(--fg);}
 
+select{
+    background-color: var(--bg);
+    width: 140px;
+    color: var(--fg);
+}
+
 .something {padding: 30px;
             background-color: var(--bg);}
 
