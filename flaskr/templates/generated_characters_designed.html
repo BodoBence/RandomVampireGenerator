@@ -1,20 +1,37 @@
 <!doctype html>
 {% extends "generator_inputs.html" %}
     {% block generated_characters %}
-        <table class="center">
             <tr>
                 <th colspan="6"> Basic Information </th>
             </tr>
-            {% for row in details %}
-                <tr>
-                    <td> {{ row['col1'] }} </td>
-                    <td> {{ row['col2'] }} </td>
-                    <td> {{ row['col3'] }} </td>
-                    <td> {{ row['col4'] }} </td>
-                    <td> {{ row['col5'] }} </td>
-                    <td> {{ row['col6'] }} </td>
-                </tr>
-            {% endfor %}
+            <tr>
+                <td> Name </td>
+                <td> {{ details['Basic_Information']['Name'] }} </td>
+                <td> Sire </td>
+                <td> {{ details['Basic_Information']['Sire'] }} </td>
+                <td> Sex </td>
+                <td>{{ details['Basic_Information']['Sex'] }} </td>
+            </tr>
+            <tr>
+                <td> Clan </td>
+                <td> {{ details['Basic_Information']['Clan'] }} </td>
+                <td> Generation </td>
+                <td> {{ details['Basic_Information']['Generation'] }} </td>
+                <td> Age </td>
+                <td>{{ details['Basic_Information']['Age'] }} </td>
+            </tr>
+            <tr>
+                <td> Health </td>
+                <td> {{ details['Trackers']['Health'] }} </td>
+                <td> Willpower </td>
+                <td> {{ details['Trackers']['Willpower'] }} </td>
+                <td> Blood Potency </td>
+                <td>{{ details['Trackers']['Blood_Potency'] }} </td>
+            </tr>
+            <tr>
+                <td> Derangement </td>
+                <td colspan="5"> {{ details['Basic_Information']['Derangement'] }}</td>
+            </tr>
             <tr>
                 <th colspan="2"> Physical Attributes </th>
                 <th colspan="2"> Social Attributes </th>
@@ -177,7 +194,6 @@
                     </td>                            
                 </tr>            
             {% endfor %}
-        </table>
         <script>
             function toggle_visibility(button_id) {
                 var skill_tables = document.getElementsByClassName("discipline_skills");

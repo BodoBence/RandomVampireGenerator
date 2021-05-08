@@ -4,9 +4,11 @@
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
     </head>
     <body>
-        {% block inputs %}
-        {% endblock %}
-        {% block generated_characters %}
-        {% endblock %}
+        <table class="center">
+            {% block inputs %}
+            {% endblock %}
+            {% block generated_characters %}
+            {% endblock %}
+        </table>
     </body>
 </html>

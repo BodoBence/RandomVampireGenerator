@@ -39,7 +39,9 @@ def result():
     startup_input_field_details['input_values'] = restructured_values
     startup_input_field_details['input_weights'] = restructured_weights
 
-    details, attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
+    details = generated_character['Character_Details']
+    pprint.pprint(details)
+    attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
     
     return render_template('generated_characters_designed.html',
                            slider_structure = startup_input_field_details['weight_structure'],

@@ -172,15 +172,9 @@ def add_discipline_number(discipline_table):
     return discipline_table
 
 def dictionary_to_html_table(character_dictionary):
-    table_character_details = []
     table_attributes = []
     table_skills = []
     table_disciplines = []
-
-    stat_block_for_flask_table(number_of_stat_key_value_pairs=2,
-                               dictionary_container=character_dictionary['Character_Details'],
-                               current_table=table_character_details,
-                               number_of_cols=6)
     
     stat_block_for_flask_table(number_of_stat_key_value_pairs=3,
                             dictionary_container=character_dictionary['Attributes'],
@@ -202,7 +196,7 @@ def dictionary_to_html_table(character_dictionary):
     generation = character_dictionary['Character_Details']['Basic_Information']['Generation']
     maximum_skill_level = default_data.default_generation_based_point_data()[generation]   
 
-    return table_character_details, table_attributes, table_skills, table_disciplines, maximum_skill_level
+    return table_attributes, table_skills, table_disciplines, maximum_skill_level
 
 def form_structuring(gathered_form_data):
  
