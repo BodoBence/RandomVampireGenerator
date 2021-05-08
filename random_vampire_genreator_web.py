@@ -6,7 +6,7 @@ import csv
 from csv import reader
 
 def get_derangement():
-    derengements = 'derengements_curated.csv'
+    derengements = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/derengements_curated.csv'
 
     with open(derengements) as chosen_file:
         reader = csv.reader(chosen_file)
@@ -242,9 +242,9 @@ def clean_up_character(character_sheet):
 
 # fill charactersheet with stats and xp,send xp
 def generate(input_values, input_conditions, input_weights):
-    file_names_male = 'names_male.txt'
-    file_names_female = 'names_female.txt'
-    file_names_surname = 'names_interesting.txt'
+    file_names_male = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_male.txt'
+    file_names_female = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_female.txt'
+    file_names_surname = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_interesting.txt'
     names_male = []
     names_female = []
     names_surname = []

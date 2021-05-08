@@ -1,0 +1,73 @@
+
+:root {--main_color: rgb(171, 37, 100);
+       --secondary_color: rgb(162, 174, 183);}
+
+.something {padding: 30px;
+            background-color: var(--main_color);}
+
+.center {margin-left: auto;
+         margin-right: auto;}
+
+.slider {-webkit-appearance: none;
+         width: 90%;
+         height: 5px;
+         border-radius: 5px;  
+         background: var(--secondary_color);
+         outline: none;
+         opacity: 0.7;
+         -webkit-transition: .2s;
+         transition: opacity .2s;}
+
+.slider::-webkit-slider-thumb {-webkit-appearance: none;
+                               appearance: none;
+                               width: 10px;
+                               height: 10px;
+                               border-radius: 50%; 
+                               background: var(--main_color);
+                               cursor: pointer;}
+
+.slider::-moz-range-thumb {width: 10px;
+                           height: 10px;
+                           border-radius: 50%;
+                           background: var(--main_color);
+                           cursor: pointer;}
+
+.my_button {background-color: var(--main_color);
+         border: none;
+         color: var(--secondary_color);
+         padding: 10px 10px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 10px;
+         cursor: pointer;}
+
+th {vertical-align: top;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;}
+            
+.discipline_name {text-align: left;
+                  padding: 0px;}
+
+td {vertical-align: top;
+    padding: 2px;
+    font-weight: normal;
+    text-align: left;
+    max-width: 350px;
+    hyphens: auto;}
+
+.discipline_skills {visibility: collapse;
+                    padding: 0px}
+
+.dot_filled {height: 10px;
+             width: 10px;
+             background-color: var(--main_color);
+             border-radius: 50%;
+             display: inline-block;}
+
+.dot_unfilled {height: 10px;
+               width: 10px;
+               background-color: var(--secondary_color);
+               border-radius: 50%;
+               display: inline-block;}

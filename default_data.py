@@ -1,68 +1,6 @@
 import csv
 import json
 
-""" def sample_character_sheet():
-    character_sheet = { 'Attributes': { 'Mental_Attributes': {  'Intelligence': 5,
-                                                                'Resolve': 5,
-                                                                'Wits': 5},
-                                        'Physical_Attributes': {'Dexterity': 5,
-                                                                'Stamina': 5,
-                                                                'Strength': 5},
-                                        'Social_Attributes': {  'Charisma': 5,
-                                                                'Composure': 5,
-                                                                'Manipulation': 5}},
-                        'Character_Details': {  'Basic_Information': {  'Age': 2296,
-                                                                        'Clan': 'Nosferatu',
-                                                                        'Generation': 8,
-                                                                        'Name': 'Clay, Nanie',
-                                                                        'Sex': 'Male',
-                                                                        'Sire': 'Older Vampire'},
-                                                'Trackers': {   'Health': 8,
-                                                                'Willpower': 10,
-                                                                'XP_Left': 1741}},
-                        'Disciplines': {'Clan_Disciplines': {   'Animalism': {'Level': 5,
-                                                                              'Skills': {'Feral whisper': 'talk to animals'},
-                                                                                        {'bond Famolous': 'have a pet'}},
-                                                                'Obfuscate': 5,
-                                                                'Potence': 5},
-                                        'Non-Clan_Disciplines': {   'Auspex': 5,
-                                                                    'Blood Sorcery': 5,
-                                                                    'Celerity': 5,
-                                                                    'Dominate': 5,
-                                                                    'Fortitude': 3,
-                                                                    'Oblivion': 5,
-                                                                    'Presence': 4,
-                                                                    'Protean': 5,
-                                                                    'Thinblood Alchemy': 5}},
-                        'Skills': { 'Mental_Skills': {  'Academics': 5,
-                                                        'Awareness': 5,
-                                                        'Finance': 4,
-                                                        'Investigation': 5,
-                                                        'Medicine': 5,
-                                                        'Occult': 5,
-                                                        'Politics': 5,
-                                                        'Science': 5,
-                                                        'Technology': 5},
-                                    'Physical_Skills': {'Athletics': 5,
-                                                        'Brawl': 5,
-                                                        'Craft': 5,
-                                                        'Drive': 5,
-                                                        'Firearms': 5,
-                                                        'Larceny': 5,
-                                                        'Melee': 5,
-                                                        'Stealth': 5,
-                                                        'Survival': 5},
-                                    'Social_Skills': {  'Animal Ken': 5,
-                                                        'Etiquette': 2,
-                                                        'Insight': 5,
-                                                        'Intimidation': 5,
-                                                        'Leadership': 4,
-                                                        'Performance': 5,
-                                                        'Persuasion': 5,
-                                                        'Streetwise': 5,
-                                                        'Subterfuge': 5}}}
-    return character_sheet """
-
 def start_conditions():
     start_conditions = {'manual_clan_condition': True,
                         'manual_generation_condition': False,
@@ -280,7 +218,7 @@ def default_sexes_data():
     return sexes
 
 def get_discipline_skills_and_rituals():
-    with open('WORKINGDICT.json') as json_file:
+    with open('/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/discipline_skills_rituals_ceremonies.json') as json_file:
         discipline_skills_and_rituals = json.load(json_file)
     return discipline_skills_and_rituals
 
