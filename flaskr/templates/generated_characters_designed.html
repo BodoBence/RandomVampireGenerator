@@ -1,5 +1,5 @@
 <!doctype html>
-{% extends "basic_info_request_default.html" %}
+{% extends "generator_inputs.html" %}
     {% block generated_characters %}
         <table class="center">
             <tr>
@@ -121,7 +121,7 @@
                     <td>
                         {% if row['col1'] != '' %}
                             <button
-                                class="button"
+                                class="my_button"
                                 id={{ row['col2']['discipline_number'] }} 
                                 onclick="toggle_visibility(this.id)"> 
                                 Hide/Show Skills 
@@ -142,7 +142,7 @@
                     <td>
                         {% if row['col3'] != '' %}
                             <button
-                                class="button"
+                                class="my_button"
                                 id={{ row['col4']['discipline_number'] }} 
                                 onclick="toggle_visibility(this.id)">
                                 Hide/Show Skills

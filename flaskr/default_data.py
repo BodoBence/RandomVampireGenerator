@@ -1,13 +1,22 @@
 import csv
 import json
 from flask import url_for
+import os
+import random
 
 # Files:'
-FILE_DERANGEMENTS = url_for('static', filename='./derengements_curated.csv')
-FILE_NAMES_MALE = url_for('static', filename='./names_male.txt')
-FILE_NAMES_FEMALE = url_for('statuc', filename='./names_female.txt')
-FILE_NAMES_INTERESTING = url_for('static', filename='./names_interesting.txt')
-FILE_DISCIPLINE_SKILLS = url_for('static', filename='./discipline_skills_rituals_ceremonies.json')
+# FILE_DERANGEMENTS = url_for('static', filename='./derengements_curated.csv')
+# FILE_NAMES_MALE = url_for('static', filename='./names_male.txt')
+# FILE_NAMES_FEMALE = url_for('statuc', filename='./names_female.txt')
+# FILE_NAMES_INTERESTING = url_for('static', filename='./names_interesting.txt')
+# FILE_DISCIPLINE_SKILLS = url_for('static', filename='./discipline_skills_rituals_ceremonies.json')
+
+script_dir = os.path.dirname(__file__)
+FILE_NAMES_MALE = os.path.join(script_dir, 'static', 'names_male.txt')
+FILE_NAMES_FEMALE = os.path.join(script_dir, 'static', 'names_female.txt')
+FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'names_interesting.txt')
+FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'discipline_skills_rituals_ceremonies.json')
+FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
 
 def start_conditions():
     start_conditions = {'manual_clan_condition': True,

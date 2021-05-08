@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, current_app
 from flask_table import Table, Col
 from random_vampire_generator import generate
 import default_data  
@@ -16,21 +16,17 @@ startup_input_field_details = {'weight_structure': default_data.default_weights_
                                'input_values': default_data.start_values(),
                                'input_weights': default_data.start_weights()}
 
-
 @app.route('/', )
 def home():
-    return render_template('basic_info_request_default.html',
+    return render_template('generator_inputs.html',
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'])
 
-
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     gathered_input = request.form
-
-    # pprint.pprint(gathered_input)
 
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
 
@@ -45,8 +41,7 @@ def result():
 
     details, attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
     
-
-    return render_template("generated_characters_designed.html",
+    return render_template('generated_characters_designed.html',
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
@@ -56,7 +51,6 @@ def result():
                            skills = skills, 
                            disciplines = disciplines,
                            max_level = max_level)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

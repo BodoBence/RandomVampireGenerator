@@ -1,9 +1,9 @@
 
-:root {--main_color: rgb(164, 215, 33);
-       --secondary_color: rgb(162, 174, 183);}
+:root {--bg: rgb(11, 37, 92);
+       --fg: rgb(250, 220, 154);}
 
 .something {padding: 30px;
-            background-color: var(--main_color);}
+            background-color: var(--bg);}
 
 .center {margin-left: auto;
          margin-right: auto;}
@@ -12,7 +12,7 @@
          width: 90%;
          height: 5px;
          border-radius: 5px;  
-         background: var(--secondary_color);
+         background: var(--bg);
          outline: none;
          opacity: 0.7;
          -webkit-transition: .2s;
@@ -23,18 +23,18 @@
                                width: 10px;
                                height: 10px;
                                border-radius: 50%; 
-                               background: var(--main_color);
+                               background: var(--bg);
                                cursor: pointer;}
 
 .slider::-moz-range-thumb {width: 10px;
                            height: 10px;
                            border-radius: 50%;
-                           background: var(--main_color);
+                           background: var(--bg);
                            cursor: pointer;}
 
-.my_button {background-color: var(--main_color);
+.my_button {background-color: var(--bg);
          border: none;
-         color: var(--secondary_color);
+         color: var(--fg);
          padding: 10px 10px;
          text-align: center;
          text-decoration: none;
@@ -62,12 +62,12 @@ td {vertical-align: top;
 
 .dot_filled {height: 10px;
              width: 10px;
-             background-color: var(--main_color);
+             background-color: var(--bg);
              border-radius: 50%;
              display: inline-block;}
 
 .dot_unfilled {height: 10px;
                width: 10px;
-               background-color: var(--secondary_color);
+               background-color: var(--fg);
                border-radius: 50%;
                display: inline-block;}
