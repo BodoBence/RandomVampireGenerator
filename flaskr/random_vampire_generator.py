@@ -5,19 +5,11 @@ import pprint
 import csv
 from csv import reader
 
-def get_derangement():
-    derengements = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/derengements_curated.csv'
-
-    with open(derengements) as chosen_file:
-        reader = csv.reader(chosen_file)
-        current_derangement = random.choice(list(reader))
-    return current_derangement
 
 def derangement_check(basic_info):
     if basic_info['Clan'] == 'Malkavian':
-        basic_info['Derangement'] = get_derangement()
+        basic_info['Derangement'] = default_data.get_derangement()
     return basic_info
-
 
 def calculate_metrics(character_sheet):
     character_sheet['Character_Details']['Trackers']['Health'] = character_sheet['Attributes']['Physical_Attributes']['Stamina'] + 3
@@ -242,16 +234,13 @@ def clean_up_character(character_sheet):
 
 # fill charactersheet with stats and xp,send xp
 def generate(input_values, input_conditions, input_weights):
-    file_names_male = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_male.txt'
-    file_names_female = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_female.txt'
-    file_names_surname = '/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/names_interesting.txt'
     names_male = []
     names_female = []
     names_surname = []
 
-    names_male = convert_txt_to_string_list(file_names_male, names_male)
-    names_female = convert_txt_to_string_list(file_names_female, names_female)
-    names_surname = convert_txt_to_string_list(file_names_surname, names_surname)
+    names_male = convert_txt_to_string_list(default_data.FILE_NAMES_MALE, names_male)
+    names_female = convert_txt_to_string_list(default_data.FILE_NAMES_FEMALE, names_female)
+    names_surname = convert_txt_to_string_list(default_data.FILE_NAMES_INTERESTING, names_surname)
 
     clan = select_from_list(options=default_data.default_clans_data(),
                             condition=input_conditions['manual_clan_condition'],

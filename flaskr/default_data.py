@@ -1,5 +1,13 @@
 import csv
 import json
+from flask import url_for
+
+# Files:'
+FILE_DERANGEMENTS = url_for('static', filename='./derengements_curated.csv')
+FILE_NAMES_MALE = url_for('static', filename='./names_male.txt')
+FILE_NAMES_FEMALE = url_for('statuc', filename='./names_female.txt')
+FILE_NAMES_INTERESTING = url_for('static', filename='./names_interesting.txt')
+FILE_DISCIPLINE_SKILLS = url_for('static', filename='./discipline_skills_rituals_ceremonies.json')
 
 def start_conditions():
     start_conditions = {'manual_clan_condition': True,
@@ -218,7 +226,7 @@ def default_sexes_data():
     return sexes
 
 def get_discipline_skills_and_rituals():
-    with open('/Users/benceleventebodo/Documents/Scripts/RandomVampireGenerator/Static/discipline_skills_rituals_ceremonies.json') as json_file:
+    with open(FILE_DISCIPLINE_SKILLS) as json_file:
         discipline_skills_and_rituals = json.load(json_file)
     return discipline_skills_and_rituals
 
@@ -241,3 +249,9 @@ def blood_potency_data():
                                       '16': [0]}
 
     return blood_potency_correspondencies
+
+def get_derangement():
+    with open(FILE_DERANGEMENTS) as chosen_file:
+        reader = csv.reader(chosen_file)
+        current_derangement = random.choice(list(reader))
+    return current_derangement

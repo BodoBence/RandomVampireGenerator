@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for
 from flask_table import Table, Col
-from random_vampire_genreator_web import generate
+from random_vampire_generator import generate
 import default_data  
 import server_functions
 import pprint
@@ -43,14 +43,6 @@ def result():
     startup_input_field_details['input_values'] = restructured_values
     startup_input_field_details['input_weights'] = restructured_weights
 
-    # pprint.pprint(gathered_input)
-    # pprint.pprint(new_input)
-
-    # format
-    #generated_character_flask_table_input = server_functions.dictionary_to_flask_table(generated_character)
-    #converted_to_flask_table = ItemTable(generated_character_flask_table_input)
-    #pprint.pprint(generated_character_flask_table_input)
-
     details, attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
     
 
@@ -59,21 +51,12 @@ def result():
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
                            slider_values = startup_input_field_details['input_weights'],
-                           #generated_character = converted_to_flask_table.__html__())
                            details = details, 
                            attributes = attributes, 
                            skills = skills, 
                            disciplines = disciplines,
                            max_level = max_level)
 
-# Declare your table
-class ItemTable(Table):
-    col1 = Col('')
-    col2 = Col('')
-    col3 = Col('')
-    col4 = Col('')
-    col5 = Col('')
-    col6 = Col('')
 
 if __name__ == '__main__':
     app.run(debug=True)
