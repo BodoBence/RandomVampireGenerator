@@ -1,11 +1,8 @@
 from flask import Flask, render_template, request, url_for, make_response
-from flask_table import Table, Col
-import pdfkit
-import os
 from random_vampire_generator import generate
 import default_data  
 import server_functions
-import pprint
+
 
 app = Flask(__name__)
 
