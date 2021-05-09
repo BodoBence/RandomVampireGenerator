@@ -3,12 +3,12 @@
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="contact.asp">News</a></li>
+            <li><a href="/"> Home </a></li>
+            <li><a href="contact.asp"> Contact </a></li>
         </ul>
     </head>
     <body>
-        <table class="center">
+        <table class="center" id="test_table">
             {% block inputs %}
             {% endblock %}
             {% block generated_characters %}

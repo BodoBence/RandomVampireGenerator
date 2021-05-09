@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, url_for, current_app
+from flask import Flask, render_template, request, url_for, make_response
 from flask_table import Table, Col
+import pdfkit
+import os
 from random_vampire_generator import generate
 import default_data  
 import server_functions
@@ -28,12 +30,7 @@ def home():
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     gathered_input = request.form
-    pprint.pprint(gathered_input)
-
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
-    print('restructured')
-    pprint.pprint(resutrctured_conditions)
-    pprint.pprint(restructured_values)
     generated_character = generate(input_values=restructured_values,
                                    input_conditions=resutrctured_conditions,
                                    input_weights=restructured_weights)
@@ -45,8 +42,8 @@ def result():
 
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
-    
-    return render_template('generated_characters_designed.html',
+
+    rendered_character = render_template('generated_characters_designed.html',
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
@@ -57,6 +54,13 @@ def result():
                            skills = skills, 
                            disciplines = disciplines,
                            max_level = max_level)
+
+    # generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
+    # output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
+    # output_path = 'out.pdf'
+    # vampire_pdf = pdfkit.from_string(rendered_character, False)
+    
+    return rendered_character
 
 if __name__ == '__main__':
     app.run(debug=True)
