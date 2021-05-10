@@ -67,5 +67,9 @@ def contact():
 def development_road():
     return render_template('development_road.html')
 
+@app.route('/calculation_maths', )
+def calculation_maths():
+    return render_template('calculation_maths.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
