@@ -3,6 +3,9 @@ from random_vampire_generator import generate
 import default_data  
 import server_functions
 
+import os
+from xhtml2pdf import pisa
+
 
 app = Flask(__name__)
 
@@ -56,6 +59,12 @@ def result():
     # output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
     # output_path = 'out.pdf'
     # vampire_pdf = pdfkit.from_string(rendered_character, False)
+
+        #pdf = StringIO()
+    html = rendered_character
+    output_filename = "test.pdf"
+    convert_html_to_pdf(html, output_filename)
+
     
     return rendered_character
 
@@ -70,6 +79,23 @@ def development_road():
 @app.route('/calculation_maths', )
 def calculation_maths():
     return render_template('calculation_maths.html')
+
+# Utility function
+def convert_html_to_pdf(source_html, output_filename):
+    # open output file for writing (truncated binary)
+    result_file = open(output_filename, "w+b")
+
+
+    # convert HTML to PDF
+    pisa_status = pisa.CreatePDF(source_html,                # the HTML to convert
+                                 default_css=, 
+                                 dest=result_file)           # file handle to recieve result
+
+    # close output file
+    result_file.close()                 # close output file
+
+    # return False on success and True on errors
+    return pisa_status.err
 
 if __name__ == '__main__':
     app.run(debug=True)
