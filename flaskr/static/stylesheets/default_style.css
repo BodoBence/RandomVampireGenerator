@@ -1,6 +1,7 @@
 
 :root {--bg: rgb(11, 37, 92);
-       --fg: rgb(250, 220, 154);}
+       --fg: rgb(250, 220, 154);
+       --white: rgb(255, 255, 255);}
 
 ul {list-style-type: none;
     margin: 0;
@@ -26,6 +27,11 @@ select {background-color: var(--bg);
         width: 140px;
         height: 30px;
         color: var(--fg);}
+select:hover{background-color: var(--fg);
+             color: var(--white);
+             border: var(--fg);
+             cursor: pointer;}
+
 input {width: 90%;
        height: 24px;
        background-color: var(--bg);
@@ -33,6 +39,8 @@ input {width: 90%;
 
 .something {padding: 30px;
             background-color: var(--bg);}
+
+.input_container {visibility: visible;}
 
 .center {margin-left: auto;
          margin-right: auto;}
@@ -72,6 +80,9 @@ input {width: 90%;
             cursor: pointer;
             height: 40px;
             width: 100%;}
+ 
+.button_general:hover{background-color: var(--fg);
+                      color: var(--white);}
 
 .button_discipline_skills {background-color: var(--bg);
                            border: none;
