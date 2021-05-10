@@ -59,5 +59,13 @@ def result():
     
     return rendered_character
 
+@app.route('/contact', )
+def contact():
+    return render_template('contact.html')
+
+@app.route('/development_road', )
+def development_road():
+    return render_template('development_road.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

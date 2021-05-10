@@ -2,10 +2,7 @@
 <html lang="en">
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
-        <ul>
-            <li><a href="/"> Home </a></li>
-            <li><a href="contact.asp"> Contact </a></li>
-        </ul>
+        {% include "navigation.html" %}
     </head>
     <body>
         <table class="center" id="test_table">
