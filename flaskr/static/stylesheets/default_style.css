@@ -27,6 +27,7 @@ select {background-color: var(--bg);
         width: 140px;
         height: 30px;
         color: var(--fg);}
+        
 select:hover{background-color: var(--fg);
              color: var(--white);
              border: var(--fg);

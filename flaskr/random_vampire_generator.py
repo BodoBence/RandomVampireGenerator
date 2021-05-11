@@ -4,6 +4,7 @@ import default_data
 import pprint
 import csv
 from csv import reader
+import math
 
 
 def derangement_check(basic_info):
@@ -77,7 +78,8 @@ def setup_character_sheet(basic_info):
     return character_sheet
 
 def calculate_xp_points(age):
-    xp_points = max(300, (age * 2))
+    xp_points = round((100 * (math.log(age+1))) + 30)
+    # xp_points = max(300, (age * 2))
     return xp_points
 
 def calculate_xp_cost_for_non_disciplines(current_level, cost):

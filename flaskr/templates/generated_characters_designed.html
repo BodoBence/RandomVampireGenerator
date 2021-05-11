@@ -222,7 +222,7 @@
                 </tr>            
             {% endfor %}
                 <tr>
-                    <td colspan="6"> <button style="visibility: collapse;" class="button_general" onclick="demoFromHTML()"> Download Vampire as PDF </button></td>
+                    <td colspan="6"> <button style="visibility: visible;" class="button_general" onclick="print_character()"> Download Vampire as PDF </button></td>
                 </tr>
         <script>
             function toggle_visibility(button_id) {
@@ -236,6 +236,10 @@
                 } else {
                     specific_disciplines_skills.style.visibility = "collapse";
                 }
+            }
+
+            function print_character(){
+                window.print();
             }
         </script>
     {% endblock %}
