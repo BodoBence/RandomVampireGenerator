@@ -77,9 +77,32 @@ def setup_character_sheet(basic_info):
                                                                                   'Skills': {'': ''}}
     return character_sheet
 
-def calculate_xp_points(age):
-    xp_points = round((100 * (math.log(age+1))) + 30)
+def calculate_xp_points(age, generation, max_age):
+    generation = str(generation)
+    max_xps_data = default_data.get_max_xps()
+    xp_coefficient = default_data.XP_COEFFICIENT
+
+    max_xp_for_attributes = max_xps_data['Attributes'][generation]
+    max_xp_for_skills = max_xps_data['Skills'][generation]
+    max_xp_for_disciplines = max_xps_data['Disciplines'][generation]
+
+    max_xp = max_xp_for_attributes + max_xp_for_skills + max_xp_for_disciplines
+
+    age_factor = age / max_age
+    # normalize between 0 and 1 
+    norm_range_max = 1
+    norm_range_min = 0.2
+    min_age = 1
+    norm_age_factor = (norm_range_max - norm_range_min) * (age - min_age)/(max_age - min_age) + norm_range_min
+
+    xp_points = round(max_xp * norm_age_factor)
+
+    # xp_points = round((100 * (math.log(age+1))) + 30)
     # xp_points = max(300, (age * 2))
+    print('max_xp:', max_xp)
+    print('age_factor', age_factor)
+    print('norm_age_factor', norm_age_factor)
+    print(xp_points)
     return xp_points
 
 def calculate_xp_cost_for_non_disciplines(current_level, cost):
@@ -147,9 +170,11 @@ def calculate_weights(weight_values):
 def level_up(character_sheet, weight_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
-    points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information'].get('Generation')]
+    points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information']['Generation']]
     weights = calculate_weights(weight_values)
-    xp = int(calculate_xp_points(character_sheet['Character_Details']['Basic_Information'].get('Age')))
+    xp = int(calculate_xp_points(age=character_sheet['Character_Details']['Basic_Information']['Age'],
+                                 generation=character_sheet['Character_Details']['Basic_Information']['Generation'],
+                                 max_age=default_data.MAX_AGE))
     xp_costs = default_data.default_costs_data()
     xp_stagnation_counter = []
     

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, make_response
+
 from random_vampire_generator import generate
 import default_data  
 import server_functions
