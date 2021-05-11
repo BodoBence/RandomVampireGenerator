@@ -8,6 +8,10 @@
                         {% endif %}
 
 
+
+
+
+
 {
                 // var skill_tables = document.getElementsByClassName("discipline_skills");
                 // var specific_disciplines_skills = skill_tables[button_id];
@@ -20,7 +24,8 @@
             }
 
 
-
+1/10 = 0.1
+1+10 / 10 + 10 = 0.5
 
 
 {'Attributes': {'Mental_Attributes': {'Intelligence': 5,

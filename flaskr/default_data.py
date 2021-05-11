@@ -17,6 +17,9 @@ FILE_NAMES_FEMALE = os.path.join(script_dir, 'static', 'names_female.txt')
 FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'names_interesting.txt')
 FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'discipline_skills_rituals_ceremonies.json')
 FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
+FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
+
+MAX_AGE = 3000
 
 def start_conditions():
     start_conditions = {'manual_clan_condition': True,
@@ -35,9 +38,9 @@ def start_values():
     return start_values
 
 def start_weights():
-    start_weights = {'Attributes': 50,
-                     'Skills': 50,
-                     'Disciplines': 50,
+    start_weights = {'Attributes': 70,
+                     'Skills': 60,
+                     'Disciplines': 30,
                      'Physical_Attributes': 50,
                      'Social_Attributes': 50, 
                      'Mental_Attributes': 50,
@@ -227,7 +230,7 @@ def default_generations_data():
     return generations
 
 def default_ages_data():
-    ages = range(1, 3001)
+    ages = range(1, (MAX_AGE + 1))
     return ages
 
 def default_sexes_data():
@@ -264,3 +267,8 @@ def get_derangement():
         reader = csv.reader(chosen_file)
         current_derangement = random.choice(list(reader))
     return current_derangement
+
+def get_max_xps():
+    with open(FILE_MAX_XPS) as json_file:
+        max_xps = json.load(json_file)
+    return max_xps
