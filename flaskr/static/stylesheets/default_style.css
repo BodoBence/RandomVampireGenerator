@@ -41,9 +41,7 @@ input {width: 90%;
 .something {padding: 30px;
             background-color: var(--bg);}
 
-.input_container {visibility: visible;}
-
-.complex_sliders {visibility: collapse;}
+.changable_visibility {visibility: visible;}
 
 .center {margin-left: auto;
          margin-right: auto;}

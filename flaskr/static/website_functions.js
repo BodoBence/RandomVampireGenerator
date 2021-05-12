@@ -1,3 +1,37 @@
+let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
+let button_input_container = document.getElementById("button_input_contianer_visibility");
+// console.log(button_complex_sliders);
+// console.log(button_input_container);
+
+button_complex_sliders.addEventListener("click", function(){
+    console.log("inside the addition of the event listener");
+    // console.log(button_complex_sliders);
+    var reference = button_complex_sliders.getAttribute("data-toggle-reference");
+    // console.log(reference);
+    toggle_visibility(reference);
+});
+
+button_input_container.addEventListener("click", function(){
+    console.log("inside the addition of the event listener");
+    // console.log(button_input_container);
+    var reference = button_input_container.getAttribute("data-toggle-reference");
+    // console.log(reference);
+    toggle_visibility(reference);
+});
+
+function toggle_visibility(target_id){
+    var target = document.getElementById(target_id);
+    console.log("inside toggle visibility function")
+    console.log(target);
+    if (target.style.visibility === "collapse") {
+        target.style.visibility = "visible";
+        console.log("visibility changed to visible")
+    } else {
+        target.style.visibility = "collapse";
+        console.log("visibility changed to collapse")
+    }
+}
+
 function load_default_slider_values(){
     document.getElementsByName("Attributes")[0].value="{{ default_input_weights['Attributes'] }}";
     document.getElementsByName("Skills")[0].value="{{ default_input_weights['Skills'] }}";
@@ -13,10 +47,12 @@ function load_default_slider_values(){
 }
 
 function toggle_visibility_inputs(class_name_reference) {
-    // console.log("hi")
+    console.log("hi, toggle visibility of inputs");
+    console.log(class_name_reference);
     var current_class_name = class_name_reference.getAttribute("data-toggle-reference");
     // console.log(current_class_name);
     var subject = document.getElementsByClassName(current_class_name)[0];
+    console.log(subject);
     // console.log(subject)
     if (subject.style.visibility === "collapse") {
         subject.style.visibility = "visible";

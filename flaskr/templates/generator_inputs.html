@@ -3,7 +3,7 @@
     {% block inputs %}
         <form action = "/result" method='POST'>
             <tr style="height: 50px;"></tr>
-            <tbody class="input_container">
+            <tbody class="changable_visibility" id="input_container_id">
                 <tr style="height:40px">
                     <td>
                         Clan:
@@ -142,7 +142,7 @@
                         onchange="drive_complex_ranges(this)">
                     </td>
                 </tr>
-                <tbody class="complex_sliders">
+                <tbody class="changable_visibility" id="complex_sliders_id" style="visibility: collapse;">
                         {% for key1, val1 in slider_structure.items() %}
                     <tr class="slider_row">
                             {% for key2, val2 in val1.items() %}
@@ -169,8 +169,8 @@
                     </td>
                     <td> 
                         <input class="button_general"
-                               data-toggle-reference="complex_sliders" 
-                               onclick="toggle_visibility_inputs(this)"
+                               data-toggle-reference="complex_sliders_id"
+                               id="button_complex_sliders_visibility"
                                type="button"
                                value="Hide/Show complex sliders!">
                     </td>
@@ -181,8 +181,8 @@
                     </td>
                     <td colspan="2"> 
                         <input class="button_general"
-                               data-toggle-reference="input_container"
-                               onclick="toggle_visibility_inputs(this)"
+                               id="button_input_contianer_visibility"
+                               data-toggle-reference="input_container_id"
                                type="button"
                                value="Hide/Show inputs">
                     </td>
