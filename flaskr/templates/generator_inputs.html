@@ -109,28 +109,37 @@
                     <td>
                         <input class="slider"
                         type="range"
-                        name="simplified_physical" 
+                        name="simplified_physical"
+                        data-referenced-name-1="Physical_Attributes"
+                        data-referenced-name-2="Physical_Skills"
                         min="0" 
                         max="100"
-                        value="50">
+                        value="50"
+                        onchange="drive_complex_ranges(this)">
                     </td>
                     <td> Social Focus </td>
                     <td>
                         <input class="slider"
                         type="range"
-                        name="simplified_social" 
+                        name="simplified_social"
+                        data-referenced-name-1="Social_Attributes"
+                        data-referenced-name-2="Social_Skills" 
                         min="0" 
                         max="100"
-                        value="50">
+                        value="50"
+                        onchange="drive_complex_ranges(this)">
                     </td>
                     <td> Mental Focus </td>
                     <td>
                         <input class="slider"
                         type="range"
                         name="simplified_mental" 
+                        data-referenced-name-1="Mental_Attributes"
+                        data-referenced-name-2="Mental_Skills"
                         min="0" 
                         max="100"
-                        value="50">
+                        value="50"
+                        onchange="drive_complex_ranges(this)">
                     </td>
                 </tr>
                     {% for key1, val1 in slider_structure.items() %}
@@ -187,16 +196,32 @@
             }
 
             function toggle_visibility_inputs(class_name_reference) {
-                console.log("hi")
+                // console.log("hi")
                 var current_class_name = class_name_reference.getAttribute("data-toggle-reference");
-                console.log(current_class_name);
+                // console.log(current_class_name);
                 var subject = document.getElementsByClassName(current_class_name)[0];
-                console.log(subject)
+                // console.log(subject)
                 if (subject.style.visibility === "collapse") {
                     subject.style.visibility = "visible";
                 } else {
                     subject.style.visibility = "collapse";
                 }
+            }
+
+            function drive_complex_ranges(currnet_slider){
+                console.log("hi on change");
+
+                var new_value = currnet_slider.value;
+                console.log(new_value);
+
+                var modifiend_slider_name_1 = currnet_slider.getAttribute("data-referenced-name-1");
+                var modifiend_slider_name_2 = currnet_slider.getAttribute("data-referenced-name-2");
+                
+                subject_1 = document.getElementsByName(modifiend_slider_name_1)[0];
+                subject_2 = document.getElementsByName(modifiend_slider_name_2)[0];
+
+                subject_1.value = new_value;
+                subject_2.value = new_value;
             }
         </script>
     {% endblock %}
