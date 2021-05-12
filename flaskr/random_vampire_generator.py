@@ -6,7 +6,6 @@ import csv
 from csv import reader
 import math
 
-
 def derangement_check(basic_info):
     if basic_info['Clan'] == 'Malkavian':
         basic_info['Derangement'] = default_data.get_derangement()
@@ -80,7 +79,6 @@ def setup_character_sheet(basic_info):
 def calculate_xp_points(age, generation, max_age):
     generation = str(generation)
     max_xps_data = default_data.get_max_xps()
-    xp_coefficient = default_data.XP_COEFFICIENT
 
     max_xp_for_attributes = max_xps_data['Attributes'][generation]
     max_xp_for_skills = max_xps_data['Skills'][generation]
@@ -246,18 +244,18 @@ def level_up(character_sheet, weight_values):
                 continue
 
 def clean_up_character(character_sheet):
-    keys_to_remove = []
+    disciplines_to_remove = {discipline_type: [] for discipline_type in character_sheet['Disciplines'].keys()}
 
     for discipline_type, disciplines_type_details in character_sheet['Disciplines'].items():
         for discipline in disciplines_type_details.keys():
             if character_sheet['Disciplines'][discipline_type][discipline]['Level'] == 0:
-                keys_to_remove.append(discipline)
+                disciplines_to_remove[discipline_type].append(discipline)
 
-    for i in range(0, len(keys_to_remove)):
-        del character_sheet['Disciplines'][discipline_type][keys_to_remove[i]]
-
-
-        
+    print('keys_to_remove', disciplines_to_remove)
+    
+    for discipline_type, disciplines in disciplines_to_remove.items():
+        for discipline in disciplines:
+            del character_sheet['Disciplines'][discipline_type][discipline]
 
 # fill charactersheet with stats and xp,send xp
 def generate(input_values, input_conditions, input_weights):
@@ -306,6 +304,7 @@ def generate(input_values, input_conditions, input_weights):
     level_up(character_sheet, input_weights)
     calculate_metrics(character_sheet)
     clean_up_character(character_sheet)
+
     return character_sheet
 
 # uncomment for simluation input testing

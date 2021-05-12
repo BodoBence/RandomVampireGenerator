@@ -83,10 +83,10 @@
                     </td>
                     <td>
                         <input type="number"
-                               min=1 
-                               max=5000 
-                               name="manual_age" 
-                               value={{ field_values['manual_age'] }}>
+                                min=1 
+                                max=5000 
+                                name="manual_age" 
+                                value={{ field_values['manual_age'] }}>
                     </td>
                     <td>
                         Name:
@@ -100,12 +100,41 @@
                     </td>
                     <td>
                         <input type="text"
-                               name="manual_name"
-                               value={{ field_values['manual_name'] }}> 
+                                name="manual_name"
+                                value={{ field_values['manual_name'] }}> 
+                    </td>
+                </tr>
+                <tr class="slider_row">
+                    <td> Physical Focus </td>
+                    <td>
+                        <input class="slider"
+                        type="range"
+                        name="simplified_physical" 
+                        min="0" 
+                        max="100"
+                        value="50">
+                    </td>
+                    <td> Social Focus </td>
+                    <td>
+                        <input class="slider"
+                        type="range"
+                        name="simplified_social" 
+                        min="0" 
+                        max="100"
+                        value="50">
+                    </td>
+                    <td> Mental Focus </td>
+                    <td>
+                        <input class="slider"
+                        type="range"
+                        name="simplified_mental" 
+                        min="0" 
+                        max="100"
+                        value="50">
                     </td>
                 </tr>
                     {% for key1, val1 in slider_structure.items() %}
-                <tr style="height:40px">
+                <tr class="slider_row">
                         {% for key2, val2 in val1.items() %}
                         <td> {{ key2 }}
                         </td> 
@@ -119,26 +148,28 @@
                         {% endfor %}
                 </tr>
                     {% endfor %}
+            </tbody>>
+                <tr>
+                    <td colspan="2"> 
+                        <input class="button_general"
+                               onclick="load_default_slider_values()"
+                               type="button"
+                               value="Load default slider values!">
+                    </td>
+                    <td colspan="2">
+                        <input class="button_general"
+                               type="submit"
+                               value="Generate!">
+                    </td>
+                    <td colspan="2"> 
+                        <input class="button_general"
+                               data-toggle-reference="input_container"
+                               onclick="toggle_visibility_inputs(this)"
+                               type="button"
+                               value="Hide/Show inputs">
+                    </td>
+                </tr>
             </tbody>
-            <tr>
-                <td colspan="2"> 
-                    <input class="button_general"
-                           onclick="load_default_slider_values()"
-                           type="button"
-                           value="Load default slider values!">
-                </td>
-                <td colspan="2">
-                    <input class="button_general"
-                           type="submit"
-                           value="Generate!">
-                </td>
-                <td colspan="2"> 
-                    <input class="button_general"
-                           onclick="toggle_visibility_inputs()"
-                           type="button"
-                           value="Hide/Show inputs">
-                </td>
-            </tr>
         </form>
         <script>
             function load_default_slider_values(){
@@ -155,12 +186,16 @@
                 document.getElementsByName("Non-Clan_Disciplines")[0].value="{{ default_input_weights['Non-Clan_Disciplines'] }}";
             }
 
-            function toggle_visibility_inputs() {
-                var inputs = document.getElementsByClassName("input_container")[0];
-                if (inputs.style.visibility === "collapse") {
-                    inputs.style.visibility = "visible";
+            function toggle_visibility_inputs(class_name_reference) {
+                console.log("hi")
+                var current_class_name = class_name_reference.getAttribute("data-toggle-reference");
+                console.log(current_class_name);
+                var subject = document.getElementsByClassName(current_class_name)[0];
+                console.log(subject)
+                if (subject.style.visibility === "collapse") {
+                    subject.style.visibility = "visible";
                 } else {
-                    inputs.style.visibility = "collapse";
+                    subject.style.visibility = "collapse";
                 }
             }
         </script>

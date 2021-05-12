@@ -46,6 +46,8 @@ input {width: 90%;
 .center {margin-left: auto;
          margin-right: auto;}
 
+tr.slider_row {height: 40px;}
+
 .slider {-webkit-appearance: none;
          width: 90%;
          height: 5px;
@@ -110,6 +112,7 @@ td {vertical-align: top;
     text-align: left;
     max-width: 350px;
     hyphens: auto;}
+
 
 .discipline_skills {visibility: collapse;
                     padding: 0px;}
