@@ -43,6 +43,8 @@ input {width: 90%;
 
 .input_container {visibility: visible;}
 
+.complex_sliders {visibility: collapse;}
+
 .center {margin-left: auto;
          margin-right: auto;}
 

@@ -167,7 +167,7 @@
                             <button
                                 class="button_discipline_skills"
                                 id={{ row['col2']['discipline_number'] }} 
-                                onclick="toggle_visibility(this.id)"> 
+                                onclick="toggle_visibility_skills(this.id)"> 
                                 Hide/Show Skills 
                             </button>
                         {% endif %}
@@ -188,7 +188,7 @@
                             <button
                                 class="button_discipline_skills"
                                 id={{ row['col4']['discipline_number'] }} 
-                                onclick="toggle_visibility(this.id)">
+                                onclick="toggle_visibility_skills(this.id)">
                                 Hide/Show Skills
                             </button>
                         {% endif %}
@@ -222,24 +222,8 @@
                 </tr>            
             {% endfor %}
                 <tr>
-                    <td colspan="6"> <button style="visibility: visible;" class="button_general" onclick="print_character()"> Download Vampire as PDF </button></td>
+                    <td colspan="6"> <button style="visibility: visible;"
+                                             class="button_general" 
+                                             onclick="print_character()"> Download Vampire as PDF </button></td>
                 </tr>
-        <script>
-            function toggle_visibility(button_id) {
-                var skill_tables = document.getElementsByClassName("discipline_skills");
-                var specific_disciplines_skills = skill_tables[button_id];
-                console.log(skill_tables);
-                console.log(specific_disciplines_skills);
-                // var specific_disciplines_skills = document.getElementById("Dominate");
-                if (specific_disciplines_skills.style.visibility === "collapse") {
-                    specific_disciplines_skills.style.visibility = "visible";
-                } else {
-                    specific_disciplines_skills.style.visibility = "collapse";
-                }
-            }
-
-            function print_character(){
-                window.print();
-            }
-        </script>
     {% endblock %}
