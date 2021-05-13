@@ -1,5 +1,6 @@
 let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
 let button_input_container = document.getElementById("button_input_contianer_visibility");
+
 // console.log(button_complex_sliders);
 // console.log(button_input_container);
 
@@ -44,21 +45,6 @@ function load_default_slider_values(){
     document.getElementsByName("Mental_Skills")[0].value="{{ default_input_weights['Mental_Skills'] }}";
     document.getElementsByName("Clan_Disciplines")[0].value="{{ default_input_weights['Clan_Disciplines'] }}";
     document.getElementsByName("Non-Clan_Disciplines")[0].value="{{ default_input_weights['Non-Clan_Disciplines'] }}";
-}
-
-function toggle_visibility_inputs(class_name_reference) {
-    console.log("hi, toggle visibility of inputs");
-    console.log(class_name_reference);
-    var current_class_name = class_name_reference.getAttribute("data-toggle-reference");
-    // console.log(current_class_name);
-    var subject = document.getElementsByClassName(current_class_name)[0];
-    console.log(subject);
-    // console.log(subject)
-    if (subject.style.visibility === "collapse") {
-        subject.style.visibility = "visible";
-    } else {
-        subject.style.visibility = "collapse";
-    }
 }
 
 function drive_complex_ranges(currnet_slider){
