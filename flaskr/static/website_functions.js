@@ -1,35 +1,47 @@
 let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
 let button_input_container = document.getElementById("button_input_contianer_visibility");
+let current_url = window.location.href;
+let current_location = get_last_url_segment(current_url);
+console.log(current_url);
+console.log(current_location);
 
 // console.log(button_complex_sliders);
 // console.log(button_input_container);
 
-button_complex_sliders.addEventListener("click", function(){
+// Functions for the Input sliders (generator_inputs.html)
+
+function get_last_url_segment(input_url){
+    var parts = input_url.split("/")
+    var last_segment = parts.pop() || parts.pop();  // handle potential trailing slash
+    return last_segment
+}
+
+button_complex_sliders.addEventListener("click", e => {
     console.log("inside the addition of the event listener");
     // console.log(button_complex_sliders);
-    var reference = button_complex_sliders.getAttribute("data-toggle-reference");
+    var reference = button_complex_sliders.getAttribute("data-toggle-reference")
     // console.log(reference);
-    toggle_visibility(reference);
+    toggle_visibility(document.getElementById(reference))
+    e.stopPropagation()
 });
 
-button_input_container.addEventListener("click", function(){
-    console.log("inside the addition of the event listener");
+button_input_container.addEventListener("click", e => {
+    console.log("inside the addition of the event listener")
     // console.log(button_input_container);
-    var reference = button_input_container.getAttribute("data-toggle-reference");
+    var reference = button_input_container.getAttribute("data-toggle-reference")
     // console.log(reference);
-    toggle_visibility(reference);
+    toggle_visibility(document.getElementById(reference))
+    e.stopPropagation()
 });
 
-function toggle_visibility(target_id){
-    var target = document.getElementById(target_id);
-    console.log("inside toggle visibility function")
-    console.log(target);
+function toggle_visibility(target){
+    // console.log("inside toggle visibility function")
     if (target.style.visibility === "collapse") {
         target.style.visibility = "visible";
-        console.log("visibility changed to visible")
+        // console.log("visibility changed to visible")
     } else {
         target.style.visibility = "collapse";
-        console.log("visibility changed to collapse")
+        // console.log("visibility changed to collapse")
     }
 }
 
@@ -65,18 +77,42 @@ function drive_complex_ranges(currnet_slider){
 
 function toggle_visibility_skills(button_id) {
     console.log("hi skills visibility toggle")
-    var skill_tables = document.getElementsByClassName("discipline_skills");
-    var specific_disciplines_skills = skill_tables[button_id];
-    console.log(skill_tables);
-    console.log(specific_disciplines_skills);
+    var skill_tables = document.getElementsByClassName("discipline_skills")
+    var specific_disciplines_skills = skill_tables[button_id]
+    console.log(skill_tables)
+    console.log(specific_disciplines_skills)
     // var specific_disciplines_skills = document.getElementById("Dominate");
     if (specific_disciplines_skills.style.visibility === "collapse") {
-        specific_disciplines_skills.style.visibility = "visible";
+        specific_disciplines_skills.style.visibility = "visible"
     } else {
-        specific_disciplines_skills.style.visibility = "collapse";
+        specific_disciplines_skills.style.visibility = "collapse"
     }
 }
 
 function print_character(){
-    window.print();
+    window.print()
+}
+
+// Functions for the generated character (generated_characters_designed.html)
+
+if (current_location === "result"){
+    create_event_listener_for_class("button_discipline_skills", "discipline_skills")
+};
+
+function create_event_listener_for_class(class_name, target_class_name){
+    console.log(class_name)
+    var selected_class_elements = document.getElementsByClassName(class_name)
+    console.log(selected_class_elements)
+    for (let index = 0; index < selected_class_elements.length; index++) {
+        console.log("loooop")
+        console.log(selected_class_elements[index])
+        var current_element = selected_class_elements[index]
+        current_element.addEventListener("click", e =>{
+            current_refernce = current_element.getAttribute("data-toggle-reference")
+            console.log(current_refernce)
+            console.log("inside")
+            console.log(document.getElementById(current_refernce))
+            toggle_visibility(current_refernce)
+        })
+    }
 }
