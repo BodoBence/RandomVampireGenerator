@@ -195,7 +195,7 @@
                 <tr>
                     <td colspan="3">
                         {% if row['col1'] != '' %}
-                            <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
+                            <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }} style="visibility: collapse;">
                                 {% for skill in row['col2']['Skills'] %}
                                 <tr>
                                     <td> {{ '' if row['col1'] == '' else skill }} </td>
@@ -207,7 +207,7 @@
                     </td>
                     <td colspan="3">
                         {% if row['col3'] != '' %}
-                            <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
+                            <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }} style="visibility: collapse;"> 
                                 {% for skill in row['col4']['Skills'] %}
                                     <tr>
                                         <td> {{ '' if row['col3'] == '' else skill }} </td>

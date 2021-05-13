@@ -17,7 +17,7 @@ function get_last_url_segment(input_url){
 }
 
 button_complex_sliders.addEventListener("click", e => {
-    console.log("inside the addition of the event listener");
+    console.log("inside the complex sliders event listener");
     // console.log(button_complex_sliders);
     var reference = button_complex_sliders.getAttribute("data-toggle-reference")
     // console.log(reference);
@@ -26,7 +26,7 @@ button_complex_sliders.addEventListener("click", e => {
 });
 
 button_input_container.addEventListener("click", e => {
-    console.log("inside the addition of the event listener")
+    console.log("inside the input container event listener")
     // console.log(button_input_container);
     var reference = button_input_container.getAttribute("data-toggle-reference")
     // console.log(reference);
@@ -35,13 +35,13 @@ button_input_container.addEventListener("click", e => {
 });
 
 function toggle_visibility(target){
-    // console.log("inside toggle visibility function")
+    console.log("inside toggle visibility function")
     if (target.style.visibility === "collapse") {
         target.style.visibility = "visible";
-        // console.log("visibility changed to visible")
+        console.log("visibility changed to visible")
     } else {
         target.style.visibility = "collapse";
-        // console.log("visibility changed to collapse")
+        console.log("visibility changed to collapse")
     }
 }
 
@@ -100,19 +100,19 @@ if (current_location === "result"){
 };
 
 function create_event_listener_for_class(class_name, target_class_name){
-    console.log(class_name)
+    // console.log(class_name)
     var selected_class_elements = document.getElementsByClassName(class_name)
-    console.log(selected_class_elements)
+    // console.log(selected_class_elements)
     for (let index = 0; index < selected_class_elements.length; index++) {
-        console.log("loooop")
-        console.log(selected_class_elements[index])
-        var current_element = selected_class_elements[index]
-        current_element.addEventListener("click", e =>{
-            current_refernce = current_element.getAttribute("data-toggle-reference")
-            console.log(current_refernce)
-            console.log("inside")
-            console.log(document.getElementById(current_refernce))
-            toggle_visibility(current_refernce)
+        // console.log("loooop")
+        // console.log(selected_class_elements[index])
+        selected_class_elements[index].addEventListener("click", e =>{
+            console.log("inside the class based event listener creation")
+            var reference = e.target.getAttribute("data-toggle-reference")
+            var discipliine_skill_table = document.getElementsByClassName(target_class_name)[reference]
+            console.log(discipliine_skill_table.style.visibility)
+
+            toggle_visibility(discipliine_skill_table)
         })
     }
 }
