@@ -93,7 +93,7 @@ def calculate_xp_points(age, generation, max_age):
     min_age = 1
     norm_age_factor = (norm_range_max - norm_range_min) * (age - min_age)/(max_age - min_age) + norm_range_min
 
-    xp_points = round(max_xp * norm_age_factor)
+    xp_points = max(300, round(max_xp * norm_age_factor))
 
     # xp_points = round((100 * (math.log(age+1))) + 30)
     # xp_points = max(300, (age * 2))

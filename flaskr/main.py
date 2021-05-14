@@ -79,6 +79,10 @@ def development_road():
 def calculation_maths():
     return render_template('calculation_maths.html')
 
+@app.route('/encounter_tracker', )
+def encounter_tracker():
+    return render_template('encounter_tracker.html')
+
 # Utility function
 # def convert_html_to_pdf(source_html, output_filename):
 #     # open output file for writing (truncated binary)
