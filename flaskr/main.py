@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, url_for, make_response
+from flask import Flask, render_template, request
+
 
 from random_vampire_generator import generate
 import default_data  
 import server_functions
 
 import os
-from xhtml2pdf import pisa
 
 
 app = Flask(__name__)
@@ -51,24 +51,25 @@ def result():
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
-    # save as pdf
-    generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
-    output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
-    vampire_for_pdf_html = render_template(
-        'generated_character.html',
-        details = details, 
-        attributes = attributes, 
-        skills = skills, 
-        disciplines = disciplines,
-        max_level = max_level)
+    # # save as pdf
+    # generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
+    # output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
+    # vampire_for_pdf_html = render_template(
+    #     'generated_character.html',
+    #     details = details, 
+    #     attributes = attributes, 
+    #     skills = skills, 
+    #     disciplines = disciplines,
+    #     max_level = max_level)
+    
+
+
 
         #pdf = StringIO()
     # html = rendered_character
     # output_filename = "test.pdf"
-    convert_html_to_pdf(vampire_for_pdf_html, generated_vampire_file_name)
-    
-    # return rendered_character
-    return render_template(
+
+    rendered_vampire = render_template(
         'home.html',
         slider_structure = startup_input_field_details['weight_structure'],
         field_conditions = resutrctured_conditions,
@@ -81,7 +82,12 @@ def result():
         skills = skills, 
         disciplines = disciplines,
         max_level = max_level,
-        pdf_path = output_path)
+        pdf_path = 'output_path')
+
+    # HTML('http://localhost:5000/').write_pdf(os.path.join(os.path.dirname(__file__)))
+    
+    # return rendered_character
+    return rendered_vampire
 
 @app.route('/contact', )
 def contact():
@@ -103,23 +109,23 @@ def encounter_tracker():
     encounters = server_functions.get_encounters()
     return render_template('encounter_tracker.html', encounters = encounters)
 
-# Utility function
-def convert_html_to_pdf(source_html, output_filename):
-    # open output file for writing (truncated binary)
-    result_file = open(output_filename, "w+b")
 
-    # convert HTML to PDF
-    pisa_status = pisa.CreatePDF(
-        source_html,
-        show_error_as_pdf=True,
-        default_css=None,                       
-        dest=result_file)
+def convert_html_to_pdf(source_url, output_filename):
+    try:
+        # create the API client instance
+        client = pdfcrowd.HtmlToImageClient('demo', 'ce544b6ea52a5621fb9d55f8b542d14d')
+        client.setOutputFormat('png')
+        client.convertUrlToFile(source_url, output_filename)
 
-    # close output file
-    result_file.close()                 # close output file
 
-    # return False on success and True on errors
-    return pisa_status.err
+        
+    except pdfcrowd.Error as why:
+        # report the error
+        sys.stderr.write('Pdfcrowd Error: {}\n'.format(why))
+
+        # rethrow or handle the exception
+        raise
+
 
 if __name__ == '__main__':
     app.run(debug=True)

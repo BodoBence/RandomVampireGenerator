@@ -21,14 +21,14 @@
 <tr>
     <td> Health </td>
     <td>
-        <table>
+
             {% for i in range(0, details['Trackers']['Health']) %}
-                <td> <span class="dot_filled"></span> </td>    
+                <span class="dot_filled"></span>
             {% endfor %}
             {% for i in range(0, 10 - details['Trackers']['Health']) %}
-                <td> <span class="dot_unfilled"></span> </td>    
+                <span class="dot_unfilled"></span> 
             {% endfor %}
-        </table>
+
     </td>
     <td> Willpower </td>
     <td>
