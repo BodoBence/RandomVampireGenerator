@@ -5,7 +5,7 @@ import json
 
 script_dir = os.path.dirname(__file__)
 
-FILE_ENCOUNTERS = os.path.join(script_dir, 'dynamic', 'encounters')
+FILE_ENCOUNTERS = os.path.join(script_dir, 'dynamic', 'encounters.json')
 
 def flatten_dictionary(input_dictionary):
     result = {}

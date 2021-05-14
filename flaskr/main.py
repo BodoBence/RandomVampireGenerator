@@ -91,6 +91,7 @@ def calculation_maths():
 @app.route('/encounter_tracker', methods = ['POST', 'GET'])
 def encounter_tracker():
     encounters = server_functions.get_encounters()
+    print(encounters)
     return render_template('encounter_tracker.html', encounters = encounters)
 
 # Utility function
