@@ -5,28 +5,13 @@
 <tr>
     <td> Health </td>
     <td>
-        <table>
+        <div class="tracker_container">
             {% for i in range(0, encounter['health_current']) %}
-                <td>
-                    <label class="tracker_container">
-                        <input type="checkbox" checked="checked">
-                        <span class="tracker_checkmark"></span>
-                    </label>
-                </td>
-            {% endfor %}
+                <span class="tracker_filled"></span>
+             {% endfor %}
             {% for i in range(0, encounter['health_max'] - encounter['health_current']) %}
-                <td>
-                    <label class="tracker_container">
-                        <input type="checkbox">
-                        <span class="tracker_checkmark"></span>
-                    </label>
-                </td>
+                <span class="tracker_unfilled"></span>
             {% endfor %}
-        </table>
-    </td>
-</tr>
-<tr>
-    <td>
-        something else
+        </div>
     </td>
 </tr>

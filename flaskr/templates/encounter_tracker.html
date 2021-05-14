@@ -10,16 +10,16 @@
             <tr style="height: 50px;">
             </tr>
             <tr>
-                <th>
+                <th colspan="3">
                    This is the Encounter Tracker Page
                 </th>
             </tr>
-            {% for encounter in encounters %}
-                {% include "encounter_card.html" %}
-            {% endfor %}
+                {% for encounter in encounters %}
+                    {% include "encounter_card.html" %}
+                {% endfor %}
             <tr>
-                <td>
-                    <form method="POST">
+                <td colspan="3">
+                    <form action="/encounter_tracker" method="POST">
                         <input type="submit" class="button_general" value="Add Encounter!"> 
                     </form>
                 </td>

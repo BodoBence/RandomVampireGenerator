@@ -88,10 +88,12 @@ def development_road():
 def calculation_maths():
     return render_template('calculation_maths.html')
 
-@app.route('/encounter_tracker', methods = ['POST', 'GET'])
+@app.route('/encounter_tracker',  methods = ['POST', 'GET'])
 def encounter_tracker():
+    if request.method == 'POST':
+        server_functions.add_encounter_to_json()
+
     encounters = server_functions.get_encounters()
-    print(encounters)
     return render_template('encounter_tracker.html', encounters = encounters)
 
 # Utility function
