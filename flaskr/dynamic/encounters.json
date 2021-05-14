@@ -1,0 +1,14 @@
+[
+    {"health_max": 10,
+     "health_current": 8,
+     "willpower_max": 10,
+     "willpwoer_current": 8,
+     "encounter_number": 1
+    },
+    {"health_max": 9,
+     "health_current": 6,
+     "willpower_max": 10,
+     "willpwoer_current": 5,
+     "encounter_number": 2
+    }
+]

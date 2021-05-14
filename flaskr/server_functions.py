@@ -1,5 +1,11 @@
 import default_data
 import pprint
+import os
+import json
+
+script_dir = os.path.dirname(__file__)
+
+FILE_ENCOUNTERS = os.path.join(script_dir, 'dynamic', 'encounters')
 
 def flatten_dictionary(input_dictionary):
     result = {}
@@ -226,3 +232,8 @@ def form_structuring(gathered_form_data):
 
 
     return gathered_condition, gathered_values, gathered_weights
+
+def get_encounters():
+    with open(FILE_ENCOUNTERS) as json_file:
+        encounters = json.load(json_file)
+    return encounters

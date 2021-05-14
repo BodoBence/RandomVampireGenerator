@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <tr>
+        <th> {{ encounter }} </th>
+    </tr>
+    <tr>
+        <td> Health </td>
+        <td>
+            <table>
+                {% for i in range(0, 5) %}
+                    <td>
+                        <label class="tracker_container">
+                            <input type="checkbox" checked="checked">
+                            <span class="tracker_checkmark"></span>
+                        </label>
+                    </td>
+                {% endfor %}
+                {% for i in range(0, 10-5) %}
+                    <td>
+                        <label class="tracker_container">
+                            <input type="checkbox">
+                            <span class="tracker_checkmark"></span>
+                        </label>
+                    </td>
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            something else
+        </td>
+    </tr>
+</html>

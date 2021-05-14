@@ -1,12 +1,38 @@
-let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
-let button_input_container = document.getElementById("button_input_contianer_visibility");
 let current_url = window.location.href;
 let current_location = get_last_url_segment(current_url);
-console.log(current_url);
-console.log(current_location);
+// console.log(current_url);
+// console.log(current_location);
 
-// console.log(button_complex_sliders);
-// console.log(button_input_container);
+if (current_location === "" || current_location === "result"){
+    let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
+    let button_input_container = document.getElementById("button_input_contianer_visibility");
+    // console.log(button_complex_sliders);
+    // console.log(button_input_container);
+
+    button_complex_sliders.addEventListener("click", e => {
+        console.log("inside the complex sliders event listener");
+        // console.log(button_complex_sliders);
+        var reference = button_complex_sliders.getAttribute("data-toggle-reference")
+        // console.log(reference);
+        toggle_visibility(document.getElementById(reference))
+        e.stopPropagation()
+    });
+    
+    button_input_container.addEventListener("click", e => {
+        console.log("inside the input container event listener")
+        // console.log(button_input_container);
+        var reference = button_input_container.getAttribute("data-toggle-reference")
+        // console.log(reference);
+        toggle_visibility(document.getElementById(reference))
+        e.stopPropagation()
+    });
+
+    if (current_location === "result"){
+        create_event_listener_for_class("button_discipline_skills", "discipline_skills");
+        // let button_download = document.getElementById("button_download");
+        // button_download.addEventListener("click", e => {})
+    };
+}
 
 // Functions for the Input sliders (generator_inputs.html)
 
@@ -15,26 +41,6 @@ function get_last_url_segment(input_url){
     var last_segment = parts.pop() || parts.pop();  // handle potential trailing slash
     return last_segment
 }
-
-button_complex_sliders.addEventListener("click", e => {
-    console.log("inside the complex sliders event listener");
-    // console.log(button_complex_sliders);
-    var reference = button_complex_sliders.getAttribute("data-toggle-reference")
-    // console.log(reference);
-    toggle_visibility(document.getElementById(reference))
-    e.stopPropagation()
-});
-
-button_input_container.addEventListener("click", e => {
-    console.log("inside the input container event listener")
-    // console.log(button_input_container);
-    var reference = button_input_container.getAttribute("data-toggle-reference")
-    // console.log(reference);
-    toggle_visibility(document.getElementById(reference))
-    e.stopPropagation()
-});
-
-
 
 function toggle_visibility(target){
     console.log("inside toggle visibility function")
@@ -92,12 +98,6 @@ function toggle_visibility_skills(button_id) {
 }
 
 // Functions for the generated character (generated_characters_designed.html)
-
-if (current_location === "result"){
-    create_event_listener_for_class("button_discipline_skills", "discipline_skills");
-    // let button_download = document.getElementById("button_download");
-    // button_download.addEventListener("click", e => {})
-};
 
 function create_event_listener_for_class(class_name, target_class_name){
     // console.log(class_name)
