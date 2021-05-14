@@ -51,15 +51,21 @@ def result():
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
-    # generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
-    # output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
-    # output_path = 'out.pdf'
-    # vampire_pdf = pdfkit.from_string(rendered_character, False)
+    # save as pdf
+    generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
+    output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
+    vampire_for_pdf_html = render_template(
+        'generated_character.html',
+        details = details, 
+        attributes = attributes, 
+        skills = skills, 
+        disciplines = disciplines,
+        max_level = max_level)
 
         #pdf = StringIO()
     # html = rendered_character
     # output_filename = "test.pdf"
-    # convert_html_to_pdf(html, output_filename)
+    convert_html_to_pdf(vampire_for_pdf_html, generated_vampire_file_name)
     
     # return rendered_character
     return render_template(
@@ -74,7 +80,8 @@ def result():
         attributes = attributes, 
         skills = skills, 
         disciplines = disciplines,
-        max_level = max_level)
+        max_level = max_level,
+        pdf_path = output_path)
 
 @app.route('/contact', )
 def contact():
@@ -97,21 +104,22 @@ def encounter_tracker():
     return render_template('encounter_tracker.html', encounters = encounters)
 
 # Utility function
-# def convert_html_to_pdf(source_html, output_filename):
-#     # open output file for writing (truncated binary)
-#     result_file = open(output_filename, "w+b")
+def convert_html_to_pdf(source_html, output_filename):
+    # open output file for writing (truncated binary)
+    result_file = open(output_filename, "w+b")
 
+    # convert HTML to PDF
+    pisa_status = pisa.CreatePDF(
+        source_html,
+        show_error_as_pdf=True,
+        default_css=None,                       
+        dest=result_file)
 
-#     # convert HTML to PDF
-#     pisa_status = pisa.CreatePDF(source_html,                # the HTML to convert
-#                                  default_css="TODO", 
-#                                  dest=result_file)           # file handle to recieve result
+    # close output file
+    result_file.close()                 # close output file
 
-#     # close output file
-#     result_file.close()                 # close output file
-
-#     # return False on success and True on errors
-#     return pisa_status.err
+    # return False on success and True on errors
+    return pisa_status.err
 
 if __name__ == '__main__':
     app.run(debug=True)

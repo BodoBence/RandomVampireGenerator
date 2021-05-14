@@ -1,0 +1,201 @@
+
+:root {
+    --bg: rgb(11, 37, 92);
+    --fg: rgb(250, 220, 154);
+    --grey: rgb(221, 217, 208);
+    --white: rgb(255, 255, 255);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--bg);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: var(--fg);
+}
+
+select {
+    background-color: var(--bg);
+    width: 140px;
+    height: 30px;
+    color: var(--fg);
+}
+        
+select:hover{
+    background-color: var(--fg);
+    color: var(--white);
+    border: var(--fg);
+    cursor: pointer;
+}
+
+input {
+    width: 90%;
+    height: 24px;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+.something {
+    padding: 30px;
+    background-color: var(--bg);
+}
+
+.changable_visibility {
+    visibility: visible;
+}
+
+.table_main {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr.slider_row {
+    height: 40px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 5px;
+    border-radius: 5px;  
+    background: var(--bg);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background: var(--fg);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    cursor: pointer;
+}
+
+.button_general {
+    background-color: var(--bg);
+    border: none;
+    color: var(--fg);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+}
+ 
+.button_general:hover{
+    background-color: var(--fg);
+    color: var(--white);
+}
+
+.button_discipline_skills {
+    background-color: var(--bg);
+    border: none;
+    color: var(--fg);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    height: 30px;
+}
+
+th {
+    vertical-align: top;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+            
+.discipline_name {
+    text-align: left;
+    padding: 0px;
+}
+
+td {
+    vertical-align: top;
+    padding: 2px;
+    font-weight: normal;
+    text-align: left;
+    max-width: 350px;
+    hyphens: auto;}
+
+
+.discipline_skills {
+    visibility: collapse;
+    padding: 0px;}
+
+.dot_filled {
+    height: 10px;
+    width: 10px;
+    background-color: var(--bg);
+    border-radius: 50%;
+    display: inline-block;}
+
+.dot_unfilled {
+    height: 10px;
+    width: 10px;
+    background-color: var(--fg);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Customize the label (the container) */             
+.tracker_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tracker_filled {
+    background-color: var(--bg);
+    height: 10px;
+    width: 10px;
+}
+.tracker_unfilled {
+    background-color: var(--grey);
+    height: 10px;
+    width: 10px;
+}
