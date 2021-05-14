@@ -6,17 +6,26 @@
         {% include "navigation.html" %}
     </head>
     <body>
-        <table class="center">
+        <table class="table_main">
             <tr style="height: 50px;">
             </tr>
             <tr>
                 <th colspan="3">
                    This is the Encounter Tracker Page
                 </th>
+            <tr>
+                <th class="button_general"
+                    colspan="3"
+                    action="/encounter_tracker"
+                    method="POST">
+                    Clear Encounters!
+                </th>
             </tr>
+            <tbody>
                 {% for encounter in encounters %}
                     {% include "encounter_card.html" %}
                 {% endfor %}
+            </tbody>
             <tr>
                 <td colspan="3">
                     <form action="/encounter_tracker" method="POST">
