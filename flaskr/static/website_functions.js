@@ -34,6 +34,8 @@ button_input_container.addEventListener("click", e => {
     e.stopPropagation()
 });
 
+
+
 function toggle_visibility(target){
     console.log("inside toggle visibility function")
     if (target.style.visibility === "collapse") {
@@ -89,14 +91,12 @@ function toggle_visibility_skills(button_id) {
     }
 }
 
-function print_character(){
-    window.print()
-}
-
 // Functions for the generated character (generated_characters_designed.html)
 
 if (current_location === "result"){
-    create_event_listener_for_class("button_discipline_skills", "discipline_skills")
+    create_event_listener_for_class("button_discipline_skills", "discipline_skills");
+    // let button_download = document.getElementById("button_download");
+    // button_download.addEventListener("click", e => {})
 };
 
 function create_event_listener_for_class(class_name, target_class_name){
@@ -107,11 +107,10 @@ function create_event_listener_for_class(class_name, target_class_name){
         // console.log("loooop")
         // console.log(selected_class_elements[index])
         selected_class_elements[index].addEventListener("click", e =>{
-            console.log("inside the class based event listener creation")
+            // console.log("inside the class based event listener creation")
             var reference = e.target.getAttribute("data-toggle-reference")
             var discipliine_skill_table = document.getElementsByClassName(target_class_name)[reference]
-            console.log(discipliine_skill_table.style.visibility)
-
+            // console.log(discipliine_skill_table.style.visibility)
             toggle_visibility(discipliine_skill_table)
         })
     }

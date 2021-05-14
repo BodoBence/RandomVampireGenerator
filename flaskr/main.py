@@ -7,7 +7,6 @@ import server_functions
 import os
 from xhtml2pdf import pisa
 
-
 app = Flask(__name__)
 
 # default_data.default_weights_data() only gives slider names and grouping
@@ -44,7 +43,7 @@ def result():
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
-    rendered_character = render_template('generated_characters_designed.html',
+    rendered_character = render_template('generated_character.html',
                            slider_structure = startup_input_field_details['weight_structure'],
                            field_conditions = startup_input_field_details['input_conditions'],
                            field_values = startup_input_field_details['input_values'],
@@ -65,7 +64,6 @@ def result():
     # html = rendered_character
     # output_filename = "test.pdf"
     # convert_html_to_pdf(html, output_filename)
-
     
     return rendered_character
 
