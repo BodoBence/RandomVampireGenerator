@@ -6,7 +6,7 @@
         {% include "navigation.html" %}
     </head>
     <body>
-        <table class="center" id="test_table">
+        <table class="table_main" method="POST"">
             {% include "generator_inputs.html" %}
             {% if have_generated_character %}
                 {% include "generated_character.html" %}
