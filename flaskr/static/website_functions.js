@@ -1,9 +1,10 @@
 let current_url = window.location.href;
 let current_location = get_last_url_segment(current_url);
-// console.log(current_url);
-// console.log(current_location);
+let root_url = location.pathname;
+console.log(current_url);
+console.log(current_location);
 
-if (current_location === "" || current_location === "result"){
+if (root_url == "/" || current_location === "result"){
     let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
     let button_input_container = document.getElementById("button_input_contianer_visibility");
     // console.log(button_complex_sliders);
