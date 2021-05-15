@@ -1,4 +1,5 @@
 <!doctype html>
+<tbody class="encounter">
     <tr class="tracker_row">
         <td> Health </td>
         <td>
@@ -6,9 +7,7 @@
         </td>
         <td>
         <table class="tracker_container">
-            {% for x in range(1, 10) %}
                 <td class="tracker" style="background-color: var(--grey);"></td>
-            {% endfor %}
         </table>
         </td>
     </tr>
@@ -19,9 +18,30 @@
         </td>
         <td>
         <table class="tracker_container">
-            {% for x in range(1, 10) %}
                 <td class="tracker" style="background-color: var(--grey);"></td>
-            {% endfor %}
         </table>
         </td>
     </tr>
+    <tr class="tracker_row">
+        <td> Health </td>
+        <td>
+            <input type="number" name="health_meter" min="1" max="20" value="10" id="http://localhost:5000/encounter_tracker">
+        </td>
+        <td>
+        <table class="tracker_container">
+                <td class="tracker" style="background-color: var(--grey);"></td>
+        </table>
+        </td>
+    </tr>
+    <tr class="tracker_row">
+        <td> Willpower </td>
+        <td>
+            <input type="number" name="willpower_meter" min="1" max="20" value="10" id="http://localhost:5000/encounter_tracker">
+        </td>
+        <td>
+        <table class="tracker_container">
+                <td class="tracker" style="background-color: var(--grey);"></td>
+        </table>
+        </td>
+    </tr>
+</tbody>

@@ -36,6 +36,7 @@ if (root_url == "/" || current_location === "result"){
 }
 
 if (current_location === "encounter_tracker"){
+    create_checkboxes()
     create_event_listener_for_trackers("tracker_container", "tracker")
 
 }
@@ -119,6 +120,28 @@ function create_event_listener_for_skills(class_name, target_class_name){
             toggle_visibility(discipliine_skill_table)
         })
     }
+}
+
+function create_checkboxes(){
+    var healths = document.getElementsByName("health_meter")
+    console.log(healths)
+    for (let index = 0; index < healths.length; index++) {
+        healths[index].addEventListener("input", e => update_value(e.target))
+    }
+
+}
+
+function update_value(health){
+    current_health = health.value
+    console.log(current_health)
+    current_parent = health.parentElement
+    curent_sibling = current_parent.nextElementSibling
+    new_tracker = document.createElement("td")
+    new_tracker.className = "tracker"
+    curent_sibling.appendChild(new_tracker)
+    console.log(new_tracker.className)
+
+
 }
 
 function create_event_listener_for_trackers(class_name_container, class_name_tracker){

@@ -197,3 +197,7 @@ td {
 .tracker_row {
     height: 80px;
 }
+
+.encounter {
+    background-color: var(--grey);
+}
