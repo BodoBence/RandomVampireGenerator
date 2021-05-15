@@ -144,7 +144,6 @@ function toggle_filled(element_in_focus){
     console.log("inside toggle tracker color function")
     if (element_in_focus.style.backgroundColor == 'var(--bg)') {
         element_in_focus.style.backgroundColor = 'var(--grey)';
-        
     } else {
         element_in_focus.style.backgroundColor = 'var(--bg)';
     }
