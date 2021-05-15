@@ -126,6 +126,11 @@ function create_checkboxes(){
     var healths = document.getElementsByName("health_meter")
     console.log(healths)
     for (let index = 0; index < healths.length; index++) {
+
+        // set start number of checkboxes
+        update_value(healths[index])
+
+        // set up event listener
         healths[index].addEventListener("input", e => update_value(e.target))
     }
 
@@ -142,6 +147,12 @@ function update_value(health){
             while (current_health > current_trackers.length){
                 add_tracker(current_trackers[0].parentElement)
             }
+        } else {
+            while (current_health < current_trackers.length) {
+                console.log(current_trackers[-1])
+                current_trackers[current_trackers.length-1].remove()
+            }
+
         }
     }
 }
