@@ -133,15 +133,24 @@ function create_checkboxes(){
 
 function update_value(health){
     current_health = health.value
-    console.log(current_health)
     current_parent = health.parentElement
-    curent_sibling = current_parent.nextElementSibling
+    current_trackers = current_parent.nextElementSibling.getElementsByClassName("tracker")
+    
+    if (current_health != current_trackers.length){
+        if (current_health > current_trackers.length){
+            // add trackers
+            while (current_health > current_trackers.length){
+                add_tracker(current_trackers[0].parentElement)
+            }
+        }
+    }
+}
+
+    
+function add_tracker(current_target){
     new_tracker = document.createElement("td")
     new_tracker.className = "tracker"
-    curent_sibling.appendChild(new_tracker)
-    console.log(new_tracker.className)
-
-
+    current_target.appendChild(new_tracker)
 }
 
 function create_event_listener_for_trackers(class_name_container, class_name_tracker){
