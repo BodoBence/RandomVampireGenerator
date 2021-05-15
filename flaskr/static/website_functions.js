@@ -124,7 +124,8 @@ function create_event_listener_for_skills(class_name, target_class_name){
 
 function create_checkboxes(){
     var healths = document.getElementsByName("health_meter")
-    console.log(healths)
+    var willpowers = document.getElementsByName("willpower_meter")
+    // console.log(healths)
     for (let index = 0; index < healths.length; index++) {
 
         // set start number of checkboxes
@@ -134,25 +135,32 @@ function create_checkboxes(){
         healths[index].addEventListener("input", e => update_value(e.target))
     }
 
+    for (let index = 0; index < willpowers.length; index++) {
+
+        // set start number of checkboxes
+        update_value(willpowers[index])
+
+        // set up event listener
+        willpowers[index].addEventListener("input", e => update_value(e.target))
+    }
 }
 
-function update_value(health){
-    current_health = health.value
-    current_parent = health.parentElement
+function update_value(tracker_stat){
+    current_tracker_stat = tracker_stat.value
+    current_parent = tracker_stat.parentElement
     current_trackers = current_parent.nextElementSibling.getElementsByClassName("tracker")
     
-    if (current_health != current_trackers.length){
-        if (current_health > current_trackers.length){
+    if (current_tracker_stat != current_trackers.length){
+        if (current_tracker_stat > current_trackers.length){
             // add trackers
-            while (current_health > current_trackers.length){
+            while (current_tracker_stat > current_trackers.length){
                 add_tracker(current_trackers[0].parentElement)
             }
         } else {
-            while (current_health < current_trackers.length) {
+            while (current_tracker_stat < current_trackers.length) {
                 console.log(current_trackers[-1])
                 current_trackers[current_trackers.length-1].remove()
             }
-
         }
     }
 }
@@ -161,6 +169,7 @@ function update_value(health){
 function add_tracker(current_target){
     new_tracker = document.createElement("td")
     new_tracker.className = "tracker"
+    new_tracker.style.backgroundColor = 'var(--grey)'
     current_target.appendChild(new_tracker)
 }
 
