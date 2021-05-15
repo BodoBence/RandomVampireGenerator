@@ -37,8 +37,13 @@ if (root_url == "/" || current_location === "result"){
 
 if (current_location === "encounter_tracker"){
     create_checkboxes()
-    create_event_listener_for_trackers("tracker_container", "tracker")
+    encounters = document.getElementsByClassName("encounter")
 
+    for (let index = 0; index < encounters.length; index++) {
+        const element = encounters[index];
+        create_event_listener_for_trackers(element, "tracker_container", "tracker")   
+    }
+    handle_encounters()
 }
 // Functions for the Input sliders (generator_inputs.html)
 
@@ -122,25 +127,42 @@ function create_event_listener_for_skills(class_name, target_class_name){
     }
 }
 
+// Functinos for the Encounter Tracker (encounter_tracker.hmtl)
+
+function handle_encounters(){
+    add_buttons = document.getElementsByName("add")
+    add_buttons.forEach(element => {
+        element.addEventListener("click", e => add_encounter())   
+    });
+
+    remove_buttons = document.getElementsByName("remove")
+    remove_buttons.forEach(element => {
+        element.addEventListener("click", e => remove_encounter(e.target))
+    })
+}
+
+function add_encounter(){
+    encounters = document.getElementsByClassName("encounter")
+    last_encounter = encounters[encounters.length-1]
+    encounter_cloned = last_encounter.cloneNode(true)
+    last_encounter.parentElement.appendChild(encounter_cloned)
+    create_event_listener_for_trackers(encounter_cloned, "tracker_container", "tracker")
+}
+
+function remove_encounter(current_button){
+    current_encounter = current_button.parentElement.parentElement
+    current_encounter.remove()
+}
+
 function create_checkboxes(){
     var healths = document.getElementsByName("health_meter")
     var willpowers = document.getElementsByName("willpower_meter")
-    // console.log(healths)
     for (let index = 0; index < healths.length; index++) {
-
-        // set start number of checkboxes
         update_value(healths[index])
-
-        // set up event listener
         healths[index].addEventListener("input", e => update_value(e.target))
     }
-
     for (let index = 0; index < willpowers.length; index++) {
-
-        // set start number of checkboxes
         update_value(willpowers[index])
-
-        // set up event listener
         willpowers[index].addEventListener("input", e => update_value(e.target))
     }
 }
@@ -158,14 +180,12 @@ function update_value(tracker_stat){
             }
         } else {
             while (current_tracker_stat < current_trackers.length) {
-                console.log(current_trackers[-1])
                 current_trackers[current_trackers.length-1].remove()
             }
         }
     }
 }
-
-    
+   
 function add_tracker(current_target){
     new_tracker = document.createElement("td")
     new_tracker.className = "tracker"
@@ -173,9 +193,9 @@ function add_tracker(current_target){
     current_target.appendChild(new_tracker)
 }
 
-function create_event_listener_for_trackers(class_name_container, class_name_tracker){
+function create_event_listener_for_trackers(class_name_encounter, class_name_container, class_name_tracker){
     // console.log(class_name_container)
-    var selected_class_elements = document.getElementsByClassName(class_name_container)
+    var selected_class_elements = class_name_encounter.getElementsByClassName(class_name_container)
     // console.log(selected_class_elements)
     for (let contianer_counter = 0; contianer_counter < selected_class_elements.length; contianer_counter++) {
         // console.log("loooop")
