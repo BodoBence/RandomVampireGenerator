@@ -29,12 +29,16 @@ if (root_url == "/" || current_location === "result"){
     });
 
     if (current_location === "result"){
-        create_event_listener_for_class("button_discipline_skills", "discipline_skills");
+        create_event_listener_for_skills("button_discipline_skills", "discipline_skills");
         // let button_download = document.getElementById("button_download");
         // button_download.addEventListener("click", e => {})
     };
 }
 
+if (current_location === "encounter_tracker"){
+    create_event_listener_for_trackers("tracker_container", "tracker")
+
+}
 // Functions for the Input sliders (generator_inputs.html)
 
 function get_last_url_segment(input_url){
@@ -100,7 +104,7 @@ function toggle_visibility_skills(button_id) {
 
 // Functions for the generated character (generated_characters_designed.html)
 
-function create_event_listener_for_class(class_name, target_class_name){
+function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
     var selected_class_elements = document.getElementsByClassName(class_name)
     // console.log(selected_class_elements)
@@ -114,5 +118,34 @@ function create_event_listener_for_class(class_name, target_class_name){
             // console.log(discipliine_skill_table.style.visibility)
             toggle_visibility(discipliine_skill_table)
         })
+    }
+}
+
+function create_event_listener_for_trackers(class_name_container, class_name_tracker){
+    // console.log(class_name_container)
+    var selected_class_elements = document.getElementsByClassName(class_name_container)
+    // console.log(selected_class_elements)
+    for (let contianer_counter = 0; contianer_counter < selected_class_elements.length; contianer_counter++) {
+        // console.log("loooop")
+        // console.log(selected_class_elements[contianer_counter])
+        var current_container = selected_class_elements[contianer_counter].getElementsByClassName(class_name_tracker)
+        // console.log(current_container)
+        for (let tracker = 0; tracker < current_container.length; tracker++){
+            // console.log("inside second loop")
+            // console.log(current_container[tracker])
+            current_container[tracker].addEventListener("click", e => {
+                toggle_filled(e.target)
+            })
+        }
+    }
+}
+
+function toggle_filled(element_in_focus){
+    console.log("inside toggle tracker color function")
+    if (element_in_focus.style.backgroundColor == 'var(--bg)') {
+        element_in_focus.style.backgroundColor = 'var(--grey)';
+        
+    } else {
+        element_in_focus.style.backgroundColor = 'var(--bg)';
     }
 }

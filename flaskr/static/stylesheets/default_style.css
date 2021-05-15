@@ -117,7 +117,7 @@ tr.slider_row {
     width: 100%;
 }
  
-.button_general:hover{
+.button_general:hover {
     background-color: var(--fg);
     color: var(--white);
 }
@@ -175,27 +175,21 @@ td {
     display: inline-block;
 }
 
-/* Customize the label (the container) */             
 .tracker_container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    height: 20px;
 }
 
-.tracker_filled {
+.tracker {
+    height: 20px;   
+    width: 20px;
     background-color: var(--bg);
-    height: 10px;
-    width: 10px;
+    display: inline-block;
+    border-color: var(--white);
+    border-style: solid;
+    border-width: 2px;
 }
-.tracker_unfilled {
-    background-color: var(--grey);
-    height: 10px;
-    width: 10px;
+
+.tracker:hover {
+    background-color: var(--fg);
+    cursor: pointer;
 }

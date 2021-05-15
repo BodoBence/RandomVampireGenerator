@@ -1,17 +1,20 @@
 <!doctype html>
-<tr>
-    <th> Encounter {{ encounter['encounter_number'] }} </th>
+<tr style="height: 30px;">
 </tr>
-<tr>
+<tr style="height: 100px;">
     <td> Health </td>
     <td>
-        <div class="tracker_container">
-            {% for i in range(0, encounter['health_current']) %}
-                <span class="tracker_filled"></span>
-             {% endfor %}
-            {% for i in range(0, encounter['health_max'] - encounter['health_current']) %}
-                <span class="tracker_unfilled"></span>
-            {% endfor %}
-        </div>
+    <table class="tracker_container">
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+        <td class="tracker" style="background-color: var(--grey);"></td>
+    </table>
     </td>
 </tr>

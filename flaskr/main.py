@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
 
+import os
 
 from random_vampire_generator import generate
 import default_data  
 import server_functions
 
-import os
+import db
+
+
 
 
 app = Flask(__name__)
@@ -51,24 +54,6 @@ def result():
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
-    # # save as pdf
-    # generated_vampire_file_name = str(generated_character['Character_Details']['Basic_Information']['Name']) + '.pdf'
-    # output_path = os.path.join(os.path.dirname(__file__), 'generated_vampires', generated_vampire_file_name)
-    # vampire_for_pdf_html = render_template(
-    #     'generated_character.html',
-    #     details = details, 
-    #     attributes = attributes, 
-    #     skills = skills, 
-    #     disciplines = disciplines,
-    #     max_level = max_level)
-    
-
-
-
-        #pdf = StringIO()
-    # html = rendered_character
-    # output_filename = "test.pdf"
-
     rendered_vampire = render_template(
         'home.html',
         slider_structure = startup_input_field_details['weight_structure'],
@@ -84,9 +69,7 @@ def result():
         max_level = max_level,
         pdf_path = 'output_path')
 
-    # HTML('http://localhost:5000/').write_pdf(os.path.join(os.path.dirname(__file__)))
-    
-    # return rendered_character
+
     return rendered_vampire
 
 @app.route('/contact', )
@@ -103,29 +86,12 @@ def calculation_maths():
 
 @app.route('/encounter_tracker',  methods = ['POST', 'GET'])
 def encounter_tracker():
-    if request.method == 'POST':
-        server_functions.add_encounter_to_json()
+    return render_template('encounter_tracker.html')
 
-    encounters = server_functions.get_encounters()
-    return render_template('encounter_tracker.html', encounters = encounters)
-
-
-def convert_html_to_pdf(source_url, output_filename):
-    try:
-        # create the API client instance
-        client = pdfcrowd.HtmlToImageClient('demo', 'ce544b6ea52a5621fb9d55f8b542d14d')
-        client.setOutputFormat('png')
-        client.convertUrlToFile(source_url, output_filename)
-
-
-        
-    except pdfcrowd.Error as why:
-        # report the error
-        sys.stderr.write('Pdfcrowd Error: {}\n'.format(why))
-
-        # rethrow or handle the exception
-        raise
-
+@app.route('/collection')
+def collection():
+    # db.init_db()
+    return render_template('collection.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

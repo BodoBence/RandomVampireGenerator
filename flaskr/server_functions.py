@@ -233,22 +233,3 @@ def form_structuring(gathered_form_data):
 
     return gathered_condition, gathered_values, gathered_weights
 
-def get_encounters():
-    with open(FILE_ENCOUNTERS) as json_file:
-        encounters = json.load(json_file)
-    return encounters
-
-def add_encounter_to_json():
-    encounters = get_encounters()
-    new_encounter = {
-        "health_max": 9,
-        "health_current": 6,
-        "willpower_max": 10,
-        "willpower_current": 5,
-        "encounter_number": 2
-    }
-
-    encounters.append(new_encounter)
-
-    with open(FILE_ENCOUNTERS, 'w') as json_file:
-        json.dump(encounters, json_file)
