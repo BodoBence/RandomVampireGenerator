@@ -193,3 +193,7 @@ td {
     background-color: var(--fg);
     cursor: pointer;
 }
+
+.tracker_row {
+    height: 80px;
+}

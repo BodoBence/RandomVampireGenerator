@@ -8,27 +8,20 @@
     <body>
         <table class="table_main">
             <tr style="height: 50px;">
+                <td></td>
             </tr>
             <tr>
                 <th colspan="3">
                    This is the Encounter Tracker Page
                 </th>
-            <tr>
-                <th class="button_general"
-                    colspan="3"
-                    action="/encounter_tracker"
-                    method="POST">
-                    Clear Encounters!
-                </th>
             </tr>
-            <tbody>
                 {% include "encounter_card.html" %}
-            </tbody>
             <tr>
-                <td colspan="3">
-                    <form action="/encounter_tracker" method="POST">
-                        <input type="submit" class="button_general" value="Add Encounter!"> 
-                    </form>
+                <td class="button_general">
+                    Clear Trackers!
+                </td>
+                <td class="button_general">
+                    Add Tracker!
                 </td>
             </tr>
         </table>
