@@ -24,7 +24,7 @@
         <td>
             <table style="max-width: 100px;">
                 {% for i in range(0, details['Trackers']['Health']) %}
-                    <td><span class="dot_filled"></span></td>
+                    <td><span class="dot_filled"> </span></td>
                 {% endfor %}
                 {% for i in range(0, 10 - details['Trackers']['Health']) %}
                     <td><span class="dot_unfilled"></span> </td>
@@ -224,7 +224,8 @@
                 class="button_general"
                 name="print_vampire"
                 style="visibility: visible;">
-                Download
+                <p>Download</p>
+                <p>(enable background graphics in print setup)</p>
             </dh>
         </tr>
 </tbody>
