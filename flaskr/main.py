@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request
+
+import uuid
 
 from random_vampire_generator import generate
 import default_data  
@@ -6,7 +8,7 @@ import server_functions
 
 
 app = Flask(__name__)
-app.secret_key = unique_key = "my_key"
+app.secret_key = unique_key = str(uuid.uuid1())
 
 startup_input_field_details = {
     'weight_structure': default_data.default_weights_structure(),
@@ -46,8 +48,7 @@ def result():
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
-    store_in_session(details, attributes, skills, disciplines, max_level)
-    print(session.keys())
+    store_generated_character(details, attributes, skills, disciplines, max_level)
 
     rendered_vampire = render_template(
         'home.html',
@@ -88,10 +89,9 @@ def collection():
     return render_template('collection.html',
         have_generated_character=HAVE_GENERATED_CHARACTER,)
 
-
-def store_in_session(details, attributes, skills, disciplines, max_level):
-    session[str(details['Basic_Information']['Age'])] = 1
-
+def store_generated_character(details, attributes, skills, disciplines, max_level):
+    # unique_key = str(uuid.uuid1())
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)

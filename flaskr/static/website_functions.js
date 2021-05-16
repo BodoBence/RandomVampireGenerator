@@ -32,6 +32,8 @@ if (root_url == "/" || current_location === "result"){
         create_event_listener_for_skills("button_discipline_skills", "discipline_skills");
         // let button_download = document.getElementById("button_download");
         // button_download.addEventListener("click", e => {})
+
+        create_global_event_listener("click", "print_vampire", print_character, true)
     };
 }
 
@@ -143,6 +145,11 @@ function create_event_listener_for_skills(class_name, target_class_name){
             toggle_visibility(discipliine_skill_table)
         })
     }
+}
+
+function print_character(){
+    console.log("hi")
+    window.print()
 }
 
 // Functinos for the Encounter Tracker (encounter_tracker.hmtl)
