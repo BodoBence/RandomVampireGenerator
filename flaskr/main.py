@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 from random_vampire_generator import generate
 import default_data  
@@ -18,7 +18,6 @@ HAVE_GENERATED_CHARACTER = False
 
 @app.route('/', )
 def home():
-    session['generated_characters'] = {}
     return render_template(
         'home.html',
         slider_structure = startup_input_field_details['weight_structure'],
@@ -46,6 +45,9 @@ def result():
 
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
+
+    store_in_session(details, attributes, skills, disciplines, max_level)
+    print(session.keys())
 
     rendered_vampire = render_template(
         'home.html',
@@ -85,6 +87,10 @@ def encounter_tracker():
 def collection():
     return render_template('collection.html',
         have_generated_character=HAVE_GENERATED_CHARACTER,)
+
+
+def store_in_session(details, attributes, skills, disciplines, max_level):
+    session[str(details['Basic_Information']['Age'])] = 1
 
 
 if __name__ == '__main__':
