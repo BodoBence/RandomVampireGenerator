@@ -12,6 +12,32 @@
                     Collection
                 </th>
             </tr>
+            <tr>
+                <form action = "/collection/showing" method='POST'>
+                    <td> Generated Vampires: </td>
+                    <td>
+                        <div class="custom-select">
+                            <select class="dropdown_selectors" list="generated_vampire_names" name="generated_character_selector">
+                                <datalist id="generated_vampire_names">
+                                    {% for character in characters %}
+                                        <option> {{ character }} </option>
+                                    {% endfor %}
+                                </datalist>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <input
+                            class="button_general"
+                            type="submit"
+                            value="Show">
+                    </td>
+                </form>
+            </tr>
+            <tr>
+                {% if have_generated_character %}
+                    {% include "generated_character.html" %}
+                {% endif %}
+            </tr>
         </table>
     </body>
 </html>
