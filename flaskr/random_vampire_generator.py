@@ -97,10 +97,10 @@ def calculate_xp_points(age, generation, max_age):
 
     # xp_points = round((100 * (math.log(age+1))) + 30)
     # xp_points = max(300, (age * 2))
-    print('max_xp:', max_xp)
-    print('age_factor', age_factor)
-    print('norm_age_factor', norm_age_factor)
-    print(xp_points)
+    # print('max_xp:', max_xp)
+    # print('age_factor', age_factor)
+    # print('norm_age_factor', norm_age_factor)
+    # print(xp_points)
     return xp_points
 
 def calculate_xp_cost_for_non_disciplines(current_level, cost):
@@ -251,7 +251,7 @@ def clean_up_character(character_sheet):
             if character_sheet['Disciplines'][discipline_type][discipline]['Level'] == 0:
                 disciplines_to_remove[discipline_type].append(discipline)
 
-    print('keys_to_remove', disciplines_to_remove)
+    # print('keys_to_remove', disciplines_to_remove)
     
     for discipline_type, disciplines in disciplines_to_remove.items():
         for discipline in disciplines:

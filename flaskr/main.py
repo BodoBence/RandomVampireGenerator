@@ -1,21 +1,12 @@
-from flask import Flask, render_template, request
-
-import os
+from flask import Flask, render_template, request, session
 
 from random_vampire_generator import generate
 import default_data  
 import server_functions
-
-import db
-
-
-
+import uuid
 
 app = Flask(__name__)
-
-# default_data.default_weights_data() only gives slider names and grouping
-# slider values come from: server_functions.start_field_values()
-# this way actual values are in a flat dictionary, and slider grouping are represented in a nested dictionary
+app.secret_key = unique_key = "my_key"
 
 startup_input_field_details = {
     'weight_structure': default_data.default_weights_structure(),
@@ -27,6 +18,7 @@ HAVE_GENERATED_CHARACTER = False
 
 @app.route('/', )
 def home():
+    session['generated_characters'] = {}
     return render_template(
         'home.html',
         slider_structure = startup_input_field_details['weight_structure'],
@@ -39,6 +31,10 @@ def home():
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     HAVE_GENERATED_CHARACTER = True
+
+    if 'generated_characters' not in session.keys():
+        session['generated_characters'] = {}
+
     gathered_input = request.form
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
     generated_character = generate(
@@ -53,6 +49,15 @@ def result():
 
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
+
+    store_generated_character(
+        details=details,
+        attributes=attributes,
+        skills=skills,
+        disciplines=disciplines,
+        max_level=max_level)
+    
+    print(session['generated_characters'].keys())
 
     rendered_vampire = render_template(
         'home.html',
@@ -88,10 +93,29 @@ def calculation_maths():
 def encounter_tracker():
     return render_template('encounter_tracker.html')
 
-@app.route('/collection')
+@app.route('/collection', methods = ['POST', 'GET'])
 def collection():
-    # db.init_db()
-    return render_template('collection.html')
+    current_characters = session['generated_characters'].keys()
+
+    print(session['generated_characters'].keys())
+
+    return render_template('collection.html',
+        characters=current_characters, 
+        have_generated_character=HAVE_GENERATED_CHARACTER,)
+
+
+def store_generated_character(details, attributes, skills, disciplines, max_level):
+    
+    # unique_key = str(uuid.uuid1())
+
+    new_character = {
+        'details': details,
+        'attributes': attributes,
+        'skills': skills,
+        'disciplines': disciplines,
+        'max_level': max_level}
+
+    session['generated_characters'][details['Basic_Information']['Age']] = new_character
 
 if __name__ == '__main__':
     app.run(debug=True)
