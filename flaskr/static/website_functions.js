@@ -54,19 +54,15 @@ function get_last_url_segment(input_url){
 
 function create_global_event_listener(type, selector, callback, use_name){
     document.addEventListener(type, e => {
-        console.log("this is an event")
-        console.log(e.target)
 
         if (use_name == true) {
             if (e.target.getAttribute('name') == selector){
-                console.log(e.target)
                 callback(e.target)
             }
         }
 
         if (use_name == false) {
             if (e.target.className == selector){
-                console.log(e.target)
                 callback(e.target)
             }
         }
@@ -85,7 +81,6 @@ function toggle_visibility(element_in_focus){
 }
 
 // Functions for the Input sliders (generator_inputs.html)
-
 
 function load_default_slider_values(){
     document.getElementsByName("Attributes")[0].value="{{ default_input_weights['Attributes'] }}";
@@ -205,12 +200,20 @@ function toggle_filled(element_in_focus){
 
 function add_encounter(){
     encounters = document.getElementsByClassName("encounter")
-    last_encounter = encounters[encounters.length-1]
-    encounter_cloned = last_encounter.cloneNode(true)
-    last_encounter.parentElement.appendChild(encounter_cloned)
+    number_of_encounters = encounters.length
+
+    if (number_of_encounters < 10){
+        last_encounter = encounters[encounters.length-1]
+        encounter_cloned = last_encounter.cloneNode(true)
+        last_encounter.parentElement.appendChild(encounter_cloned)
+    }
 }
 
 function remove_encounter(current_button){
-    current_encounter = current_button.parentElement.parentElement
-    current_encounter.remove()
+    number_of_encounters = document.getElementsByClassName("encounter").length
+    
+    if (number_of_encounters > 1){
+        current_encounter = current_button.parentElement.parentElement
+        current_encounter.remove()
+    }
 }

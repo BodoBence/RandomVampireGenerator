@@ -130,15 +130,16 @@
         </td>
         <td> Mental Focus </td>
         <td>
-            <input class="slider"
-            type="range"
-            name="simplified_mental" 
-            data-referenced-name-1="Mental_Attributes"
-            data-referenced-name-2="Mental_Skills"
-            min="0" 
-            max="100"
-            value="50"
-            onchange="drive_complex_ranges(this)">
+            <input
+                class="slider"
+                type="range"
+                name="simplified_mental" 
+                data-referenced-name-1="Mental_Attributes"
+                data-referenced-name-2="Mental_Skills"
+                min="0" 
+                max="100"
+                value="50"
+                onchange="drive_complex_ranges(this)">
         </td>
     </tr>
     <tbody class="changable_visibility" id="complex_sliders_id" style="visibility: collapse;">
@@ -147,12 +148,13 @@
                 {% for key2, val2 in val1.items() %}
                 <td> {{ key2 }}
                 </td> 
-                <td> <input class="slider"
-                            type="range" 
-                            name={{ key2 }} 
-                            min="0" 
-                            max="100"
-                            value= {{ slider_values[key2] }}>
+                <td> <input
+                        class="slider"
+                        type="range" 
+                        name={{ key2 }} 
+                        min="0" 
+                        max="100"
+                        value= {{ slider_values[key2] }}>
                 </td> 
                 {% endfor %}
         </tr>
@@ -161,29 +163,33 @@
     </tbody>>
     <tr>
         <td> 
-            <input class="button_general"
-                    onclick="load_default_slider_values()"
-                    type="button"
-                    value="Load default slider values!">
+            <input
+                class="button_general"
+                onclick="load_default_slider_values()"
+                type="button"
+                value="Load default slider values!">
         </td>
         <td> 
-            <input class="button_general"
-                    data-toggle-reference="complex_sliders_id"
-                    id="button_complex_sliders_visibility"
-                    type="button"
-                    value="Hide/Show complex sliders!">
+            <input
+                class="button_general"
+                data-toggle-reference="complex_sliders_id"
+                id="button_complex_sliders_visibility"
+                type="button"
+                value="Hide/Show complex sliders!">
         </td>
         <td colspan="2">
-            <input class="button_general"
-                    type="submit"
-                    value="Generate!">
+            <input
+                class="button_general"
+                type="submit"
+                value="Generate!">
         </td>
         <td colspan="2"> 
-            <input class="button_general"
-                    id="button_input_contianer_visibility"
-                    data-toggle-reference="input_container_id"
-                    type="button"
-                    value="Hide/Show inputs">
+            <input
+                class="button_general"
+                id="button_input_contianer_visibility"
+                data-toggle-reference="input_container_id"
+                type="button"
+                value="Hide/Show inputs">
         </td>
     </tr>
     </tbody>

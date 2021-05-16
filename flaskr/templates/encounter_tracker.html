@@ -9,13 +9,57 @@
         <table class="table_main">
             <tr style="height: 50px;">
                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
-            <tr>
-                <th colspan="3">
-                   This is the Encounter Tracker Page
-                </th>
-            </tr>
-                {% include "encounter_card.html" %}
+            <tbody class="encounter">
+                <tr>
+                    <td>
+                        <input type="text" class="input_encounter_name" value="My powerful Enemy" name="encounter_name">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="button_encounter" name="remove">
+                        Remove Encounter!
+                    </td>
+                </tr>
+                <tr class="tracker_row">
+                    <td>  
+                        Health
+                    </td>
+                    <td>
+                        <input type="number" name="health_meter" min="1" max="20" value="10">
+                    </td>
+                    <td colspan="2">
+                    <table class="tracker_container">
+                        <td class="tracker" style="background-color: var(--grey);"></td>
+                    </table>
+                    </td>
+                </tr>
+                <tr class="tracker_row">
+                    <td>
+                        Willpower
+                    </td>
+                    <td>
+                        <input type="number" name="willpower_meter" min="1" max="20" value="10">
+                    </td>
+                    <td colspan="2">
+                    <table class="tracker_container">
+                        <td class="tracker" style="background-color: var(--grey);">
+                        </td>
+                    </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="button_encounter" name="add" colspan="4">
+                        Add Encounter!
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
     </body>
     <script src={{ url_for('static', filename='website_functions.js') }}></script>
