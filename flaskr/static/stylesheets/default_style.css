@@ -237,22 +237,3 @@ td {
     background-color: var(--bg);
     color: var(--fg);
 }
-
-/* 
-@media print {
-    @page {
-        size: 6in 12in;
-    }
-   
-}
-
-    li {
-        display: none;
-        }
-
-    .inputs_section > tr {
-        display: none;
-    }
-    
-    
-} */
