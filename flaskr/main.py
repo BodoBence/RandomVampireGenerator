@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request
 
 from random_vampire_generator import generate
 import default_data  
 import server_functions
-import uuid
+
 
 app = Flask(__name__)
 app.secret_key = unique_key = "my_key"
@@ -32,9 +32,6 @@ def home():
 def result():
     HAVE_GENERATED_CHARACTER = True
 
-    if 'generated_characters' not in session.keys():
-        session['generated_characters'] = {}
-
     gathered_input = request.form
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
     generated_character = generate(
@@ -49,15 +46,6 @@ def result():
 
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
-
-    store_generated_character(
-        details=details,
-        attributes=attributes,
-        skills=skills,
-        disciplines=disciplines,
-        max_level=max_level)
-    
-    print(session['generated_characters'].keys())
 
     rendered_vampire = render_template(
         'home.html',
@@ -95,27 +83,9 @@ def encounter_tracker():
 
 @app.route('/collection', methods = ['POST', 'GET'])
 def collection():
-    current_characters = session['generated_characters'].keys()
-
-    print(session['generated_characters'].keys())
-
     return render_template('collection.html',
-        characters=current_characters, 
         have_generated_character=HAVE_GENERATED_CHARACTER,)
 
-
-def store_generated_character(details, attributes, skills, disciplines, max_level):
-    
-    # unique_key = str(uuid.uuid1())
-
-    new_character = {
-        'details': details,
-        'attributes': attributes,
-        'skills': skills,
-        'disciplines': disciplines,
-        'max_level': max_level}
-
-    session['generated_characters'][details['Basic_Information']['Age']] = new_character
 
 if __name__ == '__main__':
     app.run(debug=True)
