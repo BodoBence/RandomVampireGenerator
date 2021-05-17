@@ -1,10 +1,29 @@
+/* General */
+
 :root {
     --bg: rgb(11, 37, 92);
     --fg: rgb(250, 220, 154);
     --grey: rgb(221, 217, 208);
     --white: rgb(255, 255, 255);
-    --nav_height: 80px;
+    --nav_height: 160px;
+    --nav_left_margin: 20px;
+    font-family: Georgia, serif;
 }
+
+.title_container h1 {
+    margin-bottom: 0px;
+    margin-top: 30px;
+    margin-left: var(--nav_left_margin);
+    font-size: 30px;
+}
+.title_container p {
+    margin-left: var(--nav_left_margin);
+    margin-top: 0px;
+    font-size: 16px;
+}
+
+/* Navigation Element */
+/* Navigation Contianer */
 
 ul {
     list-style-type: none;
@@ -12,29 +31,60 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: var(--bg);
-    position: fixed;
-    top: 0;
     width: 100%;
-    height: var(--nav_height);
+    height: 60px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
 
-.top_row {height: var(--nav_height)}
-
-li {
+ul li {
     float: left;
 }
 
-li a {
+ul a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    font-size: 12px;
+    padding: 24px 8px;
     text-decoration: none;
+}
+
+ul a:first-child {
+    padding-left: var(--nav_left_margin);
+}
+
+.top_row {
+    height: var(--nav_height)
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: var(--fg);
+}
+
+/* Generator Inputs */
+
+.my_row {
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightcoral;
+    display: inherit;
+}
+
+.inputs_section td {
+    display: inline-block;
+    border-color: var(--grey);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.selection_container {
+    display: inline-block;
+    border-color: var(--grey);
+    border-style: solid;
+    border-width: 2px;
 }
 
 select {
