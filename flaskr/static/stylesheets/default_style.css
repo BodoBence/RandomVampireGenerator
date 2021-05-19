@@ -82,9 +82,19 @@ li a:hover {
     max-width: 600px;
 }
 
-.div_input_dropdown label, .div_input_type_in label, .div_input_slider label {
-    min-width: 300px;
-    display: inline;
+.div_input_dropdown, .div_input_slider {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    grid-template-columns: auto auto;
+
+}
+
+.div_input_type_in {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    grid-template-columns: auto auto auto;
 }
 
 .changable_visibility {
