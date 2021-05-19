@@ -83,6 +83,7 @@ li a:hover {
 
 .div_input_dropdown label, .div_input_type_in label, .div_input_slider label {
     min-width: 300px;
+    display: inline;
 }
 
 .changable_visibility {
