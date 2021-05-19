@@ -68,105 +68,21 @@ li a:hover {
 
 /* Generator Inputs */
 
-.cell_left {
-    height: 30px;
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    border-style: outset;
-    border-width: 1px;
-    border-color: var(--bg);
-    border-radius: var(--corner_angle);
-    border-right-width: 0px;
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%;
+.input_container_id {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    margin: 10px;
 }
 
-.cell_right {
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    border-style: outset;
-    border-width: 1px;
-    border-color: var(--bg);
-    border-radius: var(--corner_angle);
-    border-left-width: 0px;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
+.div_input_dropdown, .div_input_type_in, .div_input_slider  {
+    max-width: 600px;
 }
 
-.cell_middle {
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    border-style: outset;
-    border-width: 1px;
-    border-color: var(--bg);
-    border-left-width: 0px;
-    border-right-width: 0px;
-
-}
-
-.cell_button {
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    border-style: none;
-}
-
-.my_row {
-    border-style: solid;
-    border-width: 2px;
-    border-color: lightcoral;
-    display: inherit;
-}
-
-.inputs_section td {
-    display: inline-block;
-    border-color: var(--grey);
-    border-style: solid;
-    border-width: 2px;
-}
-
-.selection_container {
-    display: inline-block;
-    border-color: var(--grey);
-    border-style: solid;
-    border-width: 2px;
-}
-
-select {
-    background-color: var(--bg);
-    width: 140px;
-    height: 30px;
-    color: var(--fg);
-}
-        
-select:hover{
-    background-color: var(--fg);
-    color: var(--white);
-    border: var(--fg);
-    cursor: pointer;
-}
-
-input {
-    width: 90%;
-    height: 24px;
-    background-color: var(--bg);
-    color: var(--fg);
-}
-
-.something {
-    padding: 30px;
-    background-color: var(--bg);
+.div_input_dropdown label, .div_input_type_in label, .div_input_slider label {
+    min-width: 300px;
 }
 
 .changable_visibility {

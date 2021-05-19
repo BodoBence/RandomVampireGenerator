@@ -1,0 +1,197 @@
+<table class="table_main">
+    <tbody class="inputs_section">
+        <form action = "/result" method='POST'>
+            <tbody class="changable_visibility" id="input_container_id">
+            <tr style="height:40px">
+                <td class="cell_left">
+                    Clan: 
+                </td>
+                <td class="cell_right">
+                    <div class="custom-select">
+                        <select class="dropdown_selectors" list="clans" name="manual_clan">
+                            <datalist id="clans">
+                                <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
+                                <option value='Banu_Haqim' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == 'Banu_Haqim' %} selected="selected" {% endif %}> Banu_Haqim </option>
+                                <option value='Brujah' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Brujah' %} selected="selected" {% endif %}> Brujah </option>
+                                <option value='Gangrel' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Gangrel' %} selected="selected" {% endif %}> Gangrel </option>
+                                <option value='Lasombra' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Lasombra' %} selected="selected" {% endif %}> Lasombra </option>
+                                <option value='Malkavian' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Malkavian' %} selected="selected" {% endif %}> Malkavian </option>
+                                <option value='Ministry' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ministry' %} selected="selected" {% endif %}> Ministry </option>
+                                <option value='Nosferatu' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Nosferatu' %} selected="selected" {% endif %}> Nosferatu </option>
+                                <option value='Ravnos' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ravnos' %} selected="selected" {% endif %}> Ravnos </option>
+                                <option value='Toreador' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Toreador' %} selected="selected" {% endif %}> Toreador </option>
+                                <option value='Tremere' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Tremere' %} selected="selected" {% endif %}> Tremere </option>
+                                <option value='Tzimische' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Tzimische' %} selected="selected" {% endif %}> Tzimische </option>
+                                <option value='Ventrue' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ventrue' %} selected="selected" {% endif %}> Ventrue </option>
+                                <option value='Hecata' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Hecata' %} selected="selected" {% endif %}> Hecata </option>
+                            </datalist>
+                    </div>
+                </td>
+                <td class="cell_left">
+                    Sex:
+                </td>
+                <td class="cell_right">
+                    <div class="custom-select">
+                        <select list="sexes" name="manual_sex">
+                            <datalist id="sexes">
+                                <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
+                                <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
+                                <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
+                            </datalist>
+                    </div>
+        
+                </td>
+                <td class="cell_left"> Generation:
+                </td>
+                <td class="cell_right">
+                    <div class="custom-select">
+                        <select list="gens" name="manual_generation" style="width: 150px;">
+                            <datalist id="gens">
+                                    <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
+                                    <option value='1'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==1 %} selected="selected" {% endif %}> 1 </option>
+                                    <option value='2'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==2 %} selected="selected" {% endif %}> 2 </option>
+                                    <option value='3'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> 3 </option>
+                                    <option value='4'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==4 %} selected="selected" {% endif %}> 4 </option>
+                                    <option value='5'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==5 %} selected="selected" {% endif %}> 5 </option>
+                                    <option value='6'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==6 %} selected="selected" {% endif %}> 6 </option>
+                                    <option value='7'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==7 %} selected="selected" {% endif %}> 7 </option>
+                                    <option value='8'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==8 %} selected="selected" {% endif %}> 8 </option>
+                                    <option value='9'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==9 %} selected="selected" {% endif %}> 9 </option>
+                                    <option value='10'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==10 %} selected="selected" {% endif %}> 10 </option>
+                                    <option value='11'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==11 %} selected="selected" {% endif %}> 11 </option>
+                                    <option value='12'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==12 %} selected="selected" {% endif %}> 12 </option>
+                                    <option value='13'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==13 %} selected="selected" {% endif %}> 13 </option>
+                                    <option value='14'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==14 %} selected="selected" {% endif %}> 14 </option>
+                                    <option value='15'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==15 %} selected="selected" {% endif %}> 15 </option>
+                                    <option value='16'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==16 %} selected="selected" {% endif %}> 16 </option>
+                            </datalist>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td class="cell_left"> 
+                    Age:
+                </td>
+                <td class="    border-radius: var(--corner_angle);">
+                    <select list="ages" name="manual_age_selection">
+                        <datalist id="ages">
+                            <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
+                            <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
+                        </datalist>
+                </td>
+                <td class="cell_right">
+                    <input type="number"
+                            min=1 
+                            max=5000 
+                            name="manual_age" 
+                            value={{ field_values['manual_age'] }}>
+                </td>
+                <td class="cell_left">
+                    Name:
+                </td>
+                <td class="cell_middle">
+                    <select list="names" name="manual_name_selection">
+                        <datalist id="names">
+                            <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
+                            <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
+                        </datalist>
+                </td>
+                <td class="cell_right">
+                    <input type="text"
+                            name="manual_name"
+                            value={{ field_values['manual_name'] }}> 
+                </td>
+            </tr>
+            <tr class="slider_row">
+                <td class="cell_left"> Physical Focus </td>
+                <td class="cell_right">
+                    <input class="slider"
+                    type="range"
+                    name="simplified_physical"
+                    data-referenced-name-1="Physical_Attributes"
+                    data-referenced-name-2="Physical_Skills"
+                    min="0" 
+                    max="100"
+                    value="50"
+                    onchange="drive_complex_ranges(this)">
+                </td>
+                <td class="cell_left"> Social Focus </td>
+                <td class="cell_right">
+                    <input class="slider"
+                    type="range"
+                    name="simplified_social"
+                    data-referenced-name-1="Social_Attributes"
+                    data-referenced-name-2="Social_Skills" 
+                    min="0" 
+                    max="100"
+                    value="50"
+                    onchange="drive_complex_ranges(this)">
+                </td>
+                <td class="cell_left"> Mental Focus </td>
+                <td class="cell_right">
+                    <input
+                        class="slider"
+                        type="range"
+                        name="simplified_mental" 
+                        data-referenced-name-1="Mental_Attributes"
+                        data-referenced-name-2="Mental_Skills"
+                        min="0" 
+                        max="100"
+                        value="50"
+                        onchange="drive_complex_ranges(this)">
+                </td>
+            </tr>
+            <tbody class="changable_visibility" id="complex_sliders_id" style="visibility: collapse;">
+                    {% for key1, val1 in slider_structure.items() %}
+                <tr class="slider_row">
+                        {% for key2, val2 in val1.items() %}
+                        <td class="cell_left"> {{ key2 }}
+                        </td> 
+                        <td class="cell_right"> <input
+                                class="slider"
+                                type="range" 
+                                name={{ key2 }} 
+                                min="0" 
+                                max="100"
+                                value= {{ slider_values[key2] }}>
+                        </td> 
+                        {% endfor %}
+                </tr>
+                    {% endfor %}
+            </tbody>
+            </tbody>>
+            <tr>
+                <td class="cell_button"> 
+                    <input
+                        class="button_general"
+                        onclick="load_default_slider_values()"
+                        type="button"
+                        value="Load default slider values!">
+                </td>
+                <td class="cell_button"> 
+                    <input
+                        class="button_general"
+                        data-toggle-reference="complex_sliders_id"
+                        id="button_complex_sliders_visibility"
+                        type="button"
+                        value="Hide/Show complex sliders!">
+                </td>
+                <td colspan="2" class="cell_button">
+                    <input
+                        class="button_general"
+                        type="submit"
+                        value="Generate!">
+                </td>
+                <td colspan="2" class="cell_button"> 
+                    <input
+                        class="button_general"
+                        id="button_input_contianer_visibility"
+                        data-toggle-reference="input_container_id"
+                        type="button"
+                        value="Hide/Show inputs">
+                </td>
+            </tr>
+            </tbody>
+            </form>
+    </tbody>
+</table>

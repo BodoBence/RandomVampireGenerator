@@ -5,19 +5,8 @@ let root_url = location.pathname;
 // Functinoality spereation for the different pages
 
 if (root_url == "/" || current_location === "result"){
-    let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
     let button_input_container = document.getElementById("button_input_contianer_visibility");
-    // console.log(button_complex_sliders);
     // console.log(button_input_container);
-
-    button_complex_sliders.addEventListener("click", e => {
-        console.log("inside the complex sliders event listener");
-        // console.log(button_complex_sliders);
-        var reference = button_complex_sliders.getAttribute("data-toggle-reference")
-        // console.log(reference);
-        toggle_visibility(document.getElementById(reference))
-        e.stopPropagation()
-    });
     
     button_input_container.addEventListener("click", e => {
         console.log("inside the input container event listener")

@@ -6,12 +6,10 @@
         {% include "navigation.html" %}
     </head>
     <body>
-        <table class="table_main" method="POST">
-            {% include "generator_inputs.html" %}
-            {% if have_generated_character %}
-                {% include "generated_character.html" %}
-            {% endif %}
-        </table>
+        {% include "generator_inputs.html" %}
+        {% if have_generated_character %}
+            {% include "generated_character.html" %}
+        {% endif %}
     </body>
     <script src={{ url_for('static', filename='website_functions.js') }}></script>
 </html>
