@@ -1,10 +1,10 @@
 # Random Vampire Generator
 import random
-import default_data
 import pprint
 import csv
-from csv import reader
 import math
+
+import default_data
 
 def derangement_check(basic_info):
     if basic_info['Clan'] == 'Malkavian':
@@ -118,50 +118,64 @@ def calculate_weights(weight_values):
                'Skills': [],
                'Disciplines': []}
 
-    fill_list_n_times_with_input(input_list=weights['Categories'],
-                                 n=weight_values['Attributes'],
-                                 custom_input='Attributes')
+# Fill Weights for Category selection
+    fill_list_n_times_with_input(
+        input_list=weights['Categories'],
+        n=weight_values['Attributes'],
+        custom_input='Attributes')
 
-    fill_list_n_times_with_input(input_list=weights['Categories'],
-                                 n=weight_values['Skills'],
-                                 custom_input='Skills')
+    fill_list_n_times_with_input(
+        input_list=weights['Categories'],
+        n=weight_values['Skills'],
+        custom_input='Skills')
 
-    fill_list_n_times_with_input(input_list=weights['Categories'],
-                                 n=weight_values['Disciplines'],
-                                 custom_input='Disciplines')
+    fill_list_n_times_with_input(
+        input_list=weights['Categories'],
+        n=weight_values['Disciplines'],
+        custom_input='Disciplines')
 
+# Fill Weights for Attribute selection
+    fill_list_n_times_with_input(
+        input_list=weights['Attributes'],
+        n=weight_values['Physical'],
+        custom_input='Physical_Attributes')
 
-    fill_list_n_times_with_input(input_list=weights['Attributes'],
-                                 n=weight_values['Physical_Attributes'],
-                                 custom_input='Physical_Attributes')
+    fill_list_n_times_with_input(
+        input_list=weights['Attributes'],
+        n=weight_values['Social'],
+        custom_input='Social_Attributes')
 
-    fill_list_n_times_with_input(input_list=weights['Attributes'],
-                                 n=weight_values['Social_Attributes'],
-                                 custom_input='Social_Attributes')
+    fill_list_n_times_with_input(
+        input_list=weights['Attributes'],
+        n=weight_values['Mental'],
+        custom_input='Mental_Attributes')  
 
-    fill_list_n_times_with_input(input_list=weights['Attributes'],
-                                 n=weight_values['Mental_Attributes'],
-                                 custom_input='Mental_Attributes')  
+# Fill Weights for Skill selection
+    fill_list_n_times_with_input(
+        input_list=weights['Skills'],
+        n=weight_values['Physical'],
+        custom_input='Physical_Skills')
 
+    fill_list_n_times_with_input(
+        input_list=weights['Skills'],
+        n=weight_values['Social'],
+        custom_input='Social_Skills')
 
-    fill_list_n_times_with_input(input_list=weights['Skills'],
-                                 n=weight_values['Physical_Skills'],
-                                 custom_input='Physical_Skills')
-    fill_list_n_times_with_input(input_list=weights['Skills'],
-                                 n=weight_values['Social_Skills'],
-                                 custom_input='Social_Skills')
-    fill_list_n_times_with_input(input_list=weights['Skills'],
-                                 n=weight_values['Mental_Skills'],
-                                 custom_input='Mental_Skills')
+    fill_list_n_times_with_input(
+        input_list=weights['Skills'],
+        n=weight_values['Mental'],
+        custom_input='Mental_Skills')
 
+# Fill Weights for Discipline selection
+    fill_list_n_times_with_input(
+        input_list=weights['Disciplines'],
+        n=weight_values['Clan_Disciplines'],
+        custom_input='Clan_Disciplines')
 
-    fill_list_n_times_with_input(input_list=weights['Disciplines'],
-                                 n=weight_values['Clan_Disciplines'],
-                                 custom_input='Clan_Disciplines')
-
-    fill_list_n_times_with_input(input_list=weights['Disciplines'],
-                                 n=weight_values['Non-Clan_Disciplines'],
-                                 custom_input='Non-Clan_Disciplines')
+    fill_list_n_times_with_input(
+        input_list=weights['Disciplines'],
+        n=weight_values['Non-Clan_Disciplines'],
+        custom_input='Non-Clan_Disciplines')
 
     return weights      
 

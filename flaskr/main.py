@@ -11,7 +11,6 @@ app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
 
 startup_input_field_details = {
-    'weight_structure': default_data.default_weights_structure(),
     'input_conditions': default_data.start_conditions(),
     'input_values': default_data.start_values(),
     'input_weights': default_data.start_weights()}
@@ -22,7 +21,6 @@ HAVE_GENERATED_CHARACTER = False
 def home():
     return render_template(
         'home.html',
-        slider_structure = startup_input_field_details['weight_structure'],
         field_conditions = startup_input_field_details['input_conditions'],
         field_values = startup_input_field_details['input_values'],
         slider_values = startup_input_field_details['input_weights'],
@@ -52,7 +50,6 @@ def result():
 
     rendered_vampire = render_template(
         'home.html',
-        slider_structure = startup_input_field_details['weight_structure'],
         field_conditions = resutrctured_conditions,
         field_values = restructured_values,
         slider_values = restructured_weights,
