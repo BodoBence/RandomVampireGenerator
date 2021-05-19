@@ -69,91 +69,22 @@ li a:hover {
 
 /* Generator Inputs */
 
-.cell_left, .cell_middle, .cell_right {
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    background-color: var(--grey);
-    border-style: outset;
-    border-width: 1px;
-    border-color: var(--bg);
-    border-radius: var(--corner_angle);
-    border-collapse: collapse;
+.input_container_id {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: auto auto;
+    padding: 10px;
     margin: 10px;
 }
 
-.cell_left {
-    border-right-width: 0px;
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%;
-    border-collapse: collapse;
+.div_input_dropdown, .div_input_type_in, .div_input_slider  {
+    max-width: 600px;
 }
 
-.cell_right {
-    border-left-width: 0px;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
-    border-collapse: collapse;
-}
-
-.cell_middle {
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-collapse: collapse;
-
-}
-
-.cell_left p {
-    margin-left: 5px;
-}
-
-.row_input {
-    height: 100px;
-    padding: 10px;
-}
-
-.cell_button {
-    vertical-align: top;
-    font-weight: normal;
-    text-align: left;
-    hyphens: auto;
-    display: table-cell;
-    border-style: none;
-}
-
-.selection_container {
-    display: inline-block;
-    border-color: var(--grey);
-    border-style: solid;
-    border-width: 2px;
-}
-
-select {
-    width: 140px;
-    border: 0px;
-    background-color: var(--grey);
-    vertical-align: baseline;
-}
-        
-select:hover{
-    background-color: var(--fg);
-    color: var(--white);
-    border: var(--fg);
-    cursor: pointer;
-}
-
-input {
-    width: 90%;
-    height: 24px;
-    background-color: var(--bg);
-    color: var(--fg);
-}
-
-.something {
-    padding: 30px;
-    background-color: var(--bg);
+.div_input_dropdown label, .div_input_type_in label, .div_input_slider label {
+    min-width: 300px;
+    display: inline;
 }
 
 .changable_visibility {

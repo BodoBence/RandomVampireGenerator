@@ -5,20 +5,12 @@ let root_url = location.pathname;
 // Functinoality spereation for the different pages
 
 if (root_url == "/" || current_location === "result"){
-    let button_complex_sliders = document.getElementById("button_complex_sliders_visibility");
     let button_input_container = document.getElementById("button_input_contianer_visibility");
-    // console.log(button_complex_sliders);
     // console.log(button_input_container);
-
-    button_complex_sliders.addEventListener("click", e => {
-        console.log("inside the complex sliders event listener");
-        // console.log(button_complex_sliders);
-        var reference = button_complex_sliders.getAttribute("data-toggle-reference")
-        // console.log(reference);
-        toggle_visibility(document.getElementById(reference))
-        e.stopPropagation()
-    });
     
+    create_global_event_listener("input", "selection_driver", toggle_input_field, false)
+    create_global_event_listener("selectionchange", selection_based_sync,  false)
+
     button_input_container.addEventListener("click", e => {
         console.log("inside the input container event listener")
         // console.log(button_input_container);
@@ -72,7 +64,7 @@ function create_global_event_listener(type, selector, callback, use_name){
 }
 
 function toggle_visibility(element_in_focus){
-    console.log("inside toggle visibility function")
+    // console.log("inside toggle visibility function")
     if (element_in_focus.style.visibility === "collapse") {
         element_in_focus.style.visibility = "visible";
         console.log("visibility changed to visible")
@@ -83,6 +75,20 @@ function toggle_visibility(element_in_focus){
 }
 
 // Functions for the Input sliders (generator_inputs.html)
+
+function toggle_input_field(current_driver){
+    // console.log("triggered")
+    referred_element_id = current_driver.getAttribute("data-driver-reference")
+    referred_element = document.getElementById(referred_element_id)
+    referred_element.value = "Manual"
+}
+
+function selection_based_sync(current_selector, focused_value, conencted_field, default_value){
+    if (current_selector.value == focused_value){
+        conencted_field.value = default_value
+    }
+
+}
 
 function load_default_slider_values(){
     document.getElementsByName("Attributes")[0].value="{{ default_input_weights['Attributes'] }}";
@@ -96,22 +102,6 @@ function load_default_slider_values(){
     document.getElementsByName("Mental_Skills")[0].value="{{ default_input_weights['Mental_Skills'] }}";
     document.getElementsByName("Clan_Disciplines")[0].value="{{ default_input_weights['Clan_Disciplines'] }}";
     document.getElementsByName("Non-Clan_Disciplines")[0].value="{{ default_input_weights['Non-Clan_Disciplines'] }}";
-}
-
-function drive_complex_ranges(currnet_slider){
-    // console.log("hi on change");
-
-    var new_value = currnet_slider.value;
-    // console.log(new_value);
-
-    var modifiend_slider_name_1 = currnet_slider.getAttribute("data-referenced-name-1");
-    var modifiend_slider_name_2 = currnet_slider.getAttribute("data-referenced-name-2");
-    
-    subject_1 = document.getElementsByName(modifiend_slider_name_1)[0];
-    subject_2 = document.getElementsByName(modifiend_slider_name_2)[0];
-
-    subject_1.value = new_value;
-    subject_2.value = new_value;
 }
 
 function toggle_visibility_skills(button_id) {
