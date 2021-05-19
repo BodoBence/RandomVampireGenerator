@@ -131,18 +131,21 @@ li a:hover {
     
 }
 
+/* Generated Character */
 
-
-
+.table_character {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin: 10px;
+    padding: 10px;
+    max-width: 1000px;
+}
 
 .changable_visibility {
     visibility: visible;
 }
 
-.table_home {
-    margin-left: auto;
-    margin-right: auto;
-}
 
 tr.slider_row {
     height: 40px;
