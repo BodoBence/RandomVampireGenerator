@@ -2,9 +2,12 @@
 <html lang="en">
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
-        {% include "navigation.html" %}
     </head>
     <body>
+        <header>
+            {% include "navigation.html" %}
+        </header>
+        
         <table class="table_main">
             <div>
                 <tr>

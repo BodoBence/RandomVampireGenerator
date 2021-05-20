@@ -3,9 +3,11 @@
     <meta charset="UTF-8">
     <head>
         <link type="text/css" media="all" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
-        {% include "navigation.html" %}
     </head>
     <body>
+        <header>
+            {% include "navigation.html" %}
+        </header>
         <table class="table_main">
             </tr>
             <tbody class="encounter">
