@@ -5,9 +5,13 @@
         <link type="text/css" media="all" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
     </head>
     <body>
+
         <header>
             {% include "navigation.html" %}
         </header>
+
+        {% include "background.html" %}
+        
         <table class="table_main">
             </tr>
             <tbody class="encounter">
