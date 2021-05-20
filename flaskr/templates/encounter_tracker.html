@@ -2,7 +2,9 @@
 <html lang="en">
     <meta charset="UTF-8">
     <head>
-        <link type="text/css" media="all" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
     </head>
     <body>
 
@@ -11,7 +13,7 @@
         </header>
 
         {% include "background.html" %}
-        
+
         <table class="table_main">
             </tr>
             <tbody class="encounter">

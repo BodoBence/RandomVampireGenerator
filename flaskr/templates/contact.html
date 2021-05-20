@@ -2,12 +2,16 @@
 <html lang="en">
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
     </head>
 
     <body>
         <header>
             {% include "navigation.html" %}
         </header>
+
+        {% include "background.html" %}
         
         <table class="table_main">
             <div>
