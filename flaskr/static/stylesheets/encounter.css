@@ -1,0 +1,38 @@
+
+.tracker_container {
+    height: 12px;
+    width: 100%;
+    border: none;
+}
+
+.tracker {
+    height: 20px;   
+    width: 20px;
+    background-color: var(--bg);
+    display: inline-block;
+    border-color: var(--white);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.tracker:hover {
+    background-color: var(--fg);
+    cursor: pointer;
+}
+
+.tracker_row {
+    height: 80px;
+}
+
+.encounter {
+    background-color: var(--grey);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input_encounter_name {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--fg);
+}
