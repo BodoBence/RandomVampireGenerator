@@ -5,19 +5,19 @@
     margin: auto;
     position: fixed;
     top: 0px;
-    width: 100%;
     overflow: hidden;
-    background-color: var(--grey);
+    width: 100%;
 }
 
 .title_container div {
     margin: auto;
+    margin-top: 10px;
     justify-content: center;
 }
 
 .title_container h1 {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 0px;
 }
 .title_container p {
@@ -27,37 +27,33 @@
 }
 
 /* Navigation Element */
-/* Navigation Contianer */
 
 .div_navigation_container {
     margin: auto;
 }
 
-ul {
-    margin: auto;
+
+nav ul {
+    display: inline-block;
     list-style-type: none;
-    overflow: scroll;
-    width: 800px;
-}
-
-ul li {
-    float: left;
-}
-
-ul a {
-    display: block;
-    color: white;
+    margin: auto;
+    padding: 0;
     text-align: center;
-    font-size: 12px;
-    padding: 24px 8px;
+    width: 100%;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 4px;
+}
+
+nav ul li a {
     text-decoration: none;
+    color: var(--white);
+    font-weight: normal;
 }
 
-.top_row {
-    height: var(--nav_height)
-}
 
-li a:hover {
-    background-color: var(--fg);
+nav ul li a:hover {
+    color: var(--fg);
 }
-
