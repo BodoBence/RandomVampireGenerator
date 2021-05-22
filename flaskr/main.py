@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import pprint
 
 import uuid
 
@@ -32,6 +33,9 @@ def result():
     HAVE_GENERATED_CHARACTER = True
 
     gathered_input = request.form
+
+    pprint.pprint(gathered_input)
+
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
     generated_character = generate(
         input_values=restructured_values,

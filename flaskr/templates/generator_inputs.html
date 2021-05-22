@@ -31,7 +31,7 @@
                 <p>Sex:</p>
             </div>
             <div class="div_select">
-                <select list="sexes" name="manual_sex" id="selection_sex">
+                <select class="dropdown_selectors" list="sexes" name="manual_sex" id="selection_sex">
                     <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                     <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
@@ -45,7 +45,7 @@
                 <p>Generation:</p>
             </div>
             <div class="div_select">
-                <select list="gens" name="manual_generation" style="width: 150px;" id="selection_generation">
+                <select class="dropdown_selectors" list="gens" name="manual_generation" style="width: 150px;" id="selection_generation">
                     <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value='1'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==1 %} selected="selected" {% endif %}> 1 </option>
                     <option value='2'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==2 %} selected="selected" {% endif %}> 2 </option>
@@ -73,7 +73,7 @@
                 <p>Age:</p>
             </div>
             <div class="div_select">
-                <select list="ages" name="manual_age_selection" id="selection_age">
+                <select class="dropdown_selectors" list="ages" name="manual_age_selection" id="selection_age">
                     <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                   </select>
@@ -89,7 +89,7 @@
                 <p>Name:</p>
             </div>
             <div class="div_select">
-                <select list="names" name="manual_name_selection" id="selection_name">
+                <select class="dropdown_selectors" list="names" name="manual_name_selection" id="selection_name">
                     <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                   </select>
