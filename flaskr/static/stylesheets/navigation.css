@@ -1,0 +1,63 @@
+
+/* Page Title */
+
+.title_container {
+    margin: auto;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--grey);
+}
+
+.title_container div {
+    margin: auto;
+    justify-content: center;
+}
+
+.title_container h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+.title_container p {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Navigation Element */
+/* Navigation Contianer */
+
+.div_navigation_container {
+    margin: auto;
+}
+
+ul {
+    margin: auto;
+    list-style-type: none;
+    overflow: scroll;
+    width: 800px;
+}
+
+ul li {
+    float: left;
+}
+
+ul a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 24px 8px;
+    text-decoration: none;
+}
+
+.top_row {
+    height: var(--nav_height)
+}
+
+li a:hover {
+    background-color: var(--fg);
+}
+

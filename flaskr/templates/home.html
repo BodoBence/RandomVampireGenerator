@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/inputs.css') }}>
@@ -12,14 +13,14 @@
         <header>
             {% include "navigation.html" %}
         </header>
-        {% include "background.html" %}
+        <!-- {% include "background.html" %} -->
         {% include "generator_inputs.html" %}
         {% if have_generated_character %}
             {% include "generated_character.html" %}
         {% endif %}
     </body>
     <script src={{ url_for('static', filename='website_functions.js') }}></script>
-    <footer>
+    <!-- <footer>
         {% include "footer.html" %}
-    </footer>
+    </footer> -->
 </html>
