@@ -8,7 +8,8 @@
     --nav_height: 160px;
     --nav_left_margin: 20px;
     --corner_angle: 10px;
-    --input_cell_height: 30px;
+    --input_height: 30px;
+    --padding_distance: 10px;
     font-family: Georgia, serif;
 }
 
@@ -66,7 +67,7 @@ tr.slider_row {
 
 .button_general:hover {
     background-color: var(--fg);
-    color: var(--white);
+    color: var(--bg);
 }
 
 .button_encounter {
@@ -82,7 +83,7 @@ tr.slider_row {
 
 .button_encounter:hover {
     background-color: var(--fg);
-    color: var(--white);
+    color: var(--bg);
 }
 
 .button_discipline_skills {
