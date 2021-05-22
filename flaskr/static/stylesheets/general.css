@@ -3,8 +3,9 @@
 :root {
     --bg: rgb(22, 22, 22);
     --fg: rgb(250, 220, 154);
-    --grey: rgb(221, 217, 208);
+    --grey: rgb(244, 213, 197);
     --white: rgb(238, 238, 238);
+    --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
     --nav_height: 160px;
     --nav_left_margin: 20px;
     --corner_angle: 10px;
@@ -99,7 +100,11 @@ tr.slider_row {
     height: 30px;
 }
 
-
 body {
-    background-color: rgb(42, 42, 42);
+    background-color: var(--grey);
+    background-image: url("/static/svg/city_level_1.svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom -10% right 50%;
+    background-size: 80%;
 }

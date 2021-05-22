@@ -5,17 +5,17 @@
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
+        <!-- <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}> -->
+        <!-- <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}> -->
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/inputs.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/character.css') }}>
     </head>
 
     <body>
+        <!-- {% include "background.html" %} -->
         
         {% include "navigation.html" %}
 
-        <!-- {% include "background.html" %} -->
         {% include "generator_inputs.html" %}
 
         {% if have_generated_character %}
@@ -23,9 +23,10 @@
         {% endif %}
 
     </body>
-    
+
     <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
     <script src={{ url_for('static', filename='js_scripts/generator.js') }}></script>
+    <script src={{ url_for('static', filename='js_scripts/character.js') }}></script>
     <!-- <footer>
         {% include "footer.html" %}
     </footer> -->

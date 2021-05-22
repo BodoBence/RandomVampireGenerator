@@ -7,6 +7,7 @@
     top: 0px;
     overflow: hidden;
     width: 100%;
+    background-color: var(--grey);
 }
 
 .title_container div {
@@ -56,8 +57,4 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--fg);
-}
-
-.div_post_nav {
-    height: ;
 }
