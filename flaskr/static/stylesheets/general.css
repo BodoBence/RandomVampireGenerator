@@ -6,6 +6,7 @@
     --grey: rgb(244, 213, 197);
     --white: rgb(238, 238, 238);
     --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
+    --box_shadow_color: rgba(0, 0, 0, 0.211);
     --nav_height: 160px;
     --nav_left_margin: 20px;
     --corner_angle: 10px;
@@ -55,15 +56,24 @@ tr.slider_row {
 
 .button_general {
     background-color: var(--bg);
-    border: none;
     color: var(--fg);
+
     padding: 10px 10px;
+    border: none;
+
     text-align: center;
     text-decoration: none;
+
     display: inline-block;
     font-size: 10px;
     cursor: pointer;
     width: 100%;
+
+    -webkit-transition: all 1s ease;  
+    -moz-transition: all 1s ease;  
+    -o-transition: all 1s ease;  
+    -ms-transition: all 1s ease;  
+    transition: all 1s ease;
 }
 
 .button_general:hover {
