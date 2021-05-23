@@ -1,21 +1,32 @@
-let button_input_container = document.getElementById("button_input_contianer_visibility");
-// console.log(button_input_container);
+console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
+
 create_global_event_listener("input", "selection_driver", toggle_input_field, false)
 create_global_event_listener("selectionchange", selection_based_sync,  false)
-
-button_input_container.addEventListener("click", e => {
-    console.log("inside the input container event listener")
-    // console.log(button_input_container);
-    var reference = button_input_container.getAttribute("data-toggle-reference")
-    // console.log(reference);
-    toggle_visibility(document.getElementById(reference))
-    e.stopPropagation()
-});
-
+create_global_event_listener("click", "button_general", trigger_animation, false)
 
 // Functions for the Input sliders (generator_inputs.html)
+
+function trigger_animation(current_trigger){
+    
+    target_id = current_trigger.getAttribute("data-target-id")
+    target_class_1 = current_trigger.getAttribute("data-target-class-1")
+    target_class_2 = current_trigger.getAttribute("data-target-class-2")
+ 
+    target_element = document.getElementById(target_id)
+    current_class = target_element.className
+
+    // console.log("initial class")
+    // console.log(current_class)
+
+    target_element.classList.toggle(target_class_2)
+    
+    // console.log("final class")
+    // console.log( target_element.getAttribute("class"))
+}
+    
+
 
 function toggle_input_field(current_driver){
     // console.log("triggered")

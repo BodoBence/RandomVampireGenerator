@@ -1,4 +1,4 @@
-
+console.log("first line of general.js")
 // Global functions
 
 function get_last_url_segment(input_url){
@@ -8,9 +8,8 @@ function get_last_url_segment(input_url){
 }
 
 function create_global_event_listener(type, selector, callback, use_name){
+    console.log("creating global event listerner")
     document.addEventListener(type, e => {
-        console.log("creating global event listerner")
-
         if (use_name == true) {
             if (e.target.getAttribute('name') == selector){
                 callback(e.target)
