@@ -90,10 +90,6 @@ def collection():
     return render_template('collection.html',
         have_generated_character=HAVE_GENERATED_CHARACTER,)
 
-@app.route('/parallax', )
-def parallax():
-    return render_template('parallax.html')
-
 def store_generated_character(details, attributes, skills, disciplines, max_level):
     # unique_key = str(uuid.uuid1())
     pass

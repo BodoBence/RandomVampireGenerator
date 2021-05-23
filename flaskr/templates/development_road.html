@@ -2,15 +2,12 @@
 <html lang="en">
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
     </head>
     <body>
-        <header>
-            {% include "navigation.html" %}
-        </header>
-        
-        {% include "background.html" %}
+
+        {% include "navigation.html" %}
 
         <table class="table_main">
             <div>
@@ -95,8 +92,8 @@
                 </tr>
             </div>
         </table>
-    </body>
-    <footer>
+
         {% include "footer.html" %}
-    </footer>
+
+    </body>
 </html>

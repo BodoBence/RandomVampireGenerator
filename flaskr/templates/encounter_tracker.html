@@ -5,16 +5,10 @@
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/encounter.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
     </head>
     <body>
 
-        <header>
-            {% include "navigation.html" %}
-        </header>
-
-        {% include "background.html" %}
+        {% include "navigation.html" %}
 
         <table class="table_main">
             </tr>
@@ -66,9 +60,10 @@
                 </tr>
             </tbody>
         </table>
-    </body>
-    <script src={{ url_for('static', filename='website_functions.js') }}></script>
-    <footer>
+
         {% include "footer.html" %}
-    </footer>
+
+    </body>
+    <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
+    <script src={{ url_for('static', filename='js_scripts/encounter.js') }}></script>
 </html>

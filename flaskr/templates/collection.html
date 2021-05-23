@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/default_style.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/background.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
     </head>
 
     <body>
-        <header>
-            {% include "navigation.html" %}
-        </header>
+
+        {% include "navigation.html" %}
 
         <div style="width: 800px;" style="margin-top: 300px;" style="padding: 30px;">
             <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores vitae tempora quae consectetur aut enim, eaque dolores, maiores assumenda delectus officiis qui porro? Voluptatum dolor magni qui eius maxime facilis.</p>
@@ -18,8 +16,6 @@
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi mollitia, rem ducimus alias totam ipsum? Id nulla, placeat repellat harum aliquid debitis quo tempora quaerat porro magni et sequi ut.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quo in id asperiores, hic ea, beatae et quisquam harum cumque expedita delectus possimus nesciunt laborum, vel tenetur atque porro ullam.</p>
         </div>
-        
-        {% include "background.html" %}
 
         <table class="table_main">
             <tr>
@@ -54,8 +50,8 @@
                 {% endif %}
             </tr>
         </table>
-    </body>
-    <footer>
+
         {% include "footer.html" %}
-    </footer>
+
+    </body>
 </html>
