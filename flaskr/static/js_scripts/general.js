@@ -34,3 +34,19 @@ function toggle_visibility(element_in_focus){
         console.log("visibility changed to collapse")
     }
 }
+
+function toggle_class_based_animation(target_element, target_class, id_based){
+    // console.log(id_based)
+    if (id_based == true) {
+        my_target = document.getElementById(target_element)
+        my_target.classList.toggle(target_class)
+    }
+
+    if (id_based == false) {
+        my_targets = document.getElementsByClassName(target_element)
+        
+        for (let index = 0; index < my_targets.length; index++) {
+            my_targets[index].classList.toggle(target_class)
+        }
+    }
+}

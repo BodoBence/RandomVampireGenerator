@@ -6,7 +6,7 @@
                     <p>Clan:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="clans" name="manual_clan" id="selection_clan">
+                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="clans" name="manual_clan" id="selection_clan">
                         <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value='Banu_Haqim' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == 'Banu_Haqim' %} selected="selected" {% endif %}> Banu_Haqim </option>
                         <option value='Brujah' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Brujah' %} selected="selected" {% endif %}> Brujah </option>
@@ -26,14 +26,14 @@
                 </div>
             </div>
     
-            <div class="div_input_slider">
+            <div class="div_input_slider ">
                 <div>
                     <p>Physical</p>
                 </div>
                 <div class="div_slider">
                     <input
                     id="slider_physical"
-                    class="slider"
+                    class="slider input_opacity_visible input_opacity_identifier"
                     type="range"
                     name="simplified_physical"
                     min="0" 
@@ -63,7 +63,7 @@
                 <div class="div_slider">
                     <input
                     id="slider_discipline"
-                    class="slider"
+                    class="slider input_opacity_visible input_opacity_identifier"
                     type="range"
                     name="simplified_discipline" 
                     min="0" 
@@ -78,7 +78,7 @@
                     <p>Generation:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="gens" name="manual_generation" id="selection_generation">
+                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="gens" name="manual_generation" id="selection_generation">
                         <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value='1'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==1 %} selected="selected" {% endif %}> 1 </option>
                         <option value='2'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==2 %} selected="selected" {% endif %}> 2 </option>
@@ -108,7 +108,7 @@
                 <div class="div_slider">
                     <input
                     id="slider_mental"
-                    class="slider"
+                    class="slider input_opacity_visible input_opacity_identifier"
                     type="range"
                     name="simplified_mental" 
                     min="0" 
@@ -123,14 +123,14 @@
                     <p>Age:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="ages" name="manual_age_selection" id="selection_age">
+                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="ages" name="manual_age_selection" id="selection_age">
                         <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                       </select>
                     <span class="custom_arrow"></span>
                 </div>
                 <div class="div_type_in">
-                    <input type="number" min=1 max=3000 name="manual_age" value={{ field_values['manual_age'] }} class="selection_driver" data-driver-reference="selection_age">
+                    <input type="number" min=1 max=3000 name="manual_age" value={{ field_values['manual_age'] }} class="selection_driver input_opacity_visible input_opacity_identifier" data-driver-reference="selection_age">
                 </div>            
             </div>
     
@@ -141,7 +141,7 @@
                 <div class="div_slider">
                     <input
                     id="slider_social"
-                    class="slider"
+                    class="slider input_opacity_visible input_opacity_identifier"
                     type="range"
                     name="simplified_social"
                     min="0" 
@@ -155,14 +155,14 @@
                     <p>Name:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="names" name="manual_name_selection" id="selection_name">
+                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="names" name="manual_name_selection" id="selection_name">
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
                     <span class="custom_arrow"></span>
                 </div>
                 <div class="div_select">
-                    <input type="text" name="manual_name" value={{ field_values['manual_name'] }}  class="selection_driver" data-driver-reference="selection_name"> 
+                    <input type="text" name="manual_name" value={{ field_values['manual_name'] }}  class="selection_driver input_opacity_visible input_opacity_identifier" data-driver-reference="selection_name"> 
                 </div>
             </div>
 
@@ -179,9 +179,10 @@
             <input
                 class="button_general"
                 id="button_input_contianer_visibility"
-                data-target-id="all_inputs_id"
-                data-target-class-1="transform_1"
-                data-target-class-2="transform_1-active"
+                data-target-id-1="all_inputs_id"
+                data-target-class-1="transform_1-active"
+                data-target-class-2="input_opacity_identifier"
+                data-target-class-3="input_opacity_hidden"
                 type="button"
                 value="Hide/Show inputs">
         </div>

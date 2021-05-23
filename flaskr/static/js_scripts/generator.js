@@ -4,28 +4,23 @@ console.log("first line of generator.js")
 
 create_global_event_listener("input", "selection_driver", toggle_input_field, false)
 create_global_event_listener("selectionchange", selection_based_sync,  false)
-create_global_event_listener("click", "button_general", trigger_animation, false)
+create_global_event_listener("click", "button_general", toggle_generator_inputs, false)
 
 // Functions for the Input sliders (generator_inputs.html)
 
-function trigger_animation(current_trigger){
-    
-    target_id = current_trigger.getAttribute("data-target-id")
+function toggle_generator_inputs(current_trigger){
+    target_id_1 = current_trigger.getAttribute("data-target-id-1")
     target_class_1 = current_trigger.getAttribute("data-target-class-1")
+
+    toggle_class_based_animation(target_id_1, target_class_1, true)    
+
     target_class_2 = current_trigger.getAttribute("data-target-class-2")
- 
-    target_element = document.getElementById(target_id)
-    current_class = target_element.className
-
-    // console.log("initial class")
-    // console.log(current_class)
-
-    target_element.classList.toggle(target_class_2)
+    target_class_3 = current_trigger.getAttribute("data-target-class-3")
     
-    // console.log("final class")
-    // console.log( target_element.getAttribute("class"))
+    console.log("something")
+    console.log(target_class_2)
+    toggle_class_based_animation(target_class_2, target_class_3, false)
 }
-    
 
 
 function toggle_input_field(current_driver){

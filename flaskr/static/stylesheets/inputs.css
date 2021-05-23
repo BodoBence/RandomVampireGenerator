@@ -7,7 +7,7 @@
     padding: 5px;
     width: 80%;
 
-    margin-top: 100px;
+    margin-top: 130px;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -138,8 +138,7 @@ input:focus {
     transform: rotate(45deg);
 }
 
-
-.transform_1 {
+.transform_1, .input_opacity_visible {
     -webkit-transition: all 1s ease;  
     -moz-transition: all 1s ease;  
     -o-transition: all 1s ease;  
@@ -148,5 +147,12 @@ input:focus {
 }
 
 .transform_1-active {
-    margin-top: -270px;
+    margin-top: -260px;
+}
+
+
+.input_opacity_hidden {
+    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
 }
