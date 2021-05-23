@@ -1,10 +1,10 @@
 
 create_checkboxes()
 // create_global_event_listener("click", "tracker", toggle_filled, false)
-// create_global_event_listener("input", "health_meter", update_value, true)
-// create_global_event_listener("input", "willpower_meter", update_value, true)
-// create_global_event_listener("click", "add", add_encounter, true)
-// create_global_event_listener("click", "remove", remove_encounter, true)
+create_global_event_listener("input", "health_meter", update_value, true)
+create_global_event_listener("input", "willpower_meter", update_value, true)
+create_global_event_listener("click", "add", add_encounter, true)
+create_global_event_listener("click", "remove", remove_encounter, true)
 
 // Connected to checkboxes
 
@@ -69,7 +69,8 @@ function toggle_filled(element_in_focus){
 // Connected to encounters
 
 function add_encounter(){
-    encounters = document.getElementsByClassName("encounter")
+    console.log("adding encounter")
+    encounters = document.getElementsByClassName("div_encounter_card")
     number_of_encounters = encounters.length
 
     if (number_of_encounters < 10){
@@ -80,10 +81,12 @@ function add_encounter(){
 }
 
 function remove_encounter(current_button){
-    number_of_encounters = document.getElementsByClassName("encounter").length
-    
+    number_of_encounters = document.getElementsByClassName("div_encounter_card").length
+    console.log(number_of_encounters)
+
     if (number_of_encounters > 1){
         current_encounter = current_button.parentElement.parentElement
+        console.log(current_encounter)
         current_encounter.remove()
     }
 }

@@ -37,69 +37,18 @@
                     <div class="button_encounter" name="add">
                         <p>Add Encounter</p>
                     </div>
-                    <div class="div_encounter_button button_encounter" name="remove">
+                    <div class="button_encounter" name="remove">
                         <p>Remove Encounter!</p>
                     </div>
                 </div>
 
             </div>
-
         </div>
-<!-- 
-        <table class="table_main">
-            </tr>
-            <tbody class="encounter">
-                <tr>
-                    <td>
-                        <input type="text" class="input_encounter_name" value="My powerful Enemy" name="encounter_name">
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td class="button_encounter" name="remove">
-                        Remove Encounter!
-                    </td>
-                </tr>
-                <tr class="tracker_row">
-                    <td>  
-                        Health
-                    </td>
-                    <td>
-                        <input type="number" name="health_meter" min="1" max="20" value="10">
-                    </td>
-                    <td colspan="2">
-                    <table class="tracker_container">
-                        <td class="tracker" style="background-color: var(--grey);"></td>
-                    </table>
-                    </td>
-                </tr>
-                <tr class="tracker_row">
-                    <td>
-                        Willpower
-                    </td>
-                    <td>
-                        <input type="number" name="willpower_meter" min="1" max="20" value="10">
-                    </td>
-                    <td colspan="2">
-                    <table class="tracker_container">
-                        <td class="tracker" style="background-color: var(--grey);">
-                        </td>
-                    </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_encounter" name="add" colspan="4">
-                        Add Encounter!
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table> -->
 
-        {% include "footer.html" %}
+
 
     </body>
+            {% include "footer.html" %}
     <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
     <script src={{ url_for('static', filename='js_scripts/encounters.js') }}></script>
 </html>

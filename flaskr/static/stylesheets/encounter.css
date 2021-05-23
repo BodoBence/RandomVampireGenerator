@@ -18,22 +18,23 @@
 
 .div_encounter_row_1, .div_encounter_row_2, .div_encounter_row_3 {
     display: grid;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .div_encounter_row_1 {
     grid-template-columns: auto;
-
 }
 
 .div_encounter_row_2 {
     grid-template-columns: auto auto;
-    
 }
 
 .div_encounter_row_3 {
     grid-template-columns: auto auto auto;
-    
+}
+
+.div_encounter_row_3 input {
+    height: 20px;
 }
 
 
