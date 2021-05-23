@@ -1,9 +1,41 @@
 
-.tracker_container {
-    height: 12px;
-    width: 100%;
-    border: none;
+.div_encounter_card {
+    margin-top: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+
+    padding: 5%;
+
+    border-color: var(--white);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 30px;
+
+    display: grid;
+    grid-template-rows: 10%;
 }
+
+.div_encounter_row_1, .div_encounter_row_2, .div_encounter_row_3 {
+    display: grid;
+    margin-bottom: 50px;
+}
+
+.div_encounter_row_1 {
+    grid-template-columns: auto;
+
+}
+
+.div_encounter_row_2 {
+    grid-template-columns: auto auto;
+    
+}
+
+.div_encounter_row_3 {
+    grid-template-columns: auto auto auto;
+    
+}
+
 
 .tracker {
     height: 20px;   
