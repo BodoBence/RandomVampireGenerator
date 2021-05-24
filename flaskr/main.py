@@ -1,9 +1,9 @@
 # Imports
 from flask import Flask, render_template, request
 import pprint
-import sqlite3
 import uuid
 import os
+import json
 
 from random_vampire_generator import generate
 import default_data  
@@ -14,6 +14,7 @@ import server_functions
 app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
 
+
 # Startup variables
 
 startup_input_field_details = {
@@ -22,7 +23,10 @@ startup_input_field_details = {
     'input_weights': default_data.start_weights()}
 
 HAVE_GENERATED_CHARACTER = False
-
+SCRIPT_DIR = os.path.dirname(__file__)
+CHARACTER_INDEX = os.path.join(SCRIPT_DIR, 'character_index.json')
+STORED_CHARACTERS_DIR = os.path.join(SCRIPT_DIR, 'generated_characters')
+MAX_STORED_CHARACTERS = 4
 
 # Functions for the website pages
 
@@ -36,8 +40,6 @@ def home():
         default_input_weights=startup_input_field_details['input_weights'],
         have_generated_character=HAVE_GENERATED_CHARACTER)
 
-
-
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     HAVE_GENERATED_CHARACTER = True
@@ -45,12 +47,13 @@ def result():
     gathered_input = request.form
 
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
+    
     generated_character = generate(
         input_values=restructured_values,
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
 
-    pprint.pprint(generated_character)
+    store_generated_character(generated_character)
 
     # overwrite the input field and slider valies
     startup_input_field_details['input_conditions'] = resutrctured_conditions
@@ -59,8 +62,6 @@ def result():
 
     details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
-
-    store_generated_character(details, attributes, skills, disciplines, max_level)
 
     rendered_vampire = render_template(
         'home.html',
@@ -79,21 +80,17 @@ def result():
 
     return rendered_vampire
 
-
 @app.route('/contact', )
 def contact():
     return render_template('contact.html')
-
 
 @app.route('/development_road', )
 def development_road():
     return render_template('development_road.html')
 
-
 @app.route('/calculation_maths', )
 def calculation_maths():
     return render_template('calculation_maths.html')
-
 
 @app.route('/encounter_tracker',  methods = ['POST', 'GET'])
 def encounter_tracker():
@@ -106,54 +103,33 @@ def collection():
         have_generated_character=HAVE_GENERATED_CHARACTER,)
 
 
-def store_generated_character(details, attributes, skills, disciplines, max_level):
-    # unique_key = str(uuid.uuid1())
-    pass
+def store_generated_character(character):
+    new_character_file_name = f"{character['Character_Details']['Basic_Information']['Name']}.json"
+    new_character_path = os.path.join(SCRIPT_DIR, 'generated_characters', new_character_file_name)
 
-# Database functions
-
-def data_base_check(input_file_path):
-    if os.path.isfile(input_file_path):
-        return True
-    else:
-        return False
-
-
-def create_db(table_name):
-    conn = sqlite3.connect(DB_PATH)
-    print("Opened database successfully")
-
-    conn.execute(f'CREATE TABLE {table_name} (name TEXT, data1 TEXT)')
-    print("Table created successfully")
-    conn.close()
-
-
-def add_to_db(table_name, target_db, name_to_add, data1_to_add):
-    with sqlite3.connect(target_db) as con:
-        cur = con.cursor()
-        sql_string = f"INSERT INTO {table_name} VALUES ('{name_to_add}', '{data1_to_add}')"
-        print(sql_string)
-        cur.execute(sql_string)
-        con.commit()
+    # write freshly generated character to a json file    
+    with open(new_character_path, 'w') as json_file:
+        json.dump(character, json_file, indent=4, sort_keys=True)
     
+    # Create index for the gerneated chracter's file
+    with open(CHARACTER_INDEX) as index:
+        if os.stat(CHARACTER_INDEX).st_size == 0:
+            current_index = [new_character_file_name]
+        else:
+            current_index = json.load(index)
 
-# Actual databse cration and handling
+            if len(current_index) > MAX_STORED_CHARACTERS:
+                removed_character = current_index.pop(0)
+                os.remove(os.path.join(STORED_CHARACTERS_DIR, removed_character))
 
-SCRIPT_DIR = os.path.dirname(__file__)
-DATABASE_NAME = 'database.db'
-DB_PATH = os.path.join(SCRIPT_DIR, DATABASE_NAME)
-TABLE_NAME = 'vampire_x'
+            current_index.append(new_character_file_name)
 
-if data_base_check(DB_PATH) == False:
-    create_db(TABLE_NAME)
-    pass
+    # Save the new index file
+    with open(CHARACTER_INDEX, 'w') as outf:
+        json.dump(current_index, outf, indent=4)
 
-if data_base_check(DB_PATH) == True:
-    add_to_db(
-        table_name=TABLE_NAME,
-        target_db=DB_PATH,
-        name_to_add=f'vampire {str(uuid.uuid1())}',
-        data1_to_add= 'is not hungry')
+
+
 
 # Run the app!  
 

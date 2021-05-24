@@ -1,0 +1,117 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 2,
+            "Resolve": 1,
+            "Wits": 3
+        },
+        "Physical_Attributes": {
+            "Dexterity": 4,
+            "Stamina": 3,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 3,
+            "Composure": 2,
+            "Manipulation": 4
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 68,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Sanguinary Cryptophagy: Vampires that suffer from this derangement tend to disregard the taste of normal vitae in exchange for more exclusive tastes. Some become addicted to Lupine blood, while others find themselves drawn to diablerize members of specific Clans or bloodlines. While the vampire can still consume regular blood, he will refuse to do so unless in Frenzy.[27]"
+            ],
+            "Generation": 8,
+            "Name": "Mike, Orville",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 6,
+            "Health": 6,
+            "Willpower": 3,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Potence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Soaring Leap": "The Kindred can leap higher and further."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Awe": "The vampire can add their Presence rating to their Persuasion and Performance checks"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 1,
+            "Finance": 0,
+            "Investigation": 1,
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 0,
+            "Science": 0,
+            "Technology": 1
+        },
+        "Physical_Skills": {
+            "Athletics": 0,
+            "Brawl": 0,
+            "Craft": 1,
+            "Drive": 2,
+            "Firearms": 1,
+            "Larceny": 0,
+            "Melee": 0,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 0,
+            "Insight": 0,
+            "Intimidation": 1,
+            "Leadership": 0,
+            "Performance": 0,
+            "Persuasion": 0,
+            "Streetwise": 0,
+            "Subterfuge": 0
+        }
+    }
+}
