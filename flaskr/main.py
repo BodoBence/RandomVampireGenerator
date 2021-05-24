@@ -97,10 +97,21 @@ def encounter_tracker():
     return render_template('encounter_tracker.html')
 
 
-@app.route('/collection', methods = ['POST', 'GET'])
-def collection():
+@app.route('/collection_start', methods = ['POST', 'GET'])
+def collection_start():
+    with open(CHARACTER_INDEX) as index:
+        current_characters = json.load(index)
+
     return render_template('collection.html',
-        have_generated_character=HAVE_GENERATED_CHARACTER,)
+        characters = current_characters,
+        have_generated_character=False)
+
+@app.route('/collection_chosen', methods = ['POST', 'GET'])
+def collection_chosen():
+    selected_character = request.form
+    print(selected_character)
+
+
 
 
 def store_generated_character(character):
@@ -127,8 +138,6 @@ def store_generated_character(character):
     # Save the new index file
     with open(CHARACTER_INDEX, 'w') as outf:
         json.dump(current_index, outf, indent=4)
-
-
 
 
 # Run the app!  

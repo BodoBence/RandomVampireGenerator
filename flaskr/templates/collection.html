@@ -3,55 +3,39 @@
     <head>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/collection.css') }}>
     </head>
 
     <body>
 
         {% include "navigation.html" %}
 
-        <div style="width: 800px;" style="margin-top: 300px;" style="padding: 30px;">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores vitae tempora quae consectetur aut enim, eaque dolores, maiores assumenda delectus officiis qui porro? Voluptatum dolor magni qui eius maxime facilis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque quasi a nostrum accusantium iure perspiciatis quo ab enim maiores ut, veniam beatae porro explicabo! Odit doloribus sapiente porro maxime ad.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita eius quibusdam nemo in explicabo doloribus nostrum aspernatur? Ab, minima vel, harum adipisci repellat fuga aut nostrum voluptates dicta sunt sit.</p>    
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi mollitia, rem ducimus alias totam ipsum? Id nulla, placeat repellat harum aliquid debitis quo tempora quaerat porro magni et sequi ut.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quo in id asperiores, hic ea, beatae et quisquam harum cumque expedita delectus possimus nesciunt laborum, vel tenetur atque porro ullam.</p>
-        </div>
+        <div class="collection_container">
+            <form action = "/collection" method='POST'>
+                <div class="div_select">
+                    <select name="generated_characters" id="collection_selector">
+                        {% for character in characters %}
+                           <option value="{{ character }}"> {{ character }} </option> 
+                        {% endfor %}
+                    </select>
 
-        <table class="table_main">
-            <tr>
-                <th>
-                    Collection
-                </th>
-            </tr>
-            <tr>
-                <form action = "/collection/showing" method='POST'>
-                    <td> Generated Vampires: </td>
-                    <td>
-                        <div class="custom-select">
-                            <select class="dropdown_selectors" list="generated_vampire_names" name="generated_character_selector">
-                                <datalist id="generated_vampire_names">
-                                    {% for character in characters %}
-                                        <option> {{ character }} </option>
-                                    {% endfor %}
-                                </datalist>
-                        </div>
-                    </td>
-                    <td colspan="2">
-                        <input
-                            class="button_general"
-                            type="submit"
-                            value="Show">
-                    </td>
-                </form>
-            </tr>
-            <tr>
+                    <input 
+                        class="button_general"
+                        type="submit"
+                        value="Show!">   
+                </div>
+            </form>
+
+            <div>
                 {% if have_generated_character %}
                     {% include "generated_character.html" %}
-                {% endif %}
-            </tr>
-        </table>
+                {% endif %} 
+            </div>
+        </div>
+  
 
-        {% include "footer.html" %}
+
+            {% include "footer.html" %}
 
     </body>
 </html>
