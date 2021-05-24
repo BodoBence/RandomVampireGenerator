@@ -1,15 +1,20 @@
+# Imports
 from flask import Flask, render_template, request
 import pprint
-
+import sqlite3
 import uuid
+import os
 
 from random_vampire_generator import generate
 import default_data  
 import server_functions
 
 
+# Creating flaks appp
 app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
+
+# Startup variables
 
 startup_input_field_details = {
     'input_conditions': default_data.start_conditions(),
@@ -17,6 +22,9 @@ startup_input_field_details = {
     'input_weights': default_data.start_weights()}
 
 HAVE_GENERATED_CHARACTER = False
+
+
+# Functions for the website pages
 
 @app.route('/', )
 def home():
@@ -27,6 +35,8 @@ def home():
         slider_values = startup_input_field_details['input_weights'],
         default_input_weights=startup_input_field_details['input_weights'],
         have_generated_character=HAVE_GENERATED_CHARACTER)
+
+
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
@@ -69,30 +79,75 @@ def result():
 
     return rendered_vampire
 
+
 @app.route('/contact', )
 def contact():
     return render_template('contact.html')
+
 
 @app.route('/development_road', )
 def development_road():
     return render_template('development_road.html')
 
+
 @app.route('/calculation_maths', )
 def calculation_maths():
     return render_template('calculation_maths.html')
 
+
 @app.route('/encounter_tracker',  methods = ['POST', 'GET'])
 def encounter_tracker():
     return render_template('encounter_tracker.html')
+
 
 @app.route('/collection', methods = ['POST', 'GET'])
 def collection():
     return render_template('collection.html',
         have_generated_character=HAVE_GENERATED_CHARACTER,)
 
+
 def store_generated_character(details, attributes, skills, disciplines, max_level):
     # unique_key = str(uuid.uuid1())
     pass
+
+# Database functions
+
+def data_base_check(input_file_path):
+    if os.path.isfile(input_file_path):
+        return True
+    else:
+        return False
+
+
+def create_db():
+    conn = sqlite3.connect(DB_PATH)
+    print("Opened database successfully")
+
+    conn.execute('CREATE TABLE vampires (name TEXT, data1 TEXT)')
+    print("Table created successfully")
+    conn.close()
+
+
+def add_to_db(target_db, name_to_add, data1_to_add):
+    with sqlite3.connect(target_db) as con:
+        cur = con.cursor()
+        cur.execute("INSERT INTO vampires (name, data1) VALUES (?,?)", (name_to_add, data1_to_add))
+        con.commit()
+    
+
+# Actual databse cration and handling
+
+SCRIPT_DIR = os.path.dirname(__file__)
+DB_PATH = os.path.join(SCRIPT_DIR, 'database.db')
+
+if data_base_check(DB_PATH) == False:
+    create_db()
+    pass
+
+if data_base_check(DB_PATH) == True:
+    add_to_db(DB_PATH, 'vampire 2', 'is not hungry')
+
+# Run the app!  
 
 if __name__ == '__main__':
     app.run(debug=True)
