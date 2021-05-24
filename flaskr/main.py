@@ -111,7 +111,32 @@ def collection_chosen():
     selected_character = request.form
     print(selected_character)
 
+    with open(CHARACTER_INDEX) as index:
+        current_characters = json.load(index)
 
+    stored_character_path = os.path.join(
+        STORED_CHARACTERS_DIR, 
+        selected_character['generated_characters'])
+
+    with open(stored_character_path) as character:
+        character_to_display = json.load(character)
+
+    print(stored_character_path)
+    print("hi")
+    print(selected_character)
+    
+    details = character_to_display['Character_Details']
+    attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(character_to_display)
+
+    return render_template(
+        'collection.html',
+        characters = current_characters,
+        have_generated_character=True, 
+        details = details, 
+        attributes = attributes, 
+        skills = skills, 
+        disciplines = disciplines,
+        max_level = max_level)
 
 
 def store_generated_character(character):

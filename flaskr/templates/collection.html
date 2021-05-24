@@ -4,6 +4,7 @@
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
         <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/collection.css') }}>
+        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/character.css') }}>
     </head>
 
     <body>
@@ -11,7 +12,7 @@
         {% include "navigation.html" %}
 
         <div class="collection_container">
-            <form action = "/collection" method='POST'>
+            <form action = "/collection_chosen" method='POST'>
                 <div class="div_select">
                     <select name="generated_characters" id="collection_selector">
                         {% for character in characters %}
@@ -38,4 +39,8 @@
             {% include "footer.html" %}
 
     </body>
+
+    <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
+    <script src={{ url_for('static', filename='js_scripts/character.js') }}></script>
+
 </html>
