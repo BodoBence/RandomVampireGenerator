@@ -1,635 +1,235 @@
-                        {% if row['col1'] != '' %}
-                            <button
-                                class="button"
-                                id={{ row['col2']['discipline_number'] }} 
-                                onclick="toggle_visibility(this.id)"> 
-                                Hide/Show Skills 
-                            </button>
-                        {% endif %}
-
-
-
-
-
-
-{
-                // var skill_tables = document.getElementsByClassName("discipline_skills");
-                // var specific_disciplines_skills = skill_tables[button_id];
-                var specific_disciplines_skills = document.getElementById(button_id);
-                if (specific_disciplines_skills.style.visibility === "collapse") {
-                    specific_disciplines_skills.style.visibility = "visible";
-                } else {
-                    specific_disciplines_skills.style.visibility = "collapse";
-                }
-            }
-
-
-1/10 = 0.1
-1+10 / 10 + 10 = 0.5
-
-
-{'Attributes': {'Mental_Attributes': {'Intelligence': 5,
+{'Attributes': {'Mental_Attributes': {'Intelligence': 3,
                                       'Resolve': 5,
-                                      'Wits': 5},
-                'Physical_Attributes': {'Dexterity': 5,
+                                      'Wits': 4},
+                'Physical_Attributes': {'Dexterity': 3,
                                         'Stamina': 5,
-                                        'Strength': 5},
+                                        'Strength': 4},
                 'Social_Attributes': {'Charisma': 5,
-                                      'Composure': 5,
-                                      'Manipulation': 5}},
- 'Character_Details': {'Basic_Information': {'Age': 1364,
+                                      'Composure': 2,
+                                      'Manipulation': 3}},
+ 'Character_Details': {'Basic_Information': {'Age': 943,
                                              'Clan': 'Malkavian',
-                                             'Derangement': ['Regression: '
-                                                             'Characters that '
-                                                             'suffer from '
-                                                             'Regression tend '
-                                                             'to revert back '
-                                                             'into a childlike '
-                                                             'state in '
-                                                             'stressful '
-                                                             'situations. In '
-                                                             'such a state, '
-                                                             'the character '
-                                                             'rarely thinks of '
-                                                             'himself as a '
-                                                             'child, but '
-                                                             'instead exhibits '
-                                                             'poor sense for '
-                                                             'cause and '
-                                                             'effect, fear of '
-                                                             'the unknown, a '
-                                                             'tendency to '
-                                                             'avoid '
-                                                             'confrontation, '
-                                                             'and reliance on '
-                                                             'a strong '
-                                                             '"parent" '
-                                                             'figure.[18]'],
-                                             'Generation': 8,
-                                             'Name': 'Harry, Bilbo',
-                                             'Sex': 'Male',
+                                             'Derangement': ['Sanguine: '
+                                                             'Sanguines are '
+                                                             'having deep '
+                                                             'difficulties in '
+                                                             'focusing on the '
+                                                             'moment, usually '
+                                                             'being distracted '
+                                                             'and '
+                                                             'cheerful.[5]'],
+                                             'Generation': 9,
+                                             'Name': 'Marcella, Boleslaus',
+                                             'Sex': 'Female',
                                              'Sire': 'Older Vampire'},
-                       'Trackers': {'Blood_Potency': 4,
+                       'Trackers': {'Blood_Potency': 3,
                                     'Health': 8,
-                                    'Willpower': 10,
-                                    'XP_Left': 63}},
- 'Disciplines': {'Clan_Disciplines': {'Auspex': {'level': 5,
-                                                'discipline_skills': ['sense of the unseen', 'share the senses']}
-                                      'Dominate': 5,
-                                      'Obfuscate': 5},
-                 'Non-Clan_Disciplines': {'Animalism': 3,
-                                          'Blood Sorcery': 3,
-                                          'Celerity': 5,
-                                          'Fortitude': 5,
-                                          'Oblivion': 4,
-                                          'Potence': 3,
-                                          'Presence': 5,
-                                          'Protean': 3,
-                                          'Thinblood Alchemy': 3}},
- 'Skills': {'Mental_Skills': {'Academics': 5,
-                              'Awareness': 5,
-                              'Finance': 5,
-                              'Investigation': 5,
-                              'Medicine': 5,
-                              'Occult': 5,
-                              'Politics': 5,
-                              'Science': 5,
-                              'Technology': 5},
-            'Physical_Skills': {'Athletics': 5,
-                                'Brawl': 5,
-                                'Craft': 5,
-                                'Drive': 5,
-                                'Firearms': 5,
-                                'Larceny': 5,
-                                'Melee': 5,
-                                'Stealth': 5,
-                                'Survival': 5},
-            'Social_Skills': {'Animal Ken': 5,
-                              'Etiquette': 5,
-                              'Insight': 5,
-                              'Intimidation': 5,
-                              'Leadership': 5,
-                              'Performance': 5,
-                              'Persuasion': 5,
-                              'Streetwise': 5,
-                              'Subterfuge': 5}}}
-
-
-'Celerity', 'Fortitude', 'Potence', 'Thin_Blood_Alchemy', 'Oblivion']
-[{'col1': 'Character_Details',
-  'col2': '',
-  'col3': '',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Basic_Information',
-  'col2': '',
-  'col3': 'Trackers',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Name',
-  'col2': 'Megan, Malvina',
-  'col3': 'XP_Left',
-  'col4': 0,
-  'col5': '',
-  'col6': ''},
- {'col1': 'Sex',
-  'col2': 'Female',
-  'col3': 'Health',
-  'col4': 9,
-  'col5': '',
-  'col6': ''},
- {'col1': 'Generation',
-  'col2': 7,
-  'col3': 'Willpower',
-  'col4': 11,
-  'col5': '',
-  'col6': ''},
- {'col1': 'Clan',
-  'col2': 'Malkavian',
-  'col3': 'Blood_Potency',
-  'col4': 6,
-  'col5': '',
-  'col6': ''},
- {'col1': 'Sire',
-  'col2': 'Older Vampire',
-  'col3': '',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Age', 'col2': 523, 'col3': '', 'col4': '', 'col5': '', 'col6': ''},
- {'col1': 'Derangement',
-  'col2': ['Paranoid: Paranoid Disorders reflect extreme distrust. Paranoid '
-           'figures believe that others have sinister hidden motives and '
-           'relentlessly search for them. Usually, they shift blame from '
-           'themselves to others maliciousness and have long grudges.[4]'],
-  'col3': '',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Attributes',
-  'col2': '',
-  'col3': '',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Physical_Attributes',
-  'col2': '',
-  'col3': 'Social_Attributes',
-  'col4': '',
-  'col5': 'Mental_Attributes',
-  'col6': ''},
- {'col1': 'Strength',
-  'col2': 4,
-  'col3': 'Charisma',
-  'col4': 3,
-  'col5': 'Intelligence',
-  'col6': 1},
- {'col1': 'Dexterity',
-  'col2': 6,
-  'col3': 'Manipulation',
-  'col4': 6,
-  'col5': 'Wits',
-  'col6': 4},
- {'col1': 'Stamina',
-  'col2': 6,
-  'col3': 'Composure',
-  'col4': 6,
-  'col5': 'Resolve',
-  'col6': 5},
- {'col1': 'Skills', 'col2': '', 'col3': '', 'col4': '', 'col5': '', 'col6': ''},
- {'col1': 'Physical_Skills',
-  'col2': '',
-  'col3': 'Social_Skills',
-  'col4': '',
-  'col5': 'Mental_Skills',
-  'col6': ''},
- {'col1': 'Athletics',
-  'col2': 2,
-  'col3': 'Animal Ken',
-  'col4': 2,
-  'col5': 'Academics',
-  'col6': 2},
- {'col1': 'Brawl',
-  'col2': 1,
-  'col3': 'Etiquette',
-  'col4': 1,
-  'col5': 'Awareness',
-  'col6': 1},
- {'col1': 'Craft',
-  'col2': 1,
-  'col3': 'Insight',
-  'col4': 1,
-  'col5': 'Finance',
-  'col6': 0},
- {'col1': 'Drive',
-  'col2': 3,
-  'col3': 'Intimidation',
-  'col4': 3,
-  'col5': 'Investigation',
-  'col6': 0},
- {'col1': 'Melee',
-  'col2': 0,
-  'col3': 'Leadership',
-  'col4': 0,
-  'col5': 'Medicine',
-  'col6': 0},
- {'col1': 'Firearms',
-  'col2': 1,
-  'col3': 'Performance',
-  'col4': 1,
-  'col5': 'Occult',
-  'col6': 1},
- {'col1': 'Larceny',
-  'col2': 1,
-  'col3': 'Persuasion',
-  'col4': 3,
-  'col5': 'Politics',
-  'col6': 1},
- {'col1': 'Stealth',
-  'col2': 0,
-  'col3': 'Streetwise',
-  'col4': 2,
-  'col5': 'Science',
-  'col6': 4},
- {'col1': 'Survival',
-  'col2': 0,
-  'col3': 'Subterfuge',
-  'col4': 0,
-  'col5': 'Technology',
-  'col6': 1},
- {'col1': 'Disciplines',
-  'col2': '',
-  'col3': '',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Clan_Disciplines',
-  'col2': '',
-  'col3': 'Non-Clan_Disciplines',
-  'col4': '',
-  'col5': '',
-  'col6': ''},
- {'col1': 'Dominate',
-  'col2': {'Level': 3,
-           'Skills': {'': '',
-                      'Cloud Memory': 'The vampire can make the target forget '
-                                      'the past few minutes.',
-                      'Compel': 'The vampire can issue a short sentence '
-                                'command to the target.',
-                      "Domitor's Favor": 'Makes it more difficult for a '
-                                         "vampire's Blood Bonded thrall to act "
-                                         'against them.',
-                      'Mesmerize': 'The vampire can issue a longer, more '
-                                   'complicated command to the target.',
-                      'Slavish Devotion': 'The vampire can strengthen the mind '
-                                          'of theirÂ\xa0dominated victims, '
-                                          'againstÂ\xa0interference from other '
-                                          'Kindred. Amalgam: Presence 1.',
-                      'Submerged Directive': 'The vampire can use Mesmerize to '
-                                             'embed delayed or triggered '
-                                             'commands.'}},
-  'col3': 'Presence',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'Eyes of the Serpent': 'Â\xa0Amalgam Protean 1.Â\xa0Â\xa0'
-                                             'The vampire can freeze a mortal '
-                                             'in place with their gaze.'}},
-  'col5': '',
-  'col6': ''},
- {'col1': 'Obfuscate',
-  'col2': {'Level': 3,
-           'Skills': {'': '',
-                      'Chimerstry': 'The vampire can create brief, but vivid '
-                                    'single-sensory hallucinations. Amalgam: '
-                                    'Presence 1.',
-                      'Cloak of Shadows': 'The vampire can become invisible '
-                                          'while standing motionless.',
-                      'Fata Morgana': 'The vampire can craft elaborate '
-                                      'multisensory hallucinations. Amalgam: '
-                                      'Presence 2.',
-                      'Silence of Death': 'The vampire can nullify all sound '
-                                          'that they make.',
-                      'Unseen Passage': 'The vampire can move around while '
-                                        'staying invisibleâ€‹.'}},
-  'col3': 'Blood_Sorcery',
-  'col4': {'Level': 2,
-           'Skills': {'': '',
-                      'Extinguish Vitae': 'The user can intentionally remove '
-                                          'the unlife-giving properties of '
-                                          'some of the Blood in another '
-                                          'vampire, stoking their Hunger as '
-                                          'the victimâ€™s inner reserves '
-                                          'curdle into impotence',
-                      'Shape of the Sanguine Sacrament': 'Allows the vampire '
-                                                         'manipulate their (or '
-                                                         "someone else's) "
-                                                         'blood, to form '
-                                                         'intricated images, '
-                                                         'such as a simple '
-                                                         'message or a '
-                                                         'geometrical shape.'}},
-  'col5': '',
-  'col6': ''},
- {'col1': 'Auspex',
-  'col2': {'Level': 6,
-           'Skills': {'': '',
-                      "Crocodile's Tongue": ' Know what someone wants to hear '
-                                            'in order to get the best reaction',
-                      "Eagle's Sight": " Gain a bird's eye view of your area",
-                      'Heightened Senses': ' The vampire can add their Auspex '
-                                           'rating to their perception checks.',
-                      'Premonition': ' The vampire can receive visions and '
-                                     'hints about what is about to happen.',
-                      'Scry the Soul': ' The vampire can read auras.',
-                      "Spirit's Touch": ' The vampire can touch an inanimate '
-                                        'object to sense the emotional residue '
-                                        'from when the object was last used',
-                      'Telepathic Communication': ' Mentally speak with '
-                                                  'someone',
-                      'Telepathy': 'Â\xa0The vampire can project their '
-                                   'thoughts into the mind of another kindred '
-                                   'or mortal or read surface level thoughts '
-                                   'and emotions.'}},
-  'col3': 'Animalism',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'Sense the Beast': 'The vampire can sense the beast '
-                                         'within other vampires, mortals and '
-                                         'supernatural creatures.â€‹â€‹'}},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Protean',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'Weight of the Feather': 'The vampire can reduce their '
-                                               'effective mass and density, '
-                                               'making themselves almost '
-                                               'weightless. This allows them '
-                                               'to avoid triggering pressure '
-                                               'sensors as well as avoiding '
-                                               'major damage from falls, '
-                                               'collisions, or being thrown. '
-                                               'The power cannot be used for '
-                                               'longer leaps, as the '
-                                               'vampireâ€™s strength is '
-                                               'proportionally reduced.'}},
-  'col5': '',
-
-
-[{'col1': 'Dominate',
-  'col2': {'
-  ': 5,
-           'Skills': {'': '',
-                      'Ancestral Dominion': 'The vampire can makeÂ\xa0'
-                                            'theirÂ\xa0Kindred descendants to '
-                                            'take actions on their behalf, '
-                                            'without the need for eye contact '
-                                            'and verbal communication. '
-                                            'Amalgam: Blood Sorcery 3.',
-                      'Cloud Memory': 'The vampire can make the target forget '
-                                      'the past few minutes.',
-                      'Compel': 'The vampire can issue a short sentence '
-                                'command to the target.',
-                      'Dementation': 'Amalgam Obfuscate 2. The vampire can '
-                                     'trigger psychotic breaks or nervous '
-                                     'breakdowns.',
-                      "Domitor's Favor": 'Makes it more difficult for a '
-                                         "vampire's Blood Bonded thrall to act "
-                                         'against them.',
-                      'Mass Manipulation': 'The vampire can amplify their '
-                                           'other Dominate abilities to affect '
-                                           'greater numbers at the same time.',
-                      'Mesmerize': 'The vampire can issue a longer, more '
-                                   'complicated command to the target.',
-                      'Rationalize': 'The vampire can make victims of their '
-                                     'Dominate powers internalize the commands '
-                                     'and not realize they were compelled.',
-                      'Slavish Devotion': 'The vampire can strengthen the mind '
-                                          'of theirÂ\xa0dominated victims, '
-                                          'againstÂ\xa0interference from other '
-                                          'Kindred. Amalgam: Presence 1.',
-                      'Submerged Directive': 'The vampire can use Mesmerize to '
-                                             'embed delayed or triggered '
-                                             'commands.',
-                      'Terminal Decree': 'The vampire can now issue commands '
-                                         'that are deadly or harmful to their '
-                                         'targets.',
-                      'The Forgetful Mind': 'The vampire can rewrite previous '
-                                            'memories in the target.'},
-           'discipline_number': 0},
-  'col3': 'Celerity',
-  'col4': {'Level': 4,
-           'Skills': {'': '',
-                      'Draught of Elegance': 'The vampire can bestow their '
-                                             'Celerity powers on those that '
-                                             'drink her blood.',
-                      'Fleetness': 'The vampire can add their Celerity to '
-                                   'non-combat Dexterity checks.',
-                      'Rapid Reflexes': 'The vampire suffers no penalty to '
-                                        'dodging gunfire without cover.',
-                      'Traversal': 'The vampire can run up walls or across '
-                                   'water with a successful check.'},
-           'discipline_number': 1},
-  'col5': '',
-  'col6': ''},
- {'col1': 'Obfuscate',
-  'col2': {'Level': 5,
-           'Skills': {'': '',
-                      'Chimerstry': 'The vampire can create brief, but vivid '
-                                    'single-sensory hallucinations. Amalgam: '
-                                    'Presence 1.',
-                      'Cloak of Shadows': 'The vampire can become invisible '
-                                          'while standing motionless.',
-                      'Cloak the Gathering': 'The vampire can Obfuscate their '
-                                             'companions.',
-                      'Conceal': 'Amalgam of Auspex 3. The vampire can cloak '
-                                 'an inaminate object up to a small building '
-                                 'from sight.',
-                      'Fata Morgana': 'The vampire can craft elaborate '
-                                      'multisensory hallucinations. Amalgam: '
-                                      'Presence 2.',
-                      'Ghost in the Machine': 'Other Obfuscate powers work on '
-                                              'electronic recording devices.',
-                      "Imposter's Guise": 'The vampire can disguise themselves '
-                                          'as a specific person.',
-                      'Mask of a Thousand Faces': 'The vampire can assume the '
-                                                  'voice and appearance of a '
-                                                  'generic personÂ\xa0who '
-                                                  'blendsÂ\xa0in the current '
-                                                  'setting, i.e. a worker in a '
-                                                  'factory or a nightwatchman '
-                                                  'in an office.',
-                      'Mental Maze[4]': 'The Vampire can make the victim '
-                                        'unable to escape the building, '
-                                        'leaving him feeling that the building '
-                                        'folds back on itself. Amalgam: '
-                                        'Dominate (VTM) 1.',
-                      'Silence of Death': 'The vampire can nullify all sound '
-                                          'that they make.',
-                      'Unseen Passage': 'The vampire can move around while '
-                                        'staying invisibleâ€‹.',
-                      'Vanish': 'Requires Cloak of Shadows. The vampire can '
-                                'activate Cloak of Shadows or Unseen Passage '
-                                'even under direct observation.'},
-           'discipline_number': 2},
-  'col3': 'Fortitude',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'Unswayable Mind': 'The vampire can add their Fortitude '
-                                         'rating to dice rolls to resist '
-                                         'manipulation and coercion.'},
-           'discipline_number': 3},
-  'col5': '',
-  'col6': ''},
- {'col1': 'Auspex',
-  'col2': {'Level': 5,
-           'Skills': {'': '',
-                      'Clairvoyance': ' The vampire can gather information '
-                                      'from an entire city-block at once.',
-                      'Heightened Senses': ' The vampire can add their Auspex '
-                                           'rating to their perception checks.',
-                      'Obeah': ' Soothes the psychological turmoil of the '
-                               "vampire's subject. Amalgam: Fortitude 1.",
-                      'Possession': 'Â\xa0Amalgam of Dominate 3. The vampire '
-                                    'can take over the body of a mortal.',
-                      'Premonition': ' The vampire can receive visions and '
-                                     'hints about what is about to happen.',
-                      'Scry the Soul': ' The vampire can read auras.',
-                      'Sense the Unseen': ' The vampire can detect things that '
-                                          'are supernaturally invisible',
-                      'Share the Senses': ' The vampire can sense through the '
-                                          'senses of another kindred or '
-                                          'mortal.',
-                      "Spirit's Touch": ' The vampire can touch an inanimate '
-                                        'object to sense the emotional residue '
-                                        'from when the object was last used',
-                      'Telepathy': 'Â\xa0The vampire can project their '
-                                   'thoughts into the mind of another kindred '
-                                   'or mortal or read surface level thoughts '
-                                   'and emotions.',
-                      'Unburdening the Bestial Soul': " Shares the vampire's "
-                                                      'own sense of moral '
-                                                      'peace of mind with '
-                                                      'another Kindred willing '
-                                                      'to repent of their '
-                                                      'sins. Amalgam: Dominate '
-                                                      '3. Requires  Obeah.'},
-           'discipline_number': 4},
-  'col3': 'Potence',
-  'col4': {'Level': 2,
-           'Skills': {'': '',
-                      'Prowess': 'The Kindred gains an overall increase in '
-                                 'strength.',
-                      'Soaring Leap': 'The Kindred can leap higher and '
-                                      'further.'},
-           'discipline_number': 5},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Presence',
-  'col4': {'Level': 4,
-           'Skills': {'': '',
-                      'Awe': 'The vampire can add their PresenceÂ\xa0rating to '
-                             'their Persuasion and Performance checks',
-                      'Daunt': 'Â\xa0Â\xa0The vampire can add their Presence '
-                               'rating to their Intimidation checks.',
-                      'Entrancement': 'The vampire can add their Presence '
-                                      'rating to all Social pools and make '
-                                      'small requests of the target.',
-                      'Eyes of the Serpent': 'Â\xa0Amalgam Protean 1.Â\xa0Â\xa0'
-                                             'The vampire can freeze a mortal '
-                                             'in place with their gaze.',
-                      'Irresistible Voice': 'Amalgam Dominate 1. The vampire '
-                                            'can now use Dominate powers with '
-                                            'their voice alone.',
-                      'Lingering Kiss': 'The vampire can gain bonuses to their '
-                                        'Social pools against targets that '
-                                        'they have Kissed.',
-                      "True Love's Face": 'Combining Presence with Obfuscate, '
-                                          'the vampire can take the appearance '
-                                          'of someone their victim loves.'},
-           'discipline_number': 6},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Blood_Sorcery',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'A Taste for Blood': 'By tasting a drop of blood, the '
-                                           'user can discern certain basic '
-                                           'traits of the one to whom it '
-                                           'belongs'},
-           'discipline_number': 7},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Thin_Blood_Alchemy',
-  'col4': {'Level': 2,
-           'Skills': {'': '',
-                      'Envelop': 'Blinds a target through mist',
-                      'Haze': 'Creates a field of mist',
-                      'User can developÂ\xa0formulae toÂ\xa0counterfeit level 1 Disciplines': 'N/A'},
-           'discipline_number': 8},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Oblivion',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'The Binding Fetter': 'The vampire can identify objects '
-                                            'and locations important to ghosts '
-                                            'by a faint aura.'},
-           'discipline_number': 9},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Animalism',
-  'col4': {'Level': 3,
-           'Skills': {'': '',
-                      'Atavism': 'The vampire can cause an animal to '
-                                 'temporarily revert to their primal '
-                                 'instincts, forcing them to attack anyone '
-                                 'nearby or to flee the scene.',
-                      'Sense the Beast': 'The vampire can sense the beast '
-                                         'within other vampires, mortals and '
-                                         'supernatural creatures.â€‹â€‹',
-                      'Unliving Hive': 'Amalgam Obfuscate 2. The vampire can '
-                                       'become a permanent home for swarms of '
-                                       'flies or cockroaches or similar small '
-                                       'creatures.'},
-           'discipline_number': 10},
-  'col5': '',
-  'col6': ''},
- {'col1': '',
-  'col2': '',
-  'col3': 'Protean',
-  'col4': {'Level': 1,
-           'Skills': {'': '',
-                      'Eyes of the Beast': 'The vampire can will a '
-                                           'supernatural red gleam into their '
-                                           'eyes, giving them sight even in '
-                                           'the total absence of light.',
-                      'Weight of the Feather': 'The vampire can reduce their '
-                                               'effective mass and density, '
-                                               'making themselves almost '
-                                               'weightless. This allows them '
-                                               'to avoid triggering pressure '
-                                               'sensors as well as avoiding '
-                                               'major damage from falls, '
-                                               'collisions, or being thrown. '
-                                               'The power cannot be used for '
-                                               'longer leaps, as the '
-                                               'vampireâ€™s strength is '
-                                               'proportionally reduced.'},
-           'discipline_number': 11},
-  'col5': '',
-  'col6': ''}]
+                                    'Willpower': 7,
+                                    'XP_Left': 0}},
+ 'Disciplines': {'Clan_Disciplines': {'Auspex': {'Level': 2,
+                                                 'Skills': {'': '',
+                                                            'Heightened Senses': ' '
+                                                                                 'The '
+                                                                                 'vampire '
+                                                                                 'can '
+                                                                                 'add '
+                                                                                 'their '
+                                                                                 'Auspex '
+                                                                                 'rating '
+                                                                                 'to '
+                                                                                 'their '
+                                                                                 'perception '
+                                                                                 'checks.',
+                                                            'Obeah': ' Soothes '
+                                                                     'the '
+                                                                     'psychological '
+                                                                     'turmoil '
+                                                                     'of the '
+                                                                     "vampire's "
+                                                                     'subject. '
+                                                                     'Amalgam: '
+                                                                     'Fortitude '
+                                                                     '1.',
+                                                            'Sense the Unseen': ' '
+                                                                                'The '
+                                                                                'vampire '
+                                                                                'can '
+                                                                                'detect '
+                                                                                'things '
+                                                                                'that '
+                                                                                'are '
+                                                                                'supernaturally '
+                                                                                'invisible'}},
+                                      'Dominate': {'Level': 1,
+                                                   'Skills': {'': '',
+                                                              'Compel': 'The '
+                                                                        'vampire '
+                                                                        'can '
+                                                                        'issue '
+                                                                        'a '
+                                                                        'short '
+                                                                        'sentence '
+                                                                        'command '
+                                                                        'to '
+                                                                        'the '
+                                                                        'target.'}},
+                                      'Obfuscate': {'Level': 4,
+                                                    'Skills': {'': '',
+                                                               'Ghost in the Machine': 'Other '
+                                                                                       'Obfuscate '
+                                                                                       'powers '
+                                                                                       'work '
+                                                                                       'on '
+                                                                                       'electronic '
+                                                                                       'recording '
+                                                                                       'devices.',
+                                                               'Mask of a Thousand Faces': 'The '
+                                                                                           'vampire '
+                                                                                           'can '
+                                                                                           'assume '
+                                                                                           'the '
+                                                                                           'voice '
+                                                                                           'and '
+                                                                                           'appearance '
+                                                                                           'of '
+                                                                                           'a '
+                                                                                           'generic '
+                                                                                           'person '
+                                                                                           'who '
+                                                                                           'blends '
+                                                                                           'in '
+                                                                                           'the '
+                                                                                           'current '
+                                                                                           'setting, '
+                                                                                           'i.e. '
+                                                                                           'a '
+                                                                                           'worker '
+                                                                                           'in '
+                                                                                           'a '
+                                                                                           'factory '
+                                                                                           'or '
+                                                                                           'a '
+                                                                                           'nightwatchman '
+                                                                                           'in '
+                                                                                           'an '
+                                                                                           'office.',
+                                                               'Mental Maze[4]': 'The '
+                                                                                 'Vampire '
+                                                                                 'can '
+                                                                                 'make '
+                                                                                 'the '
+                                                                                 'victim '
+                                                                                 'unable '
+                                                                                 'to '
+                                                                                 'escape '
+                                                                                 'the '
+                                                                                 'building, '
+                                                                                 'leaving '
+                                                                                 'him '
+                                                                                 'feeling '
+                                                                                 'that '
+                                                                                 'the '
+                                                                                 'building '
+                                                                                 'folds '
+                                                                                 'back '
+                                                                                 'on '
+                                                                                 'itself. '
+                                                                                 'Amalgam: '
+                                                                                 'Dominate '
+                                                                                 '(VTM) '
+                                                                                 '1.',
+                                                               'Silence of Death': 'The '
+                                                                                   'vampire '
+                                                                                   'can '
+                                                                                   'nullify '
+                                                                                   'all '
+                                                                                   'sound '
+                                                                                   'that '
+                                                                                   'they '
+                                                                                   'make.',
+                                                               'Unseen Passage': 'The '
+                                                                                 'vampire '
+                                                                                 'can '
+                                                                                 'move '
+                                                                                 'around '
+                                                                                 'while '
+                                                                                 'staying '
+                                                                                 'invisibleâ€‹.',
+                                                               'Vanish': 'Requires '
+                                                                         'Cloak '
+                                                                         'of '
+                                                                         'Shadows. '
+                                                                         'The '
+                                                                         'vampire '
+                                                                         'can '
+                                                                         'activate '
+                                                                         'Cloak '
+                                                                         'of '
+                                                                         'Shadows '
+                                                                         'or '
+                                                                         'Unseen '
+                                                                         'Passage '
+                                                                         'even '
+                                                                         'under '
+                                                                         'direct '
+                                                                         'observation.'}}},
+                 'Non-Clan_Disciplines': {'Animalism': {'Level': 1,
+                                                        'Skills': {'': '',
+                                                                   'Bound Famulus': 'The '
+                                                                                    'vampire '
+                                                                                    'can '
+                                                                                    'form '
+                                                                                    'a '
+                                                                                    'bond '
+                                                                                    'with '
+                                                                                    'an '
+                                                                                    'animal '
+                                                                                    'facilitating '
+                                                                                    'the '
+                                                                                    'use '
+                                                                                    'of '
+                                                                                    'other '
+                                                                                    'Animalism '
+                                                                                    'powers.'}},
+                                          'Thin_Blood_Alchemy': {'Level': 3,
+                                                                 'Skills': {'': '',
+                                                                            'Envelop': 'Blinds '
+                                                                                       'a '
+                                                                                       'target '
+                                                                                       'through '
+                                                                                       'mist',
+                                                                            'Haze': 'Creates '
+                                                                                    'a '
+                                                                                    'field '
+                                                                                    'of '
+                                                                                    'mist',
+                                                                            'User can develop formulae to counterfeit level 2 Disciplines': 'N/A'}}}},
+ 
+ 
+ 'Skills': {'Mental_Skills': {'Academics': 0,
+                              'Awareness': 2,
+                              'Finance': 3,
+                              'Investigation': 4,
+                              'Medicine': 2,
+                              'Occult': 0,
+                              'Politics': 1,
+                              'Science': 1,
+                              'Technology': 0},
+            'Physical_Skills': {'Athletics': 4,
+                                'Brawl': 0,
+                                'Craft': 0,
+                                'Drive': 1,
+                                'Firearms': 2,
+                                'Larceny': 1,
+                                'Melee': 2,
+                                'Stealth': 1,
+                                'Survival': 3},
+            'Social_Skills': {'Animal Ken': 1,
+                              'Etiquette': 0,
+                              'Insight': 0,
+                              'Intimidation': 1,
+                              'Leadership': 0,
+                              'Performance': 0,
+                              'Persuasion': 0,
+                              'Streetwise': 2,
+                              'Subterfuge': 0}}}

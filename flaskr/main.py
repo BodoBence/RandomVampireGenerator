@@ -44,13 +44,13 @@ def result():
 
     gathered_input = request.form
 
-    pprint.pprint(gathered_input)
-
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
     generated_character = generate(
         input_values=restructured_values,
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
+
+    pprint.pprint(generated_character)
 
     # overwrite the input field and slider valies
     startup_input_field_details['input_conditions'] = resutrctured_conditions
@@ -119,33 +119,41 @@ def data_base_check(input_file_path):
         return False
 
 
-def create_db():
+def create_db(table_name):
     conn = sqlite3.connect(DB_PATH)
     print("Opened database successfully")
 
-    conn.execute('CREATE TABLE vampires (name TEXT, data1 TEXT)')
+    conn.execute(f'CREATE TABLE {table_name} (name TEXT, data1 TEXT)')
     print("Table created successfully")
     conn.close()
 
 
-def add_to_db(target_db, name_to_add, data1_to_add):
+def add_to_db(table_name, target_db, name_to_add, data1_to_add):
     with sqlite3.connect(target_db) as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO vampires (name, data1) VALUES (?,?)", (name_to_add, data1_to_add))
+        sql_string = f"INSERT INTO {table_name} VALUES ('{name_to_add}', '{data1_to_add}')"
+        print(sql_string)
+        cur.execute(sql_string)
         con.commit()
     
 
 # Actual databse cration and handling
 
 SCRIPT_DIR = os.path.dirname(__file__)
-DB_PATH = os.path.join(SCRIPT_DIR, 'database.db')
+DATABASE_NAME = 'database.db'
+DB_PATH = os.path.join(SCRIPT_DIR, DATABASE_NAME)
+TABLE_NAME = 'vampire_x'
 
 if data_base_check(DB_PATH) == False:
-    create_db()
+    create_db(TABLE_NAME)
     pass
 
 if data_base_check(DB_PATH) == True:
-    add_to_db(DB_PATH, 'vampire 2', 'is not hungry')
+    add_to_db(
+        table_name=TABLE_NAME,
+        target_db=DB_PATH,
+        name_to_add=f'vampire {str(uuid.uuid1())}',
+        data1_to_add= 'is not hungry')
 
 # Run the app!  
 
