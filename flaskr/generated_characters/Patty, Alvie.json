@@ -1,54 +1,52 @@
 {
     "Attributes": {
         "Mental_Attributes": {
-            "Intelligence": 6,
-            "Resolve": 6,
-            "Wits": 6
+            "Intelligence": 5,
+            "Resolve": 5,
+            "Wits": 5
         },
         "Physical_Attributes": {
-            "Dexterity": 6,
-            "Stamina": 6,
-            "Strength": 6
+            "Dexterity": 5,
+            "Stamina": 5,
+            "Strength": 5
         },
         "Social_Attributes": {
-            "Charisma": 6,
-            "Composure": 3,
-            "Manipulation": 6
+            "Charisma": 5,
+            "Composure": 5,
+            "Manipulation": 5
         }
     },
     "Character_Details": {
         "Basic_Information": {
-            "Age": 2026,
+            "Age": 2500,
             "Clan": "Malkavian",
             "Derangement": [
                 "Sacred Disease: The character is a victim of a trembling disorder that renders him insensate.[6]"
             ],
-            "Generation": 7,
-            "Name": "Fruzsi",
-            "Sex": "Male",
+            "Generation": 10,
+            "Name": "Patty, Alvie",
+            "Sex": "Female",
             "Sire": "Older Vampire"
         },
         "Trackers": {
-            "Blood_Potency": 4,
-            "Health": 9,
-            "Willpower": 9,
+            "Blood_Potency": 2,
+            "Health": 8,
+            "Willpower": 10,
             "XP_Left": 0
         }
     },
     "Disciplines": {
         "Clan_Disciplines": {
             "Auspex": {
-                "Level": 6,
+                "Level": 5,
                 "Skills": {
                     "": "",
-                    "Genius Loci": " Gain insight by meditating at places of high resonance",
+                    "Clairvoyance": " The vampire can gather information from an entire city-block at once.",
                     "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
                     "Premonition": " The vampire can receive visions and hints about what is about to happen.",
                     "Scry the Soul": " The vampire can read auras.",
-                    "Sense Emotion": " Learn the emotions of the people around you",
-                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
-                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used",
-                    "Unburdening the Bestial Soul": " Shares the vampire's own sense of moral peace of mind with another Kindred willing to repent of their sins. Amalgam: Dominate 3. Requires  Obeah."
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal.",
+                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used"
                 }
             },
             "Dominate": {
@@ -62,14 +60,13 @@
                 }
             },
             "Obfuscate": {
-                "Level": 3,
+                "Level": 5,
                 "Skills": {
                     "": "",
-                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
                     "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Conceal": "Amalgam of Auspex 3. The vampire can cloak an inaminate object up to a small building from sight.",
                     "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
-                    "Ghost in the Machine": "Other Obfuscate powers work on electronic recording devices.",
-                    "Mental Maze[4]": "The Vampire can make the victim unable to escape the building, leaving him feeling that the building folds back on itself. Amalgam: Dominate (VTM) 1.",
+                    "Imposter's Guise": "The vampire can disguise themselves as a specific person.",
                     "Silence of Death": "The vampire can nullify all sound that they make.",
                     "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
                 }
@@ -77,17 +74,17 @@
         },
         "Non-Clan_Disciplines": {
             "Animalism": {
-                "Level": 1,
+                "Level": 2,
                 "Skills": {
                     "": "",
+                    "Atavism": "The vampire can cause an animal to temporarily revert to their primal instincts, forcing them to attack anyone nearby or to flee the scene.",
                     "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers."
                 }
             },
             "Blood_Sorcery": {
-                "Level": 2,
+                "Level": 1,
                 "Skills": {
                     "": "",
-                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence",
                     "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
                 }
             },
@@ -117,21 +114,20 @@
                 "Level": 1,
                 "Skills": {
                     "": "",
-                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone."
+                    "Soaring Leap": "The Kindred can leap higher and further."
                 }
             },
             "Presence": {
                 "Level": 1,
                 "Skills": {
                     "": "",
-                    "Awe": "The vampire can add their Presence rating to their Persuasion and Performance checks"
+                    "Daunt": "The vampire can add their Presence rating to their Intimidation checks."
                 }
             },
             "Protean": {
-                "Level": 2,
+                "Level": 1,
                 "Skills": {
                     "": "",
-                    "Feral Weapons": "The vampire can extend their natural weapons to monstrous proportions. This usually takes the form of fingernails extending into wicked talons but can also come in other forms such as fangs elongating into veritable daggers, as from a gigantic serpent.",
                     "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
                 }
             },
@@ -139,45 +135,45 @@
                 "Level": 2,
                 "Skills": {
                     "": "",
-                    "Haze": "Creates a field of mist",
-                    "User can develop formulae to counterfeit level 1 Disciplines": "N/A"
+                    "Envelop": "Blinds a target through mist",
+                    "Haze": "Creates a field of mist"
                 }
             }
         }
     },
     "Skills": {
         "Mental_Skills": {
-            "Academics": 3,
+            "Academics": 1,
             "Awareness": 2,
-            "Finance": 2,
-            "Investigation": 2,
-            "Medicine": 6,
-            "Occult": 4,
+            "Finance": 3,
+            "Investigation": 3,
+            "Medicine": 2,
+            "Occult": 1,
             "Politics": 3,
-            "Science": 6,
-            "Technology": 4
+            "Science": 2,
+            "Technology": 3
         },
         "Physical_Skills": {
-            "Athletics": 1,
-            "Brawl": 4,
-            "Craft": 1,
+            "Athletics": 4,
+            "Brawl": 2,
+            "Craft": 4,
             "Drive": 1,
-            "Firearms": 6,
-            "Larceny": 1,
+            "Firearms": 1,
+            "Larceny": 5,
             "Melee": 0,
-            "Stealth": 2,
-            "Survival": 3
+            "Stealth": 0,
+            "Survival": 2
         },
         "Social_Skills": {
             "Animal Ken": 4,
-            "Etiquette": 3,
-            "Insight": 1,
-            "Intimidation": 2,
-            "Leadership": 5,
-            "Performance": 2,
-            "Persuasion": 2,
-            "Streetwise": 2,
-            "Subterfuge": 3
+            "Etiquette": 1,
+            "Insight": 3,
+            "Intimidation": 3,
+            "Leadership": 3,
+            "Performance": 3,
+            "Persuasion": 3,
+            "Streetwise": 1,
+            "Subterfuge": 5
         }
     }
 }
