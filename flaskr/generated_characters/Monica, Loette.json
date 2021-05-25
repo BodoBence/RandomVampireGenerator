@@ -1,0 +1,172 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 5,
+            "Resolve": 5,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 5,
+            "Stamina": 5,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 5,
+            "Composure": 3,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 2010,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Memory Lapses: Unlike Amnesia or Fugue, the character simply \"forgets\" small tidbits of knowledge, often at inopportune times. This can range from something as simple as forgetting the location of a small object, to forgetting an entire Skill or Knowledge."
+            ],
+            "Generation": 13,
+            "Name": "Monica, Loette",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 1,
+            "Health": 8,
+            "Willpower": 8,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
+                    "Ghost in the Machine": "Other Obfuscate powers work on electronic recording devices.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "A Taste for Blood": "By tasting a drop of blood, the user can discern certain basic traits of the one to whom it belongs",
+                    "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
+                }
+            },
+            "Celerity": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Blink": "The vampire can cross large distances and still take additional actions such as make an attack.",
+                    "Fleetness": "The vampire can add their Celerity to non-combat Dexterity checks.",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion.",
+                    "Valeren": "Projects Fortitude outwardly, willing the vampire's Blood to mend another vampire's injuries. Amalgam: Auspex 1."
+                }
+            },
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                }
+            },
+            "Potence": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone.",
+                    "Prowess": "The Kindred gains an overall increase in strength.",
+                    "Soaring Leap": "The Kindred can leap higher and further."
+                }
+            },
+            "Presence": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Serpent": "Amalgam Protean 1.  The vampire can freeze a mortal in place with their gaze.",
+                    "Lingering Kiss": "The vampire can gain bonuses to their Social pools against targets that they have Kissed."
+                }
+            },
+            "Protean": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
+                    "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 3,
+            "Awareness": 0,
+            "Finance": 3,
+            "Investigation": 1,
+            "Medicine": 5,
+            "Occult": 3,
+            "Politics": 2,
+            "Science": 0,
+            "Technology": 1
+        },
+        "Physical_Skills": {
+            "Athletics": 3,
+            "Brawl": 2,
+            "Craft": 2,
+            "Drive": 3,
+            "Firearms": 1,
+            "Larceny": 2,
+            "Melee": 2,
+            "Stealth": 2,
+            "Survival": 4
+        },
+        "Social_Skills": {
+            "Animal Ken": 4,
+            "Etiquette": 2,
+            "Insight": 3,
+            "Intimidation": 1,
+            "Leadership": 1,
+            "Performance": 2,
+            "Persuasion": 0,
+            "Streetwise": 1,
+            "Subterfuge": 2
+        }
+    }
+}

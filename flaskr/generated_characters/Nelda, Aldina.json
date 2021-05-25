@@ -1,0 +1,188 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 5,
+            "Resolve": 5,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 5,
+            "Stamina": 5,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 5,
+            "Composure": 5,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 2779,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Dissociative Identity Disorder (DID): Previously known as Multiple-Personality Disorder, persons with DID\u00a0develop consciously and/or subconsciously several other identities for themselves. Each personality is created to respond to certain emotional stimuli: an abused person might develop a tough-as-nails survivor personality, create a \"protector\". In most cases\u00a0the personalities are\u00a0aware of each-other, and they come and go through the victim\u2019s mind in response to specific situations or conditions.[13]"
+            ],
+            "Generation": 12,
+            "Name": "Nelda, Aldina",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 3,
+            "Health": 8,
+            "Willpower": 10,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Scry the Soul": " The vampire can read auras.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Dementation": "Amalgam Obfuscate 2. The vampire can trigger psychotic breaks or nervous breakdowns.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "Rationalize": "The vampire can make victims of their Dominate powers internalize the commands and not realize they were compelled.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1.",
+                    "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers.",
+                    "Feral Whispers": "The vampire can summon and communicate with an animal.",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence",
+                    "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
+                }
+            },
+            "Celerity": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Fleetness": "The vampire can add their Celerity to non-combat Dexterity checks.",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Toughness": "The vampire can subtract Fortitude rating from all Superficial damage sustained.",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Aura of Decay": "The vampire's connection to Oblivion manifests as an aura which spoils food, poisons water, wears down structures, and kills living things with their mere presence.",
+                    "Fatal Precognition": "The vampire's eyes become black and they remain still while they scry a vision which shows the death of a non-Kindred they can percieve. Attempts to subvert the fate seen in the vision become more difficult. Amalgam with Auspex 2.",
+                    "Shadow Cast": "The vampire summons a supernatural shadow from Oblivion, one which they control and can only be destroyed by sunlight. It allows them to use other Oblivion powers through it despite the presence of light, and casting it on somebody during social conflict intensifies the Willpower damage that victim suffers.  <a href=\"https://static.wikia.nocookie.net/whitewolf/images/4/45/V5OblivionAdvancedSealed.png/revision/latest?cb=20200508060320\" class=\"image\"><img alt=\"V5OblivionAdvancedSealed.png\" src=\"https://static.wikia.nocookie.net/whitewolf/images/4/45/V5OblivionAdvancedSealed.png/revision/latest/scale-to-width-down/180?cb=20200508060320\" decoding=\"async\" width=\"180\" height=\"180\" class=\"thumbimage\" data-image-name=\"V5OblivionAdvancedSealed.png\" data-image-key=\"V5OblivionAdvancedSealed.png\" data-src=\"https://static.wikia.nocookie.net/whitewolf/images/4/45/V5OblivionAdvancedSealed.png/revision/latest/scale-to-width-down/180?cb=20200508060320\" /></a>",
+                    "Shadow Perspective": "The vampire casts their senses to a shadow they can see, maintaining both their mundane senses and their shadow perspective. This eavesdropping cannot be detected without supernatural means, such as Sense the Unseen from Auspex.",
+                    "The Binding Fetter": "The vampire can identify objects and locations important to ghosts by a faint aura.",
+                    "Touch of Oblivion": "The vampire touches their victim and channels the raw entropic power of Oblivion through them. The victim suffers aggravated damage, and a crippling injury (blindness, muteness, a ruined limb, or the like)."
+                }
+            },
+            "Potence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Serpent": "Amalgam Protean 1.  The vampire can freeze a mortal in place with their gaze."
+                }
+            },
+            "Protean": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 1,
+            "Finance": 2,
+            "Investigation": 1,
+            "Medicine": 1,
+            "Occult": 3,
+            "Politics": 5,
+            "Science": 5,
+            "Technology": 4
+        },
+        "Physical_Skills": {
+            "Athletics": 3,
+            "Brawl": 4,
+            "Craft": 2,
+            "Drive": 1,
+            "Firearms": 2,
+            "Larceny": 2,
+            "Melee": 3,
+            "Stealth": 3,
+            "Survival": 5
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 0,
+            "Insight": 5,
+            "Intimidation": 0,
+            "Leadership": 1,
+            "Performance": 1,
+            "Persuasion": 5,
+            "Streetwise": 2,
+            "Subterfuge": 3
+        }
+    }
+}

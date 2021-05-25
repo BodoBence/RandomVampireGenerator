@@ -1,0 +1,160 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 3,
+            "Resolve": 3,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 6,
+            "Stamina": 3,
+            "Strength": 7
+        },
+        "Social_Attributes": {
+            "Charisma": 4,
+            "Composure": 2,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 202,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Sexual Dysfunction: Sexual Dysfunctions are an umbrella term for several ailments, like vaginismus, dyspareunia, or impotence. All such conditions are likely to instill an extreme aversion to sex.[19]"
+            ],
+            "Generation": 6,
+            "Name": "Elnora, Farris",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 3,
+            "Health": 6,
+            "Willpower": 5,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal."
+                }
+            },
+            "Dominate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
+                    "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "A Taste for Blood": "By tasting a drop of blood, the user can discern certain basic traits of the one to whom it belongs"
+                }
+            },
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Potence": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Prowess": "The Kindred gains an overall increase in strength.",
+                    "Soaring Leap": "The Kindred can leap higher and further."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Awe": "The vampire can add their Presence rating to their Persuasion and Performance checks"
+                }
+            },
+            "Protean": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Feral Weapons": "The vampire can extend their natural weapons to monstrous proportions. This usually takes the form of fingernails extending into wicked talons but can also come in other forms such as fangs elongating into veritable daggers, as from a gigantic serpent.",
+                    "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Envelop": "Blinds a target through mist",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 1,
+            "Finance": 3,
+            "Investigation": 1,
+            "Medicine": 2,
+            "Occult": 2,
+            "Politics": 0,
+            "Science": 0,
+            "Technology": 0
+        },
+        "Physical_Skills": {
+            "Athletics": 2,
+            "Brawl": 2,
+            "Craft": 0,
+            "Drive": 1,
+            "Firearms": 2,
+            "Larceny": 1,
+            "Melee": 0,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 2,
+            "Etiquette": 0,
+            "Insight": 1,
+            "Intimidation": 0,
+            "Leadership": 2,
+            "Performance": 2,
+            "Persuasion": 0,
+            "Streetwise": 2,
+            "Subterfuge": 2
+        }
+    }
+}

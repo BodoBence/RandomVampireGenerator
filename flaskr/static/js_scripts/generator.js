@@ -2,7 +2,7 @@ console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
 
-// create_global_event_listener("input", "selection_driver", toggle_input_field, false)
+create_global_event_listener("input", "selection_driver", toggle_input_field, false)
 create_global_event_listener("change", "manual_name_selection", selection_based_sync, true)
 create_global_event_listener("change", "manual_age_selection", selection_based_sync, true)
 // create_global_event_listener("click", "button_general", toggle_generator_inputs, false)

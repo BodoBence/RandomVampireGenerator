@@ -11,6 +11,10 @@ function create_global_event_listener(type, selector, callback, use_name){
     console.log("creating global event listerner")
     document.addEventListener(type, e => {
         // console.log(e.target)
+        console.log(e.target.className)
+        if (e.target.classList ){
+            // console.log("hi")
+        }    
 
         // Name based selection
         if (use_name == true) {
@@ -22,7 +26,7 @@ function create_global_event_listener(type, selector, callback, use_name){
 
         // Class based selection
         if (use_name == false) {
-            if (e.target.className == selector){
+            if (e.target.classList.contains(selector)){
                 console.log(e.target)
                 callback(e.target)
             }

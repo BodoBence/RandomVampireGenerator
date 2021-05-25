@@ -1,0 +1,142 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 7,
+            "Resolve": 6,
+            "Wits": 7
+        },
+        "Physical_Attributes": {
+            "Dexterity": 8,
+            "Stamina": 5,
+            "Strength": 8
+        },
+        "Social_Attributes": {
+            "Charisma": 3,
+            "Composure": 6,
+            "Manipulation": 7
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 104,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Klazomania: A person suffering from Klazomania can but will not lower their voice, constantly shouting at the top of their lungs.[16]"
+            ],
+            "Generation": 1,
+            "Name": "Kyra, Masayuki",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 10,
+            "Health": 8,
+            "Willpower": 12,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 6,
+                "Skills": {
+                    "": "",
+                    "Eagle's Sight": " Gain a bird's eye view of your area",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Possession": " Amalgam of Dominate 3. The vampire can take over the body of a mortal.",
+                    "Scry the Soul": " The vampire can read auras.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used",
+                    "The Dreaming": " Be somewhat aware of events concerning you while in torpor",
+                    "The Mind Revealed": " Continuously read someone's thoughts to know what they are thinking and about to do"
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1."
+                }
+            },
+            "Obfuscate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Animal Succulence": "The vampire can slake additional Hunger by feeding on animals.",
+                    "Atavism": "The vampire can cause an animal to temporarily revert to their primal instincts, forcing them to attack anyone nearby or to flee the scene.",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Arms of Ahriman": "The vampire summons two-dimensional shadow tendrils which glide across surfaces and victims, alternatively engaging in mystical grapples with the victim's shadow. They attack using the vampire's Wits and Oblivion, benefiting from their Potence when inflicting damage. Multiple tendrils can be created by splitting the vampire's dice pool. Amalgam with Potence 2.",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 2,
+            "Awareness": 2,
+            "Finance": 0,
+            "Investigation": 5,
+            "Medicine": 1,
+            "Occult": 2,
+            "Politics": 0,
+            "Science": 0,
+            "Technology": 0
+        },
+        "Physical_Skills": {
+            "Athletics": 0,
+            "Brawl": 2,
+            "Craft": 3,
+            "Drive": 3,
+            "Firearms": 0,
+            "Larceny": 2,
+            "Melee": 2,
+            "Stealth": 2,
+            "Survival": 2
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 1,
+            "Insight": 4,
+            "Intimidation": 2,
+            "Leadership": 1,
+            "Performance": 1,
+            "Persuasion": 1,
+            "Streetwise": 5,
+            "Subterfuge": 2
+        }
+    }
+}
