@@ -1,0 +1,164 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 9,
+            "Resolve": 8,
+            "Wits": 9
+        },
+        "Physical_Attributes": {
+            "Dexterity": 10,
+            "Stamina": 7,
+            "Strength": 10
+        },
+        "Social_Attributes": {
+            "Charisma": 9,
+            "Composure": 5,
+            "Manipulation": 7
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 555,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Schizoid: Schizoid Disorders reflect dislike of company. Schizoid characters prefer to be left alone, rejecting the need for social acceptance or attention. In contrast to Avoidant persons, Schizoid persons truly prefer this state of things.[4]"
+            ],
+            "Generation": 1,
+            "Name": "Laurence, Lister",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 10,
+            "Health": 10,
+            "Willpower": 13,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Scry the Soul": " The vampire can read auras.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal.",
+                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used"
+                }
+            },
+            "Dominate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1.",
+                    "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Mask of a Thousand Faces": "The vampire can assume the voice and appearance of a generic person who blends in the current setting, i.e. a worker in a factory or a nightwatchman in an office.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers.",
+                    "Feral Whispers": "The vampire can summon and communicate with an animal.",
+                    "Quell the Beast": "The vampire can cow mortals and can pull vampiric targets out of frenzy.",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence",
+                    "Scorpion\u00e2\u20ac\u2122s Touch": "The vampire can transmute some of their Blood into a paralyzing poison, capable of affecting mortals and vampires alike",
+                    "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
+                }
+            },
+            "Celerity": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Fleetness": "The vampire can add their Celerity to non-combat Dexterity checks.",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Toughness": "The vampire can subtract Fortitude rating from all Superficial damage sustained.",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                }
+            },
+            "Protean": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
+                    "Vicissitude": "The vampire reshapes one's own skin, muscles, and bone at will. Amalgam: Dominate 2."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 3,
+            "Awareness": 3,
+            "Finance": 1,
+            "Investigation": 2,
+            "Medicine": 5,
+            "Occult": 2,
+            "Politics": 5,
+            "Science": 4,
+            "Technology": 2
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 6,
+            "Craft": 1,
+            "Drive": 1,
+            "Firearms": 1,
+            "Larceny": 2,
+            "Melee": 1,
+            "Stealth": 2,
+            "Survival": 2
+        },
+        "Social_Skills": {
+            "Animal Ken": 4,
+            "Etiquette": 4,
+            "Insight": 3,
+            "Intimidation": 2,
+            "Leadership": 2,
+            "Performance": 1,
+            "Persuasion": 0,
+            "Streetwise": 1,
+            "Subterfuge": 0
+        }
+    }
+}

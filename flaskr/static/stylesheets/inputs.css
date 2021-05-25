@@ -49,19 +49,25 @@ input[type="range"]::-moz-range-thumb {
   }
 
 
-.input_container_id, .div_input_buttons {
+.input_container, .div_input_buttons {
     justify-content: center;
     width: 100%;
 } 
  
-.input_container_id {
+.input_container {
     display: grid;
-    padding: 10px;
     grid-row-gap: 0px;
     grid-column-gap: 20px;
     grid-template-columns: auto auto;
-    visibility: visible;
-    height: 100%;
+
+    overflow: hidden;
+    max-height: 300px;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
 }
 
 .div_input_dropdown, .div_input_type_in, .div_input_slider {
@@ -110,8 +116,9 @@ input[type="range"]::-moz-range-thumb {
 	margin: 0;
 
 	border: none;
-	box-shadow: 0 2px 0 2px rgba(0,0,0,.04);
 	border-radius: none;
+
+    box-shadow: 0 2px 0 2px rgba(0,0,0,.04);
 
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -164,20 +171,11 @@ input[type="range"]::-moz-range-thumb {
     transform: rotate(45deg);
 } */
 
-/* .transform_1, .input_opacity_visible {
-    -webkit-transition: all 1s ease;  
-    -moz-transition: all 1s ease;  
-    -o-transition: all 1s ease;  
-    -ms-transition: all 1s ease;  
-    transition: all 1s ease;
-}
-
 .transform_1-active {
-    margin-top: -260px;
-    height: 0px;
+    /* margin-top: -260px; */
+    max-height: 0px;
     overflow: hidden;
-
-} */
+}
 
 /* .input_opacity_hidden { */
     /* color: rgba(0, 0, 0, 0);

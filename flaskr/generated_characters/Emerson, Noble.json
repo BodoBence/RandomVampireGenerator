@@ -1,0 +1,162 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 6,
+            "Resolve": 5,
+            "Wits": 10
+        },
+        "Physical_Attributes": {
+            "Dexterity": 8,
+            "Stamina": 3,
+            "Strength": 8
+        },
+        "Social_Attributes": {
+            "Charisma": 10,
+            "Composure": 9,
+            "Manipulation": 4
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 238,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Sacred Disease: The character is a victim of a trembling disorder that renders him insensate.[6]"
+            ],
+            "Generation": 1,
+            "Name": "Emerson, Noble",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 10,
+            "Health": 6,
+            "Willpower": 14,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Scry the Soul": " The vampire can read auras.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Dementation": "Amalgam Obfuscate 2. The vampire can trigger psychotic breaks or nervous breakdowns.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Ghost in the Machine": "Other Obfuscate powers work on electronic recording devices.",
+                    "Mask of a Thousand Faces": "The vampire can assume the voice and appearance of a generic person who blends in the current setting, i.e. a worker in a factory or a nightwatchman in an office.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039.",
+                    "Vanish": "Requires Cloak of Shadows. The vampire can activate Cloak of Shadows or Unseen Passage even under direct observation."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers."
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "A Taste for Blood": "By tasting a drop of blood, the user can discern certain basic traits of the one to whom it belongs"
+                }
+            },
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Potence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Serpent": "Amalgam Protean 1.  The vampire can freeze a mortal in place with their gaze."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist",
+                    "User can develop formulae to counterfeit level 1 Disciplines": "N/A"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 3,
+            "Awareness": 1,
+            "Finance": 2,
+            "Investigation": 2,
+            "Medicine": 2,
+            "Occult": 0,
+            "Politics": 1,
+            "Science": 1,
+            "Technology": 5
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 2,
+            "Craft": 0,
+            "Drive": 2,
+            "Firearms": 3,
+            "Larceny": 1,
+            "Melee": 2,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 2,
+            "Etiquette": 2,
+            "Insight": 5,
+            "Intimidation": 2,
+            "Leadership": 1,
+            "Performance": 1,
+            "Persuasion": 0,
+            "Streetwise": 4,
+            "Subterfuge": 3
+        }
+    }
+}

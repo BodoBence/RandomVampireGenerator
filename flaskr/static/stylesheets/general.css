@@ -13,6 +13,7 @@
     --input_height: 30px;
     --padding_distance: 10px;
     --main_height: 10px;
+    --base_animation_time: 0.7s;
     font-family: Georgia, serif;
 }
 
