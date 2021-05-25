@@ -1,0 +1,108 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 3,
+            "Resolve": 2,
+            "Wits": 3
+        },
+        "Physical_Attributes": {
+            "Dexterity": 4,
+            "Stamina": 2,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 4,
+            "Composure": 2,
+            "Manipulation": 3
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 131,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Phlegmatic: Strongly focused inward, Phlegmatics have difficulties adapting to a quickly shifting situation.[5]"
+            ],
+            "Generation": 9,
+            "Name": "Colton, Tadao",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 3,
+            "Health": 5,
+            "Willpower": 4,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks."
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them."
+                }
+            },
+            "Obfuscate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 0,
+            "Finance": 0,
+            "Investigation": 1,
+            "Medicine": 1,
+            "Occult": 0,
+            "Politics": 0,
+            "Science": 0,
+            "Technology": 0
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 0,
+            "Craft": 0,
+            "Drive": 3,
+            "Firearms": 0,
+            "Larceny": 1,
+            "Melee": 2,
+            "Stealth": 1,
+            "Survival": 2
+        },
+        "Social_Skills": {
+            "Animal Ken": 0,
+            "Etiquette": 0,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Leadership": 0,
+            "Performance": 0,
+            "Persuasion": 1,
+            "Streetwise": 1,
+            "Subterfuge": 2
+        }
+    }
+}

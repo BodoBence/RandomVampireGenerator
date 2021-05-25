@@ -10,14 +10,20 @@ function get_last_url_segment(input_url){
 function create_global_event_listener(type, selector, callback, use_name){
     console.log("creating global event listerner")
     document.addEventListener(type, e => {
+        // console.log(e.target)
+
+        // Name based selection
         if (use_name == true) {
             if (e.target.getAttribute('name') == selector){
+                console.log(e.target)
                 callback(e.target)
             }
         }
 
+        // Class based selection
         if (use_name == false) {
             if (e.target.className == selector){
+                console.log(e.target)
                 callback(e.target)
             }
         }

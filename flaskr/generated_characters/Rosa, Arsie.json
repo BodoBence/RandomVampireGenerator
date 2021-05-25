@@ -1,0 +1,137 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 2,
+            "Resolve": 5,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 4,
+            "Stamina": 4,
+            "Strength": 4
+        },
+        "Social_Attributes": {
+            "Charisma": 3,
+            "Composure": 5,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 983,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Obsessive-Compulsive Disorder (OCD): Also sometimes referred to as Monomania, persons with OCD focus nearly all of their attention and energy onto a single repetitive behavior or action. Essentially, a person with OCD fixates on intrusive doubts and fears: Fixations she tries to banish by making sure that certain things are in order, even if they already are.[13]"
+            ],
+            "Generation": 14,
+            "Name": "Rosa, Arsie",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 0,
+            "Health": 7,
+            "Willpower": 10,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1."
+                }
+            },
+            "Dominate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Dementation": "Amalgam Obfuscate 2. The vampire can trigger psychotic breaks or nervous breakdowns.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers.",
+                    "Feral Whispers": "The vampire can summon and communicate with an animal."
+                }
+            },
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Potence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone."
+                }
+            },
+            "Protean": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
+                    "Vicissitude": "The vampire reshapes one's own skin, muscles, and bone at will. Amalgam: Dominate 2."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 0,
+            "Finance": 1,
+            "Investigation": 1,
+            "Medicine": 2,
+            "Occult": 1,
+            "Politics": 0,
+            "Science": 1,
+            "Technology": 0
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 1,
+            "Craft": 0,
+            "Drive": 2,
+            "Firearms": 1,
+            "Larceny": 2,
+            "Melee": 3,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 1,
+            "Insight": 1,
+            "Intimidation": 1,
+            "Leadership": 1,
+            "Performance": 1,
+            "Persuasion": 3,
+            "Streetwise": 3,
+            "Subterfuge": 1
+        }
+    }
+}

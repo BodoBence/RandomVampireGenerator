@@ -123,14 +123,30 @@
                     <p>Age:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="ages" name="manual_age_selection" id="selection_age">
+                    <select 
+                        class="dropdown_selectors input_opacity_visible input_opacity_identifier" 
+                        list="ages" 
+                        name="manual_age_selection" 
+                        id="selection_age"
+                        data-input-reference="manual_age_input_id"
+                        data-input-default="300"
+                        data-input-focus="Random">
+                        
                         <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
-                      </select>
+                    </select>
                     <span class="custom_arrow"></span>
                 </div>
                 <div class="div_type_in">
-                    <input type="number" min=1 max=3000 name="manual_age" value={{ field_values['manual_age'] }} class="selection_driver input_opacity_visible input_opacity_identifier" data-driver-reference="selection_age">
+                    <input 
+                        type="number" 
+                        min=1 
+                        max=3000 
+                        name="manual_age" 
+                        value={{ field_values['manual_age'] }} 
+                        class="selection_driver input_opacity_visible input_opacity_identifier" 
+                        data-driver-reference="manual_age_selection"
+                        id="manual_age_input_id">
                 </div>            
             </div>
     
@@ -140,13 +156,14 @@
                 </div>
                 <div class="div_slider">
                     <input
-                    id="slider_social"
-                    class="slider input_opacity_visible input_opacity_identifier"
-                    type="range"
-                    name="simplified_social"
-                    min="0" 
-                    max="100"
-                    value="50">                
+                        id="slider_social"
+                        class="slider input_opacity_visible input_opacity_identifier"
+                        type="range"
+                        name="simplified_social"
+                        min="0" 
+                        max="100"
+                        value="50"
+                    >                
                 </div>
             </div>
     
@@ -155,14 +172,28 @@
                     <p>Name:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors input_opacity_visible input_opacity_identifier" list="names" name="manual_name_selection" id="selection_name">
+                    <select 
+                        class="dropdown_selectors input_opacity_visible input_opacity_identifier"
+                        list="names" 
+                        name="manual_name_selection" 
+                        id="selection_name"
+                        data-input-reference="manual_name_input_id"
+                        data-input-default="Fruzsi"
+                        data-input-focus="Random">
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
                     <span class="custom_arrow"></span>
                 </div>
                 <div class="div_select">
-                    <input type="text" name="manual_name" value={{ field_values['manual_name'] }}  class="selection_driver input_opacity_visible input_opacity_identifier" data-driver-reference="selection_name"> 
+                    <input 
+                        type="text" 
+                        name="manual_name" 
+                        value={{ field_values['manual_name'] }}  
+                        class="selection_driver input_opacity_visible input_opacity_identifier" 
+                        data-driver-reference="selection_name"
+                        id="manual_name_input_id"
+                    > 
                 </div>
             </div>
 

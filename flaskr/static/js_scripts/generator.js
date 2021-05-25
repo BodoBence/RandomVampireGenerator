@@ -2,9 +2,10 @@ console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
 
-create_global_event_listener("input", "selection_driver", toggle_input_field, false)
-create_global_event_listener("selectionchange", selection_based_sync,  false)
-create_global_event_listener("click", "button_general", toggle_generator_inputs, false)
+// create_global_event_listener("input", "selection_driver", toggle_input_field, false)
+create_global_event_listener("change", "manual_name_selection", selection_based_sync, true)
+create_global_event_listener("change", "manual_age_selection", selection_based_sync, true)
+// create_global_event_listener("click", "button_general", toggle_generator_inputs, false)
 
 // Functions for the Input sliders (generator_inputs.html)
 
@@ -24,13 +25,21 @@ function toggle_generator_inputs(current_trigger){
 
 
 function toggle_input_field(current_driver){
-    // console.log("triggered")
+    console.log("manual / random switch triggered")
     referred_element_id = current_driver.getAttribute("data-driver-reference")
     referred_element = document.getElementById(referred_element_id)
     referred_element.value = "Manual"
 }
 
-function selection_based_sync(current_selector, focused_value, conencted_field, default_value){
+function selection_based_sync(current_selector){
+    console.log("doing selection based sync to default value")
+
+    focused_value = current_selector.getAttribute("data-input-focus")
+    default_value = current_selector.getAttribute("data-input-default")
+
+    conencted_field_reference = current_selector.getAttribute("data-input-reference")
+    conencted_field = document.getElementById(conencted_field_reference)
+
     if (current_selector.value == focused_value){
         conencted_field.value = default_value
     }
