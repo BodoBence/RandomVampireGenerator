@@ -36,11 +36,11 @@
     cursor: pointer;
     width: 100%;
 
-    -webkit-transition: all 1s ease;  
-    -moz-transition: all 1s ease;  
-    -o-transition: all 1s ease;  
-    -ms-transition: all 1s ease;  
-    transition: all 1s ease;
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
 }
 
 .button_general:hover {
@@ -105,4 +105,16 @@ footer {
     color: var(--white);
     font-size: 12pt;
 
+}
+
+.animation_close {
+    /* margin-top: -260px; */
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.animation_open {
+    /* margin-top: -260px; */
+    max-height: 100%;
+    overflow: hidden;
 }

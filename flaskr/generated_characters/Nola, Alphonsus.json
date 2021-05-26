@@ -1,53 +1,51 @@
 {
     "Attributes": {
         "Mental_Attributes": {
-            "Intelligence": 9,
-            "Resolve": 8,
-            "Wits": 9
+            "Intelligence": 4,
+            "Resolve": 4,
+            "Wits": 5
         },
         "Physical_Attributes": {
-            "Dexterity": 10,
-            "Stamina": 7,
-            "Strength": 10
+            "Dexterity": 4,
+            "Stamina": 5,
+            "Strength": 4
         },
         "Social_Attributes": {
-            "Charisma": 9,
+            "Charisma": 5,
             "Composure": 5,
-            "Manipulation": 7
+            "Manipulation": 4
         }
     },
     "Character_Details": {
         "Basic_Information": {
-            "Age": 555,
+            "Age": 1652,
             "Clan": "Malkavian",
             "Derangement": [
-                "Schizoid: Schizoid Disorders reflect dislike of company. Schizoid characters prefer to be left alone, rejecting the need for social acceptance or attention. In contrast to Avoidant persons, Schizoid persons truly prefer this state of things.[4]"
+                "Hysteria: A person in the grip of hysteria is unable to control her emotions, suffering severe mood swings and violent fits when subjected to stress or anxiety.[15]"
             ],
-            "Generation": 1,
-            "Name": "Laurence, Lister",
-            "Sex": "Male",
+            "Generation": 15,
+            "Name": "Nola, Alphonsus",
+            "Sex": "Female",
             "Sire": "Older Vampire"
         },
         "Trackers": {
-            "Blood_Potency": 10,
-            "Health": 10,
-            "Willpower": 13,
+            "Blood_Potency": 0,
+            "Health": 8,
+            "Willpower": 9,
             "XP_Left": 0
         }
     },
     "Disciplines": {
         "Clan_Disciplines": {
             "Auspex": {
-                "Level": 4,
+                "Level": 3,
                 "Skills": {
                     "": "",
                     "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
                     "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
                     "Premonition": " The vampire can receive visions and hints about what is about to happen.",
-                    "Scry the Soul": " The vampire can read auras.",
                     "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
-                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal.",
-                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used"
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal."
                 }
             },
             "Dominate": {
@@ -56,6 +54,8 @@
                     "": "",
                     "Cloud Memory": "The vampire can make the target forget the past few minutes.",
                     "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Dementation": "Amalgam Obfuscate 2. The vampire can trigger psychotic breaks or nervous breakdowns.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
                     "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
                     "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1.",
                     "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands."
@@ -67,7 +67,7 @@
                     "": "",
                     "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
                     "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
-                    "Mask of a Thousand Faces": "The vampire can assume the voice and appearance of a generic person who blends in the current setting, i.e. a worker in a factory or a nightwatchman in an office.",
+                    "Mental Maze[4]": "The Vampire can make the victim unable to escape the building, leaving him feeling that the building folds back on itself. Amalgam: Dominate (VTM) 1.",
                     "Silence of Death": "The vampire can nullify all sound that they make.",
                     "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
                 }
@@ -75,21 +75,17 @@
         },
         "Non-Clan_Disciplines": {
             "Animalism": {
-                "Level": 3,
+                "Level": 1,
                 "Skills": {
                     "": "",
                     "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers.",
-                    "Feral Whispers": "The vampire can summon and communicate with an animal.",
-                    "Quell the Beast": "The vampire can cow mortals and can pull vampiric targets out of frenzy.",
                     "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
                 }
             },
             "Blood_Sorcery": {
-                "Level": 3,
+                "Level": 1,
                 "Skills": {
                     "": "",
-                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence",
-                    "Scorpion\u00e2\u20ac\u2122s Touch": "The vampire can transmute some of their Blood into a paralyzing poison, capable of affecting mortals and vampires alike",
                     "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
                 }
             },
@@ -101,64 +97,72 @@
                     "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
                 }
             },
-            "Fortitude": {
+            "Oblivion": {
                 "Level": 2,
                 "Skills": {
                     "": "",
-                    "Toughness": "The vampire can subtract Fortitude rating from all Superficial damage sustained.",
-                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Fatal Precognition": "The vampire's eyes become black and they remain still while they scry a vision which shows the death of a non-Kindred they can percieve. Attempts to subvert the fate seen in the vision become more difficult. Amalgam with Auspex 2."
                 }
             },
-            "Oblivion": {
+            "Potence": {
                 "Level": 1,
                 "Skills": {
                     "": "",
-                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                    "Soaring Leap": "The Kindred can leap higher and further."
                 }
             },
-            "Protean": {
-                "Level": 2,
+            "Presence": {
+                "Level": 1,
                 "Skills": {
                     "": "",
-                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
-                    "Vicissitude": "The vampire reshapes one's own skin, muscles, and bone at will. Amalgam: Dominate 2."
+                    "Awe": "The vampire can add their Presence rating to their Persuasion and Performance checks"
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Concoct Ashe": "Concoct the substance Ashe, which can temporarily increase the Blood Potency of a thin-blooded vampire, but can create addiction[1]",
+                    "Haze": "Creates a field of mist",
+                    "User can develop formulae to counterfeit level 1 Disciplines": "N/A"
                 }
             }
         }
     },
     "Skills": {
         "Mental_Skills": {
-            "Academics": 3,
+            "Academics": 0,
             "Awareness": 3,
             "Finance": 1,
             "Investigation": 2,
-            "Medicine": 5,
-            "Occult": 2,
-            "Politics": 5,
-            "Science": 4,
-            "Technology": 2
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 2,
+            "Science": 0,
+            "Technology": 3
         },
         "Physical_Skills": {
-            "Athletics": 1,
-            "Brawl": 6,
+            "Athletics": 0,
+            "Brawl": 1,
             "Craft": 1,
-            "Drive": 1,
-            "Firearms": 1,
-            "Larceny": 2,
+            "Drive": 5,
+            "Firearms": 3,
+            "Larceny": 1,
             "Melee": 1,
-            "Stealth": 2,
-            "Survival": 2
+            "Stealth": 3,
+            "Survival": 3
         },
         "Social_Skills": {
-            "Animal Ken": 4,
-            "Etiquette": 4,
-            "Insight": 3,
-            "Intimidation": 2,
-            "Leadership": 2,
+            "Animal Ken": 0,
+            "Etiquette": 3,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Leadership": 1,
             "Performance": 1,
             "Persuasion": 0,
-            "Streetwise": 1,
-            "Subterfuge": 0
+            "Streetwise": 2,
+            "Subterfuge": 3
         }
     }
 }

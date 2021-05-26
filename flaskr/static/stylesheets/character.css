@@ -87,8 +87,16 @@ th {
 }
 
 .discipline_skills {
-    visibility: collapse;
-    padding: 0px;}
+    max-height: 0;
+    overflow: hidden;
+    padding: 0px;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
 
 .dot_filled {
     height: 10px;

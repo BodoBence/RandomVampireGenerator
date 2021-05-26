@@ -164,7 +164,9 @@
                     {% if row['col1'] != '' %}
                         <button
                             class="button_discipline_skills button_general"
-                            data-toggle-reference={{ row['col2']['discipline_number'] }}> 
+                            data-toggle-reference={{ row['col2']['discipline_number'] }}
+                            data-toggle-animation-class="animation_open"
+                            data-toggle-selection-class="discipline_skills">
                             Hide/Show Skills 
                         </button>
                     {% endif %}
@@ -184,7 +186,9 @@
                     {% if row['col3'] != '' %}
                         <button
                             class="button_discipline_skills button_general"
-                            data-toggle-reference={{ row['col4']['discipline_number'] }}>
+                            data-toggle-reference={{ row['col4']['discipline_number'] }}
+                            data-toggle-animation-class="animation_open"
+                            data-toggle-selection-class="discipline_skills">
                             Hide/Show Skills
                         </button>
                     {% endif %}
@@ -193,7 +197,7 @@
             <tr>
                 <td colspan="3">
                     {% if row['col1'] != '' %}
-                        <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }} style="visibility: collapse;">
+                        <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
                             {% for skill in row['col2']['Skills'] %}
                             <tr>
                                 <td> {{ '' if row['col1'] == '' else skill }} </td>
@@ -205,7 +209,7 @@
                 </td>
                 <td colspan="3">
                     {% if row['col3'] != '' %}
-                        <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }} style="visibility: collapse;"> 
+                        <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
                             {% for skill in row['col4']['Skills'] %}
                                 <tr>
                                     <td> {{ '' if row['col3'] == '' else skill }} </td>

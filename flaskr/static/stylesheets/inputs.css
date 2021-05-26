@@ -125,6 +125,12 @@ input[type="range"]::-moz-range-thumb {
 	appearance: none;
 
 	background-color: var(--bg);
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
 }
 
 .dropdown_selectors::-ms-expand {
@@ -170,12 +176,6 @@ input[type="range"]::-moz-range-thumb {
 
     transform: rotate(45deg);
 } */
-
-.transform_1-active {
-    /* margin-top: -260px; */
-    max-height: 0px;
-    overflow: hidden;
-}
 
 /* .input_opacity_hidden { */
     /* color: rgba(0, 0, 0, 0);
