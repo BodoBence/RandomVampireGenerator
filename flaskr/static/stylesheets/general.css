@@ -108,8 +108,7 @@ footer {
 }
 
 .animation_close {
-    /* margin-top: -260px; */
-    max-height: 0px;
+    max-height: 0px !important;
     overflow: hidden;
 }
 

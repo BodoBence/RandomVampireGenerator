@@ -56,6 +56,7 @@ input[type="range"]::-moz-range-thumb {
  
 .input_container {
     display: grid;
+
     grid-row-gap: 0px;
     grid-column-gap: 20px;
     grid-template-columns: auto auto;
