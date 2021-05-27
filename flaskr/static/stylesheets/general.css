@@ -17,9 +17,8 @@
     font-family: Georgia, serif;
 }
 
-.changable_visibility {
-    visibility: visible;
-}
+
+/* Buttons */
 
 .button_general {
     background-color: var(--bg);
@@ -77,6 +76,9 @@
     height: 30px;
 }
 
+
+/* Background (Body) */
+
 body {
     background-color: var(--grey);
     background-image: url("/static/svg/city_level_1.svg");
@@ -89,23 +91,21 @@ body {
 /* Footer*/
 
 footer {
-    /* position: fixed; */
-    position: bottom;
-}
-
-.div_footer_container {
-    margin-top: 10%;
+    position: fixed;
+    left: 0%;
+    bottom: 0%;
     width: 100%;
     height: 100px;
     background-color: var(--bg);
     text-align: center;
 }
 
-.div_footer_container p {
+footer p {
     color: var(--white);
     font-size: 12pt;
-
 }
+
+/* Dynamically added classes for animation */
 
 .animation_close {
     max-height: 0px !important;

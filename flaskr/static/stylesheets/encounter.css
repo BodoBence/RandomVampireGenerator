@@ -1,11 +1,17 @@
 
-.div_encounter_card {
-    margin-top: 200px;
-    margin-left: 10%;
-    margin-right: 10%;
+.div_encounter_container {
+    margin-top: var(--nav_height);
     margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
 
-    padding: 5%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.div_encounter_card {
+    margin: 5%;
+    padding: 2%;
 
     border-color: var(--white);
     border-style: solid;
@@ -13,12 +19,11 @@
     border-radius: 30px;
 
     display: grid;
-    grid-template-rows: 10%;
+    grid-template-rows: 10px;
 }
 
 .div_encounter_row_1, .div_encounter_row_2, .div_encounter_row_3 {
     display: grid;
-    margin-bottom: 10px;
 }
 
 .div_encounter_row_1 {
@@ -30,13 +35,14 @@
 }
 
 .div_encounter_row_3 {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 20% 20% auto;
+    grid-column-gap: 10%;
 }
 
 .div_encounter_row_3 input {
     height: 20px;
+    width: 50%;
 }
-
 
 .tracker {
     height: 20px;   
@@ -50,17 +56,12 @@
 
 .tracker:hover {
     background-color: var(--fg);
+    color: var(--fg);
     cursor: pointer;
 }
 
 .tracker_row {
     height: 80px;
-}
-
-.encounter {
-    background-color: var(--grey);
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .input_encounter_name {

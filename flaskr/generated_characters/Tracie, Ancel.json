@@ -1,0 +1,156 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 8,
+            "Resolve": 6,
+            "Wits": 7
+        },
+        "Physical_Attributes": {
+            "Dexterity": 6,
+            "Stamina": 9,
+            "Strength": 4
+        },
+        "Social_Attributes": {
+            "Charisma": 8,
+            "Composure": 10,
+            "Manipulation": 8
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 209,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Dissociate Perceptions Syndrome (DPS): Appearing after the Week of Nightmares to affect users of Chimerstry, such individuals find that they are unable to distinguish between their summoned illusions and personal hallucinations.[29]"
+            ],
+            "Generation": 2,
+            "Name": "Tracie, Ancel",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 10,
+            "Health": 12,
+            "Willpower": 16,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal."
+                }
+            },
+            "Dominate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Dementation": "Amalgam Obfuscate 2. The vampire can trigger psychotic breaks or nervous breakdowns.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Obdurate": "By shoring up their physical hardiness with vampiric Potence, the Kindred may maintain a steady footing when struck by a massive force. Amalgam: Potence 2",
+                    "Toughness": "The vampire can subtract Fortitude rating from all Superficial damage sustained.",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts.",
+                    "The Binding Fetter": "The vampire can identify objects and locations important to ghosts by a faint aura."
+                }
+            },
+            "Potence": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Lethal Body": "The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone.",
+                    "Prowess": "The Kindred gains an overall increase in strength."
+                }
+            },
+            "Protean": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
+                    "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 1,
+            "Awareness": 2,
+            "Finance": 1,
+            "Investigation": 1,
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 3,
+            "Science": 1,
+            "Technology": 2
+        },
+        "Physical_Skills": {
+            "Athletics": 2,
+            "Brawl": 2,
+            "Craft": 1,
+            "Drive": 2,
+            "Firearms": 1,
+            "Larceny": 1,
+            "Melee": 0,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 2,
+            "Etiquette": 1,
+            "Insight": 1,
+            "Intimidation": 2,
+            "Leadership": 5,
+            "Performance": 3,
+            "Persuasion": 2,
+            "Streetwise": 1,
+            "Subterfuge": 1
+        }
+    }
+}

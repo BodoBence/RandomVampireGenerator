@@ -1,0 +1,104 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 4,
+            "Resolve": 4,
+            "Wits": 4
+        },
+        "Physical_Attributes": {
+            "Dexterity": 5,
+            "Stamina": 5,
+            "Strength": 4
+        },
+        "Social_Attributes": {
+            "Charisma": 5,
+            "Composure": 3,
+            "Manipulation": 2
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 634,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Sexual Dysfunction: Sexual Dysfunctions are an umbrella term for several ailments, like vaginismus, dyspareunia, or impotence. All such conditions are likely to instill an extreme aversion to sex.[19]"
+            ],
+            "Generation": 12,
+            "Name": "Eula, Lether",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 2,
+            "Health": 8,
+            "Willpower": 7,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Scry the Soul": " The vampire can read auras.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used"
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Slavish Devotion": "The vampire can strengthen the mind of their dominated victims, against interference from other Kindred. Amalgam: Presence 1."
+                }
+            },
+            "Obfuscate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {}
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 1,
+            "Finance": 2,
+            "Investigation": 0,
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 0,
+            "Science": 1,
+            "Technology": 1
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 0,
+            "Craft": 0,
+            "Drive": 2,
+            "Firearms": 1,
+            "Larceny": 1,
+            "Melee": 0,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 1,
+            "Insight": 0,
+            "Intimidation": 0,
+            "Leadership": 1,
+            "Performance": 2,
+            "Persuasion": 1,
+            "Streetwise": 1,
+            "Subterfuge": 2
+        }
+    }
+}

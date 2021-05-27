@@ -4,10 +4,10 @@
 .div_character_background {
     background-color: var(--light_bakcground_opaque);
 
-    margin-top: 10px;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: auto;
+    margin-bottom: 20%;
 
     max-width: 800px;
 
@@ -17,6 +17,8 @@
 }
 
 .table_character {
+    table-layout: fixed;
+
     border-style: double;
     border-width: 5px;
     border-color: black;
@@ -26,6 +28,10 @@
     padding: 10px;
 
     width: 100%;
+}
+
+td {
+    width: calc(100px/6px);
 }
 
 .table_character tbody tr:nth-child(2)  {
@@ -66,6 +72,13 @@ th {
 
 .character_sheet_trackers_title {
     height: 60px;
+    text-align: center;
+}
+
+.character_sheet_trackers_squares td {
+    width: 50%;
+    text-align: center;
+    vertical-align: top;
 }
 
 .square_filled {
