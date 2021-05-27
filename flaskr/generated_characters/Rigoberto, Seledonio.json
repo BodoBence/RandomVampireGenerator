@@ -1,0 +1,134 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 5,
+            "Resolve": 5,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 5,
+            "Stamina": 5,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 5,
+            "Composure": 5,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 2096,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Compulsive Invisibility: Commonly associated with Obfuscate, the vampire has been so attuned to invisibility that it costs Willpower for him to turn his powers off.[33]"
+            ],
+            "Generation": 15,
+            "Name": "Rigoberto, Seledonio",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 0,
+            "Health": 8,
+            "Willpower": 10,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Ancestral Dominion": "The vampire can make their Kindred descendants to take actions on their behalf, without the need for eye contact and verbal communication. Amalgam: Blood Sorcery 3.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
+                    "Mental Maze[4]": "The Vampire can make the victim unable to escape the building, leaving him feeling that the building folds back on itself. Amalgam: Dominate (VTM) 1.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 3,
+            "Awareness": 2,
+            "Finance": 5,
+            "Investigation": 2,
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 1,
+            "Science": 1,
+            "Technology": 1
+        },
+        "Physical_Skills": {
+            "Athletics": 4,
+            "Brawl": 2,
+            "Craft": 2,
+            "Drive": 2,
+            "Firearms": 2,
+            "Larceny": 3,
+            "Melee": 5,
+            "Stealth": 4,
+            "Survival": 2
+        },
+        "Social_Skills": {
+            "Animal Ken": 0,
+            "Etiquette": 4,
+            "Insight": 1,
+            "Intimidation": 4,
+            "Leadership": 4,
+            "Performance": 0,
+            "Persuasion": 2,
+            "Streetwise": 2,
+            "Subterfuge": 0
+        }
+    }
+}

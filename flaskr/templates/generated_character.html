@@ -197,26 +197,26 @@
             <tr>
                 <td colspan="3">
                     {% if row['col1'] != '' %}
-                        <table class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
+                        <div class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
                             {% for skill in row['col2']['Skills'] %}
-                            <tr>
-                                <td> {{ '' if row['col1'] == '' else skill }} </td>
-                                <td> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </td>
-                            </tr>
+                            <p>
+                                <p> {{ '' if row['col1'] == '' else skill }} </p>
+                                <p> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </p>
+                            </p>
                             {% endfor %}  
-                        </table>
+                        </div>
                     {% endif %}
                 </td>
                 <td colspan="3">
                     {% if row['col3'] != '' %}
-                        <table class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
+                        <div class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
                             {% for skill in row['col4']['Skills'] %}
-                                <tr>
-                                    <td> {{ '' if row['col3'] == '' else skill }} </td>
-                                    <td> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </td>
-                                </tr>
+                                <div>
+                                    <p> {{ '' if row['col3'] == '' else skill }} </p>
+                                    <p> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </p>
+                                </div>
                             {% endfor %}   
-                        </table>
+                        </div>
                     {% endif %}
                 </td>                            
             </tr>            
