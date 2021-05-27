@@ -199,10 +199,8 @@
                     {% if row['col1'] != '' %}
                         <div class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
                             {% for skill in row['col2']['Skills'] %}
-                            <p>
                                 <p> {{ '' if row['col1'] == '' else skill }} </p>
                                 <p> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </p>
-                            </p>
                             {% endfor %}  
                         </div>
                     {% endif %}
@@ -211,10 +209,8 @@
                     {% if row['col3'] != '' %}
                         <div class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
                             {% for skill in row['col4']['Skills'] %}
-                                <div>
                                     <p> {{ '' if row['col3'] == '' else skill }} </p>
                                     <p> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </p>
-                                </div>
                             {% endfor %}   
                         </div>
                     {% endif %}

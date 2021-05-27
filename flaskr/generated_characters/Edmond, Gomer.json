@@ -1,0 +1,159 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 2,
+            "Resolve": 5,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 2,
+            "Stamina": 5,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 3,
+            "Composure": 5,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 1170,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Power-Object Fixation: Characters with a Power-Object Fixation believe that their skill and self-confidence is bound to a specific object (that has no such properties). The character cannot function properly without this object around him.[18]"
+            ],
+            "Generation": 15,
+            "Name": "Edmond, Gomer",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 0,
+            "Health": 8,
+            "Willpower": 10,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Ghost in the Machine": "Other Obfuscate powers work on electronic recording devices.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "A Taste for Blood": "By tasting a drop of blood, the user can discern certain basic traits of the one to whom it belongs",
+                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence"
+                }
+            },
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion.",
+                    "Valeren": "Projects Fortitude outwardly, willing the vampire's Blood to mend another vampire's injuries. Amalgam: Auspex 1."
+                }
+            },
+            "Oblivion": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Fatal Precognition": "The vampire's eyes become black and they remain still while they scry a vision which shows the death of a non-Kindred they can percieve. Attempts to subvert the fate seen in the vision become more difficult. Amalgam with Auspex 2."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Daunt": "The vampire can add their Presence rating to their Intimidation checks."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist",
+                    "User can develop formulae to counterfeit level 1 Disciplines": "N/A"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 1,
+            "Awareness": 3,
+            "Finance": 3,
+            "Investigation": 1,
+            "Medicine": 0,
+            "Occult": 0,
+            "Politics": 1,
+            "Science": 3,
+            "Technology": 0
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 0,
+            "Craft": 2,
+            "Drive": 0,
+            "Firearms": 0,
+            "Larceny": 2,
+            "Melee": 3,
+            "Stealth": 1,
+            "Survival": 1
+        },
+        "Social_Skills": {
+            "Animal Ken": 1,
+            "Etiquette": 1,
+            "Insight": 2,
+            "Intimidation": 1,
+            "Leadership": 2,
+            "Performance": 0,
+            "Persuasion": 1,
+            "Streetwise": 0,
+            "Subterfuge": 3
+        }
+    }
+}

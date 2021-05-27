@@ -87,6 +87,10 @@ th {
 }
 
 .discipline_skills {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    
     max-height: 0px;
     overflow: hidden;
     padding: 0px;
@@ -96,11 +100,6 @@ th {
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
-}
-
-.discipline_skills div {
-    display: grid;
-    grid-template-columns: 100px auto;
 }
 
 .dot_filled {
