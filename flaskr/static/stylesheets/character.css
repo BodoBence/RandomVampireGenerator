@@ -12,8 +12,10 @@
     max-width: 800px;
 
     padding: 5%;
-
-    box-shadow: 10px 10px var(--box_shadow_color);
+    
+    -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+    -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+    box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
 }
 
 .table_character {

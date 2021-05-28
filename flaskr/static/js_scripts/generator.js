@@ -2,10 +2,11 @@ console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
 
-create_global_event_listener("input", "selection_driver", toggle_input_field, false)
-create_global_event_listener("change", "manual_name_selection", selection_based_sync, true)
-create_global_event_listener("change", "manual_age_selection", selection_based_sync, true)
-create_global_event_listener("click", "button_general", accordion_motion, false)
+create_global_event_listener("input", "selection_driver", toggle_input_field, 'class')
+create_global_event_listener("change", "manual_name_selection", selection_based_sync, 'name')
+create_global_event_listener("change", "manual_age_selection", selection_based_sync, 'name')
+create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
+create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
 
 // Functions for the Input sliders (generator_inputs.html)
 
@@ -42,16 +43,22 @@ function selection_based_sync(current_selector){
 
 }
 
-function load_default_slider_values(){
-    document.getElementsByName("Attributes")[0].value="{{ default_input_weights['Attributes'] }}";
-    document.getElementsByName("Skills")[0].value="{{ default_input_weights['Skills'] }}";
-    document.getElementsByName("Disciplines")[0].value="{{ default_input_weights['Disciplines'] }}";
-    document.getElementsByName("Physical_Attributes")[0].value="{{ default_input_weights['Physical_Attributes'] }}";
-    document.getElementsByName("Social_Attributes")[0].value="{{ default_input_weights['Social_Attributes'] }}";
-    document.getElementsByName("Mental_Attributes")[0].value="{{ default_input_weights['Mental_Attributes'] }}";
-    document.getElementsByName("Physical_Skills")[0].value="{{ default_input_weights['Physical_Skills'] }}";
-    document.getElementsByName("Social_Skills")[0].value="{{ default_input_weights['Social_Skills'] }}";
-    document.getElementsByName("Mental_Skills")[0].value="{{ default_input_weights['Mental_Skills'] }}";
-    document.getElementsByName("Clan_Disciplines")[0].value="{{ default_input_weights['Clan_Disciplines'] }}";
-    document.getElementsByName("Non-Clan_Disciplines")[0].value="{{ default_input_weights['Non-Clan_Disciplines'] }}";
+function load_default_input_values(){
+    console.log('changing input values to defaults')
+    // Dropdowns
+    document.getElementById('selection_clan').value = 'Malkavian'
+    document.getElementById('selection_generation').value = 'Random'
+    document.getElementById('selection_age').value = 'Random'
+    document.getElementById('selection_name').value = 'Random'
+
+    // Sliders
+    document.getElementById('slider_discipline').value = 20
+    document.getElementById('slider_physical').value = 50
+    document.getElementById('slider_mental').value = 50
+    document.getElementById('slider_social').value = 50
+
+    // Input fields
+    document.getElementById('manual_name_input_id').value = 'Fruzsi'
+    document.getElementById('manual_age_input_id').value = 300
+
 }

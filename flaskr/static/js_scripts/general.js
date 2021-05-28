@@ -7,25 +7,36 @@ function get_last_url_segment(input_url){
     return last_segment
 }
 
-function create_global_event_listener(type, selector, callback, use_name){
+function create_global_event_listener(type, selector, callback, element_type){
     console.log("creating global event listerner")
     document.addEventListener(type, e => {
         // console.log(e.target)
 
-        // Name based selection
-        if (use_name == true) {
-            if (e.target.getAttribute('name') == selector){
-                console.log(e.target)
-                callback(e.target)
-            }
-        }
+        switch (element_type) {
+            case 'name':
+                console.log('in case name')
+                if (e.target.getAttribute('name') == selector){
+                    console.log(e.target)
+                    callback(e.target)
+                }
+                break
 
-        // Class based selection
-        if (use_name == false) {
-            if (e.target.classList.contains(selector)){
-                console.log(e.target)
-                callback(e.target)
-            }
+            case 'class':
+                console.log('in case class')
+                if (e.target.classList.contains(selector)){
+                    console.log(e.target)
+                    callback(e.target)
+                }
+                break
+
+            case 'id':
+                console.log('in case id')
+                if (e.target.id == selector){
+                    console.log(e.target)
+                    callback(e.target)
+                }
+                break
+
         }
     })
 }

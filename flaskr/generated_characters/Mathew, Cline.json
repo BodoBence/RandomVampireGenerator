@@ -1,75 +1,81 @@
 {
     "Attributes": {
         "Mental_Attributes": {
-            "Intelligence": 3,
-            "Resolve": 2,
+            "Intelligence": 2,
+            "Resolve": 3,
             "Wits": 5
         },
         "Physical_Attributes": {
-            "Dexterity": 5,
-            "Stamina": 2,
-            "Strength": 4
+            "Dexterity": 4,
+            "Stamina": 6,
+            "Strength": 5
         },
         "Social_Attributes": {
-            "Charisma": 4,
-            "Composure": 2,
-            "Manipulation": 5
+            "Charisma": 6,
+            "Composure": 3,
+            "Manipulation": 6
         }
     },
     "Character_Details": {
         "Basic_Information": {
-            "Age": 499,
+            "Age": 522,
             "Clan": "Malkavian",
             "Derangement": [
-                "Lunacy: The character's mood depends on the current moon phase, becoming sullen and withdrawn during a new moon and manic and full of energy at a full moon.[5]"
+                "Dissociate Perceptions Syndrome (DPS): Appearing after the Week of Nightmares to affect users of Chimerstry, such individuals find that they are unable to distinguish between their summoned illusions and personal hallucinations.[29]"
             ],
-            "Generation": 9,
-            "Name": "Logan, Goldman",
-            "Sex": "Female",
+            "Generation": 7,
+            "Name": "Mathew, Cline",
+            "Sex": "Male",
             "Sire": "Older Vampire"
         },
         "Trackers": {
-            "Blood_Potency": 5,
-            "Health": 5,
-            "Willpower": 4,
+            "Blood_Potency": 4,
+            "Health": 9,
+            "Willpower": 6,
             "XP_Left": 0
         }
     },
     "Disciplines": {
         "Clan_Disciplines": {
             "Auspex": {
-                "Level": 3,
+                "Level": 2,
                 "Skills": {
                     "": "",
-                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
-                    "Obeah": " Soothes the psychological turmoil of the vampire's subject. Amalgam: Fortitude 1.",
                     "Premonition": " The vampire can receive visions and hints about what is about to happen.",
-                    "Scry the Soul": " The vampire can read auras.",
                     "Sense the Unseen": " The vampire can detect things that are supernaturally invisible"
                 }
             },
             "Dominate": {
-                "Level": 1,
+                "Level": 2,
                 "Skills": {
                     "": "",
-                    "Compel": "The vampire can issue a short sentence command to the target."
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them."
                 }
             },
             "Obfuscate": {
-                "Level": 1,
+                "Level": 2,
                 "Skills": {
                     "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
                     "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
-                    "Silence of Death": "The vampire can nullify all sound that they make."
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
                 }
             }
         },
         "Non-Clan_Disciplines": {
-            "Oblivion": {
+            "Animalism": {
                 "Level": 1,
                 "Skills": {
                     "": "",
-                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers."
+                }
+            },
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
                 }
             },
             "Potence": {
@@ -91,7 +97,7 @@
                 "Level": 1,
                 "Skills": {
                     "": "",
-                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light."
+                    "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
                 }
             },
             "Thin_Blood_Alchemy": {
@@ -105,37 +111,37 @@
     },
     "Skills": {
         "Mental_Skills": {
-            "Academics": 0,
-            "Awareness": 0,
-            "Finance": 0,
-            "Investigation": 0,
-            "Medicine": 1,
+            "Academics": 3,
+            "Awareness": 1,
+            "Finance": 1,
+            "Investigation": 1,
+            "Medicine": 2,
             "Occult": 1,
-            "Politics": 0,
+            "Politics": 2,
             "Science": 1,
-            "Technology": 1
+            "Technology": 2
         },
         "Physical_Skills": {
             "Athletics": 0,
             "Brawl": 1,
-            "Craft": 0,
+            "Craft": 1,
             "Drive": 1,
-            "Firearms": 2,
-            "Larceny": 2,
-            "Melee": 0,
-            "Stealth": 1,
+            "Firearms": 1,
+            "Larceny": 0,
+            "Melee": 3,
+            "Stealth": 3,
             "Survival": 0
         },
         "Social_Skills": {
             "Animal Ken": 1,
             "Etiquette": 0,
-            "Insight": 0,
-            "Intimidation": 0,
+            "Insight": 1,
+            "Intimidation": 1,
             "Leadership": 1,
-            "Performance": 0,
-            "Persuasion": 1,
-            "Streetwise": 1,
-            "Subterfuge": 2
+            "Performance": 2,
+            "Persuasion": 2,
+            "Streetwise": 0,
+            "Subterfuge": 1
         }
     }
 }
