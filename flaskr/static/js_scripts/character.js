@@ -1,7 +1,5 @@
-// create_event_listener_for_skills("button_discipline_skills", "discipline_skills");
-create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, false)
-
-create_global_event_listener("click", "print_vampire", print_character, true)
+create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
+create_global_event_listener("click", "print_vampire", print_character, 'name')
 
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)

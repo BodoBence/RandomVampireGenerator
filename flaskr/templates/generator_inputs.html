@@ -6,7 +6,12 @@
                     <p>Clan:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="clans" name="manual_clan" id="selection_clan">
+                    <select 
+                        class="dropdown_selectors" 
+                        list="clans" 
+                        name="manual_clan" 
+                        id="selection_clan">
+
                         <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value='Banu_Haqim' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == 'Banu_Haqim' %} selected="selected" {% endif %}> Banu_Haqim </option>
                         <option value='Brujah' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Brujah' %} selected="selected" {% endif %}> Brujah </option>
@@ -32,13 +37,13 @@
                 </div>
                 <div class="div_slider">
                     <input
-                    id="slider_discipline"
-                    class="slider"
-                    type="range"
-                    name="simplified_discipline" 
-                    min="0" 
-                    max="100"
-                    value="50">
+                        id="slider_discipline"
+                        class="slider"
+                        type="range"
+                        name="simplified_discipline" 
+                        min="0" 
+                        max="100"
+                        value="50">
                 </div>
     
             </div>
@@ -48,7 +53,12 @@
                     <p>Sex:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="sexes" name="manual_sex" id="selection_sex">
+                    <select
+                        class="dropdown_selectors"
+                        list="sexes" 
+                        name="manual_sex" 
+                        id="selection_sex">
+
                         <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                         <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
@@ -63,13 +73,13 @@
                 </div>
                 <div class="div_slider">
                     <input
-                    id="slider_physical"
-                    class="slider"
-                    type="range"
-                    name="simplified_physical"
-                    min="0" 
-                    max="100"
-                    value="50">
+                        id="slider_physical"
+                        class="slider"
+                        type="range"
+                        name="simplified_physical"
+                        min="0" 
+                        max="100"
+                        value="50">
                 </div>
             </div>
     
@@ -78,10 +88,13 @@
                     <p>Generation:</p>
                 </div>
                 <div class="div_select">
-                    <select class="dropdown_selectors" list="gens" name="manual_generation" id="selection_generation">
+                    <select 
+                        class="dropdown_selectors"
+                        list="gens"
+                        name="manual_generation" 
+                        id="selection_generation">
+
                         <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
-                        <option value='1'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==1 %} selected="selected" {% endif %}> 1 </option>
-                        <option value='2'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==2 %} selected="selected" {% endif %}> 2 </option>
                         <option value='3'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> 3 </option>
                         <option value='4'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==4 %} selected="selected" {% endif %}> 4 </option>
                         <option value='5'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==5 %} selected="selected" {% endif %}> 5 </option>
@@ -107,13 +120,13 @@
                 </div>
                 <div class="div_slider">
                     <input
-                    id="slider_mental"
-                    class="slider"
-                    type="range"
-                    name="simplified_mental" 
-                    min="0" 
-                    max="100"
-                    value="50">
+                        id="slider_mental"
+                        class="slider"
+                        type="range"
+                        name="simplified_mental" 
+                        min="0" 
+                        max="100"
+                        value="50">
                 </div>
     
             </div>
@@ -180,6 +193,7 @@
                         data-input-reference="manual_name_input_id"
                         data-input-default="Fruzsi"
                         data-input-focus="Random">
+                        
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
