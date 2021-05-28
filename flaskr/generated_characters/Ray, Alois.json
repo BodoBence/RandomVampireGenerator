@@ -1,0 +1,196 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 6,
+            "Resolve": 6,
+            "Wits": 6
+        },
+        "Physical_Attributes": {
+            "Dexterity": 6,
+            "Stamina": 6,
+            "Strength": 6
+        },
+        "Social_Attributes": {
+            "Charisma": 6,
+            "Composure": 6,
+            "Manipulation": 6
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 2687,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Empathic Blindness: Commonly associated with Dominate, the vampire cannot understand why anyone would not heed his commands or else disagree with him, similar to sociopathy.[36]"
+            ],
+            "Generation": 7,
+            "Name": "Ray, Alois",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 7,
+            "Health": 9,
+            "Willpower": 12,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 5,
+                "Skills": {
+                    "": "",
+                    "Clairvoyance": " The vampire can gather information from an entire city-block at once.",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen.",
+                    "Sense the Unseen": " The vampire can detect things that are supernaturally invisible",
+                    "Share the Senses": " The vampire can sense through the senses of another kindred or mortal.",
+                    "Spirit's Touch": " The vampire can touch an inanimate object to sense the emotional residue from when the object was last used"
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 5,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Cloak the Gathering": "The vampire can Obfuscate their companions.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
+                    "Mask of a Thousand Faces": "The vampire can assume the voice and appearance of a generic person who blends in the current setting, i.e. a worker in a factory or a nightwatchman in an office.",
+                    "Mental Maze[4]": "The Vampire can make the victim unable to escape the building, leaving him feeling that the building folds back on itself. Amalgam: Dominate (VTM) 1.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039.",
+                    "Vanish": "Requires Cloak of Shadows. The vampire can activate Cloak of Shadows or Unseen Passage even under direct observation."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Animal Succulence": "The vampire can slake additional Hunger by feeding on animals.",
+                    "Atavism": "The vampire can cause an animal to temporarily revert to their primal instincts, forcing them to attack anyone nearby or to flee the scene.",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers.",
+                    "Sense the Beast": "The vampire can sense the beast within other vampires, mortals and supernatural creatures.\u00e2\u20ac\u2039\u00e2\u20ac\u2039"
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence",
+                    "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
+                }
+            },
+            "Celerity": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Blink": "The vampire can cross large distances and still take additional actions such as make an attack.",
+                    "Fleetness": "The vampire can add their Celerity to non-combat Dexterity checks.",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Enduring Beasts": "The vampire can extend their Fortitude powers to animals under the effect of their Animalism. Amalgam: Animalism 1.",
+                    "Obdurate": "By shoring up their physical hardiness with vampiric Potence, the Kindred may maintain a steady footing when struck by a massive force. Amalgam: Potence 2",
+                    "Toughness": "The vampire can subtract Fortitude rating from all Superficial damage sustained.",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Oblivion": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Ashes to Ashes": "The vampire may disintegrate non-Kindred corpses with their vitae, including animated cadavers like those brought to false life with Oblivion.",
+                    "Aura of Decay": "The vampire's connection to Oblivion manifests as an aura which spoils food, poisons water, wears down structures, and kills living things with their mere presence.",
+                    "Fatal Precognition": "The vampire's eyes become black and they remain still while they scry a vision which shows the death of a non-Kindred they can percieve. Attempts to subvert the fate seen in the vision become more difficult. Amalgam with Auspex 2.",
+                    "Passion Feast": "The vampire has developed the startling ability to consume the raw emotions of wraiths to temporarily sate their hunger, eroding the ghost's reason for being with their foul gluttony. Amalgam with Fortitude 2.",
+                    "The Binding Fetter": "The vampire can identify objects and locations important to ghosts by a faint aura."
+                }
+            },
+            "Potence": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Prowess": "The Kindred gains an overall increase in strength.",
+                    "Soaring Leap": "The Kindred can leap higher and further."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Awe": "The vampire can add their Presence rating to their Persuasion and Performance checks"
+                }
+            },
+            "Protean": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Vicissitude": "The vampire reshapes one's own skin, muscles, and bone at will. Amalgam: Dominate 2.",
+                    "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Defractionate": "Makes fresh blood out of bagged medical blood",
+                    "Discipline Channeling": "Through Ashe, the thin-blood can gain access to one of the deceased vampire's disciplines, even though it is too high for the standard counterfeit disciplines Prerequisite: Concoct Ashe[1]",
+                    "Envelop": "Blinds a target through mist",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 1,
+            "Awareness": 1,
+            "Finance": 6,
+            "Investigation": 3,
+            "Medicine": 5,
+            "Occult": 3,
+            "Politics": 3,
+            "Science": 6,
+            "Technology": 3
+        },
+        "Physical_Skills": {
+            "Athletics": 2,
+            "Brawl": 6,
+            "Craft": 4,
+            "Drive": 1,
+            "Firearms": 5,
+            "Larceny": 5,
+            "Melee": 3,
+            "Stealth": 5,
+            "Survival": 4
+        },
+        "Social_Skills": {
+            "Animal Ken": 2,
+            "Etiquette": 4,
+            "Insight": 1,
+            "Intimidation": 2,
+            "Leadership": 4,
+            "Performance": 3,
+            "Persuasion": 1,
+            "Streetwise": 3,
+            "Subterfuge": 3
+        }
+    }
+}
