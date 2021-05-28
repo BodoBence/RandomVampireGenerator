@@ -1,0 +1,122 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 2,
+            "Resolve": 4,
+            "Wits": 3
+        },
+        "Physical_Attributes": {
+            "Dexterity": 3,
+            "Stamina": 2,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 1,
+            "Composure": 5,
+            "Manipulation": 5
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 289,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Bulimia: Characters with Bulimia cope with stress by indulging in activities that comfort them, in most cases feeding. A bulimic will eat tremendous amounts of food when subjected to stress, then empty her stomach through drastic measures so she can eat still more.[10]"
+            ],
+            "Generation": 8,
+            "Name": "Mindy, Purcell",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 6,
+            "Health": 5,
+            "Willpower": 9,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Cloud Memory": "The vampire can make the target forget the past few minutes.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers."
+                }
+            },
+            "Blood_Sorcery": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "A Taste for Blood": "By tasting a drop of blood, the user can discern certain basic traits of the one to whom it belongs"
+                }
+            },
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Oblivion": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Oblivion's Sight": "The vampire's irises become black against the white of their sclera. They ignore all darkness penalties, even those brought on by supernatural darkness, and can see ghosts."
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 0,
+            "Awareness": 0,
+            "Finance": 1,
+            "Investigation": 0,
+            "Medicine": 2,
+            "Occult": 1,
+            "Politics": 0,
+            "Science": 0,
+            "Technology": 2
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 0,
+            "Craft": 1,
+            "Drive": 0,
+            "Firearms": 0,
+            "Larceny": 1,
+            "Melee": 1,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Social_Skills": {
+            "Animal Ken": 0,
+            "Etiquette": 0,
+            "Insight": 1,
+            "Intimidation": 0,
+            "Leadership": 1,
+            "Performance": 0,
+            "Persuasion": 1,
+            "Streetwise": 2,
+            "Subterfuge": 1
+        }
+    }
+}

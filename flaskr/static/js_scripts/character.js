@@ -19,15 +19,12 @@ function create_event_listener_for_skills(class_name, target_class_name){
 }
 
 function toggle_discipline_skills (pressed_button){
-    animating_class = pressed_button.getAttribute("data-toggle-animation-class")
     selection_class = pressed_button.getAttribute("data-toggle-selection-class")
     target_reference = pressed_button.getAttribute("data-toggle-reference")
 
     target_element = document.getElementsByClassName(selection_class)[target_reference]
-    target_element_id = target_element.getAttribute("id")
 
-    toggle_class_based_animation(target_element_id, animating_class, true)
-
+    toogle_max_height(target_element)
 }
 
 

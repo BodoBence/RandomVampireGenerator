@@ -36,7 +36,6 @@ function create_global_event_listener(type, selector, callback, element_type){
                     callback(e.target)
                 }
                 break
-
         }
     })
 }
@@ -67,6 +66,15 @@ function toggle_class_based_animation(target_element, target_class, id_based){
         
         for (let index = 0; index < my_targets.length; index++) {
             my_targets[index].classList.toggle(target_class)
+
         }
+    }
+}
+
+function toogle_max_height(target_element){
+    if (target_element.style.maxHeight) {
+        target_element.style.maxHeight = null;
+      } else {
+        target_element.style.maxHeight = target_element.scrollHeight + "px";
     }
 }
