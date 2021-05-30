@@ -1,0 +1,142 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 6,
+            "Resolve": 6,
+            "Wits": 6
+        },
+        "Physical_Attributes": {
+            "Dexterity": 5,
+            "Stamina": 6,
+            "Strength": 6
+        },
+        "Social_Attributes": {
+            "Charisma": 6,
+            "Composure": 5,
+            "Manipulation": 6
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 1626,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Power-Object Fixation: Characters with a Power-Object Fixation believe that their skill and self-confidence is bound to a specific object (that has no such properties). The character cannot function properly without this object around him.[18]"
+            ],
+            "Generation": 7,
+            "Name": "Edward, Masayo",
+            "Sex": "Male",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 4,
+            "Health": 9,
+            "Willpower": 11,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks."
+                }
+            },
+            "Dominate": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Domitor's Favor": "Makes it more difficult for a vampire's Blood Bonded thrall to act against them.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target.",
+                    "Rationalize": "The vampire can make victims of their Dominate powers internalize the commands and not realize they were compelled.",
+                    "Submerged Directive": "The vampire can use Mesmerize to embed delayed or triggered commands.",
+                    "The Forgetful Mind": "The vampire can rewrite previous memories in the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 4,
+                "Skills": {
+                    "": "",
+                    "Chimerstry": "The vampire can create brief, but vivid single-sensory hallucinations. Amalgam: Presence 1.",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Conceal": "Amalgam of Auspex 3. The vampire can cloak an inaminate object up to a small building from sight.",
+                    "Fata Morgana": "The vampire can craft elaborate multisensory hallucinations. Amalgam: Presence 2.",
+                    "Ghost in the Machine": "Other Obfuscate powers work on electronic recording devices.",
+                    "Mask of a Thousand Faces": "The vampire can assume the voice and appearance of a generic person who blends in the current setting, i.e. a worker in a factory or a nightwatchman in an office.",
+                    "Silence of Death": "The vampire can nullify all sound that they make.",
+                    "Unseen Passage": "The vampire can move around while staying invisible\u00e2\u20ac\u2039."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Animalism": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Bound Famulus": "The vampire can form a bond with an animal facilitating the use of other Animalism powers."
+                }
+            },
+            "Presence": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Serpent": "Amalgam Protean 1.  The vampire can freeze a mortal in place with their gaze."
+                }
+            },
+            "Protean": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 3,
+                "Skills": {
+                    "": "",
+                    "Envelop": "Blinds a target through mist",
+                    "Haze": "Creates a field of mist",
+                    "User can develop formulae to counterfeit level 2 Disciplines": "N/A"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 3,
+            "Awareness": 3,
+            "Finance": 2,
+            "Investigation": 1,
+            "Medicine": 2,
+            "Occult": 3,
+            "Politics": 3,
+            "Science": 1,
+            "Technology": 4
+        },
+        "Physical_Skills": {
+            "Athletics": 3,
+            "Brawl": 2,
+            "Craft": 0,
+            "Drive": 4,
+            "Firearms": 2,
+            "Larceny": 4,
+            "Melee": 1,
+            "Stealth": 3,
+            "Survival": 3
+        },
+        "Social_Skills": {
+            "Animal Ken": 2,
+            "Etiquette": 2,
+            "Insight": 1,
+            "Intimidation": 2,
+            "Leadership": 3,
+            "Performance": 2,
+            "Persuasion": 6,
+            "Streetwise": 3,
+            "Subterfuge": 1
+        }
+    }
+}

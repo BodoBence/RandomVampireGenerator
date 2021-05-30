@@ -1,6 +1,31 @@
 console.log("first line of general.js")
 // Global functions
 
+window.addEventListener('resize', (event) => {
+    resize_to_window_width("svg_city_1")
+    console.log('page is resized');
+  });
+
+
+function resize_to_window_width(target_element_id) {
+    
+    target_element = document.getElementById(target_element_id)
+
+    element_width = target_element.offsetWidth
+    window_width = window.innerWidth
+
+    calculated_scale_ratio =  window_width / element_width
+
+    console.log(target_element)
+    console.log(element_width)
+    console.log(window_width)
+    console.log(calculated_scale_ratio)
+
+    document.documentElement.style.setProperty('--screen_scale', calculated_scale_ratio)
+}
+
+
+
 function get_last_url_segment(input_url){
     var parts = input_url.split("/")
     var last_segment = parts.pop() || parts.pop();  // handle potential trailing slash

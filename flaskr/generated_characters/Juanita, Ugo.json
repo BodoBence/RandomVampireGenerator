@@ -1,0 +1,124 @@
+{
+    "Attributes": {
+        "Mental_Attributes": {
+            "Intelligence": 3,
+            "Resolve": 2,
+            "Wits": 5
+        },
+        "Physical_Attributes": {
+            "Dexterity": 2,
+            "Stamina": 4,
+            "Strength": 5
+        },
+        "Social_Attributes": {
+            "Charisma": 1,
+            "Composure": 5,
+            "Manipulation": 2
+        }
+    },
+    "Character_Details": {
+        "Basic_Information": {
+            "Age": 320,
+            "Clan": "Malkavian",
+            "Derangement": [
+                "Sanguine: Sanguines are having deep difficulties in focusing on the moment, usually being distracted and cheerful.[5]"
+            ],
+            "Generation": 10,
+            "Name": "Juanita, Ugo",
+            "Sex": "Female",
+            "Sire": "Older Vampire"
+        },
+        "Trackers": {
+            "Blood_Potency": 4,
+            "Health": 7,
+            "Willpower": 7,
+            "XP_Left": 0
+        }
+    },
+    "Disciplines": {
+        "Clan_Disciplines": {
+            "Auspex": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Heightened Senses": " The vampire can add their Auspex rating to their perception checks.",
+                    "Premonition": " The vampire can receive visions and hints about what is about to happen."
+                }
+            },
+            "Dominate": {
+                "Level": 2,
+                "Skills": {
+                    "": "",
+                    "Compel": "The vampire can issue a short sentence command to the target.",
+                    "Mesmerize": "The vampire can issue a longer, more complicated command to the target."
+                }
+            },
+            "Obfuscate": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Cloak of Shadows": "The vampire can become invisible while standing motionless.",
+                    "Silence of Death": "The vampire can nullify all sound that they make."
+                }
+            }
+        },
+        "Non-Clan_Disciplines": {
+            "Celerity": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Rapid Reflexes": "The vampire suffers no penalty to dodging gunfire without cover."
+                }
+            },
+            "Fortitude": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Unswayable Mind": "The vampire can add their Fortitude rating to dice rolls to resist manipulation and coercion."
+                }
+            },
+            "Thin_Blood_Alchemy": {
+                "Level": 1,
+                "Skills": {
+                    "": "",
+                    "Haze": "Creates a field of mist"
+                }
+            }
+        }
+    },
+    "Skills": {
+        "Mental_Skills": {
+            "Academics": 1,
+            "Awareness": 0,
+            "Finance": 0,
+            "Investigation": 2,
+            "Medicine": 1,
+            "Occult": 0,
+            "Politics": 0,
+            "Science": 1,
+            "Technology": 2
+        },
+        "Physical_Skills": {
+            "Athletics": 1,
+            "Brawl": 0,
+            "Craft": 0,
+            "Drive": 2,
+            "Firearms": 0,
+            "Larceny": 0,
+            "Melee": 1,
+            "Stealth": 0,
+            "Survival": 0
+        },
+        "Social_Skills": {
+            "Animal Ken": 0,
+            "Etiquette": 2,
+            "Insight": 1,
+            "Intimidation": 1,
+            "Leadership": 0,
+            "Performance": 1,
+            "Persuasion": 2,
+            "Streetwise": 0,
+            "Subterfuge": 1
+        }
+    }
+}
