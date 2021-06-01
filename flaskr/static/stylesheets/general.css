@@ -23,7 +23,58 @@
 
 /* Buttons */
 
+/* Button Neon */
+ 
 .button_general {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2em;
+    
+    position: relative;
+
+    border: 2em;
+    border-style: solid;
+    border-width: 0.25em;
+    border-radius: 0.25em;
+    border-color: hsla(300, 20%, 97%, 0.937);
+
+    mix-blend-mode: multiply;
+
+
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, 0);
+    color: hsla(313, 94%, 70%);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow: 
+        0 0 1.5em currentColor,
+        inset 0 0 1.5em currentColor;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
+
+ 
+.button_general:hover {
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 1em currentColor;
+
+}
+
+
+
+
+/* button classic */
+
+/* .button_general {
     background-color: var(--bg);
     color: var(--fg);
 
@@ -43,12 +94,13 @@
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
-}
+} */
 
-.button_general:hover {
+/* .button_general:hover {
     background-color: var(--fg);
     color: var(--bg);
-}
+} */
+
 
 .button_encounter {
     background-color: var(--bg);
@@ -80,34 +132,17 @@
 }
 
 
-/* Background (Body) */
+/* Background (hmtl) */
 
-.div_background .svg_city {
-    height: 30%;
+html {
 
-    /* width: 100%; */
-    position: fixed;
-    bottom: -10px;
-    margin-left: auto;
-    margin-right: auto;
-
-    transform: scaleX(var(--screen_scale));
-
-    /* margin: auto; */
-    z-index: -1;
-    pointer-events: none;
+    background: url("/static/bitmaps/lonely_city_original.jpg") no-repeat center center fixed;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    -o-background-size: auto 100%;
+    background-size: auto 100%;
 }
 
-
-
-body {
-    background-color: var(--color_darkest);
-    /* background-image: url("/static/svg/city_level_1_copy.svg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: bottom -10% right 50%;
-    background-size: 80%; */
-}
 
 /* Footer*/
 
@@ -135,6 +170,7 @@ footer p {
 
 .animation_open {
     /* margin-top: -260px; */
-    max-height: 100% !important;
+    /* max-height: 300px !important; */
+    /* max height is set in javascript */
     overflow: hidden;
 }

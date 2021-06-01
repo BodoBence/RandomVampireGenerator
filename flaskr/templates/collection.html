@@ -9,6 +9,8 @@
 
     <body>
 
+        {% include "background.html" %}
+
         {% include "navigation.html" %}
 
         <div class="collection_container">
@@ -19,6 +21,7 @@
                            <option value="{{ character }}"> {{ character }} </option> 
                         {% endfor %}
                     </select>
+                    <span class="custom_arrow"></span>
 
                     <input 
                         class="button_general"

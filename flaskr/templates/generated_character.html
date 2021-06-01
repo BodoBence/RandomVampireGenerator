@@ -195,7 +195,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="3" class="table_cell_discipline_skills">
                     {% if row['col1'] != '' %}
                         <div class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
                             {% for skill in row['col2']['Skills'] %}
@@ -205,7 +205,7 @@
                         </div>
                     {% endif %}
                 </td>
-                <td colspan="3">
+                <td colspan="3" class="table_cell_discipline_skills">
                     {% if row['col3'] != '' %}
                         <div class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
                             {% for skill in row['col4']['Skills'] %}
