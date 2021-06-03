@@ -1,5 +1,7 @@
 /* Generator Inputs */
 
+/* Containers */
+
 .div_inputs_all {
     display: grid;
     grid-row-gap: var(--padding_distance);
@@ -12,40 +14,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%; 
-    height: 5px; 
-    background: var(--fg);
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-input[type="range"]:hover {
-    cursor: pointer;
-}
-
-
-/* Slider's circle */
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: var(--main_height);
-    height: var(--main_height);
-    border-radius: 50%; 
-    background: var(--bg);
-    cursor: pointer;
-  }
-  
-input[type="range"]::-moz-range-thumb {
-    width: var(--main_height);
-    height: var(--main_height);
-    border-radius: 50%;
-    background: var(--bg);
-    cursor: pointer;
-  }
 
 
 .input_container, .div_input_buttons {
@@ -73,12 +41,10 @@ input[type="range"]::-moz-range-thumb {
 .div_input_dropdown, .div_input_type_in, .div_input_slider {
     display: grid;
     grid-column-gap: 10px;
-
 }
 
 .div_input_text_container p {
     padding-bottom: var(--padding_distance);
-
 }
 
 .div_input_dropdown {
@@ -100,6 +66,11 @@ input[type="range"]::-moz-range-thumb {
     margin-top: var(--padding_distance);
     margin-bottom: var(--padding_distance);
 }
+
+
+/* Inputs */
+
+/* Dropdown inputs */
 
 .dropdown_selectors, input {
 	display: inline-block;
@@ -155,6 +126,8 @@ input[type="range"]::-moz-range-thumb {
 
 .dropdown_selectors option {
 	font-weight: normal;
+    background: pink;
+    color: white;
 }
 
 .div_select, .div_type_in, .div_slider {
@@ -186,4 +159,41 @@ input[type="range"]::-moz-range-thumb {
 .custom_arrow:hover {
     border-color: var(--bg);
 }
+
+
+/* Range inputs */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; 
+    height: 5px; 
+    background: var(--fg);
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type="range"]:hover {
+    cursor: pointer;
+}
+
+
+/* Slider's circle */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--main_height);
+    height: var(--main_height);
+    border-radius: 50%; 
+    background: var(--bg);
+    cursor: pointer;
+  }
+  
+input[type="range"]::-moz-range-thumb {
+    width: var(--main_height);
+    height: var(--main_height);
+    border-radius: 50%;
+    background: var(--bg);
+    cursor: pointer;
+  }
+
 
