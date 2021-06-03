@@ -7,6 +7,25 @@ create_global_event_listener("change", "manual_name_selection", selection_based_
 create_global_event_listener("change", "manual_age_selection", selection_based_sync, 'name')
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
+create_global_event_listener("change", "dropdown_selectors", animation_rotate_element, 'class')
+create_global_event_listener("click", "dropdown_selectors", animation_rotate_element, 'class')
+
+// Functions for the dropdown selectors
+
+function animation_rotate_element(current_trigger){
+    console.log(current_trigger)
+    animation_target = current_trigger.nextElementSibling
+    console.log(animation_target)
+    
+    if (animation_target.getAttribute('class') == 'custom_arrow') {
+
+        if (animation_target.style.transform == "rotate(225deg)") {
+            animation_target.style.transform = "rotate(45deg)"
+        } else {
+            animation_target.style.transform = "rotate(225deg)"
+        }
+    }
+}
 
 // Functions for the Input sliders (generator_inputs.html)
 

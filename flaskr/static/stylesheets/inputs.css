@@ -2,11 +2,15 @@
 
 /* Containers */
 
-.div_inputs_all {
+.div_inputs_all, .input_container {
+    justify-content: center;
+    width: 100%;
     display: grid;
+}
+
+.div_inputs_all {
     grid-row-gap: var(--padding_distance);
     justify-content: center;
-    width: 80%;
     height: 100%;
 
     margin-top: 130px;
@@ -15,13 +19,8 @@
     margin-right: auto;
 }
 
-
-.input_container, .div_input_buttons {
-    justify-content: center;
-    width: 100%;
-} 
  
-.input_container {
+.input_container, .div_input_button_container {
     display: grid;
 
     grid-row-gap: 0px;
@@ -29,13 +28,18 @@
     grid-template-columns: auto auto;
 
     overflow: hidden;
-    max-height: 300px;
+    max-height: 400px;
 
     -webkit-transition: all var(--base_animation_time) ease;  
     -moz-transition: all var(--base_animation_time) ease;  
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
+}
+
+.div_input_buttons {
+    grid-template-columns: auto auto;
+    grid-column-gap: 20px;
 }
 
 .div_input_dropdown, .div_input_type_in, .div_input_slider {
@@ -67,6 +71,11 @@
     margin-bottom: var(--padding_distance);
 }
 
+.div_select, .div_type_in, .div_slider {
+    top: 20%;
+    padding-bottom: var(--padding_distance);
+    padding-top: var(--padding_distance);
+}
 
 /* Inputs */
 
@@ -74,6 +83,9 @@
 
 .dropdown_selectors, input {
 	display: inline-block;
+
+    font-size: 1em;
+
     position: relative;
     top: var(--padding_distance);
     bottom: var(--padding_distance);
@@ -85,12 +97,19 @@
 	/* font-size: 12px; */
 	font-family: sans-serif;
 	font-weight: normal;
-	color: var(--fg);
+
+	color: var(--white);
+    background: transparent;
     
 	box-sizing: border-box;
 	margin: 0;
 
-	border: none;
+    border-style: solid;
+    border-bottom-width: 0.1em;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-color: currentColor;
 	border-radius: none;
 
 	/* background-color: var(--bg); */
@@ -107,33 +126,30 @@
     transition: all var(--base_animation_time) ease;
 }
 
-/* .dropdown_selectors::-ms-expand {
+.dropdown_selectors::-ms-expand {
 	display: none;
-} */
+}
 
 .dropdown_selectors:hover, input:hover {
-    background-color: var(--fg);
     color: var(--bg);
     cursor: pointer;
 }
 
 .dropdown_selectors:focus {
-    border: none;
 	box-shadow: none;
 	color: var(--fg);
 	outline: none;
 }
 
+
 .dropdown_selectors option {
-	font-weight: normal;
     background: pink;
     color: white;
 }
 
-.div_select, .div_type_in, .div_slider {
-    top: 20%;
-    padding-bottom: var(--padding_distance);
-    padding-top: var(--padding_distance);
+.dropdown_selectors option:hover {
+    background: var(--white);
+    color: pink;
 }
 
 .custom_arrow {
@@ -154,6 +170,14 @@
     pointer-events: none;
 
     transform: rotate(45deg);
+    transform-origin: center;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+
 }
 
 .custom_arrow:hover {

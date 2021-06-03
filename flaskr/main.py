@@ -53,7 +53,7 @@ def result():
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
 
-    store_generated_character(generated_character)
+    # store_generated_character(generated_character)
 
     # overwrite the input field and slider valies
     startup_input_field_details['input_conditions'] = resutrctured_conditions

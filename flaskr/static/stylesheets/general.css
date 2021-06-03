@@ -38,9 +38,6 @@
     border-radius: 0.25em;
     border-color: hsla(300, 20%, 97%, 0.937);
 
-    mix-blend-mode: multiply;
-
-
     display: inline-block;
     cursor: pointer;
     width: 100%;
