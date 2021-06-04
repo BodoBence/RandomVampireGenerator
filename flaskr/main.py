@@ -96,6 +96,9 @@ def calculation_maths():
 def encounter_tracker():
     return render_template('encounter_tracker.html')
 
+@app.route('/test',  methods = ['POST', 'GET'])
+def test():
+    return render_template('test.html')
 
 @app.route('/collection_start', methods = ['POST', 'GET'])
 def collection_start():
@@ -163,6 +166,8 @@ def store_generated_character(character):
     # Save the new index file
     with open(CHARACTER_INDEX, 'w') as outf:
         json.dump(current_index, outf, indent=4)
+
+
 
 
 # Run the app!  
