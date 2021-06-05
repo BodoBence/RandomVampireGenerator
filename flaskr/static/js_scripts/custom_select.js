@@ -3,51 +3,52 @@ window.onload = function(){
 }
   
 function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
    
 var li = new Array();
 
 function crear_select(){
-    var div_cont_select = document.querySelectorAll("[data-mate-select='active']");
-    var select_ = '';
+  var div_cont_select = document.querySelectorAll("[data-mate-select='active']");
+  var select_ = '';
 
-for (var e = 0; e < div_cont_select.length; e++) {
-    div_cont_select[e].setAttribute('data-indx-select',e);
-    div_cont_select[e].setAttribute('data-selec-open','false');
+  for (var e = 0; e < div_cont_select.length; e++) {
+    div_cont_select[e].setAttribute('data-indx-select', e);
+    div_cont_select[e].setAttribute('data-selec-open', 'false');
 
     var ul_cont = document.querySelectorAll("[data-indx-select='"+e+"'] > .cont_list_select_mate > ul");
     select_ = document.querySelectorAll("[data-indx-select='"+e+"'] >select")[0];
+
     if (isMobileDevice()) { 
-        select_.addEventListener('change', function () {
-        _select_option(select_.selectedIndex,e);    
-    });
-}
+      select_.addEventListener('change', function () {
+        _select_option(select_.selectedIndex,e);
+      });
+    }
 
-var select_optiones = select_.options;
+    var select_optiones = select_.options;
 
-document.querySelectorAll("[data-indx-select='"+e+"']  > .selecionado_opcion ")[0].setAttribute('data-n-select',e);
-document.querySelectorAll("[data-indx-select='"+e+"']  > .icon_select_mate ")[0].setAttribute('data-n-select',e);
+    document.querySelectorAll("[data-indx-select='" + e + "']  > .selecionado_opcion ")[0].setAttribute('data-n-select',e);
+    document.querySelectorAll("[data-indx-select='" + e + "']  > .icon_select_mate ")[0].setAttribute('data-n-select',e);
 
-for (var i = 0; i < select_optiones.length; i++) {
-  li[i] = document.createElement('li');
-  
-  if (select_optiones[i].selected == true || select_.value == select_optiones[i].innerHTML ) {
-    li[i].className = 'active';
-    document.querySelector("[data-indx-select='"+e+"']  > .selecionado_opcion ").innerHTML = select_optiones[i].innerHTML;
-  };
+  for (var i = 0; i < select_optiones.length; i++) {
+    li[i] = document.createElement('li');
+    
+    if (select_optiones[i].selected == true || select_.value == select_optiones[i].innerHTML ) {
+      li[i].className = 'active';
+      document.querySelector("[data-indx-select='"+e+"']  > .selecionado_opcion ").innerHTML = select_optiones[i].innerHTML;
+    };
 
-  li[i].setAttribute('data-index',i);
-  li[i].setAttribute('data-selec-index',e);
+    li[i].setAttribute('data-index',i);
+    li[i].setAttribute('data-selec-index',e);
 
-  // funcion click al selecionar 
-  li[i].addEventListener( 'click', function(){  _select_option(this.getAttribute('data-index'),this.getAttribute('data-selec-index')); });
-  
-  li[i].innerHTML = select_optiones[i].innerHTML;
-  ul_cont[0].appendChild(li[i]);
-  
+    // funcion click al selecionar 
+    li[i].addEventListener( 'click', function(){  _select_option(this.getAttribute('data-index'),this.getAttribute('data-selec-index')); });
+    
+    li[i].innerHTML = select_optiones[i].innerHTML;
+    ul_cont[0].appendChild(li[i]);
+    
     }; // Fin For select_optiones
-    }; // fin for divs_cont_select
+  }; // fin for divs_cont_select
 } // Fin Function 
   
   
