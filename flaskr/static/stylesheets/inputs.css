@@ -27,8 +27,7 @@
     grid-column-gap: 20px;
     grid-template-columns: auto auto;
 
-    overflow: hidden;
-    max-height: 400px;
+    max-height: 500px;
 
     -webkit-transition: all var(--base_animation_time) ease;  
     -moz-transition: all var(--base_animation_time) ease;  
@@ -103,6 +102,10 @@ select {
     display: none;
     position: absolute;
     z-index: 2;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
 }
   
   /* list items inside the dropdown */
