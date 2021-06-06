@@ -16,21 +16,23 @@
                         id="selection_clan">
 
                         <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
-                        <option value='Banu_Haqim' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == 'Banu_Haqim' %} selected="selected" {% endif %}> Banu_Haqim </option>
-                        <option value='Brujah' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Brujah' %} selected="selected" {% endif %}> Brujah </option>
-                        <option value='Gangrel' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Gangrel' %} selected="selected" {% endif %}> Gangrel </option>
-                        <option value='Lasombra' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Lasombra' %} selected="selected" {% endif %}> Lasombra </option>
-                        <option value='Malkavian' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Malkavian' %} selected="selected" {% endif %}> Malkavian </option>
-                        <option value='Ministry' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ministry' %} selected="selected" {% endif %}> Ministry </option>
-                        <option value='Nosferatu' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Nosferatu' %} selected="selected" {% endif %}> Nosferatu </option>
-                        <option value='Ravnos' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ravnos' %} selected="selected" {% endif %}> Ravnos </option>
-                        <option value='Toreador' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Toreador' %} selected="selected" {% endif %}> Toreador </option>
-                        <option value='Tremere' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Tremere' %} selected="selected" {% endif %}> Tremere </option>
-                        <option value='Tzimische' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Tzimische' %} selected="selected" {% endif %}> Tzimische </option>
-                        <option value='Ventrue' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Ventrue' %} selected="selected" {% endif %}> Ventrue </option>
-                        <option value='Hecata' {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan']=='Hecata' %} selected="selected" {% endif %}> Hecata </option>
+                        
+                        {% for clan in clans %} 
+                            <option 
+                                value="{{ clan }}"
+                                {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == clan %} selected="selected" {% endif %}> 
+                                {{ clan }} 
+                            </option>
+                        {% endfor %}
+
                     </select>
-                    <span class="custom_arrow"></span>
+                    <div class="dropdown_button" data-reference-id="clan_container" id="button_clan_list"> somethig </div>
+                    <ul class="dropdown_content" id="clan_container">
+                        {% for clan in clans %}
+                            <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
+                        {% endfor %}
+                    </ul>
+                    <!-- <span class="custom_arrow"></span> -->
                 </div>
             </div>
 

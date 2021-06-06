@@ -20,7 +20,8 @@ app.secret_key = unique_key = str(uuid.uuid1())
 startup_input_field_details = {
     'input_conditions': default_data.start_conditions(),
     'input_values': default_data.start_values(),
-    'input_weights': default_data.start_weights()}
+    'input_weights': default_data.start_weights(),
+    'input_clans': default_data.default_clans_data()}
 
 HAVE_GENERATED_CHARACTER = False
 SCRIPT_DIR = os.path.dirname(__file__)
@@ -38,6 +39,7 @@ def home():
         field_values = startup_input_field_details['input_values'],
         slider_values = startup_input_field_details['input_weights'],
         default_input_weights=startup_input_field_details['input_weights'],
+        clans = startup_input_field_details['input_clans'],
         have_generated_character=HAVE_GENERATED_CHARACTER)
 
 @app.route('/result', methods = ['POST', 'GET'])
@@ -69,6 +71,7 @@ def result():
         field_values = restructured_values,
         slider_values = restructured_weights,
         default_input_weights=startup_input_field_details['input_weights'],
+        clans = startup_input_field_details['input_clans'],
         have_generated_character=HAVE_GENERATED_CHARACTER,
         details = details, 
         attributes = attributes, 

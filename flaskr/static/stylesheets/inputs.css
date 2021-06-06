@@ -81,7 +81,50 @@
 
 /* Dropdown inputs */
 
-.dropdown_selectors, input {
+select {
+    display: none;
+}
+
+
+.dropdown_button {
+    width: 100px;
+    height: 40px;
+    background: wheat;
+    position: relative;
+}
+  
+.dropdown_button:hover {
+    cursor: pointer;
+}
+
+.dropdown_content {
+    display: none;
+    position: relative;
+}
+  
+  /* list items inside the dropdown */
+.dropdown_content li {
+    /* position: absolute; */
+    float: inherit;
+    list-style-type: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+  
+    z-index: 1;
+    background-color: rgba(80, 148, 122, 0.59);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+  }
+    
+  /* Change color of dropdown links on hover */
+  .dropdown_content li:hover {
+    background-color: #ddd
+  }
+
+
+input {
 	display: inline-block;
 
     font-size: 1em;
@@ -126,31 +169,6 @@
     transition: all var(--base_animation_time) ease;
 }
 
-.dropdown_selectors::-ms-expand {
-	display: none;
-}
-
-.dropdown_selectors:hover, input:hover {
-    color: var(--bg);
-    cursor: pointer;
-}
-
-.dropdown_selectors:focus {
-	box-shadow: none;
-	color: var(--fg);
-	outline: none;
-}
-
-
-.dropdown_selectors option {
-    background: pink;
-    color: white;
-}
-
-.dropdown_selectors option:hover {
-    background: var(--white);
-    color: pink;
-}
 
 .custom_arrow {
     display: block;

@@ -171,3 +171,7 @@ footer p {
     /* max height is set in javascript */
     overflow: hidden;
 }
+
+.show {
+    display: block !important;
+}
