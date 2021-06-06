@@ -92,6 +92,7 @@ select {
     height: 40px;
     background: wheat;
     position: relative;
+    z-index: 1;
 }
   
 .dropdown_button:hover {
@@ -101,6 +102,7 @@ select {
 .dropdown_content {
     display: none;
     position: absolute;
+    z-index: 2;
 }
   
   /* list items inside the dropdown */
@@ -109,13 +111,11 @@ select {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
-  
-    z-index: 2;
     background-color: rgba(80, 148, 122, 0.59);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   
-  }
+}
     
 /* Change color of dropdown links on hover */
 .dropdown_content li:hover {

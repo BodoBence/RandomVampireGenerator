@@ -21,7 +21,8 @@ startup_input_field_details = {
     'input_conditions': default_data.start_conditions(),
     'input_values': default_data.start_values(),
     'input_weights': default_data.start_weights(),
-    'input_clans': default_data.default_clans_data()}
+    'input_clans': default_data.default_clans_data(),
+    'input_generations': default_data.default_generations_data()}
 
 HAVE_GENERATED_CHARACTER = False
 SCRIPT_DIR = os.path.dirname(__file__)
@@ -40,6 +41,7 @@ def home():
         slider_values = startup_input_field_details['input_weights'],
         default_input_weights=startup_input_field_details['input_weights'],
         clans = startup_input_field_details['input_clans'],
+        generations = startup_input_field_details['input_generations'],
         have_generated_character=HAVE_GENERATED_CHARACTER)
 
 @app.route('/result', methods = ['POST', 'GET'])
@@ -72,6 +74,7 @@ def result():
         slider_values = restructured_weights,
         default_input_weights=startup_input_field_details['input_weights'],
         clans = startup_input_field_details['input_clans'],
+        generations = startup_input_field_details['input_generations'],
         have_generated_character=HAVE_GENERATED_CHARACTER,
         details = details, 
         attributes = attributes, 

@@ -16,7 +16,6 @@
                         id="selection_clan">
 
                         <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
-                        
                         {% for clan in clans %} 
                             <option 
                                 value="{{ clan }}"
@@ -68,7 +67,13 @@
                         <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                         <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
                     </select>
-                    <span class="custom_arrow"></span>
+                    <div class="dropdown_button" data-reference-id="sex_container" id="button_sex_list"> somethig </div>
+                    <ul class="dropdown_content" id="sex_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
+                        <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
+                    </ul>
+                    <!-- <span class="custom_arrow"></span> -->
                 </div>
             </div>
 
@@ -100,22 +105,19 @@
                         id="selection_generation">
 
                         <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
-                        <option value='3'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> 3 </option>
-                        <option value='4'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==4 %} selected="selected" {% endif %}> 4 </option>
-                        <option value='5'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==5 %} selected="selected" {% endif %}> 5 </option>
-                        <option value='6'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==6 %} selected="selected" {% endif %}> 6 </option>
-                        <option value='7'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==7 %} selected="selected" {% endif %}> 7 </option>
-                        <option value='8'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==8 %} selected="selected" {% endif %}> 8 </option>
-                        <option value='9'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==9 %} selected="selected" {% endif %}> 9 </option>
-                        <option value='10'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==10 %} selected="selected" {% endif %}> 10 </option>
-                        <option value='11'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==11 %} selected="selected" {% endif %}> 11 </option>
-                        <option value='12'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==12 %} selected="selected" {% endif %}> 12 </option>
-                        <option value='13'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==13 %} selected="selected" {% endif %}> 13 </option>
-                        <option value='14'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==14 %} selected="selected" {% endif %}> 14 </option>
-                        <option value='15'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==15 %} selected="selected" {% endif %}> 15 </option>
-                        <option value='16'{% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==16 %} selected="selected" {% endif %}> 16 </option>
+                        {% for generation in generations %}
+                            <option value="{{ generation }}" {% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> {{ generation }} </option>
+                        {% endfor %}
                     </select>
-                    <span class="custom_arrow"></span>
+
+                    <div class="dropdown_button" data-reference-id="generation_container" id="button_generation_list"> somethig </div>
+                    <ul class="dropdown_content" id="generation_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
+                        {% for generation in generations %}
+                        <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- <span class="custom_arrow"></span> -->
                 </div>
             </div>
     
@@ -153,7 +155,13 @@
                         <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
-                    <span class="custom_arrow"></span>
+
+                    <div class="dropdown_button" data-reference-id="age_container" id="button_generation_list"> somethig </div>
+                    <ul class="dropdown_content" id="age_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_generation_list" name="age_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_generation_list" name="age_option"> Manual </li>
+                    </ul>
+                    <!-- <span class="custom_arrow"></span> -->
                 </div>
                 <div class="div_type_in">
                     <input 
@@ -202,7 +210,12 @@
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
-                    <span class="custom_arrow"></span>
+                    <div class="dropdown_button" data-reference-id="name_container" id="button_name_list"> somethig </div>
+                    <ul class="dropdown_content" id="name_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
+                    </ul>
+                    <!-- <span class="custom_arrow"></span> -->
                 </div>
                 <div class="div_select">
                     <input 

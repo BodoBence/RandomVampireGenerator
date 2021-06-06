@@ -191,7 +191,7 @@ def default_clans_data():
     return clans
 
 def default_generations_data():
-    generations = range(1, 16)
+    generations = range(3, 16)
     return generations
 
 def default_ages_data():
