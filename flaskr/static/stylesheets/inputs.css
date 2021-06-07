@@ -23,7 +23,7 @@
 .input_container, .div_input_button_container {
     display: grid;
 
-    grid-row-gap: 0px;
+    grid-row-gap: 0.5rem;
     grid-column-gap: 20px;
     grid-template-columns: auto auto;
 
@@ -70,10 +70,14 @@
     margin-bottom: var(--padding_distance);
 }
 
-.div_select, .div_type_in, .div_slider {
+.div_type_in, .div_slider {
     top: 20%;
     padding-bottom: var(--padding_distance);
     padding-top: var(--padding_distance);
+}
+
+.div_select {
+    margin: 0;
     position: relative;
 }
 
@@ -87,12 +91,30 @@ select {
 
 
 .dropdown_button {
-    width: 100px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
     background: wheat;
     position: relative;
+    display: inline-block;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    margin: 0;
+
     z-index: 1;
 }
+
+.dropdown_button p {
+    pointer-events: none;
+    font-size: 1rem;
+    text-align: left;
+
+    padding-left: 1rem;
+
+}
+
   
 .dropdown_button:hover {
     cursor: pointer;
@@ -102,6 +124,7 @@ select {
     display: none;
     position: absolute;
     z-index: 2;
+    width: 100%;
     top: 0;
     left: 0;
     margin: 0;
@@ -176,15 +199,18 @@ input {
 .custom_arrow {
     display: block;
     float: right;
-    position: relative;
-    top: -15px;
-    right: 10px;
+    position: absolute;
 
-    height: 5px;
-    width: 5px;
+    z-index: 2 ;
+
+    top: 1rem;
+    right: 1rem;
+
+    height: 0.5rem;
+    width: 0.5rem;
 
     border-style: solid;
-    border-color: var(--fg);
+    border-color: black;
     border-width: 2px;
     border-top: 0;
     border-left: 0;

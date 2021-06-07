@@ -9,27 +9,6 @@ create_global_event_listener("click", "button_input_contianer_visibility", accor
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
 correct_overflow()
 
-
-// create_global_event_listener("change", "dropdown_selectors", animation_rotate_element, 'class')
-// create_global_event_listener("click", "dropdown_selectors", animation_rotate_element, 'class')
-
-// Functions for the dropdown selectors
-
-function animation_rotate_element(current_trigger){
-    console.log(current_trigger)
-    animation_target = current_trigger.nextElementSibling
-    console.log(animation_target)
-    
-    if (animation_target.getAttribute('class') == 'custom_arrow') {
-
-        if (animation_target.style.transform == "rotate(225deg)") {
-            animation_target.style.transform = "rotate(45deg)"
-        } else {
-            animation_target.style.transform = "rotate(225deg)"
-        }
-    }
-}
-
 // Functions for the acordion motion of the input container
 
 // Corrects overflow for the input container animation
@@ -56,7 +35,6 @@ function accordion_motion(current_trigger){
     target_element.classList.toggle(target_class_1)
     target_element.style.overflow = "hidden"
 }
-
 
 function toggle_input_field(current_driver){
     console.log("manual / random switch triggered")
