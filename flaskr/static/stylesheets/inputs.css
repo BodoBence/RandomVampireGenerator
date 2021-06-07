@@ -1,5 +1,6 @@
 /* Generator Inputs */
 
+
 /* Containers */
 
 .div_inputs_all, .input_container {
@@ -81,6 +82,7 @@
     position: relative;
 }
 
+
 /* Inputs */
 
 /* Dropdown inputs */
@@ -112,10 +114,8 @@ select {
     text-align: left;
 
     padding-left: 1rem;
-
 }
 
-  
 .dropdown_button:hover {
     cursor: pointer;
 }
@@ -125,7 +125,7 @@ select {
     position: absolute;
     z-index: 2;
     width: 100%;
-    top: 0;
+    top: 4em;
     left: 0;
     margin: 0;
     padding: 0;
@@ -216,14 +216,20 @@ input {
     border-left: 0;
     pointer-events: none;
 
-    transform: rotate(45deg);
+    transform: rotate(225deg);
     transform-origin: center;
 
-    -webkit-transition: all var(--base_animation_time) ease;  
+    /* -webkit-transition: all var(--base_animation_time) ease;  
     -moz-transition: all var(--base_animation_time) ease;  
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
-    transition: all var(--base_animation_time) ease;
+    transition: all var(--base_animation_time) ease; */
+
+    -webkit-transition: all 0.3s linear;  
+    -moz-transition: all 0.3s linear;  
+    -o-transition: all 0.3s linear;  
+    -ms-transition: all 0.3s linear;  
+    transition: all 0.3s linear;
 
 }
 
@@ -257,7 +263,7 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%; 
     background: var(--bg);
     cursor: pointer;
-  }
+}
   
 input[type="range"]::-moz-range-thumb {
     width: var(--main_height);
@@ -265,6 +271,6 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     background: var(--bg);
     cursor: pointer;
-  }
+}
 
 

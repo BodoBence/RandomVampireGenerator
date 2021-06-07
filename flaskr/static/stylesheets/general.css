@@ -168,3 +168,7 @@ footer p {
 .show {
     display: block !important;
 }
+
+.animation_rotate {
+    transform: rotate(45deg) !important;
+}
