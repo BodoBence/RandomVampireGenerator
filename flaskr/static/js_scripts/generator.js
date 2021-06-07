@@ -7,8 +7,11 @@ create_global_event_listener("change", "manual_name_selection", selection_based_
 create_global_event_listener("change", "manual_age_selection", selection_based_sync, 'name')
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
-create_global_event_listener("change", "dropdown_selectors", animation_rotate_element, 'class')
-create_global_event_listener("click", "dropdown_selectors", animation_rotate_element, 'class')
+correct_overflow()
+
+
+// create_global_event_listener("change", "dropdown_selectors", animation_rotate_element, 'class')
+// create_global_event_listener("click", "dropdown_selectors", animation_rotate_element, 'class')
 
 // Functions for the dropdown selectors
 
@@ -27,16 +30,31 @@ function animation_rotate_element(current_trigger){
     }
 }
 
-// Functions for the Input sliders (generator_inputs.html)
+// Functions for the acordion motion of the input container
+
+// Corrects overflow for the input container animation
+function correct_overflow(){
+    current_element = document.getElementById("input_container_id")
+    console.log(current_element.style.overflow)
+
+    current_element.addEventListener("transitionend", () => {
+        console.log("input container transitioned")
+        if (current_element.classList.contains("animation_close") == false){
+            current_element.style.overflow = "initial"
+            console.log("chanegd overflow to:")
+            console.log(current_element.style.overflow)
+        }
+    })
+}
 
 function accordion_motion(current_trigger){
     target_id = current_trigger.getAttribute("data-target-id")
     target_class_1 = current_trigger.getAttribute("data-target-class-1")
+    target_element = document.getElementById(target_id)
 
-    toggle_class_based_animation(target_id, target_class_1, true)    
-
-    // target_class_2 = current_trigger.getAttribute("data-target-class-2")
-    // target_class_3 = current_trigger.getAttribute("data-target-class-3")
+    // Toggle animation
+    target_element.classList.toggle(target_class_1)
+    target_element.style.overflow = "hidden"
 }
 
 
@@ -61,6 +79,8 @@ function selection_based_sync(current_selector){
     }
 
 }
+
+// Functions for the Input sliders (generator_inputs.html)
 
 function load_default_input_values(){
     console.log('changing input values to defaults')

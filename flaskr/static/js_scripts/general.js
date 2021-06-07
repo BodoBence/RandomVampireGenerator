@@ -79,10 +79,10 @@ function toggle_visibility(element_in_focus){
 function toggle_class_based_animation(target_element, target_class, id_based){
     if (id_based == true) {
         my_target = document.getElementById(target_element)
-        console.log(target_element)
-        console.log(target_class)
-        console.log(id_based)
-        console.log(my_target)
+        // console.log(target_element)
+        // console.log(target_class)
+        // console.log(id_based)
+        // console.log(my_target)
         my_target.classList.toggle(target_class)
     }
 

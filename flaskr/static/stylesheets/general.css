@@ -162,14 +162,7 @@ footer p {
 
 .animation_close {
     max-height: 0px !important;
-    overflow: hidden;
-}
-
-.animation_open {
-    /* margin-top: -260px; */
-    /* max-height: 300px !important; */
-    /* max height is set in javascript */
-    overflow: hidden;
+    /* overflow: hidden !important; */
 }
 
 .show {

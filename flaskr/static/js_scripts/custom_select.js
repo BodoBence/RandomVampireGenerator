@@ -1,3 +1,4 @@
+console.log("first line of custom_select.js")
 
 create_global_event_listener('click', 'dropdown_button', handle_custom_select, 'class')
 create_global_event_listener('click', 'fake_option', update_select_with_custom, 'class')
