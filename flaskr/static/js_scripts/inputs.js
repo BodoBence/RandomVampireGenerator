@@ -55,7 +55,6 @@ function selection_based_sync(current_selector){
     if (current_selector.value == focused_value){
         conencted_field.value = default_value
     }
-
 }
 
 // Functions for the Input sliders (generator_inputs.html)

@@ -2,6 +2,12 @@ console.log("first line of custom_select.js")
 
 create_global_event_listener('click', 'dropdown_button', handle_custom_select, 'class')
 create_global_event_listener('click', 'fake_option', update_select_with_custom, 'class')
+window.addEventListener('click', close_dropdown)
+
+function close_dropdown(){
+  // TODO
+  // create rather a global event listener what closes all dropdowns if clicked outsided and triggers the close arrow animation of the open elements
+}
 
 function handle_custom_select(activated_custom_select){
   console.log("Handling custom dropdown")
@@ -15,9 +21,32 @@ function handle_custom_select(activated_custom_select){
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(activated_custom_select)
 
-  // Add close listener
-  add_close_listener(custom_options_container, activated_custom_select)
+  // // Add close listener
+  // add_close_listener(custom_options_container, activated_custom_select)
 }
+
+
+function add_close_listener(activated_custom_select, custom_options_container) {
+  window.addEventListener("click", function(e){
+    close_dropdown(e, activated_custom_select, custom_options_container)
+  })
+}
+
+// function close_dropdown(e, button, option_container){
+//   // console.log("THIS")
+//   // console.log(e.target)
+//   if (e.target == button){
+//     return
+//   }
+
+//   if (e.taget == option_container){
+//     return
+//   }
+
+//   option_container.classList.toggle("show")
+//   toggle_arrow_animation(button)
+
+// }
 
 function update_select_with_custom(my_trigger) {
   console.log('updating the hidden select field with the fake selects manual input')
@@ -32,11 +61,11 @@ function update_select_with_custom(my_trigger) {
   set_dropdown_text(my_trigger)
 
   // Close the dropdown
+  console.log(my_trigger.parentElement)
   my_trigger.parentElement.classList.toggle("show")
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(my_trigger)
-
 }
 
 function set_dropdown_text(chosen_option){
@@ -48,17 +77,17 @@ function set_dropdown_text(chosen_option){
   target.innerHTML = new_value
 }
 
-function add_close_listener(open_dropdown, button){
-  window.addEventListener('click', e => {
-    if (e.target != button) {
-      // Clsoe the dropdown menu
-      open_dropdown.classList.remove("show")
+// function add_close_listener(open_dropdown, button){
+//   window.addEventListener('click', e => {
+//     if (e.target != button) {
+//       // Clsoe the dropdown menu
+//       open_dropdown.classList.remove("show")
       
-      // Trigeer cusotm arrow animaiton
-      toggle_arrow_animation(button)
-    }
-  })
-}
+//       // Trigeer cusotm arrow animaiton
+//       toggle_arrow_animation(button)
+//     }
+//   })
+// }
 
 function toggle_arrow_animation(current_trigger){
   // console.log('getting animation target')
