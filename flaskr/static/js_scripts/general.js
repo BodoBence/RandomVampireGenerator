@@ -62,6 +62,8 @@ function create_global_event_listener(type, selector, callback, element_type){
                 }
                 break
         }
+
+        e.stopPropagation()
     })
 }
 

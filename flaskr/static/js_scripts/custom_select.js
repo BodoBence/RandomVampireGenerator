@@ -2,12 +2,65 @@ console.log("first line of custom_select.js")
 
 create_global_event_listener('click', 'dropdown_button', handle_custom_select, 'class')
 create_global_event_listener('click', 'fake_option', update_select_with_custom, 'class')
-window.addEventListener('click', close_dropdown)
+window.addEventListener('click', close_dropdowns)
 
-function close_dropdown(){
-  // TODO
-  // create rather a global event listener what closes all dropdowns if clicked outsided and triggers the close arrow animation of the open elements
+function close_dropdowns(e){
+  // by definition addEventListener first passes over the event as a parameter
+  
+  console.log('window click')
+  console.log(e.target)
+  // Quit in favour of other click tied functionality
+  if (e.target.classList.contains('dropdown_button')){
+    return
+  }
+
+  if (e.target.classList.contains('dropdown_content')){
+    return
+  }
+
+  let dropdowns = document.getElementsByClassName('dropdown_content')
+  
+  if (dropdowns.length == 0){
+    return
+  }
+
+  for (let index = 0; index < dropdowns.length; index++) {
+    const element = dropdowns[index];
+    if (element.classList.contains('show')){
+      element.classList.remove('show')
+      let respective_button = document.getElementById(element.getAttribute('data-reference-id-button'))
+      toggle_arrow_animation(respective_button)
+    }
+  }
 }
+
+// window.addEventListener('click', close_dropdown)
+
+// function handle_outside_clock(trigger_button, dropdown_container){
+//   console.log("inside handle outside click function")
+//   window.addEventListener('click', close_dropdown)
+
+//   function close_dropdown(){
+//     console.log('trigger:' + this + ' is activated')
+
+//     if (this == trigger_button){
+//       window.removeEventListener('click', close_dropdown)
+//       console.log('returned because the button was clicked')
+//       return
+//     }
+
+//     if (this == dropdown_container){
+//       window.removeEventListener('click', close_dropdown)
+//       console.log('returned because the dropdown was clicked')
+//       return
+//     }
+
+//     dropdown_container.classList.remove("show")
+//     toggle_arrow_animation(trigger_button)
+//     console.log('closed:' + dropdown_container)
+//     window.removeEventListener('click', close_dropdown)
+//   }
+// }
 
 function handle_custom_select(activated_custom_select){
   console.log("Handling custom dropdown")
@@ -17,36 +70,14 @@ function handle_custom_select(activated_custom_select){
   let custom_options_container = document.getElementById(custom_options_containter_id)
 
   custom_options_container.classList.toggle("show");
+  console.log("opened the dropdown")
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(activated_custom_select)
 
-  // // Add close listener
-  // add_close_listener(custom_options_container, activated_custom_select)
+  // Add close listener
+  // handle_outside_clock(activated_custom_select, custom_options_container)
 }
-
-
-function add_close_listener(activated_custom_select, custom_options_container) {
-  window.addEventListener("click", function(e){
-    close_dropdown(e, activated_custom_select, custom_options_container)
-  })
-}
-
-// function close_dropdown(e, button, option_container){
-//   // console.log("THIS")
-//   // console.log(e.target)
-//   if (e.target == button){
-//     return
-//   }
-
-//   if (e.taget == option_container){
-//     return
-//   }
-
-//   option_container.classList.toggle("show")
-//   toggle_arrow_animation(button)
-
-// }
 
 function update_select_with_custom(my_trigger) {
   console.log('updating the hidden select field with the fake selects manual input')
@@ -66,6 +97,9 @@ function update_select_with_custom(my_trigger) {
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(my_trigger)
+
+  // Remove outside event listneer
+  // window.removeEventListener('click', close_dropdown)
 }
 
 function set_dropdown_text(chosen_option){
@@ -76,18 +110,6 @@ function set_dropdown_text(chosen_option){
 
   target.innerHTML = new_value
 }
-
-// function add_close_listener(open_dropdown, button){
-//   window.addEventListener('click', e => {
-//     if (e.target != button) {
-//       // Clsoe the dropdown menu
-//       open_dropdown.classList.remove("show")
-      
-//       // Trigeer cusotm arrow animaiton
-//       toggle_arrow_animation(button)
-//     }
-//   })
-// }
 
 function toggle_arrow_animation(current_trigger){
   // console.log('getting animation target')

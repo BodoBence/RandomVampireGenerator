@@ -27,7 +27,7 @@
                             somethig
                         </p>    
                     </div>
-                    <ul class="dropdown_content" id="clan_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_clan_list" id="clan_container">
                         {% for clan in clans %}
                             <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
                         {% endfor %}
@@ -73,7 +73,7 @@
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" id="sex_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
                         <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
                         <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
                         <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
@@ -120,7 +120,7 @@
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" id="generation_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_generation_list" id="generation_container">
                         <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
                         {% for generation in generations %}
                         <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
@@ -170,7 +170,7 @@
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" id="age_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_age_list" id="age_container">
                         <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
                         <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
                     </ul>
@@ -228,7 +228,7 @@
                            something
                        </p>
                     </div>
-                    <ul class="dropdown_content" id="name_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
                         <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
                         <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
                     </ul>
