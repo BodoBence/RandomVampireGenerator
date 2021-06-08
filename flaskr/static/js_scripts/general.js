@@ -24,8 +24,6 @@ function resize_to_window_width(target_element_id) {
     document.documentElement.style.setProperty('--screen_scale', calculated_scale_ratio)
 }
 
-
-
 function get_last_url_segment(input_url){
     var parts = input_url.split("/")
     var last_segment = parts.pop() || parts.pop();  // handle potential trailing slash

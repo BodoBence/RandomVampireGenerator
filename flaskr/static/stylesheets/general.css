@@ -66,39 +66,6 @@
 
 }
 
-
-
-
-/* button classic */
-
-/* .button_general {
-    background-color: var(--bg);
-    color: var(--fg);
-
-    padding: 10px 10px;
-    border: none;
-
-    text-align: center;
-    text-decoration: none;
-
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    width: 100%;
-
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
-    transition: all var(--base_animation_time) ease;
-} */
-
-/* .button_general:hover {
-    background-color: var(--fg);
-    color: var(--bg);
-} */
-
-
 .button_encounter {
     background-color: var(--bg);
     border: none;
@@ -133,11 +100,17 @@
 
 html {
 
-    background: url("/static/bitmaps/lonely_city_original.jpg") no-repeat center center fixed;
-    -webkit-background-size: auto 100%;
-    -moz-background-size: auto 100%;
-    -o-background-size: auto 100%;
-    background-size: auto 100%;
+    background: url("/static/bitmaps/lonely_city_original.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position-y: center;
+    background-position-y: top;
+
+
+    /* -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto; */
 }
 
 

@@ -9,8 +9,6 @@ create_global_event_listener("click", "button_input_contianer_visibility", accor
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
 correct_overflow()
 
-// Functions for the acordion motion of the input container
-
 // Corrects overflow for the input container animation
 function correct_overflow(){
     current_element = document.getElementById("input_container_id")
@@ -25,6 +23,9 @@ function correct_overflow(){
         }
     })
 }
+
+
+// Functions for the acordion motion of the input container
 
 function accordion_motion(current_trigger){
     target_id = current_trigger.getAttribute("data-target-id")
@@ -76,5 +77,4 @@ function load_default_input_values(){
     // Input fields
     document.getElementById('manual_name_input_id').value = 'Fruzsi'
     document.getElementById('manual_age_input_id').value = 300
-
 }
