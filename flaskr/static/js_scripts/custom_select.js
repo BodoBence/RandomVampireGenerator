@@ -2,7 +2,7 @@ console.log("first line of custom_select.js")
 
 create_global_event_listener('click', 'dropdown_button', handle_custom_select, 'class')
 create_global_event_listener('click', 'fake_option', update_select_with_custom, 'class')
-window.addEventListener('click', close_dropdowns)
+document.addEventListener('click', close_dropdowns)
 
 function close_dropdowns(e){
   // by definition addEventListener first passes over the event as a parameter
@@ -34,34 +34,6 @@ function close_dropdowns(e){
   }
 }
 
-// window.addEventListener('click', close_dropdown)
-
-// function handle_outside_clock(trigger_button, dropdown_container){
-//   console.log("inside handle outside click function")
-//   window.addEventListener('click', close_dropdown)
-
-//   function close_dropdown(){
-//     console.log('trigger:' + this + ' is activated')
-
-//     if (this == trigger_button){
-//       window.removeEventListener('click', close_dropdown)
-//       console.log('returned because the button was clicked')
-//       return
-//     }
-
-//     if (this == dropdown_container){
-//       window.removeEventListener('click', close_dropdown)
-//       console.log('returned because the dropdown was clicked')
-//       return
-//     }
-
-//     dropdown_container.classList.remove("show")
-//     toggle_arrow_animation(trigger_button)
-//     console.log('closed:' + dropdown_container)
-//     window.removeEventListener('click', close_dropdown)
-//   }
-// }
-
 function handle_custom_select(activated_custom_select){
   console.log("Handling custom dropdown")
 
@@ -74,9 +46,6 @@ function handle_custom_select(activated_custom_select){
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(activated_custom_select)
-
-  // Add close listener
-  // handle_outside_clock(activated_custom_select, custom_options_container)
 }
 
 function update_select_with_custom(my_trigger) {
@@ -85,6 +54,8 @@ function update_select_with_custom(my_trigger) {
   let target_select_id = my_trigger.getAttribute('data-reference-id')
   let target_select = document.getElementById(target_select_id)
   let target_option_value = my_trigger.getAttribute('data-reference-option')
+  let target_button_id = my_trigger.getAttribute('data-reference-id-button')
+  let target_button = document.getElementById(target_button_id)
 
   target_select.value = target_option_value
 
@@ -96,10 +67,7 @@ function update_select_with_custom(my_trigger) {
   my_trigger.parentElement.classList.toggle("show")
 
   // Trigeer cusotm arrow animaiton
-  toggle_arrow_animation(my_trigger)
-
-  // Remove outside event listneer
-  // window.removeEventListener('click', close_dropdown)
+  toggle_arrow_animation(target_button)
 }
 
 function set_dropdown_text(chosen_option){
