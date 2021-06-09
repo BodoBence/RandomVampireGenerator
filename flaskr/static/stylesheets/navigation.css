@@ -50,13 +50,20 @@
     stroke:  var(--color_neon_white);
     stroke-linecap: round;
     filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
+/* 
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease; */
 }
 
 
 .animation_logo_load {
     /* animation for load in */
     animation-name: logo_load;
-    animation-duration: 6s;
+    animation-duration: var(--load_animation_time_randomized);
+    animation-iteration-count: 4;
 }
 
 @keyframes logo_load {
@@ -64,46 +71,21 @@
     0% {
         filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
         stroke:  var(--color_neon_white);}
-
-    /* more intense light */
-    10% {
-        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
-        stroke:  var(--color_neon_white);}
     
     /* turned off */
-    20% {
-        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
-        stroke:  rgba(0, 0, 0, 0.341);}
-
-    /* more intense light */
-    30% {
-        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
-        stroke:  var(--color_neon_white);}
-
-    /* turned off */
     40% {
-        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
-        stroke: rgba(0, 0, 0, 0.341);}
-
-    /* more intense light */
-    50% {
-        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
-        stroke:  var(--color_neon_white);}
+        filter: blur(0px) drop-shadow( 0 0 0.1em  var(--color_black_transparent) ) drop-shadow( 0 0 0.1em var(--color_black_transparent) );
+        stroke:  var(--color_black_transparent);}
 
     /* turned off */
     60% {
-        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
-        stroke: rgba(0, 0, 0, 0.341);}
-    
-    /* more intense light */
-    80% {
-        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
-        stroke:  var(--color_neon_white);}
+        filter: blur(0px) drop-shadow( 0 0 0.1em  var(--color_black_transparent) ) drop-shadow( 0 0 0.1em var(--color_black_transparent) );
+        stroke:  var(--color_black_transparent);}
 
-    /* turned off */
-    90% {
-        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
-        stroke: rgba(0, 0, 0, 0.341);}
+    /* more intense light */
+    85% {
+        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 3.5em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
 
     /* start position */
     100% {

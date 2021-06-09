@@ -8,15 +8,19 @@ window.onload = start_logo_load_animation
 //     console.log('page is resized');
 //   });
 
-function start_logo_load_animation() {
-    logo_elements = document.getElementsByClassName("logo_element")
-
-    for (let index = 0; index < logo_elements.length; index++) {
-        const element = logo_elements[index];
-        element.classList.add('animation_logo_load')
-    }
+function set_css_variable(variable_name, new_value) {
+    // Get the root element
+    let r = document.querySelector(':root');
+    r.style.setProperty(variable_name, new_value);
 }
 
+function get_css_variable(variable_name){
+    // Get the root element
+    let r = document.querySelector(':root');
+    requested_value = getComputedStyle(r).getPropertyValue(variable_name)
+    return requested_value
+
+}
 
 function resize_to_window_width(target_element_id) {
     
