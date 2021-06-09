@@ -109,10 +109,7 @@ input {
 	margin: 0;
 
     border-style: solid;
-    border-bottom-width: 0.1em;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-left-width: 0;
+    border: none;
     border-color: currentColor;
 	border-radius: none;
 
@@ -135,8 +132,12 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%; 
-    height: 5px; 
-    background: var(--fg);
+    height: 5px;
+
+    background-color: var(--color_neon_white);
+    box-shadow: 0 0 1em var(--color_neon_pink);
+    border-radius: 1em;
+
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
@@ -152,8 +153,10 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: var(--main_height);
     height: var(--main_height);
-    border-radius: 50%; 
-    background: var(--bg);
+    border-radius: 50%;
+    border-color: var(--color_neon_white); 
+    background-color: var(--color_neon_white);
+    box-shadow: 0 0 1em var(--color_neon_pink);
     cursor: pointer;
 }
   
@@ -161,8 +164,8 @@ input[type="range"]::-moz-range-thumb {
     width: var(--main_height);
     height: var(--main_height);
     border-radius: 50%;
-    background: var(--bg);
+    border-color: var(--color_neon_white); 
+    background-color: var(--color_neon_white);
+    box-shadow: 0 0 1em var(--color_neon_pink);
     cursor: pointer;
 }
-
-

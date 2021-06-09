@@ -25,7 +25,7 @@
 
 /* Logo svg as a whole */
 #svg_logo {
-    height: calc(var(--nav_height)*0.5);
+    height: calc(var(--nav_height)*0.4);
     width: auto;
 
     margin-left: auto;
@@ -92,5 +92,6 @@ nav ul li a {
 
 
 nav ul li a:hover {
-    color: var(--fg);
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 2em var(--color_neon_pink);
 }

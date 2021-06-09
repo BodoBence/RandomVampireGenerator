@@ -10,7 +10,6 @@ select {
 .dropdown_button {
     width: 100%;
     height: 100%;
-    background: wheat;
     position: relative;
     display: inline-block;
 
@@ -21,6 +20,30 @@ select {
     margin: 0;
 
     z-index: 1;
+
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2em;
+    
+    /* border-style: solid;
+    border-width: 0.25em;
+    border-radius: 0.25em;
+    border-color: var(--color_neon_white); */
+
+    /* background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow: 
+        0 0 1.5em currentColor,
+        inset 0 0 1.5em currentColor; */
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
 }
 
 .dropdown_button p {
@@ -52,9 +75,9 @@ select {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
-    background-color: rgba(80, 148, 122, 0.59);
+    background-color: var(--color_neon_pink_transparent);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px var(--color_neon_pink);
   
 }
     
@@ -78,11 +101,18 @@ cursor: pointer;
     width: 0.5rem;
 
     border-style: solid;
-    border-color: black;
-    border-width: 2px;
+    border-color: var(--color_neon_white);
+    border-width: 0.2em;
     border-top: 0;
     border-left: 0;
     pointer-events: none;
+
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_pink);
+
+    box-shadow: 
+        0 0 1em currentColor,
+        inset 0 0 0.1em currentColor;
 
     transform: rotate(225deg);
     transform-origin: center;
