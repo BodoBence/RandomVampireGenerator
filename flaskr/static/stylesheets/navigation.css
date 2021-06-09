@@ -33,18 +33,84 @@
     margin-top: calc(var(--nav_height)*0.3);
     margin-bottom: calc(var(--nav_height)*0.1);
 
-
     overflow: initial;
 }
 
-/* Logo svg elements inside */
-#Content > path, #Content > polyline, #Content > line{
+/* Logo svg elements inside piece-by-piece select */
+/* #Content > path, #Content > polyline, #Content > line{
+    stroke-width: 0.75em;
+    stroke:  var(--color_neon_white);
+    stroke-linecap: round;
+    filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
+} */
+
+/* Logo svg elements inside class select */
+.logo_element {
     stroke-width: 0.75em;
     stroke:  var(--color_neon_white);
     stroke-linecap: round;
     filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
 }
 
+
+.animation_logo_load {
+    /* animation for load in */
+    animation-name: logo_load;
+    animation-duration: 6s;
+}
+
+@keyframes logo_load {
+    /* start position */
+    0% {
+        filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+
+    /* more intense light */
+    10% {
+        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+    
+    /* turned off */
+    20% {
+        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
+        stroke:  rgba(0, 0, 0, 0.341);}
+
+    /* more intense light */
+    30% {
+        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+
+    /* turned off */
+    40% {
+        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
+        stroke: rgba(0, 0, 0, 0.341);}
+
+    /* more intense light */
+    50% {
+        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+
+    /* turned off */
+    60% {
+        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
+        stroke: rgba(0, 0, 0, 0.341);}
+    
+    /* more intense light */
+    80% {
+        filter: blur(1px) drop-shadow( 0 0 0.7em var(--color_neon_pink) ) drop-shadow( 0 0 5em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+
+    /* turned off */
+    90% {
+        filter: blur(1px) drop-shadow( 0 0 0em var(--color_neon_pink) ) drop-shadow( 0 0 0em var(--color_neon_pink) );
+        stroke: rgba(0, 0, 0, 0.341);}
+
+    /* start position */
+    100% {
+        filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
+        stroke:  var(--color_neon_white);}
+
+}
 
 /* .title_container h1 {
     text-align: center;

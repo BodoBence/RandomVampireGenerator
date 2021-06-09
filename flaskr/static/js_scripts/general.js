@@ -1,10 +1,21 @@
 console.log("first line of general.js")
+
+window.onload = start_logo_load_animation
 // Global functions
 
 // window.addEventListener('resize', (event) => {
 //     resize_to_window_width("svg_city_1")
 //     console.log('page is resized');
 //   });
+
+function start_logo_load_animation() {
+    logo_elements = document.getElementsByClassName("logo_element")
+
+    for (let index = 0; index < logo_elements.length; index++) {
+        const element = logo_elements[index];
+        element.classList.add('animation_logo_load')
+    }
+}
 
 
 function resize_to_window_width(target_element_id) {
