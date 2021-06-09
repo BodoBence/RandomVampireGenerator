@@ -8,7 +8,9 @@
     --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
     --box_shadow_color: rgba(0, 0, 0, 0.211);
     --color_darkest: rgb(10,10,10);
-    --nav_height: 160px;
+    --color_neon_white: hsla(300, 20%, 97%, 0.937);
+    --color_neon_pink: hsla(313, 94%, 70%);
+    --nav_height: 20vh;
     --nav_left_margin: 20px;
     --corner_angle: 10px;
     --input_height: 30px;
@@ -36,14 +38,14 @@
     border-style: solid;
     border-width: 0.25em;
     border-radius: 0.25em;
-    border-color: hsla(300, 20%, 97%, 0.937);
+    border-color: var(--color_neon_white);
 
     display: inline-block;
     cursor: pointer;
     width: 100%;
 
     background-color: rgba(0, 0, 0, 0);
-    color: hsla(313, 94%, 70%);
+    color: var(--color_neon_pink);
     text-shadow: 0 0 1em currentColor;
 
     box-shadow: 
@@ -100,7 +102,7 @@
 
 html {
 
-    background: url("/static/bitmaps/lonely_city_original.jpg");
+    background: url("/static/bitmaps/night_street_original.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position-y: center;

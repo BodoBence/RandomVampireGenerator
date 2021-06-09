@@ -14,7 +14,7 @@
     justify-content: center;
     height: 100%;
 
-    margin-top: 130px;
+    margin-top: var(--nav_height);
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
