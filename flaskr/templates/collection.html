@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/collection.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/character.css') }}>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/collection.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character.css') }}">
     </head>
 
     <body>
@@ -43,8 +43,8 @@
 
     </body>
 
-    <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
-    <script src={{ url_for('static', filename='js_scripts/navigation.js') }}></script>
-    <script src={{ url_for('static', filename='js_scripts/character.js') }}></script>
+    <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+    <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js_scripts/character.js') }}"></script>
 
 </html>

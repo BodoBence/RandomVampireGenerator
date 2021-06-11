@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/footer.css') }}>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
     </head>
     <body>
 
@@ -97,7 +97,7 @@
 
         {% include "footer.html" %}
 
-        <script src={{ url_for('static', filename='js_scripts/navigation.js') }}></script>
+        <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
 
     </body>
 </html>

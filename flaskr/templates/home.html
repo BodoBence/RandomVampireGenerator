@@ -3,11 +3,11 @@
     <meta charset="UTF-8">
 
     <head>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/general.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/navigation.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/inputs.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/custom_select.css') }}>
-        <link type="text/css" rel="stylesheet" href={{ url_for('static', filename='stylesheets/character.css') }}>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/inputs.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character.css') }}">
     </head>
 
     <body>
@@ -22,11 +22,11 @@
 
         {% include "footer.html" %}
 
-        <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
-        <script src={{ url_for('static', filename='js_scripts/navigation.js') }}></script>
-        <script src={{ url_for('static', filename='js_scripts/inputs.js') }}></script>
-        <script src={{ url_for('static', filename='js_scripts/character.js') }}></script>
-        <script src={{ url_for('static', filename='js_scripts/custom_select.js') }}></script>
+        <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/inputs.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/character.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/custom_select.js') }}"></script>
 
     </body>
 </html>
