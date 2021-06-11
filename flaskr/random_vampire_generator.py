@@ -3,7 +3,6 @@ import random
 import pprint
 import csv
 import math
-
 import default_data
 
 def derangement_check(basic_info):

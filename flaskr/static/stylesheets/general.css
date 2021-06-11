@@ -7,8 +7,9 @@
     --grey: rgb(244, 213, 197);
     --white: rgb(238, 238, 238);
     --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
-    --box_shadow_color: rgba(0, 0, 0, 0.211);
+    --box_shadow_color: rgba(0, 0, 0, 0.807);
     --color_darkest: rgb(10,10,10);
+    --color_black_transparent: rgb(6, 6, 6);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
     --color_neon_pink: hsla(313, 94%, 70%);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
@@ -19,7 +20,7 @@
     --nav_left_margin: 20px;
     --corner_angle: 10px;
     --input_height: 30px;
-    --padding_distance: 5px;
+    --padding_distance: 0.5em;
     --main_height: 10px;
 
     /* Time */
@@ -43,6 +44,13 @@ p {
 
 .glass {
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9),  rgba(255, 255, 255, 0.3));
+}
+
+.obsidian {
+    background: rgb(17,17,17);
+    background: linear-gradient(9deg, rgba(17,17,17,1) 47%, rgba(38,38,38,1) 56%, rgba(0,0,0,1) 89%, rgba(179,179,179,1) 94%, rgba(255,255,255,1) 100%);
+    border-radius: 0.5em;
+
 }
 
 /* Buttons */

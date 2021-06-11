@@ -23,13 +23,20 @@
  
 .input_container, .div_input_button_container {
     display: grid;
+    width: 100%;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-    grid-row-gap: 0.5rem;
-    grid-column-gap: 20px;
-    grid-template-columns: auto auto;
+    max-height: 1000px;
 
-    max-height: 500px;
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
 
+.div_input_button_container {
     -webkit-transition: all var(--base_animation_time) ease;  
     -moz-transition: all var(--base_animation_time) ease;  
     -o-transition: all var(--base_animation_time) ease;  
@@ -43,12 +50,22 @@
 }
 
 .div_input_dropdown, .div_input_type_in, .div_input_slider {
-    display: grid;
-    grid-column-gap: 10px;
+    display: block;
+    margin: 0;
+    padding: var(--padding_distance);
+
+    background-color: var(--color_black_transparent);
+
+    border-radius: 0.5em;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: var(--white);
+
 }
 
 .div_input_text_container p {
     padding-bottom: var(--padding_distance);
+    padding-left: var(--padding_distance);
 }
 
 .div_input_dropdown {

@@ -170,8 +170,6 @@ def store_generated_character(character):
         json.dump(current_index, outf, indent=4)
 
 
-
-
 # Run the app!  
 
 if __name__ == '__main__':
