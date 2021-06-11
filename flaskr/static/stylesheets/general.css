@@ -39,6 +39,12 @@ p {
     color: var(--white) !important;
 }
 
+/* Styles */
+
+.glass {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9),  rgba(255, 255, 255, 0.3));
+}
+
 /* Buttons */
 
 /* Button Neon */
@@ -145,6 +151,16 @@ footer {
 footer p {
     color: var(--white);
     font-size: 12pt;
+}
+
+/* General decorations */
+
+.animation_ease {
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
 }
 
 /* Dynamically added classes for animation */

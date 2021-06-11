@@ -1,6 +1,6 @@
 <form action = "/result" method='POST'>
     <div class="div_inputs_all">
-        <div class="input_container " id="input_container_id">
+        <div class="input_container animation_ease" id="input_container_id">
             <div class="div_input_dropdown">
                 <div class="div_input_text_container">
                     <p>Clan:</p>
@@ -22,14 +22,14 @@
                         {% endfor %}
 
                     </select>
-                    <div class="dropdown_button" data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list">
+                    <div class="dropdown_button glass" data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list">
                         <p>
                             somethig
                         </p>    
                     </div>
-                    <ul class="dropdown_content" data-reference-id-button="button_clan_list" id="clan_container">
+                    <ul class="dropdown_content glass" data-reference-id-button="button_clan_list" id="clan_container">
                         {% for clan in clans %}
-                            <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
+                            <li class="fake_option glass" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
                         {% endfor %}
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_clan"></span>
@@ -68,15 +68,15 @@
                         <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                         <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
                     </select>
-                    <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list">
+                    <div class="dropdown_button glass" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list">
                         <p>
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
-                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
-                        <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
-                        <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
+                    <ul class="dropdown_content glass" data-reference-id-button="button_sex_list" id="sex_container">
+                        <li class="fake_option glass" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
+                        <li class="fake_option glass" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
+                        <li class="fake_option glass" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_sex"></span>
                 </div>
@@ -115,15 +115,15 @@
                         {% endfor %}
                     </select>
 
-                    <div class="dropdown_button" data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list"> 
+                    <div class="dropdown_button glass" data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list"> 
                         <p>
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" data-reference-id-button="button_generation_list" id="generation_container">
-                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
+                    <ul class="dropdown_content glass" data-reference-id-button="button_generation_list" id="generation_container">
+                        <li class="fake_option glass" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
                         {% for generation in generations %}
-                        <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
+                        <li class="fake_option glass" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
                         {% endfor %}
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_generation"></span>
@@ -165,14 +165,14 @@
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
 
-                    <div class="dropdown_button" data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list">
+                    <div class="dropdown_button glass" data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list">
                         <p>
                             something
                         </p>
                     </div>
-                    <ul class="dropdown_content" data-reference-id-button="button_age_list" id="age_container">
-                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
-                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
+                    <ul class="dropdown_content glass" data-reference-id-button="button_age_list" id="age_container">
+                        <li class="fake_option glass" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
+                        <li class="fake_option glass" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_age"></span>
                 </div>
@@ -223,14 +223,14 @@
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
-                    <div class="dropdown_button" data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list"> 
+                    <div class="dropdown_button glass" data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list"> 
                        <p>
                            something
                        </p>
                     </div>
-                    <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
-                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
-                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
+                    <ul class="dropdown_content glass" data-reference-id-button="button_name_list" id="name_container">
+                        <li class="fake_option glass" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
+                        <li class="fake_option glass" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_name"></span>
                 </div>
