@@ -2,71 +2,162 @@
 .div_encounter_container {
     margin-top: var(--nav_height);
     margin-bottom: 10%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
 
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: auto;
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vh;
 }
 
 .div_encounter_card {
-    margin: 5%;
-    padding: 2%;
+    background-color: var(--color_black_transparent);
 
-    border-color: var(--white);
+    border-radius: 0.5em;
+    border-width: 0.1em;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 30px;
+    border-color: var(--color_dark_grey);
+
+    padding: 1rem;
+
+    box-shadow: 0 0 1em black;
 
     display: grid;
-    grid-template-rows: 10px;
+    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr 4fr 0.25fr;
+    grid-template-areas: 
+        "header header header button_remove"
+        "health_text health_counter health_trackers health_trackers"
+        "willpower_text willpower_counter willpower_trackers willpower_trackers";
+
+    -webkit-transition: all var(--base_animation_time) linear;  
+    -moz-transition: all var(--base_animation_time) linear;  
+    -o-transition: all var(--base_animation_time) linear;  
+    -ms-transition: all var(--base_animation_time) linear;  
+    transition: all var(--base_animation_time) linear;
 }
 
-.div_encounter_row_1, .div_encounter_row_2, .div_encounter_row_3 {
-    display: grid;
+.div_encounter_card:hover {
+    box-shadow: 0 0 1em var(--color_neon_pink);
+    border-color: var(--color_neon_white);
 }
 
-.div_encounter_row_1 {
-    grid-template-columns: auto;
+ /* Encounter elements */
+
+ .input_encounter_name {
+    grid-area: header;
 }
 
-.div_encounter_row_2 {
-    grid-template-columns: auto auto;
+
+input[name="health_meter"] {
+    grid-area: health_counter;
 }
 
-.div_encounter_row_3 {
-    grid-template-columns: 20% 20% auto;
-    grid-column-gap: 10%;
+input[name="willpower_meter"] {
+    grid-area: willpower_counter;
 }
 
-.div_encounter_row_3 input {
-    height: 20px;
-    width: 50%;
+.input_encounter_name, input[name="willpower_meter"], input[name="health_meter"] {
+    appearance: none;
+
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+
+    background-color: transparent;
+    color: var(--white);
+    text-indent: 1em;
+    height: 2em;
 }
+
+.input_encounter_name:hover, input[name="willpower_meter"]:hover, input[name="health_meter"]:hover {
+    border-color: var(--color_neon_white);
+
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow: 
+        0 0 1.5em currentColor,
+        inset 0 0 1.5em currentColor;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
+
+.health_label {
+    grid-area: health_text;
+}
+
+.willpower_label {
+    grid-area: willpower_text;
+}
+
+.tracker_container[name="health_container"] {
+    grid-area: health_trackers;
+}
+
+.tracker_container[name="willpower_container"] {
+    grid-area: willpower_trackers;
+}
+
+
+.button_encounter[name="remove_encounter"] {
+    grid-area: button_remove;
+    padding: 0;
+    margin: 0;
+    height: 1rem;
+    overflow: initial;
+}
+
+.button_encounter[name="remove_encounter"] p {
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    transform: rotate(45deg);
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
+
+.button_encounter[name="remove_encounter"] p:hover {
+    cursor: pointer;
+
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 2em var(--color_neon_pink);
+}
+
 
 .tracker {
-    height: 20px;   
-    width: 20px;
-    background-color: var(--bg);
-    display: inline-block;
+    margin: 0.5rem;
+    height: 1em;   
+    width: 1em;
     border-color: var(--white);
     border-style: solid;
-    border-width: 2px;
+    border-width: 0.2em;
 }
 
 .tracker:hover {
-    background-color: var(--fg);
     color: var(--fg);
     cursor: pointer;
 }
 
-.tracker_row {
-    height: 80px;
+#add_encounter {
+    grid-column-start: 1;
+    grid-column-end: auto;
+    cursor: pointer;
+
+    height: 4em;
 }
 
-.input_encounter_name {
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg);
-    color: var(--fg);
+#add_encounter p {
+    text-align: center;
 }

@@ -122,8 +122,6 @@ th {
     transition: all var(--base_animation_time) ease;
 }
 
-
-
 .dot_filled {
     height: 10px;
     width: 10px;
@@ -137,4 +135,17 @@ th {
     background-color: var(--fg);
     border-radius: 50%;
     display: inline-block;
+}
+
+.button_discipline_skills {
+    background-color: var(--bg);
+    border: none;
+    color: var(--fg);
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    height: 30px;
 }

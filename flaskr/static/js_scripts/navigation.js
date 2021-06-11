@@ -30,16 +30,16 @@ function start_logo_load_animation() {
 
 function create_random_aniamtion_time(){
     base_time = get_css_variable('--load_animation_time')
-    console.log('base time:' + base_time)
+    // console.log('base time:' + base_time)
 
     // get rid of "s" in the end
     base_time_corrected = parseFloat(base_time.slice(0, -1))
 
     random_component = (Math.random()) * 0.5
-    console.log('random:' + random_component)
+    // console.log('random:' + random_component)
 
     calculated_time = base_time_corrected + random_component + 's'
-    console.log('calculated time:' + calculated_time)
+    // console.log('calculated time:' + calculated_time)
     
     // return the value to CSS
     set_css_variable('--load_animation_time_randomized', calculated_time)

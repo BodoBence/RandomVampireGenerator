@@ -1,10 +1,10 @@
 
 create_checkboxes()
 // create_global_event_listener("click", "tracker", toggle_filled, false)
-create_global_event_listener("input", "health_meter", update_value, true)
-create_global_event_listener("input", "willpower_meter", update_value, true)
-create_global_event_listener("click", "add", add_encounter, true)
-create_global_event_listener("click", "remove", remove_encounter, true)
+create_global_event_listener("input", "health_meter", update_value, "name")
+create_global_event_listener("input", "willpower_meter", update_value, "name")
+create_global_event_listener("click", "add", add_encounter, "name")
+create_global_event_listener("click", "remove_encounter", remove_encounter, "name")
 
 // Connected to checkboxes
 

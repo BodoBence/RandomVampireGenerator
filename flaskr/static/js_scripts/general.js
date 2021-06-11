@@ -22,23 +22,6 @@ function get_css_variable(variable_name){
 
 }
 
-function resize_to_window_width(target_element_id) {
-    
-    target_element = document.getElementById(target_element_id)
-
-    element_width = target_element.offsetWidth
-    window_width = window.innerWidth
-
-    calculated_scale_ratio =  window_width / element_width
-
-    console.log(target_element)
-    console.log(element_width)
-    console.log(window_width)
-    console.log(calculated_scale_ratio)
-
-    document.documentElement.style.setProperty('--screen_scale', calculated_scale_ratio)
-}
-
 function get_last_url_segment(input_url){
     var parts = input_url.split("/")
     var last_segment = parts.pop() || parts.pop();  // handle potential trailing slash
@@ -48,7 +31,7 @@ function get_last_url_segment(input_url){
 function create_global_event_listener(type, selector, callback, element_type){
     console.log("creating global event listerner")
     document.addEventListener(type, e => {
-        // console.log(e.target)
+        console.log(e.target)
 
         switch (element_type) {
             case 'name':

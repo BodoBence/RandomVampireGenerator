@@ -68,7 +68,10 @@ p {
     display: inline-block;
     cursor: pointer;
     width: 100%;
+}
 
+
+.neon {
     border: 2em;
     border-style: solid;
     border-width: 0.25em;
@@ -90,44 +93,13 @@ p {
     transition: all var(--base_animation_time) ease;
 }
 
- 
-.button_general:hover {
+.neon:hover {
     border-color: white;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(255, 255, 255);
     text-shadow: 0 0 1em currentColor;
-
 }
-
-.button_encounter {
-    background-color: var(--bg);
-    border: none;
-    color: var(--fg);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-}
-
-.button_encounter:hover {
-    background-color: var(--fg);
-    color: var(--bg);
-}
-
-.button_discipline_skills {
-    background-color: var(--bg);
-    border: none;
-    color: var(--fg);
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    cursor: pointer;
-    height: 30px;
-}
-
+ 
 
 /* Background (hmtl) */
 
@@ -174,6 +146,7 @@ footer p {
 }
 
 /* Dynamically added classes for animation */
+
 
 .animation_close {
     max-height: 0px !important;
