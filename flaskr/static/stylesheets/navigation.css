@@ -63,7 +63,7 @@
     /* animation for load in */
     animation-name: logo_load;
     animation-duration: var(--load_animation_time_randomized);
-    animation-iteration-count: 4;
+    animation-iteration-count: 7;
 }
 
 .animation_logo_pulse {

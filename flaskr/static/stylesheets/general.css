@@ -12,8 +12,8 @@
     --color_black_transparent: rgb(0, 0, 0, 0.76);
     --color_dark_grey: rgba(81, 81, 81, 0.76);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
-    --color_neon_pink: hsla(313, 94%, 70%);
-    --color_neon_pink_alt:  hsla(313, 60%, 70%);
+    --color_neon_pink: hsla(313, 94%, 70%, 1);
+    --color_neon_pink_alt:  hsla(313, 60%, 70%, 1);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
 
     /* Heights */
@@ -26,7 +26,7 @@
 
     /* Time */
     --base_animation_time: 0.7s;
-    --load_animation_time: 1s;
+    --load_animation_time: 0.25s;
     --load_animation_time_randomized: 0s;
     --footer_height: 5%;
     --screen_scale: 1;

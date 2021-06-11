@@ -16,7 +16,6 @@ function create_checkboxes(){
 
     for (let index = 0; index < healths.length; index++) {
         console.log("updating health boxes")
-        console.log(healths[index])
         update_value(healths[index])
     }
     
@@ -34,6 +33,7 @@ function update_value(tracker_stat){
     console.log(current_parent)
 
     current_trackers = current_parent.getElementsByClassName("tracker")
+    console.log(current_trackers.length)
 
     if (current_tracker_stat == current_trackers.length) {return}
 
@@ -54,7 +54,6 @@ function update_value(tracker_stat){
 function add_tracker(current_target){
     new_tracker = document.createElement("div")
     new_tracker.className = "tracker"
-    new_tracker.style.backgroundColor = 'var(--grey)'
     current_target.appendChild(new_tracker)
 }
 
