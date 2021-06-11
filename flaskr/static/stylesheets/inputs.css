@@ -3,17 +3,7 @@
 
 /* Containers */
 
-.div_inputs_all, .input_container {
-    justify-content: center;
-    width: 100%;
-    display: grid;
-}
-
 .div_inputs_all {
-    grid-row-gap: var(--padding_distance);
-    justify-content: center;
-    height: 100%;
-
     margin-top: var(--nav_height);
     margin-bottom: 5%;
     margin-left: auto;
@@ -23,34 +13,35 @@
  
 .input_container, .div_input_button_container {
     display: grid;
-    width: 100%;
-    grid-gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
+    -webkit-transition: all var(--base_animation_time) linear;  
+    -moz-transition: all var(--base_animation_time) linear;  
+    -o-transition: all var(--base_animation_time) linear;  
+    -ms-transition: all var(--base_animation_time) linear;  
+    transition: all var(--base_animation_time) linear;
+}
+
+.input_container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-row-gap: 1em;
+    grid-column-gap: 1rem;
     max-height: 1000px;
-
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
-    transition: all var(--base_animation_time) ease;
 }
 
-.div_input_button_container {
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
-    transition: all var(--base_animation_time) ease;
+.div_input_button_container{
+    justify-items: stretch;
+    margin-top: 1em;
+    grid-column-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* padding-left: 2rem;
+    padding-right: 2rem; */
+
 }
 
-.div_input_buttons {
-    grid-template-columns: auto auto;
-    grid-column-gap: 20px;
-}
 
 .div_input_dropdown, .div_input_type_in, .div_input_slider {
-    display: block;
+    display: grid;
+
     margin: 0;
     padding: var(--padding_distance);
 
@@ -59,25 +50,28 @@
     border-radius: 0.5em;
     border-width: 0.1em;
     border-style: solid;
-    border-color: var(--white);
+    border-color: var(--color_dark_grey);
+
+    box-shadow: 0 0 1em black;
 
 }
 
 .div_input_text_container p {
-    padding-bottom: var(--padding_distance);
-    padding-left: var(--padding_distance);
+    grid-template-columns: 1fr 2fr;
+    /* padding-bottom: var(--padding_distance);
+    padding-left: var(--padding_distance); */
 }
 
 .div_input_dropdown {
-    grid-template-columns: 100px auto;
+    grid-template-columns: 1fr 2fr;
 }
 
 .div_input_slider {
-    grid-template-columns: 120px auto;
+    grid-template-columns: 1fr 3fr;
 }
 
 .div_input_type_in {
-    grid-template-columns: 100px 100px auto;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
 .div_button_load_defaults {
@@ -105,8 +99,6 @@
 input {
 	display: inline-block;
 
-    font-size: 1em;
-
     position: relative;
     top: var(--padding_distance);
     bottom: var(--padding_distance);
@@ -115,19 +107,13 @@ input {
     height: var(--input_height);
     padding-left: var(--padding_distance);
 
-	/* font-size: 12px; */
-	font-family: sans-serif;
-	font-weight: normal;
-
 	color: var(--white);
     background: transparent;
     
 	box-sizing: border-box;
 	margin: 0;
 
-    border-style: solid;
     border: none;
-    border-color: currentColor;
 	border-radius: none;
 
 	/* background-color: var(--bg); */
@@ -149,7 +135,7 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%; 
-    height: 5px;
+    height: 0.25rem;
 
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
@@ -157,6 +143,8 @@ input[type="range"] {
 
     -webkit-transition: .2s;
     transition: opacity .2s;
+
+    z-index: 2;
 }
 
 input[type="range"]:hover {

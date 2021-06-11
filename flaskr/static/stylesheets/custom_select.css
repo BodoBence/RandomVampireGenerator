@@ -64,7 +64,15 @@ select {
 
     margin: 0;
     padding: 0;
+
     background-color: var(--color_black_transparent);
+
+    border-radius: 0.5em;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: var(--color_dark_grey);
+
+    box-shadow: 0 0 1em black;
 }
   
   /* list items inside the dropdown */
@@ -72,7 +80,7 @@ select {
     list-style-type: none;
     padding: 12px 16px;
     text-decoration: none;
-    color: var(--white);
+    color: var(--white);    
     width: inherit;
     z-index: 4;
   
@@ -80,7 +88,9 @@ select {
     
 /* Change color of dropdown links on hover */
 .dropdown_content li:hover {
-cursor: pointer;
+    cursor: pointer;
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 2em var(--color_neon_pink);
 }
 
 .custom_arrow {

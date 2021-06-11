@@ -9,11 +9,11 @@
     --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
     --box_shadow_color: rgba(0, 0, 0, 0.807);
     --color_darkest: rgb(10,10,10);
-    --color_black_transparent: rgb(6, 6, 6);
+    --color_black_transparent: rgb(0, 0, 0, 0.76);
+    --color_dark_grey: rgba(81, 81, 81, 0.76);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
     --color_neon_pink: hsla(313, 94%, 70%);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
-    --color_black_transparent: rgba(0, 0, 0, 0.341);
 
     /* Heights */
     --nav_height: 20vh;
@@ -130,7 +130,7 @@ p {
 
 /* Background (hmtl) */
 
-html {
+html, .title_container {
     background: url("/static/bitmaps/night_street_width_2000_res_72.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;

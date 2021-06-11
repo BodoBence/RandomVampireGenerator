@@ -8,8 +8,6 @@
     </head>
     <body>
 
-        {% include "background.html" %}
-
         {% include "navigation.html" %}
 
         <div class="div_encounter_container">
@@ -18,8 +16,10 @@
             {% endfor %}
         </div>
 
+        {% include "footer.html" %}
+
     </body>
-            {% include "footer.html" %}
+
     <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
     <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
     <script src="{{ url_for('static', filename='js_scripts/encounters.js') }}"></script>
