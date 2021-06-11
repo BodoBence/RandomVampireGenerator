@@ -13,6 +13,7 @@
     --color_dark_grey: rgba(81, 81, 81, 0.76);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
     --color_neon_pink: hsla(313, 94%, 70%);
+    --color_neon_pink_alt:  hsla(313, 60%, 70%);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
 
     /* Heights */

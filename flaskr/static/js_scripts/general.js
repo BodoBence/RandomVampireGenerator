@@ -1,6 +1,6 @@
 console.log("first line of general.js")
 
-window.onload = start_logo_load_animation
+
 // Global functions
 
 // window.addEventListener('resize', (event) => {

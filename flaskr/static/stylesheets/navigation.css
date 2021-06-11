@@ -66,6 +66,18 @@
     animation-iteration-count: 4;
 }
 
+.animation_logo_pulse {
+    animation-name: pulsate_light;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate_light {
+    0% { filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );}
+    50% { filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink_alt) ) drop-shadow( 0 0 3em var(--color_neon_pink_alt) );}
+    100% { filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );}
+}
+
 @keyframes logo_load {
     /* start position */
     0% {

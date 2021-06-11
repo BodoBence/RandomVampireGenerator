@@ -4,7 +4,7 @@
 /* Containers */
 
 .div_inputs_all {
-    margin-top: var(--nav_height);
+    margin-top: calc(var(--nav_height) + 1em);
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
@@ -53,7 +53,11 @@
     border-color: var(--color_dark_grey);
 
     box-shadow: 0 0 1em black;
+}
 
+.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover {
+    box-shadow: 0 0 1em var(--color_neon_pink);
+    border-color: var(--color_neon_white);
 }
 
 .div_input_text_container p {

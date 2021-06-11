@@ -1,9 +1,12 @@
 console.log("first line of navigation.js")
 
 window.onload = start_logo_load_animation
+
 // Navigaiton Functions
 
 // Logo load animation
+
+
 
 function start_logo_load_animation() {
     logo_elements = document.getElementsByClassName("logo_element")
@@ -16,6 +19,7 @@ function start_logo_load_animation() {
         // only calculate random time one per iteration
         if (element == logo_elements[0]){
             element.addEventListener('animationiteration', create_random_aniamtion_time)
+            element.addEventListener('animationend', loop_standy_animation)
         }
 
         // start the animation by addig the animation class
@@ -42,3 +46,18 @@ function create_random_aniamtion_time(){
 
 }
 
+
+function loop_standy_animation(){
+    logo_elements = document.getElementsByClassName("logo_element")
+
+    for (let index = 0; index < logo_elements.length; index++) {
+        const element = logo_elements[index];
+
+        // remove the load animation by addig the animation class
+        element.classList.remove('animation_logo_load')
+
+        // start the animation by addig the animation class
+        element.classList.add('animation_logo_pulse')
+    }
+
+}
