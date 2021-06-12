@@ -1,9 +1,9 @@
 
 .div_encounter_container {
     margin-top:  calc(var(--nav_height) + 1em);
-    margin-bottom: 10%;
     margin-left: 2vw;
     margin-right: 2vw;
+    margin-bottom: 2vw;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -65,7 +65,9 @@ input[type="number"] {
 }
 
 .input_encounter_name, input[name="willpower_meter"], input[name="health_meter"], input[name="custom_meter"] {
-    appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
 
     border-style: solid;
     border-width: 0.1rem;
@@ -179,6 +181,11 @@ input[name="custom_meter"] {
 }
 
 #add_encounter {
+    margin-top: 0;
+    margin-bottom: 10%;
+    margin-right: 2vw;
+    margin-left: 2vw;
+
     grid-column-start: 1;
     grid-column-end: auto;
     cursor: pointer;

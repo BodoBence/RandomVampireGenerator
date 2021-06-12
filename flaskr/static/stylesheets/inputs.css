@@ -101,7 +101,7 @@
 /* Inputs */
 
 input {
-	display: inline-block;
+	/* display: inline-block;
 
     position: relative;
     top: var(--padding_distance);
@@ -118,7 +118,7 @@ input {
 	margin: 0;
 
     border: none;
-	border-radius: none;
+	border-radius: none; */
 
 	/* background-color: var(--bg); */
     /* box-shadow: 0 2px 0 2px rgba(0,0,0,.04); */
@@ -132,6 +132,61 @@ input {
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
+}
+
+/* Number Inputs */
+input[type="number"]{
+    display: inline-block;
+    width: 6em;
+
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+    background-color: transparent;
+
+    border-style: solid;
+    border-color: var(--white);
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+
+    color: var(--white);
+    text-indent: 1em;
+    height: 2em;
+
+}
+
+/* Text Inputs */
+input[type="text"]{
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+    display: inline-block;
+    width: 100%;
+
+    background-color: transparent;
+
+    border-style: solid;
+    border-color: var(--white);
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+
+    color: var(--white);
+    text-indent: 1em;
+    height: 2em;
+}
+
+input[type="number"]:hover, input[type="text"]:hover {
+    border-color: var(--color_neon_white);
+
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow: 
+        0 0 1.5em currentColor,
+        inset 0 0 1.5em currentColor;
 }
 
 /* Range inputs */
