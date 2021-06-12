@@ -138,16 +138,22 @@ input[name="willpower_meter"] {
 
 .tracker {
     display: inline-block;
+
     margin: 0.5rem;
     height: 1em;   
     width: 1em;
+
     border-color: var(--white);
+    background-color: transparent;
     border-style: solid;
     border-width: 0.2em;
 }
 
+.tracker_clicked {
+    background-color: blue;
+}
+
 .tracker:hover {
-    color: var(--fg);
     cursor: pointer;
 }
 
@@ -162,3 +168,4 @@ input[name="willpower_meter"] {
 #add_encounter p {
     text-align: center;
 }
+

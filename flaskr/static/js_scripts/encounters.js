@@ -1,6 +1,6 @@
 
 create_checkboxes()
-// create_global_event_listener("click", "tracker", toggle_filled, false)
+create_global_event_listener("click", "tracker", toggle_filled, "class")
 create_global_event_listener("input", "health_meter", update_value, "name")
 create_global_event_listener("input", "willpower_meter", update_value, "name")
 create_global_event_listener("click", "add_encounter", add_encounter, "name")
@@ -39,7 +39,6 @@ function update_value(tracker_stat){
 
     if (current_tracker_stat > current_trackers.length){
         while (current_tracker_stat > current_trackers.length){
-            console.log("hi")
             add_tracker(current_parent)
         }
     }
@@ -54,16 +53,17 @@ function update_value(tracker_stat){
 function add_tracker(current_target){
     new_tracker = document.createElement("div")
     new_tracker.className = "tracker"
-    new_tracker.style.backgroundColor = 'var(--grey)'
     current_target.appendChild(new_tracker)
 }
 
 function toggle_filled(element_in_focus){
-    if (element_in_focus.style.backgroundColor == 'var(--bg)') {
-        element_in_focus.style.backgroundColor = 'var(--grey)';
-    } else {
-        element_in_focus.style.backgroundColor = 'var(--bg)';
-    }
+    element_in_focus.classList.toggle('tracker_clicked')
+
+    // if (element_in_focus.style.backgroundColor == 'var(--bg)') {
+    //     element_in_focus.style.backgroundColor = 'var(--grey)';
+    // } else {
+    //     element_in_focus.style.backgroundColor = 'var(--bg)';
+    // }
 }
 
 // Connected to encounters
