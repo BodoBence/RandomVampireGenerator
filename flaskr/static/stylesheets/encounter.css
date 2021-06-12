@@ -137,6 +137,7 @@ input[name="willpower_meter"] {
 
 
 .tracker {
+    display: inline-block;
     margin: 0.5rem;
     height: 1em;   
     width: 1em;

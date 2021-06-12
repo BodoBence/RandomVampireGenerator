@@ -30,7 +30,7 @@ function update_value(tracker_stat){
     current_tracker_stat = tracker_stat.value
     console.log("updating value")
     console.log(current_tracker_stat)
-    current_parent = tracker_stat.parentElement.getElementsByClassName("tracker_container")[0]
+    current_parent = tracker_stat.nextElementSibling
     console.log(current_parent)
 
     current_trackers = current_parent.getElementsByClassName("tracker")
