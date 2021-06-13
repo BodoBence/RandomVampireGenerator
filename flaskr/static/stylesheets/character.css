@@ -2,11 +2,12 @@
 /* Generated Character */
 
 .div_character_background {
-    background-color: var(--white);
+    background-color: white;
     
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20%;
+    margin-bottom: 0;
+    margin-top: 0;
 
     max-width: 800px;
 

@@ -8,6 +8,7 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/inputs.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/home.css') }}">
     </head>
 
     <body>
@@ -18,10 +19,18 @@
 
         {% if have_generated_character %}
             {% include "generated_character.html" %}
+            <div class="div_output_buttons" id="div_download_vampire">
+                <input
+                    class="button_general neon"
+                    id="button_download_vampire"
+                    type="button"
+                    value="Download character">
+            </div>
         {% endif %}
 
         {% include "footer.html" %}
 
+        <!-- Own scripts -->
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
         <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script src="{{ url_for('static', filename='js_scripts/inputs.js') }}"></script>
