@@ -15,6 +15,7 @@
     --color_neon_pink: hsla(313, 94%, 70%);
     --color_neon_pink_alt:  hsla(313, 60%, 70%);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
+    --color_black: rgb(0, 0, 0);
 
     /* Heights */
     --nav_height: 20vh;

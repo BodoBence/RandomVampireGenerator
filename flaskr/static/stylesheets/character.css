@@ -1,9 +1,43 @@
 
 /* Generated Character */
 
+/* Colors */
+
 .div_character_background {
     background-color: white;
-    
+}
+
+.table_character {
+    border-color: var(--color_black);
+}
+
+th {
+    border-bottom-color: var(--color_black);
+}
+
+.square_filled, .dot_filled {
+    background-color: var(--color_neon_pink);
+}
+
+.square_unfilled, .dot_unfilled {
+    background-color: var(--color_black);
+}
+
+.discipline_skills p {
+    color: black !important;
+}
+
+.button_discipline_skills {
+    background-color: var(--color_black);
+    color: var(--color_neon_pink);
+}
+
+
+
+/* Everything else */
+
+.div_character_background {
+
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0;
@@ -23,7 +57,6 @@
 
     border-style: double;
     border-width: 5px;
-    border-color: black;
     border-radius: 20px;
 
     margin-top: auto;
@@ -44,15 +77,6 @@ td {
     padding-top: 20px;
 }
 
-/* .column_stat_names {
-    min-width: 100px;
-    max-width: 200px;
-}
-
-.column_stat_values {
-    min-width: 100px;
-    max-width: 200px;
-} */
 
 th {
     vertical-align: center;
@@ -90,13 +114,12 @@ th {
 .square_filled {
     height: 15px;
     width: 15px;
-    background-color: var(--bg);
-    display: inline-block;}
+    display: inline-block;
+}
 
 .square_unfilled {
     height: 15px;
     width: 15px;
-    background-color: var(--fg);
     display: inline-block;
 }
 
@@ -123,26 +146,23 @@ th {
     transition: all var(--base_animation_time) ease;
 }
 
+
 .dot_filled {
     height: 10px;
     width: 10px;
-    background-color: var(--bg);
     border-radius: 50%;
     display: inline-block;}
 
 .dot_unfilled {
     height: 10px;
     width: 10px;
-    background-color: var(--fg);
     border-radius: 50%;
     display: inline-block;
 }
 
 .button_discipline_skills {
-    background-color: var(--bg);
-    border: none;
-    color: var(--fg);
     padding: 10px 10px;
+    border: none;
     text-align: center;
     text-decoration: none;
     display: inline-block;
