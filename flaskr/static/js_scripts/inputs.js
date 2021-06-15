@@ -8,6 +8,7 @@ create_global_event_listener("change", "manual_age_selection", selection_based_s
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
 create_global_event_listener("change", "slider", display_slider_value, "class")
+create_global_event_listener("change", "selection_theme", toggle_character_style, "id")
 correct_overflow()
 
 // Corrects overflow for the input container animation
@@ -89,4 +90,9 @@ function display_slider_value(current_slider){
     new_value = current_slider.value
 
     target_element.innerHTML = new_value
+}
+
+function toggle_character_style(){
+    console.log("switching character theme")
+
 }
