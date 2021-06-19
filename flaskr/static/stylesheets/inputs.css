@@ -39,7 +39,7 @@
 }
 
 
-.div_input_dropdown, .div_input_type_in, .div_input_slider {
+.div_input_dropdown, .div_input_type_in, .div_input_slider, .div_input_checkbox {
     display: grid;
     gap: 1rem;
 
@@ -56,7 +56,7 @@
     box-shadow: 0 0 1em black;
 }
 
-.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover {
+.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover, .div_input_checkbox:hover {
     box-shadow: 0 0 1em var(--color_neon_pink);
     border-color: var(--color_neon_white);
 }
@@ -79,6 +79,10 @@
     grid-template-columns: 1fr 2fr 1fr;
 }
 
+.div_input_checkbox {
+    grid-template-columns: 3fr 1fr;
+}
+
 .div_button_load_defaults {
     margin: auto;
     width: 100%;
@@ -87,7 +91,7 @@
     margin-bottom: var(--padding_distance);
 }
 
-.div_type_in, .div_slider {
+.div_type_in, .div_slider, .div_checkbox {
     padding-bottom: var(--padding_distance);
     padding-top: var(--padding_distance);
 }
@@ -135,13 +139,12 @@ input {
 }
 
 /* Number Inputs */
-input[type="number"], input[type="text"] {
+input[type="number"], input[type="text"], input[type="checkbox"] {
     display: inline-block;
-    width: 6em;
 
-    -moz-appearance: none;
+    /* -moz-appearance: none;
 	-webkit-appearance: none;
-	appearance: none;
+	appearance: none; */
 
     background-color: transparent;
 
@@ -153,10 +156,22 @@ input[type="number"], input[type="text"] {
     color: var(--white);
     text-indent: 1em;
     height: 2em;
-
 }
 
-input[type="number"]:hover, input[type="text"]:hover {
+input[type="number"], input[type="text"] {
+    width: 6em;
+}
+
+input[type="checkbox"] {
+    width: 2em;
+}
+
+input[type="checkbox"]:checked {
+    color: white;
+    font-style: normal;
+} 
+
+input[type="number"]:hover, input[type="text"]:hover, input[type="checkbox"]:hover {
     border-color: var(--color_neon_white);
 
     background-color: rgba(0, 0, 0, 0);
@@ -188,7 +203,7 @@ input[type="range"] {
     z-index: 2;
 }
 
-input[type="range"]:hover {
+input[type="range"]:hover, input[type="checkbox"] {
     cursor: pointer;
 }
 
