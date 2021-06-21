@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/about.css') }}">
+    </head>
+
+    <body>
+
+        {% include "navigation.html" %}
+        
+        <div>
+            <p>
+                About page
+            </p>
+        </div>
+
+        {% include "footer.html" %}
+        
+        <script src={{ url_for('static', filename='js_scripts/navigation.js') }}></script>
+        <script src={{ url_for('static', filename='js_scripts/general.js') }}></script>
+
+    </body>
+</html>

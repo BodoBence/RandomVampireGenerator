@@ -104,28 +104,6 @@
 /* Inputs */
 
 input {
-	/* display: inline-block;
-
-    position: relative;
-    top: var(--padding_distance);
-    bottom: var(--padding_distance);
-
-    width: 100%;
-    height: var(--input_height);
-    padding-left: var(--padding_distance);
-
-	color: var(--white);
-    background: transparent;
-    
-	box-sizing: border-box;
-	margin: 0;
-
-    border: none;
-	border-radius: none; */
-
-	/* background-color: var(--bg); */
-    /* box-shadow: 0 2px 0 2px rgba(0,0,0,.04); */
-
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
