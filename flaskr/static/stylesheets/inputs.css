@@ -210,7 +210,7 @@ input[type="checkbox"] {
     top: 5px;
     width: 5px;
     height: 10px;
-    border: solid white;
+    border: solid var(--color_neon_white);
     border-width: 0 0.2rem 0.2rem 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
