@@ -39,6 +39,17 @@
     grid-column: 1/4;
     display: grid;
     grid-template-rows: auto;
+    grid-template-columns: 1fr;
+}
+
+.div_character_block_3 div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.div_character_card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .discipline_skills {
