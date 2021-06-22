@@ -6,7 +6,9 @@
 
 .div_character_background {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    grid-template-rows: auto;
 
     margin-left: auto;
     margin-right: auto;
@@ -22,46 +24,10 @@
     box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
 }
 
-.div_character_span_1_6 {
-    grid-column: 1/7;
-}
+.div_character_block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-.div_character_span_2_6 {
-    grid-column: 2/7;
-}
-
-.div_character_span_1_2 {
-    grid-column: 1/3;
-}
-
-.div_character_span_3_4 {
-    grid-column: 3/5;
-}
-
-.div_character_span_5_6 {
-    grid-column: 5/7;
-}
-
-.div_character_span_1_3 {
-    grid-column: 1/4;
-}
-
-.div_character_span_4_6 {
-    grid-column: 4/7;
-}
-
-
-
-
-.square_unfilled {
-    height: 15px;
-    width: 15px;
-    display: inline-block;
-}
-
-.discipline_name {
-    text-align: left;
-    padding: 0px;
 }
 
 .discipline_skills {
@@ -82,6 +48,16 @@
     transition: all var(--base_animation_time) ease;
 }
 
+.square_unfilled {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+}
+
+.discipline_name {
+    text-align: left;
+    padding: 0px;
+}
 
 .dot_filled {
     height: 10px;

@@ -62,7 +62,7 @@ def result():
     startup_input_field_details['input_values'] = restructured_values
     startup_input_field_details['input_weights'] = restructured_weights
 
-    details = generated_character['Character_Details']
+    # details = generated_character['Character_Details']
     attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
 
     rendered_vampire = render_template(
@@ -74,10 +74,7 @@ def result():
         clans = startup_input_field_details['input_clans'],
         generations = startup_input_field_details['input_generations'],
         have_generated_character=HAVE_GENERATED_CHARACTER,
-        details = details, 
-        attributes = attributes, 
-        skills = skills, 
-        disciplines = disciplines,
+        character = generated_character,
         max_level = max_level,
         pdf_path = 'output_path')
 
