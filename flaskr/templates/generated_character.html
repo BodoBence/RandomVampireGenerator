@@ -106,12 +106,12 @@
 
         {% for discipline_type in character['Disciplines'].keys() %}
 
-            <div class="div_character_block_2">
+            <div>
                 <p>{{ discipline_type }}</p>
             </div>
 
             {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
-                <div>
+                <div class="div_character_block_2">
                     <p class="discipline_name">{{ discipline_name }}</p>
                     <div>
                         {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}

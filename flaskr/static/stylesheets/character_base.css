@@ -27,7 +27,18 @@
 .div_character_block {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
+.div_character_block_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.div_character_block_3 {
+    grid-column: 1/4;
+    display: grid;
+    grid-template-rows: auto;
 }
 
 .discipline_skills {
