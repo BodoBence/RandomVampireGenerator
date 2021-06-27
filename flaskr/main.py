@@ -16,7 +16,6 @@ import server_functions
 app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
 
-
 # Startup variables
 
 startup_input_field_details = {
@@ -63,7 +62,7 @@ def result():
     startup_input_field_details['input_weights'] = restructured_weights
 
     # details = generated_character['Character_Details']
-    attributes, skills, disciplines, max_level = server_functions.dictionary_to_html_table(generated_character)
+    max_level = server_functions.get_maximum_skill_level(generated_character)
 
     rendered_vampire = render_template(
         'home.html',
