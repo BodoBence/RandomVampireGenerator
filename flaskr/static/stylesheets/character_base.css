@@ -1,0 +1,106 @@
+
+/* Generated Character */
+
+
+/* Everything else */
+
+.div_character_background {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    grid-template-rows: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    max-width: 1000px;
+
+    padding: 5%;
+    
+    -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+    -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+    box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+}
+
+.div_character_block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.div_character_block_2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.div_character_block_3 {
+    grid-column: 1/4;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+}
+
+.div_character_block_3 div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.div_character_card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.discipline_skills {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+
+    vertical-align: top;
+    
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0px;
+
+    -webkit-transition: all var(--base_animation_time) ease;  
+    -moz-transition: all var(--base_animation_time) ease;  
+    -o-transition: all var(--base_animation_time) ease;  
+    -ms-transition: all var(--base_animation_time) ease;  
+    transition: all var(--base_animation_time) ease;
+}
+
+.square_unfilled {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+}
+
+.discipline_name {
+    text-align: left;
+    padding: 0px;
+}
+
+.dot_filled {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;}
+
+.dot_unfilled {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.button_discipline_skills {
+    padding: 10px 10px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    height: 30px;
+}

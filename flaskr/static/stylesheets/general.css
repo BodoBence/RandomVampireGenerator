@@ -15,6 +15,7 @@
     --color_neon_pink: hsla(313, 94%, 70%, 1);
     --color_neon_pink_alt:  hsla(313, 60%, 70%, 1);
     --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
+    --color_black: rgb(0, 0, 0);
 
     /* Heights */
     --nav_height: 20vh;
@@ -122,17 +123,36 @@ html, .title_container {
 
 footer {
     position: fixed;
-    left: 0%;
-    bottom: 0%;
+    bottom: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    column-gap: 1em;
+
     width: 100%;
-    height: 5vh;
+
     background-color: var(--color_darkest);
+
     text-align: center;
+    align-content: center;
+
+    box-shadow: 0 -1vh 0.5vh black;
+}
+
+footer div {
+    background: url("/static/bitmaps/darkpack_black_logo.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 footer p {
-    color: var(--white);
-    font-size: 12pt;
+    margin: 1em;
+    font-size: 0.75rem;
 }
 
 /* General decorations */

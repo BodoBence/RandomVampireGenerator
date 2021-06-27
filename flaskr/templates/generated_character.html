@@ -1,234 +1,140 @@
 <!doctype html>
-<div class="div_character_background">
-    <table class="table_character">
-        <colgroup>
-            <col class="column_stat_names">
-            <col class="column_stat_values">
-            <col class="column_stat_names">
-            <col class="column_stat_values">
-            <col class="column_stat_names">
-            <col class="column_stat_values">
-        </colgroup>
-        <tbody>
-            <tr>
-                <th colspan="6"> Basic Information </th>
-            </tr>
-            <tr>
-                <td> Name </td>
-                <td> {{ details['Basic_Information']['Name'] }} </td>
-                <td> Sire </td>
-                <td> {{ details['Basic_Information']['Sire'] }} </td>
-                <td> Sex </td>
-                <td>{{ details['Basic_Information']['Sex'] }} </td>
-            </tr>
-            <tr>
-                <td> Clan </td>
-                <td> {{ details['Basic_Information']['Clan'] }} </td>
-                <td> Generation </td>
-                <td> {{ details['Basic_Information']['Generation'] }} </td>
-                <td> Age </td>
-                <td>{{ details['Basic_Information']['Age'] }} </td>
-            </tr>
-            <tr class="derangement">
-                <td> Derangement </td>
-                <td colspan="5"> {{ details['Basic_Information']['Derangement'] }}</td>
-            </tr>
-            <tr class="character_sheet_trackers_title">
-                <td colspan="2">Health</td>
-                <td colspan="2">Willpower</td>
-                <td colspan="2">Blood Potency</td>
-            </tr>
-            <tr class="character_sheet_trackers_squares">
-                <td colspan="2">
-                    {% for i in range(0, details['Trackers']['Health']) %}
+<div class="div_character_background"> 
+    
+    <!-- Basic Information Title -->
+    <div class="div_character_block">
+        <p>Basic Information</p>
+    </div>
+
+    <!-- Basic Information -->
+    <div class="div_character_block">
+        {% for key, value in character['Character_Details']['Basic_Information'].items() %}
+            <div class="div_character_card">
+                <p>{{ key }}</p>
+                <p>{{ value }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Trackers -->
+    <div class="div_character_block">
+        {% for key, value in character['Character_Details']['Trackers'].items() %}
+            <div class="div_character_card">
+                <p>{{ key }}</p>
+                <div>
+                    {% for i in range(0, value) %}
                         <span class="square_filled"> </span>
                     {% endfor %}
-                    {% for i in range(0, 10 - details['Trackers']['Health']) %}
+                    {% for i in range(0, 10 - value) %}
                         <span class="square_unfilled"></span>
                     {% endfor %}
-                </td>
-                <td colspan="2">
-                    {% for i in range(0, details['Trackers']['Willpower']) %}
-                        <span class="square_filled"></span>  
-                    {% endfor %}
-                    {% for i in range(0, 10 - details['Trackers']['Willpower']) %}
-                        <span class="square_unfilled"></span>  
-                    {% endfor %}
-                </td>
-                <td colspan="2">
-                    {% for i in range(0, details['Trackers']['Blood_Potency']) %}
-                        <span class="square_filled"></span>   
-                    {% endfor %}
-                    {% for i in range(0, 10 - details['Trackers']['Blood_Potency']) %}
-                        <span class="square_unfilled"></span>   
-                    {% endfor %}
-                </td>
-            </tr>
-        </tbody>
-    
-        <tbody>
-            <tr>
-                <th colspan="6"> Attributes </th>
-            </tr>
-            {% for row in attributes %}
-                <tr>
-                    <td> {{ row['col1'] }} </td>
-                    <td>
-                        {% for i in range(0, row['col2']) %}
-                            <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col2']) %}
-                            <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                    </td>
-                    <td> {{ row['col3'] }} </td>
-                    <td> 
-                        {% for i in range(0, row['col4']) %}
-                            <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col4']) %}
-                            <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                </td></td>
-                    <td> {{ row['col5'] }} </td>
-                    <td>
-                        {% for i in range(0, row['col6']) %}
-                                <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col6']) %}
-                                <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                    </td>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    
-        <tbody>
-            <tr>
-                <th colspan="6"> Skills </th>
-            </tr>
-            {% for row in skills %}
-                <tr>
-                    <td> {{ row['col1'] }} </td>
-                    <td>
-                        {% for i in range(0, row['col2']) %}
-                            <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col2']) %}
-                            <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                    </td>
-                    <td> {{ row['col3'] }} </td>
-                    <td>
-                        {% for i in range(0, row['col4']) %}
-                            <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col4']) %}
-                            <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                </td></td>
-                    <td> {{ row['col5'] }} </td>
-                    <td>
-                        {% for i in range(0, row['col6']) %}
-                            <span class="dot_filled"></span>   
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col6']) %}
-                            <span class="dot_unfilled"></span>   
-                        {% endfor %}
-                    </td>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    
-        <tbody>
-        <tr>
-            <th colspan="3"> Clan Disciplines </th>
-            <th colspan="3"> Non Clan Disciplines </th>
-        </tr>
-        {% for row in disciplines %}
-            <tr>
-                <td class="discipline_name"> {{ '' if row['col1'] == '' else row['col1'] }} </td>
-                <td>
-                    {% if row['col1'] != '' %}
-                        {% for i in range(0, row['col2']['Level']) %}
-                            <span class="dot_filled"></span>
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col2']['Level']) %}
-                            <span class="dot_unfilled"></span>
-                        {% endfor %}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row['col1'] != '' %}
-                        <button
-                            class="button_discipline_skills button_general"
-                            data-toggle-reference={{ row['col2']['discipline_number'] }}
-                            data-toggle-animation-class="animation_open"
-                            data-toggle-selection-class="discipline_skills">
-                            Hide/Show Skills 
-                        </button>
-                    {% endif %}
-                </td>
-                <td class="discipline_name"> {{ '' if row['col3'] == '' else row['col3'] }} </td>
-                <td>
-                    {% if row['col3'] != '' %}
-                        {% for i in range(0, row['col4']['Level']) %}
-                            <span class="dot_filled"></span>
-                        {% endfor %}
-                        {% for i in range(0, max_level - row['col4']['Level']) %}
-                            <span class="dot_unfilled"></span>
-                        {% endfor %}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if row['col3'] != '' %}
-                        <button
-                            class="button_discipline_skills button_general"
-                            data-toggle-reference={{ row['col4']['discipline_number'] }}
-                            data-toggle-animation-class="animation_open"
-                            data-toggle-selection-class="discipline_skills">
-                            Hide/Show Skills
-                        </button>
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" class="table_cell_discipline_skills">
-                    {% if row['col1'] != '' %}
-                        <div class="discipline_skills" id={{ '' if row['col1'] == '' else row['col1'] }}>
-                            {% for skill in row['col2']['Skills'] %}
-                                <p> {{ '' if row['col1'] == '' else skill }} </p>
-                                <p> {{ '' if row['col1'] == '' else row['col2']['Skills'][skill] }} </p>
-                            {% endfor %}  
-                        </div>
-                    {% endif %}
-                </td>
-                <td colspan="3" class="table_cell_discipline_skills">
-                    {% if row['col3'] != '' %}
-                        <div class="discipline_skills" id={{ '' if row['col3'] == '' else row['col3'] }}> 
-                            {% for skill in row['col4']['Skills'] %}
-                                    <p> {{ '' if row['col3'] == '' else skill }} </p>
-                                    <p> {{ '' if row['col3'] == '' else row['col4']['Skills'][skill] }} </p>
-                            {% endfor %}   
-                        </div>
-                    {% endif %}
-                </td>                            
-            </tr>            
+                </div>
+            </div>
         {% endfor %}
-        </tbody>
+    </div>
+
+    <!-- Attribues Title-->
+    <div class="div_character_block">
+        <p>Attributes</p>
+    </div>
     
-        </tbody>
-            <tr>
-                <td
-                    colspan="6"
-                    class="button_general"
-                    name="print_vampire"
-                    style="visibility: visible;">
-                    <p>Download</p>
-                    <p>(enable background graphics in print setup)</p>
-                </td>
-            </tr>
-    </table>
+    <!-- Attribues-->
+    <div class="div_character_block">
+
+        {% for attribute_type in character['Attributes'].keys() %}
+
+            <div class="div_character_block_2">
+                <p>{{ attribute_type }}</p>
+            </div>
+
+            {% for attribute_name, attribute_value in character['Attributes'][attribute_type].items() %}
+                <div class="div_character_card">
+                    <p>{{ attribute_name }}</p>
+                    <div>
+                        {% for i in range(0, attribute_value) %}
+                            <span class="dot_filled"> </span>
+                        {% endfor %}
+                        {% for i in range(0, 10 - attribute_value) %}
+                            <span class="dot_unfilled"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+
+    <!-- Skills Title-->
+    <div class="div_character_block">
+        <p>Skills</p>
+    </div>
+    
+    <!-- Skills-->
+    <div class="div_character_block">
+
+        {% for skill_type in character['Skills'].keys() %}
+
+            <div class="div_character_block_2">
+                <p>{{ skill_type }}</p>
+            </div>
+
+            {% for skill_name, skill_value in character['Skills'][skill_type].items() %}
+                <div class="div_character_card">
+                    <p>{{ skill_name }}</p>
+                    <div>
+                        {% for i in range(0, skill_value) %}
+                            <span class="dot_filled"> </span>
+                        {% endfor %}
+                        {% for i in range(0, 10 - skill_value) %}
+                            <span class="dot_unfilled"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+
+
+    <!-- Discipline Title-->
+    <div class="div_character_block">
+        <p>Disciplines</p>
+    </div>
+
+
+    {% for discipline_type in character['Disciplines'].keys() %}
+
+        <div class="div_character_block_2">
+            <p>{{ discipline_type }}</p>
+        </div>
+
+        {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
+            <div class="div_character_block_2">
+                <p class="discipline_name">{{ discipline_name }}</p>
+                <div>
+                    {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
+                        <span class="dot_filled"> </span>
+                    {% endfor %}
+                    {% for i in range(0, 10 - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
+                        <span class="dot_unfilled"></span>
+                    {% endfor %}
+                </div>
+                <button
+                    class="button_discipline_skills button_general"
+                    data-toggle-reference="{{ discipline_name }}"
+                    data-toggle-animation-class="animation_open"
+                    data-toggle-selection-class="discipline_skills">
+                        Hide/Show Skills 
+                </button>
+                <div class="div_character_block_3 discipline_skills" id="{{ discipline_name }}">
+                    {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}
+                        <div>
+                            <p>{{ skill_name }}</p>
+                            <p>{{ skill_description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 </div>

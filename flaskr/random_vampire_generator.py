@@ -326,4 +326,4 @@ def generate(input_values, input_conditions, input_weights):
 # input_conditions = default_data.start_conditions()
 # input_weights = default_data.start_weights()
 # character_sheet = generate(input_values, input_conditions, input_weights)
-# print(character_sheet)      
+# pprint.pprint(character_sheet)      

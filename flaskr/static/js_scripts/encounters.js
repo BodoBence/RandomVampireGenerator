@@ -1,8 +1,9 @@
 
 create_checkboxes()
-// create_global_event_listener("click", "tracker", toggle_filled, false)
+create_global_event_listener("click", "tracker", toggle_filled, "class")
 create_global_event_listener("input", "health_meter", update_value, "name")
 create_global_event_listener("input", "willpower_meter", update_value, "name")
+create_global_event_listener("input", "custom_meter", update_value, "name")
 create_global_event_listener("click", "add_encounter", add_encounter, "name")
 create_global_event_listener("click", "remove_encounter", remove_encounter, "name")
 
@@ -11,8 +12,10 @@ create_global_event_listener("click", "remove_encounter", remove_encounter, "nam
 function create_checkboxes(){
     healths = document.getElementsByName("health_meter")
     willpowers = document.getElementsByName("willpower_meter")
-    console.log(healths)
-    console.log(willpowers)
+    customs = document.getElementsByName("custom_meter")
+    // console.log(customs)
+    // console.log(healths)
+    // console.log(willpowers)
 
     for (let index = 0; index < healths.length; index++) {
         console.log("updating health boxes")
@@ -23,14 +26,20 @@ function create_checkboxes(){
         console.log("updating willpower boxes")
         update_value(willpowers[index])
     }
+
+    for (let index = 0; index < customs.length; index++) {
+        console.log("updating custom boxes")
+        update_value(customs[index])
+    }
+
 }
 
 function update_value(tracker_stat){
     current_tracker_stat = tracker_stat.value
-    console.log("updating value")
-    console.log(current_tracker_stat)
-    current_parent = tracker_stat.parentElement.getElementsByClassName("tracker_container")[0]
-    console.log(current_parent)
+    // console.log("updating value")
+    // console.log(current_tracker_stat)
+    current_parent = tracker_stat.nextElementSibling
+    // console.log(current_parent)
 
     current_trackers = current_parent.getElementsByClassName("tracker")
     console.log(current_trackers.length)
@@ -39,7 +48,6 @@ function update_value(tracker_stat){
 
     if (current_tracker_stat > current_trackers.length){
         while (current_tracker_stat > current_trackers.length){
-            console.log("hi")
             add_tracker(current_parent)
         }
     }
@@ -58,11 +66,7 @@ function add_tracker(current_target){
 }
 
 function toggle_filled(element_in_focus){
-    if (element_in_focus.style.backgroundColor == 'var(--bg)') {
-        element_in_focus.style.backgroundColor = 'var(--grey)';
-    } else {
-        element_in_focus.style.backgroundColor = 'var(--bg)';
-    }
+    element_in_focus.classList.toggle('tracker_clicked')
 }
 
 // Connected to encounters

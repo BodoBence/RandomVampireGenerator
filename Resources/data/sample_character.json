@@ -1,0 +1,156 @@
+{'Attributes': {'Mental_Attributes': {'Intelligence': 3,
+                                      'Resolve': 5,
+                                      'Wits': 5},
+                'Physical_Attributes': {'Dexterity': 3,
+                                        'Stamina': 4,
+                                        'Strength': 4},
+                'Social_Attributes': {'Charisma': 5,
+                                      'Composure': 5,
+                                      'Manipulation': 5}},
+ 'Character_Details': {'Basic_Information': {'Age': 836,
+                                             'Clan': 'Malkavian',
+                                             'Derangement': ['Antisocial: '
+                                                             'Antisocial '
+                                                             'Disorders '
+                                                             'reflect a lack '
+                                                             'of compassion, '
+                                                             'empathy, and '
+                                                             'consciousness. '
+                                                             'Antisocial '
+                                                             'characters tend '
+                                                             'to place their '
+                                                             'own needs above '
+                                                             'those of others '
+                                                             'every time.[1]'],
+                                             'Generation': 9,
+                                             'Name': 'Rhett, Tollie',
+                                             'Sex': 'Male',
+                                             'Sire': 'Older Vampire'},
+                       'Trackers': {'Blood_Potency': 2,
+                                    'Health': 7,
+                                    'Willpower': 10,
+                                    'XP_Left': 0}},
+ 'Disciplines': {'Clan_Disciplines': {'Auspex': {'Level': 2,
+                                                 'Skills': {'': '',
+                                                            'Heightened Senses': ' '
+                                                                                 'The '
+                                                                                 'vampire '
+                                                                                 'can '
+                                                                                 'add '
+                                                                                 'their '
+                                                                                 'Auspex '
+                                                                                 'rating '
+                                                                                 'to '
+                                                                                 'their '
+                                                                                 'perception '
+                                                                                 'checks.',
+                                                            'Obeah': ' Soothes '
+                                                                     'the '
+                                                                     'psychological '
+                                                                     'turmoil '
+                                                                     'of the '
+                                                                     "vampire's "
+                                                                     'subject. '
+                                                                     'Amalgam: '
+                                                                     'Fortitude '
+                                                                     '1.'}},
+                                      'Dominate': {'Level': 1,
+                                                   'Skills': {'': '',
+                                                              'Compel': 'The '
+                                                                        'vampire '
+                                                                        'can '
+                                                                        'issue '
+                                                                        'a '
+                                                                        'short '
+                                                                        'sentence '
+                                                                        'command '
+                                                                        'to '
+                                                                        'the '
+                                                                        'target.'}},
+                                      'Obfuscate': {'Level': 2,
+                                                    'Skills': {'': '',
+                                                               'Cloak of Shadows': 'The '
+                                                                                   'vampire '
+                                                                                   'can '
+                                                                                   'become '
+                                                                                   'invisible '
+                                                                                   'while '
+                                                                                   'standing '
+                                                                                   'motionless.',
+                                                               'Silence of Death': 'The '
+                                                                                   'vampire '
+                                                                                   'can '
+                                                                                   'nullify '
+                                                                                   'all '
+                                                                                   'sound '
+                                                                                   'that '
+                                                                                   'they '
+                                                                                   'make.',
+                                                               'Unseen Passage': 'The '
+                                                                                 'vampire '
+                                                                                 'can '
+                                                                                 'move '
+                                                                                 'around '
+                                                                                 'while '
+                                                                                 'staying '
+                                                                                 'invisibleâ€‹.'}}},
+                 'Non-Clan_Disciplines': {'Fortitude': {'Level': 1,
+                                                        'Skills': {'': '',
+                                                                   'Unswayable Mind': 'The '
+                                                                                      'vampire '
+                                                                                      'can '
+                                                                                      'add '
+                                                                                      'their '
+                                                                                      'Fortitude '
+                                                                                      'rating '
+                                                                                      'to '
+                                                                                      'dice '
+                                                                                      'rolls '
+                                                                                      'to '
+                                                                                      'resist '
+                                                                                      'manipulation '
+                                                                                      'and '
+                                                                                      'coercion.'}},
+                                          'Presence': {'Level': 1,
+                                                       'Skills': {'': '',
+                                                                  'Eyes of the Serpent': 'Amalgam '
+                                                                                         'Protean '
+                                                                                         '1.  '
+                                                                                         'The '
+                                                                                         'vampire '
+                                                                                         'can '
+                                                                                         'freeze '
+                                                                                         'a '
+                                                                                         'mortal '
+                                                                                         'in '
+                                                                                         'place '
+                                                                                         'with '
+                                                                                         'their '
+                                                                                         'gaze.'}}}},
+ 'Skills': {'Mental_Skills': {'Academics': 0,
+                              'Awareness': 2,
+                              'Finance': 0,
+                              'Investigation': 1,
+                              'Medicine': 2,
+                              'Occult': 2,
+                              'Politics': 0,
+                              'Science': 3,
+                              'Technology': 1},
+            'Physical_Skills': {'Athletics': 0,
+                                'Brawl': 2,
+                                'Craft': 1,
+                                'Drive': 1,
+                                'Firearms': 2,
+                                'Larceny': 1,
+                                'Melee': 2,
+                                'Stealth': 0,
+                                'Survival': 1},
+            'Social_Skills': {'Animal Ken': 2,
+                              'Etiquette': 0,
+                              'Insight': 0,
+                              'Intimidation': 1,
+                              'Leadership': 1,
+                              'Performance': 0,
+                              'Persuasion': 1,
+                              'Streetwise': 1,
+                              'Subterfuge': 1}}}

@@ -1,0 +1,30 @@
+
+/* Generated Character */
+
+/* Colors */
+
+.div_character_background {
+    background-color: white;
+}
+
+.div_character_background p {
+    color: black !important;
+}
+
+.square_filled, .dot_filled {
+    background-color: var(--color_neon_pink);
+}
+
+.square_unfilled, .dot_unfilled {
+    background-color: var(--color_black);
+}
+
+.discipline_skills p {
+    color: black !important;
+}
+
+.button_discipline_skills {
+    background-color: var(--color_black);
+    color: var(--color_neon_pink);
+}
+

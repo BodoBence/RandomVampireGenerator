@@ -1,6 +1,95 @@
 <form action = "/result" method='POST'>
     <div class="div_inputs_all">
         <div class="input_container animation_ease" id="input_container_id">
+
+            <div class="div_input_slider">
+                <div class="div_input_text_container">
+                    <p>Social</p>
+                </div>
+                <div class="div_slider">
+                    <input
+                        id="slider_social"
+                        data-reference-id="value_social"
+                        class="slider"
+                        type="range"
+                        name="simplified_social"
+                        min="0" 
+                        max="100"
+                        value="50"
+                    >                
+                </div>
+
+                <p class="p_range_value" id="value_social">
+                    50
+                </p>
+
+            </div>
+
+            <div class="div_input_slider">
+                <div class="div_input_text_container">
+                    <p>Mental</p>
+                </div>
+                <div class="div_slider">
+                    <input
+                        id="slider_mental"
+                        data-reference-id="value_mental"
+                        class="slider"
+                        type="range"
+                        name="simplified_mental" 
+                        min="0" 
+                        max="100"
+                        value="50">
+                </div>
+
+                <p class="p_range_value" id="value_mental">
+                    50
+                </p>
+    
+            </div>
+
+            <div class="div_input_slider ">
+                <div class="div_input_text_container">
+                    <p>Physical</p>
+                </div>
+                <div class="div_slider">
+                    <input
+                        id="slider_physical"
+                        data-reference-id="value_physical"
+                        class="slider"
+                        type="range"
+                        name="simplified_physical"
+                        min="0" 
+                        max="100"
+                        value="50">
+                </div>
+
+                <p class="p_range_value" id="value_physical">
+                    50
+                </p>
+            </div>
+
+            <div class="div_input_slider">
+                <div class="div_input_text_container">
+                    <p>Disc. Affinity</p>
+                </div>
+                <div class="div_slider">
+                    <input
+                        id="slider_discipline"
+                        data-reference-id="value_discipline"
+                        class="slider"
+                        type="range"
+                        name="simplified_discipline" 
+                        min="0" 
+                        max="100"
+                        value="50">
+                </div>
+
+                <p class="p_range_value" id="value_discipline">
+                    50
+                </p>
+    
+            </div>
+
             <div class="div_input_dropdown ">
                 <div class="div_input_text_container">
                     <p>Clan:</p>
@@ -24,33 +113,17 @@
                     </select>
                     <div class="dropdown_button " data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list">
                         <p>
-                            somethig
+                            Random
                         </p>    
                     </div>
-                    <ul class="dropdown_content " data-reference-id-button="button_clan_list" id="clan_container">
+                    <ul class="dropdown_content" data-reference-id-button="button_clan_list" id="clan_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> Random </li>
                         {% for clan in clans %}
-                            <li class="fake_option " data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
+                            <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
                         {% endfor %}
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_clan"></span>
                 </div>
-            </div>
-
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Disc. Affinity</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_discipline"
-                        class="slider"
-                        type="range"
-                        name="simplified_discipline" 
-                        min="0" 
-                        max="100"
-                        value="50">
-                </div>
-    
             </div>
     
             <div class="div_input_dropdown">
@@ -68,33 +141,17 @@
                         <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                         <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
                     </select>
-                    <div class="dropdown_button " data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list">
+                    <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list">
                         <p>
-                            something
+                            Random
                         </p>
                     </div>
-                    <ul class="dropdown_content " data-reference-id-button="button_sex_list" id="sex_container">
-                        <li class="fake_option " data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
-                        <li class="fake_option " data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
-                        <li class="fake_option " data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
+                    <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
+                        <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_sex"></span>
-                </div>
-            </div>
-
-            <div class="div_input_slider ">
-                <div class="div_input_text_container">
-                    <p>Physical</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_physical"
-                        class="slider"
-                        type="range"
-                        name="simplified_physical"
-                        min="0" 
-                        max="100"
-                        value="50">
                 </div>
             </div>
     
@@ -117,34 +174,17 @@
 
                     <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list"> 
                         <p>
-                            something
+                            Random
                         </p>
                     </div>
-                    <ul class="dropdown_content " data-reference-id-button="button_generation_list" id="generation_container">
-                        <li class="fake_option " data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
+                    <ul class="dropdown_content" data-reference-id-button="button_generation_list" id="generation_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
                         {% for generation in generations %}
-                        <li class="fake_option " data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
+                        <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
                         {% endfor %}
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_generation"></span>
                 </div>
-            </div>
-    
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Mental</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_mental"
-                        class="slider"
-                        type="range"
-                        name="simplified_mental" 
-                        min="0" 
-                        max="100"
-                        value="50">
-                </div>
-    
             </div>
     
             <div class="div_input_type_in">
@@ -167,12 +207,12 @@
 
                     <div class="dropdown_button " data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list">
                         <p>
-                            something
+                            Random
                         </p>
                     </div>
-                    <ul class="dropdown_content " data-reference-id-button="button_age_list" id="age_container">
-                        <li class="fake_option " data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
-                        <li class="fake_option " data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
+                    <ul class="dropdown_content" data-reference-id-button="button_age_list" id="age_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_age"></span>
                 </div>
@@ -188,24 +228,7 @@
                         id="manual_age_input_id">
                 </div>            
             </div>
-    
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Social</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_social"
-                        class="slider"
-                        type="range"
-                        name="simplified_social"
-                        min="0" 
-                        max="100"
-                        value="50"
-                    >                
-                </div>
-            </div>
-    
+        
             <div class="div_input_type_in">
                 <div class="div_input_text_container">
                     <p>Name:</p>
@@ -225,16 +248,16 @@
                     </select>
                     <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list"> 
                        <p>
-                           something
+                           Random
                        </p>
                     </div>
-                    <ul class="dropdown_content " data-reference-id-button="button_name_list" id="name_container">
-                        <li class="fake_option " data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
-                        <li class="fake_option " data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
+                    <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
+                        <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
+                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_name"></span>
                 </div>
-                <div class="div_select">
+                <div class="div_type_in">
                     <input 
                         type="text" 
                         name="manual_name" 
@@ -243,6 +266,48 @@
                         data-driver-reference="selection_name"
                         id="manual_name_input_id"> 
                 </div>
+            </div>
+
+            <div class="div_input_dropdown ">
+                <div class="div_input_text_container">
+                    <p>Theme</p>
+                </div>
+                <div class="div_select">
+                    <select 
+                        class="dropdown_selectors" 
+                        list="character_themes" 
+                        name="theme_selector" 
+                        id="selection_theme">
+
+                        <option value="Light" selected="selected"> Light </option>
+                        <option value="Dark"> Dark </option>
+
+                    </select>
+                    <div class="dropdown_button " data-reference-id="theme_container" data-reference-id-arrow="custom_arrow_id_theme" id="button_theme_list">
+                        <p>
+                            Light
+                        </p>    
+                    </div>
+                    <ul class="dropdown_content " data-reference-id-button="button_theme_list" id="theme_container">
+                        <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
+                        <li class="fake_option" data-reference-option="Dark" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Dark </li>
+                    </ul>
+                    <span class="custom_arrow" id="custom_arrow_id_theme"></span>
+                </div>
+            </div>
+
+            <div class="div_input_checkbox">
+                <div class="div_input_text_container">
+                    <p>Use V20 level 6+ skills</p>
+                </div>
+
+                <div class="div_checkbox">
+                    <label class="div_checkbox_container">
+                        <input type="checkbox" id="checkbox_skills">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
             </div>
         </div>
 

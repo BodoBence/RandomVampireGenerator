@@ -22,7 +22,7 @@
 }
 
 .input_container {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-row-gap: 1em;
     grid-column-gap: 1rem;
     max-height: 1000px;
@@ -38,9 +38,9 @@
 
 }
 
-
-.div_input_dropdown, .div_input_type_in, .div_input_slider {
+.div_input_dropdown, .div_input_type_in, .div_input_slider, .div_input_checkbox {
     display: grid;
+    gap: 1rem;
 
     margin: 0;
     padding: var(--padding_distance);
@@ -55,7 +55,7 @@
     box-shadow: 0 0 1em black;
 }
 
-.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover {
+.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover, .div_input_checkbox:hover {
     box-shadow: 0 0 1em var(--color_neon_pink);
     border-color: var(--color_neon_white);
 }
@@ -71,11 +71,15 @@
 }
 
 .div_input_slider {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 3fr 0.5fr;
 }
 
 .div_input_type_in {
     grid-template-columns: 1fr 2fr 1fr;
+}
+
+.div_input_checkbox {
+    grid-template-columns: 3fr 1fr;
 }
 
 .div_button_load_defaults {
@@ -86,8 +90,7 @@
     margin-bottom: var(--padding_distance);
 }
 
-.div_type_in, .div_slider {
-    top: 20%;
+.div_type_in, .div_slider, .div_checkbox {
     padding-bottom: var(--padding_distance);
     padding-top: var(--padding_distance);
 }
@@ -101,28 +104,6 @@
 /* Inputs */
 
 input {
-	display: inline-block;
-
-    position: relative;
-    top: var(--padding_distance);
-    bottom: var(--padding_distance);
-
-    width: 100%;
-    height: var(--input_height);
-    padding-left: var(--padding_distance);
-
-	color: var(--white);
-    background: transparent;
-    
-	box-sizing: border-box;
-	margin: 0;
-
-    border: none;
-	border-radius: none;
-
-	/* background-color: var(--bg); */
-    /* box-shadow: 0 2px 0 2px rgba(0,0,0,.04); */
-
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -134,12 +115,131 @@ input {
     transition: all var(--base_animation_time) ease;
 }
 
+/* Number Inputs */
+input[type="number"], input[type="text"], input[type="checkbox"] {
+    display: inline-block;
+
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+    background-color: transparent;
+
+    border-style: solid;
+    border-color: var(--white);
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+
+    color: var(--white);
+    text-indent: 1em;
+    height: 2em;
+}
+
+input[type="number"], input[type="text"] {
+    width: 6em;
+}
+
+input[type="checkbox"] {
+    width: 2em;
+}
+
+/* Checkbox elements */
+/* Customize the label (the container) */
+.div_checkbox_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.div_checkbox_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+
+    border-style: solid;
+    border-color: var(--white);
+    border-width: 0.1rem;
+    border-radius: 0.1rem;
+}
+
+/* On mouse-over, add a grey background color */
+.div_checkbox_container:hover input ~ .checkmark {
+    background-color: transparent;
+}
+
+/* When the checkbox is checked, add a blue background */
+.div_checkbox_container input:checked ~ .checkmark {
+    background-color: transparent;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.div_checkbox_container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.div_checkbox_container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--color_neon_white);
+    border-width: 0 0.2rem 0.2rem 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+} 
+
+/* Normally displayed inputs */
+
+input[type="number"]:hover, input[type="text"]:hover, input[type="checkbox"]:hover, .div_checkbox_container:hover input ~ .checkmark  {
+    border-color: var(--color_neon_white);
+
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_pink);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow: 
+        0 0 1.5em currentColor,
+        inset 0 0 1.5em currentColor;
+}
+
 /* Range inputs */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%; 
     height: 0.25rem;
+
+    width: 100%;
+
+    vertical-align: text-bottom;
 
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
@@ -151,7 +251,7 @@ input[type="range"] {
     z-index: 2;
 }
 
-input[type="range"]:hover {
+input[type="range"]:hover, input[type="checkbox"] {
     cursor: pointer;
 }
 
@@ -160,16 +260,9 @@ input[type="range"]:hover {
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: var(--main_height);
-    height: var(--main_height);
-    border-radius: 50%;
-    border-color: var(--color_neon_white); 
-    background-color: var(--color_neon_white);
-    box-shadow: 0 0 1em var(--color_neon_pink);
-    cursor: pointer;
 }
-  
-input[type="range"]::-moz-range-thumb {
+
+input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb {
     width: var(--main_height);
     height: var(--main_height);
     border-radius: 50%;
