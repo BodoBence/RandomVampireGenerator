@@ -27,7 +27,6 @@ function toggle_discipline_skills (pressed_button){
     toogle_max_height(target_element)
 }
 
-
 function print_character(){
     console.log("hi")
     window.print()

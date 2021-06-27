@@ -57,13 +57,17 @@ function update_select_with_custom(my_trigger) {
   let target_button_id = my_trigger.getAttribute('data-reference-id-button')
   let target_button = document.getElementById(target_button_id)
 
+  // Set the new value
   target_select.value = target_option_value
+
+  // custom trigger a change evnt
+  manual_event_trigger(target_select, "change")
 
   // Set fake dropdown select elemet's text to match the chosen selection
   set_dropdown_text(my_trigger)
 
   // Close the dropdown
-  console.log(my_trigger.parentElement)
+  // console.log(my_trigger.parentElement)
   my_trigger.parentElement.classList.toggle("show")
 
   // Trigeer cusotm arrow animaiton
@@ -87,4 +91,17 @@ function toggle_arrow_animation(current_trigger){
   current_target.classList.toggle("animation_rotate")
   // console.log('the animation target is')
   // console.log(current_target)
+}
+
+
+function manual_event_trigger (my_target, event_type) {
+  console.log('Manual event trigger')
+  if ("createEvent" in document) {
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent("change", false, true);
+    my_target.dispatchEvent(evt);
+  }
+  else {
+    my_target.fireEvent(event_type);
+  }
 }

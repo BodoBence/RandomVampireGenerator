@@ -1,4 +1,3 @@
-
 /* Page Title */
 
 .title_container {
@@ -9,7 +8,6 @@
     width: 100%;
     height: var(--nav_height);
     z-index: 5;
-    /* background-color: var(--color_darkest); */
 }
 
 .title_container div {
@@ -36,26 +34,12 @@
     overflow: initial;
 }
 
-/* Logo svg elements inside piece-by-piece select */
-/* #Content > path, #Content > polyline, #Content > line{
-    stroke-width: 0.75em;
-    stroke:  var(--color_neon_white);
-    stroke-linecap: round;
-    filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
-} */
-
 /* Logo svg elements inside class select */
 .logo_element {
     stroke-width: 0.75em;
     stroke:  var(--color_neon_white);
     stroke-linecap: round;
     filter: blur(1px) drop-shadow( 0 0 0.5em var(--color_neon_pink) ) drop-shadow( 0 0 3em var(--color_neon_pink) );
-/* 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
-    transition: all var(--base_animation_time) ease; */
 }
 
 
@@ -106,19 +90,6 @@
 
 }
 
-/* .title_container h1 {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 0px;
-    color: var(--white);
-}
-.title_container p {
-    text-align: center;
-    font-size: 16px;
-    margin-top: 10px;
-    color: var(--white);
-} */
-
 /* Navigation Element */
 
 .div_navigation_container {
@@ -149,7 +120,6 @@ nav ul li a {
     color: var(--white);
     font-weight: normal;
 }
-
 
 nav ul li a:hover {
     color: var(--color_neon_pink);

@@ -26,7 +26,6 @@ function correct_overflow(){
     })
 }
 
-
 // Functions for the acordion motion of the input container
 
 function accordion_motion(current_trigger){
