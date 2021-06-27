@@ -231,7 +231,7 @@ def blood_potency_data():
 def get_derangement():
     with open(FILE_DERANGEMENTS) as chosen_file:
         reader = csv.reader(chosen_file)
-        current_derangement = random.choice(list(reader))
+        current_derangement = random.choice(list(reader))[0]
     return current_derangement
 
 def get_max_xps():
