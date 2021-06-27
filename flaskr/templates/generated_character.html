@@ -2,7 +2,7 @@
 <div class="div_character_background"> 
     
     <!-- Basic Information Title -->
-    <div class="div_character_block">
+    <div class="div_character_block grid_full_span">
         <h2>Basic Information</h2>
     </div>
 
@@ -12,7 +12,7 @@
 
             {% if key == 'Derangement' %}
             <!-- special case for longer cell space for derangement text -->
-                <div class="div_character_card grid_full_span">
+                <div class="div_character_card grid_full_span gird_long_after_short">
                     <p>{{ key }}</p>
                     <p>{{ value }}</p>
                 </div>
@@ -46,39 +46,43 @@
         {% endfor %}
     </div>
 
-    <!-- Attribues Title-->
-    <div class="div_character_block">
+    <!-- Attribues Title -->
+    <div class="div_character_block grid_full_span">
         <h2>Attributes</h2>
     </div>
     
-    <!-- Attribues-->
+    <!-- Attribues -->
     <div class="div_character_block">
 
         {% for attribute_type in character['Attributes'].keys() %}
 
             <div class="div_character_block_2">
-                <p>{{ attribute_type }}</p>
-            </div>
-
-            {% for attribute_name, attribute_value in character['Attributes'][attribute_type].items() %}
-                <div class="div_character_card">
-                    <p>{{ attribute_name }}</p>
-                    <div>
-                        {% for i in range(0, attribute_value) %}
-                            <span class="dot_filled"> </span>
-                        {% endfor %}
-                        {% for i in range(0, 10 - attribute_value) %}
-                            <span class="dot_unfilled"></span>
-                        {% endfor %}
-                    </div>
+                
+                <div class="div_character_card grid_full_span">
+                    <h3>{{ attribute_type }}</h3>
                 </div>
-            {% endfor %}
+
+                {% for attribute_name, attribute_value in character['Attributes'][attribute_type].items() %}
+                    <div class="div_character_card">
+                        <p>{{ attribute_name }}</p>
+                        <div>
+                            {% for i in range(0, attribute_value) %}
+                                <span class="dot_filled"> </span>
+                            {% endfor %}
+                            {% for i in range(0, 10 - attribute_value) %}
+                                <span class="dot_unfilled"></span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
         {% endfor %}
 
     </div>
 
     <!-- Skills Title-->
-    <div class="div_character_block">
+    <div class="div_character_block grid_full_span">
         <h2>Skills</h2>
     </div>
     
@@ -88,8 +92,10 @@
         {% for skill_type in character['Skills'].keys() %}
 
             <div class="div_character_block_2">
-                <p>{{ skill_type }}</p>
-            </div>
+
+                <div class="div_character_card grid_full_span">
+                    <h3>{{ skill_type }}</h3>
+                </div>
 
             {% for skill_name, skill_value in character['Skills'][skill_type].items() %}
                 <div class="div_character_card">
@@ -104,50 +110,58 @@
                     </div>
                 </div>
             {% endfor %}
+
+            </div>
         {% endfor %}
 
     </div>
 
-
+ 
     <!-- Discipline Title-->
-    <div class="div_character_block">
+    <div class="div_character_block grid_full_span">
         <h2>Disciplines</h2>
     </div>
 
+    <div class="div_character_block">
 
-    {% for discipline_type in character['Disciplines'].keys() %}
+        {% for discipline_type in character['Disciplines'].keys() %}
 
-        <div class="div_character_block_2">
-            <p>{{ discipline_type }}</p>
-        </div>
-
-        {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
             <div class="div_character_block_2">
-                <p class="discipline_name">{{ discipline_name }}</p>
-                <div>
-                    {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
-                        <span class="dot_filled"> </span>
-                    {% endfor %}
-                    {% for i in range(0, 10 - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
-                        <span class="dot_unfilled"></span>
-                    {% endfor %}
+
+                    <h3>{{ discipline_type }}</h3>
+
+
+            {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
+                <div class="div_character_block_3">
+                    <p class="discipline_name">{{ discipline_name }}</p>
+                    <div>
+                        {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
+                            <span class="dot_filled"> </span>
+                        {% endfor %}
+                        {% for i in range(0, 10 - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
+                            <span class="dot_unfilled"></span>
+                        {% endfor %}
+                    </div>
+                    <button
+                        class="button_discipline_skills button_general"
+                        data-toggle-reference="{{ discipline_name }}"
+                        data-toggle-animation-class="animation_open"
+                        data-toggle-selection-class="discipline_skills">
+                            Hide/Show Skills 
+                    </button>
+                    <div class="discipline_skills" id="{{ discipline_name }}">
+                        {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}
+                            <div>
+                                <p>{{ skill_name }}</p>
+                                <p>{{ skill_description }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <button
-                    class="button_discipline_skills button_general"
-                    data-toggle-reference="{{ discipline_name }}"
-                    data-toggle-animation-class="animation_open"
-                    data-toggle-selection-class="discipline_skills">
-                        Hide/Show Skills 
-                </button>
-                <div class="div_character_block_3 discipline_skills" id="{{ discipline_name }}">
-                    {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}
-                        <div>
-                            <p>{{ skill_name }}</p>
-                            <p>{{ skill_description }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
+            {% endfor %}
+
             </div>
         {% endfor %}
-    {% endfor %}
+
+    </div>
 </div>

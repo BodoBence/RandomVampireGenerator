@@ -186,7 +186,7 @@
                 "Rending the Sweet Earth": "Reveals the presence of a Protean Earth Meld user.",
                 "Ward Against Cainites": "N/A",
                 "Warding Circle against Lupines": "N/A",
-                "Web of Hunger": " Web of Hunger is an extension of the Extinguish Vitae ritual (see Vampire p. 273). Instead of controlling a single person\u00e2\u20ac\u2122s vitae slowly and corrosively draining vitae from multiple targets."
+                "Web of Hunger": " Web of Hunger is an extension of the Extinguish Vitae ritual (see Vampire p. 273). Instead of controlling a single person's vitae slowly and corrosively draining vitae from multiple targets."
             },
             "5": {
                 "Creatio Ignis": "Allows the caster to manipulate fire, and start fires at close range.",
@@ -204,17 +204,17 @@
                 "Shape of the Sanguine Sacrament": "Allows the vampire manipulate their (or someone else's) blood, to form intricated images, such as a simple message or a geometrical shape."
             },
             "2": {
-                "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim\u00e2\u20ac\u2122s inner reserves curdle into impotence"
+                "Extinguish Vitae": "The user can intentionally remove the unlife-giving properties of some of the Blood in another vampire, stoking their Hunger as the victim's inner reserves curdle into impotence"
             },
             "3": {
                 "Blood of Potency": "The vampire can concentrate their Blood, increasing its potency temporarily",
-                "Scorpion\u00e2\u20ac\u2122s Touch": "The vampire can transmute some of their Blood into a paralyzing poison, capable of affecting mortals and vampires alike"
+                "Scorpion's Touch": "The vampire can transmute some of their Blood into a paralyzing poison, capable of affecting mortals and vampires alike"
             },
             "4": {
                 "Theft of Vitae": "Through mystical means, the vampire opens a wound in a major artery of a mortal victim, blood shooting out through the air in a stream toward the open mouth of the user."
             },
             "5": {
-                "Baal\u00e2\u20ac\u2122s Caress": "The vampire can transmute their Blood into an extremely aggressive poison, lethal to mortal and Kindred alike",
+                "Baal's Caress": "The vampire can transmute their Blood into an extremely aggressive poison, lethal to mortal and Kindred alike",
                 "Cauldron of Blood": "This gruesome power lets the user boil the blood of a victim in their own veins, causing massive damage and excruciating pain"
             }
         }
@@ -441,7 +441,7 @@
             "1": {
                 "Summon Spirit": "This Ceremony enables a vampire to summon a spirit from the Underworld. Requires The Binding Fetter.[2]",
                 "The Knowing Stone": "This Ceremony lets the necromancer to identify the locations and existences of specific ghosts.[3]",
-                "Traveller's Call": "This Ceremony enables a priest of Shalim to send a ripple across Oblivion and alert another Shalimite that they wish to meet, and where. Requires Oblivion\u00e2\u20ac\u2122s Sight."
+                "Traveller's Call": "This Ceremony enables a priest of Shalim to send a ripple across Oblivion and alert another Shalimite that they wish to meet, and where. Requires Oblivion's Sight."
             },
             "2": {
                 "Awaken the Homuncular Servant": "Necromancers use this Ceremony to create spies and stalkers out of body parts such as hands or skulls, or small dead animals like rats or foxes. Requires Where the Shroud Thins.",
@@ -608,7 +608,7 @@
         "skill": {
             "1": {
                 "Eyes of the Beast": "The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.",
-                "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire\u00e2\u20ac\u2122s strength is proportionally reduced."
+                "Weight of the Feather": "The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire's strength is proportionally reduced."
             },
             "2": {
                 "Feral Weapons": "The vampire can extend their natural weapons to monstrous proportions. This usually takes the form of fingernails extending into wicked talons but can also come in other forms such as fangs elongating into veritable daggers, as from a gigantic serpent.",
@@ -672,23 +672,23 @@
             },
             "2": {
                 "Envelop": "Blinds a target through mist",
-                "User can develop formulae to counterfeit level 1 Disciplines": "N/A"
+                "Counterfeit level 1": "User can develop a cointerfit level 1 discipline"
             },
             "3": {
                 "Chemically Induced Flashback": "By melting down a deceased vampire's possessions, the alchemist can gain access to the vampire's memories through Ashe Prerequisite: Concoct Ashe[1]",
                 "Concoct Ashe": "Concoct the substance Ashe, which can temporarily increase the Blood Potency of a thin-blooded vampire, but can create addiction[1]",
                 "Defractionate": "Makes fresh blood out of bagged medical blood",
                 "Profane Hieros Gamos": "User can change their gender or appearance",
-                "User can develop formulae to counterfeit level 2 Disciplines": "N/A"
+                "Counterfeit level 2": "User can develop a cointerfit level 2 discipline"
             },
             "4": {
                 "Airborne Momentum": "User can fly",
                 "Discipline Channeling": "Through Ashe, the thin-blood can gain access to one of the deceased vampire's disciplines, even though it is too high for the standard counterfeit disciplines Prerequisite: Concoct Ashe[1]",
-                "User can develop formulae to counterfeit level 3 Disciplines": "N/A"
+                "Counterfeit level 3": "User can develop a cointerfit level 3 discipline"
             },
             "5": {
                 "Awaken the Sleeper": "User can awake other vampires from torpor",
-                "User can develop formulae to counterfeit level 4 Disciplines": "N/A"
+                "Counterfeit level 4": "User can develop a cointerfit level 4 discipline"
             }
         }
     }
