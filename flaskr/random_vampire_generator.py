@@ -8,6 +8,9 @@ import default_data
 def derangement_check(basic_info):
     if basic_info['Clan'] == 'Malkavian':
         basic_info['Derangement'] = default_data.get_derangement()
+    else:
+        basic_info.pop('Derangement')
+        
     return basic_info
 
 def calculate_metrics(character_sheet):
@@ -69,10 +72,10 @@ def setup_character_sheet(basic_info):
     for discipline in disciplines:
         if discipline in current_clan_disciplines:
             character_sheet['Disciplines']['Clan_Disciplines'][discipline] = {'Level': 0,
-                                                                              'Skills': {'': ''}}
+                                                                              'Skills': {}}
         else:
             character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = {'Level': 0,
-                                                                                  'Skills': {'': ''}}
+                                                                                  'Skills': {}}
     return character_sheet
 
 def calculate_xp_points(age, generation, max_age):
