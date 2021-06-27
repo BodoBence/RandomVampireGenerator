@@ -1,12 +1,6 @@
 console.log("first line of general.js")
 
-
 // Global functions
-
-// window.addEventListener('resize', (event) => {
-//     resize_to_window_width("svg_city_1")
-//     console.log('page is resized');
-//   });
 
 function set_css_variable(variable_name, new_value) {
     // Get the root element
@@ -29,15 +23,15 @@ function get_last_url_segment(input_url){
 }
 
 function create_global_event_listener(type, selector, callback, element_type){
-    console.log("creating global event listerner")
+    // console.log("creating global event listerner")
     document.addEventListener(type, e => {
-        console.log(e.target)
+        // console.log(e.target)
 
         switch (element_type) {
             case 'name':
                 console.log('in case name')
                 if (e.target.getAttribute('name') == selector){
-                    console.log(e.target)
+                    // console.log(e.target)
                     callback(e.target)
                 }
                 break
@@ -45,15 +39,15 @@ function create_global_event_listener(type, selector, callback, element_type){
             case 'class':
                 console.log('in case class')
                 if (e.target.classList.contains(selector)){
-                    console.log(e.target)
+                    // console.log(e.target)
                     callback(e.target)
                 }
                 break
 
             case 'id':
-                console.log('in case id')
+                // console.log('in case id')
                 if (e.target.id == selector){
-                    console.log(e.target)
+                    // console.log(e.target)
                     callback(e.target)
                 }
                 break

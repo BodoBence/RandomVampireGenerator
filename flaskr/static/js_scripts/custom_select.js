@@ -7,8 +7,8 @@ document.addEventListener('click', close_dropdowns)
 function close_dropdowns(e){
   // by definition addEventListener first passes over the event as a parameter
   
-  console.log('window click')
-  console.log(e.target)
+  // console.log('window click')
+  // console.log(e.target)
   // Quit in favour of other click tied functionality
   if (e.target.classList.contains('dropdown_button')){
     return
@@ -35,21 +35,21 @@ function close_dropdowns(e){
 }
 
 function handle_custom_select(activated_custom_select){
-  console.log("Handling custom dropdown")
+  // console.log("Handling custom dropdown")
 
   // Reveal/Hide the custom select options
   let custom_options_containter_id = activated_custom_select.getAttribute('data-reference-id')
   let custom_options_container = document.getElementById(custom_options_containter_id)
 
   custom_options_container.classList.toggle("show");
-  console.log("opened the dropdown")
+  // console.log("opened the dropdown")
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(activated_custom_select)
 }
 
 function update_select_with_custom(my_trigger) {
-  console.log('updating the hidden select field with the fake selects manual input')
+  // console.log('updating the hidden select field with the fake selects manual input')
 
   let target_select_id = my_trigger.getAttribute('data-reference-id')
   let target_select = document.getElementById(target_select_id)
@@ -61,7 +61,7 @@ function update_select_with_custom(my_trigger) {
   target_select.value = target_option_value
 
   // custom trigger a change evnt
-  manual_event_trigger(target_select, "change")
+  target_select.dispatchEvent(new Event('change', { bubbles: true }))
 
   // Set fake dropdown select elemet's text to match the chosen selection
   set_dropdown_text(my_trigger)
@@ -78,7 +78,7 @@ function set_dropdown_text(chosen_option){
   let new_value = chosen_option.innerHTML
   let target_id = chosen_option.getAttribute('data-reference-id-button')
   let target = document.getElementById(target_id).firstElementChild
-  console.log(target)
+  // console.log(target)
 
   target.innerHTML = new_value
 }
@@ -91,17 +91,4 @@ function toggle_arrow_animation(current_trigger){
   current_target.classList.toggle("animation_rotate")
   // console.log('the animation target is')
   // console.log(current_target)
-}
-
-
-function manual_event_trigger (my_target, event_type) {
-  console.log('Manual event trigger')
-  if ("createEvent" in document) {
-    var evt = document.createEvent("HTMLEvents");
-    evt.initEvent("change", false, true);
-    my_target.dispatchEvent(evt);
-  }
-  else {
-    my_target.fireEvent(event_type);
-  }
 }

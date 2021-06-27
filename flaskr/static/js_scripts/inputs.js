@@ -2,6 +2,8 @@ console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
 
+create_global_event_listener('change', 'selection_theme', toggle_character_style, 'id')
+
 create_global_event_listener("input", "selection_driver", toggle_input_field, 'class')
 create_global_event_listener("change", "manual_name_selection", selection_based_sync, 'name')
 create_global_event_listener("change", "manual_age_selection", selection_based_sync, 'name')
@@ -14,14 +16,13 @@ correct_overflow()
 // Corrects overflow for the input container animation
 function correct_overflow(){
     current_element = document.getElementById("input_container_id")
-    console.log(current_element.style.overflow)
 
     current_element.addEventListener("transitionend", () => {
         console.log("input container transitioned")
         if (current_element.classList.contains("animation_close") == false){
             current_element.style.overflow = "initial"
-            console.log("chanegd overflow to:")
-            console.log(current_element.style.overflow)
+            // console.log("chanegd overflow to:")
+            // console.log(current_element.style.overflow)
         }
     })
 }
@@ -91,7 +92,16 @@ function display_slider_value(current_slider){
     target_element.innerHTML = new_value
 }
 
-function toggle_character_style(){
+function toggle_character_style(stlye_selector){
     console.log("switching character theme")
+    
+    style_element = document.getElementById('link_character_color')
 
+    switch (stlye_selector.value) {
+        case 'light':
+            style_element.setAttribute("href", "{{ url_for('static', filename='stylesheets/character_color_standard.css') }}")     
+
+        case 'dark':
+            style_element.setAttribute("href", "{{ url_for('static', filename='stylesheets/character_color_standard.css') }}")
+    }
 }
