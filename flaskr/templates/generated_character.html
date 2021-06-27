@@ -3,16 +3,29 @@
     
     <!-- Basic Information Title -->
     <div class="div_character_block">
-        <p>Basic Information</p>
+        <h2>Basic Information</h2>
     </div>
 
     <!-- Basic Information -->
     <div class="div_character_block">
         {% for key, value in character['Character_Details']['Basic_Information'].items() %}
-            <div class="div_character_card">
-                <p>{{ key }}</p>
-                <p>{{ value }}</p>
-            </div>
+
+            {% if key == 'Derangement' %}
+            <!-- special case for longer cell space for derangement text -->
+                <div class="div_character_card grid_full_span">
+                    <p>{{ key }}</p>
+                    <p>{{ value }}</p>
+                </div>
+
+            {% else %}
+
+            <!-- normal loop element -->
+                <div class="div_character_card">
+                    <p>{{ key }}</p>
+                    <p>{{ value }}</p>
+                </div>
+            {% endif %}
+
         {% endfor %}
     </div>
 
@@ -35,7 +48,7 @@
 
     <!-- Attribues Title-->
     <div class="div_character_block">
-        <p>Attributes</p>
+        <h2>Attributes</h2>
     </div>
     
     <!-- Attribues-->
@@ -66,7 +79,7 @@
 
     <!-- Skills Title-->
     <div class="div_character_block">
-        <p>Skills</p>
+        <h2>Skills</h2>
     </div>
     
     <!-- Skills-->
@@ -98,7 +111,7 @@
 
     <!-- Discipline Title-->
     <div class="div_character_block">
-        <p>Disciplines</p>
+        <h2>Disciplines</h2>
     </div>
 
 

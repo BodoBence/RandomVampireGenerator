@@ -52,6 +52,12 @@
     grid-template-columns: 1fr 1fr;
 }
 
+
+.grid_full_span {
+    grid-column: 1/-1;
+    grid-template-columns: 1fr 5fr;
+}
+
 .discipline_skills {
     display: grid;
     grid-template-columns: auto auto;
@@ -68,6 +74,11 @@
     -o-transition: all var(--base_animation_time) ease;  
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .square_unfilled {
