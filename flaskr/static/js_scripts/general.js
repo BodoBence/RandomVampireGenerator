@@ -29,7 +29,7 @@ function create_global_event_listener(type, selector, callback, element_type){
 
         switch (element_type) {
             case 'name':
-                console.log('in case name')
+                // console.log('in case name')
                 if (e.target.getAttribute('name') == selector){
                     // console.log(e.target)
                     callback(e.target)
@@ -37,7 +37,7 @@ function create_global_event_listener(type, selector, callback, element_type){
                 break
 
             case 'class':
-                console.log('in case class')
+                // console.log('in case class')
                 if (e.target.classList.contains(selector)){
                     // console.log(e.target)
                     callback(e.target)
