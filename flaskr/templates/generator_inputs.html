@@ -198,7 +198,8 @@
                         id="selection_age"
                         data-input-reference="manual_age_input_id"
                         data-input-default="300"
-                        data-input-focus="Random">
+                        data-input-focus="Random"
+                        data-reference-id-button="button_age_list">
                         
                         <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
@@ -240,7 +241,8 @@
                         id="selection_name"
                         data-input-reference="manual_name_input_id"
                         data-input-default="Fruzsi"
-                        data-input-focus="Random">
+                        data-input-focus="Random"
+                        data-reference-id-button="button_name_list">
                         
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>

@@ -2,13 +2,18 @@ console.log("first line of generator.js")
 
 // synchronize manual/random switch with manual input in the input field
 
-create_global_event_listener("input", "selection_driver", toggle_input_field, 'class')
-create_global_event_listener("change", "manual_name_selection", selection_based_sync, 'name')
-create_global_event_listener("change", "manual_age_selection", selection_based_sync, 'name')
-create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
-create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
+create_global_event_listener('input', 'manual_age_input_id', toggle_input_field, 'id')
+create_global_event_listener('input', 'manual_name_input_id', toggle_input_field, 'id')
+
+create_global_event_listener("change", "manual_name_selection", input_sync, 'name')
+create_global_event_listener("change", "manual_age_selection", input_sync, 'name')
+
 create_global_event_listener("change", "slider", display_slider_value, "class")
 create_global_event_listener("change", "selection_theme", toggle_character_style, "id")
+
+create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
+create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
+
 correct_overflow()
 
 // Corrects overflow for the input container animation
@@ -42,19 +47,31 @@ function toggle_input_field(current_driver){
     referred_element_id = current_driver.getAttribute("data-driver-reference")
     referred_element = document.getElementById(referred_element_id)
     referred_element.value = "Manual"
+    referred_element.dispatchEvent(new Event('change', { bubbles: true }))
 }
 
-function selection_based_sync(current_selector){
-    console.log("doing selection based sync to default value")
+function input_sync(current_selector){
+    console.log("doing selection based sync")
 
-    focused_value = current_selector.getAttribute("data-input-focus")
-    default_value = current_selector.getAttribute("data-input-default")
+    connected_field_reference = current_selector.getAttribute("data-input-reference")
+    connected_field = document.getElementById(connected_field_reference)
+    connected_button_reference = current_selector.getAttribute("data-reference-id-button")
+    connected_button = document.getElementById(connected_button_reference)
 
-    conencted_field_reference = current_selector.getAttribute("data-input-reference")
-    conencted_field = document.getElementById(conencted_field_reference)
+    switch (current_selector.value) {
+        case 'Random':
+            // Update iput field value
+            default_value = current_selector.getAttribute("data-input-default")
+            connected_field.value = default_value
 
-    if (current_selector.value == focused_value){
-        conencted_field.value = default_value
+            // Update fake dropdown value
+            connected_button.firstElementChild.innerHTML = 'Random'
+            break
+
+        case 'Manual':
+            // Update fake dropdown value
+            connected_button.firstElementChild.innerHTML = 'Manual'
+            break
     }
 }
 
