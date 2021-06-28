@@ -1,11 +1,7 @@
 # Imports
 from flask import Flask, render_template, request
-import pprint
 import uuid
 import os
-import json
-
-# from weasyprint import HTML
 
 from random_vampire_generator import generate
 import default_data  
@@ -26,7 +22,6 @@ startup_input_field_details = {
     'input_generations': default_data.default_generations_data()}
 
 HAVE_GENERATED_CHARACTER = False
-SCRIPT_DIR = os.path.dirname(__file__)
 
 # Functions for the website pages
 
@@ -76,7 +71,6 @@ def result():
         character = generated_character,
         max_level = max_level,
         pdf_path = 'output_path')
-
 
     return rendered_vampire
 

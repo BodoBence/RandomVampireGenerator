@@ -1,5 +1,5 @@
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
-create_global_event_listener("click", "print_vampire", print_character, 'name')
+create_global_event_listener("click", "button_download_vampire", print_character, 'id')
 
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
