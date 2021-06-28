@@ -94,14 +94,15 @@ function display_slider_value(current_slider){
 
 function toggle_character_style(stlye_selector){
     console.log("switching character theme")
+    console.log(stlye_selector.value)
     
     style_element = document.getElementById('link_character_color')
 
     switch (stlye_selector.value) {
-        case 'light':
-            style_element.setAttribute("href", "{{ url_for('static', filename='stylesheets/character_color_standard.css') }}")     
+        case 'Light':
+            style_element.setAttribute("href", "/static/stylesheets/character_color_light.css")     
 
-        case 'dark':
-            style_element.setAttribute("href", "{{ url_for('static', filename='stylesheets/character_color_standard.css') }}")
+        case 'Dark':
+            style_element.setAttribute("href", "/static/stylesheets/character_color_dark.css")
     }
 }
