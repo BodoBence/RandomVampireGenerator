@@ -1,0 +1,28 @@
+@media print {
+
+    /* hide from print */
+    form, .title_container, footer, #div_download_vampire {
+        display: none;
+    }
+
+    html {
+        background: none;
+    }
+
+    .div_character_background {
+        box-shadow: none;
+    }
+
+    /* Set page items */
+
+
+    .div_character_background {
+        size: 100%;
+    }
+}
+
+/* not really working jet */
+@page {
+    size: 30in 5.5in;
+    size: portrait;
+}

@@ -58,7 +58,6 @@
     align-items: baseline;
     align-self: start;
 }
-}
 
 .grid_full_span {
     grid-column: 1/-1 !important;
