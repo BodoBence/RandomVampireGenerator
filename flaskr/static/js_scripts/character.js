@@ -28,6 +28,14 @@ function toggle_discipline_skills (pressed_button){
 }
 
 function print_character(){
-    console.log("hi")
-    window.print()
+    console.log("in saving the character locally")
+    // window.print()
+
+    html2canvas(document.getElementById('generated_character_id'), {
+        onrendered: function(canvas) {
+            // document.body.appendChild(canvas);
+            return Canvas2Image.saveAsPNG(canvas);
+        }
+    });
+
 }

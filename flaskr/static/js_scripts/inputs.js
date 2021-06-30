@@ -96,7 +96,6 @@ function load_default_input_values(){
     document.getElementById('manual_age_input_id').value = 300
 }
 
-
 function display_slider_value(current_slider){
     console.log('slidering')
     console.log(current_slider)
