@@ -20,7 +20,7 @@
         {% include "generator_inputs.html" %}
 
         {% if have_generated_character %}
-            {% include "generated_character.html" %}
+
             <div class="div_output_buttons" id="div_download_vampire">
                 <input
                     class="button_general neon"
@@ -28,6 +28,9 @@
                     type="button"
                     value="Download character">
             </div>
+
+            {% include "generated_character.html" %}
+            
         {% endif %}
 
         {% include "footer.html" %}
