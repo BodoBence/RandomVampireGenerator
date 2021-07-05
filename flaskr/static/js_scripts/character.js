@@ -31,11 +31,62 @@ function print_character(){
     console.log("in saving the character locally")
     // window.print()
 
-    html2canvas(document.getElementById('generated_character_id'), {
-        onrendered: function(canvas) {
-            // document.body.appendChild(canvas);
-            return Canvas2Image.saveAsPNG(canvas);
-        }
+    // HTML2CANVAS SOLUTION
+    // html2canvas(document.getElementById('generated_character_id'), {
+    //     onrendered: function(canvas) {
+    //         // document.body.appendChild(canvas);
+    //         return Canvas2Image.saveAsPNG(canvas);
+    //     }
+    // });
+
+    // JSPDF SOLUTION:
+
+    // var output_pdf = new jsPDF()
+    // var character_sheet = document.getElementById('generated_character_id')
+
+    // output_pdf.fromHTML(character_sheet, 20, 20, {
+    //     'width': 1000
+    // })
+
+    // output_pdf.save('test.pdf')
+
+
+    // JSPDF SOLUTION 2
+
+
+    // var output_pdf = new jsPDF()
+    // var character_sheet = document.getElementById('generated_character_id')
+
+    // output_pdf.html(character_sheet, {
+    //     callback: function (output_pdf) {
+    //         output_pdf.save();
+    //     }
+            
+    // })
+
+    // JSPDF + HTML2CANVAS SOLUTION:
+    
+    // var character_sheet = document.getElementById('generated_character_id')
+    
+    // html2canvas(character_sheet, {
+    //     onrendered: function(canvas) {
+
+    //         var image = canvas.toDataURL("image/png")
+    //         var output_pdf = new jsPDF()
+    //         console.log('got this far')
+    //         output_pdf.addImage(image, 'JPEG', 0, 0, 1000)
+    //         output_pdf.save('test.pdf')
+    //     }
+    // })
+
+    //  JSPDF + HTML2CANVAS SOLUTION 2
+
+    var character_sheet = document.getElementById('generated_character_id')
+    // var pdf = new jsPDF('p', 'px', [1000, 3000]);
+    var pdf = new jsPDF('p', 'px');
+    pdf.addHTML(character_sheet, function () {
+        console.log('generating pdf')
+        pdf.save('Test.pdf');
     });
 
 }
