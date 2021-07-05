@@ -1,5 +1,5 @@
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
-create_global_event_listener("click", "button_download_vampire", print_character, 'id')
+create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
 
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
@@ -27,17 +27,22 @@ function toggle_discipline_skills (pressed_button){
     toogle_max_height(target_element)
 }
 
-function print_character(){
+function convert_character_to_pdf(){
     console.log("in saving the character locally")
 
     //  JSPDF + HTML2CANVAS SOLUTION 2
 
     var character_sheet = document.getElementById('generated_character_id')
-    // var pdf = new jsPDF('p', 'px', [1000, 3000]);
-    var pdf = new jsPDF('p', 'px', [800, 3000]);
+
+    var character_sheet_width = character_sheet.offsetWidth
+    var character_sheet_height = character_sheet.offsetHeight
+
+    var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height]);
+
+    console.log('generating character')
+
     pdf.addHTML(character_sheet, 0, 0, function () {
-        console.log('generating pdf')
-        pdf.save('Test.pdf');
+        pdf.save('generated_vampire.pdf');
     });
 
 }
