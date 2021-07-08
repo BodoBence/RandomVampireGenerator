@@ -98,9 +98,11 @@ function toogle_max_height(target_element){
 
 
 function cursor_to_wait(){
+    console.log('changed cursor to wait')
     document.body.style.cursor='wait'
 }
 
 function cursor_to_default(){
+    console.log('changed cursor to default')
     document.body.style.cursor='default'
 }

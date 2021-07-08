@@ -30,22 +30,25 @@ function toggle_discipline_skills (pressed_button){
 function convert_character_to_pdf(){
     console.log("in saving the character locally")
     
+    // compenstating for the long run time
     cursor_to_wait()
 
-    //  JSPDF + HTML2CANVAS SOLUTION 2
+    //  JSPDF + HTML2CANVAS SOLUTION
 
     var character_sheet = document.getElementById('generated_character_id')
 
     var character_sheet_width = character_sheet.offsetWidth
     var character_sheet_height = character_sheet.offsetHeight
 
-    var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height]);
+    console.log(character_sheet_width)
+    console.log(character_sheet_height)
 
-    console.log('generating character')
+    var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height])
 
     pdf.addHTML(character_sheet, 0, 0, function () {
         pdf.save('generated_vampire.pdf');
     });
 
+    // getting back to normal mode on completion
     cursor_to_default()
 }
