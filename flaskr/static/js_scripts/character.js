@@ -29,6 +29,8 @@ function toggle_discipline_skills (pressed_button){
 
 function convert_character_to_pdf(){
     console.log("in saving the character locally")
+    
+    cursor_to_wait()
 
     //  JSPDF + HTML2CANVAS SOLUTION 2
 
@@ -45,4 +47,5 @@ function convert_character_to_pdf(){
         pdf.save('generated_vampire.pdf');
     });
 
+    cursor_to_default()
 }

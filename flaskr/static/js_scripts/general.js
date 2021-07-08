@@ -95,3 +95,12 @@ function toogle_max_height(target_element){
         target_element.style.maxHeight = target_element.scrollHeight + "px";
     }
 }
+
+
+function cursor_to_wait(){
+    document.body.style.cursor='wait'
+}
+
+function cursor_to_default(){
+    document.body.style.cursor='default'
+}

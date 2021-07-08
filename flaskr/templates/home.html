@@ -11,6 +11,8 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_base.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_light.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/print_character.css') }}">
+        
+        {% include "head_meta.html" %}
     </head>
 
     <body>
@@ -39,7 +41,7 @@
            
             <script src="{{ url_for('static', filename='js_scripts/external/html2canvas/html2canvas.min.js') }}"></script>
             <script src="{{ url_for('static', filename='js_scripts/external/jspdf/jspdf.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='js_scripts/external/jspdf/html.js') }}"></script>
+            <script src="{{ url_for('static', filename='js_scripts/external/jspdf/addhtml.js') }}"></script>
 
         {% endif %}
 
