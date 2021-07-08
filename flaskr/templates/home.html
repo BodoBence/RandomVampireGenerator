@@ -7,7 +7,6 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/inputs.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/home.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_base.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_light.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/print_character.css') }}">
@@ -21,21 +20,16 @@
 
         {% include "generator_inputs.html" %}
 
-        {% if have_generated_character %}
 
-            <div class="div_output_buttons" id="div_download_vampire">
-                <input
-                    class="button_general neon"
-                    id="button_download_vampire"
-                    type="button"
-                    value="Download character">
-            </div>
+        {% if have_generated_character %}
 
             {% include "generated_character.html" %}
             
         {% endif %}
 
+
         {% include "footer.html" %}
+        
 
         {% if have_generated_character %}
            
