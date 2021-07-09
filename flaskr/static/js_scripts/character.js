@@ -55,7 +55,6 @@ function convert_character_to_pdf(){
     cursor_to_default()
 }
 
-
 function set_clan_background() {
     target_element = document.getElementById('generated_character_id')
     clan = document.getElementById('Clan').nextElementSibling.innerHTML.toLowerCase()
