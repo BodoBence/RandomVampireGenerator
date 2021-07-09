@@ -136,3 +136,8 @@ h3 {
     cursor: pointer;
     height: 30px;
 }
+
+.clan_logo_element {
+    stroke:  var(--color_neon_pink);
+    stroke-opacity: 0.5;
+}
