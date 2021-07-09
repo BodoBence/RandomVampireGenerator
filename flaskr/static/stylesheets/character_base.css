@@ -22,6 +22,10 @@
     -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
+
+    /* background-image: url("/static/svg/clan_logos/clan_logo_malkavian.svg");
+    background-position: center center;
+    background-size: contain; */
 }
 
 .div_character_block, .div_character_block_2, .div_character_block_3 {
