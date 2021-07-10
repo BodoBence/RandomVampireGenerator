@@ -54,12 +54,10 @@ function convert_character_to_pdf(){
 }
 
 function convert_character_to_pdf_2(){
+    //  JSPDF ONLY RECREATE SOLUTION
     console.log("in saving the character locally 2")
 
-    //  JSPDF ONLY RECREATE SOLUTION
-
     // let character_sheet = document.getElementById('generated_character_id')
-
     // let character_sheet_width = character_sheet.offsetWidth / 2
     // let character_sheet_height = character_sheet.offsetHeight / 2
 
@@ -72,9 +70,8 @@ function convert_character_to_pdf_2(){
     var unit_height = 20
     var unit_width = 100
     var column_width = 200
-    var column_position_1 = 200
-    var column_position_2 = 400
-    var column_position_3 = 600
+
+    var section_heights = [0, 0, 0, 0, 0]
 
 
     // Dictionary Parts
@@ -95,87 +92,141 @@ function convert_character_to_pdf_2(){
 
     let count_line = 1
     let count_item_in_line = 0
-    let limit_item_in_line = 4
+    let limit_item_in_line = 2
 
-    pdf_iterate_dictionary_and_place_items(basic_info, 1)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = basic_info, 
+        column_number = 1, 
+        section_number = 1,
+        measure_section = true)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(trackers, 1)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = trackers, 
+        column_number = 1, 
+        section_number = 2,
+        measure_section = true)
+        
     count_line++
-    pdf_iterate_dictionary_and_place_items(attributes_physical, 1)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = attributes_physical, 
+        column_number = 1, 
+        section_number = 3,
+        measure_section = true)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(attributes_social, 2)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = attributes_social, 
+        column_number = 2, 
+        section_number = 3,
+        measure_section = false)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(attributes_mental, 3)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = attributes_mental, 
+        column_number = 3, 
+        section_number = 3,
+        measure_section = false)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(skills_physical, 1)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = skills_physical, 
+        column_number = 1, 
+        section_number = 4,
+        measure_section = true)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(skills_social, 2)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = skills_social, 
+        column_number = 2, 
+        section_number = 4,
+        measure_section = false)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(skills_mental, 3)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = skills_mental, 
+        column_number = 3, 
+        section_number = 4,
+        measure_section = false)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(disciplines_clan, 1)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = disciplines_clan, 
+        column_number = 1, 
+        section_number = 5,
+        measure_section = true)
+
     count_line++
-    pdf_iterate_dictionary_and_place_items(disciplines_non_clan, 2)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = disciplines_non_clan, 
+        column_number = 2, 
+        section_number = 5,
+        measure_section = false)
 
     pdf.save('generated_vampire.pdf')
 
 
     // Inner Functions
 
-    function pdf_iterate_dictionary_and_place_items(current_dictionary, column_to_place_in){
+    function pdf_iterate_dictionary_and_place_items(current_dictionary, column_number, section_number, measure_section){
+
+        let baseline_horizontal = pdf_calculate_base_horizontal(section_number)
+        let baseline_vertical = pdf_calculate_base_vertical(column_number)
+
         for (var key in current_dictionary) {
             if (!current_dictionary.hasOwnProperty(key)) {
                 continue;
             }
             
-            if (count_item_in_line > limit_item_in_line) {
-                count_line++
-                count_item_in_line = 0
-            }
-            
-            
             // Key
-            count_item_in_line++
-            // pdf.text(pdf_get_left_distance(count_item_in_line, unit_width), pdf_get_top_distance(count_line), String(key))
-            pdf.text(pdf_get_column_distance(column_to_place_in), pdf_get_top_distance(count_line), String(key))
-            
+            pdf.text(baseline_vertical, baseline_horizontal, String(key))         
 
             // Value
-            count_item_in_line++
             if (typeof current_dictionary[key] == 'string'){
-                // pdf.text(pdf_get_left_distance(count_item_in_line, unit_width), pdf_get_top_distance(count_line), current_dictionary[key])
-                pdf.text(pdf_get_column_distance(column_to_place_in) + unit_width, pdf_get_top_distance(count_line), current_dictionary[key])
+                pdf.text(baseline_vertical + unit_width, baseline_horizontal, current_dictionary[key])
             }
 
             if (typeof current_dictionary[key] == 'number'){
                 // Exclude Generation, Age
                 if (key == 'Generation' || key == 'Age'){
-                    // pdf.text(pdf_get_left_distance(count_item_in_line, unit_width), pdf_get_top_distance(count_line), String(current_dictionary[key]))
-                    pdf.text(pdf_get_column_distance(column_to_place_in) + unit_width, pdf_get_top_distance(count_line), String(current_dictionary[key]))
-                } else {
+                    pdf.text(baseline_vertical + unit_width, baseline_horizontal, String(current_dictionary[key]))
 
-                // add squares
-                    for (let index = 0; index < current_dictionary[key]; index++) {
-                        // pdf.rect((pdf_get_left_distance(count_item_in_line, unit_width) + (index * 15) ), pdf_get_top_distance(count_line), 10, 10, 'F')  
-                        pdf.rect((pdf_get_column_distance(column_to_place_in) + (index * 15) ), pdf_get_top_distance(count_line), 10, 10, 'F')                   
+                } else {
+                    // add squares
+                    for (let index = 0; index < current_dictionary[key]; index++) { 
+                        pdf.rect((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 10, -10, 'F')                   
                     }
                 }
-            }   
+            }
+
+            // Do only once per line
+            baseline_horizontal = baseline_horizontal + unit_height
+
+            if (measure_section){
+                section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+            }
+
         }
     }
 
-    function pdf_get_column_distance(column_number){
-        let distance = left_margin + (column_number * column_width)
-        return distance 
-    }
+    function pdf_calculate_base_horizontal(section_number) {
+        let section_distance = 0
 
-    function pdf_get_left_distance(item_number, item_width){
-        let distance = left_margin + (item_width * item_number)
+        if (section_number == 1) {
+            section_distance = 0
+        } else {
+            for (let index = 0; index < (section_number -  1); index++) {
+                section_distance = section_distance + section_heights[index]
+            }
+        }
+
+        let distance = top_margin + section_distance
+
         return distance
     }
-    
-    function pdf_get_top_distance(line_number){
-        let distance = top_margin + (unit_height * line_number)
+
+    function pdf_calculate_base_vertical(column_number) {
+        let distance = left_margin + (column_width * (column_number - 1))
         return distance
     }
 }
