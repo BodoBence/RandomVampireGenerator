@@ -193,8 +193,17 @@ function convert_character_to_pdf_2(){
 
                 } else {
                     // add squares
+
+                    // Filled
                     for (let index = 0; index < current_dictionary[key]; index++) { 
-                        pdf.rect((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 10, -10, 'F')                   
+                        pdf.ellipse((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 5, -5, 'F')                   
+                    }
+
+                    // Empty
+                    if (max_level != current_dictionary[key]){
+                        for (let index = 0; index < max_level - current_dictionary[key]; index++) { 
+                            pdf.ellipse((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 5, -5)                   
+                        }
                     }
                 }
             }

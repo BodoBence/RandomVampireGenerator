@@ -34,7 +34,9 @@
         {% if have_generated_character %}
 
             <script>
-                var vampire = {{ character | safe }};
+                var vampire = {{ character | safe }}
+                var max_level = {{ max_level | safe}}
+                
                 console.log(vampire)
             </script>
            
