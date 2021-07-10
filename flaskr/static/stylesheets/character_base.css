@@ -143,17 +143,15 @@ h3 {
     display: block;
     position: absolute;
     
+    top: 20em;
     left: 10%;
-    right: 10%;
-    top: 15%;
-    width: auto;
+    width: 80%;
 
     z-index: -1;
-
     opacity: 0.2;
 }
 
 .clan_logo_element {
     stroke:  var(--color_neon_pink);
-    stroke-opacity: 0.5;
+    stroke-width: 0.03rem;
 }
