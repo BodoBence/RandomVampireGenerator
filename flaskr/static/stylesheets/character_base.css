@@ -24,10 +24,6 @@
     -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
-
-    /* background-image: url("/static/svg/clan_logos/clan_logo_malkavian.svg");
-    background-position: center center;
-    background-size: contain; */
 }
 
 .div_character_block, .div_character_block_2, .div_character_block_3 {
@@ -103,6 +99,15 @@ h2 {
 
 h3 {
     font-size: 1rem;
+}
+
+#div_character_sheet_title_id h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+#div_character_sheet_title_id p {
+    text-align: center;
 }
 
 .long_text {
