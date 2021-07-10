@@ -1,8 +1,6 @@
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
 create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
 
-set_clan_background()
-
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
     var selected_class_elements = document.getElementsByClassName(class_name)
@@ -53,19 +51,4 @@ function convert_character_to_pdf(){
 
     // getting back to normal mode on completion
     cursor_to_default()
-}
-
-function set_clan_background() {
-    target_element = document.getElementById('generated_character_id')
-    clan = document.getElementById('Clan').nextElementSibling.innerHTML.toLowerCase()
-    clan_image_path = "url('/static/svg/clan_logos/clan_logo_" + clan + ".svg')"
-
-    console.log(document.getElementById('Clan').nextElementSibling)
-    console.log(clan)
-    console.log(clan_image_path)
-   
-    target_element.style.backgroundImage = clan_image_path
-    target_element.style.backgroundSize = 'contain'
-    target_element.style.backgroundPosition = 'center center'
-    target_element.style.backgroundRepeat = 'no-repeat'
 }

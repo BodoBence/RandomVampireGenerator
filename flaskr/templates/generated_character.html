@@ -1,6 +1,9 @@
 <!doctype html>
-<div class="div_character_background" id="generated_character_id"> 
+<div id="generated_character_id">
     
+    <!-- Clan Logo -->
+    {% include "clan_logo_" + character['Character_Details']['Basic_Information']['Clan'] + ".html" %}
+
     <!-- Basic Information Title -->
     <div class="div_character_block grid_full_span">
         <h2>Basic Information</h2>

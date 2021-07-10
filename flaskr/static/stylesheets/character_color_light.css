@@ -3,11 +3,11 @@
 
 /* Colors */
 
-.div_character_background {
+#generated_character_id {
     background-color: white;
 }
 
-.div_character_background p {
+#generated_character_id p {
     color: black !important;
 }
 
