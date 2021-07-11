@@ -74,7 +74,8 @@ function convert_character_to_pdf(){
         current_dictionary = basic_info, 
         column_number = 1, 
         section_number = 1,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'rectangle')
     
     section_heights[0] = section_heights[0] + unit_height
 
@@ -82,7 +83,8 @@ function convert_character_to_pdf(){
         current_dictionary = trackers, 
         column_number = 1, 
         section_number = 2,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'rectangle')
     
     section_heights[1] = section_heights[1] + unit_height
 
@@ -90,7 +92,8 @@ function convert_character_to_pdf(){
         current_dictionary = attributes_physical, 
         column_number = 1, 
         section_number = 3,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'circle')
 
     section_heights[2] = section_heights[2] + unit_height
 
@@ -98,19 +101,22 @@ function convert_character_to_pdf(){
         current_dictionary = attributes_social, 
         column_number = 2, 
         section_number = 3,
-        measure_section = false)
+        measure_section = false,
+        shape_type = 'circle')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_mental, 
         column_number = 3, 
         section_number = 3,
-        measure_section = false)
+        measure_section = false,
+        shape_type = 'circle')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_physical, 
         column_number = 1, 
         section_number = 4,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'circle')
 
     section_heights[3] = section_heights[3] + unit_height
 
@@ -118,13 +124,15 @@ function convert_character_to_pdf(){
         current_dictionary = skills_social, 
         column_number = 2, 
         section_number = 4,
-        measure_section = false)
+        measure_section = false,
+        shape_type = 'circle')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_mental, 
         column_number = 3, 
         section_number = 4,
-        measure_section = false)
+        measure_section = false,
+        shape_type = 'circle')
 
     section_heights[4] = section_heights[4] + unit_height
 
@@ -132,20 +140,22 @@ function convert_character_to_pdf(){
         current_dictionary = disciplines_clan, 
         column_number = 1, 
         section_number = 5,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'circle')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = disciplines_non_clan, 
         column_number = 1, 
         section_number = 6,
-        measure_section = true)
+        measure_section = true,
+        shape_type = 'circle')
 
     pdf.save('generated_vampire.pdf')
 
     // Inner Functions
 
     function pdf_iterate_dictionary_and_place_items(
-        current_dictionary, column_number, section_number, measure_section){
+        current_dictionary, column_number, section_number, measure_section, shape_type){
 
         let baseline_horizontal = pdf_calculate_base_horizontal(section_number)
         let baseline_vertical = pdf_calculate_base_vertical(column_number)
@@ -170,14 +180,14 @@ function convert_character_to_pdf(){
 
                 } else {
                     // add circles
-                    fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary, key)
+                    fill_with_shapes(baseline_vertical, baseline_horizontal, current_dictionary, key, shape_type)
                 }
             }
             
             // For Disciplines
             if (typeof current_dictionary[key] == 'object'){
 
-                fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level')
+                fill_with_shapes(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level', shape_type)
                 measure_section_height(measure_section)
 
                 for (var skill in current_dictionary[key]['Skills']){
@@ -206,20 +216,61 @@ function convert_character_to_pdf(){
         }
     }
 
-    function fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary, key){
+    function fill_with_shapes(baseline_vertical, baseline_horizontal, current_dictionary, key, shape_type){
         
         // Filled
-        for (let index_filled = 1; index_filled <= current_dictionary[key]; index_filled++) { 
-            pdf.ellipse(
-                (baseline_vertical + unit_width + (index_filled * circle_with_space) ), 
-                baseline_horizontal, circle_radius, -circle_radius, 'F')                
+        for (let index_filled = 1; index_filled <= current_dictionary[key]; index_filled++) {
+            switch(shape_type) {
+                case 'circle':
+                    pdf.ellipse(
+                        (baseline_vertical + unit_width + (index_filled * circle_with_space) ), 
+                        baseline_horizontal, 
+                        circle_radius, 
+                        -circle_radius, 
+                        'F')
+
+                    break;
+
+                case 'rectangle':
+                    pdf.rect(
+                        (baseline_vertical + unit_width + (index_filled * circle_with_space) ), 
+                        baseline_horizontal, 
+                        circle_radius * 2, 
+                        -(circle_radius * 2), 
+                        'F')
+
+                    break;
+
+                default:
+                    console.log('did not recieve a valid shape name')
+                    break;
+            } 
         }
 
         // Empty
-        for (let index_empty = 1; index_empty <= max_level - current_dictionary[key]; index_empty++) { 
-            pdf.ellipse(
-                (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
-                baseline_horizontal, circle_radius, -circle_radius)                
+        for (let index_empty = 1; index_empty <= max_level - current_dictionary[key]; index_empty++) {
+            switch(shape_type) {
+                case 'circle':
+                    pdf.ellipse(
+                        (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
+                        baseline_horizontal, 
+                        circle_radius, 
+                        -circle_radius)
+
+                    break;
+                case 'rectangle':
+                    pdf.rect(
+                        (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
+                        baseline_horizontal, 
+                        circle_radius * 2, 
+                        -circle_radius * 2)
+
+                    break;
+                default:
+                    console.log('did not recieve a valid shape name')
+                    break;
+
+            }              
         }
     }
 
