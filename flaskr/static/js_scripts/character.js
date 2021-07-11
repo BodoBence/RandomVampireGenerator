@@ -169,27 +169,14 @@ function convert_character_to_pdf(){
 
         let baseline_horizontal = pdf_calculate_base_horizontal(section_number)
         let baseline_vertical = pdf_calculate_base_vertical(column_number)
+        let iteration_number = 1
+
 
         for (var key in current_dictionary) {
             if (!current_dictionary.hasOwnProperty(key)) {
                 continue;
             }
             
-            switch (placement_direction){
-                case 'vertical':
-                    break;
-                    
-                case 'horizontal':
-                    break;
-
-                default:
-                    console.log('did not recieve a valid placement_direction')
-                    break;
-                
-            }
-
-
-
             // Key
             pdf.text(baseline_vertical, baseline_horizontal, String(key))         
 
@@ -213,7 +200,10 @@ function convert_character_to_pdf(){
             if (typeof current_dictionary[key] == 'object'){
 
                 fill_with_shapes(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level', shape_type)
-                measure_section_height(measure_section)
+                
+                if (measure_section){
+                    section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+                }
 
                 for (var skill in current_dictionary[key]['Skills']){
                     if (!current_dictionary[key]['Skills'].hasOwnProperty(skill)) {
@@ -221,7 +211,11 @@ function convert_character_to_pdf(){
                     }
 
                     baseline_horizontal = baseline_horizontal + unit_height
-                    measure_section_height(measure_section)                    
+                    
+                    if (measure_section){
+                        section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+                    }
+                                     
                     pdf.text(baseline_vertical, baseline_horizontal, skill)
                     pdf.text(baseline_vertical + unit_width, baseline_horizontal, current_dictionary[key]['Skills'][skill])
                 }
@@ -230,14 +224,35 @@ function convert_character_to_pdf(){
             }
 
             // Do only once per line
-            baseline_horizontal = baseline_horizontal + unit_height
-            measure_section_height(measure_section)
-        }
-    }
+            switch (placement_direction){
+                case 'vertical':
+                    baseline_horizontal = baseline_horizontal + unit_height
+                    
+                    if (measure_section){
+                        section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+                    }
 
-    function measure_section_height(measure_section){
-        if (measure_section){
-            section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+                    break;
+                    
+                case 'horizontal':
+                    if (iteration_number % 3 != 0){
+                        baseline_vertical = baseline_vertical + column_width
+                        
+                    } else {
+                        baseline_vertical = baseline_vertical - (column_width * 2)
+                        baseline_horizontal = baseline_horizontal + unit_height
+                        
+                        if (measure_section){
+                            section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
+                        }
+                    }
+                    break;
+
+                default:
+                    console.log('did not recieve a valid placement_direction')
+                    break;
+            }
+            iteration_number++
         }
     }
 
