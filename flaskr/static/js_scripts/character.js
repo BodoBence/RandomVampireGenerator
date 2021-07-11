@@ -61,15 +61,18 @@ function convert_character_to_pdf_2(){
     // let character_sheet_width = character_sheet.offsetWidth / 2
     // let character_sheet_height = character_sheet.offsetHeight / 2
 
-    let pdf = new jsPDF('p', 'px', [1000, 3000]);
+    let pdf = new jsPDF('p', 'px', [1200, 3000]);
 
     // PDF Measurements
 
-    var left_margin = 20
-    var top_margin = 20
+    var left_margin = 40
+    var top_margin = 40
     var unit_height = 20
-    var unit_width = 100
-    var column_width = 200
+    var unit_width = 150
+    var column_width = 300
+    var circle_radius = 5
+    var circle_spacing = 5
+    var circle_with_space = circle_radius * 2 + circle_spacing
 
     var section_heights = [0, 0, 0, 0, 0]
 
@@ -88,75 +91,60 @@ function convert_character_to_pdf_2(){
     let disciplines_non_clan = vampire['Disciplines']['Non-Clan_Disciplines']
 
 
-    // Iteration measures
-
-    let count_line = 1
-    let count_item_in_line = 0
-    let limit_item_in_line = 2
-
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = basic_info, 
         column_number = 1, 
         section_number = 1,
         measure_section = true)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = trackers, 
         column_number = 1, 
         section_number = 2,
         measure_section = true)
         
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_physical, 
         column_number = 1, 
         section_number = 3,
         measure_section = true)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_social, 
         column_number = 2, 
         section_number = 3,
         measure_section = false)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_mental, 
         column_number = 3, 
         section_number = 3,
         measure_section = false)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_physical, 
         column_number = 1, 
         section_number = 4,
         measure_section = true)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_social, 
         column_number = 2, 
         section_number = 4,
         measure_section = false)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_mental, 
         column_number = 3, 
         section_number = 4,
         measure_section = false)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = disciplines_clan, 
         column_number = 1, 
         section_number = 5,
         measure_section = true)
 
-    count_line++
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = disciplines_non_clan, 
         column_number = 2, 
@@ -192,19 +180,19 @@ function convert_character_to_pdf_2(){
                     pdf.text(baseline_vertical + unit_width, baseline_horizontal, String(current_dictionary[key]))
 
                 } else {
-                    // add squares
-
-                    // Filled
-                    for (let index = 0; index < current_dictionary[key]; index++) { 
-                        pdf.ellipse((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 5, -5, 'F')                   
+                    // add circles
+                    fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary, key)
+                }
+            }
+            
+            // For Disciplines
+            if (typeof current_dictionary[key] == 'object'){
+                for (var key_2 in current_dictionary[key]) {
+                    if (!current_dictionary[key].hasOwnProperty(key_2)) {
+                        continue;
                     }
-
-                    // Empty
-                    if (max_level != current_dictionary[key]){
-                        for (let index = 0; index < max_level - current_dictionary[key]; index++) { 
-                            pdf.ellipse((baseline_vertical + unit_width + (index * 15) ), baseline_horizontal, 5, -5)                   
-                        }
-                    }
+                    
+                fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level')
                 }
             }
 
@@ -216,6 +204,24 @@ function convert_character_to_pdf_2(){
             }
 
         }
+    }
+
+    function fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary, key){
+        // Filled
+        for (let index_filled = 1; index_filled <= current_dictionary[key]; index_filled++) { 
+            pdf.ellipse(
+                (baseline_vertical + unit_width + (index_filled * circle_with_space) ), 
+                baseline_horizontal, circle_radius, -circle_radius, 'F')                
+        }
+
+        // Empty
+
+        for (let index_empty = 1; index_empty <= max_level - current_dictionary[key]; index_empty++) { 
+            pdf.ellipse(
+                (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
+                baseline_horizontal, circle_radius, -circle_radius)                
+        }
+
     }
 
     function pdf_calculate_base_horizontal(section_number) {
