@@ -1,5 +1,5 @@
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
-create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf_2, 'id')
+create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
 
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
@@ -28,34 +28,7 @@ function toggle_discipline_skills (pressed_button){
 }
 
 function convert_character_to_pdf(){
-    console.log("in saving the character locally")
-    
-    // compenstating for the long run time
-    cursor_to_wait()
-
-    //  JSPDF + HTML2CANVAS SOLUTION
-
-    var character_sheet = document.getElementById('generated_character_id')
-
-    var character_sheet_width = character_sheet.offsetWidth / 2
-    var character_sheet_height = character_sheet.offsetHeight / 2
-
-    console.log(character_sheet_width)
-    console.log(character_sheet_height)
-
-    var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height])
-
-    pdf.addHTML(character_sheet, 0, 0, function () {
-        pdf.save('generated_vampire.pdf');
-    });
-
-    // getting back to normal mode on completion
-    cursor_to_default()
-}
-
-function convert_character_to_pdf_2(){
     //  JSPDF ONLY RECREATE SOLUTION
-    console.log("in saving the character locally 2")
 
     // let character_sheet = document.getElementById('generated_character_id')
     // let character_sheet_width = character_sheet.offsetWidth / 2
@@ -68,14 +41,19 @@ function convert_character_to_pdf_2(){
     var left_margin = 40
     var top_margin = 40
     var unit_height = 20
-    var unit_width = 150
-    var column_width = 300
+    var unit_width_desired = 150
     var circle_radius = 5
     var circle_spacing = 5
+    var number_of_sections = 6
+
+    // Calculated Measurements
     var circle_with_space = circle_radius * 2 + circle_spacing
-
-    var section_heights = [0, 0, 0, 0, 0]
-
+    var unit_width = Math.max(unit_width_desired, (max_level * circle_with_space))
+    var column_width = unit_width * 2
+    var section_heights = []
+    for (let section_filler = 1; section_filler <= number_of_sections; section_filler++) {
+        section_heights.push(0);
+    }
 
     // Dictionary Parts
 
@@ -90,6 +68,7 @@ function convert_character_to_pdf_2(){
     let disciplines_clan = vampire['Disciplines']['Clan_Disciplines']
     let disciplines_non_clan = vampire['Disciplines']['Non-Clan_Disciplines']
 
+    // Fill iup the pdf
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = basic_info, 
@@ -155,15 +134,13 @@ function convert_character_to_pdf_2(){
         section_number = 5,
         measure_section = true)
 
-    // pdf_iterate_dictionary_and_place_items(
-    //     current_dictionary = disciplines_non_clan, 
-    //     column_number = 2, 
-    //     section_number = 5,
-    //     measure_section = false,
-    //     vertical_offset = 0)
+    pdf_iterate_dictionary_and_place_items(
+        current_dictionary = disciplines_non_clan, 
+        column_number = 1, 
+        section_number = 6,
+        measure_section = true)
 
     pdf.save('generated_vampire.pdf')
-
 
     // Inner Functions
 
@@ -201,8 +178,7 @@ function convert_character_to_pdf_2(){
             if (typeof current_dictionary[key] == 'object'){
 
                 fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level')
-
-                baseline_horizontal = baseline_horizontal + unit_height
+                measure_section_height(measure_section)
 
                 for (var skill in current_dictionary[key]['Skills']){
                     if (!current_dictionary[key]['Skills'].hasOwnProperty(skill)) {
@@ -210,23 +186,28 @@ function convert_character_to_pdf_2(){
                     }
 
                     baseline_horizontal = baseline_horizontal + unit_height
-                                      
+                    measure_section_height(measure_section)                    
                     pdf.text(baseline_vertical, baseline_horizontal, skill)
                     pdf.text(baseline_vertical + unit_width, baseline_horizontal, current_dictionary[key]['Skills'][skill])
                 }
+
+                baseline_horizontal = baseline_horizontal + unit_height
             }
 
             // Do only once per line
             baseline_horizontal = baseline_horizontal + unit_height
+            measure_section_height(measure_section)
+        }
+    }
 
-            if (measure_section){
-                section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
-            }
-
+    function measure_section_height(measure_section){
+        if (measure_section){
+            section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
         }
     }
 
     function fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary, key){
+        
         // Filled
         for (let index_filled = 1; index_filled <= current_dictionary[key]; index_filled++) { 
             pdf.ellipse(
@@ -235,7 +216,6 @@ function convert_character_to_pdf_2(){
         }
 
         // Empty
-
         for (let index_empty = 1; index_empty <= max_level - current_dictionary[key]; index_empty++) { 
             pdf.ellipse(
                 (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
@@ -264,4 +244,3 @@ function convert_character_to_pdf_2(){
         return distance
     }
 }
-
