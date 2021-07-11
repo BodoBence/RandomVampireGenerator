@@ -75,7 +75,8 @@ function convert_character_to_pdf(){
         column_number = 1, 
         section_number = 1,
         measure_section = true,
-        shape_type = 'rectangle')
+        shape_type = 'rectangle',
+        placement_direction = 'horizontal')
     
     section_heights[0] = section_heights[0] + unit_height
 
@@ -84,7 +85,8 @@ function convert_character_to_pdf(){
         column_number = 1, 
         section_number = 2,
         measure_section = true,
-        shape_type = 'rectangle')
+        shape_type = 'rectangle',
+        placement_direction = 'vertical')
     
     section_heights[1] = section_heights[1] + unit_height
 
@@ -93,7 +95,8 @@ function convert_character_to_pdf(){
         column_number = 1, 
         section_number = 3,
         measure_section = true,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     section_heights[2] = section_heights[2] + unit_height
 
@@ -102,21 +105,24 @@ function convert_character_to_pdf(){
         column_number = 2, 
         section_number = 3,
         measure_section = false,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_mental, 
         column_number = 3, 
         section_number = 3,
         measure_section = false,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_physical, 
         column_number = 1, 
         section_number = 4,
         measure_section = true,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     section_heights[3] = section_heights[3] + unit_height
 
@@ -125,14 +131,16 @@ function convert_character_to_pdf(){
         column_number = 2, 
         section_number = 4,
         measure_section = false,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_mental, 
         column_number = 3, 
         section_number = 4,
         measure_section = false,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     section_heights[4] = section_heights[4] + unit_height
 
@@ -141,21 +149,23 @@ function convert_character_to_pdf(){
         column_number = 1, 
         section_number = 5,
         measure_section = true,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = disciplines_non_clan, 
         column_number = 1, 
         section_number = 6,
         measure_section = true,
-        shape_type = 'circle')
+        shape_type = 'circle',
+        placement_direction = 'vertical')
 
     pdf.save('generated_vampire.pdf')
 
     // Inner Functions
 
     function pdf_iterate_dictionary_and_place_items(
-        current_dictionary, column_number, section_number, measure_section, shape_type){
+        current_dictionary, column_number, section_number, measure_section, shape_type, placement_direction){
 
         let baseline_horizontal = pdf_calculate_base_horizontal(section_number)
         let baseline_vertical = pdf_calculate_base_vertical(column_number)
@@ -165,6 +175,21 @@ function convert_character_to_pdf(){
                 continue;
             }
             
+            switch (placement_direction){
+                case 'vertical':
+                    break;
+                    
+                case 'horizontal':
+                    break;
+
+                default:
+                    console.log('did not recieve a valid placement_direction')
+                    break;
+                
+            }
+
+
+
             // Key
             pdf.text(baseline_vertical, baseline_horizontal, String(key))         
 
