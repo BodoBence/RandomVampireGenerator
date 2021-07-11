@@ -86,7 +86,7 @@ function convert_character_to_pdf(){
         section_number = 2,
         measure_section = true,
         shape_type = 'rectangle',
-        placement_direction = 'vertical')
+        placement_direction = 'horizontal')
     
     section_heights[1] = section_heights[1] + unit_height
 
