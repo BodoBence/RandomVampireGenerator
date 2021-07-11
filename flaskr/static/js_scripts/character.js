@@ -96,18 +96,24 @@ function convert_character_to_pdf_2(){
         column_number = 1, 
         section_number = 1,
         measure_section = true)
+    
+    section_heights[0] = section_heights[0] + unit_height
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = trackers, 
         column_number = 1, 
         section_number = 2,
         measure_section = true)
-        
+    
+    section_heights[1] = section_heights[1] + unit_height
+
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_physical, 
         column_number = 1, 
         section_number = 3,
         measure_section = true)
+
+    section_heights[2] = section_heights[2] + unit_height
 
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = attributes_social, 
@@ -127,6 +133,8 @@ function convert_character_to_pdf_2(){
         section_number = 4,
         measure_section = true)
 
+    section_heights[3] = section_heights[3] + unit_height
+
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = skills_social, 
         column_number = 2, 
@@ -139,24 +147,28 @@ function convert_character_to_pdf_2(){
         section_number = 4,
         measure_section = false)
 
+    section_heights[4] = section_heights[4] + unit_height
+
     pdf_iterate_dictionary_and_place_items(
         current_dictionary = disciplines_clan, 
         column_number = 1, 
         section_number = 5,
         measure_section = true)
 
-    pdf_iterate_dictionary_and_place_items(
-        current_dictionary = disciplines_non_clan, 
-        column_number = 2, 
-        section_number = 5,
-        measure_section = false)
+    // pdf_iterate_dictionary_and_place_items(
+    //     current_dictionary = disciplines_non_clan, 
+    //     column_number = 2, 
+    //     section_number = 5,
+    //     measure_section = false,
+    //     vertical_offset = 0)
 
     pdf.save('generated_vampire.pdf')
 
 
     // Inner Functions
 
-    function pdf_iterate_dictionary_and_place_items(current_dictionary, column_number, section_number, measure_section){
+    function pdf_iterate_dictionary_and_place_items(
+        current_dictionary, column_number, section_number, measure_section){
 
         let baseline_horizontal = pdf_calculate_base_horizontal(section_number)
         let baseline_vertical = pdf_calculate_base_vertical(column_number)
@@ -187,12 +199,20 @@ function convert_character_to_pdf_2(){
             
             // For Disciplines
             if (typeof current_dictionary[key] == 'object'){
-                for (var key_2 in current_dictionary[key]) {
-                    if (!current_dictionary[key].hasOwnProperty(key_2)) {
+
+                fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level')
+
+                baseline_horizontal = baseline_horizontal + unit_height
+
+                for (var skill in current_dictionary[key]['Skills']){
+                    if (!current_dictionary[key]['Skills'].hasOwnProperty(skill)) {
                         continue;
                     }
-                    
-                fill_with_circles(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level')
+
+                    baseline_horizontal = baseline_horizontal + unit_height
+                                      
+                    pdf.text(baseline_vertical, baseline_horizontal, skill)
+                    pdf.text(baseline_vertical + unit_width, baseline_horizontal, current_dictionary[key]['Skills'][skill])
                 }
             }
 
@@ -221,7 +241,6 @@ function convert_character_to_pdf_2(){
                 (baseline_vertical + unit_width + (current_dictionary[key] * circle_with_space) + (index_empty * circle_with_space)), 
                 baseline_horizontal, circle_radius, -circle_radius)                
         }
-
     }
 
     function pdf_calculate_base_horizontal(section_number) {
