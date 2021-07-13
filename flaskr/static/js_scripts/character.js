@@ -171,7 +171,6 @@ function convert_character_to_pdf(){
         let baseline_vertical = pdf_calculate_base_vertical(column_number)
         let iteration_number = 1
 
-
         for (var key in current_dictionary) {
             if (!current_dictionary.hasOwnProperty(key)) {
                 continue;
@@ -182,10 +181,19 @@ function convert_character_to_pdf(){
 
             // Value
             let text_height_based_vertical_offset = unit_height
+
             if (typeof current_dictionary[key] == 'string'){
-                let stat_value_split = pdf.splitTextToSize(current_dictionary[key], unit_width)
-                text_height_based_vertical_offset = stat_value_split.length * unit_height
-                pdf.text(baseline_vertical + unit_width, baseline_horizontal, stat_value_split)
+
+                if (key != 'Derangement'){
+                    let stat_value_split = pdf.splitTextToSize(current_dictionary[key], unit_width)
+                    pdf.text(baseline_vertical + unit_width, baseline_horizontal, stat_value_split)
+                    text_height_based_vertical_offset = stat_value_split.length * unit_height
+
+                } else {
+                    let stat_value_split = pdf.splitTextToSize(current_dictionary[key], (unit_width * 5))
+                    pdf.text(baseline_vertical +  unit_width, baseline_horizontal, stat_value_split)
+                    text_height_based_vertical_offset = stat_value_split.length * unit_height
+                }
             }
 
             if (typeof current_dictionary[key] == 'number'){
@@ -203,27 +211,25 @@ function convert_character_to_pdf(){
             if (typeof current_dictionary[key] == 'object'){
 
                 fill_with_shapes(baseline_vertical, baseline_horizontal, current_dictionary[key], 'Level', shape_type)
+                baseline_horizontal = baseline_horizontal + unit_height
                 
-                if (measure_section){
-                    section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
-                }
-
                 for (var skill in current_dictionary[key]['Skills']){
                     if (!current_dictionary[key]['Skills'].hasOwnProperty(skill)) {
                         continue;
                     }
 
-                    baseline_horizontal = baseline_horizontal + unit_height
-                    
-                    if (measure_section){
-                        section_heights[section_number-1] = section_heights[section_number-1] + unit_height 
-                    }
-                    
                     let discipliine_skill_value = current_dictionary[key]['Skills'][skill]
                     let discipline_skill_value_split = pdf.splitTextToSize(discipliine_skill_value, unit_width)
-                    text_height_based_vertical_offset = discipline_skill_value_split.length * unit_height
+
                     pdf.text(baseline_vertical, baseline_horizontal, skill)
                     pdf.text(baseline_vertical + unit_width, baseline_horizontal, discipline_skill_value_split)
+
+                    text_height_based_vertical_offset = discipline_skill_value_split.length * unit_height
+                    baseline_horizontal = baseline_horizontal + text_height_based_vertical_offset
+
+                    if (measure_section){
+                        section_heights[section_number-1] = section_heights[section_number-1] + text_height_based_vertical_offset 
+                    }
                     
 
                 }
@@ -232,11 +238,10 @@ function convert_character_to_pdf(){
             }
 
             // Do only once per line
-            console.log(text_height_based_vertical_offset)
             switch (placement_direction){
                 case 'vertical':
                     baseline_horizontal = baseline_horizontal + text_height_based_vertical_offset
-                    
+
                     if (measure_section){
                         section_heights[section_number-1] = section_heights[section_number-1] + text_height_based_vertical_offset 
                     }
@@ -246,11 +251,15 @@ function convert_character_to_pdf(){
                 case 'horizontal':
                     if (iteration_number % 3 != 0){
                         baseline_vertical = baseline_vertical + column_width
-                        
+
+                        if (measure_section){
+                            section_heights[section_number-1] = section_heights[section_number-1] + text_height_based_vertical_offset - unit_height
+                        }
+                       
                     } else {
                         baseline_vertical = baseline_vertical - (column_width * 2)
                         baseline_horizontal = baseline_horizontal + text_height_based_vertical_offset
-                        
+
                         if (measure_section){
                             section_heights[section_number-1] = section_heights[section_number-1] + text_height_based_vertical_offset 
                         }
@@ -261,6 +270,8 @@ function convert_character_to_pdf(){
                     console.log('did not recieve a valid placement_direction')
                     break;
             }
+            console.log('')
+            console.log('section height at ' + String(key) + ': ' + String(section_heights[section_number-1]))
             iteration_number++
         }
     }
