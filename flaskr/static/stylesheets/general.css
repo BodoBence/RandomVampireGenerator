@@ -60,9 +60,9 @@ p {
 /* Button Neon */
  
 .button_general {
-    font-size: 1em;
+    font-size: 1.25em;
     font-weight: bold;
-    padding: 2em;
+    padding: 1em;
     
     position: relative;
 
@@ -123,8 +123,10 @@ footer {
     display: grid;
     grid-template-columns: 1fr 8fr;
     column-gap: 1em;
+    padding: 0;
 
     width: 100%;
+    min-height: 7vh;
 
     background-color: var(--color_darkest);
 
@@ -137,11 +139,11 @@ footer {
 footer div {
     background: url("/static/bitmaps/darkpack_black_logo.png");
     background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: contain;
+    background-position: bottom center;
+    background-size: auto 100%;
 
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin: 0;
+    padding: 0;
 }
 
 footer p {
