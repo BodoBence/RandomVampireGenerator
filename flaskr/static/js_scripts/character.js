@@ -1,5 +1,8 @@
+replace_underscores_inner_htmls()
+
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
 create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
+
 
 function create_event_listener_for_skills(class_name, target_class_name){
     // console.log(class_name)
@@ -41,4 +44,13 @@ function convert_character_to_pdf(){
         pdf.save('generated_vampire.pdf');
     });
 
+}
+
+function replace_underscores_inner_htmls(){
+    console.log('replacing underscores')
+    let elements_with_underscore = document.getElementsByClassName('underscore')
+    for (let index = 0; index < elements_with_underscore.length; index++) {
+        let original_string = elements_with_underscore[index].innerHTML
+        elements_with_underscore[index].innerHTML = original_string.replaceAll('_', ' ')
+    }
 }
