@@ -83,10 +83,6 @@ def calculation_maths():
 def encounter_tracker():
     return render_template('encounter_tracker.html')
 
-@app.route('/test', methods = ['POST', 'GET'])
-def test():
-    return render_template('test.html')
-
 # Run the app!  
 
 if __name__ == '__main__':
