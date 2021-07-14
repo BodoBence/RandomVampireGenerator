@@ -7,7 +7,7 @@
     background-color: white;
 }
 
-#generated_character_id p {
+#generated_character_id p, h1, h2, h3 {
     color: black !important;
 }
 
