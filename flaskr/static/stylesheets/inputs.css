@@ -298,3 +298,11 @@ input[type="range"]::-moz-range-thumb {
     box-shadow: 0 0 1em var(--color_neon_pink);
     cursor: pointer;
 }
+
+/* Phone optimization */
+
+@media (orientation: portrait) {
+    .input_container {
+        grid-template-columns: 1fr !important;
+    }
+}
