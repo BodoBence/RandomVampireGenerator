@@ -2,9 +2,46 @@
     <div class="div_inputs_all">
         <div class="input_container animation_ease" id="input_container_id">
 
+            <div class="div_input_text">
+                <div class="div_input_text_card">
+                    <p>Sliders:</p>
+                    <p>
+                        The ratio of the sliders (mental, social, physical) in relation to eachother influences
+                        the "persoanlity" of the generated character. The Non-clan disciplines slider controls the opportunities
+                        to learn dark skills outside of one's clan.
+                    </p>
+                </div>
+
+                <div class="div_input_text_card">
+                    <p>Age:</p>
+                    <p>
+                        The maximum age is 3000, therefore in most cases the use of manual age
+                        is recommended for results that accomodate average gaming sessions.
+                    </p>
+                </div>
+
+                <div class="div_input_text_card">
+                    <p>Generation:</p>
+                    <p>
+                        These values range between 3 and 15, therefore a manual input will
+                        yield more usuable results in most cases, and avoids the creation of
+                        overpowering characters.
+                    </p>
+                </div>
+
+                <div class="div_input_text_card">
+                    <p>level 6+ skills:</p>
+                    <p>
+                        VTM 5th edition currently gives disciplines only up to level 5.
+                        If needed higher level disciplines can be added using V20 rules.
+                    </p>
+                </div>
+
+            </div>
+
             <div class="div_input_slider">
                 <div class="div_input_text_container">
-                    <p>Social</p>
+                    <p>Social focus:</p>
                 </div>
                 <div class="div_slider">
                     <input
@@ -13,9 +50,9 @@
                         class="slider"
                         type="range"
                         name="simplified_social"
-                        min="0" 
+                        min="0"
                         max="100"
-                        value="50">                
+                        value="50">
                 </div>
 
                 <p class="p_range_value" id="value_social">
@@ -26,7 +63,7 @@
 
             <div class="div_input_slider">
                 <div class="div_input_text_container">
-                    <p>Mental</p>
+                    <p>Mental focus:</p>
                 </div>
                 <div class="div_slider">
                     <input
@@ -34,8 +71,8 @@
                         data-reference-id="value_mental"
                         class="slider"
                         type="range"
-                        name="simplified_mental" 
-                        min="0" 
+                        name="simplified_mental"
+                        min="0"
                         max="100"
                         value="50">
                 </div>
@@ -43,12 +80,12 @@
                 <p class="p_range_value" id="value_mental">
                     50
                 </p>
-    
+
             </div>
 
             <div class="div_input_slider ">
                 <div class="div_input_text_container">
-                    <p>Physical</p>
+                    <p>Physical focus:</p>
                 </div>
                 <div class="div_slider">
                     <input
@@ -57,7 +94,7 @@
                         class="slider"
                         type="range"
                         name="simplified_physical"
-                        min="0" 
+                        min="0"
                         max="100"
                         value="50">
                 </div>
@@ -69,7 +106,7 @@
 
             <div class="div_input_slider">
                 <div class="div_input_text_container">
-                    <p>Disc. Affinity</p>
+                    <p>Non-clan disciplines:</p>
                 </div>
                 <div class="div_slider">
                     <input
@@ -77,16 +114,16 @@
                         data-reference-id="value_discipline"
                         class="slider"
                         type="range"
-                        name="simplified_discipline" 
-                        min="0" 
+                        name="simplified_discipline"
+                        min="0"
                         max="100"
-                        value="50">
+                        value="5">
                 </div>
 
                 <p class="p_range_value" id="value_discipline">
-                    50
+                    5
                 </p>
-    
+
             </div>
 
             <div class="div_input_dropdown ">
@@ -94,18 +131,18 @@
                     <p>Clan:</p>
                 </div>
                 <div class="div_select">
-                    <select 
-                        class="dropdown_selectors" 
-                        list="clans" 
-                        name="manual_clan" 
+                    <select
+                        class="dropdown_selectors"
+                        list="clans"
+                        name="manual_clan"
                         id="selection_clan">
 
                         <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
-                        {% for clan in clans %} 
-                            <option 
+                        {% for clan in clans %}
+                            <option
                                 value="{{ clan }}"
-                                {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == clan %} selected="selected" {% endif %}> 
-                                {{ clan }} 
+                                {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == clan %} selected="selected" {% endif %}>
+                                {{ clan }}
                             </option>
                         {% endfor %}
 
@@ -113,7 +150,7 @@
                     <div class="dropdown_button " data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list">
                         <p>
                             Random
-                        </p>    
+                        </p>
                     </div>
                     <ul class="dropdown_content" data-reference-id-button="button_clan_list" id="clan_container">
                         <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> Random </li>
@@ -124,7 +161,7 @@
                     <span class="custom_arrow" id="custom_arrow_id_clan"></span>
                 </div>
             </div>
-    
+
             <div class="div_input_dropdown">
                 <div class="div_input_text_container">
                     <p>Sex:</p>
@@ -132,8 +169,8 @@
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
-                        list="sexes" 
-                        name="manual_sex" 
+                        list="sexes"
+                        name="manual_sex"
                         id="selection_sex">
 
                         <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
@@ -153,16 +190,16 @@
                     <span class="custom_arrow" id="custom_arrow_id_sex"></span>
                 </div>
             </div>
-    
+
             <div class="div_input_dropdown">
                 <div class="div_input_text_container">
                     <p>Generation:</p>
                 </div>
                 <div class="div_select">
-                    <select 
+                    <select
                         class="dropdown_selectors"
                         list="gens"
-                        name="manual_generation" 
+                        name="manual_generation"
                         id="selection_generation">
 
                         <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
@@ -171,7 +208,7 @@
                         {% endfor %}
                     </select>
 
-                    <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list"> 
+                    <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list">
                         <p>
                             Random
                         </p>
@@ -185,22 +222,22 @@
                     <span class="custom_arrow" id="custom_arrow_id_generation"></span>
                 </div>
             </div>
-    
+
             <div class="div_input_type_in">
                 <div class="div_input_text_container">
                     <p>Age:</p>
                 </div>
                 <div class="div_select">
-                    <select 
-                        class="dropdown_selectors" 
-                        list="ages" 
-                        name="manual_age_selection" 
+                    <select
+                        class="dropdown_selectors"
+                        list="ages"
+                        name="manual_age_selection"
                         id="selection_age"
                         data-input-reference="manual_age_input_id"
                         data-input-default="300"
                         data-input-focus="Random"
                         data-reference-id-button="button_age_list">
-                        
+
                         <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
@@ -217,37 +254,80 @@
                     <span class="custom_arrow" id="custom_arrow_id_age"></span>
                 </div>
                 <div class="div_type_in">
-                    <input 
-                        type="number" 
-                        min=1 
-                        max=3000 
-                        name="manual_age" 
-                        value={{ field_values['manual_age'] }} 
-                        class="selection_driver" 
+                    <input
+                        type="number"
+                        min=1
+                        max=3000
+                        name="manual_age"
+                        value={{ field_values['manual_age'] }}
+                        class="selection_driver"
                         data-driver-reference="selection_age"
                         id="manual_age_input_id">
-                </div>            
+                </div>
             </div>
-        
+
+            <div class="div_input_type_in">
+                <div class="div_input_text_container">
+                    <p>XP Calculation:</p>
+                </div>
+                <div class="div_select">
+                    <select
+                        class="dropdown_selectors"
+                        list="calulation"
+                        name="manual_calculation_selection"
+                        id="selection_calculation"
+                        data-input-reference="manual_calculation_input_id"
+                        data-input-default="800"
+                        data-input-focus="Algorythm"
+                        data-reference-id-button="button_calculation_list">
+
+                        <option value="Algorythm" {% if field_conditions['manual_calculation_condition']==False %} selected="selected" {% endif %}> Algorythm </option>
+                        <option value="Manual" {% if field_conditions['manual_calculation_condition']==True %} selected="selected" {% endif %}> Manual </option>
+                    </select>
+
+                    <div class="dropdown_button " data-reference-id="calculation_container"  data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list">
+                        <p>
+                            Algorythm
+                        </p>
+                    </div>
+                    <ul class="dropdown_content" data-reference-id-button="button_calculation_list" id="calculation_container">
+                        <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list" name="calculation_option"> Algorythm </li>
+                        <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list" name="calculation_option"> Manual </li>
+                    </ul>
+                    <span class="custom_arrow" id="custom_arrow_id_calculation"></span>
+                </div>
+                <div class="div_type_in">
+                    <input
+                        type="number"
+                        min=1
+                        max=5000
+                        name="manual_calculation"
+                        value={{ field_values['manual_calculation'] }}
+                        class="selection_driver"
+                        data-driver-reference="selection_calculation"
+                        id="manual_calculation_input_id">
+                </div>
+            </div>
+
             <div class="div_input_type_in">
                 <div class="div_input_text_container">
                     <p>Name:</p>
                 </div>
                 <div class="div_select">
-                    <select 
+                    <select
                         class="dropdown_selectors"
-                        list="names" 
-                        name="manual_name_selection" 
+                        list="names"
+                        name="manual_name_selection"
                         id="selection_name"
                         data-input-reference="manual_name_input_id"
                         data-input-default="Fruzsi"
                         data-input-focus="Random"
                         data-reference-id-button="button_name_list">
-                        
+
                         <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                         <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                     </select>
-                    <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list"> 
+                    <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list">
                        <p>
                            Random
                        </p>
@@ -259,25 +339,25 @@
                     <span class="custom_arrow" id="custom_arrow_id_name"></span>
                 </div>
                 <div class="div_type_in">
-                    <input 
-                        type="text" 
-                        name="manual_name" 
-                        value={{ field_values['manual_name'] }}  
-                        class="selection_driver" 
+                    <input
+                        type="text"
+                        name="manual_name"
+                        value={{ field_values['manual_name'] }}
+                        class="selection_driver"
                         data-driver-reference="selection_name"
-                        id="manual_name_input_id"> 
+                        id="manual_name_input_id">
                 </div>
             </div>
 
             <div class="div_input_dropdown ">
                 <div class="div_input_text_container">
-                    <p>Theme</p>
+                    <p>Theme:</p>
                 </div>
                 <div class="div_select">
-                    <select 
-                        class="dropdown_selectors" 
-                        list="character_themes" 
-                        name="theme_selector" 
+                    <select
+                        class="dropdown_selectors"
+                        list="character_themes"
+                        name="theme_selector"
                         id="selection_theme">
 
                         <option value="Light" selected="selected"> Light </option>
@@ -286,8 +366,8 @@
                     </select>
                     <div class="dropdown_button " data-reference-id="theme_container" data-reference-id-arrow="custom_arrow_id_theme" id="button_theme_list">
                         <p>
-                            Light
-                        </p>    
+                            Dark
+                        </p>
                     </div>
                     <ul class="dropdown_content " data-reference-id-button="button_theme_list" id="theme_container">
                         <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
@@ -317,10 +397,10 @@
                 <input
                     class="button_general neon"
                     type="button"
-                    value="Load default values!"
+                    value="LOAD DEFAULT VALUES"
                     id="button_load_defaults">
             </div>
-            
+
             <div class="div_input_buttons">
                 <input
                     class="button_general neon"
@@ -328,14 +408,14 @@
                     data-target-id="input_container_id"
                     data-target-class-1="animation_close"
                     type="button"
-                    value="Hide/Show inputs">
+                        value="HIDE/SHOW INPUTS">
             </div>
-    
+
             <div class="div_input_buttons">
                 <input
                     class="button_general neon"
                     type="submit"
-                    value="Generate!">   
+                    value="GENERATE">
             </div>
 
             {% if have_generated_character %}
@@ -351,7 +431,7 @@
             {% endif %}
 
         </div>
-        
+
     </div>
 
 </form>

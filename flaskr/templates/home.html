@@ -8,14 +8,14 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/inputs.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_base.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_light.css') }}" id="link_character_color">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_dark.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/print_character.css') }}">
-        
+
         {% include "head_meta.html" %}
     </head>
 
     <body>
-       
+
         {% include "navigation.html" %}
 
         {% include "generator_inputs.html" %}
@@ -24,12 +24,14 @@
         {% if have_generated_character %}
 
             {% include "generated_character.html" %}
-            
+
         {% endif %}
 
 
         {% include "footer.html" %}
-        
+
+        {% include "version.html" %}
+
 
         <!-- Own scripts -->
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
@@ -38,16 +40,16 @@
         <script src="{{ url_for('static', filename='js_scripts/custom_select.js') }}"></script>
 
         {% if have_generated_character %}
-        
-        <!-- Foreign scripts -->
-        <script src="{{ url_for('static', filename='js_scripts/external/jspdf/jspdf.debug.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/external/jspdf/addhtml.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/external/html2canvas/html2canvas.js') }}"></script>
 
-        <!-- Own scripts -->
-        <script src="{{ url_for('static', filename='js_scripts/character.js') }}"></script>
+            <!-- Foreign scripts -->
+            <script src="{{ url_for('static', filename='js_scripts/external/jspdf/jspdf.debug.js') }}"></script>
+            <script src="{{ url_for('static', filename='js_scripts/external/jspdf/addhtml.js') }}"></script>
+            <script src="{{ url_for('static', filename='js_scripts/external/html2canvas/html2canvas.js') }}"></script>
 
-    {% endif %}
+            <!-- Own scripts -->
+            <script src="{{ url_for('static', filename='js_scripts/character.js') }}"></script>
+
+        {% endif %}
 
     </body>
 </html>

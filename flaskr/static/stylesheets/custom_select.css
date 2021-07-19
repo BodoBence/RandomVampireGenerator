@@ -21,23 +21,23 @@ select {
     margin: 0;
 
     z-index: 2;
-    
+
     border-style: solid;
     /* border-width: 0.1em; */
     border-top-width: 0;
     border-left-width: 0;
     border-right-width: 0;
-    border-bottom-width: 0.2em;
+    border-bottom-width: 0;
     border-radius: 0.25em;
 
     /* background-color: rgba(0, 0, 0, 0);
     color: var(--color_neon_pink);
     text-shadow: 0 0 1em currentColor; */
 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 
@@ -74,18 +74,18 @@ select {
 
     box-shadow: 0 0 1em black;
 }
-  
+
   /* list items inside the dropdown */
 .dropdown_content li {
     list-style-type: none;
     padding: 12px 16px;
     text-decoration: none;
-    color: var(--white);    
+    color: var(--white);
     width: inherit;
     z-index: 4;
-  
+
 }
-    
+
 /* Change color of dropdown links on hover */
 .dropdown_content li:hover {
     cursor: pointer;
@@ -116,23 +116,23 @@ select {
     background-color: rgba(0, 0, 0, 0);
     color: var(--color_neon_pink);
 
-    box-shadow: 
+    box-shadow:
         0 0 1em currentColor,
         inset 0 0 0.1em currentColor;
 
     transform: rotate(225deg);
     transform-origin: center;
 
-    /* -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    /* -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease; */
 
-    -webkit-transition: all 0.3s linear;  
-    -moz-transition: all 0.3s linear;  
-    -o-transition: all 0.3s linear;  
-    -ms-transition: all 0.3s linear;  
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
     transition: all 0.3s linear;
 
 }

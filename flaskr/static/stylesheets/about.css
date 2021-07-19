@@ -1,0 +1,69 @@
+.div_about_container:first-of-type {
+    margin-top: calc(var(--nav_height) + 1em);
+}
+
+.div_about_container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    width: minmax(600px, 80vw);
+
+    padding: var(--padding_distance);
+
+    background-color: var(--color_black_transparent);
+
+    border-radius: 0.5em;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: var(--color_dark_grey);
+
+    box-shadow: 0 0 1em black;
+
+}
+
+.div_about_text_card {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
+    margin: 0;
+    padding: var(--padding_distance);
+}
+
+.div_about_text_card p {
+    grid-column: 2;
+}
+
+.div_about_text_card p:first-child {
+    grid-column: 1 !important;
+
+}
+
+#div_about_logo_container_id {
+    grid-template-columns: 1fr 4fr !important;
+    gap: 1rem;
+    min-height: 8em;
+}
+
+.div_dark_pack_logo_container {
+    min-width: 100px;
+    min-height: 100px;
+    grid-column: 1 !important;
+    grid-row: 1 / 3;
+}
+
+#div_about_logo_container_id p {
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+p  {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}

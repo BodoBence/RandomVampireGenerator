@@ -1,6 +1,6 @@
 <!doctype html>
 <div id="generated_character_id">
-    
+
     <!-- Clan Logo -->
     {% include "clan_logo_" + character['Character_Details']['Basic_Information']['Clan'] + ".html" %}
 
@@ -36,17 +36,26 @@
     <!-- Trackers -->
     <div class="div_character_block">
         {% for key, value in character['Character_Details']['Trackers'].items() %}
-            <div class="div_character_card">
-                <p class="underscore">{{ key }}</p>
-                <div>
-                    {% for i in range(0, value) %}
-                        <span class="square_filled"> </span>
-                    {% endfor %}
-                    {% for i in range(0, 10 - value) %}
-                        <span class="square_unfilled"></span>
-                    {% endfor %}
+            {% if key != 'XP_Used' %}
+                <div class="div_character_card">
+                    <p class="underscore">{{ key }}</p>
+                    <div>
+                        {% for i in range(0, value) %}
+                            <span class="square_filled"> </span>
+                        {% endfor %}
+                        {% for i in range(0, 10 - value) %}
+                            <span class="square_unfilled"></span>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="div_character_card">
+                    <p class="underscore">{{ key }}</p>
+                    <div>
+                        <p>{{ value }}</p>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 
@@ -54,7 +63,7 @@
     <div class="div_character_block grid_full_span">
         <h2>Attributes</h2>
     </div>
-    
+
     <!-- Attribues -->
     <div class="div_character_block">
 
@@ -87,7 +96,7 @@
     <div class="div_character_block grid_full_span">
         <h2 class="underscore">Skills</h2>
     </div>
-    
+
     <!-- Skills-->
     <div class="div_character_block">
 
@@ -116,7 +125,7 @@
 
     </div>
 
- 
+
     <!-- Discipline Title-->
     <div class="div_character_block grid_full_span">
         <h2>Disciplines</h2>
@@ -147,7 +156,7 @@
                         data-toggle-reference="{{ discipline_name }}"
                         data-toggle-animation-class="animation_open"
                         data-toggle-selection-class="discipline_skills">
-                            Hide/Show 
+                            Hide/Show
                     </button>
                     <div class="discipline_skills" id="{{ discipline_name }}">
                         {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}

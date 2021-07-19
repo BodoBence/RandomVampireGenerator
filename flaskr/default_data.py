@@ -15,11 +15,12 @@ MAX_AGE = 3000
 
 def start_conditions():
     start_conditions = {
-        'manual_clan_condition': True,
+        'manual_clan_condition': False,
         'manual_generation_condition': False,
         'manual_age_condition': False,
         'manual_sex_condition': False,
-        'manual_name_condition': False}
+        'manual_name_condition': False,
+        'manual_calculation_condition': False}
     return start_conditions
 
 def start_values():
@@ -28,19 +29,20 @@ def start_values():
         'manual_clan': 'Malkavian',
         'manual_sex': 'Female',
         'manual_generation': 10,
+        'manual_calculation': 800,
         'manual_name': "Fruzsi"}
     return start_values
 
 def start_weights():
     start_weights = {
-        'Attributes': 70,
-        'Skills': 60,
+        'Attributes': 40,
+        'Skills': 70,
         'Disciplines': 30,
         'Physical': 50,
-        'Social': 50, 
+        'Social': 50,
         'Mental': 50,
-        'Clan_Disciplines': 70, 
-        'Non-Clan_Disciplines': 20}
+        'Clan_Disciplines': 100,
+        'Non-Clan_Disciplines': 10}
     return start_weights
 
 def default_attibute_data():
@@ -102,7 +104,7 @@ def default_skill_data():
         'Physical_Skills': skills_physical,
         'Social_Skills': skills_social,
         'Mental_Skills': skills_mental}
-    
+
     return skills
 
 def default_discipline_data():
@@ -119,7 +121,7 @@ def default_discipline_data():
         'Oblivion': 0,
         'Animalism': 0,
         'Protean': 0}
-        
+
     return disciplines
 
 def default_generation_based_point_data():
@@ -140,12 +142,12 @@ def default_generation_based_point_data():
         14:5,
         15:5,
         16:5}
-    
+
     return generation_based_point_max
 
 def default_costs_data():
     xp_costs = {
-        'Attributes': 5, 
+        'Attributes': 5,
         'Skills': 3,
         'Disciplines': {
             'Clan_Disciplines': 5,

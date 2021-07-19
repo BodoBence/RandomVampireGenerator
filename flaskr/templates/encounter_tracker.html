@@ -2,11 +2,13 @@
 <html lang="en">
     <meta charset="UTF-8">
     <head>
+
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/encounter.css') }}">
-            
+
         {% include "head_meta.html" %}
+
     </head>
     <body>
 
@@ -21,8 +23,10 @@
         <div class="neon" id="add_encounter" name="add_encounter">
             <p name="add_encounter">Add Encounter!</p>
         </div>
-        
+
         {% include "footer.html" %}
+
+        {% include "version.html" %}
 
     </body>
 

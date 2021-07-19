@@ -10,7 +10,7 @@
 
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: 10vh;
     margin-top: 0;
 
     max-width: 1200px;
@@ -20,7 +20,7 @@
     /* for the backgroud svg */
     position: relative;
     z-index: 1;
-    
+
     -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
@@ -76,15 +76,15 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 10px;
-    
+
     max-height: 0px;
     overflow: hidden;
     padding: 0px;
 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 
@@ -147,7 +147,7 @@ h3 {
 .clan_logo {
     display: block;
     position: absolute;
-    
+
     top: 20em;
     left: 15%;
     width: 70%;

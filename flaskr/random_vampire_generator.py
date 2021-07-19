@@ -1,8 +1,6 @@
 # Random Vampire Generator
 import random
 import pprint
-import csv
-import math
 import default_data
 
 def derangement_check(basic_info):
@@ -10,7 +8,7 @@ def derangement_check(basic_info):
         basic_info['Derangement'] = default_data.get_derangement()
     else:
         basic_info.pop('Derangement')
-        
+
     return basic_info
 
 def calculate_metrics(character_sheet):
@@ -51,20 +49,23 @@ def create_name(sex, male_names, female_names, surnames, name_selection_critera,
                                             user_defined=manual_name)
         name_full = name_christian + ', ' + name_surname
     return name_full
-    
+
 def setup_character_sheet(basic_info):
     character_sheet = {}
+
     character_sheet['Character_Details'] = {}
     character_sheet['Character_Details']['Basic_Information'] = basic_info
     character_sheet['Character_Details']['Trackers'] = {'XP_Left': 0,
                                                         'Health': 0,
                                                         'Willpower': 0,
-                                                        'Blood_Potency': 0}
+                                                        'Blood_Potency': 0,
+                                                        'XP_Used': 0}
     character_sheet['Attributes'] = default_data.default_attibute_data()
     character_sheet['Skills'] = default_data.default_skill_data()
     character_sheet['Disciplines'] = {}
     character_sheet['Disciplines']['Clan_Disciplines'] = {}
     character_sheet['Disciplines']['Non-Clan_Disciplines'] = {}
+
     clan_disciplines = default_data.default_clan_disciplines_data()
     current_clan_disciplines = clan_disciplines[basic_info['Clan']]
     disciplines = default_data.default_discipline_data()
@@ -78,31 +79,27 @@ def setup_character_sheet(basic_info):
                                                                                   'Skills': {}}
     return character_sheet
 
-def calculate_xp_points(age, generation, max_age):
-    generation = str(generation)
-    max_xps_data = default_data.get_max_xps()
+def calculate_xp_points(age, generation, max_age, manual_calculation_condition, manual_xp):
+    if manual_calculation_condition:
 
-    max_xp_for_attributes = max_xps_data['Attributes'][generation]
-    max_xp_for_skills = max_xps_data['Skills'][generation]
-    max_xp_for_disciplines = max_xps_data['Disciplines'][generation]
+        xp_points = manual_xp
 
-    max_xp = max_xp_for_attributes + max_xp_for_skills + max_xp_for_disciplines
+    else:
 
-    age_factor = age / max_age
-    # normalize between 0 and 1 
-    norm_range_max = 1
-    norm_range_min = 0.2
-    min_age = 1
-    norm_age_factor = (norm_range_max - norm_range_min) * (age - min_age)/(max_age - min_age) + norm_range_min
+        xp_points = 0
+        yearly_xp_base = 1.2
+        min_xp = 300
 
-    xp_points = max(300, round(max_xp * norm_age_factor))
+        for i in range(age):
 
-    # xp_points = round((100 * (math.log(age+1))) + 30)
-    # xp_points = max(300, (age * 2))
-    # print('max_xp:', max_xp)
-    # print('age_factor', age_factor)
-    # print('norm_age_factor', norm_age_factor)
-    # print(xp_points)
+            yearly_xp = yearly_xp_base - (yearly_xp_base * (i / max_age))
+
+            xp_points = xp_points + yearly_xp
+
+        xp_points = max(min_xp, xp_points)
+
+        # xp_points = max(min_xp, round(max_xp * norm_age_factor))
+
     return xp_points
 
 def calculate_xp_cost_for_non_disciplines(current_level, cost):
@@ -150,7 +147,7 @@ def calculate_weights(weight_values):
     fill_list_n_times_with_input(
         input_list=weights['Attributes'],
         n=weight_values['Mental'],
-        custom_input='Mental_Attributes')  
+        custom_input='Mental_Attributes')
 
 # Fill Weights for Skill selection
     fill_list_n_times_with_input(
@@ -179,19 +176,25 @@ def calculate_weights(weight_values):
         n=weight_values['Non-Clan_Disciplines'],
         custom_input='Non-Clan_Disciplines')
 
-    return weights      
+    return weights
 
-def level_up(character_sheet, weight_values):
+def level_up(character_sheet, weight_values, input_conditions, input_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
     points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information']['Generation']]
     weights = calculate_weights(weight_values)
     xp = int(calculate_xp_points(age=character_sheet['Character_Details']['Basic_Information']['Age'],
                                  generation=character_sheet['Character_Details']['Basic_Information']['Generation'],
-                                 max_age=default_data.MAX_AGE))
+                                 max_age=default_data.MAX_AGE,
+                                 manual_calculation_condition=input_conditions['manual_calculation_condition'],
+                                 manual_xp=input_values['manual_calculation']))
+
+    #Store Character xp
+    character_sheet['Character_Details']['Trackers']['XP_Used'] = int(xp)
+
     xp_costs = default_data.default_costs_data()
     xp_stagnation_counter = []
-    
+
     while xp > 2 and len(xp_stagnation_counter) < 30:
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
@@ -201,7 +204,7 @@ def level_up(character_sheet, weight_values):
             current_level = int(character_sheet[current_category][current_type][current_stat]['Level'])
 
             # get most expensive potential discipline skill level
-            most_expensive_viable_level = 0 
+            most_expensive_viable_level = 0
 
             if current_type == 'Clan_Disciplines':
                 clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
@@ -214,7 +217,7 @@ def level_up(character_sheet, weight_values):
                 else:
                     if (level + 1) * clan_multiplier <= xp:
                         most_expensive_viable_level = level + 1
-            
+
             if most_expensive_viable_level != 0:
                 # get potential upgrade skills
                 current_discipline_skills = list(character_sheet[current_category][current_type][current_stat]['Skills'].keys())
@@ -229,16 +232,16 @@ def level_up(character_sheet, weight_values):
 
                 if len(potential_discipline_skills) == 0:
                     xp_stagnation_counter.append(1)
-                    continue                                    
+                    continue
 
                 future_level, future_skill, future_skill_description = random.choice(potential_discipline_skills)
 
                 if future_level > current_level:
                     character_sheet[current_category][current_type][current_stat]['Level'] += 1
-                
+
                 character_sheet[current_category][current_type][current_stat]['Skills'][future_skill] = future_skill_description
                 xp = xp - (clan_multiplier * future_level)
-                
+
             else:
                 xp_stagnation_counter.append(1)
                 continue
@@ -268,7 +271,7 @@ def clean_up_character(character_sheet):
                 disciplines_to_remove[discipline_type].append(discipline)
 
     # print('keys_to_remove', disciplines_to_remove)
-    
+
     for discipline_type, disciplines in disciplines_to_remove.items():
         for discipline in disciplines:
             del character_sheet['Disciplines'][discipline_type][discipline]
@@ -286,7 +289,7 @@ def generate(input_values, input_conditions, input_weights):
     clan = select_from_list(options=default_data.default_clans_data(),
                             condition=input_conditions['manual_clan_condition'],
                             user_defined=input_values['manual_clan'])
-  
+
     generation = select_from_list(options=default_data.default_generations_data(),
                                   condition=input_conditions['manual_generation_condition'],
                                   user_defined=input_values['manual_generation'])
@@ -311,13 +314,13 @@ def generate(input_values, input_conditions, input_weights):
                   'Generation': generation,
                   'Clan': clan,
                   'Sire': 'Older Vampire',
-                  'Age': age, 
+                  'Age': age,
                   'Derangement': 'N/A'}
 
     basic_info = derangement_check(basic_info)
-  
+
     character_sheet = setup_character_sheet(basic_info)
-    level_up(character_sheet, input_weights)
+    level_up(character_sheet, input_weights, input_conditions, input_values)
     calculate_metrics(character_sheet)
     clean_up_character(character_sheet)
 
@@ -329,4 +332,4 @@ def generate(input_values, input_conditions, input_weights):
 # input_conditions = default_data.start_conditions()
 # input_weights = default_data.start_weights()
 # character_sheet = generate(input_values, input_conditions, input_weights)
-# pprint.pprint(character_sheet)      
+# pprint.pprint(character_sheet)

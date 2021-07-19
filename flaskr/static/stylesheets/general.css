@@ -2,9 +2,6 @@
 
 :root {
     /* Colors */
-    --bg: rgb(22, 22, 22);
-    --fg: rgb(250, 220, 154);
-    --grey: rgb(244, 213, 197);
     --white: rgb(238, 238, 238);
     --light_bakcground_opaque: rgba(239, 239, 239, 0.813);
     --box_shadow_color: rgba(0, 0, 0, 0.807);
@@ -22,7 +19,7 @@
     --nav_left_margin: 20px;
     --corner_angle: 10px;
     --input_height: 30px;
-    --padding_distance: 0.5em;
+    --padding_distance: 1em;
     --main_height: 10px;
 
     /* Time */
@@ -58,17 +55,18 @@ p {
 /* Buttons */
 
 /* Button Neon */
- 
+
 .button_general {
     font-size: 1.25em;
-    font-weight: bold;
     padding: 1em;
-    
+
     position: relative;
 
     display: inline-block;
     cursor: pointer;
     width: 100%;
+
+    font-family: Helvetica !important;
 }
 
 
@@ -80,27 +78,31 @@ p {
     border-color: var(--color_neon_white);
 
     background-color: rgba(0, 0, 0, 0);
-    color: var(--color_neon_pink);
-    text-shadow: 0 0 1em currentColor;
+    color: var(--color_neon_white);
+    text-shadow: 0 0 1em var(--color_neon_pink);
 
-    box-shadow: 
-        0 0 1.5em currentColor,
-        inset 0 0 1.5em currentColor;
+    box-shadow:
+        0 0 1.5em var(--color_neon_pink),
+        inset 0 0 1.5em var(--color_neon_pink);
 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 
 .neon:hover {
     border-color: white;
     background-color: rgba(0, 0, 0, 0);
-    color: rgb(255, 255, 255);
+    color: var(--color_neon_white);
     text-shadow: 0 0 1em currentColor;
+
+    box-shadow:
+        0 0 1.5em var(--color_neon_white),
+        inset 0 0 1.5em var(--color_neon_white);
 }
- 
+
 
 /* Background (hmtl) */
 
@@ -123,7 +125,11 @@ footer {
     display: grid;
     grid-template-columns: 1fr 8fr;
     column-gap: 1em;
-    padding: 0;
+
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 
     width: 100%;
     min-height: 7vh;
@@ -134,30 +140,55 @@ footer {
     align-content: center;
 
     box-shadow: 0 -1vh 0.5vh black;
+
+    z-index: 5;
 }
 
-footer div {
-    background: url("/static/bitmaps/darkpack_black_logo.png");
+.div_dark_pack_logo_container {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    background: url("/static/bitmaps/darkpack_tranparent_logo_color_change_500px.png");
     background-repeat: no-repeat;
     background-position: bottom center;
     background-size: auto 100%;
 
     margin: 0;
     padding: 0;
+
 }
 
 footer p {
-    margin: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
     font-size: 0.75rem;
+
+    grid-column: 2;
 }
+
+/* Display version */
+
+#p_version_id {
+    display: block;
+    position: fixed;
+    right: 1em;
+    bottom: 0.5em;
+
+    font-size: 0.75rem;
+    z-index: 6;
+
+}
+
 
 /* General decorations */
 
 .animation_ease {
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 

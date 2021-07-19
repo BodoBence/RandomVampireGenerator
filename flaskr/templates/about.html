@@ -5,22 +5,49 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/about.css') }}">
-            
+
         {% include "head_meta.html" %}
     </head>
 
     <body>
 
         {% include "navigation.html" %}
-        
-        <div>
+
+        <div class="div_about_container">
+
+            <div class="div_about_text_card">
+                <p>Development</p>
+                <p>
+                    AutoFeed is developed by an enthusiastic fan of the Vampire The Masquerade, Bence Levente Bodó.
+                    It is intended as free-to-use tool for interasting ramdomized narration.
+                </p>
+            </div>
+
+            <div class="div_about_text_card">
+                <p>Thanks to</p>
+                <p>
+                    My darling, Fru for everything relatred coding and more.
+                </p>
+                <p>
+                    The Cordoba crew for their infinite supply of vampire experiences.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="div_about_container" id="div_about_logo_container_id">
+            <div class="div_dark_pack_logo_container"></div>
             <p>
-                About page
+                Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission.
+                All rights reserved. For more information please visit worldofdarkness.com.
+            </p>
+            <p>
+                The contents of this site / web application are not official World of Darkness materials.
             </p>
         </div>
 
-        {% include "footer.html" %}
-        
+        {% include "version.html" %}
+
         <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
 
