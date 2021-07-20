@@ -12,21 +12,31 @@
     </head>
     <body>
 
-        {% include "navigation.html" %}
+        <div class="app">
+            <div class="content_header">
+                {% include "navigation.html" %}
+            </div>
 
-        <div class="div_encounter_container">
-            {% for i in range(0, 2) %}
-                {% include "encounter_card.html" %}
-            {% endfor %}
+            <div class="content_main">
+                <div class="div_encounter_container">
+                    {% for i in range(0, 2) %}
+                        {% include "encounter_card.html" %}
+                    {% endfor %}
+                </div>
+        
+                <div class="neon" id="add_encounter" name="add_encounter">
+                    <p name="add_encounter">Add Encounter!</p>
+                </div>
+
+            </div>
+
+            <div class="content_footer">
+                
+                {% include "footer.html" %}
+
+            </div>
+
         </div>
-
-        <div class="neon" id="add_encounter" name="add_encounter">
-            <p name="add_encounter">Add Encounter!</p>
-        </div>
-
-        {% include "footer.html" %}
-
-        {% include "version.html" %}
 
     </body>
 

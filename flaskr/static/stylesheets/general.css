@@ -33,6 +33,38 @@
     font-family: Georgia, serif;
 }
 
+/* Main Layout */
+
+body {
+    margin: 0;
+}
+
+.app {
+    display: grid;
+    position: fixed;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(auto, 1fr) 8fr 1fr;
+    row-gap: 1em;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content_header, .content_main, .content_footer {
+    margin: 0;
+}
+
+.content_header {
+    display: grid;
+    padding-top: 1vh;
+}
+
+.content_main {
+    overflow: scroll;
+    padding: 0.5em;
+}
+
 /* Font */
 p {
     font-size: 1rem;
@@ -117,22 +149,16 @@ html, .title_container {
 
 /* Footer*/
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.content_footer {
 
     display: grid;
-    grid-template-columns: 1fr 8fr;
+    grid-template-columns: 3fr 8fr 1fr;
     column-gap: 1em;
 
     padding-left: 0;
     padding-right: 0;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-
-    width: 100%;
-    min-height: 7vh;
 
     background-color: var(--color_darkest);
 
@@ -150,15 +176,16 @@ footer {
 
     background: url("/static/bitmaps/darkpack_tranparent_logo_color_change_500px.png");
     background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: auto 100%;
+    background-position: center center;
+    background-size: contain;
 
     margin: 0;
     padding: 0;
+    padding-bottom: 1rem;
 
 }
 
-footer p {
+.content_footer p {
     margin-left: 1em;
     margin-right: 1em;
     margin-bottom: 0.5em;
@@ -172,13 +199,11 @@ footer p {
 
 #p_version_id {
     display: block;
-    position: fixed;
-    right: 1em;
-    bottom: 0.5em;
+    grid-column: 3;
+    grid-row: 1 / 3;
 
     font-size: 0.75rem;
     z-index: 6;
-
 }
 
 

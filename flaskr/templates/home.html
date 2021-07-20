@@ -16,22 +16,29 @@
 
     <body>
 
-        {% include "navigation.html" %}
+        <div class="app">
+            <div class="content_header">
+                {% include "navigation.html" %}
+            </div>
 
-        {% include "generator_inputs.html" %}
+            <div class="content_main">
+                {% include "generator_inputs.html" %}
 
+                {% if have_generated_character %}
+        
+                    {% include "generated_character.html" %}
+        
+                {% endif %}
 
-        {% if have_generated_character %}
+            </div>
 
-            {% include "generated_character.html" %}
+            <div class="content_footer">
+                
+                {% include "footer.html" %}
 
-        {% endif %}
+            </div>
 
-
-        {% include "footer.html" %}
-
-        {% include "version.html" %}
-
+        </div>
 
         <!-- Own scripts -->
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
