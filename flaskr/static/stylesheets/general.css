@@ -39,35 +39,6 @@ body {
     margin: 0;
 }
 
-.app {
-    display: grid;
-    position: fixed;
-    grid-template-columns: 1fr;
-    row-gap: 1em;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
-.content_header, .content_main, .content_footer {
-    margin: 0;
-}
-
-.content_header {
-    display: grid;
-    padding-top: 1vh;
-}
-
-.content_main {
-    overflow: scroll;
-    padding: 0.5em;
-}
-
-.content_footer {
-    max-height: 10vh;
-}
-
 /* Font */
 p {
     font-size: 1rem;
@@ -128,7 +99,7 @@ p {
 
 /* Background (hmtl) */
 
-html {
+html, #container_navigation_id {
     background: url("/static/bitmaps/night_street_width_2000_res_72.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -139,8 +110,7 @@ html {
 
 /* Footer*/
 
-.content_footer {
-
+#container_footer_id {
     display: grid;
     grid-template-columns: 3fr 8fr 1fr;
     column-gap: 1em;
@@ -175,7 +145,7 @@ html {
 
 }
 
-.content_footer p {
+#container_footer_id p {
     margin-left: 1em;
     margin-right: 1em;
     margin-bottom: 0.5em;
