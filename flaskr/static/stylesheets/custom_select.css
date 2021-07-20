@@ -46,8 +46,6 @@ select {
     font-size: 1rem;
     text-align: left;
     color: var(--white);
-
-    padding-left: var(--padding_distance);
 }
 
 .dropdown_button:hover {
