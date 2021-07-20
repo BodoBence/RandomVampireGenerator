@@ -122,7 +122,6 @@ input[type="number"] {
 .button_encounter[name="remove_encounter"] p {
     padding: 0;
     margin: 0;
-    font-size: 2rem;
     transform: rotate(45deg);
 
     -webkit-transition: all var(--base_animation_time) ease;  
