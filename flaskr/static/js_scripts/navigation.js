@@ -6,8 +6,6 @@ window.onload = start_logo_load_animation
 
 // Logo load animation
 
-
-
 function start_logo_load_animation() {
     logo_elements = document.getElementsByClassName("logo_element")
     
