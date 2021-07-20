@@ -43,7 +43,6 @@ body {
     display: grid;
     position: fixed;
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(auto, 1fr) 8fr 1fr;
     row-gap: 1em;
     width: 100vw;
     height: 100vh;
@@ -65,24 +64,16 @@ body {
     padding: 0.5em;
 }
 
+.content_footer {
+    max-height: 10vh;
+}
+
 /* Font */
 p {
     font-size: 1rem;
     color: var(--white) !important;
 }
 
-/* Styles */
-
-.glass {
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9),  rgba(255, 255, 255, 0.3));
-}
-
-.obsidian {
-    background: rgb(17,17,17);
-    background: linear-gradient(9deg, rgba(17,17,17,1) 47%, rgba(38,38,38,1) 56%, rgba(0,0,0,1) 89%, rgba(179,179,179,1) 94%, rgba(255,255,255,1) 100%);
-    border-radius: 0.5em;
-
-}
 
 /* Buttons */
 
@@ -100,7 +91,6 @@ p {
 
     font-family: Helvetica !important;
 }
-
 
 .neon {
     border: 2em;
@@ -138,7 +128,7 @@ p {
 
 /* Background (hmtl) */
 
-html, .title_container {
+html {
     background: url("/static/bitmaps/night_street_width_2000_res_72.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -192,6 +182,9 @@ html, .title_container {
     margin-top: 0.5em;
     font-size: 0.75rem;
 
+    text-overflow: ellipsis;
+    overflow: hidden;
+
     grid-column: 2;
 }
 
@@ -231,4 +224,12 @@ html, .title_container {
 
 .animation_rotate {
     transform: rotate(45deg) !important;
+}
+
+/* Phone Responsivity */
+
+@media screen and (max-width: 600px){
+    html {
+        font-size: 2rem;
+    }
 }
