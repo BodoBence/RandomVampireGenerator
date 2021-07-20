@@ -9,7 +9,7 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_base.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_dark.css') }}" id="link_character_color">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/print_character.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
 
         {% include "head_meta.html" %}
     </head>
@@ -17,6 +17,7 @@
     <body>
 
         {% include "navigation.html" %}
+
 
         {% include "generator_inputs.html" %}
 
@@ -26,8 +27,8 @@
             
         {% endif %}
 
-
         {% include "footer.html" %}
+
 
         <!-- Own scripts -->
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>

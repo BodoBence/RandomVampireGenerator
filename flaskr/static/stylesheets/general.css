@@ -15,8 +15,6 @@
     --color_black: rgb(0, 0, 0);
 
     /* Heights */
-    --nav_height: 20vh;
-    --nav_left_margin: 20px;
     --corner_angle: 10px;
     --input_height: 30px;
     --padding_distance: 1em;
@@ -36,8 +34,14 @@
 /* Main Layout */
 
 body {
-    margin: 0;
+    margin: 0; /* prevents scrollbars */
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
 }
+
 
 /* Font */
 p {
@@ -106,69 +110,6 @@ html, #container_navigation_id {
     background-position: center 35%;
     background-size: cover;
 }
-
-
-/* Footer*/
-
-#container_footer_id {
-    display: grid;
-    grid-template-columns: 3fr 8fr 1fr;
-    column-gap: 1em;
-
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-
-    background-color: var(--color_darkest);
-
-    text-align: center;
-    align-content: center;
-
-    box-shadow: 0 -1vh 0.5vh black;
-
-    z-index: 5;
-}
-
-.div_dark_pack_logo_container {
-    grid-column: 1;
-    grid-row: 1 / 3;
-
-    background: url("/static/bitmaps/darkpack_tranparent_logo_color_change_500px.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-
-    margin: 0;
-    padding: 0;
-    padding-bottom: 1rem;
-
-}
-
-#container_footer_id p {
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-    font-size: 0.75rem;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    grid-column: 2;
-}
-
-/* Display version */
-
-#p_version_id {
-    display: block;
-    grid-column: 3;
-    grid-row: 1 / 3;
-
-    font-size: 0.75rem;
-    z-index: 6;
-}
-
 
 /* General decorations */
 
