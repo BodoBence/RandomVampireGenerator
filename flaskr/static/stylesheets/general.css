@@ -29,6 +29,7 @@
 
     /* Misc */
     font-family: Georgia, serif;
+    font-size: 1rem;
 }
 
 /* Main Layout */
@@ -45,7 +46,6 @@ body {
 
 /* Font */
 p {
-    font-size: 1rem;
     color: var(--white) !important;
 }
 
@@ -139,8 +139,8 @@ html, #container_navigation_id {
 
 /* Phone Responsivity */
 
-@media screen and (max-width: 600px){
-    html {
-        font-size: 2rem;
+@media screen and (min-width: 2001px){
+    html, #container_navigation_id {
+        background: url("/static/bitmaps/night_street_width_3000.jpg");
     }
 }
