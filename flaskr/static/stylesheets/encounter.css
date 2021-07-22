@@ -3,7 +3,7 @@
     margin: 0;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     grid-template-rows: auto;
     grid-column-gap: 2vw;
     grid-row-gap: 2vh;
@@ -23,12 +23,8 @@
 
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 0.5fr 1fr 4fr 0.25fr;
-    grid-template-areas: 
-        "header header header button_remove"
-        "health_text health_counter health_trackers health_trackers"
-        "willpower_text willpower_counter willpower_trackers willpower_trackers"
-        "custom_text custom_counter custom_trackers custom_trackers";
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+    grid-template-rows: auto;
 
     -webkit-transition: all var(--base_animation_time) linear;  
     -moz-transition: all var(--base_animation_time) linear;  
@@ -45,21 +41,21 @@
  /* Encounter elements */
 
  .input_encounter_name {
-    grid-area: header;
+    grid-column: 1/4;
 }
 
-
-input[name="health_meter"] {
-    grid-area: health_counter;
+.health_label, .willpower_label, .custom_label {
+    grid-column: 1;
 }
 
-input[name="willpower_meter"] {
-    grid-area: willpower_counter;
+input[name="health_meter"], input[name="willpower_meter"], input[name="custom_meter"] {
+    grid-column: 2;
 }
 
-input[type="number"] {
-    width: 4em;
+.tracker_container[name="health_container"], .tracker_container[name="willpower_container"], .tracker_container[name="custom_container"] {
+    grid-column: 3;
 }
+
 
 .input_encounter_name, input[name="willpower_meter"], input[name="health_meter"], input[name="custom_meter"] {
 	-moz-appearance: none;
@@ -72,7 +68,7 @@ input[type="number"] {
 
     background-color: transparent;
     color: var(--white);
-    text-indent: 1em;
+    text-indent: 1rem;
     height: 2em;
 }
 
@@ -94,25 +90,9 @@ input[type="number"] {
     transition: all var(--base_animation_time) ease;
 }
 
-.health_label {
-    grid-area: health_text;
-}
-
-.willpower_label {
-    grid-area: willpower_text;
-}
-
-.tracker_container[name="health_container"] {
-    grid-area: health_trackers;
-}
-
-.tracker_container[name="willpower_container"] {
-    grid-area: willpower_trackers;
-}
-
 
 .button_encounter[name="remove_encounter"] {
-    grid-area: button_remove;
+    grid-column: 4;
     padding: 0;
     margin: 0;
     height: 1rem;
@@ -136,21 +116,6 @@ input[type="number"] {
 
     color: var(--color_neon_pink);
     text-shadow: 0 0 2em var(--color_neon_pink);
-}
-
-
-.custom_label {
-    grid-area: custom_text;
-}
-
-
-input[name="custom_meter"] {
-    grid-area: custom_counter;
-}
-
-
-.tracker_container[name="custom_container"]{
-    grid-area: custom_trackers;
 }
 
 .tracker {

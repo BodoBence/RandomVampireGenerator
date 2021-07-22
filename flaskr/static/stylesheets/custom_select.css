@@ -43,6 +43,7 @@ select {
 
 .dropdown_button p {
     pointer-events: none;
+    font-size: 1rem;
     text-align: left;
     color: var(--white);
 }
