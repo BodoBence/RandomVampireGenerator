@@ -65,6 +65,8 @@ p {
     width: 100%;
 
     font-family: Helvetica !important;
+
+    background: rgba(0, 0, 0, 0.8) !important;
 }
 
 .neon {
@@ -104,7 +106,7 @@ p {
 /* Background (hmtl) */
 
 html, #container_navigation_id {
-    background: url("/static/bitmaps/night_street_width_2000_res_72.jpg");
+    background: url("/static/bitmaps/background_width_1000_res_72.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center 35%;
@@ -139,8 +141,14 @@ html, #container_navigation_id {
 
 /* Phone Responsivity */
 
-@media screen and (min-width: 2001px){
+@media screen and (min-width: 2000px){
     html, #container_navigation_id {
-        background: url("/static/bitmaps/night_street_width_3000.jpg");
+        background: url("/static/bitmaps/background_width_2000_res_72.jpg");
+    }
+}
+
+@media screen and (min-width: 3000px){
+    html, #container_navigation_id {
+        background: url("/static/bitmaps/background_width_3000_res_72.jpg");
     }
 }
