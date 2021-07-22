@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
-    width: minmax(600px, 80vw);
+    width: 100%
 
     padding: var(--padding_distance);
 
@@ -66,4 +66,9 @@ p  {
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
+}
+
+#about_logo_id {
+    max-height: 25vh;
+    grid-row: 1/3;
 }

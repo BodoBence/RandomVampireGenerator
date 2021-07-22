@@ -24,7 +24,7 @@
 
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 2fr 2fr 2fr 0.5fr;
+    grid-template-columns: 2.5fr auto 2fr 0.5fr;
     grid-template-rows: auto;
     align-items: first baseline;
 
@@ -43,13 +43,14 @@
  /* Encounter elements */
 
  .input_encounter_name {
-    grid-column: 1/4;
+    grid-column: 1/5;
 }
 
 .health_label, .willpower_label, .custom_label {
     grid-column: 1;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-indent: 1rem;
 }
 
 input[name="health_meter"], input[name="willpower_meter"], input[name="custom_meter"] {
@@ -57,11 +58,13 @@ input[name="health_meter"], input[name="willpower_meter"], input[name="custom_me
 }
 
 .tracker_container[name="health_container"], .tracker_container[name="willpower_container"], .tracker_container[name="custom_container"] {
-    grid-column: 3;
+    grid-column: 3/6;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(1em, 1.25em));
-    gap: 0.1em;
+    gap: 0.3rem;
     justify-items: stretch;
+    min-width: 5em;
+    overflow: visible;
 }
 
 
@@ -80,6 +83,10 @@ input[name="health_meter"], input[name="willpower_meter"], input[name="custom_me
     text-indent: 1rem;
     
     height: 2em;
+}
+
+input[name="willpower_meter"], input[name="health_meter"], .tracker_container[name="custom_container"] {
+    margin-top: 0.4rem;
 }
 
 input[name="willpower_meter"], input[name="health_meter"], input[name="custom_meter"] {
@@ -106,7 +113,7 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
 
 
 .button_encounter[name="remove_encounter"] {
-    grid-column: 4;
+    grid-column: 5/6;
     grid-row: 1;
 
     padding: 0;

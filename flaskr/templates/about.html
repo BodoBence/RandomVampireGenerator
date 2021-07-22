@@ -11,52 +11,42 @@
 
     <body>
 
-        <div class="app">
-            <div class="content_header">
-                {% include "navigation.html" %}
+        {% include "navigation.html" %}
+
+        <div class="div_about_container">
+
+            <div class="div_about_text_card">
+                <p>Development</p>
+                <p>
+                    AutoFeed is developed by an enthusiastic fan of the Vampire The Masquerade, Bence Levente Bodó.
+                    It is intended as free-to-use tool for interasting ramdomized narration.
+                </p>
             </div>
 
-            <div class="content_main">
-                <div class="div_about_container">
-
-                    <div class="div_about_text_card">
-                        <p>Development</p>
-                        <p>
-                            AutoFeed is developed by an enthusiastic fan of the Vampire The Masquerade, Bence Levente Bodó.
-                            It is intended as free-to-use tool for interasting ramdomized narration.
-                        </p>
-                    </div>
-        
-                    <div class="div_about_text_card">
-                        <p>Thanks to</p>
-                        <p>
-                            My darling, Fru for everything related to coding and much more.
-                        </p>
-                        <p>
-                            The Cordoba crew for their infinite supply of vampire experiences.
-                        </p>
-                    </div>
-        
-                </div>
-        
-                <div class="div_about_container" id="div_about_logo_container_id">
-                    <div class="div_dark_pack_logo_container"></div>
-                    <p>
-                        Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission.
-                        All rights reserved. For more information please visit worldofdarkness.com.
-                    </p>
-                    <p>
-                        The contents of this site / web application are not official World of Darkness materials.
-                    </p>
-                </div>  
-
+            <div class="div_about_text_card">
+                <p>Thanks to</p>
+                <p>
+                    My darling, Fru for everything related to coding and much more.
+                </p>
+                <p>
+                    The Cordoba crew for their infinite supply of vampire experiences.
+                </p>
             </div>
 
-            <div class="content_footer">
-                
-                {% include "footer.html" %}
+        </div>
 
-            </div>
+        <div class="div_about_container" id="div_about_logo_container_id">
+            <img src="{{ url_for('static', filename='bitmaps/darkpack_tranparent_logo_color_change_500px.png') }}" alt="dark pack logo" id="about_logo_id">
+            <p>
+                Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission.
+                All rights reserved. For more information please visit worldofdarkness.com.
+            </p>
+            <p>
+                The contents of this site / web application are not official World of Darkness materials.
+            </p>
+        </div>  
+           
+        {% include "footer.html" %}
 
         <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>

@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     padding-top: 2vh;
+    z-index: 4;
 }
 
 #container_logo_id {
