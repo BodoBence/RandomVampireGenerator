@@ -138,3 +138,21 @@ select {
 .custom_arrow:hover {
     border-color: var(--bg);
 }
+
+
+.phone_custom_select_menu {
+    position: fixed !important;
+    width: 90%;
+    left: 5%;
+    overflow: scroll;
+}
+
+
+/* Phone Responsivity */
+
+/* @media only screen and (max-height: 740px){
+    .dropdown_content {
+        position: fixed !important;
+    }
+
+} */

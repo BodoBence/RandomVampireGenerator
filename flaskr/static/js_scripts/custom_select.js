@@ -7,8 +7,6 @@ document.addEventListener('click', close_dropdowns)
 function close_dropdowns(e){
   // by definition addEventListener first passes over the event as a parameter
   
-  // console.log('window click')
-  // console.log(e.target)
   // Quit in favour of other click tied functionality
   if (e.target.classList.contains('dropdown_button')){
     return
@@ -26,6 +24,7 @@ function close_dropdowns(e){
 
   for (let index = 0; index < dropdowns.length; index++) {
     const element = dropdowns[index];
+
     if (element.classList.contains('show')){
       element.classList.remove('show')
       let respective_button = document.getElementById(element.getAttribute('data-reference-id-button'))
@@ -42,7 +41,12 @@ function handle_custom_select(activated_custom_select){
   let custom_options_container = document.getElementById(custom_options_containter_id)
 
   custom_options_container.classList.toggle("show");
-  // console.log("opened the dropdown")
+
+  // Window size sensitivity for phones
+  if (window.innerHeight/2 < custom_options_container.offsetHeight){
+    console.log('found phone')
+    custom_options_container.classList.add('phone_custom_select_menu')
+  }
 
   // Trigeer cusotm arrow animaiton
   toggle_arrow_animation(activated_custom_select)
