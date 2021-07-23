@@ -3,14 +3,21 @@ console.log("first line of general.js")
 window.onload = visualize_current_page()
 
 function visualize_current_page(){
-    current_path = window.location.href
-    navigation_links = document.getElementsByName('navigation_link')
+    current_path = window.location.pathname
 
-    for (let index = 0; index < navigation_links.length; index++) {
-        const element = navigation_links[index]
-        if (element.href == current_path){
-            element.classList.add('current_page_link')
-        }
+    switch (current_path) {
+        case '/':
+            document.getElementById('nav_link_home').classList.add('current_page_link')
+            break
+        case '/result':
+            document.getElementById('nav_link_home').classList.add('current_page_link')
+            break
+        case '/encounter_tracker':
+            document.getElementById('nav_link_tracker').classList.add('current_page_link')
+            break
+        case '/about':
+            document.getElementById('nav_link_about').classList.add('current_page_link')
+            break 
     }
 }
 

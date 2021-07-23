@@ -23,7 +23,6 @@ function correct_overflow(){
     current_element = document.getElementById("input_container_id")
 
     current_element.addEventListener("transitionend", () => {
-        console.log("input container transitioned")
         if (current_element.classList.contains("animation_close") == false){
             current_element.style.overflow = "initial"
             // console.log("chanegd overflow to:")
@@ -49,7 +48,18 @@ function accordion_motion(current_trigger){
     console.log(target_element.classList)
 
     // Cleanup
-    target_element.classList.remove("animation_pre_smooth")   
+    function remove_animation_ease(){
+        target_element.classList.remove("animation_pre_smooth")
+        target_element.removeEventListener("webkitTransitionEnd", remove_animation_ease)
+        target_element.removeEventListener("transitionend", remove_animation_ease)
+    }
+    // Code for Chrome, Safari and Opera
+    target_element.addEventListener("webkitTransitionEnd", remove_animation_ease)
+
+    // Standard syntax
+    target_element.addEventListener("transitionend", remove_animation_ease)
+
+    console.log(target_element.classList)
 }
 
 function toggle_input_field(current_driver){
