@@ -99,11 +99,33 @@
 
 #nav_id li a {
     text-decoration: none;
-    color: var(--white);
+    color: var(--color_dark_grey);
     font-weight: normal;
+    font-family: Helvetica !important;
+
+    -webkit-transition: 
+        color var(--base_animation_time) ease, 
+        text-shadow var(--base_animation_time) !important;
+    -moz-transition:         
+        color var(--base_animation_time) ease, 
+        text-shadow var(--base_animation_time) !important;
+    -o-transition:         
+        color var(--base_animation_time) ease, 
+        text-shadow var(--base_animation_time) !important;
+    -ms-transition:          
+        color var(--base_animation_time) ease, 
+        text-shadow var(--base_animation_time) !important;
+    transition:          
+        color var(--base_animation_time) ease, 
+        text-shadow var(--base_animation_time) !important;
 }
 
-#nav_id li a:hover {
-    color: var(--color_neon_pink);
-    text-shadow: 0 0 2em var(--color_neon_pink);
+#nav_id li a:hover, .current_page_link:hover {
+    color: var(--color_neon_white) !important;
+    text-shadow: 0 0 2em currentColor;
+}
+
+.current_page_link {
+    color: var(--color_neon_pink) !important;
+    text-shadow: 0 0 2em currentColor;
 }

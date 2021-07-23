@@ -52,11 +52,21 @@
 
     box-shadow: 0 0 1em black;
 
-    -webkit-transition: box-shadow var(--base_animation_time) ease;
-    -moz-transition: box-shadow var(--base_animation_time) ease;
-    -o-transition: box-shadow var(--base_animation_time) ease;
-    -ms-transition: box-shadow var(--base_animation_time) ease;
-    transition: box-shadow var(--base_animation_time) ease;
+    -webkit-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -moz-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -o-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -ms-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
 }
 
 .div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover, .div_input_checkbox:hover {

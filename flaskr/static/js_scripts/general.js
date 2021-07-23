@@ -1,9 +1,20 @@
 console.log("first line of general.js")
 
-// Global functions
+window.onload = visualize_current_page()
+
+function visualize_current_page(){
+    current_path = window.location.href
+    navigation_links = document.getElementsByName('navigation_link')
+
+    for (let index = 0; index < navigation_links.length; index++) {
+        const element = navigation_links[index]
+        if (element.href == current_path){
+            element.classList.add('current_page_link')
+        }
+    }
+}
 
 function set_css_variable(variable_name, new_value) {
-    // Get the root element
     let r = document.querySelector(':root');
     r.style.setProperty(variable_name, new_value);
 }
@@ -95,7 +106,6 @@ function toogle_max_height(target_element){
         target_element.style.maxHeight = target_element.scrollHeight + "px";
     }
 }
-
 
 function cursor_to_wait(){
     console.log('changed cursor to wait')
