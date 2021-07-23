@@ -51,6 +51,12 @@
     border-color: var(--color_dark_grey);
 
     box-shadow: 0 0 1em black;
+
+    -webkit-transition: box-shadow var(--base_animation_time) ease;
+    -moz-transition: box-shadow var(--base_animation_time) ease;
+    -o-transition: box-shadow var(--base_animation_time) ease;
+    -ms-transition: box-shadow var(--base_animation_time) ease;
+    transition: box-shadow var(--base_animation_time) ease;
 }
 
 .div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover, .div_input_checkbox:hover {
@@ -120,12 +126,6 @@ input {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-
-    -webkit-transition: box-shadow var(--base_animation_time) ease;
-    -moz-transition: box-shadow var(--base_animation_time) ease;
-    -o-transition: box-shadow var(--base_animation_time) ease;
-    -ms-transition: box-shadow var(--base_animation_time) ease;
-    transition: box-shadow var(--base_animation_time) ease;
 }
 
 /* Number Inputs */
@@ -257,9 +257,6 @@ input[type="range"] {
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
     border-radius: 1em;
-
-    -webkit-transition: .2s;
-    transition: opacity .2s;
 
     z-index: 2;
 }

@@ -118,11 +118,11 @@ html, #container_navigation_id {
 /* Dynamically added classes for animation */
 
 .animation_pre_smooth {
-    -webkit-transition: all var(--base_animation_time) linear;
-    -moz-transition: all var(--base_animation_time) linear;
-    -o-transition: all var(--base_animation_time) linear;
-    -ms-transition: all var(--base_animation_time) linear;
-    transition: all var(--base_animation_time) linear;
+    -webkit-transition: all var(--base_animation_time) linear !important;
+    -moz-transition: all var(--base_animation_time) linear !important;
+    -o-transition: all var(--base_animation_time) linear !important;
+    -ms-transition: all var(--base_animation_time) linear !important;
+    transition: all var(--base_animation_time) linear !important;
 }
 
 
