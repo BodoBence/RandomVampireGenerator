@@ -39,9 +39,17 @@ function accordion_motion(current_trigger){
     target_class_1 = current_trigger.getAttribute("data-target-class-1")
     target_element = document.getElementById(target_id)
 
+    // Prepare for the animation
+    target_element.classList.add("animation_pre_smooth")    
+
     // Toggle animation
     target_element.classList.toggle(target_class_1)
     target_element.style.overflow = "hidden"
+
+    console.log(target_element.classList)
+
+    // Cleanup
+    target_element.classList.remove("animation_pre_smooth")   
 }
 
 function toggle_input_field(current_driver){

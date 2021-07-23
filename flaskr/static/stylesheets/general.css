@@ -115,20 +115,19 @@ html, #container_navigation_id {
 
 /* General decorations */
 
-.animation_ease {
-    -webkit-transition: all var(--base_animation_time) ease;
-    -moz-transition: all var(--base_animation_time) ease;
-    -o-transition: all var(--base_animation_time) ease;
-    -ms-transition: all var(--base_animation_time) ease;
-    transition: all var(--base_animation_time) ease;
-}
-
 /* Dynamically added classes for animation */
+
+.animation_pre_smooth {
+    -webkit-transition: all var(--base_animation_time) linear;
+    -moz-transition: all var(--base_animation_time) linear;
+    -o-transition: all var(--base_animation_time) linear;
+    -ms-transition: all var(--base_animation_time) linear;
+    transition: all var(--base_animation_time) linear;
+}
 
 
 .animation_close {
     max-height: 0px !important;
-    /* overflow: hidden !important; */
 }
 
 .show {
