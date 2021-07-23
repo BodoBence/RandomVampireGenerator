@@ -1,24 +1,15 @@
-/* Generator Inputs */
 
+form {
+    width: 100%;
+}
 
-/* Containers */
-
-.div_inputs_all {
+form > div {
     margin-top: 0;
     margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
-}
 
-
-.input_container, .div_input_button_container {
     display: grid;
-
-    -webkit-transition: all var(--base_animation_time) linear;
-    -moz-transition: all var(--base_animation_time) linear;
-    -o-transition: all var(--base_animation_time) linear;
-    -ms-transition: all var(--base_animation_time) linear;
-    transition: all var(--base_animation_time) linear;
 }
 
 .input_container {
@@ -33,9 +24,6 @@
     margin-top: 1em;
     grid-gap: 1em;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-    /* padding-left: 2rem;
-    padding-right: 2rem; */
-
 }
 
 .div_input_dropdown, .div_input_type_in, .div_input_slider, .div_input_checkbox, .div_input_text {
@@ -118,28 +106,14 @@
     position: relative;
 }
 
-
-/* Inputs */
-
 input {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-
-    -webkit-transition: all var(--base_animation_time) ease;
-    -moz-transition: all var(--base_animation_time) ease;
-    -o-transition: all var(--base_animation_time) ease;
-    -ms-transition: all var(--base_animation_time) ease;
-    transition: all var(--base_animation_time) ease;
 }
 
-/* Number Inputs */
 input[type="number"], input[type="text"], input[type="checkbox"] {
     display: inline-block;
-
-    -moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
 
     background-color: transparent;
 
@@ -161,8 +135,6 @@ input[type="checkbox"] {
     width: 2em;
 }
 
-/* Checkbox elements */
-/* Customize the label (the container) */
 .div_checkbox_container {
     display: block;
     position: relative;

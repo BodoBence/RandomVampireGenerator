@@ -5,17 +5,11 @@ create_global_event_listener("click", "button_download_vampire", convert_charact
 
 
 function create_event_listener_for_skills(class_name, target_class_name){
-    // console.log(class_name)
     var selected_class_elements = document.getElementsByClassName(class_name)
-    // console.log(selected_class_elements)
     for (let index = 0; index < selected_class_elements.length; index++) {
-        // console.log("loooop")
-        // console.log(selected_class_elements[index])
         selected_class_elements[index].addEventListener("click", e =>{
-            // console.log("inside the class based event listener creation")
             var reference = e.target.getAttribute("data-toggle-reference")
             var discipliine_skill_table = document.getElementsByClassName(target_class_name)[reference]
-            // console.log(discipliine_skill_table.style.visibility)
             toggle_visibility(discipliine_skill_table)
         })
     }
@@ -31,19 +25,13 @@ function toggle_discipline_skills (pressed_button){
 }
 
 function convert_character_to_pdf(){
-    console.log("in saving the character locally")
-
-    //  JSPDF + HTML2CANVAS SOLUTION 2
-
     var character_sheet = document.getElementById('generated_character_id')
     var character_sheet_width = character_sheet.offsetWidth
     var character_sheet_height = character_sheet.offsetHeight
     var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height]);
-    console.log('generating character')
     pdf.addHTML(character_sheet, 0, 0, function () {
         pdf.save('generated_vampire.pdf');
     });
-
 }
 
 function replace_underscores_inner_htmls(){
