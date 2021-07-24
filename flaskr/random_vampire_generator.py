@@ -1,8 +1,10 @@
 # Random Vampire Generator
-from flaskr.default_data import MAX_AGE
+
 import random
 import pprint
 import default_data
+
+from default_data import MAX_AGE
 
 def derangement_check(basic_info):
     if basic_info['Clan'] == 'Malkavian':
@@ -79,29 +81,7 @@ def setup_character_sheet(basic_info):
             character_sheet['Disciplines']['Non-Clan_Disciplines'][discipline] = {'Level': 0,
                                                                                   'Skills': {}}
     return character_sheet
-
-def calculate_age_modulated_weight (age):
-    base_attribute_weight = 1
-    base_skill_weight = 1
-    base_discipline_weight = 1
-
-
-    # must be higher than the base value
-    changed_attribute = 2
-    changed_skill = 1
-    changed_discipline = 3
-
-    changed_attribute_weight = int(base_attribute_weight + ((changed_attribute - base_attribute_weight) * (age / MAX_AGE)))
-    changed_skill_weight = int(base_skill_weight + ((changed_skill - base_skill_weight) * (age / MAX_AGE)))
-    changed_discipline_weight = int(base_attribute_weight + ((changed_discipline - base_discipline_weight) * (age / MAX_AGE)))
-
-    changed_weights = {
-        'Attributes': changed_attribute_weight,
-        'Skills': changed_skill_weight,
-        'Disciplines': changed_discipline_weight,}
-
-    return changed_weights
-
+   
 def calculate_xp_points(age, generation, max_age, manual_calculation_condition, manual_xp):
     if manual_calculation_condition:
 
@@ -133,7 +113,25 @@ def fill_list_n_times_with_input(input_list, n, custom_input):
         input_list.append(custom_input)
     return input_list
 
-def calculate_weights(weight_values):
+def calculate_weights(age, weight_values):
+
+    base_attribute_weight = weight_values['Attributes']
+    base_skill_weight = weight_values['Skills']
+    base_discipline_weight = weight_values['Disciplines']
+
+    # must be higher than the base value
+    changed_attribute = default_data.age_modulated_weights()['Attributes']
+    changed_skill = default_data.age_modulated_weights()['Skills']
+    changed_discipline = default_data.age_modulated_weights()['Disciplines']
+
+    changed_attribute_weight = int(base_attribute_weight + ((changed_attribute - base_attribute_weight) * (age / MAX_AGE)))
+    changed_skill_weight = int(base_skill_weight + ((changed_skill - base_skill_weight) * (age / MAX_AGE)))
+    changed_discipline_weight = int(base_attribute_weight + ((changed_discipline - base_discipline_weight) * (age / MAX_AGE)))
+
+    weight_values['Attributes'] = changed_attribute_weight
+    weight_values['Skills'] = changed_skill_weight
+    weight_values['Disciplines'] = changed_discipline_weight
+
     weights = {'Categories': [],
                'Attributes': [],
                'Skills': [],
@@ -204,7 +202,9 @@ def level_up(character_sheet, weight_values, input_conditions, input_values):
     # Variable setup
     generation_data = default_data.default_generation_based_point_data()
     points_maximum = generation_data[character_sheet['Character_Details']['Basic_Information']['Generation']]
-    weights = calculate_weights(weight_values)
+    weights = calculate_weights(
+        age = character_sheet['Character_Details']['Basic_Information']['Age'], 
+        weight_values = weight_values)
     xp = int(calculate_xp_points(age=character_sheet['Character_Details']['Basic_Information']['Age'],
                                  generation=character_sheet['Character_Details']['Basic_Information']['Generation'],
                                  max_age=default_data.MAX_AGE,

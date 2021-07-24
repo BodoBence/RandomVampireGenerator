@@ -1,5 +1,4 @@
 <form action = "/result" method='POST'>
-<<<<<<< HEAD
     <div id="input_container_id">
         <div>
             <p>
@@ -21,16 +20,12 @@
                 If needed higher level disciplines can be added using V20 rules.
             </p>
         </div>
-=======
-    <div class="div_inputs_all">
-        <div class="input_container" id="input_container_id">
->>>>>>> b60369442f8709f077ddd992be76011e2a0d2c54
 
         <div>
             <label for="slider_social">Social focus:</label>
             <input
                 id="slider_social"
-                data-reference-id="value_social"
+                data-reference-id="value_social_id"
                 class="slider"
                 type="range"
                 name="simplified_social"
@@ -38,15 +33,14 @@
                 max="100"
                 value="50"
             >
-            <label for="slider_social" id="value_social">50</label>
-
+            <label for="slider_social" id="value_social_id">50</label>
         </div>
 
         <div>
             <label for="slider_mental">Mental focus:</label>
             <input
                 id="slider_mental"
-                data-reference-id="value_mental"
+                data-reference-id="value_mental_id"
                 class="slider"
                 type="range"
                 name="simplified_mental"
@@ -54,17 +48,14 @@
                 max="100"
                 value="50"
             >
-
-            <label for="slider_mental" id="value_mental">50</label>
-
+            <label for="slider_mental" id="value_mental_id">50</label>
         </div>
 
         <div>
-
             <label for="slider_physical">Physical focus:</label>
             <input
                 id="slider_physical"
-                data-reference-id="value_physical"
+                data-reference-id="value_physical_id"
                 class="slider"
                 type="range"
                 name="simplified_physical"
@@ -72,17 +63,11 @@
                 max="100"
                 value="50"
             >
-
-            <label for="slider_physical" id="value_physical">
-                50
-            </label>
-
+            <label for="slider_physical" id="value_physical_id">50</label>
         </div>
 
         <div>
-
             <label for="slider_discipline">Non-clan disciplines:</label>
-
             <input
                 id="slider_discipline"
                 data-reference-id="value_discipline"
@@ -93,23 +78,19 @@
                 max="100"
                 value="5"> 
 
-            <label for="slider_discipline" id="value_discipline">
-                5
-            </label>
-
+            <label for="slider_discipline" id="value_discipline">5</label>
         </div>
 
         <div>
-
-            <p>Clan:</p>
-
-            <div class="div_select">
+            <label for="button_clan_list_id">Clan:</label>
+            <div class="dropdown_button " data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list_id">
+                <p>Random</p>
                 <select
                     class="dropdown_selectors"
                     list="clans"
                     name="manual_clan"
                     id="selection_clan">
-
+    
                     <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
                     {% for clan in clans %}
                         <option
@@ -118,14 +99,9 @@
                             {{ clan }}
                         </option>
                     {% endfor %}
-
+    
                 </select>
-                <div class="dropdown_button " data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list">
-                    <p>
-                        Random
-                    </p>
-                </div>
-                <ul class="dropdown_content" data-reference-id-button="button_clan_list" id="clan_container">
+                <ul class="dropdown_content" data-reference-id-button="button_clan_list_id" id="clan_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> Random </li>
                     {% for clan in clans %}
                         <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
@@ -136,39 +112,35 @@
         </div>
 
         <div>
-
-                <p>Sex:</p>
-
-            <div class="div_select">
+            <label for="button_sex_list_id">Sex:</label>
+            <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list_id">
+                <p>Random</p>
                 <select
-                    class="dropdown_selectors"
-                    list="sexes"
-                    name="manual_sex"
-                    id="selection_sex">
+                class="dropdown_selectors"
+                list="sexes"
+                name="manual_sex"
+                id="selection_sex">
 
                     <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
                     <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
                 </select>
-                <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list">
-                    <p>
-                        Random
-                    </p>
-                </div>
                 <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Female </li>
-                    <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list" name="sex_option"> Male </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Female </li>
+                    <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Male </li>
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_sex"></span>
             </div>
+            <span class="custom_arrow" id="custom_arrow_id_sex"></span>
+
         </div>
 
         <div>
-
-                <p>Generation:</p>
-
-            <div class="div_select">
+            <label for="button_generation_list_id">Generation:</label>
+            <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list_id">
+                <p>
+                    Random
+                </p>
                 <select
                     class="dropdown_selectors"
                     list="gens"
@@ -180,27 +152,23 @@
                         <option value="{{ generation }}" {% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> {{ generation }} </option>
                     {% endfor %}
                 </select>
-
-                <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list">
-                    <p>
-                        Random
-                    </p>
-                </div>
                 <ul class="dropdown_content" data-reference-id-button="button_generation_list" id="generation_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list_id" name="generation_option"> Random </li>
                     {% for generation in generations %}
-                    <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list" name="generation_option"> {{ generation }} </li>
+                    <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list_id" name="generation_option"> {{ generation }} </li>
                     {% endfor %}
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_generation"></span>
             </div>
+            <span class="custom_arrow" id="custom_arrow_id_generation"></span>
+
         </div>
 
         <div>
-
-            <p>Age:</p>
-
-            <div class="div_select">
+            <label for="button_age_list_id">Age:</label>
+            <div class="dropdown_button " data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list_id">
+                <p>
+                    Random
+                </p>
                 <select
                     class="dropdown_selectors"
                     list="ages"
@@ -209,84 +177,77 @@
                     data-input-reference="manual_age_input_id"
                     data-input-default="300"
                     data-input-focus="Random"
-                    data-reference-id-button="button_age_list">
+                    data-reference-id-button="button_age_list"
+                >
 
                     <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
                 </select>
-
-                <div class="dropdown_button " data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list">
-                    <p>
-                        Random
-                    </p>
-                </div>
                 <ul class="dropdown_content" data-reference-id-button="button_age_list" id="age_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list" name="age_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Manual </li>
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_age"></span>
+            <span class="custom_arrow" id="custom_arrow_id_age"></span>
             </div>
-            <div>
-                <input
-                    type="number"
-                    min=1
-                    max=3000
-                    name="manual_age"
-                    value={{ field_values['manual_age'] }}
-                    class="selection_driver"
-                    data-driver-reference="selection_age"
-                    id="manual_age_input_id">
-            </div>
+
+            <input
+                type="number"
+                min=1
+                max=3000
+                name="manual_age"
+                value={{ field_values['manual_age'] }}
+                class="selection_driver"
+                data-driver-reference="selection_age"
+                id="manual_age_input_id"
+            >
+
         </div>
 
         <div>
-
-                <p>XP Calculation:</p>
-
-            <div class="div_select">
+            <label for="button_calculation_list_id">XP Calculation:</label>
+            <div class="dropdown_button " data-reference-id="calculation_container"  data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list_id">
+                <p>
+                    Algorythm
+                </p>
                 <select
-                    class="dropdown_selectors"
-                    list="calulation"
-                    name="manual_calculation_selection"
-                    id="selection_calculation"
-                    data-input-reference="manual_calculation_input_id"
-                    data-input-default="800"
-                    data-input-focus="Algorythm"
-                    data-reference-id-button="button_calculation_list">
+                class="dropdown_selectors"
+                list="calulation"
+                name="manual_calculation_selection"
+                id="selection_calculation"
+                data-input-reference="manual_calculation_input_id"
+                data-input-default="800"
+                data-input-focus="Algorythm"
+                data-reference-id-button="button_calculation_list">
 
                     <option value="Algorythm" {% if field_conditions['manual_calculation_condition']==False %} selected="selected" {% endif %}> Algorythm </option>
                     <option value="Manual" {% if field_conditions['manual_calculation_condition']==True %} selected="selected" {% endif %}> Manual </option>
                 </select>
-
-                <div class="dropdown_button " data-reference-id="calculation_container"  data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list">
-                    <p>
-                        Algorythm
-                    </p>
-                </div>
                 <ul class="dropdown_content" data-reference-id-button="button_calculation_list" id="calculation_container">
-                    <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list" name="calculation_option"> Algorythm </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list" name="calculation_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorythm </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Manual </li>
                 </ul>
                 <span class="custom_arrow" id="custom_arrow_id_calculation"></span>
             </div>
-            <div>
-                <input
-                    type="number"
-                    min=1
-                    max=5000
-                    name="manual_calculation"
-                    value={{ field_values['manual_calculation'] }}
-                    class="selection_driver"
-                    data-driver-reference="selection_calculation"
-                    id="manual_calculation_input_id">
-            </div>
+            <input
+                type="number"
+                min=1
+                max=5000
+                name="manual_calculation"
+                value={{ field_values['manual_calculation'] }}
+                class="selection_driver"
+                data-driver-reference="selection_calculation"
+                id="manual_calculation_input_id"
+            >
+                
         </div>
 
         <div>
+            <p>Name:</p>
 
-                <p>Name:</p>
-
-            <div class="div_select">
+            <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list">
+                <p>
+                    Random
+                </p>
                 <select
                     class="dropdown_selectors"
                     list="names"
@@ -300,62 +261,55 @@
                     <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
                     <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                 </select>
-                <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list">
-                    <p>
-                        Random
-                    </p>
-                </div>
                 <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
                     <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
                 </ul>
+            
                 <span class="custom_arrow" id="custom_arrow_id_name"></span>
             </div>
-            <div>
-                <input
-                    type="text"
-                    name="manual_name"
-                    value={{ field_values['manual_name'] }}
-                    class="selection_driver"
-                    data-driver-reference="selection_name"
-                    id="manual_name_input_id">
-            </div>
+
+            <input
+                type="text"
+                name="manual_name"
+                value={{ field_values['manual_name'] }}
+                class="selection_driver"
+                data-driver-reference="selection_name"
+                id="manual_name_input_id">
+
         </div>
 
         <div>
 
-                <p>Theme:</p>
-
-            <div class="div_select">
+            <label for="button_theme_list_id">Theme:</label>
+            <div class="dropdown_button " data-reference-id="theme_container" data-reference-id-arrow="custom_arrow_id_theme" id="button_theme_list_id">
+                <p>
+                    Dark
+                </p>
                 <select
-                    class="dropdown_selectors"
-                    list="character_themes"
-                    name="theme_selector"
-                    id="selection_theme">
+                class="dropdown_selectors"
+                list="character_themes"
+                name="theme_selector"
+                id="selection_theme">
 
-                    <option value="Light" selected="selected"> Light </option>
-                    <option value="Dark"> Dark </option>
+                <option value="Light" selected="selected"> Light </option>
+                <option value="Dark"> Dark </option>
 
-                </select>
-                <div class="dropdown_button " data-reference-id="theme_container" data-reference-id-arrow="custom_arrow_id_theme" id="button_theme_list">
-                    <p>
-                        Dark
-                    </p>
-                </div>
+            </select>
                 <ul class="dropdown_content " data-reference-id-button="button_theme_list" id="theme_container">
                     <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
                     <li class="fake_option" data-reference-option="Dark" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Dark </li>
                 </ul>
                 <span class="custom_arrow" id="custom_arrow_id_theme"></span>
+
             </div>
+
         </div>
 
         <div>
             <label for="checkbox_skills">Use V20 level 6+ skills</label>
-
             <input type="checkbox" id="checkbox_skills">
             <span class="checkmark"></span>
-               
         </div>
     </div>
 

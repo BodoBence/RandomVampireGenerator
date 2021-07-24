@@ -45,6 +45,16 @@ def start_weights():
         'Non-Clan_Disciplines': 10}
     return start_weights
 
+def age_modulated_weights():
+
+    age_modulated_weights = {
+        'Attributes': 40,
+        'Skills': 70,
+        'Disciplines': 90}
+    
+    return age_modulated_weights
+
+
 def default_attibute_data():
     attributes_physical = {
         'Strength': 1,
