@@ -85,6 +85,7 @@ def calculate_age_modulated_weight (age):
     base_skill_weight = 1
     base_discipline_weight = 1
 
+
     # must be higher than the base value
     changed_attribute = 2
     changed_skill = 1
