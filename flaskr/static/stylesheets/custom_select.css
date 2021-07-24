@@ -91,11 +91,8 @@ select {
     text-shadow: 0 0 2em var(--color_neon_pink);
 }
 
-.custom_arrow {
+span {
     display: block;
-    float: right;
-    position: absolute;
-
     z-index: 3 ;
 
     top: calc(50% - 0.5rem);
@@ -135,7 +132,7 @@ select {
 
 }
 
-.custom_arrow:hover {
+span:hover {
     border-color: var(--bg);
 }
 

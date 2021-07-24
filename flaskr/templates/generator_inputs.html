@@ -107,8 +107,8 @@
                         <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
                     {% endfor %}
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_clan"></span>
             </div>
+            <span id="custom_arrow_id_clan"></span>
         </div>
 
         <div>
@@ -131,7 +131,7 @@
                     <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Male </li>
                 </ul>
             </div>
-            <span class="custom_arrow" id="custom_arrow_id_sex"></span>
+            <span id="custom_arrow_id_sex"></span>
 
         </div>
 
@@ -159,7 +159,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <span class="custom_arrow" id="custom_arrow_id_generation"></span>
+            <span id="custom_arrow_id_generation"></span>
 
         </div>
 
@@ -187,8 +187,8 @@
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Random </li>
                     <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Manual </li>
                 </ul>
-            <span class="custom_arrow" id="custom_arrow_id_age"></span>
             </div>
+            <span id="custom_arrow_id_age"></span>
 
             <input
                 type="number"
@@ -226,8 +226,8 @@
                     <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorythm </li>
                     <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Manual </li>
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_calculation"></span>
             </div>
+            <span id="custom_arrow_id_calculation"></span>
             <input
                 type="number"
                 min=1
@@ -242,9 +242,9 @@
         </div>
 
         <div>
-            <p>Name:</p>
+            <label for="button_name_list_id">Name:</label>
 
-            <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list">
+            <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list_id">
                 <p>
                     Random
                 </p>
@@ -262,12 +262,11 @@
                     <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
                 </select>
                 <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list" name="name_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list_id" name="name_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list_id" name="name_option"> Manual </li>
                 </ul>
-            
-                <span class="custom_arrow" id="custom_arrow_id_name"></span>
             </div>
+            <span id="custom_arrow_id_name"></span>
 
             <input
                 type="text"
@@ -300,9 +299,8 @@
                     <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
                     <li class="fake_option" data-reference-option="Dark" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Dark </li>
                 </ul>
-                <span class="custom_arrow" id="custom_arrow_id_theme"></span>
-
             </div>
+            <span id="custom_arrow_id_theme"></span>
 
         </div>
 
