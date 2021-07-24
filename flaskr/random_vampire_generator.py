@@ -1,4 +1,5 @@
 # Random Vampire Generator
+from flaskr.default_data import MAX_AGE
 import random
 import pprint
 import default_data
@@ -79,6 +80,27 @@ def setup_character_sheet(basic_info):
                                                                                   'Skills': {}}
     return character_sheet
 
+def calculate_age_modulated_weight (age):
+    base_attribute_weight = 1
+    base_skill_weight = 1
+    base_discipline_weight = 1
+
+    # must be higher than the base value
+    changed_attribute = 2
+    changed_skill = 1
+    changed_discipline = 3
+
+    changed_attribute_weight = int(base_attribute_weight + ((changed_attribute - base_attribute_weight) * (age / MAX_AGE)))
+    changed_skill_weight = int(base_skill_weight + ((changed_skill - base_skill_weight) * (age / MAX_AGE)))
+    changed_discipline_weight = int(base_attribute_weight + ((changed_discipline - base_discipline_weight) * (age / MAX_AGE)))
+
+    changed_weights = {
+        'Attributes': changed_attribute_weight,
+        'Skills': changed_skill_weight,
+        'Disciplines': changed_discipline_weight,}
+
+    return changed_weights
+
 def calculate_xp_points(age, generation, max_age, manual_calculation_condition, manual_xp):
     if manual_calculation_condition:
 
@@ -87,7 +109,7 @@ def calculate_xp_points(age, generation, max_age, manual_calculation_condition, 
     else:
 
         xp_points = 0
-        yearly_xp_base = 1.2
+        yearly_xp_base = 3
         min_xp = 300
 
         for i in range(age):
@@ -95,10 +117,9 @@ def calculate_xp_points(age, generation, max_age, manual_calculation_condition, 
             yearly_xp = yearly_xp_base - (yearly_xp_base * (i / max_age))
 
             xp_points = xp_points + yearly_xp
-
+        print(xp_points)
         xp_points = max(min_xp, xp_points)
-
-        # xp_points = max(min_xp, round(max_xp * norm_age_factor))
+        
 
     return xp_points
 

@@ -35,9 +35,9 @@ def start_values():
 
 def start_weights():
     start_weights = {
-        'Attributes': 40,
+        'Attributes': 20,
         'Skills': 70,
-        'Disciplines': 30,
+        'Disciplines': 50,
         'Physical': 50,
         'Social': 50,
         'Mental': 50,

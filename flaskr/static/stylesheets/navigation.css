@@ -10,10 +10,15 @@
 
 #container_logo_id {
     display: block;
-
     margin: auto;
     max-width: 80%;
     min-height: 80%;
+}
+
+#container_navigation_id p {
+    text-align: center;
+    color: var(--color_neon_pink) !important;
+    text-shadow: 0 0 1em currentColor;
 }
 
 /* Logo svg as a whole */
