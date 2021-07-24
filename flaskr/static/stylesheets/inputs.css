@@ -13,7 +13,7 @@ form > div {
 
 form > div > div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(3em, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(3em, auto));
     justify-items: stretch;
     padding: 1rem;
     gap: 1rem;
@@ -25,7 +25,7 @@ form > div > div {
     box-shadow: 0 0 1em black;
 }
 
-form > div > div p:last-child {
+form > div > div label:last-child {
     justify-self: end;
 }
 
