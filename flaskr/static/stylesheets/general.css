@@ -95,6 +95,22 @@ html, #container_navigation_id {
     background-size: cover;
 }
 
+<<<<<<< HEAD
+=======
+/* General decorations */
+
+/* Dynamically added classes for animation */
+
+.animation_pre_smooth {
+    -webkit-transition: all var(--base_animation_time) linear !important;
+    -moz-transition: all var(--base_animation_time) linear !important;
+    -o-transition: all var(--base_animation_time) linear !important;
+    -ms-transition: all var(--base_animation_time) linear !important;
+    transition: all var(--base_animation_time) linear !important;
+}
+
+
+>>>>>>> b60369442f8709f077ddd992be76011e2a0d2c54
 .animation_close {
     max-height: 0px !important;
 }
