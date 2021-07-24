@@ -64,6 +64,7 @@ form > div > div:hover {
 
 label {
     color: var(--white);
+    padding: 1rem;
 }
 
 .div_input_button_container{
