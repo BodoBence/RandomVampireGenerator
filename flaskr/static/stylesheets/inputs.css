@@ -1,16 +1,32 @@
-
-form {
-    width: 100%;
-}
-
 form > div {
-    margin-top: 0;
     margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
-
+    padding: 1rem;
     display: grid;
+
 }
+
+form > div > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3em, 1fr));
+    align-items: first baseline;
+    gap: 1rem;
+    margin: 0;
+    padding: 1em;
+    background-color: var(--color_black_transparent);
+    border-radius: 0.5em;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: var(--color_dark_grey);
+    box-shadow: 0 0 1em black;
+}
+
+form > div > div:hover {
+    box-shadow: 0 0 1em var(--color_neon_pink);
+    border-color: var(--color_neon_white);
+} 
+
 
 .input_container {
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
@@ -26,77 +42,16 @@ form > div {
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
 }
 
-.div_input_dropdown, .div_input_type_in, .div_input_slider, .div_input_checkbox, .div_input_text {
-    display: grid;
-
-    align-items: first baseline;
-
-    gap: 1rem;
-
-    margin: 0;
-    padding: 1em;
-
-    background-color: var(--color_black_transparent);
-
-    border-radius: 0.5em;
-    border-width: 0.1em;
-    border-style: solid;
-    border-color: var(--color_dark_grey);
-
-    box-shadow: 0 0 1em black;
-}
-
-.div_input_dropdown:hover, .div_input_type_in:hover, .div_input_slider:hover, .div_input_checkbox:hover {
-    box-shadow: 0 0 1em var(--color_neon_pink);
-    border-color: var(--color_neon_white);
-}
-
-.div_input_text_container p {
+div p {
     grid-template-columns: 1fr 2fr;
 }
 
-.div_input_text_card {
-    display: grid;
-    row-gap: 0;
-    column-gap: 0.5rem;
-}
-
-.div_input_text_card p {
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-}
-
-.div_input_text {
-    grid-column: 1/-1;
-    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-}
-
-.div_input_dropdown {
-    grid-template-columns: 1fr 1fr;
-}
-
-.div_input_slider {
-    grid-template-columns: 1fr 2fr 0.5fr;
-}
-
-.div_input_type_in {
-    grid-template-columns: 1fr 1fr 1fr;
-}
 
 .div_input_checkbox {
     grid-template-columns: 3fr 1fr;
 }
 
-.div_button_load_defaults {
-    margin: auto;
-    width: 100%;
-    position: relative;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.div_type_in, .div_slider, .div_checkbox {
+.div_type_in, .div_checkbox {
     padding-bottom: 1em;
     padding-top: 1em;
 }
@@ -223,21 +178,14 @@ input[type="number"]:hover, input[type="text"]:hover, input[type="checkbox"]:hov
 
 /* Range inputs */
 input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
     height: 0.25rem;
-
     width: 100%;
-
     vertical-align: text-bottom;
-
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
     border-radius: 1em;
-
     -webkit-transition: .2s;
-    transition: opacity .2s;
-
+    transition: opacity .2s ease;
     z-index: 2;
 }
 
@@ -248,23 +196,19 @@ input[type="range"]:hover, input[type="checkbox"] {
 
 /* Slider's circle */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: var(--main_height);
-    height: var(--main_height);
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     border-color: var(--color_neon_white);
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
-    cursor: pointer;
 }
 
 input[type="range"]::-moz-range-thumb {
-    width: var(--main_height);
-    height: var(--main_height);
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     border-color: var(--color_neon_white);
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
-    cursor: pointer;
 }

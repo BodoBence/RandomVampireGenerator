@@ -9,14 +9,12 @@
     --color_dark_grey: rgba(81, 81, 81, 0.76);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
     --color_neon_pink: hsla(313, 94%, 70%, 1);
-    --color_neon_pink_transparent: rgba(250, 107, 219, 0.493);
     --color_black: rgb(0, 0, 0);
 
     /* Time */
     --base_animation_time: 0.7s;
     --load_animation_time: 0.25s;
     --load_animation_time_randomized: 0s;
-    --footer_height: 5%;
     --screen_scale: 1;
 
     /* Misc */
@@ -28,23 +26,15 @@
 
 body {
     margin: 0; /* prevents scrollbars */
-
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto 1fr auto;
     height: 100%;
 }
 
-
-/* Font */
 p {
     color: var(--white) !important;
 }
-
-
-/* Buttons */
-
-/* Button Neon */
 
 .button_general {
     font-size: 1.25em;
@@ -68,7 +58,7 @@ p {
     border-radius: 0.25em;
     border-color: var(--color_neon_white);
 
-    background-color: rgba(0, 0, 0, 0);
+    background-color: black;
     color: var(--color_neon_white);
     text-shadow: 0 0 1em var(--color_neon_pink);
 
@@ -76,11 +66,11 @@ p {
         0 0 1.5em var(--color_neon_pink),
         inset 0 0 1.5em var(--color_neon_pink);
 
-    -webkit-transition: all var(--base_animation_time) ease;
-    -moz-transition: all var(--base_animation_time) ease;
-    -o-transition: all var(--base_animation_time) ease;
-    -ms-transition: all var(--base_animation_time) ease;
-    transition: all var(--base_animation_time) ease;
+    -webkit-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -moz-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -o-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -ms-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
 }
 
 .neon:hover {
@@ -105,19 +95,8 @@ html, #container_navigation_id {
     background-size: cover;
 }
 
-/* General decorations */
-
-.animation_ease {
-    -webkit-transition: all var(--base_animation_time) ease;
-    -moz-transition: all var(--base_animation_time) ease;
-    -o-transition: all var(--base_animation_time) ease;
-    -ms-transition: all var(--base_animation_time) ease;
-    transition: all var(--base_animation_time) ease;
-}
-
 .animation_close {
     max-height: 0px !important;
-    /* overflow: hidden !important; */
 }
 
 .show {

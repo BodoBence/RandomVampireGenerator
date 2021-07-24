@@ -1,124 +1,110 @@
 <form action = "/result" method='POST'>
 
-        <div class="input_container animation_ease" id="input_container_id">
+        <div class="input_container" id="input_container_id">
 
             <div class="div_input_text">
-                <div class="div_input_text_card">
-                    <p>Sliders:</p>
-                    <p>
-                        The ratio of the sliders (mental, social, physical) in relation to eachother influences
-                        the "persoanlity" of the generated character. The Non-clan disciplines slider controls the opportunities
-                        to learn dark skills outside of one's clan.
-                    </p>
-                </div>
 
-                <div class="div_input_text_card">
-                    <p>Age:</p>
-                    <p>
-                        The maximum age is 3000, therefore in most cases the use of manual age
-                        is recommended for results that accomodate average gaming sessions.
-                    </p>
-                </div>
+                <p>Sliders:</p>
+                <p>
+                    The ratio of the sliders (mental, social, physical) in relation to eachother influences
+                    the "persoanlity" of the generated character. The Non-clan disciplines slider controls the opportunities
+                    to learn dark skills outside of one's clan.
+                </p>
 
-                <div class="div_input_text_card">
-                    <p>Generation:</p>
-                    <p>
-                        These values range between 3 and 15, therefore a manual input will
-                        yield more usuable results in most cases, and avoids the creation of
-                        overpowering characters.
-                    </p>
-                </div>
+                <p>Age:</p>
+                <p>
+                    The maximum age is 3000, therefore in most cases the use of manual age
+                    is recommended for results that accomodate average gaming sessions.
+                </p>
 
-                <div class="div_input_text_card">
-                    <p>level 6+ skills:</p>
-                    <p>
-                        VTM 5th edition currently gives disciplines only up to level 5.
-                        If needed higher level disciplines can be added using V20 rules.
-                    </p>
-                </div>
+                <p>Generation:</p>
+                <p>
+                    These values range between 3 and 15, therefore a manual input will
+                    yield more usuable results in most cases, and avoids the creation of
+                    overpowering characters.
+                </p>
 
-            </div>
-
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Social focus:</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_social"
-                        data-reference-id="value_social"
-                        class="slider"
-                        type="range"
-                        name="simplified_social"
-                        min="0"
-                        max="100"
-                        value="50">
-                </div>
-
-                <p class="p_range_value" id="value_social">
-                    50
+                <p>level 6+ skills:</p>
+                <p>
+                    VTM 5th edition currently gives disciplines only up to level 5.
+                    If needed higher level disciplines can be added using V20 rules.
                 </p>
 
             </div>
 
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Mental focus:</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_mental"
-                        data-reference-id="value_mental"
-                        class="slider"
-                        type="range"
-                        name="simplified_mental"
-                        min="0"
-                        max="100"
-                        value="50">
-                </div>
+            <div>
 
-                <p class="p_range_value" id="value_mental">
-                    50
-                </p>
+                <p>Social focus:</p>
+
+                <input
+                    id="slider_social"
+                    data-reference-id="value_social"
+                    class="slider"
+                    type="range"
+                    name="simplified_social"
+                    min="0"
+                    max="100"
+                    value="50"
+                >
+
+                <p class="p_range_value" id="value_social">50</p>
 
             </div>
 
-            <div class="div_input_slider ">
-                <div class="div_input_text_container">
-                    <p>Physical focus:</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_physical"
-                        data-reference-id="value_physical"
-                        class="slider"
-                        type="range"
-                        name="simplified_physical"
-                        min="0"
-                        max="100"
-                        value="50">
-                </div>
+            <div>
+
+                <p>Mental focus:</p>
+
+                <input
+                    id="slider_mental"
+                    data-reference-id="value_mental"
+                    class="slider"
+                    type="range"
+                    name="simplified_mental"
+                    min="0"
+                    max="100"
+                    value="50"
+                >
+
+                <p class="p_range_value" id="value_mental">50</p>
+
+            </div>
+
+            <div>
+
+                <p>Physical focus:</p>
+
+
+                <input
+                    id="slider_physical"
+                    data-reference-id="value_physical"
+                    class="slider"
+                    type="range"
+                    name="simplified_physical"
+                    min="0"
+                    max="100"
+                    value="50"
+                >
 
                 <p class="p_range_value" id="value_physical">
                     50
                 </p>
+
             </div>
 
-            <div class="div_input_slider">
-                <div class="div_input_text_container">
-                    <p>Non-clan disciplines:</p>
-                </div>
-                <div class="div_slider">
-                    <input
-                        id="slider_discipline"
-                        data-reference-id="value_discipline"
-                        class="slider"
-                        type="range"
-                        name="simplified_discipline"
-                        min="0"
-                        max="100"
-                        value="5">
-                </div>
+            <div>
+
+                <p>Non-clan disciplines:</p>
+
+                <input
+                    id="slider_discipline"
+                    data-reference-id="value_discipline"
+                    class="slider"
+                    type="range"
+                    name="simplified_discipline"
+                    min="0"
+                    max="100"
+                    value="5"> 
 
                 <p class="p_range_value" id="value_discipline">
                     5
@@ -126,10 +112,10 @@
 
             </div>
 
-            <div class="div_input_dropdown ">
-                <div class="div_input_text_container">
-                    <p>Clan:</p>
-                </div>
+            <div>
+
+                <p>Clan:</p>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -162,10 +148,10 @@
                 </div>
             </div>
 
-            <div class="div_input_dropdown">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Sex:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -191,10 +177,10 @@
                 </div>
             </div>
 
-            <div class="div_input_dropdown">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Generation:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -223,10 +209,10 @@
                 </div>
             </div>
 
-            <div class="div_input_type_in">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Age:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -253,7 +239,7 @@
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_age"></span>
                 </div>
-                <div class="div_type_in">
+                <div>
                     <input
                         type="number"
                         min=1
@@ -266,10 +252,10 @@
                 </div>
             </div>
 
-            <div class="div_input_type_in">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>XP Calculation:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -296,7 +282,7 @@
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_calculation"></span>
                 </div>
-                <div class="div_type_in">
+                <div>
                     <input
                         type="number"
                         min=1
@@ -309,10 +295,10 @@
                 </div>
             </div>
 
-            <div class="div_input_type_in">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Name:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -338,7 +324,7 @@
                     </ul>
                     <span class="custom_arrow" id="custom_arrow_id_name"></span>
                 </div>
-                <div class="div_type_in">
+                <div>
                     <input
                         type="text"
                         name="manual_name"
@@ -349,10 +335,10 @@
                 </div>
             </div>
 
-            <div class="div_input_dropdown ">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Theme:</p>
-                </div>
+
                 <div class="div_select">
                     <select
                         class="dropdown_selectors"
@@ -377,10 +363,10 @@
                 </div>
             </div>
 
-            <div class="div_input_checkbox">
-                <div class="div_input_text_container">
+            <div>
+
                     <p>Use V20 level 6+ skills</p>
-                </div>
+
 
                 <div class="div_checkbox">
                     <label class="div_checkbox_container">
