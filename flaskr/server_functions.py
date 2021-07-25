@@ -13,7 +13,7 @@ def form_structuring(gathered_form_data):
         'manual_age': int(gathered_form_data['manual_age']),
         'manual_clan': 'Malkavian' if gathered_form_data['manual_clan'] == 'Random' else gathered_form_data['manual_clan'],
         'manual_sex': 'Female' if gathered_form_data['manual_sex'] == 'Random' else gathered_form_data['manual_sex'],
-        'manual_generation': 10 if gathered_form_data['manual_generation'] == 'Random' else int(gathered_form_data['manual_generation']),
+        'manual_generation': default_data.start_values()['manual_generation'] if gathered_form_data['manual_generation'] == 'Random' else int(gathered_form_data['manual_generation']),
         'manual_name': gathered_form_data['manual_name'],
         'manual_calculation': int(gathered_form_data['manual_calculation'])}
 

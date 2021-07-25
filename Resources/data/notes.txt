@@ -1,0 +1,1 @@
+ImmutableMultiDict([('simplified_social', '50'), ('simplified_mental', '50'), ('simplified_physical', '50'), ('simplified_discipline', '5'), ('manual_clan', ''), ('manual_sex', ''), ('manual_generation', ''), ('manual_age', '300'), ('manual_calculation', '800'), ('manual_name', 'Fruzsi')])

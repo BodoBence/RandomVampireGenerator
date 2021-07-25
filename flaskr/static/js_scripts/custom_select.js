@@ -1,5 +1,5 @@
 create_global_event_listener('click', 'dropdown_button', handle_custom_select, 'class')
-create_global_event_listener('click', 'fake_option', update_select_with_custom, 'class')
+create_global_event_listener('click', 'fake_option', update_input_field_with_customs_value, 'class')
 document.addEventListener('click', close_dropdowns)
 
 function close_dropdowns(e){
@@ -42,17 +42,18 @@ function handle_custom_select(activated_custom_select){
   toggle_arrow_animation(activated_custom_select)
 }
 
-function update_select_with_custom(my_trigger) {
+function update_input_field_with_customs_value(my_trigger) {
 
-  let target_select_id = my_trigger.getAttribute('data-reference-id')
-  let target_select = document.getElementById(target_select_id)
+  let target_input_id = my_trigger.getAttribute('data-reference-id')
+  let target_input = document.getElementById(target_input_id)
   let target_option_value = my_trigger.getAttribute('data-reference-option')
   let target_button_id = my_trigger.getAttribute('data-reference-id-button')
   let target_button = document.getElementById(target_button_id)
 
-  target_select.value = target_option_value
+  target_input.value = target_option_value
+  
 
-  target_select.dispatchEvent(new Event('change', { bubbles: true }))
+  target_input.dispatchEvent(new Event('change', { bubbles: true }))
 
   set_dropdown_text(my_trigger)
 

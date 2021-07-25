@@ -67,10 +67,10 @@
         </div>
 
         <div>
-            <label for="slider_discipline">Non-clan disciplines:</label>
+            <label for="slider_discipline_id">Non-clan disciplines:</label>
             <input
-                id="slider_discipline"
-                data-reference-id="value_discipline"
+                id="slider_discipline_id"
+                data-reference-id="value_discipline_id"
                 class="slider"
                 type="range"
                 name="simplified_discipline"
@@ -78,33 +78,23 @@
                 max="100"
                 value="5"> 
 
-            <label for="slider_discipline" id="value_discipline">5</label>
+            <label for="slider_discipline_id" id="value_discipline_id">5</label>
         </div>
 
         <div>
             <label for="button_clan_list_id">Clan:</label>
             <div class="dropdown_button " data-reference-id="clan_container" data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list_id">
                 <p>Random</p>
-                <select
-                    class="dropdown_selectors"
-                    list="clans"
+                <input 
+                    type="text" 
+                    id="selection_clan_id" 
                     name="manual_clan"
-                    id="selection_clan">
-    
-                    <option value='Random' {% if field_conditions['manual_clan_condition']==False %} selected="selected" {% endif %}> Random </option>
-                    {% for clan in clans %}
-                        <option
-                            value="{{ clan }}"
-                            {% if field_conditions['manual_clan_condition']==True and field_values['manual_clan'] == clan %} selected="selected" {% endif %}>
-                            {{ clan }}
-                        </option>
-                    {% endfor %}
-    
-                </select>
+                    value="Random"
+                >
                 <ul class="dropdown_content" data-reference-id-button="button_clan_list_id" id="clan_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan_id" data-reference-id-button="button_clan_list_id" name="clan_option"> Random </li>
                     {% for clan in clans %}
-                        <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan" data-reference-id-button="button_clan_list" name="clan_option"> {{ clan }}</li>
+                        <li class="fake_option" data-reference-option="{{ clan }}" data-reference-id="selection_clan_id" data-reference-id-button="button_clan_list_id" name="clan_option"> {{ clan }}</li>
                     {% endfor %}
                 </ul>
             </div>
@@ -115,20 +105,16 @@
             <label for="button_sex_list_id">Sex:</label>
             <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex" id="button_sex_list_id">
                 <p>Random</p>
-                <select
-                class="dropdown_selectors"
-                list="sexes"
-                name="manual_sex"
-                id="selection_sex">
-
-                    <option value="Random" {% if field_conditions['manual_sex_condition']==False %} selected="selected" {% endif %}> Random </option>
-                    <option value="Female" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Female' %} selected="selected" {% endif %}> Female </option>
-                    <option value="Male" {% if field_conditions['manual_sex_condition']==True and field_values['manual_sex']=='Male' %} selected="selected" {% endif %}> Male </option>
-                </select>
+                <input 
+                    type="text" 
+                    id="selection_sex_id"
+                    name="manual_sex"
+                    value="Random"
+                >
                 <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Female </li>
-                    <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex" data-reference-id-button="button_sex_list_id" name="sex_option"> Male </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex_id" data-reference-id-button="button_sex_list_id" name="sex_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Female" data-reference-id="selection_sex_id" data-reference-id-button="button_sex_list_id" name="sex_option"> Female </li>
+                    <li class="fake_option" data-reference-option="Male" data-reference-id="selection_sex_id" data-reference-id-button="button_sex_list_id" name="sex_option"> Male </li>
                 </ul>
             </div>
             <span id="custom_arrow_id_sex"></span>
@@ -138,24 +124,17 @@
         <div>
             <label for="button_generation_list_id">Generation:</label>
             <div class="dropdown_button " data-reference-id="generation_container"  data-reference-id-arrow="custom_arrow_id_generation"  id="button_generation_list_id">
-                <p>
-                    Random
-                </p>
-                <select
-                    class="dropdown_selectors"
-                    list="gens"
+                <p>Random</p>
+                <input 
+                    type="text" 
+                    id="selection_generation_id"
                     name="manual_generation"
-                    id="selection_generation">
-
-                    <option value='Random' {% if field_conditions['manual_generation_condition']==False %} selected="selected" {% endif %}> Random </option>
-                    {% for generation in generations %}
-                        <option value="{{ generation }}" {% if field_conditions['manual_generation_condition']==True and field_values['manual_generation']==3 %} selected="selected" {% endif %}> {{ generation }} </option>
-                    {% endfor %}
-                </select>
+                    value="Random"
+                >
                 <ul class="dropdown_content" data-reference-id-button="button_generation_list" id="generation_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation" data-reference-id-button="button_generation_list_id" name="generation_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation_id" data-reference-id-button="button_generation_list_id" name="generation_option"> Random </li>
                     {% for generation in generations %}
-                    <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation" data-reference-id-button="button_generation_list_id" name="generation_option"> {{ generation }} </li>
+                    <li class="fake_option" data-reference-option="{{ generation }}" data-reference-id="selection_generation_id" data-reference-id-button="button_generation_list_id" name="generation_option"> {{ generation }} </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -166,26 +145,19 @@
         <div>
             <label for="button_age_list_id">Age:</label>
             <div class="dropdown_button " data-reference-id="age_container"  data-reference-id-arrow="custom_arrow_id_age" id="button_age_list_id">
-                <p>
-                    Random
-                </p>
-                <select
-                    class="dropdown_selectors"
-                    list="ages"
+                <p>Random</p>
+                <input 
+                    type="text" 
+                    id="selection_age_id"
                     name="manual_age_selection"
-                    id="selection_age"
                     data-input-reference="manual_age_input_id"
                     data-input-default="300"
                     data-input-focus="Random"
-                    data-reference-id-button="button_age_list"
+                    value="Random"
                 >
-
-                    <option value="Random" {% if field_conditions['manual_age_condition']==False %} selected="selected" {% endif %}> Random </option>
-                    <option value="Manual" {% if field_conditions['manual_age_condition']==True %} selected="selected" {% endif %}> Manual </option>
-                </select>
                 <ul class="dropdown_content" data-reference-id-button="button_age_list" id="age_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age" data-reference-id-button="button_age_list_id" name="age_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age_id" data-reference-id-button="button_age_list_id" name="age_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_age_id" data-reference-id-button="button_age_list_id" name="age_option"> Manual </li>
                 </ul>
             </div>
             <span id="custom_arrow_id_age"></span>
@@ -206,25 +178,19 @@
         <div>
             <label for="button_calculation_list_id">XP Calculation:</label>
             <div class="dropdown_button " data-reference-id="calculation_container"  data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list_id">
-                <p>
-                    Algorythm
-                </p>
-                <select
-                class="dropdown_selectors"
-                list="calulation"
-                name="manual_calculation_selection"
-                id="selection_calculation"
-                data-input-reference="manual_calculation_input_id"
-                data-input-default="800"
-                data-input-focus="Algorythm"
-                data-reference-id-button="button_calculation_list">
-
-                    <option value="Algorythm" {% if field_conditions['manual_calculation_condition']==False %} selected="selected" {% endif %}> Algorythm </option>
-                    <option value="Manual" {% if field_conditions['manual_calculation_condition']==True %} selected="selected" {% endif %}> Manual </option>
-                </select>
+                <p>Algorythm</p>
+                <input 
+                    type="text" 
+                    id="selection_calculation_id"
+                    name="manual_calculation_selection"
+                    data-input-reference="manual_calculation_input_id"
+                    data-input-default="800"
+                    data-input-focus="Algorythm"
+                    value="Algorythm"
+                >
                 <ul class="dropdown_content" data-reference-id-button="button_calculation_list" id="calculation_container">
-                    <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorythm </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Algorythm" data-reference-id="selection_calculation_id" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorythm </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation_id" data-reference-id-button="button_calculation_list_id" name="calculation_option"> Manual </li>
                 </ul>
             </div>
             <span id="custom_arrow_id_calculation"></span>
@@ -245,25 +211,20 @@
             <label for="button_name_list_id">Name:</label>
 
             <div class="dropdown_button " data-reference-id="name_container" data-reference-id-arrow="custom_arrow_id_name" id="button_name_list_id">
-                <p>
-                    Random
-                </p>
-                <select
-                    class="dropdown_selectors"
-                    list="names"
+                <p>Random</p>
+                <input 
+                    type="text" 
+                    id="selection_name_id"
                     name="manual_name_selection"
-                    id="selection_name"
                     data-input-reference="manual_name_input_id"
                     data-input-default="Fruzsi"
                     data-input-focus="Random"
-                    data-reference-id-button="button_name_list">
-
-                    <option value="Random" {% if field_conditions['manual_name_condition']==False %} selected="selected" {% endif %}> Random </option>
-                    <option value="Manual" {% if field_conditions['manual_name_condition']==True %} selected="selected" {% endif %}> Manual </option>
-                </select>
+                    data-reference-id-button="button_name_list"
+                    value="Random"
+                >
                 <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name" data-reference-id-button="button_name_list_id" name="name_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name" data-reference-id-button="button_name_list_id" name="name_option"> Manual </li>
+                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name_id" data-reference-id-button="button_name_list_id" name="name_option"> Random </li>
+                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_name_id" data-reference-id-button="button_name_list_id" name="name_option"> Manual </li>
                 </ul>
             </div>
             <span id="custom_arrow_id_name"></span>
@@ -282,22 +243,14 @@
 
             <label for="button_theme_list_id">Theme:</label>
             <div class="dropdown_button " data-reference-id="theme_container" data-reference-id-arrow="custom_arrow_id_theme" id="button_theme_list_id">
-                <p>
-                    Dark
-                </p>
-                <select
-                class="dropdown_selectors"
-                list="character_themes"
-                name="theme_selector"
-                id="selection_theme">
-
-                <option value="Light" selected="selected"> Light </option>
-                <option value="Dark"> Dark </option>
-
-            </select>
+                <p>Dark</p>
+                <input 
+                    type="text"
+                    id="selection_theme_id"
+                >
                 <ul class="dropdown_content " data-reference-id-button="button_theme_list" id="theme_container">
-                    <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
-                    <li class="fake_option" data-reference-option="Dark" data-reference-id="selection_theme" data-reference-id-button="button_theme_list" name="theme_option"> Dark </li>
+                    <li class="fake_option" data-reference-option="Light" data-reference-id="selection_theme_id" data-reference-id-button="button_theme_list" name="theme_option"> Light </li>
+                    <li class="fake_option" data-reference-option="Dark" data-reference-id="selection_theme_id" data-reference-id-button="button_theme_list" name="theme_option"> Dark </li>
                 </ul>
             </div>
             <span id="custom_arrow_id_theme"></span>

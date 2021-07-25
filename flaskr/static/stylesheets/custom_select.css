@@ -1,7 +1,7 @@
 /* Custom Dropdown select */
 
 /* Hide real select */
-select {
+.dropdown_button input {
     display: none;
 }
 
