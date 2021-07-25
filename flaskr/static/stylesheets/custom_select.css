@@ -41,23 +41,18 @@
 .dropdown_content {
     display: none;
     position: absolute;
-    z-index: 6;
-    width: 100%;
+    z-index: 3;
+    width: auto;
     top: 4em;
     left: 0;
-
     overflow: scroll;
-
     margin: 0;
     padding: 0;
-
     background-color: var(--color_black_transparent);
-
     border-radius: 0.5em;
     border-width: 0.1em;
     border-style: solid;
     border-color: var(--color_dark_grey);
-
     box-shadow: 0 0 1em black;
 }
 

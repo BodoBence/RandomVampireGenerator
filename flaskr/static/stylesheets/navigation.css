@@ -2,8 +2,8 @@
 
 #container_navigation_id {
     display: grid;
-    position: sticky;
-    top: 0;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr repeat(2, minmax(1rem, 0.2fr)) ;
     padding-top: 2vh;
     z-index: 4;
 }

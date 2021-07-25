@@ -30,6 +30,11 @@ body {
     grid-template-columns: 100%;
     grid-template-rows: auto 1fr auto;
     height: 100%;
+    background: url("/static/bitmaps/background_width_1000_res_72.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
 }
 
 p {
@@ -79,17 +84,6 @@ p {
         inset 0 0 1.5em var(--color_neon_white);
 }
 
-
-/* Background (hmtl) */
-
-html, #container_navigation_id {
-    background: url("/static/bitmaps/background_width_1000_res_72.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center 35%;
-    background-size: cover;
-}
-
 /* General decorations */
 
 /* Dynamically added classes for animation */
@@ -118,13 +112,13 @@ html, #container_navigation_id {
 /* Phone Responsivity */
 
 @media screen and (min-width: 2000px){
-    html, #container_navigation_id {
+    body {
         background: url("/static/bitmaps/background_width_2000_res_72.jpg");
     }
 }
 
 @media screen and (min-width: 3000px){
-    html, #container_navigation_id {
+    body {
         background: url("/static/bitmaps/background_width_3000_res_72.jpg");
     }
 }
