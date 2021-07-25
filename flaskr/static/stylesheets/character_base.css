@@ -6,6 +6,7 @@
 
 #generated_character_id {
     display: grid;
+    grid-template-columns: auto;
     grid-template-rows: auto;
 
     margin-left: auto;
@@ -26,57 +27,43 @@
     box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
 }
 
-.div_character_block, .div_character_block_2, .div_character_block_3 {
+/* Big blocks */
+#generated_character_id div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 1em;
     align-items: start;
     align-self: start;
 }
 
-.div_character_block {
+/* Trait name and value pairs */
+#generated_character_id div div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
 }
 
-.div_character_block_2 {
+h3 + div {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
 }
 
-.div_character_block_3 {
+/* Tracker containers */
+#generated_character_id div div div {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    align-items: baseline;
-    align-self: start;
+    gap: 0.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
 }
 
 .discipline_skills div {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr !important;
 }
-
-.div_character_card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: baseline;
-    align-self: start;
-}
-
-.grid_full_span {
-    grid-column: 1/-1 !important;
-
-}
-
-.gird_long_after_short {
-    grid-template-columns: 1fr 5fr;
-}
-
 
 .discipline_skills {
-    grid-column: 1/-1 !important;
-    display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     grid-column-gap: 10px;
-
+    grid-column: 1/-1;
     max-height: 0px;
     overflow: hidden;
     padding: 0px;

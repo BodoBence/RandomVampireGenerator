@@ -67,22 +67,6 @@ label {
     padding: 1rem;
 }
 
-.div_input_button_container{
-    justify-items: stretch;
-    margin-top: 1em;
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-}
-
-.div_input_checkbox {
-    grid-template-columns: 3fr 1fr;
-}
-
-.div_type_in, .div_checkbox {
-    padding-bottom: 1em;
-    padding-top: 1em;
-}
-
 input {
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -96,7 +80,7 @@ input[type="number"], input[type="text"], input[type="checkbox"] {
     border-color: var(--white);
     border-width: 0.1rem;
     border-radius: 0.1rem;
-
+    margin-top: 0.5rem;
     color: var(--white);
     text-indent: 1em;
     height: 2em;
@@ -194,6 +178,7 @@ input[type="number"]:hover, input[type="text"]:hover, input[type="checkbox"]:hov
 
 /* Range inputs */
 input[type="range"] {
+    margin-top: 1.5rem;
     height: 0.25rem;
     width: 100%;
     vertical-align: text-bottom;
@@ -216,6 +201,7 @@ input[type="range"]::-webkit-slider-thumb {
     border-color: var(--color_neon_white);
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
+    color: var(--color_neon_pink);
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -225,4 +211,5 @@ input[type="range"]::-moz-range-thumb {
     border-color: var(--color_neon_white);
     background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
+    color: var(--color_neon_pink);
 }

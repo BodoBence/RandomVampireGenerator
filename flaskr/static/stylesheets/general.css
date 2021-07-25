@@ -18,7 +18,7 @@
     --screen_scale: 1;
 
     /* Misc */
-    font-family: Georgia, serif;
+    font-family: Helvetica;
     font-size: 1rem;
 }
 
@@ -39,15 +39,10 @@ p {
 .button_general {
     font-size: 1.25em;
     padding: 1em;
-
     position: relative;
-
     display: inline-block;
     cursor: pointer;
     width: 100%;
-
-    font-family: Helvetica !important;
-
     background: rgba(0, 0, 0, 0.8) !important;
 }
 
@@ -95,8 +90,6 @@ html, #container_navigation_id {
     background-size: cover;
 }
 
-<<<<<<< HEAD
-=======
 /* General decorations */
 
 /* Dynamically added classes for animation */
@@ -110,7 +103,6 @@ html, #container_navigation_id {
 }
 
 
->>>>>>> b60369442f8709f077ddd992be76011e2a0d2c54
 .animation_close {
     max-height: 0px !important;
 }
