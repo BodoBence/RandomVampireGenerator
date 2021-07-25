@@ -79,7 +79,7 @@
     text-shadow: 0 0 2em var(--color_neon_pink);
 }
 
-span {
+.dropdown_button + span {
     display: block;
     z-index: 3 ;
     right: 1rem;
@@ -112,10 +112,9 @@ span {
 
 }
 
-span:hover {
+.dropdown_button + span:hover {
     border-color: var(--bg);
 }
-
 
 .phone_custom_select_menu {
     position: fixed !important;

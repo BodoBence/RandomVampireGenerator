@@ -102,10 +102,6 @@ input[type="number"], input[type="text"], input[type="checkbox"] {
     height: 2em;
 }
 
-input[type="number"], input[type="text"] {
-    width: 6em;
-}
-
 input[type="checkbox"] {
     width: 2em;
 }
