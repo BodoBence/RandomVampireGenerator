@@ -28,7 +28,6 @@ body {
     margin: 0; /* prevents scrollbars */
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto 1fr auto;
     height: 100%;
     background: url("/static/bitmaps/background_width_1000_res_72.jpg");
     background-repeat: no-repeat;
@@ -41,27 +40,19 @@ p {
     color: var(--white) !important;
 }
 
-.button_general {
-    font-size: 1.25em;
+input[type='button'], input[type='submit'] {
     padding: 1em;
-    position: relative;
     display: inline-block;
     cursor: pointer;
     width: 100%;
     background: rgba(0, 0, 0, 0.8) !important;
-}
-
-.neon {
     border: 2em;
     border-style: solid;
     border-width: 0.25em;
     border-radius: 0.25em;
     border-color: var(--color_neon_white);
-
-    background-color: black;
     color: var(--color_neon_white);
     text-shadow: 0 0 1em var(--color_neon_pink);
-
     box-shadow:
         0 0 1.5em var(--color_neon_pink),
         inset 0 0 1.5em var(--color_neon_pink);
@@ -73,7 +64,7 @@ p {
     transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
 }
 
-.neon:hover {
+input[type='button']:hover, input[type='submit']:hover {
     border-color: white;
     background-color: rgba(0, 0, 0, 0);
     color: var(--color_neon_white);
@@ -84,8 +75,6 @@ p {
         inset 0 0 1.5em var(--color_neon_white);
 }
 
-/* General decorations */
-
 /* Dynamically added classes for animation */
 
 .animation_pre_smooth {
@@ -95,7 +84,6 @@ p {
     -ms-transition: all var(--base_animation_time) linear !important;
     transition: all var(--base_animation_time) linear !important;
 }
-
 
 .animation_close {
     max-height: 0px !important;

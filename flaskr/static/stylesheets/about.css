@@ -5,10 +5,7 @@
     margin-bottom: 1em;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-    width: 100%;
-
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
     padding: var(--padding_distance);
 
     background-color: var(--color_black_transparent);

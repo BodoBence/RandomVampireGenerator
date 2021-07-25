@@ -3,7 +3,7 @@
 #container_navigation_id {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 1fr repeat(2, minmax(1rem, 0.2fr)) ;
+    row-gap: 0.2rem;
     padding-top: 2vh;
     z-index: 4;
 }
@@ -17,8 +17,11 @@
 
 #container_navigation_id p {
     text-align: center;
-    color: var(--color_neon_pink) !important;
-    text-shadow: 0 0 1em currentColor;
+    color: var(--white) !important;
+    text-shadow: 0 0 1em var(--color_neon_pink);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8rem;
 }
 
 /* Logo svg as a whole */
@@ -105,8 +108,7 @@
 #nav_id li a {
     text-decoration: none;
     color: var(--color_dark_grey);
-    font-weight: normal;
-    font-family: Helvetica !important;
+    font-size: 0.8rem;
 
     -webkit-transition: 
         color var(--base_animation_time) ease, 
@@ -126,11 +128,22 @@
 }
 
 #nav_id li a:hover, .current_page_link:hover {
-    color: var(--color_neon_white) !important;
+    color: var(--white) !important;
     text-shadow: 0 0 2em currentColor;
 }
 
 .current_page_link {
     color: var(--color_neon_pink) !important;
     text-shadow: 0 0 2em currentColor;
+}
+
+/* Phone Responsivity */
+
+@media screen and (min-width: 2000px){
+    #nav_id li a {
+        font-size: 1rem;
+    }
+    #container_navigation_id p {
+        font-size: 1rem;
+    }
 }

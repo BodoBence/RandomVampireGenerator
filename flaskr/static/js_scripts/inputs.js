@@ -1,7 +1,3 @@
-console.log("first line of generator.js")
-
-// synchronize manual/random switch with manual input in the input field
-
 create_global_event_listener('input', 'manual_age_input_id', toggle_input_field, 'id')
 create_global_event_listener('input', 'manual_name_input_id', toggle_input_field, 'id')
 create_global_event_listener('input', 'manual_calculation_input_id', toggle_input_field, 'id')
@@ -25,8 +21,6 @@ function correct_overflow(){
     current_element.addEventListener("transitionend", () => {
         if (current_element.classList.contains("animation_close") == false){
             current_element.style.overflow = "initial"
-            // console.log("chanegd overflow to:")
-            // console.log(current_element.style.overflow)
         }
     })
 }

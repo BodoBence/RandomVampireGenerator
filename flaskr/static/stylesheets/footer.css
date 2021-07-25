@@ -1,5 +1,4 @@
 /* Footer*/
-
 #container_footer_id {
     display: grid;
     grid-template-columns: minmax(3em, 1fr) auto minmax(3em, 1fr);
