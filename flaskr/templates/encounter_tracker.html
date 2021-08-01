@@ -14,7 +14,7 @@
     <body>
 
         {% include "navigation.html" %}
-        <div>
+        <main>
             <div class="div_encounter_container">
                 {% for i in range(0, 2) %}
                     {% include "encounter_card.html" %}
@@ -23,7 +23,7 @@
     
             <input id="add_encounter_id" name="add_encounter" type="button" value="Add Encounter!">
 
-        </div>
+        </main>
 
                 
         {% include "footer.html" %}

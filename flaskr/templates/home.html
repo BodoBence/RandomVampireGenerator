@@ -16,13 +16,17 @@
 
         {% include "navigation.html" %}
 
-        {% include "generator_inputs.html" %}
+        <main>
 
-        {% if have_generated_character %}
+            {% include "generator_inputs.html" %}
 
-            {% include "generated_character.html" %}
-            
-        {% endif %}
+            {% if have_generated_character %}
+
+                {% include "generated_character.html" %}
+                
+            {% endif %}
+
+        </main>
 
         {% include "footer.html" %}
 
