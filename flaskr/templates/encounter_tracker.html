@@ -14,14 +14,17 @@
     <body>
 
         {% include "navigation.html" %}
+        <div>
+            <div class="div_encounter_container">
+                {% for i in range(0, 2) %}
+                    {% include "encounter_card.html" %}
+                {% endfor %}
+            </div>
+    
+            <input id="add_encounter_id" name="add_encounter" type="button" value="Add Encounter!">
 
-        <div class="div_encounter_container">
-            {% for i in range(0, 2) %}
-                {% include "encounter_card.html" %}
-            {% endfor %}
         </div>
 
-        <input id="add_encounter_id" name="add_encounter" type="button" value="Add Encounter!">
                 
         {% include "footer.html" %}
 

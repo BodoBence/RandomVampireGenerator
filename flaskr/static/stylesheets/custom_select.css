@@ -13,7 +13,6 @@
     /* box-shadow: 0 0 0.5em currentColor; */
 
     margin: 0;
-    z-index: 2;
 
     border-style: solid;
     /* border-width: 0.1em; */
@@ -41,7 +40,7 @@
 .dropdown_content {
     display: none;
     position: absolute;
-    z-index: 3;
+    z-index: 1;
     width: auto;
     top: 4em;
     left: 0;
@@ -63,7 +62,6 @@
     text-decoration: none;
     color: var(--white);
     width: inherit;
-    z-index: 4;
 
 }
 
@@ -76,7 +74,6 @@
 
 .dropdown_button + span {
     display: block;
-    z-index: 3 ;
     right: 1rem;
     margin: 1rem;
     height: 0.5rem;

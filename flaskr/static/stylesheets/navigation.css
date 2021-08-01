@@ -1,5 +1,4 @@
 /* Page Title */
-
 #container_navigation_id {
     display: grid;
     grid-template-columns: 100%;
@@ -89,7 +88,6 @@
 }
 
 /* Navigation Element */
-
 
 #nav_id {
     display: inline-block;

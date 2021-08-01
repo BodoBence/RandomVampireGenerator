@@ -28,11 +28,21 @@
     grid-template-rows: auto;
     align-items: first baseline;
 
-    -webkit-transition: all var(--base_animation_time) linear;  
-    -moz-transition: all var(--base_animation_time) linear;  
-    -o-transition: all var(--base_animation_time) linear;  
-    -ms-transition: all var(--base_animation_time) linear;  
-    transition: all var(--base_animation_time) linear;
+    -webkit-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -moz-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -o-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    -ms-transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
+    transition: 
+        box-shadow var(--base_animation_time) ease, 
+        border-color var(--base_animation_time) ease;
 }
 
 .div_encounter_card:hover {

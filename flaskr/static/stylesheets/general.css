@@ -28,7 +28,8 @@ body {
     margin: 0; /* prevents scrollbars */
     display: grid;
     grid-template-columns: 100%;
-    height: 100%;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100%;
     background: url("/static/bitmaps/background_width_1000_res_72.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
