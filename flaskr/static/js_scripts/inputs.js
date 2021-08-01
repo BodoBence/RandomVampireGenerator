@@ -52,12 +52,9 @@ function accordion_motion(current_trigger){
 
     // Standard syntax
     target_element.addEventListener("transitionend", remove_animation_ease)
-
-    console.log(target_element.classList)
 }
 
 function toggle_input_field(current_driver){
-    console.log("manual / random switch triggered")
     referred_element_id = current_driver.getAttribute("data-driver-reference")
     referred_element = document.getElementById(referred_element_id)
     referred_element.value = "Manual"
@@ -65,8 +62,6 @@ function toggle_input_field(current_driver){
 }
 
 function input_sync(current_selector){
-    console.log("doing selection based sync")
-
     connected_field_reference = current_selector.getAttribute("data-input-reference")
     connected_field = document.getElementById(connected_field_reference)
     connected_button_reference = current_selector.getAttribute("data-reference-id-button")

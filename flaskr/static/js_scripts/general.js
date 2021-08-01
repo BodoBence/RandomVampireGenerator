@@ -1,5 +1,3 @@
-console.log("first line of general.js")
-
 window.onload = visualize_current_page()
 
 function visualize_current_page(){
