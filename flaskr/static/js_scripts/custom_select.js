@@ -66,14 +66,11 @@ function set_dropdown_text(chosen_option){
   let new_value = chosen_option.innerHTML
   let target_id = chosen_option.getAttribute('data-reference-id-button')
   let target = document.getElementById(target_id).firstElementChild
-
   target.innerHTML = new_value
 }
 
 function toggle_arrow_animation(current_trigger){
-
   let current_target_id = current_trigger.getAttribute("data-reference-id-arrow")
   let current_target = document.getElementById(current_target_id)
-
   current_target.classList.toggle("animation_rotate")
 }

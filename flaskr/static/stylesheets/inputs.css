@@ -51,8 +51,20 @@ form > div > div {
         border-color var(--base_animation_time) ease;
 }
 
-form > div > div:first-of-type{
+form > div > div:first-of-type {
     grid-template-columns: repeat(auto-fit, minmax(18em, 1fr)) !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+form > div > div:first-of-type p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    hyphens: auto;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 form > div > div label:last-child {
