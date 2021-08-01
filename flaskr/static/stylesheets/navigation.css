@@ -4,7 +4,7 @@
     grid-template-columns: 100%;
     row-gap: 0.2rem;
     padding-top: 2vh;
-    z-index: 4;
+    z-index: 1;
 }
 
 #container_logo_id {
@@ -12,6 +12,7 @@
     margin: auto;
     max-width: 80%;
     min-height: 80%;
+    height: 8em;
 }
 
 #container_navigation_id p {
