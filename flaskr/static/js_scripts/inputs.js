@@ -39,8 +39,6 @@ function accordion_motion(current_trigger){
     target_element.classList.toggle(target_class_1)
     target_element.style.overflow = "hidden"
 
-    console.log(target_element.classList)
-
     // Cleanup
     function remove_animation_ease(){
         target_element.classList.remove("animation_pre_smooth")
@@ -137,8 +135,6 @@ function load_default_input_values(){
 }
 
 function display_slider_value(current_slider){
-    console.log('slidering')
-    console.log(current_slider)
     target_id = current_slider.getAttribute('data-reference-id')
     target_element = document.getElementById(target_id)
     new_value = current_slider.value
@@ -147,19 +143,14 @@ function display_slider_value(current_slider){
 }
 
 function toggle_character_style(stlye_selector){
-    // console.log("switching character theme")
-    // console.log(stlye_selector.value)
-
     style_element = document.getElementById('link_character_color')
 
     switch (stlye_selector.value) {
         case 'Light':
-            // console.log('in case light')
             style_element.setAttribute("href", "/static/stylesheets/character_color_light.css")
             break
 
         case 'Dark':
-            // console.log('in case dark')
             style_element.setAttribute("href", "/static/stylesheets/character_color_dark.css")
             break
     }
