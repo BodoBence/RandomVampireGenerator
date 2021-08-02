@@ -13,7 +13,7 @@
 
     /* for the backgroud svg */
     position: relative;
-    z-index: 1;
+    z-index: 0;
 
     -moz-box-shadow: calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
     -moz-box-shadow:  calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) calc(var(--padding_distance)*2) var(--box_shadow_color);
@@ -27,6 +27,8 @@
     gap: 1em;
     align-items: start;
     align-self: start;
+    z-index: 2;
+
 }
 
 /* Trait name and value pairs */
@@ -69,11 +71,22 @@ h3 + div {
     transition: all var(--base_animation_time) ease;
 }
 
+/* title of the character sheet */
+#div_character_sheet_title_id {
+    grid-template-columns: 100% !important;
+    row-gap: 0 !important;
+} 
+
 h1 + p {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+
 h1, h2, h3 {
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     width: 100%;
 }
@@ -84,15 +97,6 @@ h2 {
 
 h3 {
     font-size: 1rem;
-}
-
-#div_character_sheet_title_id h1 {
-    font-size: 3rem;
-    text-align: center;
-}
-
-#div_character_sheet_title_id p {
-    text-align: center;
 }
 
 .long_text {
@@ -140,7 +144,7 @@ h3 {
     width: 70%;
     max-height: 80%;
 
-    z-index: -1;
+    z-index: 1;
     opacity: 0.2;
 }
 

@@ -98,7 +98,7 @@ def calculate_xp_points(age, generation, max_age, manual_calculation_condition, 
             yearly_xp = yearly_xp_base - (yearly_xp_base * (i / max_age))
 
             xp_points = xp_points + yearly_xp
-        print(xp_points)
+            
         xp_points = max(min_xp, xp_points)
         
 
