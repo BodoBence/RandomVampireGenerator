@@ -11,4 +11,6 @@ function update_input_checkbox(current_trigger){
     } else {
         input_checkbox_element.checked = true
     }
+
+    input_checkbox_element.dispatchEvent(new Event('change', { bubbles: true }))
 }
