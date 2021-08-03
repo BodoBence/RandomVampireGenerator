@@ -71,7 +71,7 @@ def setup_character_sheet(basic_info):
 
     clan_disciplines = default_data.default_clan_disciplines_data()
     current_clan_disciplines = clan_disciplines[basic_info['Clan']]
-    disciplines = default_data.default_discipline_data()
+    disciplines = default_data.expanded_disciplines(basic_info['Clan'])
 
     for discipline in disciplines:
         if discipline in current_clan_disciplines:

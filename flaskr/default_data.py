@@ -127,11 +127,18 @@ def default_discipline_data():
         'Presence': 0,
         'Auspex': 0,
         'Blood_Sorcery': 0,
-        'Thin_Blood_Alchemy': 0,
         'Oblivion': 0,
         'Animalism': 0,
         'Protean': 0}
 
+    return disciplines
+
+def expanded_disciplines(clan):
+    disciplines = default_discipline_data()
+
+    if clan == 'Thin-blood':
+        disciplines['Thin_Blood_Alchemy'] = 0
+    
     return disciplines
 
 def default_generation_based_point_data():
@@ -180,7 +187,8 @@ def default_clan_disciplines_data():
         'Tremere': ['Auspex', 'Blood Sorcery', 'Dominate'],
         'Tzimische': ['Animalism', 'Auspex', 'Protean'],
         'Ventrue': ['Dominate', 'Prsence', 'Fortitude'],
-        'Hecata': ['Auspex', 'Fortitude', 'Oblivion']}
+        'Hecata': ['Auspex', 'Fortitude', 'Oblivion'],
+        'Thin-blood': ['Thin_Blood_Alchemy']}
 
     return clan_disciplines
 
@@ -198,7 +206,8 @@ def default_clans_data():
         'Tremere',
         'Tzimische',
         'Ventrue',
-        'Hecata']
+        'Hecata',
+        'Thin-blood']
 
     return clans
 

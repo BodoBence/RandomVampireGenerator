@@ -89,12 +89,12 @@
 
         <div>
             <label for="button_generation_list_id">Generation:</label>
-            <div class="dropdown_button " data-reference-id="generation_container"
+            <div class="dropdown_button " data-reference-id="generation_container_id"
                 data-reference-id-arrow="custom_arrow_id_generation" id="button_generation_list_id">
                 <p>Random</p>
                 <input type="text" id="selection_generation_id" name="manual_generation" value="Random">
                 <ul class="dropdown_content" data-reference-id-button="button_generation_list"
-                    id="generation_container">
+                    id="generation_container_id">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation_id"
                         data-reference-id-button="button_generation_list_id" name="generation_option"> Random </li>
                     {% for generation in generations %}

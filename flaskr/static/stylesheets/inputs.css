@@ -186,3 +186,8 @@ input::-moz-range-thumb {
     box-shadow: 0 0 1em var(--color_neon_pink);
     color: var(--color_neon_pink);
 }
+
+.disabled{
+    pointer-events:none;
+    opacity:0.4;
+}

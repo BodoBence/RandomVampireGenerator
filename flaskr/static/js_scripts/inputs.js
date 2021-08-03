@@ -12,6 +12,8 @@ create_global_event_listener("change", "selection_theme", toggle_character_style
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
 
+create_global_event_listener("change", "selection_clan_id", toogle_generation_options, 'id')
+
 correct_overflow()
 
 // Corrects overflow for the input container animation
@@ -154,4 +156,35 @@ function toggle_character_style(stlye_selector){
             style_element.setAttribute("href", "/static/stylesheets/character_color_dark.css")
             break
     }
+}
+
+function toogle_generation_options(){
+    let selected_clan = document.getElementById('selection_clan_id').value
+    let generations_ul_element = document.getElementById('generation_container_id')
+    let generations_li_elements = generations_ul_element.children
+    let thin_blood_minimum_generation = 14
+
+    if (selected_clan == 'Thin-blood'){
+        for (let index = 0; index < generations_li_elements.length; index++) {
+            const element = generations_li_elements[index];
+            const element_value = element.getAttribute('data-reference-option')
+            
+            if (element_value != 'Random' ){
+                if (element_value < thin_blood_minimum_generation){
+                    element.classList.add('disabled')
+                }
+            }   
+        }
+    } else {
+        for (let index = 0; index < generations_li_elements.length; index++) {
+            const element = generations_li_elements[index];
+            const element_value = element.getAttribute('data-reference-option')
+            
+            if (element_value != 'Random' ){
+                if (element.classList.contains('disabled') == true){
+                    element.classList.remove('disabled')
+                }
+            }   
+        }
+    } 
 }
