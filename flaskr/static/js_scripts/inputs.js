@@ -159,6 +159,8 @@ function toggle_character_style(stlye_selector){
 }
 
 function toogle_generation_options(){
+    // Special case for thin-bloods to only have 14 and higher generations
+    console.log('thin blood selected')
     let selected_clan = document.getElementById('selection_clan_id').value
     let generations_ul_element = document.getElementById('generation_container_id')
     let generations_li_elements = generations_ul_element.children
@@ -175,6 +177,14 @@ function toogle_generation_options(){
                 }
             }   
         }
+
+        // Modify the generation selsection input area
+        let generation_input =  document.getElementById('selection_generation_id').value
+        if (generation_input != 'Random' && generation_input < 14){
+            generation_input = 14
+            document.getElementById('button_generation_list_id').firstElementChild.innerHTML = 14
+        }
+        
     } else {
         for (let index = 0; index < generations_li_elements.length; index++) {
             const element = generations_li_elements[index];
