@@ -1,5 +1,3 @@
-# Random Vampire Generator
-
 import random
 import pprint
 import default_data
@@ -82,21 +80,17 @@ def setup_character_sheet(basic_info):
                                                                                   'Skills': {}}
     return character_sheet
    
-def calculate_xp_points(age, generation, max_age, manual_calculation_condition, manual_xp):
+def calculate_xp_points(age, max_age, manual_calculation_condition, manual_xp):
     if manual_calculation_condition:
-
         xp_points = manual_xp
 
     else:
-
         xp_points = 0
-        yearly_xp_base = 3
+        yearly_xp_base = 2
         min_xp = 300
 
         for i in range(age):
-
             yearly_xp = yearly_xp_base - (yearly_xp_base * (i / max_age))
-
             xp_points = xp_points + yearly_xp
             
         xp_points = max(min_xp, xp_points)
@@ -206,7 +200,6 @@ def level_up(character_sheet, weight_values, input_conditions, input_values):
         age = character_sheet['Character_Details']['Basic_Information']['Age'], 
         weight_values = weight_values)
     xp = int(calculate_xp_points(age=character_sheet['Character_Details']['Basic_Information']['Age'],
-                                 generation=character_sheet['Character_Details']['Basic_Information']['Generation'],
                                  max_age=default_data.MAX_AGE,
                                  manual_calculation_condition=input_conditions['manual_calculation_condition'],
                                  manual_xp=input_values['manual_calculation']))
@@ -312,9 +305,15 @@ def generate(input_values, input_conditions, input_weights):
                             condition=input_conditions['manual_clan_condition'],
                             user_defined=input_values['manual_clan'])
 
-    generation = select_from_list(options=default_data.default_generations_data(),
-                                  condition=input_conditions['manual_generation_condition'],
-                                  user_defined=input_values['manual_generation'])
+    if clan != 'Thin-blood':
+        generation = select_from_list(options=default_data.default_generations_data(),
+                                condition=input_conditions['manual_generation_condition'],
+                                user_defined=input_values['manual_generation'])
+    else:
+        generation = select_from_list(options=default_data.thinblood_generations_data(),
+                        condition=input_conditions['manual_generation_condition'],
+                        user_defined=input_values['manual_generation'])
+
 
     age = select_from_list(options=default_data.default_ages_data(),
                            condition=input_conditions['manual_age_condition'] ,

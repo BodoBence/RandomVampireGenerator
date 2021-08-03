@@ -212,7 +212,11 @@ def default_clans_data():
     return clans
 
 def default_generations_data():
-    generations = range(3, 16)
+    generations = range(3, 17)
+    return generations
+
+def thinblood_generations_data():
+    generations = range(14, 17)
     return generations
 
 def default_ages_data():
