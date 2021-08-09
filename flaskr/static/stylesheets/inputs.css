@@ -171,13 +171,14 @@ input[type="range"]:hover {
 
 /* Slider's circle */
 input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
     width: 0.75rem;
     height: 0.75rem;
     border-radius: 50%;
     border-color: var(--color_neon_white);
-    background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
-    color: var(--color_neon_pink);
+    background: var(--color_neon_white);
 }
 
 input::-moz-range-thumb {
@@ -185,9 +186,8 @@ input::-moz-range-thumb {
     height: 0.75rem;
     border-radius: 50%;
     border-color: var(--color_neon_white);
-    background-color: var(--color_neon_white);
     box-shadow: 0 0 1em var(--color_neon_pink);
-    color: var(--color_neon_pink);
+    background: var(--color_neon_white);
 }
 
 .disabled{

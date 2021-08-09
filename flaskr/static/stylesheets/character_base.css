@@ -75,7 +75,17 @@ h3 + div {
 #div_character_sheet_title_id {
     grid-template-columns: 100% !important;
     row-gap: 0 !important;
-} 
+}
+
+#div_character_sheet_title_id h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#div_character_sheet_title_id p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
 h1 + p {
     text-align: center;

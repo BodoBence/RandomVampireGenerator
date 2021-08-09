@@ -175,7 +175,7 @@ def default_costs_data():
 
 def default_clan_disciplines_data():
     clan_disciplines = {
-        'Banu_Haqim': ['Celerity', 'Obfuscate', 'Blood Sorcery'],
+        'Banu_Haqim': ['Celerity', 'Obfuscate', 'Blood_Sorcery'],
         'Brujah': ['Potence', 'Celerity', 'Presence'],
         'Gangrel': ['Fortitude', 'Animalism', 'Protean'],
         'Lasombra': ['Domnaite', 'Potence', 'Oblivion'],

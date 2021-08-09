@@ -86,14 +86,14 @@ def calculate_xp_points(age, max_age, manual_calculation_condition, manual_xp):
 
     else:
         xp_points = 0
-        yearly_xp_base = 2
-        min_xp = 300
+        yearly_xp_base = 1
+        start_xp = 400
 
         for i in range(age):
-            yearly_xp = yearly_xp_base - (yearly_xp_base * (i / max_age))
+            yearly_xp = (yearly_xp_base - (yearly_xp_base * (i / max_age)))*0.8
             xp_points = xp_points + yearly_xp
             
-        xp_points = max(min_xp, xp_points)
+        xp_points = start_xp + xp_points
         
 
     return xp_points
