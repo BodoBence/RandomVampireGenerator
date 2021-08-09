@@ -9,7 +9,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30em, 1fr));
     gap: 1rem;
-    box-shadow: 0 0 1em black;
 }
 
 
@@ -59,4 +58,26 @@ p  {
 
 a {
     color: var(--color_neon_pink);
+}
+
+/* Diagram */
+
+#svg_xp_clac_id {
+    margin-top: 3em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 3em;
+
+}
+
+#svg_xp_clac_id path {
+    fill: var(--color_neon_pink);
+}
+
+#svg_xp_clac_id rect {
+    stroke: var(--color_neon_pink) !important;
+}
+
+#svg_xp_clac_id g path {
+    stroke: var(--color_neon_pink) !important;
 }

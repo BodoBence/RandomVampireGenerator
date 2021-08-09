@@ -28,6 +28,9 @@
                     My darling, Fru for everything related to coding and much more.
                 </p>
                 <p>
+                    Mároly and Márk for their insight intp the mathematics of XP calculation.
+                </p>
+                <p>
                     The Cordoba crew for their infinite supply of vampire experiences.
                 </p>
             </div>
@@ -38,6 +41,23 @@
                     By becomimng its a patron at:
                 </p>
                 <a href="https://www.patreon.com/creator-home" target="_blank">https://www.patreon.com/creator-home</a>
+            </div>
+
+            <div>
+                <p>Automatic XP Calculation</p>
+                <br>
+                <p>yearly_xp_base = 1</p>
+                <p>start_xp = 400</p>
+                <br>
+                <p style="margin-left: 1em;"> for i in range(age):</p>
+                <p style="margin-left: 2em;">     yearly_xp = (yearly_xp_base - (yearly_xp_base * (i / max_age)))*0.8</p>
+                <p style="margin-left: 2em;">     xp_points = xp_points + yearly_xp</p>
+                <br>
+                <p style="margin-left: 1em;">xp_points = start_xp + xp_points</p>
+                <br>
+                <p>Giving use the following distribution of XP over age:</p>
+                {% include "xp_calculation_diagram.html" %}
+               
             </div>
     
             <div id="div_about_logo_container_id">
