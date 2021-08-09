@@ -52,17 +52,8 @@
 
             <div>
                 <p>Automatic XP Calculation</p>
-                <br>
-                <p>yearly_xp_base = 1</p>
-                <p>start_xp = 400</p>
-                <br>
-                <p style="margin-left: 1em;"> for i in range(age):</p>
-                <p style="margin-left: 2em;">     yearly_xp = (yearly_xp_base - (yearly_xp_base * (i / max_age)))*0.8</p>
-                <p style="margin-left: 2em;">     xp_points = xp_points + yearly_xp</p>
-                <br>
-                <p style="margin-left: 1em;">xp_points = start_xp + xp_points</p>
-                <br>
-                <p>Giving use the following distribution of XP over age:</p>
+                <p>When generated as opposed to normal character generation, characters start with 400 XP points, which together with future XP poins is spent according to the normal rules. With each year the vampire "lives" it get less and less XP points, simulating how eventually there will be nothing new under the Sun. At the max age of 3000 the vampire the vampire will learn nothing new and have accumulated a total of circa 1600 XP points.</p>
+
                 {% include "xp_calculation_diagram.html" %}
                
             </div>
