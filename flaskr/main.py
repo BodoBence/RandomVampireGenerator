@@ -14,7 +14,7 @@ app.secret_key = unique_key = str(uuid.uuid1())
 # Startup variables
 
 # Metadata
-VERSION_INFO = '1.11'
+VERSION_INFO = '2.1'
 
 # Generator defaults
 startup_input_field_details = {
