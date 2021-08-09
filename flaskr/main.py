@@ -48,7 +48,6 @@ def result():
     HAVE_GENERATED_CHARACTER = True
 
     gathered_input = request.form
-    print(gathered_input)
 
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
 

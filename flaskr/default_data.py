@@ -7,7 +7,7 @@ script_dir = os.path.dirname(__file__)
 FILE_NAMES_MALE = os.path.join(script_dir, 'static', 'names_male.txt')
 FILE_NAMES_FEMALE = os.path.join(script_dir, 'static', 'names_female.txt')
 FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'names_interesting.txt')
-FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'discipline_skills_rituals_ceremonies.json')
+FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'restructured_discipline_skills_rituals_ceremonies.json')
 FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
 FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
 
@@ -184,7 +184,7 @@ def default_clan_disciplines_data():
         'Nosferatu': ['Obfuscate', 'Animalism', 'Potence'],
         'Ravnos': ['Animalism', 'Obfuscate', 'Presence'],
         'Toreador': ['Celerity', 'Auspex', 'Presence'],
-        'Tremere': ['Auspex', 'Blood Sorcery', 'Dominate'],
+        'Tremere': ['Auspex', 'Blood_Sorcery', 'Dominate'],
         'Tzimische': ['Animalism', 'Auspex', 'Protean'],
         'Ventrue': ['Dominate', 'Prsence', 'Fortitude'],
         'Hecata': ['Auspex', 'Fortitude', 'Oblivion'],

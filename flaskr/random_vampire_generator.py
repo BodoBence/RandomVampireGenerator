@@ -196,7 +196,7 @@ def check_skill_requirements(skill, current_disciplines, current_discipline_skil
     check_result = False
 
     if 'Required_skills' not in discipline_skill_dictionary.keys() or 'Requried_disciplines' not in discipline_skill_dictionary.keys():
-        check_result = False
+        check_result = True
 
     if 'Required_skills' in discipline_skill_dictionary.keys():
         for required_skill in discipline_skill_dictionary['Required_skills'].items():
@@ -207,8 +207,7 @@ def check_skill_requirements(skill, current_disciplines, current_discipline_skil
         for required_discipline in discipline_skill_dictionary['Required_disciplines'].keys():
             if required_discipline in current_disciplines.keys():
                 if discipline_skill_dictionary['Required_disciplines'][required_discipline] <= current_disciplines[required_discipline]:
-                    check_result = True
-                
+                    check_result = True      
     return check_result
 
 def level_up(character_sheet, weight_values, input_conditions, input_values):
@@ -261,15 +260,14 @@ def level_up(character_sheet, weight_values, input_conditions, input_values):
                 
                 potential_discipline_skills = []
                 
-                discipline_skill_dictionary = default_data.get_discipline_skills_and_rituals()[current_stat]['skill']
-                
-                for skill_level in discipline_skill_dictionary.keys():
-                    if int(skill_level) <= most_expensive_viable_level:
-                        for skill, description in discipline_skill_dictionary[skill_level].items():
-                            if skill not in current_discipline_skills:
-                                if check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary):
-                                    skill_info = (int(skill_level), skill, description)
-                                    potential_discipline_skills.append(skill_info)
+                for discipline_ability_dictionary in default_data.get_discipline_skills_and_rituals()[current_stat].values():
+                    for skill_level in discipline_ability_dictionary.keys():
+                        if int(skill_level) <= most_expensive_viable_level:
+                            for skill in discipline_ability_dictionary[skill_level].keys():
+                                if skill not in current_discipline_skills:
+                                    if check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_ability_dictionary):
+                                        skill_info = (int(skill_level), skill, discipline_ability_dictionary[skill_level][skill]['Description'])
+                                        potential_discipline_skills.append(skill_info)
 
                 if len(potential_discipline_skills) == 0:
                     xp_stagnation_counter.append(1)
