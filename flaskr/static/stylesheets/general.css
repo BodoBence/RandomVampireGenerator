@@ -54,7 +54,6 @@ input[type='button'], input[type='submit'] {
     cursor: pointer;
     width: 100%;
     background: rgba(0, 0, 0, 0.8) !important;
-    border: 2em;
     border-style: solid;
     border-width: 0.25em;
     border-radius: 0.25em;
@@ -107,14 +106,20 @@ input[type='button']:hover, input[type='submit']:hover {
 
 /* Phone Responsivity */
 
-@media screen and (min-width: 2000px){
+@media screen and (min-width: 1280px){
     #img_background_id {
-        content: url("/static/bitmaps/background_width_2000_res_72.jpg");
+        content: url("/static/bitmaps/background_1280_720_res_72.jpg");
     }
 }
 
-@media screen and (min-width: 3000px){
+@media screen and (min-width: 1920px){
     #img_background_id {
-        content: url("/static/bitmaps/background_width_3000_res_72.jpg");
+        content: url("/static/bitmaps/background_1920_1080_res_72.jpg");
+    }
+}
+
+@media screen and (min-width: 2560px){
+    #img_background_id {
+        content: url("/static/bitmaps/background_2560_1440_res_72.jpg");
     }
 }
