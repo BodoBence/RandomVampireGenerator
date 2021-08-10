@@ -20,8 +20,8 @@
             <div>
                 <p>Development</p>
                 <p>
-                    AutoFeed is developed by an enthusiastic fan of the Vampire The Masquerade, Bence Levente Bodó.
-                    It is intended as free-to-use tool for interasting ramdomized narration.
+                    AutoFeed is developed by Bence Levente Bodó, a fan of the tabletop role-playing game, Vampire: the Masquerade.
+                    It is intended as a free-to-use tool for a smooth randomized narrative experience. Naturally, it is storytellers who will probably benefit the most from it, but don't let that discourage you from sinking your fangs in it for player character inspiration!
                 </p>
             </div>
     
@@ -31,7 +31,7 @@
                     My darling, Fru for everything related to coding and much more.
                 </p>
                 <p>
-                    Mároly and Márk for their insight into the mathematics of XP calculation.
+                    Mároly and Márk for their insight in the mathematics of XP calculation.
                 </p>
                 <p>
                     The Cordoba crew for their infinite supply of vampire experiences.
@@ -40,21 +40,23 @@
 
             <div>
                 <p>Contact</p>
-                <p>Feel free to drop an email with any observations, recomendation, or anything at:</p>
+                <p>Feel free to drop an email with any observations, recomendations, or anything to:</p>
                 <p>autofeed.generator@gmail.com</p>
             </div>
 
             <div>
                 <p>Support AutoFeed</p>
                 <p>
-                    By becoming its a patron at:
+                    By becoming a patron at:
                 </p>
                 <a href="https://www.patreon.com/autofeed" target="_blank">https://www.patreon.com/autofeed</a>
             </div>
 
             <div>
                 <p>Automatic XP Calculation</p>
-                <p>When generated as opposed to normal character generation, characters start with 400 XP points, which together with future XP poins is spent according to the normal rules. With each year the vampire "lives" it get less and less XP points, simulating how eventually there will be nothing new under the Sun. At the max age of 3000 the vampire the vampire will learn nothing new and have accumulated a total of circa 1600 XP points.</p>
+                <p>
+                    AutoFeed starts character generation with a fixed amount of 400 XP points. From there they live their simulated unlife, gathering experience every year. While getting older, they get less and less XP points (see below), emulating how eventually there will be nothing new under the Sun. Reaching the maximum age of 3000 years the vampire will have accumulated a total of circa 1600 XP points. XP points are spent according to the normal rules of the 5th edition handbook.
+                </p>
 
                 {% include "xp_calculation_diagram.html" %}
                
@@ -62,13 +64,18 @@
     
             <div id="div_about_logo_container_id">
                 <img src="{{ url_for('static', filename='bitmaps/darkpack_tranparent_logo_color_change_500px.png') }}" alt="dark pack logo" id="about_logo_id">
-                <p>
-                    Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission.
-                    All rights reserved. For more information please visit worldofdarkness.com.
-                </p>
-                <p>
-                    The contents of this site / web application are not official World of Darkness materials.
-                </p>
+                <div id="div_legal_id">
+                    <p>
+                        Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved.
+                    </p>
+                    <p>
+                        For more information please visit
+                    </p>
+                    <a href="https://www.worldofdarkness.com/">worldofdarkness.com</a>
+                    <p>
+                        AutoFeed is not an official World of Darkness material.
+                    </p>
+                </div>
             </div>  
 
         </main>

@@ -35,7 +35,7 @@
     <!-- Trackers -->
     <div>
         {% for key, value in character['Character_Details']['Trackers'].items() %}
-            {% if key != 'XP_Used' %}
+            {% if key != 'XP_Used' and key != 'XP_Left' %}
                 <div>
                     <p class="underscore">{{ key }}</p>
                     <div>
@@ -45,13 +45,6 @@
                         {% for i in range(0, 10 - value) %}
                             <span class="square_unfilled"></span>
                         {% endfor %}
-                    </div>
-                </div>
-            {% else %}
-                <div>
-                    <p class="underscore">{{ key }}</p>
-                    <div>
-                        <p>{{ value }}</p>
                     </div>
                 </div>
             {% endif %}

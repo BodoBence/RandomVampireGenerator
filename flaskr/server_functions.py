@@ -35,7 +35,7 @@ def form_structuring(gathered_form_data):
         'manual_age_condition': False if gathered_form_data['manual_age_selection']=='Random' else True,
         'manual_sex_condition': False if gathered_form_data['manual_sex']=='Random' else True,
         'manual_name_condition': False if gathered_form_data['manual_name_selection']=='Random' else True,
-        'manual_calculation_condition': False if gathered_form_data['manual_calculation_selection']=='Algorythm' else True}
+        'manual_calculation_condition': False if gathered_form_data['manual_calculation_selection']=='Algorithm' else True}
 
 
     return gathered_condition, gathered_values, gathered_weights

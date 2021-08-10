@@ -108,7 +108,7 @@ function load_default_input_values(){
     input_name.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_calculation = document.getElementById('selection_calculation')
-    input_calculation.value = 'Algorythm'
+    input_calculation.value = 'Algorithm'
     input_calculation.dispatchEvent(new Event('change', { bubbles: true }))
 
 

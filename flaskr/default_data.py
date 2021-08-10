@@ -25,11 +25,11 @@ def start_conditions():
 
 def start_values():
     start_values = {
-        'manual_age': 300,
+        'manual_age': 1,
         'manual_clan': 'Malkavian',
         'manual_sex': 'Female',
         'manual_generation': 10,
-        'manual_calculation': 800,
+        'manual_calculation': 1,
         'manual_name': "Fruzsi"}
     return start_values
 

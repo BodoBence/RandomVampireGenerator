@@ -2,22 +2,21 @@
     <div id="input_container_id">
         <div>
             <p>
-                Sliders: The ratio of the sliders (mental, social, physical) in relation to eachother influences
-                the "persoanlity" of the generated character. The Non-clan disciplines slider controls the opportunities
-                to learn dark skills outside of one's clan.
+                <span style="color: var(--color_neon_pink);">Sliders: </span> The ratio of the focus sliders (mental, social, physical) in relation to each other influence
+                the personality of the generated character. The "Non-clan disciplines" slider controls the ratio to which the character might learn dark skills outside of their clan.
             </p>
             <p>
-                Age: The maximum age is 3000, therefore in most cases the use of manual age
-                is recommended for results that accomodate average gaming sessions.
+                <span style="color: var(--color_neon_pink);">Age: </span> The maximum age is 3000, therefore in most cases the use of manual age
+                is recommended for characters that accomodate average gaming sessions better.
             </p>
             <p>
-                Generation: These values range between 3 and 15, therefore a manual input will
-                yield more usuable results in most cases, and avoids the creation of
-                overpowering characters.
+                <span style="color: var(--color_neon_pink);">Generation: </span> These values range between 3 and 16, therefore, a manual input will
+                yield more usuable characters in most cases, and avoids the creation of
+                overpowering antediluvians.
             </p>
             <p>
-                Level 6+ skills: VTM 5th edition currently gives disciplines only up to level 5.
-                If needed higher level disciplines can be added using V20 rules.
+                <span style="color: var(--color_neon_pink);">Level 5+ skills: </span> VTM 5th edition currently describes disciplines only up to level 5.
+                If needed, higher level disciplines can be added using V20 rules.
             </p>
         </div>
 
@@ -114,7 +113,7 @@
                 data-reference-id-arrow="custom_arrow_id_age" id="button_age_list_id">
                 <p>Random</p>
                 <input type="text" id="selection_age_id" name="manual_age_selection"
-                    data-input-reference="manual_age_input_id" data-input-default="300" data-input-focus="Random"
+                    data-input-reference="manual_age_input_id" data-input-default="1" data-input-focus="Random"
                     value="Random" data-reference-id-button="button_age_list_id">
                 <ul class="dropdown_content" data-reference-id-button="button_age_list_id" id="age_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age_id"
@@ -131,18 +130,18 @@
         </div>
 
         <div>
-            <label for="button_calculation_list_id">XP Calculation:</label>
+            <label for="button_calculation_list_id">XP gain:</label>
             <div class="dropdown_button " data-reference-id="calculation_container"
                 data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list_id">
-                <p>Algorythm</p>
+                <p>Algorithm</p>
                 <input type="text" id="selection_calculation_id" name="manual_calculation_selection"
-                    data-input-reference="manual_calculation_input_id" data-input-default="800"
-                    data-input-focus="Algorythm" value="Algorythm" data-reference-id-button="button_calculation_list_id">
+                    data-input-reference="manual_calculation_input_id" data-input-default="1"
+                    data-input-focus="Algorithm" value="Algorithm" data-reference-id-button="button_calculation_list_id">
                 <ul class="dropdown_content" data-reference-id-button="button_calculation_list_id"
                     id="calculation_container">
-                    <li class="fake_option" data-reference-option="Algorythm"
+                    <li class="fake_option" data-reference-option="Algorithm"
                         data-reference-id="selection_calculation_id"
-                        data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorythm </li>
+                        data-reference-id-button="button_calculation_list_id" name="calculation_option"> Algorithm </li>
                     <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_calculation_id"
                         data-reference-id-button="button_calculation_list_id" name="calculation_option"> Manual </li>
                 </ul>
@@ -192,7 +191,7 @@
         </div>
 
         <div>
-            <label for="checkbox_skills">Use V20 level 6+ skills</label>
+            <label for="checkbox_skills">Use V20 level 5+ skills</label>
             <input type="checkbox" id="checkbox_skills_id">
             <span class="custom_checkbox" data-reference-id="checkbox_skills_id"></span>
         </div>
