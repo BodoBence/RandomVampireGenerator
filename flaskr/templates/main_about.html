@@ -6,16 +6,16 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/about.css') }}">
 
-        {% include "head_meta.html" %}
+        {% include "aux_head_meta.html" %}
     </head>
 
     <body>
 
-        {% include "navigation.html" %}
+        {% include "aux_navigation.html" %}
 
         <main>
 
-            {% include "background.html" %}
+            {% include "aux_background.html" %}
 
             <div>
                 <p>Development</p>
@@ -58,7 +58,7 @@
                     AutoFeed starts character generation with a fixed amount of 400 XP points. From there they live their simulated unlife, gathering experience every year. While getting older, they get less and less XP points (see below), emulating how eventually there will be nothing new under the Sun. Reaching the maximum age of 3000 years the vampire will have accumulated a total of circa 1600 XP points. XP points are spent according to the normal rules of the 5th edition handbook.
                 </p>
 
-                {% include "xp_calculation_diagram.html" %}
+                {% include "aux_xp_calculation_diagram.html" %}
                
             </div>
     
@@ -80,7 +80,7 @@
 
         </main>
 
-        {% include "footer.html" %}
+        {% include "aux_footer.html" %}
 
         <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>

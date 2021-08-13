@@ -8,20 +8,20 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/encounter.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
 
-        {% include "head_meta.html" %}
+        {% include "aux_head_meta.html" %}
 
     </head>
     <body>
 
-        {% include "navigation.html" %}
+        {% include "aux_navigation.html" %}
                
         <main>
 
-            {% include "background.html" %}
+            {% include "baux_ackground.html" %}
 
             <div class="div_encounter_container">
                 {% for i in range(0, 2) %}
-                    {% include "encounter_card.html" %}
+                    {% include "aux_encounter_card.html" %}
                 {% endfor %}
             </div>
     
@@ -30,7 +30,7 @@
         </main>
 
                 
-        {% include "footer.html" %}
+        {% include "aux_footer.html" %}
 
     </body>
 

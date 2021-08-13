@@ -9,28 +9,28 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_dark.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
 
-        {% include "head_meta.html" %}
+        {% include "aux_head_meta.html" %}
     </head>
 
     <body>
 
-        {% include "navigation.html" %}
+        {% include "aux_navigation.html" %}
 
         <main>
 
-            {% include "background.html" %}
+            {% include "aux_background.html" %}
 
-            {% include "generator_inputs.html" %}
+            {% include "aux_generator_inputs.html" %}
 
             {% if have_generated_character %}
 
-                {% include "generated_character.html" %}
+                {% include "aux_generated_character.html" %}
 
             {% endif %}
 
         </main>
 
-        {% include "footer.html" %}
+        {% include "aux_footer.html" %}
 
 
         <!-- Own scripts -->
