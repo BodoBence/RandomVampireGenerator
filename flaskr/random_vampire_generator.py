@@ -347,18 +347,25 @@ def generate(input_values, input_conditions, input_weights):
                            condition=input_conditions['manual_sex_condition'] ,
                            user_defined=input_values['manual_sex'])
 
-    name = create_name(sex=sex,
+    character_name = create_name(sex=sex,
                        male_names=names_male,
                        female_names=names_female,
                        surnames=names_surname,
                        name_selection_critera=input_conditions['manual_name_condition'],
                        manual_name=input_values['manual_name'])
 
-    basic_info = {'Name': name,
+    sire_name = create_name(sex=random.choice(['male', 'female']),
+                    male_names=names_male,
+                    female_names=names_female,
+                    surnames=names_surname,
+                    name_selection_critera=False,
+                    manual_name='Random_Older_Vampire')
+
+    basic_info = {'Name': character_name,
                   'Sex': sex,
                   'Generation': generation,
                   'Clan': clan,
-                  'Sire': 'Older Vampire',
+                  'Sire': sire_name,
                   'Age': age,
                   'Derangement': 'N/A'}
 

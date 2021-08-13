@@ -1,8 +1,15 @@
-replace_underscores_inner_htmls()
+generated_character_page_initial()
 
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
 create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
 
+
+function generated_character_page_initial(){
+    replace_underscores_inner_htmls()
+    var character_sheet = document.getElementById('generated_character_id')
+    character_sheet.scrollIntoView(alignToTop=true)
+
+}
 
 function create_event_listener_for_skills(class_name, target_class_name){
     var selected_class_elements = document.getElementsByClassName(class_name)
@@ -26,6 +33,7 @@ function toggle_discipline_skills (pressed_button){
 
 function convert_character_to_pdf(){
     var character_sheet = document.getElementById('generated_character_id')
+    character_sheet.scrollIntoView(alignToTop=true)
     var character_sheet_width = character_sheet.offsetWidth
     var character_sheet_height = character_sheet.offsetHeight
     var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height]);

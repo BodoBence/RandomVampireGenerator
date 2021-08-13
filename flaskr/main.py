@@ -14,7 +14,7 @@ app.secret_key = unique_key = str(uuid.uuid1())
 # Startup variables
 
 # Metadata
-VERSION_INFO = '2.1'
+VERSION_INFO = '2.2'
 
 # Generator defaults
 startup_input_field_details = {
@@ -33,7 +33,7 @@ HAVE_GENERATED_CHARACTER = False
 @app.route('/', )
 def home():
     return render_template(
-        'home.html',
+        'main_home.html',
         version = VERSION_INFO,
         field_conditions = startup_input_field_details['input_conditions'],
         field_values = startup_input_field_details['input_values'],
@@ -66,7 +66,7 @@ def result():
     max_level = server_functions.get_maximum_skill_level(generated_character)
 
     rendered_vampire = render_template(
-        'home.html',
+        'main_home.html',
         version = VERSION_INFO,
         field_conditions = resutrctured_conditions,
         field_values = restructured_values,
@@ -83,13 +83,13 @@ def result():
 @app.route('/about', )
 def about():
     return render_template(
-        'about.html',
+        'main_about.html',
         version = VERSION_INFO)
 
 @app.route('/encounter_tracker',  methods = ['POST', 'GET'])
 def encounter_tracker():
     return render_template(
-        'encounter_tracker.html',
+        'main_encounter_tracker.html',
         version = VERSION_INFO)
 
 # Run the app!
