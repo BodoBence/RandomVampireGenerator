@@ -1,7 +1,7 @@
 generated_character_page_initial()
 
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
-create_global_event_listener("click", "button_download_vampire", convert_character_to_pdf, 'id')
+create_global_event_listener("click", "button_download_vampire_id", convert_character_to_pdf, 'id')
 
 
 function generated_character_page_initial(){

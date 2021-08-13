@@ -74,11 +74,10 @@
 
 .dropdown_button + span {
     display: block;
-    right: 1rem;
     margin: 1rem;
     height: 0.5rem;
     width: 0.5rem;
-
+    justify-self: right; /* works best if the dropdown element is placed in a grid */
     border-style: solid;
     border-color: var(--color_neon_white);
     border-width: 0.2em;

@@ -4,7 +4,7 @@ form {
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 5vh;
+    margin-bottom: 0.5rem;
 }
 
 form > div {
@@ -51,6 +51,10 @@ form > div > div {
     transition: 
         box-shadow var(--base_animation_time) ease, 
         border-color var(--base_animation_time) ease;
+}
+
+form > div > div > span {
+    justify-self: right;
 }
 
 form > div > div:first-of-type {
@@ -193,4 +197,12 @@ input::-moz-range-thumb {
 .disabled{
     pointer-events:none;
     opacity:0.4;
+}
+
+@media screen and (min-width: 40em) and (max-width: 60em) {
+    form > div > input:last-of-type {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+    
 }
