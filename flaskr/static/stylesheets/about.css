@@ -75,11 +75,16 @@ a {
 
 /* Diagram */
 
+#div_xp_id {
+    grid-template-columns: 1fr 1fr;
+}
+
+
 #svg_xp_clac_id {
-    margin-top: 3em;
-    margin-bottom: 1em;
-    margin-left: 1em;
-    margin-right: 3em;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    padding: 0.5rem;
 
 }
 

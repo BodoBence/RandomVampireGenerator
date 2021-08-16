@@ -76,12 +76,6 @@ h3 + div {
     max-height: 0px;
     overflow: hidden;
     padding: 0px;
-
-    -webkit-transition: all var(--base_animation_time) ease;
-    -moz-transition: all var(--base_animation_time) ease;
-    -o-transition: all var(--base_animation_time) ease;
-    -ms-transition: all var(--base_animation_time) ease;
-    transition: all var(--base_animation_time) ease;
 }
 
 /* title of the character sheet */

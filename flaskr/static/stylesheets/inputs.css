@@ -36,20 +36,20 @@ form > div > div {
     border-color: var(--color_dark_grey);
     box-shadow: 0 0 1em black;
 
-    -webkit-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -webkit-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -moz-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -moz-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -o-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -o-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -ms-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -ms-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    transition: 
-        box-shadow var(--base_animation_time) ease, 
+    transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
 }
 
@@ -57,6 +57,7 @@ form > div > div > span {
     justify-self: right;
 }
 
+/* Help text for the inputs */
 form > div > div:first-of-type {
     grid-template-columns: repeat(auto-fit, minmax(18em, 1fr)) !important;
     padding-top: 1rem;
@@ -80,7 +81,7 @@ form > div > div label:last-child {
 form > div > div:hover {
     box-shadow: 0 0 1em var(--color_neon_pink);
     border-color: var(--color_neon_white);
-} 
+}
 
 #input_container_id {
     max-height: 3000px;
@@ -204,5 +205,13 @@ input::-moz-range-thumb {
         grid-column-start: 1;
         grid-column-end: -1;
     }
-    
+
+}
+
+@media screen and (min-width: 58em) and (max-width: 75em){
+    form > div > div:first-of-type > p:last-of-type {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
 }

@@ -103,23 +103,3 @@ input[type='button']:hover, input[type='submit']:hover {
 .animation_rotate {
     transform: rotate(45deg) !important;
 }
-
-/* Phone Responsivity */
-
-@media screen and (min-width: 1280px){
-    #img_background_id {
-        content: url("/static/bitmaps/background_1280_720_res_72.jpg");
-    }
-}
-
-@media screen and (min-width: 1920px){
-    #img_background_id {
-        content: url("/static/bitmaps/background_1920_1080_res_72.jpg");
-    }
-}
-
-@media screen and (min-width: 2560px){
-    #img_background_id {
-        content: url("/static/bitmaps/background_2560_1440_res_72.jpg");
-    }
-}
