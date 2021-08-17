@@ -10,7 +10,6 @@ import server_functions
 app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
 
-
 # Startup variables
 
 # Metadata
