@@ -103,3 +103,39 @@ input[type='button']:hover, input[type='submit']:hover {
 .animation_rotate {
     transform: rotate(45deg) !important;
 }
+
+
+@media (min-aspect-ratio: 10/10) and (max-aspect-ratio: 14/10){
+    #img_background_id {
+        top: -40vh;
+        min-height: 140vh;
+    } 
+}
+
+@media (min-aspect-ratio: 14/10) and (max-aspect-ratio: 18/10) {
+    #img_background_id {
+        top: -60vh;
+        min-height: 160vh;
+    } 
+}
+
+@media (min-aspect-ratio: 18/10) and (max-aspect-ratio: 20/10) {
+    #img_background_id {
+        top: -80vh;
+        min-height: 180vh;
+    } 
+}
+
+@media (min-aspect-ratio: 20/10) and (max-aspect-ratio: 22/10) {
+    #img_background_id {
+        top: -100vh;
+        min-height: 200vh;
+    } 
+}
+
+@media (min-aspect-ratio: 22/10) {
+    #img_background_id {
+        top: -120vh;
+        min-height: 220vh;
+    } 
+}
