@@ -1,10 +1,14 @@
 <div id="container_footer_id">
-    <img src="{{ url_for('static', filename='bitmaps/darkpack_tranparent_logo_color_change_500px.png') }}" alt="dark pack logo">
+    {% if display_legal == true %}
 
-    <p>
-        Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with
-        permission. All rights reserved. For more information please visit worldofdarkness.com. AutoFeed is not official World of Darkness material.
-    </p>
+        <img src="{{ url_for('static', filename='bitmaps/darkpack_tranparent_logo_color_change_500px.png') }}" alt="dark pack logo">
+
+        <p>
+            Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with
+            permission. All rights reserved. For more information please visit worldofdarkness.com. AutoFeed is not official World of Darkness material.
+        </p>
+
+    {% endif %}
 
     <p id="p_version_id">
         version:
