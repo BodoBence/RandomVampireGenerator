@@ -88,52 +88,60 @@ function input_sync(current_selector){
 // Functions for the Input sliders (generator_inputs.html)
 
 function load_default_input_values(){
-    console.log('changing input values to defaults')
-
     // Dropdowns
-    input_clan = document.getElementById('selection_clan')
-    input_clan.value = 'Malkavian'
+    input_clan = document.getElementById('selection_clan_id')
+    input_clan.value = 'Random'
+    input_clan.parentElement.firstElementChild.innerHTML = 'Random'
     input_clan.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_generation = document.getElementById('selection_generation')
+    input_generation = document.getElementById('selection_generation_id')
     input_generation.value = 'Random'
+    input_generation.parentElement.firstElementChild.innerHTML = 'Random'
     input_generation.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_age = document.getElementById('selection_age')
+    input_age = document.getElementById('selection_sex_id')
     input_age.value = 'Random'
+    input_age.parentElement.firstElementChild.innerHTML = 'Random'
     input_age.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_name = document.getElementById('selection_name')
+    input_age = document.getElementById('selection_age_id')
+    input_age.value = 'Random'
+    input_age.parentElement.firstElementChild.innerHTML = 'Random'
+    input_age.dispatchEvent(new Event('change', { bubbles: true }))
+
+    input_name = document.getElementById('selection_name_id')
     input_name.value = 'Random'
+    input_name.parentElement.firstElementChild.innerHTML = 'Random'
     input_name.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_calculation = document.getElementById('selection_calculation')
+    input_calculation = document.getElementById('selection_calculation_id')
     input_calculation.value = 'Algorithm'
+    input_calculation.parentElement.firstElementChild.innerHTML = 'Random'
     input_calculation.dispatchEvent(new Event('change', { bubbles: true }))
 
 
     // Sliders
-    input_discipline = document.getElementById('slider_discipline')
-    input_discipline.value = 0
+    input_discipline = document.getElementById('slider_discipline_id')
+    input_discipline.value = 5
     input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_physical = document.getElementById('slider_physical')
+    input_physical = document.getElementById('slider_physical_id')
     input_physical.value = 50
     input_physical.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_mental = document.getElementById('slider_mental')
+    input_mental = document.getElementById('slider_mental_id')
     input_mental.value = 50
     input_mental.dispatchEvent(new Event('change', { bubbles: true }))
 
-    input_social = document.getElementById('slider_social')
+    input_social = document.getElementById('slider_social_id')
     input_social.value = 50
     input_social.dispatchEvent(new Event('change', { bubbles: true }))
 
 
     // Input fields
     document.getElementById('manual_name_input_id').value = 'Fruzsi'
-    document.getElementById('manual_age_input_id').value = 300
-    document.getElementById('manual_calculation_input_id').value = 800
+    document.getElementById('manual_age_input_id').value = 1
+    document.getElementById('manual_calculation_input_id').value = 1
 }
 
 function display_slider_value(current_slider){
