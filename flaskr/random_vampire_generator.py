@@ -193,15 +193,10 @@ def calculate_weights(age, weight_values):
     return weights
 
 def calculate_clan_multiplier(current_type):
-    if current_type != 'Clan_Disciplines' or current_type != 'Clan_Disciplines':
-        print('ERROR: current_type for get_clan_multiplier is not appropriate')
-    
-    else: 
-        
-        if current_type == 'Clan_Disciplines':
-            clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
-        else:
-            clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
+    if current_type == 'Clan_Disciplines':
+        clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
+    else:
+        clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
 
     return clan_multiplier
 
@@ -215,23 +210,32 @@ def calculate_most_expensive_viable_level(current_level, points_maximum, clan_mu
 
     return most_expensive_viable_level
 
-def check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary):
-    check_result = False
+def check_skill_requirements(skill_level, skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary, character_sheet):
+    print('checking skill:')
+    print(skill)
+    target_skill_data = discipline_skill_dictionary[skill_level][skill].keys()
+    print('target skill data: ' + str(target_skill_data))
+    check_result = True
 
-    if 'Required_skills' not in discipline_skill_dictionary.keys() or 'Requried_disciplines' not in discipline_skill_dictionary.keys():
-        check_result = True
+    if 'Required_skills' in target_skill_data:
+        print('there is a required skill')
+        for required_skill in discipline_skill_dictionary[skill_level][skill]['Required_skills']:
+            print('required skill: ' + required_skill)
+            if required_skill not in current_discipline_skills:
+                check_result = False
+                return check_result
 
-    if 'Required_skills' in discipline_skill_dictionary.keys():
-        for required_skill in discipline_skill_dictionary['Required_skills'].items():
-            if required_skill in current_discipline_skills:
-                check_result = True
-
-    if 'Requried_disciplines' in discipline_skill_dictionary.keys():
-        for required_discipline in discipline_skill_dictionary['Required_disciplines'].keys():
-            if required_discipline in current_disciplines.keys():
-                if discipline_skill_dictionary['Required_disciplines'][required_discipline] <= current_disciplines[required_discipline]:
-                    check_result = True   
-
+    if 'Requried_disciplines' in current_disciplines:
+        for required_discipline in discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'].keys():
+            if required_discipline in character_sheet['Disciplines']['Clan_Disciplines'].keys():
+                if discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'][required_discipline] > character_sheet['Disciplines']['Clan_Disciplines'][required_discipline]:
+                    check_result = False
+                    return check_result
+            else:
+                if discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'][required_discipline] > character_sheet['Disciplines']['Non-Clan_Disciplines'][required_discipline]:
+                    check_result = False
+                    return check_result
+    print (check_result)
     return check_result
 
 def collect_potential_discipline_skills(character_sheet, current_category, current_type, current_stat, most_expensive_viable_level):
@@ -245,9 +249,9 @@ def collect_potential_discipline_skills(character_sheet, current_category, curre
     for discipline_skill_dictionary in default_data.get_discipline_skills_and_rituals()[current_stat].values():
         for skill_level in discipline_skill_dictionary.keys():
             if int(skill_level) <= most_expensive_viable_level:
-                for skill in discipline_skill_dictionary[skill_level].keys():
+                for skill in discipline_skill_dictionary[skill_level].keys(): # E.g "Hightened Senses"
                     if skill not in current_discipline_skills:
-                        if check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary):
+                        if check_skill_requirements(skill_level, skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary, character_sheet):
                             skill_info = (int(skill_level), skill, discipline_skill_dictionary[skill_level][skill]['Description'])
                             potential_discipline_skills.append(skill_info)
 
@@ -273,14 +277,13 @@ def level_up(character_sheet, weight_values, input_conditions, input_values):
     xp_stagnation_counter = []
 
     while xp > 2 and len(xp_stagnation_counter) < 30:
-        current_category = random.choice(weights['Categories'])
-        current_type = random.choice(weights[current_category])
-        current_stat = random.choice(list(character_sheet[current_category][current_type].keys()))
+        current_category = random.choice(weights['Categories']) # E.g. Discipline, or Skills, 
+        current_type = random.choice(weights[current_category]) # E.g. clan-discipline, 
+        current_stat = random.choice(list(character_sheet[current_category][current_type].keys())) # E.g. Auspex
 
         # Discipline track
         if current_category == 'Disciplines':
             current_level = int(character_sheet[current_category][current_type][current_stat]['Level'])
-            most_expensive_viable_level = 0
             clan_multiplier = calculate_clan_multiplier(current_type)
             most_expensive_viable_level = calculate_most_expensive_viable_level(current_level, points_maximum, clan_multiplier, xp)
 
