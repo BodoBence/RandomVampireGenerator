@@ -201,6 +201,8 @@ def calculate_clan_multiplier(current_type):
     return clan_multiplier
 
 def calculate_most_expensive_viable_level(current_level, points_maximum, clan_multiplier, xp):
+    most_expensive_viable_level = 0
+
     for level in range(0, current_level + 1 ):
         if level == points_maximum:
             most_expensive_viable_level = level
@@ -211,31 +213,28 @@ def calculate_most_expensive_viable_level(current_level, points_maximum, clan_mu
     return most_expensive_viable_level
 
 def check_skill_requirements(skill_level, skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary, character_sheet):
-    print('checking skill:')
-    print(skill)
     target_skill_data = discipline_skill_dictionary[skill_level][skill].keys()
-    print('target skill data: ' + str(target_skill_data))
     check_result = True
 
     if 'Required_skills' in target_skill_data:
-        print('there is a required skill')
         for required_skill in discipline_skill_dictionary[skill_level][skill]['Required_skills']:
-            print('required skill: ' + required_skill)
             if required_skill not in current_discipline_skills:
                 check_result = False
                 return check_result
 
-    if 'Requried_disciplines' in current_disciplines:
-        for required_discipline in discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'].keys():
+    if 'Required_disciplines' in target_skill_data:
+        print('current disciplines:' + str(current_disciplines))
+        for required_discipline in discipline_skill_dictionary[skill_level][skill]['Required_disciplines'].keys():
+            print('required discipline: ' + str(required_discipline))
             if required_discipline in character_sheet['Disciplines']['Clan_Disciplines'].keys():
-                if discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'][required_discipline] > character_sheet['Disciplines']['Clan_Disciplines'][required_discipline]:
+                if discipline_skill_dictionary[skill_level][skill]['Required_disciplines'][required_discipline] > character_sheet['Disciplines']['Clan_Disciplines'][required_discipline]['Level']:
                     check_result = False
                     return check_result
             else:
-                if discipline_skill_dictionary[skill_level][skill]['Requried_disciplines'][required_discipline] > character_sheet['Disciplines']['Non-Clan_Disciplines'][required_discipline]:
+                if discipline_skill_dictionary[skill_level][skill]['Required_disciplines'][required_discipline] > character_sheet['Disciplines']['Non-Clan_Disciplines'][required_discipline]['Level']:
                     check_result = False
                     return check_result
-    print (check_result)
+
     return check_result
 
 def collect_potential_discipline_skills(character_sheet, current_category, current_type, current_stat, most_expensive_viable_level):
