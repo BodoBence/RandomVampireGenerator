@@ -192,6 +192,29 @@ def calculate_weights(age, weight_values):
 
     return weights
 
+def calculate_clan_multiplier(current_type):
+    if current_type != 'Clan_Disciplines' or current_type != 'Clan_Disciplines':
+        print('ERROR: current_type for get_clan_multiplier is not appropriate')
+    
+    else: 
+        
+        if current_type == 'Clan_Disciplines':
+            clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
+        else:
+            clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
+
+    return clan_multiplier
+
+def calculate_most_expensive_viable_level(current_level, points_maximum, clan_multiplier, xp):
+    for level in range(0, current_level + 1 ):
+        if level == points_maximum:
+            most_expensive_viable_level = level
+        else:
+            if (level + 1) * clan_multiplier <= xp:
+                most_expensive_viable_level = level + 1
+
+    return most_expensive_viable_level
+
 def check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary):
     check_result = False
 
@@ -207,8 +230,29 @@ def check_skill_requirements(skill, current_disciplines, current_discipline_skil
         for required_discipline in discipline_skill_dictionary['Required_disciplines'].keys():
             if required_discipline in current_disciplines.keys():
                 if discipline_skill_dictionary['Required_disciplines'][required_discipline] <= current_disciplines[required_discipline]:
-                    check_result = True      
+                    check_result = True   
+
     return check_result
+
+def collect_potential_discipline_skills(character_sheet, current_category, current_type, current_stat, most_expensive_viable_level):
+    current_disciplines = list(character_sheet['Disciplines']['Clan_Disciplines'].keys())
+    current_disciplines.append(character_sheet['Disciplines']['Non-Clan_Disciplines'].keys())
+
+    current_discipline_skills = list(character_sheet[current_category][current_type][current_stat]['Skills'].keys())
+    
+    potential_discipline_skills = []
+    
+    for discipline_skill_dictionary in default_data.get_discipline_skills_and_rituals()[current_stat].values():
+        for skill_level in discipline_skill_dictionary.keys():
+            if int(skill_level) <= most_expensive_viable_level:
+                for skill in discipline_skill_dictionary[skill_level].keys():
+                    if skill not in current_discipline_skills:
+                        if check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_skill_dictionary):
+                            skill_info = (int(skill_level), skill, discipline_skill_dictionary[skill_level][skill]['Description'])
+                            potential_discipline_skills.append(skill_info)
+
+    return potential_discipline_skills
+
 
 def level_up(character_sheet, weight_values, input_conditions, input_values):
     # Variable setup
@@ -232,42 +276,16 @@ def level_up(character_sheet, weight_values, input_conditions, input_values):
         current_category = random.choice(weights['Categories'])
         current_type = random.choice(weights[current_category])
         current_stat = random.choice(list(character_sheet[current_category][current_type].keys()))
+
+        # Discipline track
         if current_category == 'Disciplines':
-            # Discipline track
             current_level = int(character_sheet[current_category][current_type][current_stat]['Level'])
-
-            # get most expensive potential discipline skill level
             most_expensive_viable_level = 0
-
-            if current_type == 'Clan_Disciplines':
-                clan_multiplier = default_data.default_costs_data()['Disciplines']['Clan_Disciplines']
-            else:
-                clan_multiplier = default_data.default_costs_data()['Disciplines']['Non-Clan_Disciplines']
-
-            for level in range(0, current_level + 1 ):
-                if level == points_maximum:
-                    most_expensive_viable_level = level
-                else:
-                    if (level + 1) * clan_multiplier <= xp:
-                        most_expensive_viable_level = level + 1
+            clan_multiplier = calculate_clan_multiplier(current_type)
+            most_expensive_viable_level = calculate_most_expensive_viable_level(current_level, points_maximum, clan_multiplier, xp)
 
             if most_expensive_viable_level != 0:
-                # get potential upgrade skills
-                current_discipline_skills = list(character_sheet[current_category][current_type][current_stat]['Skills'].keys())
-                
-                current_disciplines = list(character_sheet['Disciplines']['Clan_Disciplines'].keys())
-                current_disciplines.append(character_sheet['Disciplines']['Non-Clan_Disciplines'].keys())
-                
-                potential_discipline_skills = []
-                
-                for discipline_ability_dictionary in default_data.get_discipline_skills_and_rituals()[current_stat].values():
-                    for skill_level in discipline_ability_dictionary.keys():
-                        if int(skill_level) <= most_expensive_viable_level:
-                            for skill in discipline_ability_dictionary[skill_level].keys():
-                                if skill not in current_discipline_skills:
-                                    if check_skill_requirements(skill, current_disciplines, current_discipline_skills, discipline_ability_dictionary):
-                                        skill_info = (int(skill_level), skill, discipline_ability_dictionary[skill_level][skill]['Description'])
-                                        potential_discipline_skills.append(skill_info)
+                potential_discipline_skills = collect_potential_discipline_skills(character_sheet, current_category, current_type, current_stat, most_expensive_viable_level)
 
                 if len(potential_discipline_skills) == 0:
                     xp_stagnation_counter.append(1)
