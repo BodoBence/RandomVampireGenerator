@@ -74,7 +74,6 @@ function create_global_event_listener(type, selector, callback, element_type){
 }
 
 function toggle_visibility(element_in_focus){
-
     if (element_in_focus.style.visibility === "collapse") {
         element_in_focus.style.visibility = "visible";
         console.log("visibility changed to visible")
