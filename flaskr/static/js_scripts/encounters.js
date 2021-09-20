@@ -94,56 +94,18 @@ function remove_encounter(current_button) {
 
 function roll_the_dice(roll_button) {
     let difficulty = roll_button.parentElement.querySelector("input[name='diffculty_meter']").value
-    let number_of_dice = roll_button.parentElement.querySelector("input[name='dice_meter']").value
     let hunger = roll_button.parentElement.querySelector("input[name='hunger_meter']").value
     let dice = roll_button.parentElement.querySelectorAll(".dice")
-    let critical = 0
-    let bestial_faliure = 0
-    let messy_critical = 0 
-    let succes = 0
-    let faliure = 0
-
-    if (hunger > 0) {
-        for (let index = 0; index < hunger; index++) {
-            dice[index].classList.append('hunger')
-        }
-    }
 
     // roll each die
-    dice.forEach(element => {
-        if (element.classList.contains('hunger') == true){
-            let die_type = 'hunger'
-        }  
+    let roll = []
 
-        let roll = Math.floor(Math.random() * 10)
-        if (1 == roll) {
-            faliure = faliure + 1
-        }
-        if (6 <= roll && roll <= 9) {
-            succes = succes + 1
-        }
-        if (0 == roll) {
-            critical = critical + 1
-        }
-        console.log(roll)
+    dice.forEach(element => {
+        roll.push((Math.floor(Math.random() * 10)) + 1) // random gives values between 0 and 1, to have it go from 1 to 10, we add 1
     })
 
-    // calcualte result
-    if (critical % 2 == 0 && critical != 0) {
-        critical = critical * 2
-    }
+    success = roll.filter(e => 6 <= e).length
 
-    if (faliure < succes) {
-        succes = succes - faliure
-    } 
-
-    let roll_result = succes + critical 
-    if (roll_result >= difficulty) {
-        console.log('succes, with a margin of: ' + String(roll_result - difficulty))
-    } else {
-        console.log('failue with a margin of: ' + String(difficulty - roll_result))
-    }
-
-
-
+    console.log('roll: ' + String(roll))
+    console.log('success: ' + String(success))
 }
