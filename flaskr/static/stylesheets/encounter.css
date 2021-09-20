@@ -195,3 +195,11 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
     text-align: center;
 }
 
+.button_roll:hover {
+    cursor: pointer;
+}
+
+.button_roll p {
+    pointer-events: none;
+}
+

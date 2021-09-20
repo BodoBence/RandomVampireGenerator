@@ -1,54 +1,57 @@
 
 create_checkboxes()
+
 create_global_event_listener("click", "tracker", toggle_filled, "class")
+
 create_global_event_listener("input", "health_meter", update_value, "name")
 create_global_event_listener("input", "willpower_meter", update_value, "name")
 create_global_event_listener("input", "custom_meter", update_value, "name")
+create_global_event_listener("input", "dice_meter", update_value, "name")
+
 create_global_event_listener("click", "add_encounter", add_encounter, "name")
 create_global_event_listener("click", "remove_encounter", remove_encounter, "name")
+
+create_global_event_listener("click", "button_roll", roll_the_dice, "class")
 
 // Connected to checkboxes
 
 function create_checkboxes(){
-    healths = document.getElementsByName("health_meter")
-    willpowers = document.getElementsByName("willpower_meter")
-    customs = document.getElementsByName("custom_meter")
-    // console.log(customs)
-    // console.log(healths)
-    // console.log(willpowers)
+    let healths = document.getElementsByName("health_meter")
+    let willpowers = document.getElementsByName("willpower_meter")
+    let customs = document.getElementsByName("custom_meter")
+    let dice = document.getElementsByName("dice_meter")
 
     for (let index = 0; index < healths.length; index++) {
-        console.log("updating health boxes")
-        update_value(healths[index])
+        update_value(healths[index], "tracker")
     }
     
     for (let index = 0; index < willpowers.length; index++) {
-        console.log("updating willpower boxes")
-        update_value(willpowers[index])
+        update_value(willpowers[index], "tracker")
     }
 
     for (let index = 0; index < customs.length; index++) {
-        console.log("updating custom boxes")
-        update_value(customs[index])
+        update_value(customs[index], "tracker")
+    }
+
+    for (let index = 0; index < dice.length; index++) {
+        update_value(dice[index], "dice")
+        
     }
 
 }
 
-function update_value(tracker_stat){
+function update_value(tracker_stat, added_class){
+    console.log(added_class)
     current_tracker_stat = tracker_stat.value
-    // console.log("updating value")
-    // console.log(current_tracker_stat)
     current_parent = tracker_stat.nextElementSibling
-    // console.log(current_parent)
-
-    current_trackers = current_parent.getElementsByClassName("tracker")
-    console.log(current_trackers.length)
+    current_trackers = current_parent.getElementsByClassName(added_class)
+    console.log(current_trackers)
 
     if (current_tracker_stat == current_trackers.length) {return}
 
     if (current_tracker_stat > current_trackers.length){
         while (current_tracker_stat > current_trackers.length){
-            add_tracker(current_parent)
+            add_tracker(current_parent, added_class)
         }
     }
 
@@ -59,9 +62,9 @@ function update_value(tracker_stat){
     }
 }
 
-function add_tracker(current_target){
+function add_tracker(current_target, chosen_class_name){
     new_tracker = document.createElement("div")
-    new_tracker.className = "tracker"
+    new_tracker.className = chosen_class_name
     current_target.appendChild(new_tracker)
 }
 
@@ -92,4 +95,13 @@ function remove_encounter(current_button){
         console.log(current_encounter)
         current_encounter.remove()
     }
+}
+
+function roll_the_dice(roll_button){
+    let difficulty = roll_button.parentElement.querySelector("input[name='diffculty_meter']").value
+    let number_of_dice = roll_button.parentElement.querySelector("input[name='dice_meter']").value
+    let hunger = roll_button.parentElement.querySelector("input[name='hunger_meter']").value
+
+
+
 }
