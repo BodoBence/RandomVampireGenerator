@@ -55,16 +55,18 @@
     grid-column: 1/5;
 }
 
-.health_label, .willpower_label, .custom_label {
+.div_encounter_card label, .div_encounter_card input[name="custom_meter_label"]{
     grid-column: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     text-indent: 1rem;
+    color: var(--white);
 }
 
-input[name="health_meter"], input[name="willpower_meter"], input[name="custom_meter"] {
+.div_encounter_card input[type="number"] {
     grid-column: 2;
 }
+
 
 .tracker_container[name="health_container"], .tracker_container[name="willpower_container"], .tracker_container[name="custom_container"] {
     grid-column: 3/6;
@@ -77,7 +79,7 @@ input[name="health_meter"], input[name="willpower_meter"], input[name="custom_me
 }
 
 
-.input_encounter_name, input[name="willpower_meter"], input[name="health_meter"], input[name="custom_meter"] {
+.input_encounter_name, input[type="number"] {
     --border_widdth: 0.1rem;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -152,7 +154,7 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
     text-shadow: 0 0 2em var(--color_neon_pink);
 }
 
-.tracker {
+.tracker, .dice {
     display: inline-block;
 
     margin: 0;
@@ -177,6 +179,23 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
     box-shadow: 0 0 1em var(--white);
 }
 
+.dice_container {
+    grid-column: 3;
+    grid-row: 5/7;
+}
+
+.button_roll:hover {
+    cursor: pointer;
+}
+
+.button_roll {
+    grid-column: 1/-1;
+}
+
+.button_roll p {
+    pointer-events: none;
+}
+
 #add_encounter_id {
     margin-top: 0;
     margin-bottom: 10%;
@@ -195,11 +214,5 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
     text-align: center;
 }
 
-.button_roll:hover {
-    cursor: pointer;
-}
 
-.button_roll p {
-    pointer-events: none;
-}
 
