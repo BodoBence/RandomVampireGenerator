@@ -116,3 +116,19 @@ function cursor_to_default(){
     console.log('changed cursor to default')
     document.body.style.cursor='default'
 }
+
+function array_sampler(pool, sample_size){
+    // returns n random elements from my_array
+    if (sample_size == 0) {
+        return console.log('Error: give non 0 sample size')
+    }
+
+    let samples = []
+    for (let index = 0; index < sample_size; index++) {
+        let sample_element = pool[Math.floor(Math.random() * pool.length)];
+        samples.push(sample_element)
+        pool.splice(sample_element.index, 1)        
+    }
+
+    return samples
+}

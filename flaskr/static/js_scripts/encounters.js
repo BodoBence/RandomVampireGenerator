@@ -1,4 +1,3 @@
-
 create_checkboxes()
 
 create_global_event_listener("click", "tracker", toggle_filled, "class")
@@ -63,6 +62,10 @@ function add_tracker(current_target, chosen_class_name) {
     new_tracker = document.createElement('div')
     new_tracker.className = chosen_class_name
     current_target.appendChild(new_tracker)
+
+    if (chosen_class_name === 'dice'){
+        new_tracker.innerHTML = '0'
+    }
 }
 
 function toggle_filled(element_in_focus) {
@@ -92,20 +95,46 @@ function remove_encounter(current_button) {
     }
 }
 
-function roll_the_dice(roll_button) {
-    let difficulty = roll_button.parentElement.querySelector("input[name='diffculty_meter']").value
-    let hunger = roll_button.parentElement.querySelector("input[name='hunger_meter']").value
-    let dice = roll_button.parentElement.querySelectorAll(".dice")
+// Connected to Dire rolling
 
-    // roll each die
+function roll_the_dice(roll_button) {
+    // creates random numbers between 1 and 10 for each dice respective of the roll button
+    let dice = roll_button.parentElement.querySelectorAll(".dice")
     let roll = []
 
-    dice.forEach(element => {
+    for (let index = 0; index < dice.length; index++) {
         roll.push((Math.floor(Math.random() * 10)) + 1) // random gives values between 0 and 1, to have it go from 1 to 10, we add 1
-    })
+    }
 
-    success = roll.filter(e => 6 <= e).length
+    roll.sort((a, b) => a - b)
 
-    console.log('roll: ' + String(roll))
-    console.log('success: ' + String(success))
+    write_roll_numbers(roll, dice)
+
+    allocate_hunger(dice, roll_button)
+}
+
+function write_roll_numbers(roll, dice) {
+    for (let index = 0; index < roll.length; index++) {
+        dice[index].innerHTML = roll[index]  
+    }
+}
+
+function allocate_hunger(dice, roll_button) {
+    let hunger_value = roll_button.parentElement.querySelector("input[name='hunger_meter']").value
+
+    if (hunger_value == 0) {
+    } else {
+
+        // get rid of current hunger dice
+        dice.forEach(e => {
+            if (e.classList.contains('dice_hunger'))
+            e.classList.remove('dice_hunger')
+        })
+
+        // assign new hunger dice
+        hunger_dice = array_sampler(Array.from(dice), hunger_value) // defined in general.js
+        for (let index = 0; index < hunger_dice.length; index++) {
+            hunger_dice[index].classList.add('dice_hunger')
+        }
+    }
 }

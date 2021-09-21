@@ -65,10 +65,19 @@
 
 .div_encounter_card input[type="number"] {
     grid-column: 2;
+    width: calc(4em + (0.1rem * 2));
+}
+
+.div_encounter_card input[name="dice_meter"] {
+    grid-column: 4 !important;
+}
+
+.div_encounter_card label[for="dice_meter"] {
+    grid-column: 3 !important;
 }
 
 
-.tracker_container[name="health_container"], .tracker_container[name="willpower_container"], .tracker_container[name="custom_container"] {
+.tracker_container {
     grid-column: 3/6;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(1em, 1.25em));
@@ -96,13 +105,6 @@
     height: 2em;
 }
 
-input[name="willpower_meter"], input[name="health_meter"], .tracker_container[name="custom_container"] {
-    margin-top: 0.4rem;
-}
-
-input[name="willpower_meter"], input[name="health_meter"], input[name="custom_meter"] {
-    width: calc(4em + (0.1rem * 2));
-}
 
 .input_encounter_name:hover, input[name="willpower_meter"]:hover, input[name="health_meter"]:hover, input[name="custom_meter"]:hover {
     border-color: var(--color_neon_white);
@@ -154,18 +156,45 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
     text-shadow: 0 0 2em var(--color_neon_pink);
 }
 
-.tracker, .dice {
+.tracker {
     display: inline-block;
-
     margin: 0;
     height: 1em;   
     width: 1em;
-
     border-color: var(--white);
     background-color: transparent;
     border-radius: 0.1rem;
     border-style: solid;
     border-width: 0.1rem;
+}
+
+.dice {
+    display: inline-grid;
+    margin: 0;
+    height: 2em;   
+    width: 2em;
+    border-color: var(--white);
+    background-color: transparent;
+    border-radius: 0.1rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    color: var(--color_neon_pink);
+    text-align: center;
+    align-content: center;
+}
+
+.dice_hunger {
+    color: red;
+}
+
+.dice::before {
+    content: " ";
+    bottom: 100%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
 }
 
 .tracker_clicked {
@@ -180,8 +209,14 @@ input[name="willpower_meter"], input[name="health_meter"], input[name="custom_me
 }
 
 .dice_container {
-    grid-column: 3;
-    grid-row: 5/7;
+    grid-column: 1/6;
+    grid-row: 6;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1em, 1.25em));
+    gap: 1rem;
+    min-width: 5em;
+    overflow: visible;
+    justify-content: space-evenly;
 }
 
 .button_roll:hover {
