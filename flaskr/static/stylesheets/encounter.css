@@ -183,7 +183,6 @@
     position: relative;
     z-index: 0;
     text-shadow: 0 0 0.5rem var(--color_neon_pink);
-    transition: all 1s;
     font-family: TickingTimebombBB, Arial, sans-serif;
 }
 
@@ -208,14 +207,38 @@
     filter: blur(0.01rem)
         drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) 
         drop-shadow( 0 0 0.2rem var(--color_neon_pink) );
-    
-    transition: all 10s;
 }
 
 .svg_dice path{
     width: 2rem;
     height: 2rem;
     fill: currentColor;
+}
+
+/* Dice Animations */
+.animation_roll_load_svg {
+    animation-name: dice_load_svg;
+}
+
+.animation_roll_load_path {
+    animation-name: dice_load_path;
+}
+
+.animation_roll_load_svg, .animation_roll_load_path {
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes dice_load_svg {
+    0% {filter: blur(0.01rem) drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) drop-shadow( 0 0 0.2rem var(--color_neon_pink) );}
+    50% {filter: blur(0.01rem) drop-shadow( 0 0 0 black ) drop-shadow( 0 0 0 black );}
+    100% {filter: blur(0.01rem) drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) drop-shadow( 0 0 0.2rem var(--color_neon_pink) );}
+}
+
+@keyframes dice_load_path {
+    0% {fill: currentColor;}
+    50% {fill: black;}
+    100% {fill: currentcolor;}
 }
 
 .tracker_clicked {

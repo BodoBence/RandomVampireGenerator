@@ -13,6 +13,9 @@ create_global_event_listener("click", "remove_encounter", remove_encounter, "nam
 
 create_global_event_listener("click", "button_roll", roll_the_dice, "class")
 
+create_global_event_listener("animationend", "animation_roll_load_svg", remove_animation_roll_load_svg_class, "class")
+create_global_event_listener("animationend", "animation_roll_load_path", remove_animation_roll_load_path_class, "class")
+
 // Connected to checkboxes
 
 function create_checkboxes() {
@@ -105,11 +108,9 @@ function remove_encounter(current_button) {
 function roll_the_dice(roll_button) {
     // creates random numbers between 1 and 10 for each dice respective of the roll button
     let dice = roll_button.parentElement.querySelectorAll(".dice")
-    let roll = []
+    let roll = generate_n_random_number(dice.length)
 
-    for (let index = 0; index < dice.length; index++) {
-        roll.push((Math.floor(Math.random() * 10)) + 1) // random gives values between 0 and 1, to have it go from 1 to 10, we add 1
-    }
+    add_animation_roll_load(dice)
 
     roll.sort((a, b) => a - b)
 
@@ -169,4 +170,29 @@ function add_svg_to_dice(){
             e.querySelector('.svg_dice').style.visibility = 'initial'
         }
     })
+
+    let svgs = scdf
+}
+
+function generate_n_random_number(n){
+    let generated_numbers = []
+
+    for (let index = 0; index <n; index++) {
+        generated_numbers.push((Math.floor(Math.random() * 10)) + 1) // random gives values between 0 and 1, to have it go from 1 to 10, we add 1
+    }
+    return generated_numbers
+}
+
+function add_animation_roll_load(target_elements){
+    target_elements.forEach(e => {
+        e.classList.add('animation_roll_load')
+    })
+}
+
+function remove_animation_roll_load_svg_class(finished_element){
+    finished_element.classList.remove('animation_roll_load_svg')
+}
+
+function remove_animation_roll_load_path_class(finished_element){
+    finished_element.classList.remove('animation_roll_load_path')
 }
