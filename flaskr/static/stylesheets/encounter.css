@@ -173,28 +173,46 @@
     margin: 0;
     height: 2em;   
     width: 2em;
-    border-color: var(--white);
-    background-color: transparent;
-    border-radius: 0.1rem;
-    border-style: solid;
-    border-width: 0.1rem;
-    color: var(--color_neon_pink);
+    color: var(--color_neon_white);
     text-align: center;
     align-content: center;
+    position: relative;
+    z-index: 0;
+    text-shadow: 0 0 0.35rem var(--color_neon_pink);
+    transition: all 10s;
 }
 
 .dice_hunger {
-    color: red;
+    text-shadow: 0 0 0.35rem red;
 }
 
-.dice::before {
-    content: " ";
-    bottom: 100%;
-    border: solid transparent;
-    height: 0;
-    width: 0;
+.dice_hunger .svg_dice {
+    filter: blur(0.01rem)
+    drop-shadow( 0 0 0.1rem red ) 
+    drop-shadow( 0 0 0.2rem red );
+}
+
+
+.svg_dice {
+    display: block;
+    z-index: -1;
     position: absolute;
-    pointer-events: none;
+    top: -10%;
+    left: 0;
+    overflow: visible;
+    filter: blur(0.01rem)
+        drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) 
+        drop-shadow( 0 0 0.2rem var(--color_neon_pink) );
+    
+    transition: all 10s;
+}
+
+.svg_dice polygon{
+    width: 2rem;
+    height: 2rem;
+    stroke-width: 2rem;
+    stroke-linecap: round;
+    stroke: currentColor;
 }
 
 .tracker_clicked {
@@ -209,10 +227,10 @@
 }
 
 .dice_container {
-    grid-column: 1/6;
+    grid-column: 1/7;
     grid-row: 6;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(1em, 1.25em));
+    grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr));
     gap: 1rem;
     min-width: 5em;
     overflow: visible;
@@ -224,7 +242,7 @@
 }
 
 .button_roll {
-    grid-column: 1/-1;
+    grid-column: 1/7;
 }
 
 .button_roll p {
@@ -248,6 +266,3 @@
 #add_encounter_id p {
     text-align: center;
 }
-
-
-

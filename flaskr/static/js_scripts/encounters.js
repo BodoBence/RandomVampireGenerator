@@ -1,4 +1,5 @@
 create_checkboxes()
+add_svg_to_dice()
 
 create_global_event_listener("click", "tracker", toggle_filled, "class")
 
@@ -56,6 +57,10 @@ function update_value(tracker_stat) {
             current_trackers[current_trackers.length - 1].remove()
         }
     }
+
+    if (tracker_stat.name == 'dice_meter'){
+        add_svg_to_dice()
+    }
 }
 
 function add_tracker(current_target, chosen_class_name) {
@@ -108,9 +113,23 @@ function roll_the_dice(roll_button) {
 
     roll.sort((a, b) => a - b)
 
+    roll = replace_10s_with_0s(roll)
+
     write_roll_numbers(roll, dice)
 
     allocate_hunger(dice, roll_button)
+    
+    add_svg_to_dice()
+}
+
+function replace_10s_with_0s(pool){
+    for (let index = 0; index < pool.length; index++) {
+        if (pool[index] == 10){
+            pool[index] = 0
+        }
+    }
+    
+    return pool
 }
 
 function write_roll_numbers(roll, dice) {
@@ -137,4 +156,17 @@ function allocate_hunger(dice, roll_button) {
             hunger_dice[index].classList.add('dice_hunger')
         }
     }
+}
+
+function add_svg_to_dice(){
+    let svg_type = document.querySelector('.svg_dice')
+    let dice = document.querySelectorAll('.dice')
+
+    dice.forEach(e => {
+        if (e.children.length == 0){
+            let svg_token = svg_type.cloneNode(true)
+            e.appendChild(svg_token)
+            e.querySelector('.svg_dice').style.visibility = 'initial'
+        }
+    })
 }
