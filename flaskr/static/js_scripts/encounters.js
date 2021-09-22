@@ -13,8 +13,9 @@ create_global_event_listener("click", "remove_encounter", remove_encounter, "nam
 
 create_global_event_listener("click", "button_roll", roll_the_dice, "class")
 
-create_global_event_listener("animationend", "animation_roll_load_svg", remove_animation_roll_load_svg_class, "class")
-create_global_event_listener("animationend", "animation_roll_load_path", remove_animation_roll_load_path_class, "class")
+create_global_event_listener("animationend", "animation_roll_svg", remove_animation_roll_svg, "class")
+create_global_event_listener("animationend", "animation_roll_path", remove_animation_roll_path, "class")
+create_global_event_listener("animationend", "animation_roll_div", remove_animation_roll_div, "class")
 
 // Connected to checkboxes
 
@@ -110,8 +111,6 @@ function roll_the_dice(roll_button) {
     let dice = roll_button.parentElement.querySelectorAll(".dice")
     let roll = generate_n_random_number(dice.length)
 
-    add_animation_roll_load(dice)
-
     roll.sort((a, b) => a - b)
 
     roll = replace_10s_with_0s(roll)
@@ -121,6 +120,8 @@ function roll_the_dice(roll_button) {
     allocate_hunger(dice, roll_button)
     
     add_svg_to_dice()
+
+    add_animation_roll_load(dice)
 }
 
 function replace_10s_with_0s(pool){
@@ -170,8 +171,6 @@ function add_svg_to_dice(){
             e.querySelector('.svg_dice').style.visibility = 'initial'
         }
     })
-
-    let svgs = scdf
 }
 
 function generate_n_random_number(n){
@@ -185,14 +184,33 @@ function generate_n_random_number(n){
 
 function add_animation_roll_load(target_elements){
     target_elements.forEach(e => {
-        e.classList.add('animation_roll_load')
+        let time_random_component = Math.random()
+
+        e.classList.add('animation_roll_div')
+        add_random_time_component(e, time_random_component)
+
+        let target_svgs = e.getElementsByClassName('svg_dice')
+        target_svgs[0].classList.add('animation_roll_svg')
+        add_random_time_component(target_svgs[0], time_random_component)
+
+        let target_paths = target_svgs[0].getElementsByClassName('path_dice')
+        target_paths[0].classList.add('animation_roll_path')
+        add_random_time_component(target_paths[0], time_random_component)
     })
 }
 
-function remove_animation_roll_load_svg_class(finished_element){
-    finished_element.classList.remove('animation_roll_load_svg')
+function remove_animation_roll_svg(finished_element){
+    finished_element.classList.remove('animation_roll_svg')
 }
 
-function remove_animation_roll_load_path_class(finished_element){
-    finished_element.classList.remove('animation_roll_load_path')
+function remove_animation_roll_path(finished_element){
+    finished_element.classList.remove('animation_roll_path')
+}
+
+function remove_animation_roll_div(finished_element){
+    finished_element.classList.remove('animation_roll_div')
+}
+
+function add_random_time_component(target_element, time){
+    target_element.style.animationDuration = String(1.2 + (time * 0.5)) + 's'
 }

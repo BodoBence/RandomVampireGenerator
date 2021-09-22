@@ -191,9 +191,7 @@
 }
 
 .dice_hunger .svg_dice {
-    filter: blur(0.01rem)
-    drop-shadow( 0 0 0.1rem red ) 
-    drop-shadow( 0 0 0.2rem red );
+    color: red;
 }
 
 
@@ -204,41 +202,77 @@
     top: -10%;
     left: 0;
     overflow: visible;
-    filter: blur(0.01rem)
-        drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) 
-        drop-shadow( 0 0 0.2rem var(--color_neon_pink) );
+    color: var(--color_neon_pink);
+    filter: 
+        blur(0.01rem)
+        drop-shadow( 0 0 0.1rem currentColor ) 
+        drop-shadow( 0 0 0.2rem currentColor );
 }
 
 .svg_dice path{
     width: 2rem;
     height: 2rem;
-    fill: currentColor;
+    fill: var(--color_neon_white);
 }
 
 /* Dice Animations */
-.animation_roll_load_svg {
+.animation_roll_svg {
     animation-name: dice_load_svg;
-}
-
-.animation_roll_load_path {
-    animation-name: dice_load_path;
-}
-
-.animation_roll_load_svg, .animation_roll_load_path {
-    animation-duration: 1s;
+    animation-duration: 1.2s;
     animation-iteration-count: 1;
 }
 
+.animation_roll_path {
+    animation-name: dice_load_path;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+}
+
+.animation_roll_div {
+    animation-name: dice_load_div;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+} 
+
 @keyframes dice_load_svg {
-    0% {filter: blur(0.01rem) drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) drop-shadow( 0 0 0.2rem var(--color_neon_pink) );}
-    50% {filter: blur(0.01rem) drop-shadow( 0 0 0 black ) drop-shadow( 0 0 0 black );}
-    100% {filter: blur(0.01rem) drop-shadow( 0 0 0.1rem var(--color_neon_pink) ) drop-shadow( 0 0 0.2rem var(--color_neon_pink) );}
+    0% {filter: 
+            blur(0.01rem)
+            drop-shadow(0 0 0.2rem currentColor)
+            drop-shadow( 0 0 1rem currentColor );}
+
+    40% {filter: 
+            blur(0.01rem) 
+            drop-shadow( 0 0 0 black ) 
+            drop-shadow( 0 0 0 black );}
+
+    60% {filter: 
+            blur(0.01rem) 
+            drop-shadow( 0 0 0 black ) 
+            drop-shadow( 0 0 0 black );}
+
+    90% {filter: 
+            blur(0.01rem) 
+            drop-shadow( 0 0 0.15rem currentColor )
+            drop-shadow( 0 0 0.25rem currentColor );}
+
+    100% {filter: 
+            blur(0.01rem) 
+            drop-shadow( 0 0 0.1rem currentColor )
+            drop-shadow( 0 0 0.2rem currentColor );}
 }
 
 @keyframes dice_load_path {
-    0% {fill: currentColor;}
-    50% {fill: black;}
-    100% {fill: currentcolor;}
+    0% {fill: var(--color_neon_white);}
+    40% {fill: black;}
+    60% {fill: black;}
+    100% {fill: var(--color_neon_white);}
+}
+
+@keyframes dice_load_div {
+    0% {color:  var(--color_neon_white);}
+    40% {color: black;}
+    60% {color: black;}
+    100% {color: var(--color_neon_white);}
 }
 
 .tracker_clicked {
