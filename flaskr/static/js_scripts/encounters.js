@@ -12,6 +12,8 @@ create_global_event_listener("click", "add_encounter", add_encounter, "name")
 create_global_event_listener("click", "remove_encounter", remove_encounter, "name")
 
 create_global_event_listener("click", "button_roll", roll_the_dice, "class")
+create_global_event_listener("click", "button_roll", accorian_dice_roller_button, "class")
+create_global_event_listener("click", "svg_roll_triangle", accorian_dice_roller_triangle, "class")
 
 create_global_event_listener("animationend", "animation_roll_svg", remove_animation_roll_svg, "class")
 create_global_event_listener("animationend", "animation_roll_path", remove_animation_roll_path, "class")
@@ -43,16 +45,16 @@ function create_checkboxes() {
 }
 
 function update_value(tracker_stat) {
-    current_tracker_stat = tracker_stat.value
-    current_parent = tracker_stat.nextElementSibling
-    added_class = tracker_stat.getAttribute('data-class-name')
-    current_trackers = current_parent.getElementsByClassName(added_class)
+    let current_tracker_stat = tracker_stat.value
+    let target_container = get_tracker_container(tracker_stat)
+    let added_class = tracker_stat.getAttribute('data-class-name')
+    let current_trackers = target_container.getElementsByClassName(added_class)
 
     if (current_tracker_stat == current_trackers.length) { return }
 
     if (current_tracker_stat > current_trackers.length) {
         while (current_tracker_stat > current_trackers.length) {
-            add_tracker(current_parent, added_class)
+            add_tracker(target_container, added_class)
         }
     }
 
@@ -73,7 +75,22 @@ function add_tracker(current_target, chosen_class_name) {
     current_target.appendChild(new_tracker)
 
     if (chosen_class_name === 'dice'){
-        new_tracker.innerHTML = '0'
+        new_tracker.innerHTML = String(generate_n_random_number(1)[0])
+    }
+}
+
+function get_tracker_container(tracker){
+    switch (tracker.name) {
+        case 'health_meter':
+            return tracker.nextElementSibling
+        case 'willpower_meter':
+            return tracker.nextElementSibling
+        case 'custom_meter':
+            return tracker.nextElementSibling            
+        case 'dice_meter':
+            return tracker.parentElement.querySelector('.dice_container')        
+        default:
+            break;
     }
 }
 
@@ -168,7 +185,7 @@ function add_svg_to_dice(){
         if (e.children.length == 0){
             let svg_token = svg_type.cloneNode(true)
             e.appendChild(svg_token)
-            e.querySelector('.svg_dice').style.visibility = 'initial'
+            e.querySelector('.svg_dice').style.display = 'block'
         }
     })
 }
@@ -213,4 +230,37 @@ function remove_animation_roll_div(finished_element){
 
 function add_random_time_component(target_element, time){
     target_element.style.animationDuration = String(1.2 + (time * 0.5)) + 's'
+}
+
+function accorian_dice_roller_button(current_button){
+    let dice_roller_elements = current_button.parentElement.getElementsByClassName('dire_roller_element')
+    for (let index = 0; index < dice_roller_elements.length; index++) {
+        dice_roller_elements[index].classList.remove('dont_display')      
+    }
+
+    current_button.value = 'ROLL'
+    handle_indicator_animation(current_button, dice_roller_elements)
+}
+
+function accorian_dice_roller_triangle(current_triangle){
+    let dice_roller_elements = current_triangle.parentElement.getElementsByClassName('dire_roller_element')
+    for (let index = 0; index < dice_roller_elements.length; index++) {
+        dice_roller_elements[index].classList.toggle('dont_display')      
+    }
+
+    if (dice_roller_elements[0].classList.contains('dont_display')){
+        current_triangle.previousElementSibling.value = 'SHOW DICE ROLLER'
+    } else {
+        current_triangle.previousElementSibling.value = 'ROLL'
+    }
+
+    handle_indicator_animation(current_triangle.previousElementSibling, dice_roller_elements)
+}
+
+function handle_indicator_animation(current_button, dice_roller_elements){
+    if (dice_roller_elements[0].classList.contains('dont_display')){
+        current_button.nextElementSibling.classList.add('triangle_closed')
+    } else {
+        current_button.nextElementSibling.classList.remove('triangle_closed')
+    }
 }

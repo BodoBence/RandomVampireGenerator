@@ -3,6 +3,8 @@
     src: url('fonts/TickingTimebombBB.ttf');
 }
 
+/* Encounter cards */
+
 .div_encounter_container {
     margin: 0;
     display: grid;
@@ -13,6 +15,10 @@
 }
 
 .div_encounter_card {
+    grid-gap: 1em;
+    grid-template-columns: 2.5fr auto 2fr 0.5fr;
+    grid-template-rows: auto;
+    align-items: first baseline;
     background-color: var(--color_black_transparent);
 
     border-radius: 0.5em;
@@ -26,10 +32,6 @@
     box-shadow: 0 0 1em black;
 
     display: grid;
-    grid-gap: 1em;
-    grid-template-columns: 2.5fr auto 2fr 0.5fr;
-    grid-template-rows: auto;
-    align-items: first baseline;
 
     -webkit-transition: 
         box-shadow var(--base_animation_time) ease, 
@@ -72,14 +74,13 @@
     width: calc(4em + (0.1rem * 2));
 }
 
-.div_encounter_card input[name="dice_meter"] {
+.div_encounter_card input[name="hunger_meter"] {
     grid-column: 4 !important;
 }
 
-.div_encounter_card label[for="dice_meter"] {
+.div_encounter_card label[for="hunger_meter"] {
     grid-column: 3 !important;
 }
-
 
 .tracker_container {
     grid-column: 3/6;
@@ -90,7 +91,6 @@
     min-width: 5em;
     overflow: visible;
 }
-
 
 .input_encounter_name, input[type="number"] {
     --border_widdth: 0.1rem;
@@ -109,7 +109,6 @@
     height: 2em;
 }
 
-
 .input_encounter_name:hover, input[name="willpower_meter"]:hover, input[name="health_meter"]:hover, input[name="custom_meter"]:hover {
     border-color: var(--color_neon_white);
 
@@ -127,7 +126,6 @@
     -ms-transition: all var(--base_animation_time) ease;  
     transition: all var(--base_animation_time) ease;
 }
-
 
 .button_encounter[name="remove_encounter"] {
     grid-column: 5/6;
@@ -172,11 +170,24 @@
     border-width: 0.1rem;
 }
 
+
+.tracker_clicked {
+    background-color: var(--color_neon_pink);
+    box-shadow: 0 0 1em var(--color_neon_pink);
+}
+
+.tracker:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    box-shadow: 0 0 1em var(--white);
+}
+
 .dice {
     display: inline-grid;
     margin: 0;
     height: 2em;   
     width: 2em;
+    font-size: 1.25em;
     color: var(--color_neon_white);
     text-align: center;
     align-content: center;
@@ -193,7 +204,6 @@
 .dice_hunger .svg_dice {
     color: var(--color_neon_green);
 }
-
 
 .svg_dice {
     display: block;
@@ -214,6 +224,7 @@
     height: 2rem;
     fill: var(--color_neon_white);
 }
+
 
 /* Dice Animations */
 .animation_roll_svg {
@@ -275,20 +286,8 @@
     100% {color: var(--color_neon_white);}
 }
 
-.tracker_clicked {
-    background-color: var(--color_neon_pink);
-    box-shadow: 0 0 1em var(--color_neon_pink);
-}
-
-.tracker:hover {
-    cursor: pointer;
-    background-color: var(--white);
-    box-shadow: 0 0 1em var(--white);
-}
-
 .dice_container {
     grid-column: 1/7;
-    grid-row: 6;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr));
     gap: 1rem;
@@ -302,13 +301,44 @@
 }
 
 .button_roll {
-    grid-column: 1/7;
+    grid-column: 1/5;
 }
 
 .button_roll p {
     pointer-events: none;
 }
 
+.svg_roll_triangle {
+    grid-column: 5/6;
+    color: var(--color_neon_pink);
+    max-height: 100%;
+    max-width: 3em;
+    filter: 
+        blur(0.01rem)
+        drop-shadow( 0 0 0.1rem currentColor ) 
+        drop-shadow( 0 0 0.2rem currentColor );
+    transition: transform 0.5s;
+}
+
+.svg_roll_triangle:hover {
+    cursor: pointer;
+    color: var(--color_neon_white);
+
+}
+
+.svg_roll_triangle path {
+    fill: var(--color_neon_white);
+}
+
+.dont_display{
+    display: none;
+}
+
+.triangle_closed {
+    transform: rotate(180deg);
+}
+
+/* Add button after te cards */
 #add_encounter_id {
     margin-top: 0;
     margin-right: 0.5rem;

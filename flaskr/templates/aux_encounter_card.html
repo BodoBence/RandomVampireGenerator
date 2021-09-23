@@ -1,6 +1,9 @@
 <div class="div_encounter_card">
 
     <input type="text" class="input_encounter_name" value="My powerful Enemy" name="encounter_name">
+    <div class="button_encounter" name="remove_encounter">
+        <p name="remove_encounter">+</p>
+    </div>
 
     <label for="health_meter">Health</label>
     <input type="number" name="health_meter" min="1" max="20" value="8" data-class-name="tracker">
@@ -23,19 +26,17 @@
         </div>
     </div>
 
-    <label for="hunger_meter">Hunger</label>
-    <input type="number" name="hunger_meter" min="0" max="5" value="3">
-    <label for="dice_meter">#Dice   </label>
-    <input type="number" name="dice_meter" min="1" max="20" value="6" data-class-name="dice">
+    <input type="button" class="button_roll" value="SHOW DICE ROLLER"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg_roll_triangle triangle_closed">
+        <path d="M87.77,9.77a1.12,1.12,0,0,1,1,.67,1.45,1.45,0,0,1,0,1.33L51,86.34a1.1,1.1,0,0,1-2,0L11.22,11.77a1.45,1.45,0,0,1,0-1.33,1.12,1.12,0,0,1,1-.67H87.77m8-9.77H4.26C1,0-1.06,4,.58,7.27L46.32,97.58a4,4,0,0,0,7.36,0L99.42,7.27C101.06,4,99,0,95.74,0Z"/>
+    </svg>
 
-    <div class="dice_container">
-    </div>
+    <label class="dire_roller_element dont_display" for="dice_meter"># of Dice</label>
+    <input class="dire_roller_element dont_display" type="number" name="dice_meter" min="1" max="20" value="6" data-class-name="dice">
+    <label class="dire_roller_element dont_display" for="hunger_meter">Hunger</label>
+    <input class="dire_roller_element dont_display" type="number" name="hunger_meter" min="0" max="5" value="3">
 
-    <input type="button" class="button_roll" value="ROLL">   
-    </input>
-
-    <div class="button_encounter" name="remove_encounter">
-        <p name="remove_encounter">+</p>
+    <div class="dice_container dire_roller_element dont_display">
     </div>
 
 </div>
