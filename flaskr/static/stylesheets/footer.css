@@ -5,24 +5,19 @@
     grid-template-rows: 1fr;
     column-gap: 1rem;
     align-items: last baseline;
-
     width: 100%;
     max-height: 5vh;
-
     padding-left: 0;
     padding-right: 0;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-
     background-color: var(--color_darkest);
-
     box-shadow: 0 -1vh 0.5vh black;
 }
 
 #container_footer_id img {
     max-height: 5vh;
     max-width: 100%;
-
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 0.5rem;
