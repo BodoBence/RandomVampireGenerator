@@ -187,11 +187,11 @@
 }
 
 .dice_hunger {
-    text-shadow: 0 0 0.5rem red;
+    text-shadow: 0 0 0.5rem var(--color_neon_green);
 }
 
 .dice_hunger .svg_dice {
-    color: red;
+    color: var(--color_neon_green);
 }
 
 

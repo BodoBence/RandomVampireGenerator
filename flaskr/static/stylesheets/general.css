@@ -9,6 +9,7 @@
     --color_dark_grey: rgba(167, 167, 167, 0.76);
     --color_neon_white: hsla(300, 20%, 97%, 0.937);
     --color_neon_pink: hsla(313, 94%, 70%, 1);
+    --color_neon_green: #6bfaa9;
     --color_black: rgb(0, 0, 0);
 
     /* Time */
@@ -34,14 +35,20 @@
     z-index: -1;
 }
 
+html {
+    width: 100%;
+    min-height: 100vh;
+}
+
 body {
-    margin: 0; /* prevents scrollbars */
     display: grid;
-    grid-template-columns: 100%;
     grid-template-rows: auto 1fr auto;
-    height: 100vh;
-    width:100%;
+    min-height: 100vh;
     z-index: 0;
+}
+
+main {
+    margin: 0; /* prevents scrollbars */
 }
 
 p {

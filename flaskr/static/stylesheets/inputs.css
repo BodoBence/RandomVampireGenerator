@@ -200,7 +200,7 @@ input::-moz-range-thumb {
     opacity:0.4;
 }
 
-@media screen and (min-width: 40em) and (max-width: 60em) {
+@media screen and (min-width: 40em) and (max-width: 64em) {
     form > div > input:last-of-type {
         grid-column-start: 1;
         grid-column-end: -1;
@@ -208,7 +208,7 @@ input::-moz-range-thumb {
 
 }
 
-@media screen and (min-width: 58em) and (max-width: 75em){
+@media screen and (min-width: 63em) and (max-width: 75em){
     form > div > div:first-of-type > p:last-of-type {
         grid-column-start: 1;
         grid-column-end: -1;
