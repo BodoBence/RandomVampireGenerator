@@ -33,20 +33,20 @@
 
     display: grid;
 
-    -webkit-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -webkit-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -moz-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -moz-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -o-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -o-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    -ms-transition: 
-        box-shadow var(--base_animation_time) ease, 
+    -ms-transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
-    transition: 
-        box-shadow var(--base_animation_time) ease, 
+    transition:
+        box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
 }
 
@@ -105,7 +105,7 @@
     background-color: transparent;
     color: var(--white);
     text-indent: 1rem;
-    
+
     height: 2em;
 }
 
@@ -116,14 +116,14 @@
     color: var(--color_neon_pink);
     text-shadow: 0 0 1em currentColor;
 
-    box-shadow: 
+    box-shadow:
         0 0 1.5em currentColor,
         inset 0 0 1.5em currentColor;
 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 
@@ -144,10 +144,10 @@
     transform: rotate(45deg);
     text-align: center;
 
-    -webkit-transition: all var(--base_animation_time) ease;  
-    -moz-transition: all var(--base_animation_time) ease;  
-    -o-transition: all var(--base_animation_time) ease;  
-    -ms-transition: all var(--base_animation_time) ease;  
+    -webkit-transition: all var(--base_animation_time) ease;
+    -moz-transition: all var(--base_animation_time) ease;
+    -o-transition: all var(--base_animation_time) ease;
+    -ms-transition: all var(--base_animation_time) ease;
     transition: all var(--base_animation_time) ease;
 }
 
@@ -161,7 +161,7 @@
 .tracker {
     display: inline-block;
     margin: 0;
-    height: 1em;   
+    height: 1em;
     width: 1em;
     border-color: var(--white);
     background-color: transparent;
@@ -185,7 +185,7 @@
 .dice {
     display: inline-grid;
     margin: 0;
-    height: 2em;   
+    height: 2em;
     width: 2em;
     font-size: 1.25em;
     color: var(--color_neon_white);
@@ -213,9 +213,9 @@
     left: 0;
     overflow: visible;
     color: var(--color_neon_pink);
-    filter: 
+    filter:
         blur(0.01rem)
-        drop-shadow( 0 0 0.1rem currentColor ) 
+        drop-shadow( 0 0 0.1rem currentColor )
         drop-shadow( 0 0 0.2rem currentColor );
 }
 
@@ -243,31 +243,31 @@
     animation-name: dice_load_div;
     animation-duration: 1.2s;
     animation-iteration-count: 1;
-} 
+}
 
 @keyframes dice_load_svg {
-    0% {filter: 
+    0% {filter:
             blur(0.01rem)
             drop-shadow(0 0 0.2rem currentColor)
             drop-shadow( 0 0 1rem currentColor );}
 
-    40% {filter: 
-            blur(0.01rem) 
-            drop-shadow( 0 0 0 black ) 
+    40% {filter:
+            blur(0.01rem)
+            drop-shadow( 0 0 0 black )
             drop-shadow( 0 0 0 black );}
 
-    60% {filter: 
-            blur(0.01rem) 
-            drop-shadow( 0 0 0 black ) 
+    60% {filter:
+            blur(0.01rem)
+            drop-shadow( 0 0 0 black )
             drop-shadow( 0 0 0 black );}
 
-    90% {filter: 
-            blur(0.01rem) 
+    90% {filter:
+            blur(0.01rem)
             drop-shadow( 0 0 0.15rem currentColor )
             drop-shadow( 0 0 0.25rem currentColor );}
 
-    100% {filter: 
-            blur(0.01rem) 
+    100% {filter:
+            blur(0.01rem)
             drop-shadow( 0 0 0.1rem currentColor )
             drop-shadow( 0 0 0.2rem currentColor );}
 }
@@ -302,6 +302,7 @@
 
 .button_roll {
     grid-column: 1/5;
+    align-self: start;
 }
 
 .button_roll p {
@@ -309,13 +310,15 @@
 }
 
 .svg_roll_triangle {
+    align-self: start;
     grid-column: 5/6;
     color: var(--color_neon_pink);
+    height: 100%;
     max-height: 100%;
     max-width: 3em;
-    filter: 
+    filter:
         blur(0.01rem)
-        drop-shadow( 0 0 0.1rem currentColor ) 
+        drop-shadow( 0 0 0.1rem currentColor )
         drop-shadow( 0 0 0.2rem currentColor );
     transition: transform 0.5s;
 }
