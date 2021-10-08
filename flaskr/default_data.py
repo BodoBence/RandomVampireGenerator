@@ -13,6 +13,7 @@ FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
 
 MAX_AGE = 3000
 
+# Character Generator
 def start_conditions():
     start_conditions = {
         'manual_clan_condition': False,
@@ -263,3 +264,11 @@ def get_max_xps():
     with open(FILE_MAX_XPS) as json_file:
         max_xps = json.load(json_file)
     return max_xps
+
+# City Generator
+
+def start_city_values():
+    start_values = {
+        'manual_number_of_vampires': 10}
+        
+    return start_values

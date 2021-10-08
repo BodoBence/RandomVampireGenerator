@@ -13,15 +13,20 @@ app.secret_key = unique_key = str(uuid.uuid1())
 # Startup variables
 
 # Metadata
-VERSION_INFO = '2.91'
+VERSION_INFO = '3.01'
 
-# Generator defaults
+# Character Generator defaults
 startup_input_field_details = {
     'input_conditions': default_data.start_conditions(),
     'input_values': default_data.start_values(),
     'input_weights': default_data.start_weights(),
     'input_clans': default_data.default_clans_data(),
     'input_generations': default_data.default_generations_data()}
+
+# City Generator defaults
+startup_city_input_field_details = {
+    'input_values': default_data.start_city_values()}
+
 
 # Background values
 HAVE_GENERATED_CHARACTER = False
@@ -32,7 +37,7 @@ HAVE_GENERATED_CHARACTER = False
 @app.route('/', )
 def home():
     return render_template(
-        'main_home.html',
+        'main_character_generator.html',
         display_legal = True,
         version = VERSION_INFO,
         field_conditions = startup_input_field_details['input_conditions'],
@@ -66,7 +71,7 @@ def result():
     max_level = server_functions.get_maximum_skill_level(generated_character)
 
     rendered_vampire = render_template(
-        'main_home.html',
+        'main_character_generator.html',
         display_legal = True,
         version = VERSION_INFO,
         field_conditions = resutrctured_conditions,
@@ -92,6 +97,14 @@ def about():
 def encounter_tracker():
     return render_template(
         'main_encounter_tracker.html',
+        display_legal = True,
+        version = VERSION_INFO)
+
+@app.route('/city_generator',  methods = ['POST', 'GET'])
+def city_generator():
+    return render_template(
+        'main_city_generator.html',
+        field_values = startup_city_input_field_details['input_values'],
         display_legal = True,
         version = VERSION_INFO)
 

@@ -1,0 +1,25 @@
+inputs:
+
+number of vampires
+factions
+hierarchy type: flat / vertical
+interaction with people: hiding, dominating, involved, businessy
+Age average:
+Age max:
+Age min:
+
+
+Sample Vampire Profile:
+Fraction:
+Position:
+Age:
+Name:
+Clan:
+Sire:
+Children:
+
+-Visualizable Data
+Character sheet
+relationships
+
+

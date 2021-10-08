@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/city_inputs.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/about.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
+        
+
+        {% include "aux_head_meta.html" %}
+    </head>
+
+    <body>
+
+        {% include "aux_navigation.html" %}
+
+        <main>
+
+            {% include "aux_background.html" %}
+
+            {% include "aux_city_generator_inputs.html" %}
+
+        </main>
+
+        {% include "aux_footer.html" %}
+
+        <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/city_inputs.js') }}"></script>
+        <script src="{{ url_for('static', filename='js_scripts/custom_select.js') }}"></script>
+
+    </body>
+</html>

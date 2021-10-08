@@ -1,0 +1,77 @@
+{
+    "Camarilla":{
+        "Prince":{
+            "Rank": 1,
+            "Superior": ["none"]
+        },
+        "Seneschal": {
+            "Rank": 2,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Primogen": {
+            "Rank": 2,
+            "Superior": ["Prince"]
+        },
+        "Sheriff": {
+            "Rank": 2,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Clan_Whip": {
+            "Rank": 3,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Herald": {
+            "Rank": 2,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Scourge": {
+            "Rank": 2,
+            "Superior": ["Prince"]
+        },
+        "Principal_of_Faith": {
+            "Rank": 2,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Keeper_of_Elysium": {
+            "Rank": 2,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Emissary": {
+            "Rank": 2,
+            "Superior": ["Prince"]
+        },
+        "Shadow": {
+            "Rank": 3,
+            "Superior": ["Prince", "Primogen"]
+        },
+        "Hound": {
+            "Rank": 3,
+            "Superior": ["Prince", "Primogen", "Sheriff"]
+        },
+        "Kindred": {
+            "Rank": 4,
+            "Superior": ["Prince", "Primogen", "Clan_Whip"]
+        }
+
+    },
+    "Sabbath": {},
+    "Anarch": {
+        "Baron": {
+            "Rank": 1,
+            "Superior": ["none"]
+        },
+        "Emissary": {
+            "Rank": 2,
+            "Superior": ["Baron"]
+        },
+        "Sweeper": {
+            "Rank": 2,
+            "Superior": ["Baron"]
+        },
+        "Grunt": {
+            "Rank": 2,
+            "Superior": ["Baron"]
+        }
+    },
+    "Independent": {}
+}
