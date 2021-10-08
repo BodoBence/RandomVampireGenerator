@@ -270,5 +270,5 @@ def get_max_xps():
 def start_city_values():
     start_values = {
         'manual_number_of_vampires': 10}
-        
+
     return start_values
