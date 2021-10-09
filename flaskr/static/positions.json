@@ -3,17 +3,23 @@
         "Prince":{
             "Rank": 1,
             "Superior": [],
-            "Number_allowed": 1 
+            "Number_allowed": 1,
+            "Obigatory": true,
+            "Requries": []
         },
         "Seneschal": {
             "Rank": 2,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 1
+            "Superior": ["Prince"],
+            "Number_allowed": 1,
+            "Obigatory": false,
+            "Requries": ["Prince"]
         },
         "Primogen": {
             "Rank": 2,
             "Superior": ["Prince"],
-            "Number_allowed": 7
+            "Number_allowed": 7,
+            "Obigatory": true,
+            "Requries": ["Prince"]
         },
         "Sheriff": {
             "Rank": 2,

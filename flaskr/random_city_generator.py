@@ -1,8 +1,9 @@
-from posixpath import join
 import pprint
 import random
 import os
 import json
+from dataclasses import dataclass
+from operator import attrgetter
 
 SCRIPT_DIR = os.path.dirname(__file__)
 FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
@@ -27,24 +28,23 @@ def generate_random_city():
         city_generator_inputs['favor_females'],
         city_generator_inputs['favor_males'])
 
-    citizens = {}
+    citizens = []
     # Generate citizens
     for citizen in range(city_generator_inputs['number_of_vampires']):
-        citizens[citizen] = generate_citizen(
+       citizens.append(generate_citizen(
             city_generator_inputs,
             factions,
-            sexes)
+            sexes))
 
     # Generate citizen relations
     citizens = create_citizen_relations(citizens)
 
     return citizens
 
-
 def gather_default_input_values():
     inputs = {
         'number_of_vampires': 8,
-        'number_of_factions': 1,
+        'number_of_factions': 3,
         'age_average': 150,
         'age_standard_deviation': 120,
         'favor_females': 70,
@@ -61,7 +61,7 @@ def gather_manual_input_values():
 
 def gather_input_conditions():
     condtitions = {
-        'MANUAL_FACTION_CHOICE': True
+        'MANUAL_FACTION_CHOICE': False
     }
     return condtitions
 
@@ -82,26 +82,43 @@ def create_sexes_list(n_male, n_female):
 
     return sexes_list
 
-def generate_citizen(inputs, factions, sexes):
-    age = abs(int(random.normalvariate(inputs['age_average'], inputs['age_standard_deviation'])))
-    sex = random.choice(sexes)
-    name = create_name(sex)
-    faction = random.choice(factions)
-    clan = create_clans_list(faction)[0]
+@dataclass
+class citizen:
+    name: str
+    faction: str
+    position: str 
+    age: int
+    name: str
+    sex: str
+    clan: str
+    sire: str
+    generation: int
+    children: list
+    superior: dict
+    relations: dict
 
-    citizen = {
-    'Faction': faction,
-    'Position': None,
-    'Age': age,
-    'Name': name,
-    'Sex': sex,
-    'Clan': clan,
-    'Sire': None,
-    'Generation': None,
-    'Children': None
-    }
+def generate_citizen(inputs, factions, sexes):
+    generated_age = abs(int(random.normalvariate(inputs['age_average'], inputs['age_standard_deviation'])))
+    generated_sex = random.choice(sexes)
+    generated_name = create_name(generated_sex)
+    generated_faction = random.choice(factions)
+    generated_clan = create_clans_list(generated_faction)[0]
+
+    generted_citizen = citizen(
+        faction = generated_faction,
+        position = None,
+        age = generated_age,
+        name = generated_name,
+        sex =  generated_sex,
+        clan = generated_clan,
+        sire =  None,
+        generation =  None,
+        children = None,
+        superior = None,
+        relations = None
+    )
     
-    return citizen
+    return generted_citizen
 
 def create_name(sex):
     male_names = []
@@ -138,50 +155,49 @@ def create_citizen_relations(citizens):
     with open(FILE_POSITIONS) as json_file:
         positions = json.load(json_file)    
 
-    citizens_Camarilla = select_vampires('Camarilla', citizens)
-    citizens_Sabbath = select_vampires('Sabbath', citizens)
-    citizens_Anarch = select_vampires('Anarch', citizens)
-    citizens_Independent = select_vampires('Independent', citizens)
-
-    for citizen_Camarilla in citizens_Camarilla:
-        citizen_Camarilla['Position'] = get_position_in_Camarilla(citizens_Camarilla, positions)
-
-    for citizen_Sabbath in citizens_Sabbath:
-        citizen_Sabbath['Position'] = get_position_in_Sabbath(citizens_Sabbath, positions)
-
-    for citizen_Anarch in citizens_Anarch:
-        citizen_Anarch['Position'] = get_position_in_Anarch(citizens_Anarch, positions)
-
-    for citizen_Independent in citizens_Independent:
-        citizen_Independent['Position'] = get_position_in_Independent(positions)
+    citizens = give_positions(positions, citizens)
 
     return citizens
 
-def select_vampires(faction_critera, citizens):
-    selection = {}
-    for citizen in citizens:
-        if citizen['Faction'] == faction_critera:
-            selection[citizen.key] = citizen
+def give_positions(positions, citizens):
+    pprint.pprint(citizens)
+    print('------------------------')
+    # Camarilla
+    camarilla_citizens = [x for x in citizens if x.faction == 'Camarilla']
+
+    if len(camarilla_citizens) == 0:
+        pass
+    if len(camarilla_citizens) == 1:
+        camarilla_citizens[0].position = 'Prince'
+    if len(camarilla_citizens) > 1:
+        # Assign a Prince
+        max(camarilla_citizens, key=attrgetter('age')).position = 'Prince'
+
+        # Assigin a Primogen Council
+        camarilla_citizens = assign_primogen_council(camarilla_citizens)
+
+    # Anarch
+    anarch_citizens = [x for x in citizens if x.faction == 'Arnach']
+    # Shabbath
+    sabbath_citizens = [x for x in citizens if x.faction == 'Sabbath']
+    # Independent
+    independent_citizens = [x for x in citizens if x.faction == 'Independent']
+
+    # Put all factions togther
+    citizens_with_positions = []
     
-    return selection
+    if len(camarilla_citizens) != 0:
+        citizens_with_positions.append(camarilla_citizens)
 
-def get_position_in_Camarilla(citizens_Camarilla, positions):
-    # Make 1 Prince
-    have_prince = False
-    for potential_prince in citizens_Camarilla:
-        if potential_prince['Position'] == 'Prince':
-            have_prince = True
-    if 
-    return
+    if len(anarch_citizens) != 0:
+        citizens_with_positions.append(anarch_citizens)
 
-def get_position_in_Sabbath(citizens_Sabbath, positions):
-    return
+    if len(sabbath_citizens) != 0:
+        citizens_with_positions.append(sabbath_citizens)
 
-def get_position_in_Anarch(citizens_Anarch, positions):
-    return
+    if len(independent_citizens) != 0:
+        citizens_with_positions.append(independent_citizens)
 
-def get_position_in_Independent(positions):
-    position = positions.keys[0]
-    return position
-
+    return citizens_with_positions
+    
 pprint.pprint(generate_random_city())
