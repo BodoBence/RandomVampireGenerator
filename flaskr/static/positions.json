@@ -5,95 +5,145 @@
             "Superior": [],
             "Number_allowed": 1,
             "Obigatory": true,
-            "Requries": []
+            "Clan_restriction": false
         },
         "Seneschal": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obigatory": false,
-            "Requries": ["Prince"]
+            "Clan_restriction": false
         },
         "Primogen": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 7,
             "Obigatory": true,
-            "Requries": ["Prince"]
+            "Clan_restriction": true
         },
         "Sheriff": {
             "Rank": 2,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 1
+            "Superior": ["Prince"],
+            "Number_allowed": 1,
+            "Obigatory": true,
+            "Clan_restriction": false
         },
         "Clan_Whip": {
             "Rank": 3,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 7
+            "Superior": ["Primogen"],
+            "Number_allowed": 7,
+            "Obigatory": false,
+            "Clan_restriction": true
         },
         "Herald": {
             "Rank": 2,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 1
+            "Superior": ["Prince"],
+            "Number_allowed": 1,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Scourge": {
             "Rank": 2,
             "Superior": ["Prince"],
-            "Number_allowed": 1
+            "Number_allowed": 1,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Principal_of_Faith": {
             "Rank": 2,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 1
+            "Superior": ["Prince"],
+            "Number_allowed": 1,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Keeper_of_Elysium": {
             "Rank": 2,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 1
+            "Superior": ["Prince"],
+            "Number_allowed": 1,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Emissary": {
             "Rank": 2,
             "Superior": ["Prince"],
-            "Number_allowed": 3
+            "Number_allowed": 3,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Shadow": {
             "Rank": 3,
-            "Superior": ["Prince", "Primogen"],
-            "Number_allowed": 99
+            "Superior": ["Primogen"],
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Hound": {
             "Rank": 3,
-            "Superior": ["Prince", "Primogen", "Sheriff"],
-            "Number_allowed": 99
+            "Superior": ["Sheriff"],
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Kindred": {
             "Rank": 4,
-            "Superior": ["Prince", "Primogen", "Clan_Whip"],
-            "Number_allowed": 99
+            "Superior": ["Primogen"],
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         }
 
     },
-    "Sabbath": {},
+    "Sabbath": {
+        "Ductus": {
+            "Rank": 1,
+            "Superior": [],
+            "Number_allowed": 99,
+            "Obigatory": true,
+            "Clan_restriction": false
+        },
+        "Priest": {
+            "Rank": 1,
+            "Superior": [],
+            "Number_allowed": 99,
+            "Obigatory": true,
+            "Clan_restriction": false
+        },
+        "Shovelhead": {
+            "Rank": 2,
+            "Superior": ["Ductus"],
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
+        }
+    },
     "Anarch": {
         "Baron": {
             "Rank": 1,
             "Superior": ["none"],
-            "Number_allowed": 99
+            "Number_allowed": 99,
+            "Obigatory": true,
+            "Clan_restriction": false
         },
         "Emissary": {
             "Rank": 2,
             "Superior": ["Baron"],
-            "Number_allowed": 99
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Sweeper": {
             "Rank": 2,
             "Superior": ["Baron"],
-            "Number_allowed": 99
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         },
         "Grunt": {
             "Rank": 2,
             "Superior": ["Baron"],
-            "Number_allowed": 99
+            "Number_allowed": 99,
+            "Obigatory": false,
+            "Clan_restriction": false
         }
     },
 
@@ -101,7 +151,9 @@
         "N/A": {
             "Rank": 1,
             "Superior": [],
-            "Number_allowed": 99
+            "Number_allowed": 99,
+            "Obigatory": true,
+            "Clan_restriction": false
         }
     }
 }

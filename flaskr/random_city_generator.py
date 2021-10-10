@@ -3,7 +3,7 @@ import random
 import os
 import json
 from dataclasses import dataclass
-from operator import attrgetter
+from operator import attrgetter, contains
 
 SCRIPT_DIR = os.path.dirname(__file__)
 FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
@@ -43,7 +43,7 @@ def generate_random_city():
 
 def gather_default_input_values():
     inputs = {
-        'number_of_vampires': 8,
+        'number_of_vampires': 20,
         'number_of_factions': 3,
         'age_average': 150,
         'age_standard_deviation': 120,
@@ -160,44 +160,51 @@ def create_citizen_relations(citizens):
     return citizens
 
 def give_positions(positions, citizens):
-    pprint.pprint(citizens)
-    print('------------------------')
-    # Camarilla
-    camarilla_citizens = [x for x in citizens if x.faction == 'Camarilla']
+    # camarilla_citizens = [x for x in citizens if x.faction == 'Camarilla']
+    # max(camarilla_citizens, key=attrgetter('age')).position = 'Prince'
 
-    if len(camarilla_citizens) == 0:
-        pass
-    if len(camarilla_citizens) == 1:
-        camarilla_citizens[0].position = 'Prince'
-    if len(camarilla_citizens) > 1:
-        # Assign a Prince
-        max(camarilla_citizens, key=attrgetter('age')).position = 'Prince'
+    # Order citizen according to age
+    citizens.sort(key=lambda x: x.age, reverse=True)
 
-        # Assigin a Primogen Council
-        camarilla_citizens = assign_primogen_council(camarilla_citizens)
+    for citizen in citizens:
+        faction_positions = positions[citizen.faction]
+        faction_ranks = get_faction_ranks(faction_positions)
+        for rank in faction_ranks:
+            # print('rank ' + str(rank))
+            for position in faction_positions:
+                if citizen.position == None:
+                    if position_requirement_check(position, faction_positions, rank, citizens, citizen):
+                        citizen.position = str(position)
+                        print(citizen.name + ' final position ' + position)
 
-    # Anarch
-    anarch_citizens = [x for x in citizens if x.faction == 'Arnach']
-    # Shabbath
-    sabbath_citizens = [x for x in citizens if x.faction == 'Sabbath']
-    # Independent
-    independent_citizens = [x for x in citizens if x.faction == 'Independent']
+    return citizens
 
-    # Put all factions togther
-    citizens_with_positions = []
-    
-    if len(camarilla_citizens) != 0:
-        citizens_with_positions.append(camarilla_citizens)
+def get_faction_ranks(positions):
+    ranks = []
+    for position in positions:
+        if positions[position]['Rank'] not in ranks:
+            ranks.append(int(positions[position]['Rank']))
+    ranks.sort()
 
-    if len(anarch_citizens) != 0:
-        citizens_with_positions.append(anarch_citizens)
+    return ranks
 
-    if len(sabbath_citizens) != 0:
-        citizens_with_positions.append(sabbath_citizens)
+def position_requirement_check(position, faction_positions, rank, citizens, citizen):
+    if faction_positions[position]['Clan_restriction'] == False:
+        clan_critrion = True
+    else:
+        if len([x for x in citizens if x.clan == citizen.clan and x.position == position and x.name != citizen.name]) < faction_positions[position]['Number_allowed']:
+            clan_critrion = True
+        else:
+            clan_critrion = False
 
-    if len(independent_citizens) != 0:
-        citizens_with_positions.append(independent_citizens)
+    correct_rank = True if faction_positions[position]['Rank'] == rank else False
 
-    return citizens_with_positions
-    
+    n_positions_in_city = len([x for x in citizens if x.position == position])
+    position_is_open = True if n_positions_in_city < faction_positions[position]['Number_allowed'] else False
+
+    check_result = True if correct_rank and position_is_open and clan_critrion else False
+
+    return check_result
+
+
 pprint.pprint(generate_random_city())
