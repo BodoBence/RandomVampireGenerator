@@ -3,7 +3,8 @@ import random
 import os
 import json
 from dataclasses import dataclass
-from operator import attrgetter, contains
+from operator import attrgetter
+import csv
 
 SCRIPT_DIR = os.path.dirname(__file__)
 FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
@@ -38,7 +39,7 @@ def generate_random_city():
             sexes))
 
     # Generate citizen relations
-    citizens = create_citizen_relations(citizens, inputs['minimum_sireing_gap'])
+    citizens = create_citizen_relations(citizens, city_generator_inputs['minimum_sireing_gap'])
 
     return citizens
 
@@ -90,7 +91,6 @@ class citizen:
     faction: str
     position: str 
     age: int
-    name: str
     sex: str
     clan: str
     sire: str
@@ -115,7 +115,7 @@ def generate_citizen(inputs, factions, sexes):
         clan = generated_clan,
         sire =  None,
         generation =  None,
-        children = None,
+        children = [],
         superior = None,
         relations = None
     )
@@ -179,7 +179,7 @@ def give_positions(positions, citizens):
                 if citizen.position == None:
                     if position_requirement_check(position, faction_positions, rank, citizens, citizen):
                         citizen.position = str(position)
-                        print(citizen.name + ' final position ' + position)
+                        # print(citizen.name + ' final position ' + position)
 
     return citizens
 
@@ -218,7 +218,6 @@ def relate_citizens(citizens, ):
             new_relation_dict = {}
             for other_citizen in citizens:
                 if other_citizen != citizen:
-                    print(random.choice(relation_options))
                     new_relation_dict[other_citizen.name] = random.choice(relation_options)
             citizen.relations = new_relation_dict
 
@@ -229,10 +228,17 @@ def assign_families(citizens, minimum_sireing_gap):
 
     for clan in clan_list:
         clan_members = [x for x in citizens if x.clan == clan]
+        clan_members.sort(key=lambda x: x.age, reverse=True)
         if len(clan_members) > 1:
+            for clan_member in clan_members:
+                for other_clan_member in clan_members:
+                    # Looking for 
+                    if other_clan_member.sire == None and clan_member.age - other_clan_member.age > minimum_sireing_gap:
+                        other_clan_member.sire = clan_member.name
+                        clan_member.children.append(other_clan_member.name)
+
+    return citizens
             
-
-
 
 def get_clans(citizens):
     clans = []
@@ -242,5 +248,21 @@ def get_clans(citizens):
 
     return clans
 
+def make_csv(citizens):
+    with open('city.csv', 'wb') as csv_file:
+        wr = csv.writer(csv_file, delimiter=',')
+        for citizen in citizens:
+            wr.writerow(list(citizen))
 
-pprint.pprint(generate_random_city())
+new_city = generate_random_city()
+
+for dweller in new_city:
+    print('name: ' + str(dweller.name) + ' ' + 'sire: ' + str(dweller.sire) + ' ' + 'children: ' + str(dweller.children))
+
+
+# pprint.pprint(generate_random_city())
+
+# make_csv(generate_random_city())
+
+
+
