@@ -9,6 +9,7 @@ SCRIPT_DIR = os.path.dirname(__file__)
 FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
 FILE_FACTION_AFILIATIONS = os.path.join(SCRIPT_DIR, 'static', 'faction_afiliations.json')
 FILE_POSITIONS = os.path.join(SCRIPT_DIR, 'static', 'positions.json')
+FILE_CITIZEN_RELATIONS = os.path.join(SCRIPT_DIR, 'static', 'citizen_relations.json')
 FILE_NAMES_MALE = os.path.join(SCRIPT_DIR, 'static', 'names_male.txt')
 FILE_NAMES_FEMALE = os.path.join(SCRIPT_DIR, 'static', 'names_female.txt')
 FILE_NAMES_INTERESTING = os.path.join(SCRIPT_DIR, 'static', 'names_interesting.txt')
@@ -37,7 +38,7 @@ def generate_random_city():
             sexes))
 
     # Generate citizen relations
-    citizens = create_citizen_relations(citizens)
+    citizens = create_citizen_relations(citizens, inputs['minimum_sireing_gap'])
 
     return citizens
 
@@ -48,7 +49,8 @@ def gather_default_input_values():
         'age_average': 150,
         'age_standard_deviation': 120,
         'favor_females': 70,
-        'favor_males': 30
+        'favor_males': 30,
+        'minimum_sireing_gap': 20
     }
     return inputs
 
@@ -151,11 +153,13 @@ def create_clans_list(faction):
         clans_list = random.sample(clans[faction], 1)
     return clans_list
 
-def create_citizen_relations(citizens):
+def create_citizen_relations(citizens, minimum_sireing_gap):
     with open(FILE_POSITIONS) as json_file:
         positions = json.load(json_file)    
 
     citizens = give_positions(positions, citizens)
+    citizens = relate_citizens(citizens)
+    citizens = assign_families(citizens, minimum_sireing_gap)
 
     return citizens
 
@@ -205,6 +209,38 @@ def position_requirement_check(position, faction_positions, rank, citizens, citi
     check_result = True if correct_rank and position_is_open and clan_critrion else False
 
     return check_result
+
+def relate_citizens(citizens, ):
+    with open(FILE_CITIZEN_RELATIONS) as json_file:
+        relation_options = json.load(json_file)
+
+        for citizen in citizens:
+            new_relation_dict = {}
+            for other_citizen in citizens:
+                if other_citizen != citizen:
+                    print(random.choice(relation_options))
+                    new_relation_dict[other_citizen.name] = random.choice(relation_options)
+            citizen.relations = new_relation_dict
+
+    return citizens
+
+def assign_families(citizens, minimum_sireing_gap):
+    clan_list = get_clans(citizens)
+
+    for clan in clan_list:
+        clan_members = [x for x in citizens if x.clan == clan]
+        if len(clan_members) > 1:
+            
+
+
+
+def get_clans(citizens):
+    clans = []
+    for citizen in citizens:
+        if citizen.clan not in clans:
+            clans.append(str(citizen.clan))
+
+    return clans
 
 
 pprint.pprint(generate_random_city())
