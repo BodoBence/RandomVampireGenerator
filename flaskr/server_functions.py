@@ -39,3 +39,7 @@ def form_structuring(gathered_form_data):
 
 
     return gathered_condition, gathered_values, gathered_weights
+
+def structure_city(city):
+    city.sort(key=lambda x: x.faction)
+    return city

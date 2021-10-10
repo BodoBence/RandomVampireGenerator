@@ -4,91 +4,91 @@
             "Rank": 1,
             "Superior": [],
             "Number_allowed": 1,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         },
         "Seneschal": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Primogen": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 7,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": true
         },
         "Sheriff": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         },
         "Clan_Whip": {
             "Rank": 3,
             "Superior": ["Primogen"],
             "Number_allowed": 7,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": true
         },
         "Herald": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Scourge": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Principal_of_Faith": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Keeper_of_Elysium": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 1,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Emissary": {
             "Rank": 2,
             "Superior": ["Prince"],
             "Number_allowed": 3,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Shadow": {
             "Rank": 3,
             "Superior": ["Primogen"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Hound": {
             "Rank": 3,
             "Superior": ["Sheriff"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Kindred": {
             "Rank": 4,
             "Superior": ["Primogen"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         }
 
@@ -98,21 +98,21 @@
             "Rank": 1,
             "Superior": [],
             "Number_allowed": 99,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         },
         "Priest": {
             "Rank": 1,
             "Superior": [],
             "Number_allowed": 99,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         },
         "Shovelhead": {
             "Rank": 2,
             "Superior": ["Ductus"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         }
     },
@@ -121,28 +121,28 @@
             "Rank": 1,
             "Superior": ["none"],
             "Number_allowed": 99,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         },
         "Emissary": {
             "Rank": 2,
             "Superior": ["Baron"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Sweeper": {
             "Rank": 2,
             "Superior": ["Baron"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         },
         "Grunt": {
             "Rank": 2,
             "Superior": ["Baron"],
             "Number_allowed": 99,
-            "Obigatory": false,
+            "Obligatory": false,
             "Clan_restriction": false
         }
     },
@@ -152,7 +152,7 @@
             "Rank": 1,
             "Superior": [],
             "Number_allowed": 99,
-            "Obigatory": true,
+            "Obligatory": true,
             "Clan_restriction": false
         }
     }

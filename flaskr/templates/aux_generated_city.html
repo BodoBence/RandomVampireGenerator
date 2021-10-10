@@ -1,0 +1,33 @@
+<div>
+    {% for character in generated_city %}
+    <div>
+        <p>
+            {{ character.name }}
+        </p>
+        <p>
+            Faction: 
+            {{ character.faction }}
+        </p>
+        <p>
+            Position:
+            {{ character.position }}
+        </p>
+        <p>
+            Age:
+            {{ character.age }}
+        </p>
+        <p>
+            Clan: 
+            {{ character.clan }}
+        </p>
+        <p>
+            Children:
+            {{ character.children }}
+        </p>
+        <p>
+            Relations:
+            {{ character.relations }}
+        </p>
+    </div>
+    {% endfor %}
+</div>

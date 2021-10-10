@@ -2,7 +2,8 @@
 from flask import Flask, render_template, request
 import uuid
 
-from random_vampire_generator import generate
+from random_vampire_generator import generate as generate_character
+from random_city_generator import generate_random_city as generate_city
 import default_data
 import server_functions
 
@@ -48,15 +49,15 @@ def home():
         generations = startup_input_field_details['input_generations'],
         have_generated_character=HAVE_GENERATED_CHARACTER)
 
-@app.route('/result', methods = ['POST', 'GET'])
-def result():
+@app.route('/result_character', methods = ['POST', 'GET'])
+def result_character():
     HAVE_GENERATED_CHARACTER = True
 
     gathered_input = request.form
 
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
 
-    generated_character = generate(
+    generated_character = generate_character(
         input_values=restructured_values,
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
@@ -107,6 +108,24 @@ def city_generator():
         field_values = startup_city_input_field_details['input_values'],
         display_legal = True,
         version = VERSION_INFO)
+
+@app.route('/result_city', methods = ['POST', 'GET'])
+def result_city():
+    HAVE_GENERATED_CITY = True
+
+    gathered_input = request.form
+    generated_city = generate_city()
+    structured_city = server_functions.structure_city(generated_city)
+
+    rendered_city = render_template(
+        'main_city_generator.html',
+        display_legal = True,
+        version = VERSION_INFO,
+        field_values = startup_city_input_field_details['input_values'],
+        have_generated_city=HAVE_GENERATED_CITY,
+        generated_city = structured_city)
+
+    return rendered_city
 
 # Run the app!
 

@@ -23,7 +23,11 @@ def generate_random_city():
     factions = create_factions_list(
         city_generator_inputs['number_of_factions'],
         city_generator_conditions['MANUAL_FACTION_CHOICE'],
-        city_generator_manual_values['factions']
+        city_generator_manual_values['factions'],
+        city_generator_inputs['faction_ratio_camarilla'],
+        city_generator_inputs['faction_ratio_sabbath'],
+        city_generator_inputs['faction_ratio_anarch'],
+        city_generator_inputs['faction_ratio_independent']
     )
 
     sexes = create_sexes_list(
@@ -47,6 +51,10 @@ def gather_default_input_values():
     inputs = {
         'number_of_vampires': 20,
         'number_of_factions': 3,
+        'faction_ratio_camarilla': 10,
+        'faction_ratio_sabbath': 4,
+        'faction_ratio_anarch': 4,
+        'faction_ratio_independent': 1,
         'age_average': 150,
         'age_standard_deviation': 120,
         'favor_females': 70,
@@ -68,7 +76,7 @@ def gather_input_conditions():
     }
     return condtitions
 
-def create_factions_list(number_of_factions, faction_choice_condition, manual_factions_list):
+def create_factions_list(number_of_factions, faction_choice_condition, manual_factions_list, ratio_Camarilla, ratio_Sabbath, ratio_Anarch, ratio_Independent ):
     if faction_choice_condition == False:
         with open(FILE_FACTIONS) as json_file:
             factions = json.load(json_file)
@@ -76,7 +84,22 @@ def create_factions_list(number_of_factions, faction_choice_condition, manual_fa
     else:
         factions_list = manual_factions_list
 
-    return factions_list
+    # apply weights to factions list
+    weigted_list = []
+    if 'Camarilla' in factions_list:
+        for i in range(1, ratio_Camarilla):
+            weigted_list.append('Camarilla')
+    if 'Anarch' in factions_list:
+        for i in range(1, ratio_Anarch):
+            weigted_list.append('Anarch'),
+    if 'Sabbath' in factions_list:
+        for i in range(1, ratio_Sabbath):
+            weigted_list.append('Sabbath')
+    if 'Independent' in factions_list:
+        for i in range(1, ratio_Independent):
+            weigted_list.append('Independent')
+
+    return weigted_list
 
 def create_sexes_list(n_male, n_female):
     sexes_list = ['Male' for i in range(1, n_male)]
@@ -121,6 +144,11 @@ def generate_citizen(inputs, factions, sexes):
     )
     
     return generted_citizen
+
+def fill_list_n_times_with_input(input_list, n, custom_input):
+    for i in range(1, n):
+        input_list.append(custom_input)
+    return input_list
 
 def create_name(sex):
     male_names = []
@@ -254,10 +282,10 @@ def make_csv(citizens):
         for citizen in citizens:
             wr.writerow(list(citizen))
 
-new_city = generate_random_city()
+# new_city = generate_random_city()
 
-for dweller in new_city:
-    print('name: ' + str(dweller.name) + ' ' + 'sire: ' + str(dweller.sire) + ' ' + 'children: ' + str(dweller.children))
+# for dweller in new_city:
+#     print('name: ' + str(dweller.name) + ' ' + 'sire: ' + str(dweller.sire) + ' ' + 'children: ' + str(dweller.children))
 
 
 # pprint.pprint(generate_random_city())
