@@ -1,32 +1,87 @@
 <form action="/result_city" method='POST'>
     <div id="input_container_id">
         <div>
-            <label for="button_number_of_vampires_id">Number of Vampires:</label>
-            <div class="dropdown_button " data-reference-id="age_container"
-                data-reference-id-arrow="custom_arrow_id_age" id="button_number_of_vampires_id">
-                <p>Random</p>
-                <input type="text" id="selection_number_of_vampires_id" name="manual_number_of_vampires_selection"
-                    data-input-reference="manual_number_of_vampires_input_id" data-input-default="1" data-input-focus="Random"
-                    value="Random" data-reference-id-button="button_number_of_vampires_id">
-                <ul class="dropdown_content" data-reference-id-button="button_number_of_vampires_id" id="age_container">
-                    <li class="fake_option" data-reference-option="Random" data-reference-id="selection_number_of_vampires_id"
-                        data-reference-id-button="button_number_of_vampires_id" name="number_of_vampires_option"> Random </li>
-                    <li class="fake_option" data-reference-option="Manual" data-reference-id="selection_number_of_vampires_id"
-                        data-reference-id-button="button_number_of_vampires_id" name="number_of_vampires_option"> Manual </li>
-                </ul>
-            </div>
-            <span id="custom_arrow_id_age"></span>
-
-            <input type="number" min=1 max=40 name="manual_number_of_vampires" value="{{ field_values['manual_number_of_vampires'] }}"
-                class="selection_driver" data-driver-reference="selection_number_of_vampires_id" id="manual_number_of_vampires_input_id">
+            <p>
+                <span style="color: var(--color_neon_pink);">Sliders: </span> The ratio of the focus sliders (mental, social, physical) in relation to each other influence
+                the personality of the generated character. The "Non-clan disciplines" slider controls the ratio to which the character might learn dark skills outside of their clan.
+            </p>
+            <p>
+                <span style="color: var(--color_neon_pink);">Age: </span> The maximum age is 3000, therefore in most cases the use of manual age
+                is recommended for characters that accomodate average gaming sessions better.
+            </p>
+            <p>
+                <span style="color: var(--color_neon_pink);">Generation: </span> These values range between 3 and 16, therefore, a manual input will
+                yield more usuable characters in most cases, and avoids the creation of
+                overpowering antediluvians.
+            </p>
+            <p>
+                <span style="color: var(--color_neon_pink);">Level 5+ skills: </span> VTM 5th edition currently describes disciplines only up to level 5.
+                If needed, higher level disciplines can be added using V20 rules.
+            </p>
         </div>
 
         <div>
-            <label for="slider_mental_id">Mental focus:</label>
-            <input id="slider_mental_id" data-reference-id="value_mental_id" class="slider" type="range"
-                name="simplified_mental" min="0" max="100" value="50">
-            <label for="slider_mental_id" id="value_mental_id">50</label>
+            <label for="slider_camarilla_id">Camarilla presence:</label>
+            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" class="slider" type="range"
+                name="slider_camarilla" min="0" max="100" value="50">
+            <label for="slider_camarilla_id" id="value_camarilla_id">50</label>
         </div>
+
+        <div>
+            <label for="slider_anarch_id">Anarch presence:</label>
+            <input id="slider_anarch_id" data-reference-id="value_anarch_id" class="slider" type="range"
+                name="slider_anarch" min="0" max="100" value="50">
+            <label for="slider_anarch_id" id="value_anarch_id">50</label>
+        </div>
+
+        <div>
+            <label for="slider_sabbath_id">Sabbath presence:</label>
+            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" class="slider" type="range"
+                name="slider_sabbath" min="0" max="100" value="50">
+            <label for="slider_sabbath_id" id="value_sabbath_id">50</label>
+        </div>
+
+        <div>
+            <label for="slider_independent_id">Independent presence:</label>
+            <input id="slider_independent_id" data-reference-id="value_independent_id" class="slider" type="range"
+                name="slider_independent" min="0" max="100" value="5">
+
+            <label for="slider_independent_id" id="value_independent_id">5</label>
+        </div>
+
+        <div>
+            <label for="slider_average_age_id">Average age:</label>
+            <input id="slider_average_age_id" data-reference-id="value_average_age_id" class="slider" type="range"
+                name="slider_average_age" min="0" max="100" value="5">
+
+            <label for="slider_average_age_id" id="value_average_age_id">5</label>
+        </div>
+
+        <div>
+            <label for="slider_age_deviation_id">Age deviation:</label>
+            <input id="slider_age_deviation_id" data-reference-id="value_age_deviation_id" class="slider" type="range"
+                name="slider_age_deviation" min="0" max="100" value="5">
+
+            <label for="slider_age_deviation_id" id="value_age_deviation_id">5</label>
+        </div>
+
+        <div>
+            <label for="slider_male_to_female_id">Male to female:</label>
+            <input id="slider_male_to_female_id" data-reference-id="value_male_to_female_id" class="slider" type="range"
+                name="slider_male_to_female" min="0" max="100" value="5">
+
+            <label for="slider_male_to_female_id" id="value_male_to_female_id">5</label>
+        </div>
+
+        <div>
+            <label for="slider_n_vampires_id">Number of vampires:</label>
+            <input id="slider_n_vampires_id" data-reference-id="value_n_vampires_id" class="slider" type="range"
+                name="slider_n_vampires" min="0" max="100" value="5">
+
+            <label for="slider_n_vampires_id" id="value_n_vampires_id">5</label>
+        </div>
+
+    </div>
     
     </div>
 
