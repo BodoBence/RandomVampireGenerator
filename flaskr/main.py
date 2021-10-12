@@ -7,6 +7,9 @@ from random_city_generator import generate_random_city as generate_city
 import default_data
 import server_functions
 
+import json
+import os
+
 # Creating flaks appp
 app = Flask(__name__)
 app.secret_key = unique_key = str(uuid.uuid1())
@@ -15,6 +18,12 @@ app.secret_key = unique_key = str(uuid.uuid1())
 
 # Metadata
 VERSION_INFO = '3.01'
+
+# Background values
+HAVE_GENERATED_CHARACTER = False
+HAVE_GENERATED_CITY = False
+SCRIPT_DIR = os.path.dirname(__file__)
+FILE_DEFAULT_CITY_INPUT_VALUES = os.path.join(SCRIPT_DIR, 'static', 'city_generator_default_inputs.json')
 
 # Character Generator defaults
 startup_input_field_details = {
@@ -27,10 +36,6 @@ startup_input_field_details = {
 # City Generator defaults
 startup_city_input_field_details = {
     'input_values': default_data.start_city_values()}
-
-
-# Background values
-HAVE_GENERATED_CHARACTER = False
 
 # Functions for the website pages
 
@@ -103,11 +108,15 @@ def encounter_tracker():
 
 @app.route('/city_generator',  methods = ['POST', 'GET'])
 def city_generator():
+    with open(FILE_DEFAULT_CITY_INPUT_VALUES) as json_file:
+        default_city_input_values = json.load(json_file)
+
     return render_template(
         'main_city_generator.html',
         field_values = startup_city_input_field_details['input_values'],
         display_legal = True,
-        version = VERSION_INFO)
+        version = VERSION_INFO,
+        default_city_input_values = default_city_input_values)
 
 @app.route('/result_city', methods = ['POST', 'GET'])
 def result_city():

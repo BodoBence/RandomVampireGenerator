@@ -1,18 +1,8 @@
-create_global_event_listener('input', 'manual_age_input_id', toggle_input_field, 'id')
-create_global_event_listener('input', 'manual_name_input_id', toggle_input_field, 'id')
-create_global_event_listener('input', 'manual_calculation_input_id', toggle_input_field, 'id')
-
-create_global_event_listener("change", "manual_name_selection", input_sync, 'name')
-create_global_event_listener("change", "manual_age_selection", input_sync, 'name')
-create_global_event_listener("change", "manual_calculation_selection", input_sync, 'name')
 
 create_global_event_listener("change", "slider", display_slider_value, "class")
-create_global_event_listener("change", "selection_theme", toggle_character_style, "id")
 
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
-
-create_global_event_listener("change", "selection_clan_id", toogle_generation_options, 'id')
 
 correct_overflow()
 
@@ -54,96 +44,6 @@ function accordion_motion(current_trigger){
     target_element.addEventListener("transitionend", remove_animation_ease)
 }
 
-function toggle_input_field(current_driver){
-    referred_element_id = current_driver.getAttribute("data-driver-reference")
-    referred_element = document.getElementById(referred_element_id)
-    referred_element.value = "Manual"
-    referred_element.dispatchEvent(new Event('change', { bubbles: true }))
-}
-
-function input_sync(current_selector){
-    connected_field_reference = current_selector.getAttribute("data-input-reference")
-    connected_field = document.getElementById(connected_field_reference)
-    connected_button_reference = current_selector.getAttribute("data-reference-id-button")
-    connected_button = document.getElementById(connected_button_reference)
-    case_1 = String(current_selector.getAttribute("data-input-focus"))
-
-    switch (current_selector.value) {
-        case case_1:
-            // Update iput field value
-            default_value = current_selector.getAttribute("data-input-default")
-            connected_field.value = default_value
-
-            // Update fake dropdown value
-            connected_button.firstElementChild.innerHTML = case_1
-            break
-
-        case 'Manual':
-            // Update fake dropdown value
-            connected_button.firstElementChild.innerHTML = 'Manual'
-            break
-    }
-}
-
-// Functions for the Input sliders (generator_inputs.html)
-
-function load_default_input_values(){
-    // Dropdowns
-    input_clan = document.getElementById('selection_clan_id')
-    input_clan.value = 'Random'
-    input_clan.parentElement.firstElementChild.innerHTML = 'Random'
-    input_clan.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_generation = document.getElementById('selection_generation_id')
-    input_generation.value = 'Random'
-    input_generation.parentElement.firstElementChild.innerHTML = 'Random'
-    input_generation.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_age = document.getElementById('selection_sex_id')
-    input_age.value = 'Random'
-    input_age.parentElement.firstElementChild.innerHTML = 'Random'
-    input_age.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_age = document.getElementById('selection_age_id')
-    input_age.value = 'Random'
-    input_age.parentElement.firstElementChild.innerHTML = 'Random'
-    input_age.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_name = document.getElementById('selection_name_id')
-    input_name.value = 'Random'
-    input_name.parentElement.firstElementChild.innerHTML = 'Random'
-    input_name.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_calculation = document.getElementById('selection_calculation_id')
-    input_calculation.value = 'Algorithm'
-    input_calculation.parentElement.firstElementChild.innerHTML = 'Random'
-    input_calculation.dispatchEvent(new Event('change', { bubbles: true }))
-
-
-    // Sliders
-    input_discipline = document.getElementById('slider_discipline_id')
-    input_discipline.value = 5
-    input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_physical = document.getElementById('slider_physical_id')
-    input_physical.value = 50
-    input_physical.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_mental = document.getElementById('slider_mental_id')
-    input_mental.value = 50
-    input_mental.dispatchEvent(new Event('change', { bubbles: true }))
-
-    input_social = document.getElementById('slider_social_id')
-    input_social.value = 50
-    input_social.dispatchEvent(new Event('change', { bubbles: true }))
-
-
-    // Input fields
-    document.getElementById('manual_name_input_id').value = 'Fruzsi'
-    document.getElementById('manual_age_input_id').value = 1
-    document.getElementById('manual_calculation_input_id').value = 1
-}
-
 function display_slider_value(current_slider){
     target_id = current_slider.getAttribute('data-reference-id')
     target_element = document.getElementById(target_id)
@@ -152,57 +52,41 @@ function display_slider_value(current_slider){
     target_element.innerHTML = new_value
 }
 
-function toggle_character_style(stlye_selector){
-    style_element = document.getElementById('link_character_color')
+function load_default_input_values(){
+    // Sliders
+    input_discipline = document.getElementById('slider_camarilla_id')
+    input_discipline.value = {{ default_city_input_values['faction_ratio_camarilla'] }}
+    input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
 
-    switch (stlye_selector.value) {
-        case 'Light':
-            style_element.setAttribute("href", "/static/stylesheets/character_color_light.css")
-            break
+    input_physical = document.getElementById('slider_anarch_id')
+    input_physical.value = default_city_input_values['faction_ratio_camarilla']
+    input_physical.dispatchEvent(new Event('change', { bubbles: true }))
 
-        case 'Dark':
-            style_element.setAttribute("href", "/static/stylesheets/character_color_dark.css")
-            break
-    }
-}
+    input_mental = document.getElementById('slider_sabbath_id')
+    input_mental.value = default_city_input_values['faction_ratio_camarilla']
+    input_mental.dispatchEvent(new Event('change', { bubbles: true }))
 
-function toogle_generation_options(){
-    // Special case for thin-bloods to only have 14 and higher generations
-    console.log('thin blood selected')
-    let selected_clan = document.getElementById('selection_clan_id').value
-    let generations_ul_element = document.getElementById('generation_container_id')
-    let generations_li_elements = generations_ul_element.children
-    let thin_blood_minimum_generation = 14
+    input_social = document.getElementById('slider_independent_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
+    
+    input_social = document.getElementById('slider_average_age_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
 
-    if (selected_clan == 'Thin-blood'){
-        for (let index = 0; index < generations_li_elements.length; index++) {
-            const element = generations_li_elements[index];
-            const element_value = element.getAttribute('data-reference-option')
-            
-            if (element_value != 'Random' ){
-                if (element_value < thin_blood_minimum_generation){
-                    element.classList.add('disabled')
-                }
-            }   
-        }
+    input_social = document.getElementById('slider_age_deviation_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
 
-        // Modify the generation selsection input area
-        let generation_input =  document.getElementById('selection_generation_id').value
-        if (generation_input != 'Random' && generation_input < 14){
-            generation_input = 14
-            document.getElementById('button_generation_list_id').firstElementChild.innerHTML = 14
-        }
-        
-    } else {
-        for (let index = 0; index < generations_li_elements.length; index++) {
-            const element = generations_li_elements[index];
-            const element_value = element.getAttribute('data-reference-option')
-            
-            if (element_value != 'Random' ){
-                if (element.classList.contains('disabled') == true){
-                    element.classList.remove('disabled')
-                }
-            }   
-        }
-    } 
+    input_social = document.getElementById('slider_sireing_age_gap_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
+
+    input_social = document.getElementById('slider_male_to_female_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
+
+    input_social = document.getElementById('slider_n_vampires_id')
+    input_social.value = default_city_input_values['faction_ratio_camarilla']
+    input_social.dispatchEvent(new Event('change', { bubbles: true }))
 }
