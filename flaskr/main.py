@@ -113,8 +113,18 @@ def city_generator():
 def result_city():
     HAVE_GENERATED_CITY = True
 
-    gathered_input = request.form
-    generated_city = generate_city()
+    generated_city = generate_city(
+        faction_ratio_camarilla = int(request.form['slider_camarilla']),
+        faction_ratio_sabbath = int(request.form['slider_sabbath']),
+        faction_ratio_anarch = int(request.form['slider_anarch']),
+        faction_ratio_independent = int(request.form['slider_independent']),
+        favor_females = 100 - int(request.form['slider_male_to_female']),
+        favor_males = int(request.form['slider_male_to_female']),
+        number_of_vampires = int(request.form['slider_n_vampires']),
+        age_average = int(request.form['slider_average_age']),
+        age_standard_deviation = int(request.form['slider_age_deviation']),
+        minimum_sireing_gap = int(request.form['slider_sireing_age_gap'])
+    )
     structured_city = server_functions.structure_city(generated_city)
 
     rendered_city = render_template(

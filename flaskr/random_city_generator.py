@@ -15,42 +15,14 @@ FILE_NAMES_MALE = os.path.join(SCRIPT_DIR, 'static', 'names_male.txt')
 FILE_NAMES_FEMALE = os.path.join(SCRIPT_DIR, 'static', 'names_female.txt')
 FILE_NAMES_INTERESTING = os.path.join(SCRIPT_DIR, 'static', 'names_interesting.txt')
 
-def generate_random_city():
-    city_generator_inputs = gather_default_input_values()
-    city_generator_manual_values = gather_manual_input_values()
-    city_generator_conditions = gather_input_conditions()
+def system_inputs():
+    """ Inputs needed for city generation, but not controlled by the used """
+    pass
 
-    factions = create_factions_list(
-        city_generator_inputs['number_of_factions'],
-        city_generator_conditions['MANUAL_FACTION_CHOICE'],
-        city_generator_manual_values['factions'],
-        city_generator_inputs['faction_ratio_camarilla'],
-        city_generator_inputs['faction_ratio_sabbath'],
-        city_generator_inputs['faction_ratio_anarch'],
-        city_generator_inputs['faction_ratio_independent']
-    )
-
-    sexes = create_sexes_list(
-        city_generator_inputs['favor_females'],
-        city_generator_inputs['favor_males'])
-
-    citizens = []
-    # Generate citizens
-    for citizen in range(city_generator_inputs['number_of_vampires']):
-       citizens.append(generate_citizen(
-            city_generator_inputs,
-            factions,
-            sexes))
-
-    # Generate citizen relations
-    citizens = create_citizen_relations(citizens, city_generator_inputs['minimum_sireing_gap'])
-
-    return citizens
-
-def gather_default_input_values():
+def test_user_inputs():
+    """ Manual user inputs for TESTING without having to interface, normally these should be gathered form the user """
     inputs = {
         'number_of_vampires': 20,
-        'number_of_factions': 3,
         'faction_ratio_camarilla': 10,
         'faction_ratio_sabbath': 4,
         'faction_ratio_anarch': 4,
@@ -63,50 +35,63 @@ def gather_default_input_values():
     }
     return inputs
 
-def gather_manual_input_values():
-    manual_input_values = {
-        'factions': ['Camarilla']
-    }
+def generate_random_city(
+    faction_ratio_camarilla,
+    faction_ratio_sabbath,
+    faction_ratio_anarch,
+    faction_ratio_independent,
+    favor_females,
+    favor_males,
+    number_of_vampires,
+    age_average,
+    age_standard_deviation,
+    minimum_sireing_gap):
 
-    return manual_input_values
+    factions = create_factions_list(
+        faction_ratio_camarilla,
+        faction_ratio_sabbath,
+        faction_ratio_anarch,
+        faction_ratio_independent)
 
-def gather_input_conditions():
-    condtitions = {
-        'MANUAL_FACTION_CHOICE': False
-    }
-    return condtitions
+    sexes_list = ['Male' for i in range(1, favor_males)]
+    female_list = ['Female' for i in range(1, favor_females)]
+    sexes_list.extend(female_list)
 
-def create_factions_list(number_of_factions, faction_choice_condition, manual_factions_list, ratio_Camarilla, ratio_Sabbath, ratio_Anarch, ratio_Independent ):
-    if faction_choice_condition == False:
-        with open(FILE_FACTIONS) as json_file:
-            factions = json.load(json_file)
-            factions_list = random.sample(factions, number_of_factions)
-    else:
-        factions_list = manual_factions_list
+    citizens = []
+    # Generate citizens
+    for citizen in range(number_of_vampires):
+       citizens.append(generate_citizen(
+            age_average, 
+            age_standard_deviation, 
+            factions,
+            sexes_list))
+
+    # Generate citizen relations
+    citizens = create_citizen_relations(citizens, minimum_sireing_gap)
+
+    return citizens
+
+def create_factions_list(ratio_Camarilla, ratio_Sabbath, ratio_Anarch, ratio_Independent ):
+    """ Weigh the factions from the JSON file according to their desired presence in the city """
+    with open(FILE_FACTIONS) as json_file:
+        factions = json.load(json_file)
 
     # apply weights to factions list
     weigted_list = []
-    if 'Camarilla' in factions_list:
+    if ratio_Camarilla > 0:
         for i in range(1, ratio_Camarilla):
             weigted_list.append('Camarilla')
-    if 'Anarch' in factions_list:
+    if ratio_Anarch > 0:
         for i in range(1, ratio_Anarch):
             weigted_list.append('Anarch'),
-    if 'Sabbath' in factions_list:
+    if ratio_Sabbath > 0:
         for i in range(1, ratio_Sabbath):
             weigted_list.append('Sabbath')
-    if 'Independent' in factions_list:
+    if ratio_Independent > 0:
         for i in range(1, ratio_Independent):
             weigted_list.append('Independent')
 
     return weigted_list
-
-def create_sexes_list(n_male, n_female):
-    sexes_list = ['Male' for i in range(1, n_male)]
-    female_list = ['Female' for i in range(1, n_female)]
-    sexes_list.extend(female_list)
-
-    return sexes_list
 
 @dataclass
 class citizen:
@@ -122,8 +107,8 @@ class citizen:
     superior: dict
     relations: dict
 
-def generate_citizen(inputs, factions, sexes):
-    generated_age = abs(int(random.normalvariate(inputs['age_average'], inputs['age_standard_deviation'])))
+def generate_citizen(age_average, age_standard_deviation, factions, sexes):
+    generated_age = abs(int(random.normalvariate(age_average, age_standard_deviation)))
     generated_sex = random.choice(sexes)
     generated_name = create_name(generated_sex)
     generated_faction = random.choice(factions)
@@ -144,11 +129,6 @@ def generate_citizen(inputs, factions, sexes):
     )
     
     return generted_citizen
-
-def fill_list_n_times_with_input(input_list, n, custom_input):
-    for i in range(1, n):
-        input_list.append(custom_input)
-    return input_list
 
 def create_name(sex):
     male_names = []
@@ -252,29 +232,25 @@ def relate_citizens(citizens, ):
     return citizens
 
 def assign_families(citizens, minimum_sireing_gap):
-    clan_list = get_clans(citizens)
+    """ Create sire - child relationships within clan member if there is enough age gap """
+    # Create a list of the clans
+    clan_list = []
+    for citizen in citizens:
+        if citizen.clan not in clan_list:
+            clan_list.append(str(citizen.clan))
 
+    # Sire–Child relationships by definitation can happen only within clans
     for clan in clan_list:
-        clan_members = [x for x in citizens if x.clan == clan]
-        clan_members.sort(key=lambda x: x.age, reverse=True)
+        clan_members = [x for x in citizens if x.clan == clan]  # Gather clan members
+        clan_members.sort(key=lambda x: x.age, reverse=True)    # Sort clan member by age
         if len(clan_members) > 1:
-            for clan_member in clan_members:
-                for other_clan_member in clan_members:
-                    # Looking for 
-                    if other_clan_member.sire == None and clan_member.age - other_clan_member.age > minimum_sireing_gap:
-                        other_clan_member.sire = clan_member.name
-                        clan_member.children.append(other_clan_member.name)
+            for potential_sire in clan_members:
+                for potential_child in clan_members:
+                    if potential_child.sire == None and potential_sire.age - potential_child.age > minimum_sireing_gap:
+                        potential_child.sire = potential_sire.name
+                        potential_sire.children.append(potential_child.name)
 
     return citizens
-            
-
-def get_clans(citizens):
-    clans = []
-    for citizen in citizens:
-        if citizen.clan not in clans:
-            clans.append(str(citizen.clan))
-
-    return clans
 
 def make_csv(citizens):
     with open('city.csv', 'wb') as csv_file:
