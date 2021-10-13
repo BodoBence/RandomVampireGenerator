@@ -35,8 +35,11 @@
 
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+
+        <script>
+            var default_city_input_values = JSON.parse('{{ default_city_input_values | tojson | safe}}')
+        </script>
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/city_inputs.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/drag_input.js') }}"></script>
 
     </body>
 </html>
