@@ -1,8 +1,11 @@
 <div>
     {% for character in generated_city %}
-    <div>
+    <div style="grid-row: {{ character.rank }};">
         <p>
             {{ character.name }}
+        </p>
+        <p>
+            {{ character.rank }}
         </p>
         <p>
             Faction: 
@@ -23,10 +26,6 @@
         <p>
             Children:
             {{ character.children }}
-        </p>
-        <p>
-            Relations:
-            {{ character.relations }}
         </p>
     </div>
     {% endfor %}

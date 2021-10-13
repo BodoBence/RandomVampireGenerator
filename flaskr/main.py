@@ -104,24 +104,16 @@ def encounter_tracker():
 @app.route('/city_generator',  methods = ['POST', 'GET'])
 def city_generator():
 
-    default_city_input_values = {
-        'something': 20,
-    }
-
     return render_template(
         'main_city_generator.html',
         field_values = startup_city_input_field_details['input_values'],
         display_legal = True,
         version = VERSION_INFO,
-         default_city_input_values = default_city_input_values)
+        default_city_input_values = server_functions.get_default_city_values())
 
 @app.route('/result_city', methods = ['POST', 'GET'])
 def result_city():
     HAVE_GENERATED_CITY = True
-
-    default_city_input_values = {
-        'something': 20,
-    }
 
     generated_city = generate_city(
         faction_ratio_camarilla = int(request.form['slider_camarilla']),
@@ -143,7 +135,7 @@ def result_city():
         version = VERSION_INFO,
         field_values = startup_city_input_field_details['input_values'],
         have_generated_city=HAVE_GENERATED_CITY,
-        default_city_input_values = default_city_input_values,
+        default_city_input_values = server_functions.get_default_city_values(),
         generated_city = structured_city)
 
     return rendered_city

@@ -1,4 +1,9 @@
 import default_data
+import os
+import json
+
+script_dir = os.path.dirname(__file__)
+FILE_CITY_GENERATOR_DEFAULT_INPUTS = os.path.join(script_dir, 'static', 'city_generator_default_inputs.json')
 
 def get_maximum_skill_level(character_dictionary):
 
@@ -43,3 +48,9 @@ def form_structuring(gathered_form_data):
 def structure_city(city):
     city.sort(key=lambda x: x.faction)
     return city
+
+def get_default_city_values():
+    """ Return JSON dict values """
+    with open(FILE_CITY_GENERATOR_DEFAULT_INPUTS) as json_file:
+        values = json.load(json_file)
+    return values 

@@ -106,6 +106,7 @@ class citizen:
     children: list
     superior: dict
     relations: dict
+    rank: int
 
 def generate_citizen(age_average, age_standard_deviation, factions, sexes):
     generated_age = abs(int(random.normalvariate(age_average, age_standard_deviation)))
@@ -125,7 +126,8 @@ def generate_citizen(age_average, age_standard_deviation, factions, sexes):
         generation =  None,
         children = [],
         superior = None,
-        relations = None
+        relations = None,
+        rank = None
     )
     
     return generted_citizen
@@ -187,6 +189,7 @@ def give_positions(positions, citizens):
                 if citizen.position == None:
                     if position_requirement_check(position, faction_positions, rank, citizens, citizen):
                         citizen.position = str(position)
+                        citizen.rank = rank
                         # print(citizen.name + ' final position ' + position)
 
     return citizens

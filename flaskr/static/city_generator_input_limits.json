@@ -1,0 +1,42 @@
+{
+    "number_of_vampires_": {
+        "min": 2,
+        "max": 100
+    },
+    "faction_ratio_camarilla": {
+        "min": 1,
+        "max": 100
+    },
+    "faction_ratio_sabbath": {
+        "min": 1,
+        "max": 100
+    },
+    "faction_ratio_anarch": {
+        "min": 1,
+        "max": 100
+    },
+    "faction_ratio_independent": {
+        "min": 1,
+        "max": 100
+    },
+    "age_average": {
+        "min": 2,
+        "max": 100
+    },
+    "age_standard_deviation": {
+        "min": 1,
+        "max": 1000
+    },
+    "favor_females": {
+        "min": 0,
+        "max": 100
+    },
+    "favor_males": {
+        "min": 0,
+        "max": 100
+    },
+    "minimum_sireing_gap": {
+        "min": 1,
+        "max": 1000
+    }
+}
