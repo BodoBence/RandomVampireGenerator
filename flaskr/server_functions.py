@@ -47,7 +47,19 @@ def form_structuring(gathered_form_data):
 
 def structure_city(city):
     city.sort(key=lambda x: x.faction)
-    return city
+
+    city_factions = [x.faction for x in city]
+    city_factions_used = []
+    city_factions_unique = [city_factions_used.append(x) for x in city_factions if x not in city_factions_used]
+
+    city_output = {}
+    for faction in city_factions_unique:
+        city_output[faction] = []
+        for citizen in city:
+            if citizen.faction == faction:
+                city_output[faction].append(citizen)
+
+    return city_output
 
 def get_default_city_values():
     """ Return JSON dict values """

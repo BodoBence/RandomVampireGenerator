@@ -1,32 +1,34 @@
 <div>
-    {% for character in generated_city %}
-    <div style="grid-row: {{ character.rank }};">
-        <p>
-            {{ character.name }}
-        </p>
-        <p>
-            {{ character.rank }}
-        </p>
-        <p>
-            Faction: 
-            {{ character.faction }}
-        </p>
-        <p>
-            Position:
-            {{ character.position }}
-        </p>
-        <p>
-            Age:
-            {{ character.age }}
-        </p>
-        <p>
-            Clan: 
-            {{ character.clan }}
-        </p>
-        <p>
-            Children:
-            {{ character.children }}
-        </p>
-    </div>
+    {% for faction in generated_city %}
+        {% for citizen in generated_city[faction] %}
+            <div style="grid-row: {{ character.rank }};">
+                <p>
+                    {{ character.name }}
+                </p>
+                <p>
+                    {{ character.rank }}
+                </p>
+                <p>
+                    Faction: 
+                    {{ character.faction }}
+                </p>
+                <p>
+                    Position:
+                    {{ character.position }}
+                </p>
+                <p>
+                    Age:
+                    {{ character.age }}
+                </p>
+                <p>
+                    Clan: 
+                    {{ character.clan }}
+                </p>
+                <p>
+                    Children:
+                    {{ character.children }}
+                </p>
+            </div>
+        {% endfor %}
     {% endfor %}
 </div>

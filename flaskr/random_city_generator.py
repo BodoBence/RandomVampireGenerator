@@ -255,21 +255,13 @@ def assign_families(citizens, minimum_sireing_gap):
 
     return citizens
 
-def make_csv(citizens):
-    with open('city.csv', 'wb') as csv_file:
-        wr = csv.writer(csv_file, delimiter=',')
-        for citizen in citizens:
-            wr.writerow(list(citizen))
 
 # new_city = generate_random_city()
 
 # for dweller in new_city:
 #     print('name: ' + str(dweller.name) + ' ' + 'sire: ' + str(dweller.sire) + ' ' + 'children: ' + str(dweller.children))
 
-
 # pprint.pprint(generate_random_city())
-
-# make_csv(generate_random_city())
 
 
 
