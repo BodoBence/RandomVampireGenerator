@@ -16,22 +16,33 @@
                         <p>Position:</p>
                         <p>{{ citizen.position }}</p>
 
-                        <p>Age:</p>
-                        <p>{{ citizen.age }}</p>
+                        <div class="citizen_detail_header">
+                            <p>
+                                Details
+                            </p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svg_button_triangle triangle_closed">
+                                <path d="M87.77,9.77a1.12,1.12,0,0,1,1,.67,1.45,1.45,0,0,1,0,1.33L51,86.34a1.1,1.1,0,0,1-2,0L11.22,11.77a1.45,1.45,0,0,1,0-1.33,1.12,1.12,0,0,1,1-.67H87.77m8-9.77H4.26C1,0-1.06,4,.58,7.27L46.32,97.58a4,4,0,0,0,7.36,0L99.42,7.27C101.06,4,99,0,95.74,0Z"/>
+                            </svg>
 
-                        <p>Clan:</p>
-                        <p>{{ citizen.clan }}</p>
+                        </div>
 
-                        <p>Sire:</p>
-                        <p class="DOM_link">{{ citizen.sire }}</p>
+                        <p class="citizen_details dont_display">Age:</p>
+                        <p class="citizen_details dont_display">{{ citizen.age }}</p>
 
-                        <p>Children:</p>
-                        {% for child in citizen.children %}
-                        <p class="DOM_link">{{ child }}</p>
-                        {% endfor %}
+                        <p class="citizen_details dont_display">Clan:</p>
+                        <p class="citizen_details dont_display">{{ citizen.clan }}</p>
+
+                        <p class="citizen_details dont_display">Sire:</p>
+                        <p class="DOM_link citizen_details dont_display">{{ citizen.sire }}</p>
+
+                        <p class="citizen_details dont_display">Children:</p>
+                        <div class="citizen_details dont_display">
+                            {% for child in citizen.children %}
+                            <p class="DOM_link">{{ child }}</p>
+                            {% endfor %}
+                        </div>
+
                     </div>
-                
-
             {% endfor %}
             </div>
         {% endfor %}

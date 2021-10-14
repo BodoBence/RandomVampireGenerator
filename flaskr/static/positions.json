@@ -22,7 +22,7 @@
             "Clan_restriction": true
         },
         "Sheriff": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obligatory": true,
@@ -31,40 +31,40 @@
         "Clan_Whip": {
             "Rank": 3,
             "Superior": ["Primogen"],
-            "Number_allowed": 7,
+            "Number_allowed": 1,
             "Obligatory": false,
             "Clan_restriction": true
         },
         "Herald": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Scourge": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Principal_of_Faith": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Keeper_of_Elysium": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 1,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Emissary": {
-            "Rank": 2,
+            "Rank": 3,
             "Superior": ["Prince"],
             "Number_allowed": 3,
             "Obligatory": false,
@@ -73,14 +73,14 @@
         "Shadow": {
             "Rank": 3,
             "Superior": ["Primogen"],
-            "Number_allowed": 99,
+            "Number_allowed": 7,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Hound": {
             "Rank": 3,
             "Superior": ["Sheriff"],
-            "Number_allowed": 99,
+            "Number_allowed": 2,
             "Obligatory": false,
             "Clan_restriction": false
         },

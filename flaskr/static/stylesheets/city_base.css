@@ -1,6 +1,6 @@
 .generated_city {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, auto);
 }
 
 
@@ -20,10 +20,14 @@
 
 .citizen {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: auto;
+    gap: 0.5rem;
+    margin: 0;
     align-self: start;
+
     min-width: 4rem;
-    /* max-width: 14rem; */
+    max-width: 14rem;
     position: relative;
 
     margin: 0;
@@ -35,24 +39,31 @@
     border-style: solid;
     border-color: var(--color_dark_grey);
     box-shadow: 0 0 1em black;
-
 }
+
+.citizen:hover {
+    box-shadow: 0 0 1em var(--color_neon_pink);
+    border-color: var(--color_neon_white);
+}
+
 
 .citizen p {
     display: block;
+    margin: 0;
 }
 
-.citizen p:first-of-type{
+.citizen_name {
     grid-column: 1/-1;
     color: var(--color_neon_pink) !important;
+    margin: 0;
 }
 
 .DOM_link {
-    color: var(--color_neon_pink);
+    color: var(--color_neon_pink) !important;
 }
 
 .DOM_link:hover {
-    cursor: pointer !important;
+    cursor: pointer;
 }
 
 .clan_logo {
@@ -66,9 +77,56 @@
 
     z-index: 1;
     opacity: 0.2;
+
+    pointer-events: none;
 }
 
 .clan_logo_element {
     stroke:  var(--color_neon_pink);
     stroke-width: 0.05rem;
+}
+
+.citizen .citizen_detail_header {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.citizen .citizen_detail_header p {
+    color: var(--color_neon_pink) !important;
+}
+
+.svg_button_triangle {
+    pointer-events: none;
+    align-self: start;
+    color: var(--color_neon_pink);
+    height: 100%;
+    max-height: 100%;
+    max-width: 1rem;
+    justify-self: end;
+    filter:
+        blur(0.01rem)
+        drop-shadow( 0 0 0.1rem currentColor )
+        drop-shadow( 0 0 0.2rem currentColor );
+    transition: transform 0.5s;
+}
+
+.svg_button_triangle path {
+    fill: var(--color_neon_white);
+}
+
+.citizen .citizen_detail_header:hover {
+    cursor: pointer;
+}
+
+.citizen .citizen_detail_header:hover .svg_button_triangle, .citizen .citizen_detail_header:hover p {
+    color: var(--color_neon_white) !important;
+}
+
+.triangle_closed {
+    transform: rotate(180deg);
+}
+
+.dont_display{
+    display: none !important;
 }

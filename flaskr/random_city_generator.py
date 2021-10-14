@@ -191,7 +191,7 @@ def give_positions(positions, citizens):
             # print('rank ' + str(rank))
             for position in faction_positions:
                 if citizen.position == None:
-                    if position_requirement_check(position, faction_positions, rank, citizens, citizen):
+                    if is_okay_to_take_position(position, faction_positions, rank, citizens, citizen):
                         citizen.position = str(position)
                         citizen.rank = rank
                         # print(citizen.name + ' final position ' + position)
@@ -207,23 +207,30 @@ def get_faction_ranks(positions):
 
     return ranks
 
-def position_requirement_check(position, faction_positions, rank, citizens, citizen):
-    if faction_positions[position]['Clan_restriction'] == False:
-        clan_critrion = True
-    else:
-        if len([x for x in citizens if x.clan == citizen.clan and x.position == position and x.name != citizen.name]) < faction_positions[position]['Number_allowed']:
-            clan_critrion = True
-        else:
-            clan_critrion = False
+def is_okay_to_take_position(position, faction_positions, rank, citizens, citizen):
+    """ Determines if citizen can take position """
 
+    # Check for other clan members with the same position
+    if faction_positions[position]['Clan_restriction'] == False: # there can be more of this position in a clan
+        clan_critrion_satisfied = True
+    if faction_positions[position]['Clan_restriction'] == True: # there ce be ONLY ONE of this position in a clan
+        if len([x for x in citizens if x.clan == citizen.clan and x.position == position and x.name != citizen.name]) < 1:
+            clan_critrion_satisfied = True
+        else:
+            clan_critrion_satisfied = False
+
+    # Check if the position has the correct rank
     correct_rank = True if faction_positions[position]['Rank'] == rank else False
 
+    # Check if we wouldn't exceed the allowed number of citizens with the position
     n_positions_in_city = len([x for x in citizens if x.position == position])
     position_is_open = True if n_positions_in_city < faction_positions[position]['Number_allowed'] else False
 
-    check_result = True if correct_rank and position_is_open and clan_critrion else False
-
-    return check_result
+    # Compare
+    if correct_rank and position_is_open and clan_critrion_satisfied:
+        return True
+    else:
+        return False
 
 def relate_citizens(citizens, ):
     with open(FILE_CITIZEN_RELATIONS) as json_file:
@@ -253,17 +260,25 @@ def assign_families(citizens, minimum_sireing_gap):
         if len(clan_members) > 1:
             for potential_sire in clan_members:
                 for potential_child in clan_members:
-                    if potential_child.sire == None and potential_sire.age - potential_child.age > minimum_sireing_gap:
+                    if is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap):
                         potential_child.sire = potential_sire.name
                         potential_sire.children.append(potential_child.name)
 
     return citizens
 
+def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap):
+    """ Check criteria for making sire – child relationships"""
+    
+    child_criterion = True if potential_child.sire == None else False
+    age_criterion = True if potential_sire.age - potential_child.age > minimum_sireing_gap else False # Also exlcudes self to self matches
+    sire_criterion = True if len(potential_sire.children) < (potential_sire.age / 100) else False # Sire's can only make 1 child / 100 years
 
-# new_city = generate_random_city()
+    if child_criterion and age_criterion and sire_criterion:
+        return True
+    else:
+        return False
 
-# for dweller in new_city:
-#     print('name: ' + str(dweller.name) + ' ' + 'sire: ' + str(dweller.sire) + ' ' + 'children: ' + str(dweller.children))
+
 
 # pprint.pprint(generate_random_city())
 
