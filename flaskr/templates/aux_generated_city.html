@@ -1,34 +1,40 @@
-<div>
+<div class="generated_city">
     {% for faction in generated_city %}
-        {% for citizen in generated_city[faction] %}
-            <div style="grid-row: {{ character.rank }};">
-                <p>
-                    {{ character.name }}
-                </p>
-                <p>
-                    {{ character.rank }}
-                </p>
-                <p>
-                    Faction: 
-                    {{ character.faction }}
-                </p>
-                <p>
-                    Position:
-                    {{ character.position }}
-                </p>
-                <p>
-                    Age:
-                    {{ character.age }}
-                </p>
-                <p>
-                    Clan: 
-                    {{ character.clan }}
-                </p>
-                <p>
-                    Children:
-                    {{ character.children }}
-                </p>
+        <div class="faction">
+        {% for rank in generated_city[faction] %}
+            <div class="rank">
+            {% for citizen in generated_city[faction][rank] %}
+                    <div class="citizen">
+
+                        {% include "aux_clan_logo_" + citizen.clan + ".html" %}
+
+                        <p class="citizen_name">{{ citizen.name }}</p>
+
+                        <p>Faction:</p>
+                        <p>{{ citizen.faction }}</p>
+
+                        <p>Position:</p>
+                        <p>{{ citizen.position }}</p>
+
+                        <p>Age:</p>
+                        <p>{{ citizen.age }}</p>
+
+                        <p>Clan:</p>
+                        <p>{{ citizen.clan }}</p>
+
+                        <p>Sire:</p>
+                        <p class="DOM_link">{{ citizen.sire }}</p>
+
+                        <p>Children:</p>
+                        {% for child in citizen.children %}
+                        <p class="DOM_link">{{ child }}</p>
+                        {% endfor %}
+                    </div>
+                
+
+            {% endfor %}
             </div>
         {% endfor %}
+        </div>
     {% endfor %}
 </div>

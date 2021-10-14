@@ -2,9 +2,11 @@ import pprint
 import random
 import os
 import json
+import uuid
+
 from dataclasses import dataclass
 from operator import attrgetter
-import csv
+
 
 SCRIPT_DIR = os.path.dirname(__file__)
 FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
@@ -107,6 +109,7 @@ class citizen:
     superior: dict
     relations: dict
     rank: int
+    id: str
 
 def generate_citizen(age_average, age_standard_deviation, factions, sexes):
     generated_age = abs(int(random.normalvariate(age_average, age_standard_deviation)))
@@ -127,7 +130,8 @@ def generate_citizen(age_average, age_standard_deviation, factions, sexes):
         children = [],
         superior = None,
         relations = None,
-        rank = None
+        rank = None,
+        id = uuid.uuid1()
     )
     
     return generted_citizen

@@ -96,60 +96,8 @@ input {
 	appearance: none;
 }
 
-input[type="number"], input[type="text"], .custom_checkbox {
-    display: inline-block;
-    background-color: transparent;
-    border-style: solid;
-    border-color: var(--white);
-    border-width: 0.1rem;
-    border-radius: 0.1rem;
-    margin-top: 0.5rem;
-    color: var(--white);
-    text-indent: 1em;
-    height: 2em;
-}
-
-input[type="checkbox"] {
-    display: none;
-}
-
-.custom_checkbox {
-    width: 1em;
-    height: 1em;
-}
 
 /* Normally displayed inputs */
-
-input[type="number"]:hover, input[type="text"]:hover {
-    border-color: var(--color_neon_white);
-
-    background-color: black;
-    color: var(--color_neon_pink);
-    text-shadow: 0 0 1em currentColor;
-
-    box-shadow:
-        0 0 1.5em currentColor,
-        inset 0 0 1.5em currentColor;
-}
-
-.custom_checkbox:hover {
-    cursor: pointer;
-    border-color: var(--white);
-
-    background-color: black;
-    color: var(--white);
-    text-shadow: 0 0 1em currentColor;
-
-    box-shadow:
-        0 0 1.5em currentColor,
-        inset 0 0 1.5em currentColor;
-}
-
-.custom_checkbox_clicked {
-    background-color: var(--color_neon_pink);
-    box-shadow:
-        0 0 1.5em currentColor;
-}
 
 /* Range inputs */
 input[type="range"] {

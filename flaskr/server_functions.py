@@ -46,18 +46,24 @@ def form_structuring(gathered_form_data):
     return gathered_condition, gathered_values, gathered_weights
 
 def structure_city(city):
+    """ Create new neested structure for html display in grid """
+    # Sort by faction
     city.sort(key=lambda x: x.faction)
 
-    city_factions = [x.faction for x in city]
-    city_factions_used = []
-    city_factions_unique = [city_factions_used.append(x) for x in city_factions if x not in city_factions_used]
+    unique_factions = list(set([x.faction for x in city]))
+    faction_ranks = {}
+    for faction in unique_factions:
+        faction_ranks[faction] = list(set([x.rank for x in city if x.faction == faction]))
 
     city_output = {}
-    for faction in city_factions_unique:
-        city_output[faction] = []
-        for citizen in city:
-            if citizen.faction == faction:
-                city_output[faction].append(citizen)
+    for faction in unique_factions:
+        city_output[faction] = {}
+        for rank in faction_ranks[faction]:
+            city_output[faction][rank] = []
+
+    for citizen in city:
+        city_output[citizen.faction][citizen.rank].append(citizen)
+
 
     return city_output
 
