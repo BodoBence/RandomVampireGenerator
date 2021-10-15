@@ -2,6 +2,8 @@ create_global_event_listener('click', 'DOM_link', go_to_citizen, 'class')
 create_global_event_listener("click", "citizen_detail_header", accorian_details, "class")
 create_global_event_listener("click", "svg_button_triangle", accorian_details, "class")
 
+replace_underscores_inner_htmls()
+
 function go_to_citizen(e){
     /* Bring into view clicked citizen */
     citizens = document.getElementsByClassName('citizen_name')
@@ -27,4 +29,12 @@ function accorian_details(current_button){
 function handle_indicator_animation(current_button, citizen_detail_elements){
     triangle = current_button.querySelector('.svg_button_triangle')
     triangle.classList.toggle('triangle_closed')
+}
+
+function replace_underscores_inner_htmls(){
+    let elements_with_underscore = document.getElementsByClassName('underscore')
+    for (let index = 0; index < elements_with_underscore.length; index++) {
+        let original_string = elements_with_underscore[index].innerHTML
+        elements_with_underscore[index].innerHTML = original_string.replaceAll('_', ' ')
+    }
 }

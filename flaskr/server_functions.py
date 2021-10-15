@@ -1,5 +1,6 @@
 import default_data
 import os
+import pprint
 import json
 
 script_dir = os.path.dirname(__file__)
@@ -51,20 +52,20 @@ def structure_city(city):
     city.sort(key=lambda x: x.faction)
 
     unique_factions = list(set([x.faction for x in city]))
-    faction_ranks = {}
-    for faction in unique_factions:
-        faction_ranks[faction] = list(set([x.rank for x in city if x.faction == faction]))
-
+    unique_clans_per_faction = {x:list(set([y.clan for y in city if y.faction == x])) for x in unique_factions}
     city_output = {}
-    for faction in unique_factions:
-        city_output[faction] = {}
-        for rank in faction_ranks[faction]:
-            city_output[faction][rank] = []
+    for unique_faction in unique_factions:
+        city_output[unique_faction] = {}
+        for unique_clan in unique_clans_per_faction[unique_faction]:
+            unique_ranks_per_clan = list(set([x.rank for x in city if x.faction == unique_faction and x.clan == unique_clan]))
+            city_output[unique_faction][unique_clan] = {}   
+            for rank in unique_ranks_per_clan:
+                city_output[unique_faction][unique_clan][rank] = []
+                for citizen in city:
+                    if citizen.faction == unique_faction and citizen.clan == unique_clan and citizen.rank == rank:
+                        city_output[unique_faction][unique_clan][rank].append(citizen)
 
-    for citizen in city:
-        city_output[citizen.faction][citizen.rank].append(citizen)
-
-
+      
     return city_output
 
 def get_default_city_values():
