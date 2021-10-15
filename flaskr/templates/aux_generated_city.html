@@ -45,6 +45,10 @@
                         <p class="DOM_link">{{ child }}</p>
                         {% endfor %}
                     </div>
+
+                    <p class="citizen_details dont_display">Relations:</p>
+                    <button class="citizen_details dont_display relations" value="Show relations" data-relations="{{ citizen.relations }}"></button>
+
                 </div>
                 {% endfor %}
             </div>
