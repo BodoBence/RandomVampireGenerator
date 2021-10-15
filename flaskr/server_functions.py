@@ -47,23 +47,35 @@ def form_structuring(gathered_form_data):
     return gathered_condition, gathered_values, gathered_weights
 
 def structure_city(city):
-    """ Create new neested structure for html display in grid """
+    """ Create new neested structure for html display in grid:
+    iterare through citizens in a hierarcy
+    Faction –> Clan —> Rank -> Citizens """
     # Sort by faction
     city.sort(key=lambda x: x.faction)
 
+    # Get lists of unique elements
     unique_factions = list(set([x.faction for x in city]))
     unique_clans_per_faction = {x:list(set([y.clan for y in city if y.faction == x])) for x in unique_factions}
+    # Create and fill nested dicts with the new structure
     city_output = {}
-    for unique_faction in unique_factions:
-        city_output[unique_faction] = {}
-        for unique_clan in unique_clans_per_faction[unique_faction]:
-            unique_ranks_per_clan = list(set([x.rank for x in city if x.faction == unique_faction and x.clan == unique_clan]))
-            city_output[unique_faction][unique_clan] = {}   
+    for faction in unique_factions:
+        city_output[faction] = {} # Create new keys for the factions
+        city_output[faction]['faction_leaders'] = {'1':[]} # Seperate custom nest for faction leaders
+        for clan in unique_clans_per_faction[faction]:
+            unique_ranks_per_clan = list(set([x.rank for x in city if x.faction == faction and x.clan == clan]))
+            city_output[faction][clan] = {} # Create new keys for clans per faction
             for rank in unique_ranks_per_clan:
-                city_output[unique_faction][unique_clan][rank] = []
+                if rank != 1: # Rank = 1 means faction leader, who go in under their own key ['faction_leaders'], not the clans
+                    city_output[faction][clan][rank] = [] # Create new lists for ranks per clans per faction
                 for citizen in city:
-                    if citizen.faction == unique_faction and citizen.clan == unique_clan and citizen.rank == rank:
-                        city_output[unique_faction][unique_clan][rank].append(citizen)
+                    if citizen.faction == faction and citizen.clan == clan and citizen.rank == rank:
+                        if citizen.rank == 1:
+                            city_output[faction]['faction_leaders']['1'].append(citizen) # Seems redundant, but will allow the html to iterate through all citizens in one go and speerate leaders at the same time
+                        else:
+                            city_output[faction][clan][rank].append(citizen) # Majority of cases
+            if city_output[faction][clan] == {}:
+                del city_output[faction][clan]
+
 
       
     return city_output

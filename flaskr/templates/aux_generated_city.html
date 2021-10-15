@@ -3,7 +3,11 @@
     <p class="faction_name">{{ faction }}</p>
     <div class="faction">
         {% for clan in generated_city[faction] %}
+        {% if clan == 'faction_leaders' %}
+        <div class="faction_leaders">
+        {% else %}
         <div class="clan">
+        {% endif %}
             {% for rank in generated_city[faction][clan] %}
             <div class="rank">
                 {% for citizen in generated_city[faction][clan][rank] %}

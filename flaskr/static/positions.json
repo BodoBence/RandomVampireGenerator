@@ -97,14 +97,14 @@
         "Ductus": {
             "Rank": 1,
             "Superior": [],
-            "Number_allowed": 99,
+            "Number_allowed": 1,
             "Obligatory": true,
             "Clan_restriction": false
         },
         "Priest": {
             "Rank": 1,
             "Superior": [],
-            "Number_allowed": 99,
+            "Number_allowed": 1,
             "Obligatory": true,
             "Clan_restriction": false
         },
@@ -120,21 +120,21 @@
         "Baron": {
             "Rank": 1,
             "Superior": ["none"],
-            "Number_allowed": 99,
+            "Number_allowed": 3,
             "Obligatory": true,
             "Clan_restriction": false
         },
         "Emissary": {
             "Rank": 2,
             "Superior": ["Baron"],
-            "Number_allowed": 99,
+            "Number_allowed": 3,
             "Obligatory": false,
             "Clan_restriction": false
         },
         "Sweeper": {
             "Rank": 2,
             "Superior": ["Baron"],
-            "Number_allowed": 99,
+            "Number_allowed": 2,
             "Obligatory": false,
             "Clan_restriction": false
         },
