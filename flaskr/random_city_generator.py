@@ -13,13 +13,10 @@ FILE_FACTIONS = os.path.join(SCRIPT_DIR, 'static', 'factions.json')
 FILE_FACTION_AFILIATIONS = os.path.join(SCRIPT_DIR, 'static', 'faction_afiliations.json')
 FILE_POSITIONS = os.path.join(SCRIPT_DIR, 'static', 'positions.json')
 FILE_CITIZEN_RELATIONS = os.path.join(SCRIPT_DIR, 'static', 'citizen_relations.json')
+FILE_INTERNAL_INPUTS = os.path.join(SCRIPT_DIR, 'static', 'citiy_generator_internal_inputs.json')
 FILE_NAMES_MALE = os.path.join(SCRIPT_DIR, 'static', 'names_male.txt')
 FILE_NAMES_FEMALE = os.path.join(SCRIPT_DIR, 'static', 'names_female.txt')
 FILE_NAMES_INTERESTING = os.path.join(SCRIPT_DIR, 'static', 'names_interesting.txt')
-
-def system_inputs():
-    """ Inputs needed for city generation, but not controlled by the used """
-    pass
 
 def test_user_inputs():
     """ Manual user inputs for TESTING without having to interface, normally these should be gathered form the user """
@@ -49,6 +46,9 @@ def generate_random_city(
     age_standard_deviation,
     minimum_sireing_gap):
 
+    with open(FILE_INTERNAL_INPUTS) as json_file:
+        internal_inputs = json.load(json_file)
+    
     factions = create_factions_list(
         faction_ratio_camarilla,
         faction_ratio_sabbath,
@@ -64,12 +64,16 @@ def generate_random_city(
     for citizen in range(number_of_vampires):
        citizens.append(generate_citizen(
             age_average, 
-            age_standard_deviation, 
+            age_standard_deviation,
+            internal_inputs['minimum_age'], 
             factions,
             sexes_list))
 
     # Generate citizen relations
-    citizens = create_citizen_relations(citizens, minimum_sireing_gap)
+    citizens = create_citizen_relations(
+        citizens, 
+        minimum_sireing_gap, 
+        internal_inputs['number_of_years_per_child'])
 
     return citizens
 
@@ -111,8 +115,8 @@ class citizen:
     rank: int
     id: str
 
-def generate_citizen(age_average, age_standard_deviation, factions, sexes):
-    generated_age = abs(int(random.normalvariate(age_average, age_standard_deviation)))
+def generate_citizen(age_average, age_standard_deviation, minimum_age, factions, sexes):
+    generated_age = max(minimum_age, abs(int(random.normalvariate(age_average, age_standard_deviation))))
     generated_sex = random.choice(sexes)
     generated_name = create_name(generated_sex)
     generated_faction = random.choice(factions)
@@ -167,13 +171,13 @@ def create_clans_list(faction):
         clans_list = random.sample(clans[faction], 1)
     return clans_list
 
-def create_citizen_relations(citizens, minimum_sireing_gap):
+def create_citizen_relations(citizens, minimum_sireing_gap, number_of_years_per_child):
     with open(FILE_POSITIONS) as json_file:
         positions = json.load(json_file)    
 
     citizens = give_positions(positions, citizens)
     citizens = relate_citizens(citizens)
-    citizens = assign_families(citizens, minimum_sireing_gap)
+    citizens = assign_families(citizens, minimum_sireing_gap, number_of_years_per_child)
 
     return citizens
 
@@ -245,7 +249,7 @@ def relate_citizens(citizens, ):
 
     return citizens
 
-def assign_families(citizens, minimum_sireing_gap):
+def assign_families(citizens, minimum_sireing_gap, number_of_years_per_child):
     """ Create sire - child relationships within clan member if there is enough age gap """
     # Create a list of the clans
     clan_list = []
@@ -260,18 +264,22 @@ def assign_families(citizens, minimum_sireing_gap):
         if len(clan_members) > 1:
             for potential_sire in clan_members:
                 for potential_child in clan_members:
-                    if is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap):
+                    if is_okay_to_sire(
+                            potential_child, 
+                            potential_sire, 
+                            minimum_sireing_gap,
+                            number_of_years_per_child):
                         potential_child.sire = potential_sire.name
                         potential_sire.children.append(potential_child.name)
 
     return citizens
 
-def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap):
+def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap, number_of_years_per_child):
     """ Check criteria for making sire – child relationships"""
     
     child_criterion = True if potential_child.sire == None else False
     age_criterion = True if potential_sire.age - potential_child.age > minimum_sireing_gap else False # Also exlcudes self to self matches
-    sire_criterion = True if len(potential_sire.children) < (potential_sire.age / 100) else False # Sire's can only make 1 child / 100 years
+    sire_criterion = True if len(potential_sire.children) < (potential_sire.age / number_of_years_per_child) else False # Sire's can only make 1 child / 100 years
 
     if child_criterion and age_criterion and sire_criterion:
         return True
