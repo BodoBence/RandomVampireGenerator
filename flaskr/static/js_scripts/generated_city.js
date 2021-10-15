@@ -2,7 +2,17 @@ create_global_event_listener('click', 'DOM_link', go_to_citizen, 'class')
 create_global_event_listener("click", "citizen_detail_header", accorian_details, "class")
 create_global_event_listener("click", "svg_button_triangle", accorian_details, "class")
 
+// Once per page load
 replace_underscores_inner_htmls()
+bring_city_into_view()
+
+document.onload = test_line_adding()
+
+// Functions
+function bring_city_into_view(){
+    city = document.querySelector('.generated_city')
+    city.scrollIntoView(true)
+}
 
 function go_to_citizen(e){
     /* Bring into view clicked citizen */
@@ -37,4 +47,41 @@ function replace_underscores_inner_htmls(){
         let original_string = elements_with_underscore[index].innerHTML
         elements_with_underscore[index].innerHTML = original_string.replaceAll('_', ' ')
     }
+}
+
+function connect_elements_with_svg_line(element_a, element_b, svg_style, parent){
+    /* Adds an svg line, connecting element_a to element_b, it creates the svg line */
+    let x1 = element_a.offsetLeft + (element_a.offsetWidth/2);
+    let y1 = element_a.offsetTop + (element_a.offsetHeight/2);
+    let x2 = element_b.offsetLeft + (element_b.offsetWidth/2);
+    let y2 = element_b.offsetTop + (element_b.offsetHeight/2);
+    console.log('1')
+    console.log(x1)
+    console.log(y1)
+    console.log('2')
+    console.log(x2)
+    console.log(y2)
+
+    // Create the svg element
+    let new_svg = document.createElementNS('http://www.w3.org/2000/svg','svg')
+    new_svg.classList.add(svg_style)
+
+    // new_svg.classList.add(svg_class)
+    let new_line = document.createElementNS('http://www.w3.org/2000/svg','line')
+    // new_line.classList.add(line_class)
+    new_line.setAttribute('x1',x1)
+    new_line.setAttribute('y1',y1)
+    new_line.setAttribute('x2',x2)
+    new_line.setAttribute('y2',y2)
+    new_line.setAttribute('stroke', 'red')
+    new_line.setAttribute('stroke-width', '4px')
+    new_svg.appendChild(new_line)
+    parent.appendChild(new_svg)
+
+}
+
+function test_line_adding(){
+    citizens = document.getElementsByClassName('citizen')
+    connect_elements_with_svg_line(citizens[0], citizens[1], 'svg_layer', document.body)
+    connect_elements_with_svg_line(citizens[0], citizens[2], 'svg_layer', document.body)     
 }
