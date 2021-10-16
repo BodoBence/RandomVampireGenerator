@@ -1,8 +1,8 @@
 create_global_event_listener('click', 'DOM_link', go_to_citizen, 'class')
 create_global_event_listener("click", "citizen_detail_header", accorian_details, "class")
 create_global_event_listener("click", "svg_button_triangle", accorian_details, "class")
-create_global_event_listener("mouseover", "relations", add_relationship_lines, "class")
-create_global_event_listener("mouseout", "relations", remove_relationship_lines, "class")
+// create_global_event_listener("mouseover", "relations", add_relationship_lines, "class")
+// create_global_event_listener("mouseout", "relations", remove_relationship_lines, "class")
 
 // Once per page load
 replace_underscores_inner_htmls()
@@ -51,6 +51,13 @@ function replace_underscores_inner_htmls(){
     }
 }
 
+function handle_relations(e){
+    related_elements_str = e.getAttribute('data-relations')
+    related_elements_str_formated = related_elements_str.replace(/'/g, '"') // format to javascript compatibility
+    related_elements= JSON.parse(related_elements_str_formated)
+}
+
+/* Line Drawing */
 function connect_elements_with_svg_line(element_a, element_b, svg_style, parent){
     /* Adds an svg line, connecting element_a to element_b, it creates the svg line */
     // let x1 = element_a.offsetLeft + (element_a.offsetWidth/2);
@@ -152,3 +159,4 @@ function remove_relationship_lines(){
         line_svgs[index].remove()
     }
 }
+

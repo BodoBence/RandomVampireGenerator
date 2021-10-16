@@ -245,7 +245,13 @@ def relate_citizens(citizens, ):
             for other_citizen in citizens:
                 if other_citizen != citizen:
                     new_relation_dict[other_citizen.name] = random.choice(relation_options)
-            citizen.relations = new_relation_dict
+            
+            unique_ways_to_relate = list(set([x for x in new_relation_dict.values()]))
+            new_relation_dict_formatted = {}
+            for relation_way in unique_ways_to_relate:
+                new_relation_dict_formatted[relation_way] = [x for x in new_relation_dict if new_relation_dict[x] == relation_way]
+
+            citizen.relations = new_relation_dict_formatted
 
     return citizens
 

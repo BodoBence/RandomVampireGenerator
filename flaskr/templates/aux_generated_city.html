@@ -47,7 +47,13 @@
                     </div>
 
                     <p class="citizen_details dont_display">Relations:</p>
-                    <button class="citizen_details dont_display relations" value="Show relations" data-relations="{{ citizen.relations }}"></button>
+                    {% for relation_type in citizen.relations.keys() %}
+                        <p class="citizen_details dont_display" style="grid-column: 1/2;">{{ relation_type }}</p>
+                        {% for related_citizen in citizen.relations[relation_type] %}
+                            <p class="DOM_link citizen_details dont_display" style="grid-column: 2/3;">{{ related_citizen }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    <!-- <button class="citizen_details dont_display relations" value="Show relations" data-relations="{{ citizen.relations }}"></button> -->
 
                 </div>
                 {% endfor %}
