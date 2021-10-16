@@ -11,7 +11,7 @@
             {% for rank in generated_city[faction][clan] %}
             <div class="rank">
                 {% for citizen in generated_city[faction][clan][rank] %}
-                <div class="citizen">
+                <div class="citizen" id="{{ citizen.name }}">
                     {% include "aux_clan_logo_" + citizen.clan + ".html" %}
                     <p class="citizen_name">{{ citizen.name }}</p>
 

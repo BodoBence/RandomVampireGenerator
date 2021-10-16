@@ -2,7 +2,7 @@ create_global_event_listener('click', 'DOM_link', go_to_citizen, 'class')
 create_global_event_listener("click", "citizen_detail_header", accorian_details, "class")
 create_global_event_listener("click", "svg_button_triangle", accorian_details, "class")
 create_global_event_listener("mouseover", "relations", add_relationship_lines, "class")
-// create_global_event_listener("mouseout", "relations", remove_relationship_lines, "class")
+create_global_event_listener("mouseout", "relations", remove_relationship_lines, "class")
 
 // Once per page load
 replace_underscores_inner_htmls()
@@ -133,7 +133,22 @@ function get_element_outline_point(element, horizontal, vertical, output){
 }
 
 function add_relationship_lines(e){
-    console.log(e)
-    related_elements = e.getAttribute('data-relations').slice(0, -1).slice(0, 0)
-    console.log(related_elements)
+    /* adds relationship lines with a specified class */
+    related_elements_str = e.getAttribute('data-relations')
+    related_elements_str_formated = related_elements_str.replace(/'/g, '"') // format to javascript compatibility
+    related_elements= JSON.parse(related_elements_str_formated)
+
+    for(let key in related_elements) {
+        // let value = related_elements[key] // get the value
+        target_citizen = document.getElementById(key)
+        connect_elements_with_svg_line(e.parentElement, target_citizen, 'svg_layer', document.body)
+      }
+}
+
+function remove_relationship_lines(){
+    /* Removes all the relationslines, it is based on the svg_layer class selection */
+    line_svgs = document.querySelectorAll('.svg_layer') // Needs queryselectALL so that it becomes a not live list, where it is possible to remove within the list  
+    for (let index = 0; index < line_svgs.length; index++) {
+        line_svgs[index].remove()
+    }
 }
