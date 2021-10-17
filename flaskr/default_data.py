@@ -10,6 +10,7 @@ FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'names_interesting.t
 FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'restructured_discipline_skills_rituals_ceremonies.json')
 FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
 FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
+FILE_CLANS = os.path.join(script_dir, 'static', 'clans.json')
 
 MAX_AGE = 3000
 
@@ -194,23 +195,9 @@ def default_clan_disciplines_data():
     return clan_disciplines
 
 def default_clans_data():
-    clans = [
-        'Banu_Haqim',
-        'Brujah',
-        'Gangrel',
-        'Lasombra',
-        'Malkavian',
-        'Ministry',
-        'Nosferatu',
-        'Ravnos',
-        'Toreador',
-        'Tremere',
-        'Tzimische',
-        'Ventrue',
-        'Hecata',
-        'Thin-blood']
-
-    return clans
+    with open(FILE_CLANS) as json_file:
+        clans = json.load(json_file)
+        return clans
 
 def default_generations_data():
     generations = range(3, 17)
@@ -250,7 +237,10 @@ def blood_potency_data():
         '13': list(range(1,4)),
         '14': [0],
         '15': [0],
-        '16': [0]}
+        '16': [0],
+        '17': [0],
+        '18': [0]
+    }
 
     return blood_potency_correspondencies
 

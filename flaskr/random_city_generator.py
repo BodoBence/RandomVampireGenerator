@@ -3,6 +3,7 @@ import random
 import os
 import json
 import uuid
+import default_data
 
 from dataclasses import dataclass
 from operator import attrgetter
@@ -67,7 +68,8 @@ def generate_random_city(
             age_standard_deviation,
             internal_inputs['minimum_age'], 
             factions,
-            sexes_list))
+            sexes_list,
+            internal_inputs['minimum_generation']))
 
     # Generate citizen relations
     citizens = create_citizen_relations(
@@ -114,13 +116,20 @@ class citizen:
     relations: dict
     rank: int
     id: str
+    sire_in_city: bool
+    blood_potency: int
 
-def generate_citizen(age_average, age_standard_deviation, minimum_age, factions, sexes):
+def generate_citizen(age_average, age_standard_deviation, minimum_age, factions, sexes, minimum_generation):
+    """ create a citizen class object and assign most of the values for its attributes """
+    
+    # The order of the following is important, as the later functions use the data of the earliers
     generated_age = max(minimum_age, abs(int(random.normalvariate(age_average, age_standard_deviation))))
     generated_sex = random.choice(sexes)
     generated_name = create_name(generated_sex)
     generated_faction = random.choice(factions)
     generated_clan = create_clans_list(generated_faction)[0]
+    generated_generation = assign_generation(generated_age, generated_clan, age_average, minimum_generation)
+    generated_blood_potency = int(random.choice(default_data.blood_potency_data()[str(generated_generation)]))
 
     generted_citizen = citizen(
         faction = generated_faction,
@@ -130,12 +139,14 @@ def generate_citizen(age_average, age_standard_deviation, minimum_age, factions,
         sex =  generated_sex,
         clan = generated_clan,
         sire =  None,
-        generation =  None,
+        generation =  generated_generation,
         children = [],
         superior = None,
         relations = None,
         rank = None,
-        id = uuid.uuid1()
+        id = uuid.uuid1(),
+        sire_in_city = False,
+        blood_potency = generated_blood_potency
     )
     
     return generted_citizen
@@ -171,6 +182,20 @@ def create_clans_list(faction):
         clans_list = random.sample(clans[faction], 1)
     return clans_list
 
+def assign_generation(age, clan, age_average, minimum_generation):
+    """ Pick a generation value based on age (seniority) and clan """
+    # the lower the generation is the stronger, tipically older a vampire is
+    if clan != 'Thin-blood': # Thin-blood have fewer generation options open to them
+        generation_options = default_data.default_generations_data()
+    else:
+        generation_options = default_data.thinblood_generations_data()
+
+    modulated_generation_options = [x for x in generation_options if x >= minimum_generation] # 1-6 generations are extremley rare, so we should exclude them
+    age_bias = int((age / age_average) + 1) # the older the vampire is (relative to the average) the higher the bias
+    generation = min([random.choice(modulated_generation_options) for i in range(0, age_bias)]) # the comparision of repeated random picks scews the choice toward a lower value
+
+    return generation
+
 def create_citizen_relations(citizens, minimum_sireing_gap, number_of_years_per_child):
     with open(FILE_POSITIONS) as json_file:
         positions = json.load(json_file)    
@@ -178,6 +203,7 @@ def create_citizen_relations(citizens, minimum_sireing_gap, number_of_years_per_
     citizens = give_positions(positions, citizens)
     citizens = relate_citizens(citizens)
     citizens = assign_families(citizens, minimum_sireing_gap, number_of_years_per_child)
+    citizens = create_non_city_sires(citizens)
 
     return citizens
 
@@ -270,14 +296,11 @@ def assign_families(citizens, minimum_sireing_gap, number_of_years_per_child):
         if len(clan_members) > 1:
             for potential_sire in clan_members:
                 for potential_child in clan_members:
-                    if is_okay_to_sire(
-                            potential_child, 
-                            potential_sire, 
-                            minimum_sireing_gap,
-                            number_of_years_per_child):
+                    if is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap, number_of_years_per_child):
                         potential_child.sire = potential_sire.name
+                        potential_child.sire_in_city = True
+                        potential_sire.generation = potential_sire.generation + 1
                         potential_sire.children.append(potential_child.name)
-
     return citizens
 
 def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap, number_of_years_per_child):
@@ -291,6 +314,14 @@ def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap, number
         return True
     else:
         return False
+
+def create_non_city_sires(citizens):
+    """ For citizens, whom getting a sire was not an option, give random named sires """
+    sireless_citizens = [x for x in citizens if x.sire_in_city == False]
+    for citizen in sireless_citizens:
+        citizen.sire = create_name(random.choice(['Male', 'Female']))
+    
+    return sireless_citizens
 
 
 

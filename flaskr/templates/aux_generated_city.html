@@ -5,8 +5,8 @@
         {% for clan in generated_city[faction] %}
         {% if clan == 'faction_leaders' %}
         <div class="faction_leaders">
-        {% else %}
-        <div class="clan">
+        {% else %}            
+        <div class="clan" data-clan_name="{{ clan }}">
         {% endif %}
             {% for rank in generated_city[faction][clan] %}
             <div class="rank">
@@ -36,8 +36,18 @@
                     <p class="citizen_details dont_display">Clan:</p>
                     <p class="citizen_details dont_display">{{ citizen.clan }}</p>
 
+                    <p class="citizen_details dont_display">Generation:</p>
+                    <p class="citizen_details dont_display">{{ citizen.generation }}</p>
+
+                    <p class="citizen_details dont_display">Blood Potency:</p>
+                    <p class="citizen_details dont_display">{{ citizen.blood_potency }}</p>
+
                     <p class="citizen_details dont_display">Sire:</p>
-                    <p class="DOM_link citizen_details dont_display">{{ citizen.sire }}</p>
+                    {% if citizen.sire_in_city == True %}
+                        <p class="DOM_link citizen_details dont_display">{{ citizen.sire }}</p>
+                    {% else %}
+                        <p class="citizen_details dont_display">{{ citizen.sire }}</p>
+                    {% endif %}
 
                     <p class="citizen_details dont_display">Children:</p>
                     <div class="citizen_details dont_display">

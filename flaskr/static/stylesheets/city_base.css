@@ -2,14 +2,15 @@
 .generated_city {
     display: grid;
     /* text and faction, faction needs a lot more space */
-    grid-template-columns: minmax(auto, 5vw) auto; 
+    grid-template-columns: minmax(auto, 10vw) auto; 
     grid-row-gap: 4rem;
     margin-bottom: 10vh;
 }
 
 /* Vertical text with faction name, decorative element */
 .faction_name {
-    font-size: 2rem;
+    /* font size needs to be vwv to correspond with the space it has */
+    font-size: 6vw; 
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
@@ -39,6 +40,23 @@
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-row-gap: 1rem;
     align-content: start;
+    position: relative;
+}
+
+.clan::after {
+    content: attr(data-clan_name);
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color_neon_white);
+    position: absolute;
+    top: -2rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* Double text shadow for crispier edges */
+    text-shadow: 0 0 0.5rem black;
+    text-shadow: 0 0 1rem black;
 }
 
 /* children: rank(1) */
@@ -91,6 +109,8 @@
     border-style: solid;
     border-color: var(--color_dark_grey);
     box-shadow: 0 0 1em black;
+
+    transition: filter 0.4s;
 }
 
 .citizen:hover {
@@ -117,7 +137,6 @@
 .DOM_link:hover {
     cursor: pointer;
 }
-
 
 .citizen .citizen_detail_header {
     grid-column: 1/-1;
@@ -177,13 +196,17 @@
     color: var(--color_neon_white) !important;
 }
 
+/* MISC (dynamically added classes in JS)*/
 .triangle_closed {
     transform: rotate(180deg);
 }
 
-/* MISC */
 .dont_display{
     display: none !important;
+}
+
+.dim {
+    filter: opacity(0.3);
 }
 
 .svg_layer {

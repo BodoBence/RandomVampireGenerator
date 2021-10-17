@@ -1,6 +1,8 @@
 create_global_event_listener('click', 'DOM_link', go_to_citizen, 'class')
 create_global_event_listener("click", "citizen_detail_header", accorian_details, "class")
 create_global_event_listener("click", "svg_button_triangle", accorian_details, "class")
+create_global_event_listener("mouseover", "DOM_link", dim_non_hover_citizens, "class")
+create_global_event_listener("mouseout", "DOM_link", reveal_non_hover_citizens, "class")
 // create_global_event_listener("mouseover", "relations", add_relationship_lines, "class")
 // create_global_event_listener("mouseout", "relations", remove_relationship_lines, "class")
 
@@ -160,3 +162,27 @@ function remove_relationship_lines(){
     }
 }
 
+function dim_non_hover_citizens(e){
+    /* Applies dim class to citizens that are not the target, nor self */
+    target_citizen_id = e.innerHTML
+    target_citizen = document.getElementById(target_citizen_id)
+    citizens = document.getElementsByClassName('citizen')
+
+    for (let index = 0; index < citizens.length; index++) {
+        if (citizens[index] != e.closest('.citizen')){
+            if (citizens[index] != target_citizen){
+                citizens[index].classList.add('dim')
+            }
+        }
+    }
+}
+
+function reveal_non_hover_citizens(e){
+    /* Removes dim class from citizens */
+    target_citizen = document.getElementById(e.innerHTML)
+    citizens = document.getElementsByClassName('citizen')
+
+    for (let index = 0; index < citizens.length; index++) {
+        citizens[index].classList.remove('dim')
+    }
+}
