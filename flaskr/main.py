@@ -52,16 +52,12 @@ def home():
 @app.route('/result_character', methods = ['POST', 'GET'])
 def result_character():
     HAVE_GENERATED_CHARACTER = True
-
     gathered_input = request.form
-
     resutrctured_conditions, restructured_values, restructured_weights = server_functions.form_structuring(gathered_input)
-
     generated_character = generate_character(
         input_values=restructured_values,
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
-
 
     # overwrite the input field and slider valies
     startup_input_field_details['input_conditions'] = resutrctured_conditions
@@ -114,7 +110,9 @@ def city_generator():
 @app.route('/result_city', methods = ['POST', 'GET'])
 def result_city():
     HAVE_GENERATED_CITY = True
-
+    # print('------------------------') #DEBUG
+    # print('number of vmaps input') #DEBUG
+    # print(request.form['slider_n_vampires']) #DEBUG
     generated_city = generate_city(
         faction_ratio_camarilla = int(request.form['slider_camarilla']),
         faction_ratio_sabbath = int(request.form['slider_sabbath']),
@@ -127,6 +125,9 @@ def result_city():
         age_standard_deviation = int(request.form['slider_age_deviation']),
         minimum_sireing_gap = int(request.form['slider_sireing_age_gap'])
     )
+    # print('number of vmaps output') #DEBUG
+    # print(len(generated_city)) #DEBUG
+    # print('------------------------') #DEBUG
     structured_city = server_functions.structure_city(generated_city)
 
     rendered_city = render_template(

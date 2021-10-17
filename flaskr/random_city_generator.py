@@ -62,8 +62,9 @@ def generate_random_city(
 
     citizens = []
     # Generate citizens
-    for citizen in range(number_of_vampires):
-       citizens.append(generate_citizen(
+    for citizen in range(0, number_of_vampires):
+        # print('generating vamp number: ' + str(citizen)) # DEBUG
+        citizens.append(generate_citizen(
             age_average, 
             age_standard_deviation,
             internal_inputs['minimum_age'], 
@@ -77,6 +78,7 @@ def generate_random_city(
         minimum_sireing_gap, 
         internal_inputs['number_of_years_per_child'])
 
+    # print('number of cirizens with relations: ' + str(len(citizens))) # DEBUG
     return citizens
 
 def create_factions_list(ratio_Camarilla, ratio_Sabbath, ratio_Anarch, ratio_Independent ):
@@ -201,9 +203,13 @@ def create_citizen_relations(citizens, minimum_sireing_gap, number_of_years_per_
         positions = json.load(json_file)    
 
     citizens = give_positions(positions, citizens)
+    # print('number of vamp after positions: ' + str(len(citizens))) # DEBUG
     citizens = relate_citizens(citizens)
+    # print('number of vamp after relates: ' + str(len(citizens))) # DEBUG
     citizens = assign_families(citizens, minimum_sireing_gap, number_of_years_per_child)
+    # print('number of vamp after families: ' + str(len(citizens))) # DEBUG
     citizens = create_non_city_sires(citizens)
+    # print('number of vamp after nonsire: ' + str(len(citizens))) # DEBUG
 
     return citizens
 
@@ -317,11 +323,11 @@ def is_okay_to_sire(potential_child, potential_sire, minimum_sireing_gap, number
 
 def create_non_city_sires(citizens):
     """ For citizens, whom getting a sire was not an option, give random named sires """
-    sireless_citizens = [x for x in citizens if x.sire_in_city == False]
-    for citizen in sireless_citizens:
-        citizen.sire = create_name(random.choice(['Male', 'Female']))
-    
-    return sireless_citizens
+    for citizen in citizens:
+        if citizen.sire_in_city == False:
+            citizen.sire = create_name(random.choice(['Male', 'Female']))
+
+    return citizens
 
 
 

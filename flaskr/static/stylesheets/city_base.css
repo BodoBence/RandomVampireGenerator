@@ -2,21 +2,26 @@
 .generated_city {
     display: grid;
     /* text and faction, faction needs a lot more space */
-    grid-template-columns: minmax(auto, 10vw) auto; 
+    grid-template-columns: minmax(auto, 6vw) auto; 
     grid-row-gap: 4rem;
     margin-bottom: 10vh;
 }
 
 /* Vertical text with faction name, decorative element */
+.faction_name_contianer {
+    margin: auto;
+}
+
 .faction_name {
     /* font size needs to be vwv to correspond with the space it has */
-    font-size: 6vw; 
+    font-size: 150%; 
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-transform: uppercase;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    max-height: 100%;
+    text-overflow: ellipsis;
     /* Double text shadow for crispier edges */
     text-shadow: 0 0 0.5rem black;
     text-shadow: 0 0 1rem black;
@@ -43,7 +48,7 @@
     position: relative;
 }
 
-.clan::after {
+.clan::before {
     content: attr(data-clan_name);
     display: block;
     font-size: 1.5rem;
@@ -96,7 +101,7 @@
     margin: 0;
     align-self: start;
 
-    min-width: 4rem;
+    /* min-width: 4rem; */
     max-width: 14rem;
     position: relative;
 
@@ -152,15 +157,12 @@
 .clan_logo {
     display: block;
     position: absolute;
-
     top: 10%;
     left: 15%;
     width: 70%;
     max-height: 80%;
-
     z-index: 1;
     opacity: 0.2;
-
     pointer-events: none;
 }
 

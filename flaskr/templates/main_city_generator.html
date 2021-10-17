@@ -3,6 +3,7 @@
     <head>
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/rectangle_input.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/city_inputs.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
         
@@ -36,6 +37,7 @@
 
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/rectangle_input.js') }}"></script>
 
         <script>
             var default_city_input_values = JSON.parse('{{ default_city_input_values | tojson | safe}}')
