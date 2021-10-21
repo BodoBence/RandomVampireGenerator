@@ -7,10 +7,16 @@ function visualize_current_page(){
         case '/':
             document.getElementById('nav_link_home').classList.add('current_page_link')
             break
-        case '/result':
+        case '/result_character':
             document.getElementById('nav_link_home').classList.add('current_page_link')
             break
         case '/encounter_tracker':
+            document.getElementById('nav_link_tracker').classList.add('current_page_link')
+            break
+        case '/city_generator':
+            document.getElementById('nav_link_tracker').classList.add('current_page_link')
+            break
+        case '/result_city':
             document.getElementById('nav_link_tracker').classList.add('current_page_link')
             break
         case '/about':
