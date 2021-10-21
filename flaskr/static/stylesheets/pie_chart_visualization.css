@@ -1,0 +1,28 @@
+.svg_pie_chart {
+    width: 100%;
+    transform: rotateZ(-80deg)
+}
+
+.circle_pie_sector {
+    fill: transparent;
+    stroke: var(--color_neon_pink);
+    stroke-width: 0.5rem;
+    stroke-dasharray: 100%;
+    transform-origin: center center;
+}
+
+.circle_pie_sector:nth-child(1) {
+    filter: opacity(1);
+}
+
+.circle_pie_sector:nth-child(2) {
+    filter: opacity(0.6);
+}
+
+.circle_pie_sector:nth-child(3) {
+    filter: opacity(0.4);
+}
+
+.circle_pie_sector:nth-child(3) {
+    filter: opacity(0.2);
+}

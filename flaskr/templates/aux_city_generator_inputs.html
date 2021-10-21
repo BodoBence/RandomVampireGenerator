@@ -7,39 +7,38 @@
         </div>
 
         <div>
-            <label for="rectangle_input_id">Rectangle Input</label->
-            <div class="rectangle_input_container" id="rectangle_input_id">
-                <div class="rectange_input_cursor"></div>
-            </div>
-        </div>
-
-        <div>
             <label for="slider_camarilla_id">Camarilla presence:</label>
-            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" class="slider" type="range"
+            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" class="slider pie_input" type="range"
                 name="slider_camarilla" min="0" max="100" value="80">
             <label for="slider_camarilla_id" id="value_camarilla_id">80</label>
         </div>
 
         <div>
             <label for="slider_anarch_id">Anarch presence:</label>
-            <input id="slider_anarch_id" data-reference-id="value_anarch_id" class="slider" type="range"
+            <input id="slider_anarch_id" data-reference-id="value_anarch_id" class="slider pie_input" type="range"
                 name="slider_anarch" min="0" max="100" value="10">
             <label for="slider_anarch_id" id="value_anarch_id">10</label>
         </div>
 
         <div>
             <label for="slider_sabbath_id">Sabbath presence:</label>
-            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" class="slider" type="range"
+            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" class="slider pie_input" type="range"
                 name="slider_sabbath" min="0" max="100" value="5">
             <label for="slider_sabbath_id" id="value_sabbath_id">5</label>
         </div>
 
         <div>
             <label for="slider_independent_id">Independent presence:</label>
-            <input id="slider_independent_id" data-reference-id="value_independent_id" class="slider" type="range"
+            <input id="slider_independent_id" data-reference-id="value_independent_id" class="slider pie_input" type="range"
                 name="slider_independent" min="0" max="100" value="1">
 
             <label for="slider_independent_id" id="value_independent_id">1</label>
+        </div>
+
+        <div>
+            <svg class="svg_pie_chart" width="100" height="100">
+                <circle class="circle_pie_sector" data-pie_percentage="30" cx="50%" cy="50" r="30"></circle>  <!-- this DOM element is cloned in pie_chart_visualization.js based on 'pie_input' class presence in the document to match the input -->
+            </svg>
         </div>
 
         <div>
