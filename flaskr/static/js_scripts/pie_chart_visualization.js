@@ -3,15 +3,15 @@ create_global_event_listener('change', 'pie_input', update_pie, 'class')
 function update_pie() {
     let pie_input_elements = document.getElementsByClassName('pie_input')
     let sum_of_inputs = get_sum_of_inputs(pie_input_elements)
-    let list_of_percentages = []
+    let list_of_degrees = []
 
     for (let index = 0; index < pie_input_elements.length; index++) {
         let target_percentage = pie_input_elements[index].value / sum_of_inputs
-        list_of_percentages.push(target_percentage * 360)
+        list_of_degrees.push(target_percentage * 360)
         let pie_segment_id = pie_input_elements[index].getAttribute('data-reference-pie-id')
         let pie_segment = document.getElementById(pie_segment_id)
         set_pie_sector_length(pie_segment, target_percentage)   
-        set_pie_sector_rotation(pie_segment, index, list_of_percentages)
+        set_pie_sector_rotation(pie_segment, index, list_of_degrees)
 
     }
 }
@@ -30,25 +30,11 @@ function set_pie_sector_length(pie_segmnet, target_percentage) {
     pie_segmnet.style.strokeDashoffset =  perimeter * (1 - target_percentage)
 }
 
-function set_pie_sector_rotation(pie_segment, current_pie_input_index, list_of_percentages) {
-    if (current_pie_input_index == 0) {
-        let degree = "0"
-        pie_segment.style.transform = "rotateZ(" + degree + "deg)"
-        return
+function set_pie_sector_rotation(pie_segment, current_pie_input_index, list_of_degrees) {
+    let degree = 0
+    for (let index = 0; index < current_pie_input_index; index++) {
+        degree = degree + list_of_degrees[index]
     }
-    if (current_pie_input_index == 1) {
-        let degree = list_of_percentages[0].toString()
-        pie_segment.style.transform = "rotateZ(" + degree + "deg)"
-        return
-    }
-    if (current_pie_input_index == 2) {
-        let degree = (list_of_percentages[0] + list_of_percentages[1]).toString()
-        pie_segment.style.transform = "rotateZ(" + degree + "deg)"
-        return
-    }
-    if (current_pie_input_index == 3) {
-        let degree = (list_of_percentages[0] + list_of_percentages[1] + list_of_percentages[2]).toString()
-        pie_segment.style.transform = "rotateZ(" + degree + "deg)"
-        return
-    }
+    pie_segment.style.transform = "rotateZ(" + degree.toString() + "deg)"
+    return
 }
