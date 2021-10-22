@@ -23,7 +23,6 @@ function pie_update() {
         // Actual changes:
         pie_set_sector_length(pie_segment, target_percentage)   
         pie_set_sector_rotation(pie_segment, index, list_of_degrees)
-
     }
 
     function pie_get_sum_of_inputs(pie_input_elements) {
@@ -35,15 +34,15 @@ function pie_update() {
         return sum_of_inputs
     }
     
-    function pie_set_sector_length(pie_segmnet, target_percentage) {
+    function pie_set_sector_length(pie_segment, target_percentage) {
         /* Creates a perimeter long dash for the stroke of the svg circle element 
         and offests it so that it does not display
         and offests it again so as to cover only the given percentage
         of the perimeter of the circle --> giviing the illusion of a circle segment */
-        let perimeter = pie_segmnet.getAttribute("r") * 2 * Math.PI
+        let perimeter = parseInt(pie_segment.getAttribute("r")) * 2 * Math.PI
         let seperator_length = perimeter * 0.035  // make the sections shorter uniformly than their percentage so as to seperate them
-        pie_segmnet.style.strokeDasharray =  perimeter
-        pie_segmnet.style.strokeDashoffset =  perimeter * (1 - target_percentage) + seperator_length // Offset is calcualte in the opposite direction so we have to go with 1- target_percentage
+        pie_segment.style.strokeDasharray =  perimeter
+        pie_segment.style.strokeDashoffset =  (perimeter * (1 - target_percentage)) + seperator_length // Offset is calcualte in the opposite direction so we have to go with 1- target_percentage
     }
     
     function pie_set_sector_rotation(pie_segment, current_pie_input_index, list_of_degrees) {

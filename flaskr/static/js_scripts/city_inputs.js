@@ -45,12 +45,10 @@ function accordion_motion(current_trigger){
 }
 
 function display_slider_value(current_slider){
-    target_id = current_slider.getAttribute('data-reference-id')
-    target_element = document.getElementById(target_id)
-
-    new_value = current_slider.value
+    let target_id = current_slider.getAttribute('data-reference-id')
+    let target_element = document.getElementById(target_id)
+    let new_value = current_slider.value
     target_element.innerHTML = new_value
-    console.log(target_element.innerHTML)
 }
 
 function load_default_input_values(){
