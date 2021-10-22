@@ -1,5 +1,6 @@
 .svg_pie_chart {
-    width: 100%;
+    max-width: 90%;
+    max-height: 90%;
     transform: rotateZ(-90deg);
     transform-origin: center center;
 }
@@ -9,22 +10,23 @@
     stroke: var(--color_neon_pink);
     stroke-width: 0.3rem;
     stroke-dasharray: 100%;
+    stroke-linecap: round;
     transform-origin: center center;
     transition: all 0.5s;
 }
 
 .circle_pie_sector:nth-child(1) {
-    filter: opacity(1);
+    filter: brightness(1);
 }
 
 .circle_pie_sector:nth-child(2) {
-    filter: opacity(0.6);
+    filter: brightness(0.6);
 }
 
 .circle_pie_sector:nth-child(3) {
-    filter: opacity(0.4);
+    filter: brightness(0.4);
 }
 
 .circle_pie_sector:nth-child(4) {
-    filter: opacity(0.2);
+    filter: brightness(0.2);
 }

@@ -21,6 +21,7 @@ form > div {
 }
 
 form > div > div {
+    /* individual boxes for the input itemds */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(3em, auto));
     justify-items: stretch;
@@ -59,6 +60,7 @@ form > div > div > span {
 }
 
 form > div > div:first-of-type p {
+    /* special case for the top tooltip section */
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 1rem;
@@ -83,8 +85,14 @@ form > div > div:hover {
 
 #input_container_id > div:first-of-type {
     grid-column: 1/-1;
+
 }
 
+.pie_chart_container {
+    height: 10rem;
+}
+
+/* Elements inside the (visual) input boxes */
 label {
     color: var(--white);
     padding: 1rem;
@@ -141,6 +149,8 @@ input::-moz-range-thumb {
     pointer-events:none;
     opacity:0.4;
 }
+
+/* Screen responsivitsy */
 
 @media screen and (min-width: 40em) and (max-width: 64em) {
     form > div > input:last-of-type {
