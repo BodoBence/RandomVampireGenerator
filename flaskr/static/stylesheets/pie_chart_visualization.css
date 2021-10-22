@@ -4,6 +4,7 @@
     transform: rotateZ(-90deg);
     transform-origin: center center;
     position: relative;
+    margin: auto;
 }
 
 .circle_pie_sector {
@@ -21,13 +22,13 @@
 }
 
 .circle_pie_sector:nth-child(2) {
-    filter: brightness(0.6);
+    filter: brightness(0.8);
 }
 
 .circle_pie_sector:nth-child(3) {
-    filter: brightness(0.4);
+    filter: brightness(0.8);
 }
 
 .circle_pie_sector:nth-child(4) {
-    filter: brightness(0.2);
+    filter: brightness(0.4);
 }

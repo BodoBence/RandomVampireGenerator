@@ -1,4 +1,5 @@
 create_global_event_listener('change', 'pie_input', pie_update, 'class')
+// window.onload = pie_update()
 
 function pie_update() {
     /* Updates the angle of an svg pie chart's sections so as to they match the relations of input element values */
@@ -42,7 +43,7 @@ function pie_update() {
         let perimeter = parseInt(pie_segment.getAttribute("r")) * 2 * Math.PI
         let seperator_length = perimeter * 0.035  // make the sections shorter uniformly than their percentage so as to seperate them
         pie_segment.style.strokeDasharray =  perimeter
-        pie_segment.style.strokeDashoffset =  (perimeter * (1 - target_percentage)) + seperator_length // Offset is calcualte in the opposite direction so we have to go with 1- target_percentage
+        pie_segment.style.strokeDashoffset =  perimeter * (1 - target_percentage) // Offset is calcualte in the opposite direction so we have to go with 1- target_percentage
     }
     
     function pie_set_sector_rotation(pie_segment, current_pie_input_index, list_of_degrees) {

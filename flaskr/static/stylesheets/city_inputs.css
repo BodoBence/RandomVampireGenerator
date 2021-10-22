@@ -21,7 +21,7 @@ form > div {
 }
 
 form > div > div {
-    /* individual boxes for the input itemds */
+    /* individual boxes for the input items */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(3em, auto));
     justify-items: stretch;
@@ -53,6 +53,40 @@ form > div > div {
     transition:
         box-shadow var(--base_animation_time) ease,
         border-color var(--base_animation_time) ease;
+}
+
+form > div > div:nth-child(2) {
+    /* faction relation inputs */
+    grid-template-columns: 1fr 3fr 0.3fr 0.3fr !important;
+}
+
+form > div > div:nth-child(2) span {
+    /* color codes */
+    background-color: var(--color_neon_pink);
+    grid-column: 4;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 1rem;
+    display: block;
+    border-radius: 100%;
+}
+
+form > div > div:nth-child(2) span:nth-of-type(1){
+    filter: brightness(1);
+}
+form > div > div:nth-child(2) span:nth-of-type(2){
+    filter: brightness(0.8);
+}
+form > div > div:nth-child(2) span:nth-of-type(3){
+    filter: brightness(0.6);
+}
+form > div > div:nth-child(2) span:nth-of-type(4){
+    filter: brightness(0.4);
+}
+
+
+.svg_pie_chart {
+    grid-column: 1/-1;
 }
 
 form > div > div > span {
@@ -90,9 +124,6 @@ form > div > div:hover {
 
 .pie_chart_container {
     height: 10rem;
-    display: grid;
-    grid-template-columns: 1fr 3fr 10fr 1fr 3fr;
-    grid-template-rows: 1fr 1fr;
 }
 
 /* Elements inside the (visual) input boxes */
@@ -161,12 +192,33 @@ input::-moz-range-thumb {
         grid-column-end: -1;
     }
 
+    form > div > div:nth-child(2) {
+        /* faction relation inputs */
+        grid-column: 1/-1;
+        grid-template-columns: 1fr 3fr 0.3fr 0.3fr 3fr  !important;
+    }
+
+    .svg_pie_chart {
+        grid-column: 4/-1;
+        grid-row: 1/5;
+    }
 }
 
 @media screen and (min-width: 63em) and (max-width: 75em){
     form > div > div:first-of-type > p:last-of-type {
         grid-column-start: 1;
         grid-column-end: -1;
+    }
+
+    form > div > div:nth-child(2) {
+        /* faction relation inputs */
+        grid-column: 1/-1;
+        grid-template-columns: 1fr 3fr 0.3fr 0.3fr 3fr !important;
+    }
+
+    .svg_pie_chart {
+        grid-column: 5/-1;
+        grid-row: 1/5;
     }
 
 }
