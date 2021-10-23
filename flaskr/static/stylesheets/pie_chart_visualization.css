@@ -1,20 +1,63 @@
-.svg_pie_chart {
-    max-width: 90%;
-    max-height: 90%;
-    transform: rotateZ(-90deg);
-    transform-origin: center center;
-    position: relative;
-    margin: auto;
-}
+.pie_chart {
+    --pie_Section_1_end: 25%;
+    --pie_Section_2_end: 50%;
+    --pie_Section_3_end: 75%;
+    --pie_Section_4_end: 100%;
+    --pie_section_seperator: 0%;
+    --pie_seperator_color: transparent;
+    --pie_section_1_color: red;
+    --pie_section_2_color: blue;
+    --pie_section_3_color: green;
+    --pie_section_4_color: yellow;
 
-.circle_pie_sector {
-    fill: transparent;
-    stroke: var(--color_neon_pink);
-    stroke-width: 0.3rem;
-    stroke-dasharray: 100%;
-    stroke-linecap: round;
+    display: block;
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    max-height: 100%;
+    max-width: 100%;
+
     transform-origin: center center;
-    transition: all 0.5s;
+    transition: all 2s;
+    mix-blend-mode: screen; /* this makes the black of the radial gradient transparent  */
+
+    background: radial-gradient(black 60%, transparent 61%), 
+        conic-gradient(
+            /* Section 1 */
+            var(--pie_section_1_color)  /* Color */
+            0% /* section start */
+            calc(var(--pie_Section_1_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_1_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_1_end ), /* section end */
+            
+            /* Section 2 */
+            var(--pie_section_2_color)  /* Color */
+            var(--pie_Section_1_end ) /* section start */
+            calc(var(--pie_Section_2_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_2_end) - var(--pie_section_seperator)) /* section star */
+            var(--pie_Section_2_end ), /* section end */
+
+            /* Section 3 */
+            var(--pie_section_3_color)  /* Color */
+            var(--pie_Section_2_end) /* section start */
+            calc(var(--pie_Section_3_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_3_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_3_end ), /* section end */
+
+            /* Section 4 */
+            var(--pie_section_4_color)  /* Color */
+            var(--pie_Section_3_end) /* section start */
+            calc(var(--pie_Section_4_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_4_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_4_end )); /* section end */
 }
 
 .circle_pie_sector:nth-child(1) {
@@ -32,3 +75,4 @@
 .circle_pie_sector:nth-child(4) {
     filter: brightness(0.4);
 }
+    

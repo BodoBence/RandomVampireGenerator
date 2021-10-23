@@ -8,35 +8,27 @@
 
         <div>
             <label for="slider_camarilla_id" style="grid-column: 1;">Camarilla:</label>
-            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-id="pie_sector_camarilla_id" class="slider pie_input" type="range"
+            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
                 name="slider_camarilla" min="0" max="100" value="80">
             <label for="slider_camarilla_id" id="value_camarilla_id" style="grid-column: 3;">80</label>
-            <span></span>
 
             <label for="slider_anarch_id" style="grid-column: 1;">Anarch:</label>
-            <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-id="pie_sector_anarch_id" class="slider pie_input" type="range"
+            <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
                 name="slider_anarch" min="0" max="100" value="10">
             <label for="slider_anarch_id" id="value_anarch_id" style="grid-column: 3;">10</label>
-            <span></span>
             
             <label for="slider_sabbath_id" style="grid-column: 1;">Sabbath:</label>
-            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-id="pie_sector_sabbath_id" class="slider pie_input" type="range"
+            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
                 name="slider_sabbath" min="0" max="100" value="5">
             <label for="slider_sabbath_id" id="value_sabbath_id" style="grid-column: 3;">5</label>
-            <span></span>
             
             <label for="slider_independent_id" style="grid-column: 1;">Independent:</label>
-            <input id="slider_independent_id" data-reference-id="value_independent_id" data-reference-pie-id="pie_sector_independent_id" class="slider pie_input" type="range"
+            <input id="slider_independent_id" data-reference-id="value_independent_id" data-reference-pie-variable="--pie_Section_4_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
                 name="slider_independent" min="0" max="100" value="1">
             <label for="slider_independent_id" id="value_independent_id" style="grid-column: 3;">1</label>
-            <span></span>
-            
-            <svg class="svg_pie_chart" viewBox="0 0 100 100">
-                <circle class="circle_pie_sector" id="pie_sector_camarilla_id" cx="50%" cy="50%" r="40%"></circle>
-                <circle class="circle_pie_sector" id="pie_sector_anarch_id" cx="50%" cy="50%" r="40%"></circle>
-                <circle class="circle_pie_sector" id="pie_sector_sabbath_id" cx="50%" cy="50%" r="40%"></circle>
-                <circle class="circle_pie_sector" id="pie_sector_independent_id" cx="50%" cy="50%" r="40%"></circle>
-            </svg>
+
+            <div class="pie_chart" id="pie_chart_faction_id"></div>
+
         </div>
 
         <div>
