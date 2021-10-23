@@ -21,6 +21,8 @@ function pie_update() {
             target_percentage = target_percentage + (100 * (pie_input_elements[i].value / sum_of_inputs))
         }
         let css_variable_name = pie_input_elements[index].getAttribute('data-reference-pie-variable')
+        let current_percentage_string = getComputedStyle(pie).getPropertyValue(css_variable_name)
+        let current_percentage = parseInt(current_percentage_string.substring(0, current_percentage_string.length - 1))        
         pie.style.setProperty(css_variable_name, (target_percentage.toString() + '%'))
     }
 

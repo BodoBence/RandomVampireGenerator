@@ -1,5 +1,6 @@
 {
     "minimum_age": 15,
     "number_of_years_per_child": 100,
+    "minimum_sireing_gap": 30,
     "minimum_generation": 7
 }

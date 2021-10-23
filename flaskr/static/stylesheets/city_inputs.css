@@ -57,7 +57,7 @@ form > div > div {
 
 form > div > div:nth-child(2) {
     /* faction relation inputs */
-    grid-template-columns: 1fr 3fr 0.3fr 0.3fr !important;
+    grid-template-columns: 1fr 3fr 0.3fr 3fr !important;
 }
 
 form > div > div:nth-child(2) span {
@@ -195,11 +195,11 @@ input::-moz-range-thumb {
     form > div > div:nth-child(2) {
         /* faction relation inputs */
         grid-column: 1/-1;
-        grid-template-columns: 1fr 3fr 0.3fr 0.3fr 3fr  !important;
+        grid-template-columns: 1fr 3fr 0.3fr 3fr !important;
     }
 
-    .svg_pie_chart {
-        grid-column: 4/-1;
+    .pie_chart {
+        grid-column: 4;
         grid-row: 1/5;
     }
 }
@@ -213,7 +213,7 @@ input::-moz-range-thumb {
     form > div > div:nth-child(2) {
         /* faction relation inputs */
         grid-column: 1/-1;
-        grid-template-columns: 1fr 3fr 0.3fr 0.3fr 3fr !important;
+        grid-template-columns: 1fr 3fr 0.3fr 3fr !important;
     }
 
     .svg_pie_chart {

@@ -1,9 +1,8 @@
 {
-    "number_of_vampires": 20,
-    "faction_ratio_camarilla": 70,
-    "faction_ratio_sabbath": 15,
-    "faction_ratio_anarch": 10,
-    "faction_ratio_independent": 5,
+    "faction_ratio_camarilla": 10,
+    "faction_ratio_sabbath": 3,
+    "faction_ratio_anarch": 1,
+    "faction_ratio_independent": 1,
     "age_average": 200,
     "age_standard_deviation": 120,
     "favor_females": 30,

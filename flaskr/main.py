@@ -114,16 +114,14 @@ def result_city():
     # print('number of vmaps input') #DEBUG
     # print(request.form['slider_n_vampires']) #DEBUG
     generated_city = generate_city(
-        faction_ratio_camarilla = int(request.form['slider_camarilla']),
-        faction_ratio_sabbath = int(request.form['slider_sabbath']),
-        faction_ratio_anarch = int(request.form['slider_anarch']),
-        faction_ratio_independent = int(request.form['slider_independent']),
+        n_camarilla = int(request.form['slider_camarilla']),
+        n_sabbath = int(request.form['slider_sabbath']),
+        n_anarch = int(request.form['slider_anarch']),
+        n_independent = int(request.form['slider_independent']),
         favor_females = 100 - int(request.form['slider_male_to_female']),
         favor_males = int(request.form['slider_male_to_female']),
-        number_of_vampires = int(request.form['slider_n_vampires']),
         age_average = int(request.form['slider_average_age']),
-        age_standard_deviation = int(request.form['slider_age_deviation']),
-        minimum_sireing_gap = int(request.form['slider_sireing_age_gap'])
+        age_standard_deviation = int(request.form['slider_age_deviation'])
     )
     # print('number of vmaps output') #DEBUG
     # print(len(generated_city)) #DEBUG

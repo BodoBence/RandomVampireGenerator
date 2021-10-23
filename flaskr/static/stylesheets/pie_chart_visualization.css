@@ -11,6 +11,7 @@
     --pie_section_4_color: yellow;
 
     display: block;
+    margin: auto;
     border-radius: 50%;
     width: 12rem;
     height: 12rem;
@@ -20,6 +21,7 @@
     transform-origin: center center;
     transition: all 2s;
     mix-blend-mode: screen; /* this makes the black of the radial gradient transparent  */
+    filter: blur(2px);
 
     background: radial-gradient(black 60%, transparent 61%), 
         conic-gradient(
