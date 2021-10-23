@@ -8,27 +8,32 @@
 
         <div>
             <label for="slider_camarilla_id" style="grid-column: 1;">Camarilla:</label>
-            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
+            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
                 name="slider_camarilla" min="0" max="25" value="80">
             <label for="slider_camarilla_id" id="value_camarilla_id" style="grid-column: 3;">80</label>
+            <span></span>
 
             <label for="slider_anarch_id" style="grid-column: 1;">Anarch:</label>
-            <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
+            <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
                 name="slider_anarch" min="0" max="25" value="10">
             <label for="slider_anarch_id" id="value_anarch_id" style="grid-column: 3;">10</label>
-            
+            <span></span>
+
             <label for="slider_sabbath_id" style="grid-column: 1;">Sabbath:</label>
-            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
+            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
                 name="slider_sabbath" min="0" max="25" value="5">
             <label for="slider_sabbath_id" id="value_sabbath_id" style="grid-column: 3;">5</label>
-            
+            <span></span>
+
             <label for="slider_independent_id" style="grid-column: 1;">Independent:</label>
-            <input id="slider_independent_id" data-reference-id="value_independent_id" data-reference-pie-variable="--pie_Section_4_end" data-reference-pie-id="pie_chart_faction_id" class="slider pie_input" type="range"
+            <input id="slider_independent_id" data-reference-id="value_independent_id" data-reference-pie-variable="--pie_Section_4_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
                 name="slider_independent" min="0" max="25" value="1">
             <label for="slider_independent_id" id="value_independent_id" style="grid-column: 3;">1</label>
-
-            <div class="pie_chart" id="pie_chart_faction_id"></div>
-            <!-- <div class="pie_chart" id="pie_chart_faction_front_id"></div> -->
+            <span></span>
+            
+            <!-- both pies use the same inputs and abode, one is to be blurred for effect, the other is crisp -->
+            <div class="pie_chart pie_faction"></div> 
+            <div class="pie_chart pie_faction"></div>
 
         </div>
 

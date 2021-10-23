@@ -10,8 +10,8 @@ function pie_update() {
     // Set upt variables:
     let pie_input_elements = document.getElementsByClassName('pie_input')
     let sum_of_inputs = pie_get_sum_of_inputs(pie_input_elements)
-    let pie_id_string = pie_input_elements[0].getAttribute('data-reference-pie-id')
-    let pie = document.getElementById(pie_id_string)
+    let pie_class_string = pie_input_elements[0].getAttribute('data-reference-pie-class')
+    let pies = document.getElementsByClassName(pie_class_string)
 
     // Adjsut the pie chart css variables per input value:
     for (let index = 0; index < pie_input_elements.length; index++) {
@@ -20,10 +20,10 @@ function pie_update() {
         for (let i = 1; i <= index; i++) {
             target_percentage = target_percentage + (100 * (pie_input_elements[i].value / sum_of_inputs))
         }
-        let css_variable_name = pie_input_elements[index].getAttribute('data-reference-pie-variable')
-        let current_percentage_string = getComputedStyle(pie).getPropertyValue(css_variable_name)
-        let current_percentage = parseInt(current_percentage_string.substring(0, current_percentage_string.length - 1))        
-        pie.style.setProperty(css_variable_name, (target_percentage.toString() + '%'))
+        let css_variable_name = pie_input_elements[index].getAttribute('data-reference-pie-variable')      
+        for (let index = 0; index < pies.length; index++) {
+            pies[index].style.setProperty(css_variable_name, (target_percentage.toString() + '%'))            
+        }
     }
 
     function pie_get_sum_of_inputs(pie_input_elements) {
