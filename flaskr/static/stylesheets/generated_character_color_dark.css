@@ -13,7 +13,7 @@
 }
 
 .square_filled, .dot_filled {
-    background-color: var(--color_neon_pink);
+    background-color: var(--color_neon_pink) !important;
 }
 
 .square_unfilled, .dot_unfilled, .button_discipline_skills {

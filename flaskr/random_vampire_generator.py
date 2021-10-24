@@ -223,9 +223,7 @@ def check_skill_requirements(skill_level, skill, current_disciplines, current_di
                 return check_result
 
     if 'Required_disciplines' in target_skill_data:
-        print('current disciplines:' + str(current_disciplines))
         for required_discipline in discipline_skill_dictionary[skill_level][skill]['Required_disciplines'].keys():
-            print('required discipline: ' + str(required_discipline))
             if required_discipline in character_sheet['Disciplines']['Clan_Disciplines'].keys():
                 if discipline_skill_dictionary[skill_level][skill]['Required_disciplines'][required_discipline] > character_sheet['Disciplines']['Clan_Disciplines'][required_discipline]['Level']:
                     check_result = False

@@ -2,6 +2,13 @@ generated_character_page_initial()
 
 create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
 create_global_event_listener("click", "button_download_vampire_id", convert_character_to_pdf, 'id')
+create_global_event_listener("click", "dot", toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
+create_global_event_listener("click", "square", toggle_square_filled_and_unfilled, 'class')
+create_global_event_listener("click", "skill_delete_button", skill_delete, "class")
+
+// create_global_event_listener("click", "dot_unfilled", swap_dot_unfilled_to_filled, 'class')
+// create_global_event_listener("click", "square_filled", swap_square_filled_to_unfilled, 'class')
+// create_global_event_listener("click", "square_unfilled", swap_square_unfilled_to_filled, 'class')
 
 
 function generated_character_page_initial(){
@@ -49,4 +56,21 @@ function replace_underscores_inner_htmls(){
         let original_string = elements_with_underscore[index].innerHTML
         elements_with_underscore[index].innerHTML = original_string.replaceAll('_', ' ')
     }
+}
+
+function toggle_dot_filled_and_unfilled(trigger) {
+    /* change filled to unfilled on dot */
+    trigger.classList.toggle('dot_filled')
+    trigger.classList.toggle('dot_unfilled')
+}
+
+function toggle_square_filled_and_unfilled(trigger) {
+    /* change filled to unfilled on square */
+    trigger.classList.toggle('square_filled')
+    trigger.classList.toggle('square_unfilled')
+}
+
+function skill_delete(trigger) {
+    let container = trigger.parentElement
+    container.parentNode.removeChild(container)
 }

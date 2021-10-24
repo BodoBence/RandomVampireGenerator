@@ -157,11 +157,11 @@ function toggle_character_style(stlye_selector){
 
     switch (stlye_selector.value) {
         case 'Light':
-            style_element.setAttribute("href", "/static/stylesheets/character_color_light.css")
+            style_element.setAttribute("href", "/static/stylesheets/generated_character_color_light.css")
             break
 
         case 'Dark':
-            style_element.setAttribute("href", "/static/stylesheets/character_color_dark.css")
+            style_element.setAttribute("href", "/static/stylesheets/generated_character_color_dark.css")
             break
     }
 }

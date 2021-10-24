@@ -42,10 +42,10 @@
                     <p class="underscore">{{ key }}</p>
                     <div>
                         {% for i in range(0, value) %}
-                            <span class="square_filled"> </span>
+                            <span class="square square_filled"> </span>
                         {% endfor %}
                         {% for i in range(0, 10 - value) %}
-                            <span class="square_unfilled"></span>
+                            <span class="square square_unfilled"></span>
                         {% endfor %}
                     </div>
                 </div>
@@ -70,10 +70,10 @@
                         <p>{{ attribute_name }}</p>
                         <div>
                             {% for i in range(0, attribute_value) %}
-                                <span class="dot_filled"> </span>
+                                <span class="dot dot_filled"> </span>
                             {% endfor %}
                             {% for i in range(0, 10 - attribute_value) %}
-                                <span class="dot_unfilled"></span>
+                                <span class="dot dot_unfilled"></span>
                             {% endfor %}
                         </div>
                     </div>
@@ -104,10 +104,10 @@
                     <p class="underscore">{{ skill_name }}</p>
                     <div>
                         {% for i in range(0, skill_value) %}
-                            <span class="dot_filled"> </span>
+                            <span class="dot dot_filled"> </span>
                         {% endfor %}
                         {% for i in range(0, 10 - skill_value) %}
-                            <span class="dot_unfilled"></span>
+                            <span class="dot dot_unfilled"></span>
                         {% endfor %}
                     </div>
                 </div>
@@ -135,10 +135,10 @@
                     <p class="discipline_name underscore">{{ discipline_name }}</p>
                     <div>
                         {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
-                            <span class="dot_filled"> </span>
+                            <span class="dot dot_filled"> </span>
                         {% endfor %}
                         {% for i in range(0, 10 - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
-                            <span class="dot_unfilled"></span>
+                            <span class="dot dot_unfilled"></span>
                         {% endfor %}
                     </div>
                     <button
@@ -153,6 +153,7 @@
                             <div>
                                 <p class="underscore">{{ skill_name }}</p>
                                 <p class="long_text">{{ skill_description }}</p>
+                                <button type="button" class="skill_delete_button">X</button>
                             </div>
                         {% endfor %}
                     </div>

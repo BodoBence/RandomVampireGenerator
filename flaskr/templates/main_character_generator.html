@@ -5,8 +5,8 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/inputs.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom_select.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_base.css') }}">
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/character_color_dark.css') }}" id="link_character_color">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/generated_character_base.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/generated_character_color_dark.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
 
         {% include "aux_head_meta.html" %}
@@ -48,7 +48,7 @@
             <script src="{{ url_for('static', filename='js_scripts/external/html2canvas/html2canvas.js') }}"></script>
 
             <!-- Own scripts -->
-            <script src="{{ url_for('static', filename='js_scripts/character.js') }}"></script>
+            <script src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
 
         {% endif %}
 

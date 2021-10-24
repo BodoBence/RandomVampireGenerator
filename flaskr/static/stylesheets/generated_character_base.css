@@ -65,8 +65,9 @@ h3 + div {
 }
 
 .discipline_skills div {
+    /* Discipline skills container */
     display: grid;
-    grid-template-columns: 1fr 2fr !important;
+    grid-template-columns: 1fr 2fr 0.2fr !important;
 }
 
 .discipline_skills {
@@ -76,6 +77,19 @@ h3 + div {
     max-height: 0px;
     overflow: hidden;
     padding: 0px;
+}
+
+.discipline_skills div button {
+    /* Skill delate x button */
+    color: var(--color_neon_pink);
+    background-color: transparent;
+    border: none;
+}
+
+.discipline_skills div button:hover {
+    /* Skill delate x button */
+    cursor: pointer;
+    color: white;
 }
 
 /* title of the character sheet */
@@ -140,6 +154,11 @@ h3 {
     border-radius: 50%;
     display: inline-block;
     margin-top: 1rem;
+}
+
+.dot_filled:hover, .dot_unfilled:hover, .square_filled:hover, .square_unfilled:hover {
+    cursor: pointer;
+    background-color: white !important;
 }
 
 .button_discipline_skills {
