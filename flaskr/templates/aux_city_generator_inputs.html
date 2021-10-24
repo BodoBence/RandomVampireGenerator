@@ -7,6 +7,7 @@
         </div>
 
         <div>
+<<<<<<< HEAD
             <label for="slider_camarilla_id">Camarilla presence:</label>
             <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" class="slider faction_slider" type="range"
                 name="slider_camarilla" min="0" max="100" value="80">
@@ -33,6 +34,36 @@
                 name="slider_independent" min="0" max="100" value="1">
 
             <label for="slider_independent_id" id="value_independent_id">1</label>
+=======
+            <label for="slider_camarilla_id" style="grid-column: 1;">Camarilla:</label>
+            <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
+                name="slider_camarilla" min="0" max="25" value="80">
+            <label for="slider_camarilla_id" id="value_camarilla_id" style="grid-column: 3;">80</label>
+            <span></span>
+
+            <label for="slider_anarch_id" style="grid-column: 1;">Anarch:</label>
+            <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
+                name="slider_anarch" min="0" max="25" value="10">
+            <label for="slider_anarch_id" id="value_anarch_id" style="grid-column: 3;">10</label>
+            <span></span>
+
+            <label for="slider_sabbath_id" style="grid-column: 1;">Sabbath:</label>
+            <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
+                name="slider_sabbath" min="0" max="25" value="5">
+            <label for="slider_sabbath_id" id="value_sabbath_id" style="grid-column: 3;">5</label>
+            <span></span>
+
+            <label for="slider_independent_id" style="grid-column: 1;">Independent:</label>
+            <input id="slider_independent_id" data-reference-id="value_independent_id" data-reference-pie-variable="--pie_Section_4_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
+                name="slider_independent" min="0" max="25" value="1">
+            <label for="slider_independent_id" id="value_independent_id" style="grid-column: 3;">1</label>
+            <span></span>
+            
+            <!-- both pies use the same inputs and abode, one is to be blurred for effect, the other is crisp -->
+            <div class="pie_chart pie_faction"></div> 
+            <div class="pie_chart pie_faction"></div>
+
+>>>>>>> 30d0968b67990185238af05d94a7c1421574a014
         </div>
 
         <div>
@@ -52,27 +83,11 @@
         </div>
 
         <div>
-            <label for="slider_sireing_age_gap_id">Sireing Agegap:</label>
-            <input id="slider_sireing_age_gap_id" data-reference-id="value_sireing_age_gap_id" class="slider" type="range"
-                name="slider_sireing_age_gap" min="0" max="1000" value="30">
-
-            <label for="slider_sireing_age_gap_id" id="value_sireing_age_gap_id">30</label>
-        </div>
-
-        <div>
             <label for="slider_male_to_female_id">Male to female:</label>
             <input id="slider_male_to_female_id" data-reference-id="value_male_to_female_id" class="slider" type="range"
                 name="slider_male_to_female" min="0" max="100" value="50">
 
             <label for="slider_male_to_female_id" id="value_male_to_female_id">50</label>
-        </div>
-
-        <div>
-            <label for="slider_n_vampires_id">Number of vampires:</label>
-            <input id="slider_n_vampires_id" data-reference-id="value_n_vampires_id" class="slider" type="range"
-                name="slider_n_vampires" min="2" max="100" value="10">
-
-            <label for="slider_n_vampires_id" id="value_n_vampires_id">10</label>
         </div>
 
     </div>

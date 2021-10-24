@@ -22,11 +22,10 @@ FILE_NAMES_INTERESTING = os.path.join(SCRIPT_DIR, 'static', 'names_interesting.t
 def test_user_inputs():
     """ Manual user inputs for TESTING without having to interface, normally these should be gathered form the user """
     inputs = {
-        'number_of_vampires': 20,
-        'faction_ratio_camarilla': 10,
-        'faction_ratio_sabbath': 4,
-        'faction_ratio_anarch': 4,
-        'faction_ratio_independent': 1,
+        'faction_n_camarilla': 10,
+        'faction_n_sabbath': 4,
+        'faction_n_anarch': 4,
+        'faction_n_independent': 1,
         'age_average': 150,
         'age_standard_deviation': 120,
         'favor_females': 70,
@@ -36,39 +35,37 @@ def test_user_inputs():
     return inputs
 
 def generate_random_city(
-    faction_ratio_camarilla,
-    faction_ratio_sabbath,
-    faction_ratio_anarch,
-    faction_ratio_independent,
+    n_camarilla,
+    n_sabbath,
+    n_anarch,
+    n_independent,
     favor_females,
     favor_males,
-    number_of_vampires,
     age_average,
-    age_standard_deviation,
-    minimum_sireing_gap):
+    age_standard_deviation):
 
     with open(FILE_INTERNAL_INPUTS) as json_file:
         internal_inputs = json.load(json_file)
     
-    factions = create_factions_list(
-        faction_ratio_camarilla,
-        faction_ratio_sabbath,
-        faction_ratio_anarch,
-        faction_ratio_independent)
-
+    factions = create_factions_list(n_camarilla, n_sabbath, n_anarch, n_independent)
+    
     sexes_list = ['Male' for i in range(1, favor_males)]
     female_list = ['Female' for i in range(1, favor_females)]
     sexes_list.extend(female_list)
 
+    number_of_vampires = n_camarilla + n_sabbath + n_anarch + n_independent
+    minimum_sireing_gap = internal_inputs['minimum_sireing_gap']
+    
     citizens = []
     # Generate citizens
     for citizen in range(0, number_of_vampires):
+        faction = factions.pop(random.randint(0, len(factions)-1))
         # print('generating vamp number: ' + str(citizen)) # DEBUG
         citizens.append(generate_citizen(
             age_average, 
             age_standard_deviation,
             internal_inputs['minimum_age'], 
-            factions,
+            faction,
             sexes_list,
             internal_inputs['minimum_generation']))
 
@@ -81,25 +78,19 @@ def generate_random_city(
     # print('number of cirizens with relations: ' + str(len(citizens))) # DEBUG
     return citizens
 
-def create_factions_list(ratio_Camarilla, ratio_Sabbath, ratio_Anarch, ratio_Independent ):
-    """ Weigh the factions from the JSON file according to their desired presence in the city """
-    with open(FILE_FACTIONS) as json_file:
-        factions = json.load(json_file)
-
-    # apply weights to factions list
+def create_factions_list(n_camarilla, n_sabbath, n_anarch, n_independent):
+    """ Create a list with each faction name relative to the number in input """
     weigted_list = []
-    if ratio_Camarilla > 0:
-        for i in range(1, ratio_Camarilla):
-            weigted_list.append('Camarilla')
-    if ratio_Anarch > 0:
-        for i in range(1, ratio_Anarch):
-            weigted_list.append('Anarch'),
-    if ratio_Sabbath > 0:
-        for i in range(1, ratio_Sabbath):
-            weigted_list.append('Sabbath')
-    if ratio_Independent > 0:
-        for i in range(1, ratio_Independent):
-            weigted_list.append('Independent')
+
+    camarilla = ['Camarilla' for i in range(n_camarilla)]
+    sabbath = ['Sabbath' for i in range(n_sabbath)]
+    anarch = ['Anarch' for i in range(n_anarch)]
+    independent = ['Independent' for i in range(n_independent)]
+
+    weigted_list.extend(camarilla)
+    weigted_list.extend(sabbath)
+    weigted_list.extend(anarch)
+    weigted_list.extend(independent)
 
     return weigted_list
 
@@ -121,20 +112,19 @@ class citizen:
     sire_in_city: bool
     blood_potency: int
 
-def generate_citizen(age_average, age_standard_deviation, minimum_age, factions, sexes, minimum_generation):
+def generate_citizen(age_average, age_standard_deviation, minimum_age, faction, sexes, minimum_generation):
     """ create a citizen class object and assign most of the values for its attributes """
     
     # The order of the following is important, as the later functions use the data of the earliers
     generated_age = max(minimum_age, abs(int(random.normalvariate(age_average, age_standard_deviation))))
     generated_sex = random.choice(sexes)
     generated_name = create_name(generated_sex)
-    generated_faction = random.choice(factions)
-    generated_clan = create_clans_list(generated_faction)[0]
+    generated_clan = create_clans_list(faction)[0]
     generated_generation = assign_generation(generated_age, generated_clan, age_average, minimum_generation)
     generated_blood_potency = int(random.choice(default_data.blood_potency_data()[str(generated_generation)]))
 
     generted_citizen = citizen(
-        faction = generated_faction,
+        faction = faction,
         position = None,
         age = generated_age,
         name = generated_name,

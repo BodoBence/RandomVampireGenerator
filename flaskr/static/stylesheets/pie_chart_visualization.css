@@ -1,0 +1,66 @@
+.pie_chart {
+    --pie_Section_1_end: 25%;
+    --pie_Section_2_end: 50%;
+    --pie_Section_3_end: 75%;
+    --pie_Section_4_end: 100%;
+    --pie_section_seperator: 0%;
+    --pie_seperator_color: transparent;
+    --pie_section_1_color: hsla(313, 94%, 70%, 1);
+    --pie_section_2_color: hsla(313, 94%, 35%, 1);
+    --pie_section_3_color: hsla(313, 94%, 15%, 1);
+    --pie_section_4_color: hsla(313, 94%, 5%, 1);
+
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    max-height: 100%;
+    max-width: 100%;
+    transition: all 2s;
+    mix-blend-mode: screen; /* this makes the black of the radial gradient transparent  */
+    filter: blur(10px);
+
+    background: radial-gradient(black 60%, transparent 61%), 
+        conic-gradient(
+            /* Section 1 */
+            var(--pie_section_1_color)  /* Color */
+            0% /* section start */
+            calc(var(--pie_Section_1_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_1_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_1_end ), /* section end */
+            
+            /* Section 2 */
+            var(--pie_section_2_color)  /* Color */
+            var(--pie_Section_1_end ) /* section start */
+            calc(var(--pie_Section_2_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_2_end) - var(--pie_section_seperator)) /* section star */
+            var(--pie_Section_2_end ), /* section end */
+
+            /* Section 3 */
+            var(--pie_section_3_color)  /* Color */
+            var(--pie_Section_2_end) /* section start */
+            calc(var(--pie_Section_3_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_3_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_3_end ), /* section end */
+
+            /* Section 4 */
+            var(--pie_section_4_color)  /* Color */
+            var(--pie_Section_3_end) /* section start */
+            calc(var(--pie_Section_4_end) - var(--pie_section_seperator)), /* section end */
+            /* Section SEPERATOR */
+            var(--pie_seperator_color) /* Color */
+            calc(var(--pie_Section_4_end) - var(--pie_section_seperator)) /* section start */
+            var(--pie_Section_4_end )); /* section end */
+}
+
+.pie_chart:nth-of-type(2) {
+    /* for the second pie to cancel out blur */
+    filter: none !important;
+}

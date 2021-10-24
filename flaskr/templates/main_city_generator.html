@@ -4,6 +4,7 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/general.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navigation.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/city_inputs.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/pie_chart_visualization.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
         
         {% if have_generated_city %}
@@ -36,6 +37,10 @@
 
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+<<<<<<< HEAD
+=======
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/pie_chart_visualization.js') }}"></script>
+>>>>>>> 30d0968b67990185238af05d94a7c1421574a014
 
         <script>
             var default_city_input_values = JSON.parse('{{ default_city_input_values | tojson | safe}}')
