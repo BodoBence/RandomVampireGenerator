@@ -58,7 +58,7 @@ function load_default_input_values(){
 
     // Sliders
     input_discipline = document.getElementById('slider_camarilla_id')
-    input_discipline.value = default_city_input_values['faction_ratio_camarilla']
+    input_discipline.value = 1['faction_ratio_camarilla']
     input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_physical = document.getElementById('slider_anarch_id')

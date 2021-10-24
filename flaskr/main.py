@@ -66,6 +66,7 @@ def result_character():
 
     # details = generated_character['Character_Details']
     max_level = server_functions.get_maximum_skill_level(generated_character)
+    discipline_dict = default_data.get_discipline_skills_and_rituals()
 
     rendered_vampire = render_template(
         'main_character_generator.html',
@@ -79,7 +80,8 @@ def result_character():
         generations = startup_input_field_details['input_generations'],
         have_generated_character=HAVE_GENERATED_CHARACTER,
         character = generated_character,
-        max_level = max_level)
+        max_level = max_level,
+        discipline_dict = discipline_dict)
 
     return rendered_vampire
 
@@ -123,9 +125,7 @@ def result_city():
         age_average = int(request.form['slider_average_age']),
         age_standard_deviation = int(request.form['slider_age_deviation'])
     )
-    # print('number of vmaps output') #DEBUG
-    # print(len(generated_city)) #DEBUG
-    # print('------------------------') #DEBUG
+
     structured_city = server_functions.structure_city(generated_city)
 
     rendered_city = render_template(

@@ -5,6 +5,7 @@ create_global_event_listener("click", "button_download_vampire_id", convert_char
 create_global_event_listener("click", "dot", toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener("click", "square", toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener("click", "skill_delete_button", skill_delete, "class")
+create_global_event_listener("click", "skill_add_button", skill_add, "class")
 
 // create_global_event_listener("click", "dot_unfilled", swap_dot_unfilled_to_filled, 'class')
 // create_global_event_listener("click", "square_filled", swap_square_filled_to_unfilled, 'class')
@@ -73,4 +74,45 @@ function toggle_square_filled_and_unfilled(trigger) {
 function skill_delete(trigger) {
     let container = trigger.parentElement
     container.parentNode.removeChild(container)
+}
+
+function skill_add(trigger) {
+    /* Creat a list of skills to choose whic to add to the current discipline
+    the options come from a JSON dictionary read in in main_character_generator.html
+    the list's DOM objects are created in the code */
+    console.log(discipline_dict)
+
+    let current_discipline = trigger.parentElement.getAttribute('id')
+    // Get current discipline level
+    let current_discipline_level_container = trigger.parentElement.parentElement.querySelector('.discipline_level')
+    let current_discipline_level = current_discipline_level_container.querySelectorAll('.dot_filled').length
+
+    // Get already owned rituals
+    let skill_containers = trigger.parentElement.querySelectorAll('.discipline_skill')
+    let owned_skills = []
+    for (let index = 0; index < skill_containers.length; index++) {
+        owned_skills.push(skill_containers[index].children[0].innerHTML)
+    }
+    console.log('owned')
+    console.log(owned_skills)
+
+    let potential_skills = []
+    let potential_skill_descriptions = []
+    console.log(discipline_dict[current_discipline]['skill'])
+
+    for (const skill_level in discipline_dict[current_discipline]['skill']) {
+        if (skill_level <= current_discipline_level) {
+            let skill_keys = Object.keys(discipline_dict[current_discipline]['skill'][skill_level])
+            skill_keys.forEach(key => {
+                if (owned_skills.includes(key) == false) {
+                    potential_skills.push(key)
+                    potential_skill_descriptions.push(discipline_dict[current_discipline]['skill'][skill_level][key])
+                }
+            });  
+        }
+    }
+
+    console.log(potential_skills)
+    console.log(potential_skill_descriptions)
+
 }
