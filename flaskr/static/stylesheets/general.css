@@ -108,6 +108,10 @@ input[type='button']:hover, input[type='submit']:hover {
     display: block !important;
 }
 
+.dont_show {
+    display: none !important;
+}
+
 .animation_rotate {
     transform: rotate(45deg) !important;
 }

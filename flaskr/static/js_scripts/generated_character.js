@@ -94,32 +94,37 @@ function skill_add(trigger) {
         owned_skills.push(skill_containers[index].children[0].innerHTML)
     }
 
-    let potential_skills = []
-    let potential_skill_descriptions = []
+    // Get Options list container and first child
+    let skill_options_list = trigger.parentElement.querySelector('.skill_options')
+    let skill_options_list_item_first = skill_options_list.children[0]
 
     for (const skill_level in discipline_dict[current_discipline]['skill']) {
         if (skill_level <= current_discipline_level) {
             let skill_keys = Object.keys(discipline_dict[current_discipline]['skill'][skill_level])
             skill_keys.forEach(key => {
                 if (owned_skills.includes(key) == false) {
-                    potential_skills.push(key)
-                    potential_skill_descriptions.push(discipline_dict[current_discipline]['skill'][skill_level][key])
+                    let skill_options_list_item = skill_options_list_item_first.cloneNode(true)
+                    skill_options_list_item.children[0].innerHTML = key
+                    skill_options_list_item.children[1].innerHTML =  discipline_dict[current_discipline]['skill'][skill_level][key]['Description']
+                    skill_options_list.appendChild(skill_options_list_item)
                 }
             });  
         }
     }
 
-    console.log(potential_skill_descriptions[0])
+    // Dispaly options
+    skill_options_list.classList.remove('dont_show')
 
-    let skill_options_list = trigger.parentElement.querySelector('.skill_options')
-    let skill_options_list_item_first = skill_options_list.children[0]
+    for (let index = 0; index < skill_options_list.children.length; index++) {
+        skill_options_list.children[index].addEventListener('click', choose_option)
+    }
 
-    potential_skills.forEach(potential_skill => {
-        let skill_options_list_item = skill_options_list_item_first.cloneNode(true)
-        skill_options_list_item.children[0].innerHTML = potential_skill
-        skill_options_list_item.children[1].innerHTML =  
-        skill_options_list.appendChild(skill_options_list_item)
-    });
-
-    console.log(skill_options_list)
+    // Hide the options list when an option is clicked and add te skill
+    function choose_option(event) {
+        let new_skill = trigger.parentElement.querySelectorAll('.discipline_skill')[0].cloneNode(true)
+        new_skill.children[0].innerHTML = event.target.children[0].innerHTML
+        new_skill.children[1].innerHTML = event.target.children[1].innerHTML
+        Node.trigger.target.parentElement.insertBefore(new_skill, Node.trigger)
+        skill_options_list.classList.add('dont_show')
+    }
 }

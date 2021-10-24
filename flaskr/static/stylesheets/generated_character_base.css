@@ -170,6 +170,62 @@ h3 {
     cursor: pointer;
 }
 
+/* Skill options */
+.skill_options {
+    display: grid;
+    width: 90vw;
+    margin: auto;
+    grid-template-columns: 1fr;
+    position: fixed;
+    top: 3rem;
+    left: 1rem;
+    z-index: 2;
+
+    padding: 0.5rem;
+    background-color: var(--color_black_transparent);
+    border-radius: 0.5em;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: var(--color_dark_grey);
+    box-shadow: 0 0 1em black;
+
+    -webkit-transition:
+        box-shadow var(--base_animation_time) ease,
+        border-color var(--base_animation_time) ease;
+    -moz-transition:
+        box-shadow var(--base_animation_time) ease,
+        border-color var(--base_animation_time) ease;
+    -o-transition:
+        box-shadow var(--base_animation_time) ease,
+        border-color var(--base_animation_time) ease;
+    -ms-transition:
+        box-shadow var(--base_animation_time) ease,
+        border-color var(--base_animation_time) ease;
+    transition:
+        box-shadow var(--base_animation_time) ease,
+        border-color var(--base_animation_time) ease;
+}
+
+.skill_options li {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.skill_options li:nth-child(1) p {
+    /* option: none - so it is grey */
+    font: grey;
+}
+
+.skill_options li:hover {
+    cursor: pointer;
+    background-color: var(--color_neon_pink);
+}
+
+.skill_options li:hover > p {
+    font: var(--color_neon_pink) !important;
+}
+
+/* SVGs */
 .clan_logo {
     display: block;
     position: absolute;
