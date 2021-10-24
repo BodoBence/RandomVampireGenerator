@@ -93,12 +93,9 @@ function skill_add(trigger) {
     for (let index = 0; index < skill_containers.length; index++) {
         owned_skills.push(skill_containers[index].children[0].innerHTML)
     }
-    console.log('owned')
-    console.log(owned_skills)
 
     let potential_skills = []
     let potential_skill_descriptions = []
-    console.log(discipline_dict[current_discipline]['skill'])
 
     for (const skill_level in discipline_dict[current_discipline]['skill']) {
         if (skill_level <= current_discipline_level) {
@@ -112,7 +109,17 @@ function skill_add(trigger) {
         }
     }
 
-    console.log(potential_skills)
-    console.log(potential_skill_descriptions)
+    console.log(potential_skill_descriptions[0])
 
+    let skill_options_list = trigger.parentElement.querySelector('.skill_options')
+    let skill_options_list_item_first = skill_options_list.children[0]
+
+    potential_skills.forEach(potential_skill => {
+        let skill_options_list_item = skill_options_list_item_first.cloneNode(true)
+        skill_options_list_item.children[0].innerHTML = potential_skill
+        skill_options_list_item.children[1].innerHTML =  
+        skill_options_list.appendChild(skill_options_list_item)
+    });
+
+    console.log(skill_options_list)
 }

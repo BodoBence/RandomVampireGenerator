@@ -50,6 +50,12 @@ function display_slider_value(current_slider){
     let target_id = current_slider.getAttribute('data-reference-id')
     let target_element = document.getElementById(target_id)
     let new_value = current_slider.value
+    skill_keys.forEach(key => {
+        if (owned_skills.includes(key) == false) {
+            potential_skills.push(key)
+            potential_skill_descriptions.push(discipline_dict[current_discipline]['skill'][skill_level][key])
+        }
+    });
     target_element.innerHTML = new_value
 }
 
