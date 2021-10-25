@@ -121,10 +121,24 @@ function skill_add(trigger) {
 
     // Hide the options list when an option is clicked and add te skill
     function choose_option(event) {
-        let new_skill = trigger.parentElement.querySelectorAll('.discipline_skill')[0].cloneNode(true)
-        new_skill.children[0].innerHTML = event.target.children[0].innerHTML
-        new_skill.children[1].innerHTML = event.target.children[1].innerHTML
-        Node.trigger.target.parentElement.insertBefore(new_skill, Node.trigger)
+        console.log(event.target.children)
+        let new_skill_container = document.createElement('div')
+        Node.trigger.target.parentElement.insertBefore(new_skill_container, Node.trigger)
+        new_skill_container.classList.add('discipline_skill')
+
+        let new_skill_name = document.createElement('p')
+        let new_skill_description = document.createElement('p')
+
+        new_skill_container.appendChild(new_skill_name)
+        new_skill_container.appendChild(new_skill_description)
+
+        new_skill_name.innerHTML = event.target.children[0].innerHTML
+        new_skill_description.innerHTML = event.target.children[1].innerHTML
+             
+
+        // maybe a li p no pointer events kne hoyg leygen hoyg minid g a li legyen az event.target
+        
+       
         skill_options_list.classList.add('dont_show')
     }
 }
