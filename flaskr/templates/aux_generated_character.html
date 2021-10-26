@@ -148,7 +148,7 @@
                         data-toggle-selection-class="discipline_skills">
                             Hide/Show
                     </button>
-                    <div class="discipline_skills" id="{{ discipline_name }}">
+                    <div class="discipline_skills dont_show" id="{{ discipline_name }}">
                         {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}
                             <div class="discipline_skill">
                                 <p class="underscore">{{ skill_name }}</p>
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             {% endfor %}
-
+                <button type="button" class="add_discipline_button">ADD DISCIPLINE</button>
             </div>
         {% endfor %}
 

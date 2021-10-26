@@ -74,22 +74,22 @@ h3 + div {
     grid-template-columns: 1fr !important;
     grid-column-gap: 10px;
     grid-column: 1/-1;
-    max-height: 0px;
-    overflow: hidden;
     padding: 0px;
 }
 
-.discipline_skills div button {
+.skill_delete_button {
     /* Skill delate x button */
     color: var(--color_neon_pink);
+    text-shadow: 0 0 0.5rem var(--color_neon_pink);
     background-color: transparent;
     border: none;
 }
 
-.discipline_skills div button:hover {
+.skill_delete_button:hover {
     /* Skill delate x button */
     cursor: pointer;
     color: white;
+    text-shadow: 0 0 0.5rem white;
 }
 
 /* title of the character sheet */
@@ -223,6 +223,41 @@ h3 {
 
 .skill_options li:hover > p {
     font: var(--color_neon_pink) !important;
+}
+
+/* Add skills button */
+.skill_add_button {
+    padding: 1em;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-style: solid;
+    border-width: 0.25em;
+    border-radius: 0.25em;
+    border-color: var(--color_neon_white);
+    color: var(--color_neon_white);
+    text-shadow: 0 0 1em var(--color_neon_pink);
+    box-shadow:
+        0 0 1.5em var(--color_neon_pink),
+        inset 0 0 1.5em var(--color_neon_pink);
+
+    -webkit-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -moz-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -o-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    -ms-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+    transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+}
+
+.skill_add_button:hover {
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color_neon_white);
+    text-shadow: 0 0 1em currentColor;
+
+    box-shadow:
+        0 0 1.5em var(--color_neon_white),
+        inset 0 0 1.5em var(--color_neon_white);
 }
 
 /* SVGs */

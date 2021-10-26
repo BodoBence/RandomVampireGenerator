@@ -7,16 +7,10 @@ create_global_event_listener("click", "square", toggle_square_filled_and_unfille
 create_global_event_listener("click", "skill_delete_button", skill_delete, "class")
 create_global_event_listener("click", "skill_add_button", skill_add, "class")
 
-// create_global_event_listener("click", "dot_unfilled", swap_dot_unfilled_to_filled, 'class')
-// create_global_event_listener("click", "square_filled", swap_square_filled_to_unfilled, 'class')
-// create_global_event_listener("click", "square_unfilled", swap_square_unfilled_to_filled, 'class')
-
-
 function generated_character_page_initial(){
     replace_underscores_inner_htmls()
     var character_sheet = document.getElementById('generated_character_id')
     character_sheet.scrollIntoView(alignToTop=true)
-
 }
 
 function create_event_listener_for_skills(class_name, target_class_name){
@@ -35,8 +29,7 @@ function toggle_discipline_skills (pressed_button){
     target_reference = pressed_button.getAttribute("data-toggle-reference")
 
     target_element = document.getElementsByClassName(selection_class)[target_reference]
-
-    toogle_max_height(target_element)
+    target_element.classList.toggle('dont_show')
 }
 
 function convert_character_to_pdf(){
@@ -80,7 +73,6 @@ function skill_add(trigger) {
     /* Creat a list of skills to choose whic to add to the current discipline
     the options come from a JSON dictionary read in in main_character_generator.html
     the list's DOM objects are created in the code */
-    console.log(discipline_dict)
 
     let current_discipline = trigger.parentElement.getAttribute('id')
     // Get current discipline level
@@ -98,6 +90,7 @@ function skill_add(trigger) {
     let skill_options_list = trigger.parentElement.querySelector('.skill_options')
     let skill_options_list_item_first = skill_options_list.children[0]
 
+    // Add to the list the potential skills
     for (const skill_level in discipline_dict[current_discipline]['skill']) {
         if (skill_level <= current_discipline_level) {
             let skill_keys = Object.keys(discipline_dict[current_discipline]['skill'][skill_level])
@@ -115,30 +108,59 @@ function skill_add(trigger) {
     // Dispaly options
     skill_options_list.classList.remove('dont_show')
 
+    // Create event listeners for pop-up the list options
     for (let index = 0; index < skill_options_list.children.length; index++) {
         skill_options_list.children[index].addEventListener('click', choose_option)
     }
 
     // Hide the options list when an option is clicked and add te skill
     function choose_option(event) {
-        console.log(event.target.children)
-        let new_skill_container = document.createElement('div')
-        Node.trigger.target.parentElement.insertBefore(new_skill_container, Node.trigger)
-        new_skill_container.classList.add('discipline_skill')
+        // Unify the input for future operatios to be the LI element
+        switch (event.target.tagName) {
+            case 'LI':
+                chosen_option_element = event.target
+                break;
 
-        let new_skill_name = document.createElement('p')
-        let new_skill_description = document.createElement('p')
-
-        new_skill_container.appendChild(new_skill_name)
-        new_skill_container.appendChild(new_skill_description)
-
-        new_skill_name.innerHTML = event.target.children[0].innerHTML
-        new_skill_description.innerHTML = event.target.children[1].innerHTML
-             
-
-        // maybe a li p no pointer events kne hoyg leygen hoyg minid g a li legyen az event.target
+            case 'P':
+                chosen_option_element = event.target.parentElement
+                break;
         
-       
+            default:
+                console.log('The clicked element is not of the right kind, should be li or p')
+                break;
+        }
+
+        if (chosen_option_element.children[0].innerHTML != 'None') {
+            // Create the chosen elements and append them
+            let new_skill_container = document.createElement('div')
+            trigger.parentElement.insertBefore(new_skill_container, trigger)
+            new_skill_container.classList.add('discipline_skill')
+
+            let new_skill_name = document.createElement('p')
+            let new_skill_description = document.createElement('p')
+            let new_skill_delete_button = document.createElement('button')
+            new_skill_delete_button.setAttribute('type', 'button')
+            new_skill_delete_button.classList.add('skill_delete_button')
+        
+            // Append created elements
+            new_skill_container.appendChild(new_skill_name)
+            new_skill_container.appendChild(new_skill_description)
+            new_skill_container.appendChild(new_skill_delete_button)
+
+            // set the text of the new skill according to the chosen element
+            new_skill_name.innerHTML =chosen_option_element.children[0].innerHTML
+            new_skill_description.innerHTML = chosen_option_element.children[1].innerHTML
+            new_skill_delete_button.innerHTML = 'X'
+        }   
+
+        // Hide the list
         skill_options_list.classList.add('dont_show')
+        // Remove the event listeners
+
+        // Remove list elements, except the first('none')
+        let list = chosen_option_element.parentElement
+        for (let index = 1; index < list.children.length; index++) { // start at 1, so the 0 (the none option) stays
+            list.removeChild(list.children[index])
+        }
     }
 }
