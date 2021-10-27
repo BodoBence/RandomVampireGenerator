@@ -180,6 +180,7 @@ h3 {
     top: 3rem;
     left: 1rem;
     z-index: 2;
+    overflow: scroll;
 
     padding: 0.5rem;
     background-color: var(--color_black_transparent);
@@ -208,7 +209,7 @@ h3 {
 
 .skill_options li {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 1fr 5fr;
 }
 
 .skill_options > li:nth-of-type(1) > p {
@@ -216,13 +217,13 @@ h3 {
     color: grey !important;
 }
 
-.skill_options li:hover {
+.skill_options:hover {
     cursor: pointer;
-    background-color: var(--color_neon_pink);
 }
 
-.skill_options li:hover > p {
-    font: var(--color_neon_pink) !important;
+.skill_options li:hover p, .skill_options li p:hover  {
+    cursor: pointer;
+    color: var(--color_neon_pink) !important;
 }
 
 /* Add skills button */

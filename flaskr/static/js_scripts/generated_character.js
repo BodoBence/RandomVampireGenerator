@@ -44,7 +44,6 @@ function convert_character_to_pdf(){
 }
 
 function replace_underscores_inner_htmls(){
-    console.log('replacing underscores')
     let elements_with_underscore = document.getElementsByClassName('underscore')
     for (let index = 0; index < elements_with_underscore.length; index++) {
         let original_string = elements_with_underscore[index].innerHTML
@@ -101,22 +100,28 @@ function skill_add(trigger) {
     document.body.appendChild(skill_options_list)
 
     // Add to the list the potential skills
-    for (const skill_level in discipline_dict[current_discipline]['skill']) {
-        if (skill_level <= current_discipline_level) {
-            let skill_keys = Object.keys(discipline_dict[current_discipline]['skill'][skill_level])
-            skill_keys.forEach(key => {
-                if (owned_skills.includes(key) == false) {
-                    let skill_options_list_item = document.createElement('li')
-                    let skil_options_list_item_p1 = document.createElement('p')
-                    let skil_options_list_item_p2 = document.createElement('p')
-                    skill_options_list_item.appendChild(skil_options_list_item_p1)
-                    skill_options_list_item.appendChild(skil_options_list_item_p2)
-                    skil_options_list_item_p1.innerHTML = key
-                    skil_options_list_item_p2.innerHTML =  discipline_dict[current_discipline]['skill'][skill_level][key]['Description']
-                    skill_options_list.appendChild(skill_options_list_item)
-                }
-            });  
-        }
+    for (const skill_tpye in discipline_dict[current_discipline]) {
+        for (const skill_level in discipline_dict[current_discipline][skill_tpye]) {
+            if (skill_level <= current_discipline_level) {
+                let skill_keys = Object.keys(discipline_dict[current_discipline][skill_tpye][skill_level])
+                skill_keys.forEach(key => {
+                    if (owned_skills.includes(key) == false) {
+                        let skill_options_list_item = document.createElement('li')
+                        let skil_options_list_item_p1 = document.createElement('p')
+                        let skil_options_list_item_p2 = document.createElement('p')
+                        let skil_options_list_item_p3 = document.createElement('p')
+
+                        skill_options_list_item.appendChild(skil_options_list_item_p1)
+                        skill_options_list_item.appendChild(skil_options_list_item_p2)
+                        skill_options_list_item.appendChild(skil_options_list_item_p3)
+                        skil_options_list_item_p1.innerHTML = skill_tpye
+                        skil_options_list_item_p2.innerHTML =  key
+                        skil_options_list_item_p3.innerHTML =  discipline_dict[current_discipline][skill_tpye][skill_level][key]['Description']
+                        skill_options_list.appendChild(skill_options_list_item)
+                    }
+                });  
+            }
+        }        
     }
 
     // Create event listeners for pop-up the list options
@@ -128,8 +133,6 @@ function skill_add(trigger) {
 
     // Hide the options list when an option is clicked and add te skill
     function choose_option(event) {
-        console.log('here')
-        console.log(event.composedPath())
         if (event.composedPath().includes(skill_options_list) == true) {    // Check if the list is clicked
             // The list is clicked
             // Unify the input for future operatios to be the LI element
