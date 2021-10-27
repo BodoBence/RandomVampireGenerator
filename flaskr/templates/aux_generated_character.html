@@ -131,7 +131,7 @@
             <div style="grid-template-columns: 1fr;">
                 <h3 class="underscore">{{ discipline_type }}</h3>
             {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
-                <div style="grid-template-columns: 1fr 1fr 1fr !important;">
+                <div style="grid-template-columns: 1fr 1fr 1fr 0.3fr !important;">
                     <p class="discipline_name underscore">{{ discipline_name }}</p>
                     <div class="discipline_level">
                         {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
@@ -158,11 +158,13 @@
                         {% endfor %}
                         <button type="button" class="skill_add_button">ADD SKILL</button>
                     </div>
+                    <button type="button" class="discipline_delete_button">X</button>
                 </div>
             {% endfor %}
                 
             </div>
         {% endfor %}
-
     </div>
+    <button type="button" class="discipline_add_button">ADD DISCIPLINE</button>
+
 </div>

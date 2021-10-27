@@ -77,7 +77,7 @@ h3 + div {
     padding: 0px;
 }
 
-.skill_delete_button {
+.skill_delete_button, .discipline_delete_button {
     /* Skill delate x button */
     color: var(--color_neon_pink);
     text-shadow: 0 0 0.5rem var(--color_neon_pink);
@@ -85,7 +85,7 @@ h3 + div {
     border: none;
 }
 
-.skill_delete_button:hover {
+.skill_delete_button:hover, .discipline_delete_button:hover {
     /* Skill delate x button */
     cursor: pointer;
     color: white;
@@ -174,7 +174,10 @@ h3 {
 .skill_options {
     display: grid;
     width: 90vw;
+    max-height: 90vh;
     margin: auto;
+    overflow: scroll;
+    align-self: center;
     grid-template-columns: 1fr;
     position: fixed;
     top: 3rem;
@@ -209,7 +212,7 @@ h3 {
 
 .skill_options li {
     display: grid;
-    grid-template-columns: 1fr 1fr 5fr;
+    grid-template-columns: minmax(5rem, 0.5fr) minmax(10rem, 1fr) minmax(auto, 5fr);
 }
 
 .skill_options > li:nth-of-type(1) > p {
@@ -227,7 +230,7 @@ h3 {
 }
 
 /* Add skills button */
-.skill_add_button {
+.skill_add_button, .discipline_add_button {
     padding: 1em;
     display: inline-block;
     cursor: pointer;
@@ -248,6 +251,10 @@ h3 {
     -o-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
     -ms-transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
     transition: color var(--base_animation_time) ease, box-shadow var(--base_animation_time) ease, text-shadow var(--base_animation_time) ease;
+}
+
+.discipline_add_button {
+   margin-top: 1rem;
 }
 
 .skill_add_button:hover {

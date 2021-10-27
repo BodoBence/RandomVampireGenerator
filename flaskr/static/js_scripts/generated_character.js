@@ -1,11 +1,13 @@
 generated_character_page_initial()
 
-create_global_event_listener("click", "button_discipline_skills", toggle_discipline_skills, 'class')
-create_global_event_listener("click", "button_download_vampire_id", convert_character_to_pdf, 'id')
-create_global_event_listener("click", "dot", toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
-create_global_event_listener("click", "square", toggle_square_filled_and_unfilled, 'class')
-create_global_event_listener("click", "skill_delete_button", skill_delete, "class")
-create_global_event_listener("click", "skill_add_button", skill_add, "class")
+create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
+create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id')
+create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
+create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
+create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
+create_global_event_listener('click', 'skill_add_button', skill_add, 'class')
+create_global_event_listener('click', 'discipline_delete_button', delete_container, 'class')
+create_global_event_listener('click', 'discipline_add_button', discipline_add, 'class')
 
 function generated_character_page_initial(){
     replace_underscores_inner_htmls()
@@ -13,20 +15,9 @@ function generated_character_page_initial(){
     character_sheet.scrollIntoView(alignToTop=true)
 }
 
-function create_event_listener_for_skills(class_name, target_class_name){
-    var selected_class_elements = document.getElementsByClassName(class_name)
-    for (let index = 0; index < selected_class_elements.length; index++) {
-        selected_class_elements[index].addEventListener("click", e =>{
-            var reference = e.target.getAttribute("data-toggle-reference")
-            var discipliine_skill_table = document.getElementsByClassName(target_class_name)[reference]
-            toggle_visibility(discipliine_skill_table)
-        })
-    }
-}
-
 function toggle_discipline_skills (pressed_button){
-    selection_class = pressed_button.getAttribute("data-toggle-selection-class")
-    target_reference = pressed_button.getAttribute("data-toggle-reference")
+    selection_class = pressed_button.getAttribute('data-toggle-selection-class')
+    target_reference = pressed_button.getAttribute('data-toggle-reference')
 
     target_element = document.getElementsByClassName(selection_class)[target_reference]
     target_element.classList.toggle('dont_show')
@@ -63,7 +54,7 @@ function toggle_square_filled_and_unfilled(trigger) {
     trigger.classList.toggle('square_unfilled')
 }
 
-function skill_delete(trigger) {
+function delete_container(trigger) {
     let container = trigger.parentElement
     container.parentNode.removeChild(container)
 }
@@ -114,7 +105,8 @@ function skill_add(trigger) {
                         skill_options_list_item.appendChild(skil_options_list_item_p1)
                         skill_options_list_item.appendChild(skil_options_list_item_p2)
                         skill_options_list_item.appendChild(skil_options_list_item_p3)
-                        skil_options_list_item_p1.innerHTML = skill_tpye
+                        console.log(skill_tpye)
+                        skil_options_list_item_p1.innerHTML = ((skill_tpye != 'blood_sorcery_ritual') ? ((skill_tpye != 'ceremony') ? 'Skill' : 'Ceremony') :'Ritual')
                         skil_options_list_item_p2.innerHTML =  key
                         skil_options_list_item_p3.innerHTML =  discipline_dict[current_discipline][skill_tpye][skill_level][key]['Description']
                         skill_options_list.appendChild(skill_options_list_item)
@@ -183,4 +175,26 @@ function skill_add(trigger) {
             document.removeEventListener('click', choose_option)    // Remove event listener
         }
     }
+}
+
+function discipline_add(trigger_event) {
+    /* Create a list of disciplines to choose one to add
+    the lsit is created programatically here and removed upon choosing one of its items */
+    let current_disciplines = document.querySelectorAll('.discipline_name')
+    let discipline_list = []
+    let potential_discipline_list = []
+
+    //  Collect the currently owned disciplines
+    for (let index = 0; index < current_disciplines.length; index++) {
+        discipline_list.push(discipline_list[index].innerHTML)
+    }
+
+    //  Collect the not owned disciplineskbirthdayboiiiii
+    for (const discipline in discipline_dict) {
+        if (discipline_list.includes(discipline) == false) {
+            potential_discipline_list.push(discipline)
+        }
+    }
+
+
 }
