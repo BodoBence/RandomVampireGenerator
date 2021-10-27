@@ -120,66 +120,64 @@ function skill_add(trigger) {
     }
 
     // Create event listeners for pop-up the list options
-    for (let index = 0; index < skill_options_list.children.length; index++) {
-        skill_options_list.children[index].addEventListener('click', choose_option)
-    }
+    // for (let index = 0; index < skill_options_list.children.length; index++) {
+    //     skill_options_list.children[index].addEventListener('click', choose_option)
+    // }
 
-    window.addEventListener('click', close_options)
+    document.addEventListener('click', choose_option)
 
     // Hide the options list when an option is clicked and add te skill
     function choose_option(event) {
-        // Unify the input for future operatios to be the LI element
-        switch (event.target.tagName) {
-            case 'LI':
-                chosen_option_element = event.target
-                break;
-
-            case 'P':
-                chosen_option_element = event.target.parentElement
-                break;
-        
-            default:
-                console.log('The clicked element is not of the right kind, should be li or p')
-                break;
-        }
-
-        if (chosen_option_element.children[0].innerHTML != 'None') {
-            // Create the chosen element as a discipline skill (skillname, description, clsoe button) and append them
-            let new_skill_container = document.createElement('div')
-            trigger.parentElement.insertBefore(new_skill_container, trigger)
-            new_skill_container.classList.add('discipline_skill')
-
-            let new_skill_name = document.createElement('p')
-            let new_skill_description = document.createElement('p')
-            let new_skill_delete_button = document.createElement('button')
-            new_skill_delete_button.setAttribute('type', 'button')
-            new_skill_delete_button.classList.add('skill_delete_button')
-        
-            // Append created elements
-            new_skill_container.appendChild(new_skill_name)
-            new_skill_container.appendChild(new_skill_description)
-            new_skill_container.appendChild(new_skill_delete_button)
-
-            // set the text of the new skill according to the chosen element
-            new_skill_name.innerHTML =chosen_option_element.children[0].innerHTML
-            new_skill_description.innerHTML = chosen_option_element.children[1].innerHTML
-            new_skill_delete_button.innerHTML = 'X'
-        }   
-
-        // Remove list
-        chosen_option_element.parentElement.parentElement.removeChild(chosen_option_element.parentElement)
-
-    }
-
-    function close_options(click_event) {
         console.log('here')
-        if ((skill_options_list.childrend.includes(click_event.target) == false) || (skill_options_list.children.includes(click_event.target.parentElement) == false)) {
-            // click outside of the skill_options_list
+        console.log(event.composedPath())
+        if (event.composedPath().includes(skill_options_list) == true) {    // Check if the list is clicked
+            // The list is clicked
+            // Unify the input for future operatios to be the LI element
+            switch (event.target.tagName) {
+                case 'LI':
+                    chosen_option_element = event.target
+                    break;
 
-            // remove list
+                case 'P':
+                    chosen_option_element = event.target.parentElement
+                    break;
+            
+                default:
+                    console.log('The clicked element is not of the right kind, should be li or p')
+                    break;
+            }
 
+            if (chosen_option_element.children[0].innerHTML != 'None') {
+                // Create the chosen element as a discipline skill (skillname, description, clsoe button) and append them
+                let new_skill_container = document.createElement('div')
+                trigger.parentElement.insertBefore(new_skill_container, trigger)
+                new_skill_container.classList.add('discipline_skill')
 
-            window.removeEventListener('click', close_options)
+                let new_skill_name = document.createElement('p')
+                let new_skill_description = document.createElement('p')
+                let new_skill_delete_button = document.createElement('button')
+                new_skill_delete_button.setAttribute('type', 'button')
+                new_skill_delete_button.classList.add('skill_delete_button')
+            
+                // Append created elements
+                new_skill_container.appendChild(new_skill_name)
+                new_skill_container.appendChild(new_skill_description)
+                new_skill_container.appendChild(new_skill_delete_button)
+
+                // set the text of the new skill according to the chosen element
+                new_skill_name.innerHTML =chosen_option_element.children[0].innerHTML
+                new_skill_description.innerHTML = chosen_option_element.children[1].innerHTML
+                new_skill_delete_button.innerHTML = 'X'
+            }   
+
+            // Remove Items
+            skill_options_list.parentElement.removeChild(skill_options_list)    // Remove the list
+            document.removeEventListener('click', choose_option)    // Remove event listener
+        } else {
+            // Click outside the list
+            // Remove Items
+            skill_options_list.parentElement.removeChild(skill_options_list)    // Remove the list
+            document.removeEventListener('click', choose_option)    // Remove event listener
         }
     }
 }
