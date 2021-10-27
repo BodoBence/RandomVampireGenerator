@@ -70,9 +70,8 @@ function skill_delete(trigger) {
 }
 
 function skill_add(trigger) {
-    /* Creat a list of skills to choose whic to add to the current discipline
-    the options come from a JSON dictionary read in in main_character_generator.html
-    the list's DOM objects are created in the code */
+    /* Create a list of skills to choose one to add to the current discipline
+    the lsit is created programatically here and removed upon choosing one of its items */
 
     let current_discipline = trigger.parentElement.getAttribute('id')
     // Get current discipline level
@@ -87,8 +86,19 @@ function skill_add(trigger) {
     }
 
     // Get Options list container and first child
-    let skill_options_list = trigger.parentElement.querySelector('.skill_options')
-    let skill_options_list_item_first = skill_options_list.children[0]
+    // let skill_options_list = trigger.parentElement.querySelector('.skill_options')
+    // let skill_options_list_item_first = skill_options_list.children[0]
+
+    // Create options list container and children
+    let skill_options_list = document.createElement('ul')   
+    let skill_option_none = document.createElement('li')
+    skill_options_list.classList.add('skill_options')
+    skill_options_list.appendChild(skill_option_none)
+    let skill_option_p = document.createElement('p')
+    skill_option_none.appendChild(skill_option_p)
+    skill_option_p.innerHTML = 'None'
+    skill_option_p.style.gridColumn = '1/-1'
+    document.body.appendChild(skill_options_list)
 
     // Add to the list the potential skills
     for (const skill_level in discipline_dict[current_discipline]['skill']) {
@@ -96,22 +106,25 @@ function skill_add(trigger) {
             let skill_keys = Object.keys(discipline_dict[current_discipline]['skill'][skill_level])
             skill_keys.forEach(key => {
                 if (owned_skills.includes(key) == false) {
-                    let skill_options_list_item = skill_options_list_item_first.cloneNode(true)
-                    skill_options_list_item.children[0].innerHTML = key
-                    skill_options_list_item.children[1].innerHTML =  discipline_dict[current_discipline]['skill'][skill_level][key]['Description']
+                    let skill_options_list_item = document.createElement('li')
+                    let skil_options_list_item_p1 = document.createElement('p')
+                    let skil_options_list_item_p2 = document.createElement('p')
+                    skill_options_list_item.appendChild(skil_options_list_item_p1)
+                    skill_options_list_item.appendChild(skil_options_list_item_p2)
+                    skil_options_list_item_p1.innerHTML = key
+                    skil_options_list_item_p2.innerHTML =  discipline_dict[current_discipline]['skill'][skill_level][key]['Description']
                     skill_options_list.appendChild(skill_options_list_item)
                 }
             });  
         }
     }
 
-    // Dispaly options
-    skill_options_list.classList.remove('dont_show')
-
     // Create event listeners for pop-up the list options
     for (let index = 0; index < skill_options_list.children.length; index++) {
         skill_options_list.children[index].addEventListener('click', choose_option)
     }
+
+    window.addEventListener('click', close_options)
 
     // Hide the options list when an option is clicked and add te skill
     function choose_option(event) {
@@ -131,7 +144,7 @@ function skill_add(trigger) {
         }
 
         if (chosen_option_element.children[0].innerHTML != 'None') {
-            // Create the chosen elements and append them
+            // Create the chosen element as a discipline skill (skillname, description, clsoe button) and append them
             let new_skill_container = document.createElement('div')
             trigger.parentElement.insertBefore(new_skill_container, trigger)
             new_skill_container.classList.add('discipline_skill')
@@ -153,14 +166,20 @@ function skill_add(trigger) {
             new_skill_delete_button.innerHTML = 'X'
         }   
 
-        // Hide the list
-        skill_options_list.classList.add('dont_show')
-        // Remove the event listeners
+        // Remove list
+        chosen_option_element.parentElement.parentElement.removeChild(chosen_option_element.parentElement)
 
-        // Remove list elements, except the first('none')
-        let list = chosen_option_element.parentElement
-        for (let index = 1; index < list.children.length; index++) { // start at 1, so the 0 (the none option) stays
-            list.removeChild(list.children[index])
+    }
+
+    function close_options(click_event) {
+        console.log('here')
+        if ((skill_options_list.childrend.includes(click_event.target) == false) || (skill_options_list.children.includes(click_event.target.parentElement) == false)) {
+            // click outside of the skill_options_list
+
+            // remove list
+
+
+            window.removeEventListener('click', close_options)
         }
     }
 }

@@ -211,9 +211,9 @@ h3 {
     grid-template-columns: 1fr 5fr;
 }
 
-.skill_options li:nth-child(1) p {
+.skill_options > li:nth-of-type(1) > p {
     /* option: none - so it is grey */
-    font: grey;
+    color: grey !important;
 }
 
 .skill_options li:hover {
