@@ -170,8 +170,9 @@ h3 {
     cursor: pointer;
 }
 
-/* Skill options */
-.skill_options {
+/* Skill options and Discipline Options
+created programatically in genereated_character.js */
+.skill_options, .discipline_options {
     display: grid;
     width: 90vw;
     max-height: 90vh;
@@ -210,21 +211,21 @@ h3 {
         border-color var(--base_animation_time) ease;
 }
 
-.skill_options li {
+.skill_options li, .discipline_options li {
     display: grid;
     grid-template-columns: minmax(5rem, 0.5fr) minmax(10rem, 1fr) minmax(auto, 5fr);
 }
 
-.skill_options > li:nth-of-type(1) > p {
+.skill_options > li:nth-of-type(1) > p, .discipline_options > li:nth-of-type(1) > p {
     /* option: none - so it is grey */
     color: grey !important;
 }
 
-.skill_options:hover {
+.skill_options:hover, .discipline_options:hover {
     cursor: pointer;
 }
 
-.skill_options li:hover p, .skill_options li p:hover  {
+.skill_options li:hover p, .skill_options li p:hover, .discipline_options li:hover p, .discipline_options li p:hover   {
     cursor: pointer;
     color: var(--color_neon_pink) !important;
 }

@@ -189,11 +189,95 @@ function discipline_add(trigger_event) {
         discipline_list.push(discipline_list[index].innerHTML)
     }
 
+    // Create the discipline options menu with a first none element
+    // Do basic formatting that is extra to those in csss
+    let discipline_options = document.createElement('ul')
+    discipline_options.classList.add('discipline_options')
+    let discipline_option_none = document.createElement('li')
+    let discipline_option_none_p1 = document.createElement('p')
+    discipline_options.appendChild(discipline_option_none)
+    discipline_options.style.gridTemplateColumns = '1fr'
+    discipline_option_none.appendChild(discipline_option_none_p1)
+    discipline_option_none_p1.innerHTML = 'None'
+    discipline_option_none_p1.style.gridColumn = '1/-1'
+
     //  Collect the not owned disciplineskbirthdayboiiiii
     for (const discipline in discipline_dict) {
         if (discipline_list.includes(discipline) == false) {
             potential_discipline_list.push(discipline)
+            let discipline_option = document.createElement('li')
+            let discipline_option_p1 = document.createElement('p')
+
+            discipline_option.appendChild(discipline_option_p1)
+            discipline_option_p1.innerHTML = discipline
+            discipline_options.appendChild(discipline_options)
         }
+    }    
+
+    // Create event listeners for pop-up the list options
+    // for (let index = 0; index < skill_options_list.children.length; index++) {
+    //     skill_options_list.children[index].addEventListener('click', choose_option)
+    // }
+
+    document.addEventListener('click', choose_discipline)
+
+    function choose_discipline(click_event) {
+        if (click_event.composedPath().includes(discipline_options) == true) {    // Check if the list is clicked
+            // The list is clicked
+            // Unify the input for future operatios to be the LI element
+            switch (click_event.target.tagName) {
+                case 'LI':
+                    chosen_option_element = click_event.target
+                    break;
+
+                case 'P':
+                    chosen_option_element = click_event.target.parentElement
+                    break;
+            
+                default:
+                    console.log('The clicked element is not of the right kind, should be li or p')
+                    break;
+            }
+
+            if (chosen_option_element.children[0].innerHTML != 'None') {
+                // Create the chosen element as a discipline  (skillname, description, clsoe button) and append them
+                let disicpline_container = document.querySelectorAll('.discipline_container')[-1]
+                let last_discipline = disicpline_container.children[-1]
+                let new_discipline = last_discipline.cloneNode(true)
+                let discipline_name = chosen_option_element.target.children[0].innerHTML
+
+                // Setup new Discipline values
+                new_discipline.children[0].innerHTML = discipline_name
+                let new_discipline_dots = new_discipline.querySelectorAll('.dot_filled')
+
+                for (let index = 0; index < new_discipline_dots.length; index++) {
+                    new_discipline_dots[index].classList.remove('dot_filled')
+                    new_discipline_dots[index].classList.add('dot_unfilled')
+                }
+
+                let visibility_button = new_discipline.querySelector('.button_discipline_skills')
+                visibility_button.setAttribute('data-toggle-reference', discipline_name)
+
+                new_discipline.querySelector('.discipline_skills').setAttribute('id', discipline_name)
+                
+                let skills = new_discipline.querySelectorAll('.discipline_skill')
+                for (let index = 0; index < skills.length; index++) {
+                    skills.parentElement.removeChild(skills[index])
+                }
+                
+            
+            }   
+
+            // Remove Items
+            discipline_options.parentElement.removeChild(discipline_options)    // Remove the list
+            document.removeEventListener('click', choose_discipline)    // Remove event listener
+        } else {
+            // Click outside the list
+            // Remove Items
+            discipline_options.parentElement.removeChild(discipline_options)    // Remove the list
+            document.removeEventListener('click', choose_discipline)    // Remove event listener
+        }
+        
     }
 
 

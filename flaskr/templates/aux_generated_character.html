@@ -128,7 +128,7 @@
     <div style="grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)) !important;">
 
         {% for discipline_type in character['Disciplines'].keys() %}
-            <div style="grid-template-columns: 1fr;">
+            <div class="discipline_container" style="grid-template-columns: 1fr;">
                 <h3 class="underscore">{{ discipline_type }}</h3>
             {% for discipline_name in character['Disciplines'][discipline_type].keys() %}
                 <div style="grid-template-columns: 1fr 1fr 1fr 0.3fr !important;">
