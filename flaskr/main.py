@@ -67,21 +67,23 @@ def result_character():
     # details = generated_character['Character_Details']
     max_level = server_functions.get_maximum_skill_level(generated_character)
     discipline_dict = default_data.get_discipline_skills_and_rituals()
+    clan_disciplin_dict = default_data.default_clan_disciplines_data()
 
     rendered_vampire = render_template(
         'main_character_generator.html',
         display_legal = True,
         version = VERSION_INFO,
+        have_generated_character=HAVE_GENERATED_CHARACTER,
         field_conditions = resutrctured_conditions,
         field_values = restructured_values,
         slider_values = restructured_weights,
-        default_input_weights=startup_input_field_details['input_weights'],
+        default_input_weights = startup_input_field_details['input_weights'],
         clans = startup_input_field_details['input_clans'],
         generations = startup_input_field_details['input_generations'],
-        have_generated_character=HAVE_GENERATED_CHARACTER,
         character = generated_character,
         max_level = max_level,
-        discipline_dict = discipline_dict)
+        discipline_dict = discipline_dict,
+        clan_discipline_dict = clan_disciplin_dict)
 
     return rendered_vampire
 

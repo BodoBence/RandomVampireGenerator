@@ -75,10 +75,6 @@ function skill_add(trigger) {
         owned_skills.push(skill_containers[index].children[0].innerHTML)
     }
 
-    // Get Options list container and first child
-    // let skill_options_list = trigger.parentElement.querySelector('.skill_options')
-    // let skill_options_list_item_first = skill_options_list.children[0]
-
     // Create options list container and children
     let skill_options_list = document.createElement('ul')   
     let skill_option_none = document.createElement('li')
@@ -160,8 +156,11 @@ function skill_add(trigger) {
                 new_skill_container.appendChild(new_skill_delete_button)
 
                 // set the text of the new skill according to the chosen element
-                new_skill_name.innerHTML =chosen_option_element.children[0].innerHTML
-                new_skill_description.innerHTML = chosen_option_element.children[1].innerHTML
+                // chosen_option_element.children[0] is the skill type (e.g. skill, ritual, etc.)
+                // chosen_option_element.children[1] is the skill name (e.g. rapid reflexes, hightened senes, etc.)
+                // chosen_option_element.children[2] is the skill description (e.g. be able to see ghosts etc.)
+                new_skill_name.innerHTML = chosen_option_element.children[1].innerHTML
+                new_skill_description.innerHTML = chosen_option_element.children[2].innerHTML
                 new_skill_delete_button.innerHTML = 'X'
             }   
 
@@ -235,7 +234,7 @@ function discipline_add(trigger_event) {
 
             if (chosen_option_element.children[0].innerHTML != 'None') {
                 // Create the chosen element as a discipline  (skillname, description, clsoe button) and append them
-                let last_discipline = Array.from(document.querySelectorAll('.discipline_container')).at(-1)
+                let last_discipline = Array.from(Array.from(document.querySelectorAll('.discipline_container')).at(-1).children).at(-1)
                 let new_discipline = last_discipline.cloneNode(true)
                 let discipline_name = chosen_option_element.children[0].innerHTML
 
@@ -243,10 +242,13 @@ function discipline_add(trigger_event) {
                 new_discipline.children[0].innerHTML = discipline_name
                 let new_discipline_dots = new_discipline.querySelectorAll('.dot_filled')
 
+                // Set disciplin dots to one filled, rest unfilled
                 for (let index = 0; index < new_discipline_dots.length; index++) {
                     new_discipline_dots[index].classList.remove('dot_filled')
                     new_discipline_dots[index].classList.add('dot_unfilled')
                 }
+                new_discipline_dots[0].classList.remove('dot_unfilled')
+                new_discipline_dots[0].classList.add('dot_filled')
 
                 let visibility_button = new_discipline.querySelector('.button_discipline_skills')
                 visibility_button.setAttribute('data-toggle-reference', discipline_name)
@@ -271,8 +273,5 @@ function discipline_add(trigger_event) {
             discipline_options.parentElement.removeChild(discipline_options)    // Remove the list
             document.removeEventListener('click', choose_discipline)    // Remove event listener
         }
-        
     }
-
-
 }

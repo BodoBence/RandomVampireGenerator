@@ -50,6 +50,7 @@
             <!-- Own scripts -->
             <script>
                 var discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
+                var clan_discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
             </script>          
             <script src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
 

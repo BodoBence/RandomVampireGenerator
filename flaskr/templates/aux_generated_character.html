@@ -14,23 +14,19 @@
     <!-- Basic Information -->
     <div>
         {% for key, value in character['Character_Details']['Basic_Information'].items() %}
-
             {% if key == 'Derangement' %}
             <!-- special case for longer cell space for derangement text -->
                 <div style="grid-column: 1/-1;">
                     <p>{{ key }}</p>
-                    <p>{{ value }}</p>
+                    <p contenteditable="true">{{ value }}</p>
                 </div>
-
             {% else %}
-
             <!-- normal loop element -->
                 <div>
                     <p id="{{ key }}">{{ key }}</p>
-                    <p>{{ value }}</p>
+                    <p contenteditable="true">{{ value }}</p>
                 </div>
             {% endif %}
-
         {% endfor %}
     </div>
 
@@ -148,6 +144,7 @@
                         data-toggle-selection-class="discipline_skills">
                             Hide/Show
                     </button>
+                    <button type="button" class="discipline_delete_button">X</button>
                     <div class="discipline_skills dont_show" id="{{ discipline_name }}">
                         {% for skill_name, skill_description in character['Disciplines'][discipline_type][discipline_name]['Skills'].items() %}
                             <div class="discipline_skill">
@@ -158,7 +155,6 @@
                         {% endfor %}
                         <button type="button" class="skill_add_button">ADD SKILL</button>
                     </div>
-                    <button type="button" class="discipline_delete_button">X</button>
                 </div>
             {% endfor %}
                 
