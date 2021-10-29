@@ -180,19 +180,18 @@ function skill_add(trigger) {
 function discipline_add(trigger_event) {
     /* Create a list of disciplines to choose one to add
     the lsit is created programatically here and removed upon choosing one of its items */
-    let current_disciplines = document.querySelectorAll('.discipline_name')
-    let discipline_list = []
-    let potential_discipline_list = []
+    let current_discipline_elements = Array.from(document.querySelectorAll('.discipline_name'))
+    let owned_discipline_names = []
 
     //  Collect the currently owned disciplines
-    for (let index = 0; index < current_disciplines.length; index++) {
-        discipline_list.push(discipline_list[index].innerHTML)
+    for (let index = 0; index < current_discipline_elements.length; index++) {
+        owned_discipline_names.push(current_discipline_elements[index].innerHTML)
     }
 
     // Create the discipline options menu with a first none element
     // Do basic formatting that is extra to those in csss
     let discipline_options = document.createElement('ul')
-    discipline_options.classList.add('discipline_options')
+    discipline_options.classList.add('discipline_options')  
     let discipline_option_none = document.createElement('li')
     let discipline_option_none_p1 = document.createElement('p')
     discipline_options.appendChild(discipline_option_none)
@@ -201,24 +200,19 @@ function discipline_add(trigger_event) {
     discipline_option_none_p1.innerHTML = 'None'
     discipline_option_none_p1.style.gridColumn = '1/-1'
 
-    //  Collect the not owned disciplineskbirthdayboiiiii
+    //  Create discipline options li item for not-owned disciplins
     for (const discipline in discipline_dict) {
-        if (discipline_list.includes(discipline) == false) {
-            potential_discipline_list.push(discipline)
+        if (owned_discipline_names.includes(discipline) == false) {
             let discipline_option = document.createElement('li')
             let discipline_option_p1 = document.createElement('p')
 
             discipline_option.appendChild(discipline_option_p1)
             discipline_option_p1.innerHTML = discipline
-            discipline_options.appendChild(discipline_options)
+            discipline_options.appendChild(discipline_option)
         }
-    }    
+    }
 
-    // Create event listeners for pop-up the list options
-    // for (let index = 0; index < skill_options_list.children.length; index++) {
-    //     skill_options_list.children[index].addEventListener('click', choose_option)
-    // }
-
+    document.body.appendChild(discipline_options)
     document.addEventListener('click', choose_discipline)
 
     function choose_discipline(click_event) {
@@ -241,10 +235,9 @@ function discipline_add(trigger_event) {
 
             if (chosen_option_element.children[0].innerHTML != 'None') {
                 // Create the chosen element as a discipline  (skillname, description, clsoe button) and append them
-                let disicpline_container = document.querySelectorAll('.discipline_container')[-1]
-                let last_discipline = disicpline_container.children[-1]
+                let last_discipline = Array.from(document.querySelectorAll('.discipline_container')).at(-1)
                 let new_discipline = last_discipline.cloneNode(true)
-                let discipline_name = chosen_option_element.target.children[0].innerHTML
+                let discipline_name = chosen_option_element.children[0].innerHTML
 
                 // Setup new Discipline values
                 new_discipline.children[0].innerHTML = discipline_name
@@ -260,13 +253,14 @@ function discipline_add(trigger_event) {
 
                 new_discipline.querySelector('.discipline_skills').setAttribute('id', discipline_name)
                 
-                let skills = new_discipline.querySelectorAll('.discipline_skill')
+                let skills = Array.from(new_discipline.querySelectorAll('.discipline_skill'))
                 for (let index = 0; index < skills.length; index++) {
-                    skills.parentElement.removeChild(skills[index])
+                    skills[index].parentElement.removeChild(skills[index])
                 }
-                
-            
-            }   
+
+                // Append te completed disciplin to the discipline list
+                last_discipline.parentElement.appendChild(new_discipline)   
+            }         
 
             // Remove Items
             discipline_options.parentElement.removeChild(discipline_options)    // Remove the list
