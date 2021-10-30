@@ -3,11 +3,9 @@ create_global_event_listener("change", "slider", display_slider_value, "class")
 
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')
-create_global_event_listener('change', 'faction_slider', synchronize_faction_sliders, 'class')
 
 correct_overflow()
 load_default_input_values()
-synchronize_faction_sliders()
 // Corrects overflow for the input container animation
 function correct_overflow(){
     current_element = document.getElementById("input_container_id")
@@ -50,12 +48,6 @@ function display_slider_value(current_slider){
     let target_id = current_slider.getAttribute('data-reference-id')
     let target_element = document.getElementById(target_id)
     let new_value = current_slider.value
-    skill_keys.forEach(key => {
-        if (owned_skills.includes(key) == false) {
-            potential_skills.push(key)
-            potential_skill_descriptions.push(discipline_dict[current_discipline]['skill'][skill_level][key])
-        }
-    });
     target_element.innerHTML = new_value
 }
 
@@ -64,7 +56,7 @@ function load_default_input_values(){
 
     // Sliders
     input_discipline = document.getElementById('slider_camarilla_id')
-    input_discipline.value = 1['faction_ratio_camarilla']
+    input_discipline.value = default_city_input_values['faction_ratio_camarilla']
     input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_physical = document.getElementById('slider_anarch_id')
@@ -90,38 +82,4 @@ function load_default_input_values(){
     input_social = document.getElementById('slider_male_to_female_id')
     input_social.value = default_city_input_values['favor_males']
     input_social.dispatchEvent(new Event('change', { bubbles: true }))
-}
-
-function synchronize_faction_sliders(event){
-    /* EUpdate the faction slider values so they add up to a fixed sum */
-    // Set up variables
-    let goal = 100
-    let sliders = document.getElementsByClassName('pie_input')
-
-    if (sum_sliders(sliders) < goal) {
-        while (sum_sliders(sliders) < goal) {
-            console.log('here')
-            for (let index = 0; index < sliders.length; index++) {
-                if (sliders[index].value != event.target){
-                    sliders[index].value = sliders.value + 1
-                }
-            }
-        }
-    }
-
-    while (sum_sliders(sliders) > goal) {
-        for (let index = 0; index < sliders.length; index++) {
-            if (sliders[index].value != event.target){
-                sliders[index].value = sliders.value - 1
-            }
-        }
-    }
-
-    function sum_sliders(sliders){
-        let sum = 0
-        for (let index = 0; index < sliders.length; index++) {
-            sum = sum + sliders[index].value
-        }
-        return sum
-    }
 }
