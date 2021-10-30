@@ -1,5 +1,5 @@
 
-create_global_event_listener("change", "slider", display_slider_value, "class")
+create_global_event_listener("input", "slider", display_slider_value, "class")
 
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')
 create_global_event_listener("click", "button_load_defaults", load_default_input_values, 'id')

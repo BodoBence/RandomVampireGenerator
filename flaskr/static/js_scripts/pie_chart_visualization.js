@@ -1,4 +1,4 @@
-create_global_event_listener('change', 'pie_input', pie_update, 'class')
+create_global_event_listener('input', 'pie_input', pie_update, 'class')
 window.onload = pie_update()
 
 function pie_update() {

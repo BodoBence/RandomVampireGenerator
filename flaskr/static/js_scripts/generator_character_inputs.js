@@ -6,7 +6,7 @@ create_global_event_listener("change", "manual_name_selection", input_sync, 'nam
 create_global_event_listener("change", "manual_age_selection", input_sync, 'name')
 create_global_event_listener("change", "manual_calculation_selection", input_sync, 'name')
 
-create_global_event_listener("change", "slider", display_slider_value, "class")
+create_global_event_listener("input", "slider", display_slider_value, "class")
 create_global_event_listener("change", "selection_theme", toggle_character_style, "id")
 
 create_global_event_listener("click", "button_input_contianer_visibility", accordion_motion, 'id')

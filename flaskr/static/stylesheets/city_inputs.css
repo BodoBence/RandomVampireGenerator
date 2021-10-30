@@ -61,7 +61,7 @@ form > div > div:nth-child(2) {
 }
 
 form > div > div:nth-child(2) span {
-    /* color codes */
+    /* color codes for faction relations inputs*/
     background-color: var(--color_neon_pink);
     grid-column: 4;
     width: 1.5rem;
@@ -221,5 +221,4 @@ input::-moz-range-thumb {
         grid-column: 5;
         grid-row: 1/5;
     }
-
 }

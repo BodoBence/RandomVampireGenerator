@@ -251,7 +251,6 @@ input::-moz-range-thumb {
         grid-column: 5;
         grid-row: 1/5;
     }
-
 }
 
 @media screen and (min-width: 63em) {
@@ -271,5 +270,4 @@ input::-moz-range-thumb {
         grid-column: 5;
         grid-row: 1/5;
     }
-
 }
