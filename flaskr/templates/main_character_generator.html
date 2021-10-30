@@ -8,6 +8,7 @@
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/generated_character_base.css') }}">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/generated_character_color_dark.css') }}" id="link_character_color">
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/footer.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/pie_chart_visualization.css') }}">
 
         {% include "aux_head_meta.html" %}
     </head>
@@ -34,11 +35,12 @@
 
 
         <!-- Own scripts -->
-        <script src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/generator_character_inputs.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/custom_select.js') }}"></script>
-        <script src="{{ url_for('static', filename='js_scripts/custom_checkbox.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/general.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/navigation.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/generator_character_inputs.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/custom_select.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/custom_checkbox.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/pie_chart_visualization.js') }}"></script>
 
         {% if have_generated_character %}
 
@@ -52,7 +54,7 @@
                 var discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
                 var clan_discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
             </script>          
-            <script src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
 
         {% endif %}
 

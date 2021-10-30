@@ -22,23 +22,26 @@
 
         <div>
             <label for="slider_social_id">Social focus:</label>
-            <input id="slider_social_id" data-reference-id="value_social_id" class="slider" type="range"
+            <input id="slider_social_id" data-reference-id="value_social_id"  data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
                 name="simplified_social" min="0" max="100" value="50">
             <label for="slider_social_id" id="value_social_id">50</label>
-        </div>
+            <span></span>
 
-        <div>
             <label for="slider_mental_id">Mental focus:</label>
-            <input id="slider_mental_id" data-reference-id="value_mental_id" class="slider" type="range"
+            <input id="slider_mental_id" data-reference-id="value_mental_id"  data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
                 name="simplified_mental" min="0" max="100" value="50">
             <label for="slider_mental_id" id="value_mental_id">50</label>
-        </div>
+            <span></span>
 
-        <div>
             <label for="slider_physical_id">Physical focus:</label>
-            <input id="slider_physical_id" data-reference-id="value_physical_id" class="slider" type="range"
+            <input id="slider_physical_id" data-reference-id="value_physical_id"  data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
                 name="simplified_physical" min="0" max="100" value="50">
             <label for="slider_physical_id" id="value_physical_id">50</label>
+            <span></span>
+            
+            <!-- both pies use the same inputs and abode, one is to be blurred for effect, the other is crisp -->
+            <div class="pie_chart pie_attributes"></div> 
+            <div class="pie_chart pie_attributes"></div>
         </div>
 
         <div>
