@@ -187,7 +187,7 @@ def default_clan_disciplines_data():
         'Ravnos': ['Animalism', 'Obfuscate', 'Presence'],
         'Toreador': ['Celerity', 'Auspex', 'Presence'],
         'Tremere': ['Auspex', 'Blood_Sorcery', 'Dominate'],
-        'Tzimische': ['Animalism', 'Auspex', 'Protean'],
+        'Tzimische': ['Animalism', 'Dominate', 'Protean'],
         'Ventrue': ['Dominate', 'Prsence', 'Fortitude'],
         'Hecata': ['Auspex', 'Fortitude', 'Oblivion'],
         'Thin-blood': ['Thin_Blood_Alchemy']}
