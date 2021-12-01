@@ -2,27 +2,33 @@
     <div id="input_container_id">
         <div>
             <p>
-                <span style="color: var(--color_neon_pink);">Tooltip: </span> Tooltips come here
+                <span style="color: var(--color_neon_pink);">Faction sliders: </span> The values of the faction sliders represent the number of kindred in the given faction for the generated city, not percentages.
+            </p>
+            <p>
+                <span style="color: var(--color_neon_pink);">Age deviation: </span> As a regular statistical measure, age deviation represents how much the a citizen's age will be able to differ from the average age. Additioanlly there is a minimum age.
+            </p>
+            <p>
+                <span style="color: var(--color_neon_pink);">Male to female: </span> Represents the ratio of the sexes.
             </p>
         </div>
 
         <div>
             <label for="slider_camarilla_id" style="grid-column: 1;">Camarilla:</label>
             <input id="slider_camarilla_id" data-reference-id="value_camarilla_id" data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
-                name="slider_camarilla" min="0" max="25" value="80">
-            <label for="slider_camarilla_id" id="value_camarilla_id" style="grid-column: 3;">80</label>
+                name="slider_camarilla" min="0" max="25" value="10">
+            <label for="slider_camarilla_id" id="value_camarilla_id" style="grid-column: 3;">10</label>
             <span></span>
 
             <label for="slider_anarch_id" style="grid-column: 1;">Anarch:</label>
             <input id="slider_anarch_id" data-reference-id="value_anarch_id" data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
-                name="slider_anarch" min="0" max="25" value="10">
-            <label for="slider_anarch_id" id="value_anarch_id" style="grid-column: 3;">10</label>
+                name="slider_anarch" min="0" max="25" value="4">
+            <label for="slider_anarch_id" id="value_anarch_id" style="grid-column: 3;">4</label>
             <span></span>
 
             <label for="slider_sabbath_id" style="grid-column: 1;">Sabbath:</label>
             <input id="slider_sabbath_id" data-reference-id="value_sabbath_id" data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-class="pie_faction" class="slider pie_input" type="range"
-                name="slider_sabbath" min="0" max="25" value="5">
-            <label for="slider_sabbath_id" id="value_sabbath_id" style="grid-column: 3;">5</label>
+                name="slider_sabbath" min="0" max="25" value="3">
+            <label for="slider_sabbath_id" id="value_sabbath_id" style="grid-column: 3;">3</label>
             <span></span>
 
             <label for="slider_independent_id" style="grid-column: 1;">Independent:</label>

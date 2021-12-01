@@ -259,6 +259,13 @@ def get_max_xps():
 
 def start_city_values():
     start_values = {
+        'faction_ratio_camarilla': 10,
+        'faction_ratio_anarch': 5,
+        'faction_ratio_sabbath': 3,
+        'faction_ratio_independent': 1,
+        'age_average': 300,
+        'age_standard_deviation': 120,
+        'favor_males': 50,
         'manual_number_of_vampires': 10}
 
     return start_values

@@ -187,10 +187,6 @@ input::-moz-range-thumb {
 /* Screen responsivitsy */
 
 @media screen and (min-width: 40em) and (max-width: 64em) {
-    form > div > input:last-of-type {
-        grid-column-start: 1;
-        grid-column-end: -1;
-    }
 
     form > div > div:nth-child(2) {
         /* faction relation inputs */
@@ -205,10 +201,6 @@ input::-moz-range-thumb {
 }
 
 @media screen and (min-width: 63em){
-    form > div > div:first-of-type > p:last-of-type {
-        grid-column-start: 1;
-        grid-column-end: -1;
-    }
 
     form > div > div:nth-child(2) {
         /* faction relation inputs */
