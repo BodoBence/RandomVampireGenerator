@@ -31,12 +31,13 @@ function create_character_interactive_pdf(){
     let text_area = page_width - (page_margin * 2)
     let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
     let subcolumn_start = 150
+    let rows_start = [50, 200, 400]
 
     var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
 
-    doc.text(200, 50, 'Hello world!'); // Title
-    doc.text(100, 300, String(character_sheet['Character_Details']['Basic_Information']['Clan']))
-    
+    doc.text(500, 50, 'Hello world!'); // Title
+    // doc.text(100, 300, String(character_sheet['Character_Details']['Basic_Information']['Clan']))
+
     /* Attributes */
     let keys_physical_attributes = []
     Object.keys(character_sheet['Attributes']['Physical_Attributes']).forEach(function(key) {
@@ -53,9 +54,31 @@ function create_character_interactive_pdf(){
         keys_mental_attributes.push(key)
     });
 
-    create_column(column_item_keys=keys_physical_attributes, column_items=character_sheet['Attributes']['Physical_Attributes'], pos_x=three_column_layout[0], pos_y=200, offset_x=subcolumn_start, offset_y=30)
-    create_column(column_item_keys=keys_social_attributes, column_items=character_sheet['Attributes']['Social_Attributes'], pos_x=three_column_layout[1], pos_y=200, offset_x=subcolumn_start, offset_y=30)
-    create_column(column_item_keys=keys_mental_attributes, column_items=character_sheet['Attributes']['Mental_Attributes'], pos_x=three_column_layout[2], pos_y= 200, offset_x=subcolumn_start, offset_y=30)
+    create_column_with_boxes(column_item_keys=keys_physical_attributes, column_items=character_sheet['Attributes']['Physical_Attributes'], pos_x=three_column_layout[0], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
+    create_column_with_boxes(column_item_keys=keys_social_attributes, column_items=character_sheet['Attributes']['Social_Attributes'], pos_x=three_column_layout[1], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
+    create_column_with_boxes(column_item_keys=keys_mental_attributes, column_items=character_sheet['Attributes']['Mental_Attributes'], pos_x=three_column_layout[2], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
+    
+    /* Skills */
+    let keys_physical_skills = []
+    Object.keys(character_sheet['Skills']['Physical_Skills']).forEach(function(key) {
+        keys_physical_skills.push(key)
+     });
+
+    let keys_social_skills = []
+    Object.keys(character_sheet['Skills']['Social_Skills']).forEach(function(key) {
+        keys_social_skills.push(key)
+    });
+
+    let keys_mental_skills = []
+    Object.keys(character_sheet['Skills']['Mental_Skills']).forEach(function(key) {
+        keys_mental_skills.push(key)
+    });
+
+    create_column_with_boxes(column_item_keys=keys_physical_skills, column_items=character_sheet['Skills']['Physical_Skills'], pos_x=three_column_layout[0], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
+    create_column_with_boxes(column_item_keys=keys_social_skills, column_items=character_sheet['Skills']['Social_Skills'], pos_x=three_column_layout[1], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
+    create_column_with_boxes(column_item_keys=keys_mental_skills, column_items=character_sheet['Skills']['Mental_Skills'], pos_x=three_column_layout[2], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
+
+    
 
 
     // create_n_checkbox(4, 4, 100, 100, 15)
@@ -64,21 +87,24 @@ function create_character_interactive_pdf(){
     doc.save('Test.pdf');
 
     // Internal functions
-    function create_column(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
+    function create_column_with_boxes(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
         for (let index = 0; index < column_item_keys.length; index++) {
             doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), "left")
-            doc.text(pos_x + offset_x, pos_y + (offset_y * index), String(column_items[column_item_keys[index]]))
+            // doc.text(pos_x + offset_x, pos_y + (offset_y * index), String(column_items[column_item_keys[index]]))
+            create_n_checkbox(5, column_items[column_item_keys[index]], pos_x + offset_x, pos_y + (offset_y * index), 15)
+
         }
     }
 
     function create_n_checkbox(n, n_filled, pos_x, pos_y, box_offset){
         n_filled -= 1 // indexes later start with 0 not 1
         let boxes = []
+        let box_baseline_correction = 10
 
         for (let index = 0; index < n; index++) {
             boxes[index] = new CheckBox()
             boxes[index].fieldName = "field" + String(index);
-            boxes[index].Rect = [pos_x + (box_offset * index), pos_y, 10, 10];
+            boxes[index].Rect = [pos_x + (box_offset * index), pos_y - box_baseline_correction, 10, 10];
             if (index <= n_filled){
                 boxes[index].appearanceState = 'On' //checked
             } else {
