@@ -1,9 +1,9 @@
 generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
-// create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id') // Convert to pdf
-create_global_event_listener('click', 'button_download_vampire_id', create_character_interactive_pdf, 'id') // Create pdf 
-create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected wi0  th adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
+create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
+create_global_event_listener('click', 'button_download_vampire_interactive_id', create_character_interactive_pdf, 'id') // Create interactive pdf 
+create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
 create_global_event_listener('click', 'skill_add_button', skill_add, 'class')
@@ -25,29 +25,78 @@ function toggle_discipline_skills (pressed_button){
 }
 
 function create_character_interactive_pdf(){
-    var doc = new jsPDF('p', 'px', [400, 1000]);
-    doc.text(50, 50, 'Hello world!');
-    var boxes = []
-    create_n_checkbox_at(4, 4, 100, 100, 15)
+    let page_width = 1000
+    let page_height = 2000
+    let page_margin = 50
+    let text_area = page_width - (page_margin * 2)
+    let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
+    let subcolumn_start = 150
+
+    var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
+
+    doc.text(200, 50, 'Hello world!'); // Title
+    doc.text(100, 300, String(character_sheet['Character_Details']['Basic_Information']['Clan']))
+    
+    /* Attributes */
+    let keys_physical_attributes = []
+    Object.keys(character_sheet['Attributes']['Physical_Attributes']).forEach(function(key) {
+        keys_physical_attributes.push(key)
+     });
+
+    let keys_social_attributes = []
+    Object.keys(character_sheet['Attributes']['Social_Attributes']).forEach(function(key) {
+        keys_social_attributes.push(key)
+    });
+
+    let keys_mental_attributes = []
+    Object.keys(character_sheet['Attributes']['Mental_Attributes']).forEach(function(key) {
+        keys_mental_attributes.push(key)
+    });
+
+    create_column(column_item_keys=keys_physical_attributes, column_items=character_sheet['Attributes']['Physical_Attributes'], pos_x=three_column_layout[0], pos_y=200, offset_x=subcolumn_start, offset_y=30)
+    create_column(column_item_keys=keys_social_attributes, column_items=character_sheet['Attributes']['Social_Attributes'], pos_x=three_column_layout[1], pos_y=200, offset_x=subcolumn_start, offset_y=30)
+    create_column(column_item_keys=keys_mental_attributes, column_items=character_sheet['Attributes']['Mental_Attributes'], pos_x=three_column_layout[2], pos_y= 200, offset_x=subcolumn_start, offset_y=30)
+
+
+    // create_n_checkbox(4, 4, 100, 100, 15)
+    // create_dropdownlist(["1", "2", "3"], "1", "1", 200, 100, 100, 15)
 
     doc.save('Test.pdf');
 
     // Internal functions
+    function create_column(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
+        for (let index = 0; index < column_item_keys.length; index++) {
+            doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), "left")
+            doc.text(pos_x + offset_x, pos_y + (offset_y * index), String(column_items[column_item_keys[index]]))
+        }
+    }
 
-    function create_n_checkbox_at(n, n_filled, x, y, box_offset){
-        n_filled -= 1 // indexes later start with 0 not 
+    function create_n_checkbox(n, n_filled, pos_x, pos_y, box_offset){
+        n_filled -= 1 // indexes later start with 0 not 1
+        let boxes = []
+
         for (let index = 0; index < n; index++) {
             boxes[index] = new CheckBox()
             boxes[index].fieldName = "field" + String(index);
-            boxes[index].Rect = [x + (box_offset * index), y, 10, 10];
+            boxes[index].Rect = [pos_x + (box_offset * index), pos_y, 10, 10];
             if (index <= n_filled){
-                console.log("Yes")
                 boxes[index].appearanceState = 'On' //checked
             } else {
                 boxes[index].appearanceState = 'Off' //unchecked
             }
             doc.addField(boxes[index])
         }
+    }
+
+    function create_dropdownlist(options, option_value, option_default_value, pos_x, pos_y, width, height){
+        let comboBox = new ComboBox();
+        comboBox.fieldName = "ChoiceField1";
+        comboBox.topIndex = 1;
+        comboBox.Rect = [pos_x, pos_y, width, height];
+        comboBox.setOptions(options);
+        comboBox.value = option_value;
+        comboBox.defaultValue = option_default_value;
+        doc.addField(comboBox);
     }
 }
 
