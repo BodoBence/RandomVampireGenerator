@@ -1,7 +1,8 @@
 generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
-create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id')
+// create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id') // Convert to pdf
+create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id') // Create pdf 
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
