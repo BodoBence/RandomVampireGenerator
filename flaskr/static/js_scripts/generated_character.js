@@ -2,8 +2,8 @@ generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
 // create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id') // Convert to pdf
-create_global_event_listener('click', 'button_download_vampire_id', convert_character_to_pdf, 'id') // Create pdf 
-create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
+create_global_event_listener('click', 'button_download_vampire_id', create_character_interactive_pdf, 'id') // Create pdf 
+create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected wi0  th adifferent class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
 create_global_event_listener('click', 'skill_add_button', skill_add, 'class')
@@ -22,6 +22,33 @@ function toggle_discipline_skills (pressed_button){
 
     target_element = document.getElementsByClassName(selection_class)[target_reference]
     target_element.classList.toggle('dont_show')
+}
+
+function create_character_interactive_pdf(){
+    var doc = new jsPDF('p', 'px', [400, 1000]);
+    doc.text(50, 50, 'Hello world!');
+    var boxes = []
+    create_n_checkbox_at(4, 4, 100, 100, 15)
+
+    doc.save('Test.pdf');
+
+    // Internal functions
+
+    function create_n_checkbox_at(n, n_filled, x, y, box_offset){
+        n_filled -= 1 // indexes later start with 0 not 
+        for (let index = 0; index < n; index++) {
+            boxes[index] = new CheckBox()
+            boxes[index].fieldName = "field" + String(index);
+            boxes[index].Rect = [x + (box_offset * index), y, 10, 10];
+            if (index <= n_filled){
+                console.log("Yes")
+                boxes[index].appearanceState = 'On' //checked
+            } else {
+                boxes[index].appearanceState = 'Off' //unchecked
+            }
+            doc.addField(boxes[index])
+        }
+    }
 }
 
 function convert_character_to_pdf(){
