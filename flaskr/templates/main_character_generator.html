@@ -53,6 +53,7 @@
             <script>
                 var discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
                 var clan_discipline_dict = JSON.parse('{{ clan_discipline_dict | tojson | safe}}')
+                var clans = JSON.parse('{{ clan_list | tojson | safe}}')
                 var character_sheet = JSON.parse('{{ character | tojson | safe}}')
             </script>          
             <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>

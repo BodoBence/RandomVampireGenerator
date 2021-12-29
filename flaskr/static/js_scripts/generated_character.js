@@ -25,18 +25,44 @@ function toggle_discipline_skills (pressed_button){
 }
 
 function create_character_interactive_pdf(){
+    /* Setup values */
+    // Size
     let page_width = 1000
     let page_height = 2000
     let page_margin = 50
     let text_area = page_width - (page_margin * 2)
     let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
     let subcolumn_start = 150
-    let rows_start = [50, 200, 400]
+    let rows_start = [100, 200, 400, 800]
+
+    // Data
 
     var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
 
     doc.text(500, 50, 'Hello world!'); // Title
     // doc.text(100, 300, String(character_sheet['Character_Details']['Basic_Information']['Clan']))
+
+    /* Basic info */
+    doc.text(three_column_layout[0], rows_start[0], "Name")
+    create_text_field(pos_x=three_column_layout[0] + subcolumn_start, pos_y=rows_start[0], text=String(character_sheet["Character_Details"]["Basic_Information"]["Name"], field_name="text_field_name", is_multiline=false))
+
+    doc.text(three_column_layout[1], rows_start[0], "Age")
+    create_text_field(pos_x=three_column_layout[1] + subcolumn_start, pos_y=rows_start[0], text=String(character_sheet["Character_Details"]["Basic_Information"]["Age"]), field_name="text_field_age", is_multiline=false)
+
+
+    doc.text(three_column_layout[2], rows_start[0], "Clan")
+    create_combo_box(pos_x=three_column_layout[2] + subcolumn_start, pos_y=rows_start[0], list_options=clans, list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Clan"]), field_name="list_field_clan")
+
+    doc.text(three_column_layout[0], rows_start[0] + 30, "Sire")
+    create_text_field(pos_x=three_column_layout[0] + subcolumn_start, pos_y=rows_start[0] + 30, text=String(character_sheet["Character_Details"]["Basic_Information"]["Sire"], field_name="text_field_sire", is_multiline=false))
+
+    doc.text(three_column_layout[1], rows_start[0] + 30, "Sex")
+    create_combo_box(pos_x=three_column_layout[1] + subcolumn_start, pos_y=rows_start[0] + 30, list_options=["Male", "Female"], list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Sex"]), field_name="list_field_sex")
+
+    doc.text(three_column_layout[2], rows_start[0] + 30, "Generation")
+    create_combo_box(pos_x=three_column_layout[2] + subcolumn_start, pos_y=rows_start[0] + 30, list_options=["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Generation"]), field_name="list_field_sex")
+
+    /* Trackers */
 
     /* Attributes */
     let keys_physical_attributes = []
@@ -78,7 +104,27 @@ function create_character_interactive_pdf(){
     create_column_with_boxes(column_item_keys=keys_social_skills, column_items=character_sheet['Skills']['Social_Skills'], pos_x=three_column_layout[1], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
     create_column_with_boxes(column_item_keys=keys_mental_skills, column_items=character_sheet['Skills']['Mental_Skills'], pos_x=three_column_layout[2], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
 
-    
+    /* Disciplines */
+    let keys_clan_disciplines = []
+    Object.keys(character_sheet['Disciplines']['Clan_Disciplines']).forEach(function(key) {
+        keys_clan_disciplines.push(key)
+    });
+
+    let keys_non_clan_disciplines = []
+    Object.keys(character_sheet['Disciplines']['Non-Clan_Disciplines']).forEach(function(key) {
+        keys_non_clan_disciplines.push(key)
+    });
+
+    /* Clan */
+    let clan_disciplines_current = clan_discipline_dict[character_sheet["Character_Details"]["Basic_Information"]["Clan"]]
+    for (let index = 0; index < clan_disciplines_current.length; index++) {
+        if (keys_clan_disciplines.includes(clan_disciplines_current[index])){
+            doc.text(three_column_layout[index], rows_start[3], String(clan_disciplines_current[index]))
+            create_n_checkbox(5, character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[index])]["Level"], three_column_layout[index] + subcolumn_start, rows_start[3], box_offset=15)
+        }
+    }
+
+
 
 
     // create_n_checkbox(4, 4, 100, 100, 15)
@@ -87,12 +133,30 @@ function create_character_interactive_pdf(){
     doc.save('Test.pdf');
 
     // Internal functions
+    function create_combo_box(pos_x, pos_y, list_options, list_value, field_name){
+        let comboBox = new ComboBox();
+        comboBox.fieldName = field_name;
+        comboBox.topIndex = 1;
+        comboBox.Rect = [pos_x, pos_y - 10, 100, 20];
+        comboBox.setOptions(list_options);
+        comboBox.value = list_value;
+        comboBox.defaultValue = list_value;
+        doc.addField(comboBox);
+    }
+
+    function create_text_field(pos_x, pos_y, text, field_name, is_multiline){
+        let textField_name = new TextField();
+        textField_name.Rect = [pos_x, pos_y - 10, 100, 20]
+        textField_name.multiline = is_multiline;
+        textField_name.value = text
+        textField_name.fieldName = field_name;
+        doc.addField(textField_name);
+    }
+
     function create_column_with_boxes(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
         for (let index = 0; index < column_item_keys.length; index++) {
             doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), "left")
-            // doc.text(pos_x + offset_x, pos_y + (offset_y * index), String(column_items[column_item_keys[index]]))
             create_n_checkbox(5, column_items[column_item_keys[index]], pos_x + offset_x, pos_y + (offset_y * index), 15)
-
         }
     }
 
@@ -112,17 +176,6 @@ function create_character_interactive_pdf(){
             }
             doc.addField(boxes[index])
         }
-    }
-
-    function create_dropdownlist(options, option_value, option_default_value, pos_x, pos_y, width, height){
-        let comboBox = new ComboBox();
-        comboBox.fieldName = "ChoiceField1";
-        comboBox.topIndex = 1;
-        comboBox.Rect = [pos_x, pos_y, width, height];
-        comboBox.setOptions(options);
-        comboBox.value = option_value;
-        comboBox.defaultValue = option_default_value;
-        doc.addField(comboBox);
     }
 }
 
