@@ -31,16 +31,23 @@ function create_character_interactive_pdf(){
     let page_height = 2000
     let page_margin = 50
     let text_area = page_width - (page_margin * 2)
+    let thee_column_layout_column_width = text_area / 3
     let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
     let subcolumn_start = 150
-    let rows_start = [100, 200, 400, 800]
+    let rows_start = [130, 200, 400, 800]
+    let line_height = 30
 
     // Data
+    let max_skill_level = 10
 
+    // PDF
     var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
 
-    doc.text(500, 50, 'Hello world!'); // Title
-    // doc.text(100, 300, String(character_sheet['Character_Details']['Basic_Information']['Clan']))
+    /* Populating the empty PDF with Data */
+
+    doc.text(500, 50, 'Vampire'); // Title
+    doc.text(500, 65, 'The Masquerade'); // SubTitle
+    doc.text(500, 80, 'Created by AutoFeed'); // SubTitle 2
 
     /* Basic info */
     doc.text(three_column_layout[0], rows_start[0], "Name")
@@ -117,12 +124,35 @@ function create_character_interactive_pdf(){
 
     /* Clan */
     let clan_disciplines_current = clan_discipline_dict[character_sheet["Character_Details"]["Basic_Information"]["Clan"]]
-    for (let index = 0; index < clan_disciplines_current.length; index++) {
-        if (keys_clan_disciplines.includes(clan_disciplines_current[index])){
-            doc.text(three_column_layout[index], rows_start[3], String(clan_disciplines_current[index]))
-            create_n_checkbox(5, character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[index])]["Level"], three_column_layout[index] + subcolumn_start, rows_start[3], box_offset=15)
+    for (let discipline_index = 0; discipline_index < clan_disciplines_current.length; discipline_index++) {
+        // Discipline name and level
+        if (keys_clan_disciplines.includes(clan_disciplines_current[discipline_index])){
+            doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
+            create_n_checkbox(max_skill_level, character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Level"], three_column_layout[discipline_index] + subcolumn_start, rows_start[3], box_offset=15)
+
+            // Discipline skills
+            let current_discipline_skill_keys = []
+            Object.keys(character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Skills"]).forEach(function(key) {
+                current_discipline_skill_keys.push(key)
+            });
+
+            let current_discipline_skill_values = []
+            Object.values(character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Skills"]).forEach(function(value) {
+                current_discipline_skill_values.push(value)
+            });
+
+            create_column_with_text(column_items=current_discipline_skill_keys, pos_x=three_column_layout[discipline_index], pos_y=rows_start[3] + line_height, offset_y=line_height)
+
+            create_column_with_text(column_items=current_discipline_skill_values, pos_x=three_column_layout[discipline_index] + subcolumn_start, pos_y=rows_start[3] + line_height, offset_y=line_height)
+                
+        } else {
+            doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
+            create_n_checkbox(max_skill_level, 0, three_column_layout[discipline_index] + subcolumn_start, rows_start[3], box_offset=15)
         }
     }
+
+    /* Non-Clan */
+
 
 
 
@@ -155,8 +185,14 @@ function create_character_interactive_pdf(){
 
     function create_column_with_boxes(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
         for (let index = 0; index < column_item_keys.length; index++) {
-            doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), "left")
-            create_n_checkbox(5, column_items[column_item_keys[index]], pos_x + offset_x, pos_y + (offset_y * index), 15)
+            doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), align="left")
+            create_n_checkbox(max_skill_level, column_items[column_item_keys[index]], pos_x + offset_x, pos_y + (offset_y * index), 15)
+        }
+    }
+
+    function create_column_with_text(column_items, pos_x, pos_y, offset_y){
+        for (let index = 0; index < column_items.length; index++) {
+            doc.text(pos_x, pos_y + (offset_y * index), String(column_items[index]), align="left", maxWidth=String(thee_column_layout_column_width-subcolumn_start))
         }
     }
 
