@@ -233,20 +233,53 @@ function convert_character_to_csv(){
     var csvFileData = []
     console.log('hi')
     let stats = document.getElementsByClassName("stat_name")
+
+    // Stats
     for (let i = 0; i < stats.length; i++) {
         let item = []
+        // stat name
         item.push(stats[i].innerHTML)
-        item.push('12')
+
+        // stat value
+        let statValue = 0
+        let statValueSource = stats[i].nextElementSibling
+        if (statValueSource.children.length == 0) {
+            // stat value is a text, or number, but is not indicated with dots
+            statValue = statValueSource.innerHTML
+        } else {
+            // stat vlaie is indicated visually with dots, etc.
+            if (statValueSource.firstElementChild.classList.contains('square')){
+                statValue = statValueSource.getElementsByClassName('square_filled').length
+            }
+            if (statValueSource.firstElementChild.classList.contains('dot')){
+                statValue = statValueSource.getElementsByClassName('dot_filled').length
+            }
+        }
+
+        item.push(statValue)
         csvFileData.push(item)
+
+        // Gather discipline skills
+        if (stats[i].classList.contains("discipline_name")){
+            console.log(stats[i].innerHTML)
+            let discipline_skill_data = stats[i].parentElement.lastElementChild.getElementsByClassName("discipline_skill")
+        
+            let discipline_name = String(stats[i].innerHTML + " skills")
+            let discipline_skills = []
+
+            for (let i = 0; i < discipline_skill_data.length - 1; i++) {
+
+                if (discipline_skill_data[i].children > 0){
+                    discipline_skills.push(discipline_skill_data[i].firstElementChild)
+                }
+            }
+
+            csvFileData.push([discipline_name, discipline_skills])
+            
+        }
     }
 
-    // var csvFileData = [  
-    //     ['Alan Walker', 'Singer'],  
-    //     ['Cristiano Ronaldo', 'Footballer'],  
-    //     ['Saina Nehwal', 'Badminton Player'],  
-    //     ['Arijit Singh', 'Singer'],  
-    //     ['Terence Lewis', 'Dancer']  
-    // ];
+    
 
     //  define the heading for each row of the data  
     var csv = 'Stat name,Stat value\n';  
