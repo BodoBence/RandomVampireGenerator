@@ -14,7 +14,7 @@ app.secret_key = unique_key = str(uuid.uuid1())
 # Startup variables
 
 # Metadata
-VERSION_INFO = '3.2'
+VERSION_INFO = '3.3'
 
 # Background values
 HAVE_GENERATED_CHARACTER = False

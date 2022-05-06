@@ -2,7 +2,8 @@ generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
 create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
-create_global_event_listener('click', 'button_download_vampire_interactive_id', create_character_interactive_pdf, 'id') // Create interactive pdf 
+create_global_event_listener('click', 'button_download_vampire_interactive_id', create_character_interactive_pdf, 'id') // Create interactive pdf
+create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV 
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
@@ -224,6 +225,39 @@ function convert_character_to_pdf(){
     pdf.addHTML(character_sheet, 0, 0, function () {
         pdf.save('generated_vampire.pdf');
     });
+}
+
+function convert_character_to_csv(){
+   
+    //c reate CSV file data in an array  
+    var csvFileData = [  
+        ['Alan Walker', 'Singer'],  
+        ['Cristiano Ronaldo', 'Footballer'],  
+        ['Saina Nehwal', 'Badminton Player'],  
+        ['Arijit Singh', 'Singer'],  
+        ['Terence Lewis', 'Dancer']  
+    ];
+
+    //  define the heading for each row of the data  
+    var csv = 'Name,Profession\n';  
+    
+    //  merge the data with CSV  
+    csvFileData.forEach(function(row) {  
+            csv += row.join(',');  
+            csv += "\n";  
+    });  
+
+    //  Creating a hidden element - needed so that the downloaded file will have a name
+    var hiddenElement = document.createElement('a');  
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
+    hiddenElement.target = '_blank';  
+        
+    //  provide the name for the CSV file to be downloaded  
+    hiddenElement.download = 'RandomGeneratedVampireData.csv';  
+    hiddenElement.click();  
+
+    // Cleanup
+    document.removeChild('a')
 }
 
 function replace_underscores_inner_htmls(){
