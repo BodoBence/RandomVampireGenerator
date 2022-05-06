@@ -229,17 +229,27 @@ function convert_character_to_pdf(){
 
 function convert_character_to_csv(){
    
-    //c reate CSV file data in an array  
-    var csvFileData = [  
-        ['Alan Walker', 'Singer'],  
-        ['Cristiano Ronaldo', 'Footballer'],  
-        ['Saina Nehwal', 'Badminton Player'],  
-        ['Arijit Singh', 'Singer'],  
-        ['Terence Lewis', 'Dancer']  
-    ];
+    //  create CSV file data in an array
+    var csvFileData = []
+    console.log('hi')
+    let stats = document.getElementsByClassName("stat_name")
+    for (let i = 0; i < stats.length; i++) {
+        let item = []
+        item.push(stats[i].innerHTML)
+        item.push('12')
+        csvFileData.push(item)
+    }
+
+    // var csvFileData = [  
+    //     ['Alan Walker', 'Singer'],  
+    //     ['Cristiano Ronaldo', 'Footballer'],  
+    //     ['Saina Nehwal', 'Badminton Player'],  
+    //     ['Arijit Singh', 'Singer'],  
+    //     ['Terence Lewis', 'Dancer']  
+    // ];
 
     //  define the heading for each row of the data  
-    var csv = 'Name,Profession\n';  
+    var csv = 'Stat name,Stat value\n';  
     
     //  merge the data with CSV  
     csvFileData.forEach(function(row) {  
