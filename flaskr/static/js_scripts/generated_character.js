@@ -261,37 +261,33 @@ function convert_character_to_csv(){
 
         // Gather discipline skills
         if (stats[i].classList.contains("discipline_name")){
-            console.log(stats[i].innerHTML)
-            let discipline_skill_data = stats[i].parentElement.lastElementChild.getElementsByClassName("discipline_skill")
-        
-            let discipline_name = String(stats[i].innerHTML + " skills")
-            let discipline_skills = []
+            let discipline_skill_data = stats[i].parentElement.getElementsByClassName("discipline_skills")[0].getElementsByClassName("discipline_skill")
 
-            for (let i = 0; i < discipline_skill_data.length - 1; i++) {
+            for (let skill_counter = 0; skill_counter < discipline_skill_data.length; skill_counter++) {
 
-                if (discipline_skill_data[i].children > 0){
-                    discipline_skills.push(discipline_skill_data[i].firstElementChild)
-                }
-            }
+                let discipline_skills = [`${stats[i].innerHTML} skills`]
+                discipline_skills.push(discipline_skill_data[skill_counter].children[0].innerHTML)
+                discipline_skills.push(discipline_skill_data[skill_counter].children[1].innerHTML)
+                csvFileData.push(discipline_skills)
 
-            csvFileData.push([discipline_name, discipline_skills])
-            
+            }           
         }
     }
 
     
 
     //  define the heading for each row of the data  
-    var csv = 'Stat name,Stat value\n';  
+    let csv = 'Stat name\tStat value\tDiscipline skill\n';  
     
     //  merge the data with CSV  
     csvFileData.forEach(function(row) {  
-            csv += row.join(',');  
+            csv += row.join("\t");  // tab seperated CSV
+            // csv += row.join(',');  // comma seperated CSV
             csv += "\n";  
     });  
 
     //  Creating a hidden element - needed so that the downloaded file will have a name
-    var hiddenElement = document.createElement('a');  
+    let hiddenElement = document.createElement('a');  
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);  
     hiddenElement.target = '_blank';  
         
