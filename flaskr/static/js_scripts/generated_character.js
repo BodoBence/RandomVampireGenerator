@@ -2,7 +2,7 @@ generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
 create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
-create_global_event_listener('click', 'button_download_vampire_interactive_id', create_cahracter_interactive_pdf_2, 'id') // Create interactive pdf
+create_global_event_listener('click', 'button_download_vampire_interactive_id', create_cahracter_interactive_pdf, 'id') // Create interactive pdf
 create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
@@ -25,196 +25,7 @@ function toggle_discipline_skills (pressed_button){
     target_element.classList.toggle('dont_show')
 }
 
-function create_character_interactive_pdf(){
-    /* Setup values */
-    // Size
-    let page_width = 1000
-    let page_height = 2000
-    let page_margin = 50
-    let text_area = page_width - (page_margin * 2)
-    let thee_column_layout_column_width = text_area / 3
-    let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
-    let one_column_layout = [page_margin, page_margin + text_area]
-    let subcolumn_start = 150
-    let rows_start = [130, 200, 400, 800]
-    let line_height = 30
-
-    // Data
-    let max_skill_level = 10
-
-    // PDF
-    var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
-
-    /* Populating the empty PDF with Data */
-
-    doc.text(500, 50, 'Vampire'); // Title
-    doc.text(500, 65, 'The Masquerade'); // SubTitle
-    doc.text(500, 80, 'Created by AutoFeed'); // SubTitle 2
-
-    /* Basic info */
-    doc.text(three_column_layout[0], rows_start[0], "Name")
-    create_text_field(pos_x=three_column_layout[0] + subcolumn_start, pos_y=rows_start[0], text=String(character_sheet["Character_Details"]["Basic_Information"]["Name"], field_name="text_field_name", is_multiline=false))
-
-    doc.text(three_column_layout[1], rows_start[0], "Age")
-    create_text_field(pos_x=three_column_layout[1] + subcolumn_start, pos_y=rows_start[0], text=String(character_sheet["Character_Details"]["Basic_Information"]["Age"]), field_name="text_field_age", is_multiline=false)
-
-
-    doc.text(three_column_layout[2], rows_start[0], "Clan")
-    create_combo_box(pos_x=three_column_layout[2] + subcolumn_start, pos_y=rows_start[0], list_options=clans, list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Clan"]), field_name="list_field_clan")
-
-    doc.text(three_column_layout[0], rows_start[0] + 30, "Sire")
-    create_text_field(pos_x=three_column_layout[0] + subcolumn_start, pos_y=rows_start[0] + 30, text=String(character_sheet["Character_Details"]["Basic_Information"]["Sire"], field_name="text_field_sire", is_multiline=false))
-
-    doc.text(three_column_layout[1], rows_start[0] + 30, "Sex")
-    create_combo_box(pos_x=three_column_layout[1] + subcolumn_start, pos_y=rows_start[0] + 30, list_options=["Male", "Female"], list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Sex"]), field_name="list_field_sex")
-
-    doc.text(three_column_layout[2], rows_start[0] + 30, "Generation")
-    create_combo_box(pos_x=three_column_layout[2] + subcolumn_start, pos_y=rows_start[0] + 30, list_options=["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"], list_value=String(character_sheet["Character_Details"]["Basic_Information"]["Generation"]), field_name="list_field_sex")
-
-    /* Trackers */
-
-    /* Attributes */
-    let keys_physical_attributes = []
-    Object.keys(character_sheet['Attributes']['Physical_Attributes']).forEach(function(key) {
-        keys_physical_attributes.push(key)
-     });
-
-    let keys_social_attributes = []
-    Object.keys(character_sheet['Attributes']['Social_Attributes']).forEach(function(key) {
-        keys_social_attributes.push(key)
-    });
-
-    let keys_mental_attributes = []
-    Object.keys(character_sheet['Attributes']['Mental_Attributes']).forEach(function(key) {
-        keys_mental_attributes.push(key)
-    });
-
-    create_column_with_boxes(column_item_keys=keys_physical_attributes, column_items=character_sheet['Attributes']['Physical_Attributes'], pos_x=three_column_layout[0], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
-    create_column_with_boxes(column_item_keys=keys_social_attributes, column_items=character_sheet['Attributes']['Social_Attributes'], pos_x=three_column_layout[1], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
-    create_column_with_boxes(column_item_keys=keys_mental_attributes, column_items=character_sheet['Attributes']['Mental_Attributes'], pos_x=three_column_layout[2], pos_y=rows_start[1], offset_x=subcolumn_start, offset_y=30)
-    
-    /* Skills */
-    let keys_physical_skills = []
-    Object.keys(character_sheet['Skills']['Physical_Skills']).forEach(function(key) {
-        keys_physical_skills.push(key)
-     });
-
-    let keys_social_skills = []
-    Object.keys(character_sheet['Skills']['Social_Skills']).forEach(function(key) {
-        keys_social_skills.push(key)
-    });
-
-    let keys_mental_skills = []
-    Object.keys(character_sheet['Skills']['Mental_Skills']).forEach(function(key) {
-        keys_mental_skills.push(key)
-    });
-
-    create_column_with_boxes(column_item_keys=keys_physical_skills, column_items=character_sheet['Skills']['Physical_Skills'], pos_x=three_column_layout[0], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
-    create_column_with_boxes(column_item_keys=keys_social_skills, column_items=character_sheet['Skills']['Social_Skills'], pos_x=three_column_layout[1], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
-    create_column_with_boxes(column_item_keys=keys_mental_skills, column_items=character_sheet['Skills']['Mental_Skills'], pos_x=three_column_layout[2], pos_y=rows_start[2], offset_x=subcolumn_start, offset_y=30)
-
-    /* Disciplines */
-    let keys_clan_disciplines = []
-    Object.keys(character_sheet['Disciplines']['Clan_Disciplines']).forEach(function(key) {
-        keys_clan_disciplines.push(key)
-    });
-
-    let keys_non_clan_disciplines = []
-    Object.keys(character_sheet['Disciplines']['Non-Clan_Disciplines']).forEach(function(key) {
-        keys_non_clan_disciplines.push(key)
-    });
-
-    /* Clan */
-    let clan_disciplines_current = clan_discipline_dict[character_sheet["Character_Details"]["Basic_Information"]["Clan"]]
-    for (let discipline_index = 0; discipline_index < clan_disciplines_current.length; discipline_index++) {
-
-        // Discipline name and level
-        if (keys_clan_disciplines.includes(clan_disciplines_current[discipline_index])){
-            doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
-            create_n_checkbox(max_skill_level, character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Level"], three_column_layout[discipline_index] + subcolumn_start, rows_start[3], box_offset=15)
-
-            // Discipline skills
-            let current_discipline_skill_keys = []
-            Object.keys(character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Skills"]).forEach(function(key) {
-                current_discipline_skill_keys.push(key)
-            });
-
-            let current_discipline_skill_values = []
-            Object.values(character_sheet["Disciplines"]["Clan_Disciplines"][String(keys_clan_disciplines[discipline_index])]["Skills"]).forEach(function(value) {
-                current_discipline_skill_values.push(value)
-            });
-
-            create_column_with_text(column_items=current_discipline_skill_keys, pos_x=three_column_layout[discipline_index], pos_y=rows_start[3] + line_height, offset_y=line_height)
-            
-            // create_column_with_text(column_items=current_discipline_skill_values, pos_x=three_column_layout[discipline_index] + subcolumn_start, pos_y=rows_start[3] + line_height, offset_y=line_height)
-                
-        } else {
-            doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
-            create_n_checkbox(max_skill_level, 0, three_column_layout[discipline_index] + subcolumn_start, rows_start[3], box_offset=15)
-        }
-    }
-
-    /* Non-Clan */
-
-    // create_n_checkbox(4, 4, 100, 100, 15)
-    // create_dropdownlist(["1", "2", "3"], "1", "1", 200, 100, 100, 15)
-
-    doc.save('Test.pdf');
-
-
-    function create_combo_box(pos_x, pos_y, list_options, list_value, field_name){
-        let comboBox = new ComboBox();
-        comboBox.fieldName = field_name;
-        comboBox.topIndex = 1;
-        comboBox.Rect = [pos_x, pos_y - 10, 100, 20];
-        comboBox.setOptions(list_options);
-        comboBox.value = list_value;
-        comboBox.defaultValue = list_value;
-        doc.addField(comboBox);
-    }
-
-    function create_text_field(pos_x, pos_y, text, field_name, is_multiline){
-        let textField_name = new TextField();
-        textField_name.Rect = [pos_x, pos_y - 10, 100, 20]
-        textField_name.multiline = is_multiline;
-        textField_name.value = text
-        textField_name.fieldName = field_name;
-        doc.addField(textField_name);
-    }
-
-    function create_column_with_boxes(column_item_keys, column_items, pos_x, pos_y, offset_x, offset_y){
-        for (let index = 0; index < column_item_keys.length; index++) {
-            doc.text(pos_x, pos_y + (offset_y * index), String(column_item_keys[index]), align="left")
-            create_n_checkbox(max_skill_level, column_items[column_item_keys[index]], pos_x + offset_x, pos_y + (offset_y * index), 15)
-        }
-    }
-
-    function create_column_with_text(column_items, pos_x, pos_y, offset_y){
-        for (let index = 0; index < column_items.length; index++) {
-            doc.text(pos_x, pos_y + (offset_y * index), String(column_items[index]), align="left", maxWidth=String(thee_column_layout_column_width-subcolumn_start))
-        }
-    }
-
-    function create_n_checkbox(n, n_filled, pos_x, pos_y, box_offset){
-        n_filled -= 1 // indexes later start with 0 not 1
-        let boxes = []
-        let box_baseline_correction = 10
-
-        for (let index = 0; index < n; index++) {
-            boxes[index] = new CheckBox()
-            boxes[index].fieldName = "field" + String(index);
-            boxes[index].Rect = [pos_x + (box_offset * index), pos_y - box_baseline_correction, 10, 10];
-            if (index <= n_filled){
-                boxes[index].appearanceState = 'On' //checked
-            } else {
-                boxes[index].appearanceState = 'Off' //unchecked
-            }
-            doc.addField(boxes[index])
-        }
-    }
-}
-
-function create_cahracter_interactive_pdf_2() {
+function create_cahracter_interactive_pdf() {
     character_data = gather_character_data()
     console.log(character_data)
     write_interactive_pdf(character_data)
@@ -269,13 +80,13 @@ function create_cahracter_interactive_pdf_2() {
     function write_interactive_pdf(character_data) {
         /* Setup values */
     // Size
-    let page_width = 1000
-    let page_height = 2000
     let page_margin = 50
-    let text_area = page_width - (page_margin * 2)
-    let subcolumn_start = 150
-    let rows_start = [130, 200, 400, 800]
-    let line_height = 30
+    let x_height = 24
+    let first_column_width = 150
+    let first_Section_start = 180
+    let page_width = 500
+    let page_height = character_data.length * x_height +200
+
 
     // Data
     let max_skill_level = 10
@@ -284,16 +95,20 @@ function create_cahracter_interactive_pdf_2() {
     var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
 
     /* Populating the empty PDF with Data */
+    doc.setFontSize(20)
+    doc.text(page_width * 0.5, 50, ['Vampire', 'The Masquerade'], align='center'); // Title
+    doc.setFontSize(12)
+    doc.text(page_width * 0.5, 110, 'Created by AutoFeed', align='center'); // Title
 
-    doc.text(500, 50, 'Vampire'); // Title
-    doc.text(500, 65, 'The Masquerade'); // SubTitle
-    doc.text(500, 80, 'Created by AutoFeed'); // SubTitle 2
 
     // Actual Sheet
+    doc.setFontSize(12)
     for (let index = 0; index < character_data.length; index++) {
         // Stat name
         let current_stat_name =  character_data[index][0]
-        doc.text(page_margin, 100 + (15 * index), current_stat_name)
+        if (current_stat_name.slice(-6) != "skills") {
+            doc.text(page_margin, first_Section_start + (x_height * index), current_stat_name)
+        }
 
         // Stat Value
         let current_stat_value = character_data[index][1]
@@ -302,16 +117,21 @@ function create_cahracter_interactive_pdf_2() {
                 if (current_stat_name.slice(-6) != "skills"){
                     console.log(current_stat_name.slice(-6)) //
                     // Normal Stats
-                    create_text_field(pos_x=page_margin + 100, pos_y=100 + (15 * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false)
+                    create_text_field(pos_x=page_margin + first_column_width, pos_y=first_Section_start + (x_height * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false, field_length=first_column_width)
                 } else {
                     // Disicpline skills
-                    create_text_field(pos_x=page_margin, pos_y=100 + (15 * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false)
+                    // Discipline skill name
+                    create_text_field(pos_x=page_margin, pos_y=first_Section_start + (x_height * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false, field_length=first_column_width)
+                    // Discipline skill description
+                    let current_discipline_description = character_data[index][2]
+                    create_text_field(pos_x=page_margin + first_column_width, pos_y=first_Section_start + (x_height * index), text=current_discipline_description, field_name=`text_field_${current_stat_name}`, is_multiline=false, field_length=page_width-(2*page_margin)-first_column_width)
+
                 }
 
                 break;
 
             case "number":
-                create_n_checkbox(n=10, n_filled=current_stat_value, pos_x=page_margin + 100, pos_y=100 + (15 * index), box_offset=30)
+                create_n_checkbox(n=max_skill_level, n_filled=current_stat_value, pos_x=page_margin + first_column_width, pos_y=first_Section_start + (x_height * index), box_offset=20)
                 break;
         
             default:
@@ -342,9 +162,9 @@ function create_cahracter_interactive_pdf_2() {
     }
 
     
-    function create_text_field(pos_x, pos_y, text, field_name, is_multiline){
+    function create_text_field(pos_x, pos_y, text, field_name, is_multiline, field_length){
         let textField_name = new TextField();
-        textField_name.Rect = [pos_x, pos_y - 10, 100, 20]
+        textField_name.Rect = [pos_x, pos_y - 10, field_length, 20]
         textField_name.multiline = is_multiline;
         textField_name.value = text
         textField_name.fieldName = field_name;
