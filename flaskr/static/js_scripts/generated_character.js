@@ -3,7 +3,7 @@ generated_character_page_initial()
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
 create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
 create_global_event_listener('click', 'button_download_vampire_interactive_id', create_character_interactive_pdf, 'id') // Create interactive pdf
-create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV 
+create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
 create_global_event_listener('click', 'skill_delete_button', delete_container, 'class')
@@ -34,6 +34,7 @@ function create_character_interactive_pdf(){
     let text_area = page_width - (page_margin * 2)
     let thee_column_layout_column_width = text_area / 3
     let three_column_layout = [page_margin, page_margin + (text_area / 3), page_margin + ((text_area / 3) *2) ]
+    let one_column_layout = [page_margin, page_margin + text_area]
     let subcolumn_start = 150
     let rows_start = [130, 200, 400, 800]
     let line_height = 30
@@ -126,6 +127,7 @@ function create_character_interactive_pdf(){
     /* Clan */
     let clan_disciplines_current = clan_discipline_dict[character_sheet["Character_Details"]["Basic_Information"]["Clan"]]
     for (let discipline_index = 0; discipline_index < clan_disciplines_current.length; discipline_index++) {
+
         // Discipline name and level
         if (keys_clan_disciplines.includes(clan_disciplines_current[discipline_index])){
             doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
