@@ -2,7 +2,7 @@ generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
 create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
-create_global_event_listener('click', 'button_download_vampire_interactive_id', create_character_interactive_pdf, 'id') // Create interactive pdf
+create_global_event_listener('click', 'button_download_vampire_interactive_id', create_cahracter_interactive_pdf_2, 'id') // Create interactive pdf
 create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
 create_global_event_listener('click', 'square', toggle_square_filled_and_unfilled, 'class')
@@ -145,8 +145,8 @@ function create_character_interactive_pdf(){
             });
 
             create_column_with_text(column_items=current_discipline_skill_keys, pos_x=three_column_layout[discipline_index], pos_y=rows_start[3] + line_height, offset_y=line_height)
-
-            create_column_with_text(column_items=current_discipline_skill_values, pos_x=three_column_layout[discipline_index] + subcolumn_start, pos_y=rows_start[3] + line_height, offset_y=line_height)
+            
+            // create_column_with_text(column_items=current_discipline_skill_values, pos_x=three_column_layout[discipline_index] + subcolumn_start, pos_y=rows_start[3] + line_height, offset_y=line_height)
                 
         } else {
             doc.text(three_column_layout[discipline_index], rows_start[3], String(clan_disciplines_current[discipline_index]))
@@ -156,16 +156,12 @@ function create_character_interactive_pdf(){
 
     /* Non-Clan */
 
-
-
-
-
     // create_n_checkbox(4, 4, 100, 100, 15)
     // create_dropdownlist(["1", "2", "3"], "1", "1", 200, 100, 100, 15)
 
     doc.save('Test.pdf');
 
-    // Internal functions
+
     function create_combo_box(pos_x, pos_y, list_options, list_value, field_name){
         let comboBox = new ComboBox();
         comboBox.fieldName = field_name;
@@ -218,6 +214,146 @@ function create_character_interactive_pdf(){
     }
 }
 
+function create_cahracter_interactive_pdf_2() {
+    character_data = gather_character_data()
+    console.log(character_data)
+    write_interactive_pdf(character_data)
+
+    // Internal Functions
+    function gather_character_data(){
+        var character_data = []
+        let stats = document.getElementsByClassName("stat_name")
+    
+        // Stats
+        for (let i = 0; i < stats.length; i++) {
+            let item = []
+            // stat name
+            item.push(stats[i].innerHTML)
+    
+            // stat value
+            let statValue = 0
+            let statValueSource = stats[i].nextElementSibling
+            if (statValueSource.children.length == 0) {
+                // stat value is a text, or number, but is not indicated with dots
+                statValue = statValueSource.innerHTML
+            } else {
+                // stat vlaie is indicated visually with dots, etc.
+                if (statValueSource.firstElementChild.classList.contains('square')){
+                    statValue = statValueSource.getElementsByClassName('square_filled').length
+                }
+                if (statValueSource.firstElementChild.classList.contains('dot')){
+                    statValue = statValueSource.getElementsByClassName('dot_filled').length
+                }
+            }
+    
+            item.push(statValue)
+            character_data.push(item)
+    
+            // Gather discipline skills
+            if (stats[i].classList.contains("discipline_name")){
+                let discipline_skill_data = stats[i].parentElement.getElementsByClassName("discipline_skills")[0].getElementsByClassName("discipline_skill")
+    
+                for (let skill_counter = 0; skill_counter < discipline_skill_data.length; skill_counter++) {
+    
+                    let discipline_skills = [`${stats[i].innerHTML} skills`]
+                    discipline_skills.push(discipline_skill_data[skill_counter].children[0].innerHTML)
+                    discipline_skills.push(discipline_skill_data[skill_counter].children[1].innerHTML)
+                    character_data.push(discipline_skills)
+    
+                }           
+            }
+        }
+        return character_data
+    }
+
+    function write_interactive_pdf(character_data) {
+        /* Setup values */
+    // Size
+    let page_width = 1000
+    let page_height = 2000
+    let page_margin = 50
+    let text_area = page_width - (page_margin * 2)
+    let subcolumn_start = 150
+    let rows_start = [130, 200, 400, 800]
+    let line_height = 30
+
+    // Data
+    let max_skill_level = 10
+
+    // PDF
+    var doc = new jsPDF('p', 'pt', [page_height, page_width]); // create pdf
+
+    /* Populating the empty PDF with Data */
+
+    doc.text(500, 50, 'Vampire'); // Title
+    doc.text(500, 65, 'The Masquerade'); // SubTitle
+    doc.text(500, 80, 'Created by AutoFeed'); // SubTitle 2
+
+    // Actual Sheet
+    for (let index = 0; index < character_data.length; index++) {
+        // Stat name
+        let current_stat_name =  character_data[index][0]
+        doc.text(page_margin, 100 + (15 * index), current_stat_name)
+
+        // Stat Value
+        let current_stat_value = character_data[index][1]
+        switch (typeof current_stat_value) {
+            case "string":
+                if (current_stat_name.slice(-6) != "skills"){
+                    console.log(current_stat_name.slice(-6)) //
+                    // Normal Stats
+                    create_text_field(pos_x=page_margin + 100, pos_y=100 + (15 * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false)
+                } else {
+                    // Disicpline skills
+                    create_text_field(pos_x=page_margin, pos_y=100 + (15 * index), text=current_stat_value, field_name=`text_field_${current_stat_name}`, is_multiline=false)
+                }
+
+                break;
+
+            case "number":
+                create_n_checkbox(n=10, n_filled=current_stat_value, pos_x=page_margin + 100, pos_y=100 + (15 * index), box_offset=30)
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    // End
+    doc.save('Test.pdf');
+
+    // Internal fucntions
+    function create_n_checkbox(n, n_filled, pos_x, pos_y, box_offset){
+        n_filled -= 1 // indexes later start with 0 not 1
+        let boxes = []
+        let box_baseline_correction = 10
+
+        for (let index = 0; index < n; index++) {
+            boxes[index] = new CheckBox()
+            boxes[index].fieldName = "field" + String(index);
+            boxes[index].Rect = [pos_x + (box_offset * index), pos_y - box_baseline_correction, 10, 10];
+            if (index <= n_filled){
+                boxes[index].appearanceState = 'On' //checked
+            } else {
+                boxes[index].appearanceState = 'Off' //unchecked
+            }
+            doc.addField(boxes[index])
+        }
+    }
+
+    
+    function create_text_field(pos_x, pos_y, text, field_name, is_multiline){
+        let textField_name = new TextField();
+        textField_name.Rect = [pos_x, pos_y - 10, 100, 20]
+        textField_name.multiline = is_multiline;
+        textField_name.value = text
+        textField_name.fieldName = field_name;
+        doc.addField(textField_name);
+    }
+
+    }
+}
+
 function convert_character_to_pdf(){
     var character_sheet = document.getElementById('generated_character_id')
     character_sheet.scrollIntoView(alignToTop=true)
@@ -233,7 +369,6 @@ function convert_character_to_csv(){
    
     //  create CSV file data in an array
     var csvFileData = []
-    console.log('hi')
     let stats = document.getElementsByClassName("stat_name")
 
     // Stats
