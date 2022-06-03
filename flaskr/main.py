@@ -69,6 +69,7 @@ def result_character():
     discipline_dict = default_data.get_discipline_skills_and_rituals()
     clan_discipline_dict = default_data.default_clan_disciplines_data()
     clan_list = default_data.default_clans_data()
+    generation_based_max_level_dict = default_data.default_generation_based_point_data()
 
     rendered_vampire = render_template(
         'main_character_generator.html',
@@ -85,7 +86,8 @@ def result_character():
         max_level = max_level,
         discipline_dict = discipline_dict,
         clan_list = clan_list,
-        clan_discipline_dict = clan_discipline_dict)
+        clan_discipline_dict = clan_discipline_dict,
+        generation_based_max_level_dict = generation_based_max_level_dict)
 
     return rendered_vampire
 

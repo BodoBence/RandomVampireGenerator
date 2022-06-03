@@ -131,6 +131,7 @@ def default_discipline_data():
         'Blood_Sorcery': 0,
         'Oblivion': 0,
         'Animalism': 0,
+        'Thin_Blood_Alchemy': 0,
         'Protean': 0}
 
     return disciplines

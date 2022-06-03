@@ -24,6 +24,18 @@
                     <p class="stat_name">{{ key }}</p>
                     <p class="stat_value" contenteditable="true">{{ value }}</p>
                 </div>
+            {% elif key == 'Generation'%}
+                <!-- special case for generation -->
+                <div>
+                    <p class="stat_name" id="{{ key }}">{{ key }}</p>
+                    <input type="number" max="17" min="0" value="{{ value }}" class="stat_value" >
+                </div>
+            {% elif key == 'Age'%}
+            <!-- special case for generation -->
+            <div>
+                <p class="stat_name" id="{{ key }}">{{ key }}</p>
+                <input type="number" max="3000" min="0" value="{{ value }}" class="stat_value" >
+            </div>
             {% else %}
             <!-- normal loop element -->
                 <div>
@@ -44,7 +56,7 @@
                         {% for i in range(0, value) %}
                             <span class="square square_filled"> </span>
                         {% endfor %}
-                        {% for i in range(0, 10 - value) %}
+                        {% for i in range(0, max_level - value) %}
                             <span class="square square_unfilled"></span>
                         {% endfor %}
                     </div>
@@ -72,7 +84,7 @@
                             {% for i in range(0, attribute_value) %}
                                 <span class="dot dot_filled"> </span>
                             {% endfor %}
-                            {% for i in range(0, 10 - attribute_value) %}
+                            {% for i in range(0, max_level - attribute_value) %}
                                 <span class="dot dot_unfilled"></span>
                             {% endfor %}
                         </div>
@@ -106,7 +118,7 @@
                         {% for i in range(0, skill_value) %}
                             <span class="dot dot_filled"> </span>
                         {% endfor %}
-                        {% for i in range(0, 10 - skill_value) %}
+                        {% for i in range(0, max_level - skill_value) %}
                             <span class="dot dot_unfilled"></span>
                         {% endfor %}
                     </div>
@@ -137,7 +149,7 @@
                         {% for i in range(0, character['Disciplines'][discipline_type][discipline_name]['Level']) %}
                             <span class="dot dot_filled"> </span>
                         {% endfor %}
-                        {% for i in range(0, 10 - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
+                        {% for i in range(0, max_level - character['Disciplines'][discipline_type][discipline_name]['Level']) %}
                             <span class="dot dot_unfilled"></span>
                         {% endfor %}
                     </div>
