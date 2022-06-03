@@ -10,7 +10,7 @@ create_global_event_listener('click', 'skill_delete_button', delete_container, '
 create_global_event_listener('click', 'skill_add_button', skill_add, 'class')
 create_global_event_listener('click', 'discipline_delete_button', delete_container, 'class')
 create_global_event_listener('click', 'discipline_add_button', discipline_add, 'class')
-create_global_event_listener('onChange', 'Generation', updateMaxLevel, 'id')
+create_global_event_listener('input', 'inputGenerationID', updateMaxLevel, 'id')
 
 function generated_character_page_initial(){
     replace_underscores_inner_htmls()
@@ -40,25 +40,37 @@ function create_cahracter_interactive_pdf() {
         for (let i = 0; i < stats.length; i++) {
             let item = []
             // stat name
-            item.push(stats[i].innerHTML)
+            let statName = stats[i].innerHTML
+            item.push(statName)
+
     
             // stat value
             let statValue = 0
-            let statValueSource = stats[i].nextElementSibling
-            if (statValueSource.children.length == 0) {
-                // stat value is a text, or number, but is not indicated with dots
-                statValue = statValueSource.innerHTML
-            } else {
-                // stat vlaie is indicated visually with dots, etc.
-                if (statValueSource.firstElementChild.classList.contains('square')){
-                    statValue = statValueSource.getElementsByClassName('square_filled').length
-                }
-                if (statValueSource.firstElementChild.classList.contains('dot')){
-                    statValue = statValueSource.getElementsByClassName('dot_filled').length
-                }
+            switch (statName) {
+                case 'Generation': case 'Age':
+                    statValue = stats[i].nextElementSibling.value
+                    item.push(statValue)
+                    break;
+            
+                default:
+                    let statValueSource = stats[i].nextElementSibling
+                    if (statValueSource.children.length == 0) {
+                        // stat value is a text, or number, but is not indicated with dots
+                        statValue = statValueSource.innerHTML
+                    } else {
+                        // stat vlaie is indicated visually with dots, etc.
+                        if (statValueSource.firstElementChild.classList.contains('square')){
+                            statValue = statValueSource.getElementsByClassName('square_filled').length
+                        }
+                        if (statValueSource.firstElementChild.classList.contains('dot')){
+                            statValue = statValueSource.getElementsByClassName('dot_filled').length
+                        }
+                    }
+            
+                    item.push(statValue)
+                    break;
             }
-    
-            item.push(statValue)
+            
             characterData.push(item)
     
             // Gather discipline skills
@@ -563,8 +575,8 @@ function discipline_add(trigger_event) {
 }
 
 function updateMaxLevel(trigger) {
-    console.log('here')
     let newGeneration = parseInt(trigger.value)
     let newMaxLevel = MAXLEVELDICT[newGeneration]
     MAXLEVEL = newMaxLevel
+    console.log(MAXLEVEL)
 }
