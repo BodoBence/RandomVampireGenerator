@@ -29,20 +29,20 @@
         <div>
             <label for="slider_social_id">Social focus:</label>
             <input id="slider_social_id" data-reference-id="value_social_id"  data-reference-pie-variable="--pie_Section_1_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
-                name="simplified_social" min="0" max="100" value="50">
-            <label for="slider_social_id" id="value_social_id">50</label>
+                name="simplified_social" min="0" max="100" value="{{ slider_values['Social'] }}">
+            <label for="slider_social_id" id="value_social_id">{{ slider_values['Social'] }}</label>
             <span></span>
 
             <label for="slider_mental_id">Mental focus:</label>
             <input id="slider_mental_id" data-reference-id="value_mental_id"  data-reference-pie-variable="--pie_Section_2_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
-                name="simplified_mental" min="0" max="100" value="50">
-            <label for="slider_mental_id" id="value_mental_id">50</label>
+                name="simplified_mental" min="0" max="100" value="{{ slider_values['Mental'] }}">
+            <label for="slider_mental_id" id="value_mental_id">{{ slider_values['Mental'] }}</label>
             <span></span>
 
             <label for="slider_physical_id">Physical focus:</label>
             <input id="slider_physical_id" data-reference-id="value_physical_id"  data-reference-pie-variable="--pie_Section_3_end" data-reference-pie-class="pie_attributes" class="slider pie_input" type="range"
-                name="simplified_physical" min="0" max="100" value="50">
-            <label for="slider_physical_id" id="value_physical_id">50</label>
+                name="simplified_physical" min="0" max="100" value="{{ slider_values['Physical'] }}">
+            <label for="slider_physical_id" id="value_physical_id">{{ slider_values['Physical'] }}</label>
             <span></span>
             
             <!-- both pies use the same inputs and abode, one is to be blurred for effect, the other is crisp -->
@@ -53,17 +53,17 @@
         <div>
             <label for="slider_discipline_id">Non-clan disciplines:</label>
             <input id="slider_discipline_id" data-reference-id="value_discipline_id" class="slider" type="range"
-                name="simplified_discipline" min="0" max="100" value="5">
+                name="simplified_discipline" min="0" max="100" value="{{ slider_values['Non-Clan_Disciplines'] }}">
 
-            <label for="slider_discipline_id" id="value_discipline_id">5</label>
+            <label for="slider_discipline_id" id="value_discipline_id">{{ slider_values['Non-Clan_Disciplines'] }}</label>
         </div>
 
         <div>
             <label for="button_clan_list_id">Clan:</label>
             <div class="dropdown_button " data-reference-id="clan_container"
                 data-reference-id-arrow="custom_arrow_id_clan" id="button_clan_list_id">
-                <p>Random</p>
-                <input type="text" id="selection_clan_id" name="manual_clan" value="Random">
+                <p>{{ 'Random' if field_conditions['manual_clan_condition'] == false else field_values['manual_clan'] }}</p>
+                <input type="text" id="selection_clan_id" name="manual_clan" value="{{ 'Random' if field_conditions['manual_clan_condition'] == false else 'manual'  }}">
                 <ul class="dropdown_content" data-reference-id-button="button_clan_list_id" id="clan_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_clan_id"
                         data-reference-id-button="button_clan_list_id" name="clan_option"> Random </li>
@@ -80,8 +80,8 @@
             <label for="button_sex_list_id">Sex:</label>
             <div class="dropdown_button" data-reference-id="sex_container" data-reference-id-arrow="custom_arrow_id_sex"
                 id="button_sex_list_id">
-                <p>Random</p>
-                <input type="text" id="selection_sex_id" name="manual_sex" value="Random">
+                <p>{{ 'Random' if field_conditions['manual_sex_condition'] == false else field_values['manual_sex'] }}</p>
+                <input type="text" id="selection_sex_id" name="manual_sex" value="{{ 'Random' if field_conditions['manual_sex_condition'] == false else field_values['manual_sex'] }}">
                 <ul class="dropdown_content" data-reference-id-button="button_sex_list" id="sex_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_sex_id"
                         data-reference-id-button="button_sex_list_id" name="sex_option"> Random </li>
@@ -99,8 +99,8 @@
             <label for="button_generation_list_id">Generation:</label>
             <div class="dropdown_button " data-reference-id="generation_container_id"
                 data-reference-id-arrow="custom_arrow_id_generation" id="button_generation_list_id">
-                <p>Random</p>
-                <input type="text" id="selection_generation_id" name="manual_generation" value="Random">
+                <p>{{ 'Random' if field_conditions['manual_generation_condition'] == false else field_values['manual_generation'] }}</p>
+                <input type="text" id="selection_generation_id" name="manual_generation" value="{{ 'Random' if field_conditions['manual_generation_condition'] == false else field_values['manual_generation'] }}">
                 <ul class="dropdown_content" data-reference-id-button="button_generation_list"
                     id="generation_container_id">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_generation_id"
@@ -120,10 +120,10 @@
             <label for="button_age_list_id">Age:</label>
             <div class="dropdown_button " data-reference-id="age_container"
                 data-reference-id-arrow="custom_arrow_id_age" id="button_age_list_id">
-                <p>Random</p>
+                <p>{{ 'Random' if field_conditions['manual_age_condition'] == false else 'Manual' }}</p>
                 <input type="text" id="selection_age_id" name="manual_age_selection"
                     data-input-reference="manual_age_input_id" data-input-default="1" data-input-focus="Random"
-                    value="Random" data-reference-id-button="button_age_list_id">
+                    value="{{ 'Random' if field_conditions['manual_age_condition'] == false else field_values['manual_age'] }}" data-reference-id-button="button_age_list_id">
                 <ul class="dropdown_content" data-reference-id-button="button_age_list_id" id="age_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_age_id"
                         data-reference-id-button="button_age_list_id" name="age_option"> Random </li>
@@ -139,13 +139,13 @@
         </div>
 
         <div>
-            <label for="button_calculation_list_id">XP gain:</label>
+            <label for="button_calculation_list_id">XP:</label>
             <div class="dropdown_button " data-reference-id="calculation_container"
                 data-reference-id-arrow="custom_arrow_id_calculation" id="button_calculation_list_id">
-                <p>Algorithm</p>
+                <p>{{ 'Algorithm' if field_conditions['manual_calculation_condition'] == false else 'Manual' }}</p>
                 <input type="text" id="selection_calculation_id" name="manual_calculation_selection"
                     data-input-reference="manual_calculation_input_id" data-input-default="1"
-                    data-input-focus="Algorithm" value="Algorithm" data-reference-id-button="button_calculation_list_id">
+                    data-input-focus="Algorithm" value="{{ 'Algorithm' if field_conditions['manual_calculation_condition'] == false else field_values['manual_calculation'] }}" data-reference-id-button="button_calculation_list_id">
                 <ul class="dropdown_content" data-reference-id-button="button_calculation_list_id"
                     id="calculation_container">
                     <li class="fake_option" data-reference-option="Algorithm"
@@ -166,10 +166,10 @@
 
             <div class="dropdown_button " data-reference-id="name_container"
                 data-reference-id-arrow="custom_arrow_id_name" id="button_name_list_id">
-                <p>Random</p>
+                <p>{{ 'Random' if field_conditions['manual_name_condition'] == false else 'Manual' }}</p>
                 <input type="text" id="selection_name_id" name="manual_name_selection"
                     data-input-reference="manual_name_input_id" data-input-default="Fruzsi" data-input-focus="Random"
-                    data-reference-id-button="button_name_list_id" value="Random">
+                    data-reference-id-button="button_name_list_id" value="{{ 'Random' if field_conditions['manual_name_condition'] == false else field_values['manual_name'] }}">
                 <ul class="dropdown_content" data-reference-id-button="button_name_list" id="name_container">
                     <li class="fake_option" data-reference-option="Random" data-reference-id="selection_name_id"
                         data-reference-id-button="button_name_list_id" name="name_option"> Random </li>

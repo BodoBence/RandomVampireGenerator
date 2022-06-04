@@ -41,13 +41,15 @@ def home():
         'main_character_generator.html',
         display_legal = True,
         version = VERSION_INFO,
+        have_generated_character=HAVE_GENERATED_CHARACTER,
+
+        clans = startup_input_field_details['input_clans'],
+        generations = startup_input_field_details['input_generations'],
+
         field_conditions = startup_input_field_details['input_conditions'],
         field_values = startup_input_field_details['input_values'],
         slider_values = startup_input_field_details['input_weights'],
-        default_input_weights=startup_input_field_details['input_weights'],
-        clans = startup_input_field_details['input_clans'],
-        generations = startup_input_field_details['input_generations'],
-        have_generated_character=HAVE_GENERATED_CHARACTER)
+        default_input_weights = startup_input_field_details['input_weights'])
 
 @app.route('/result_character', methods = ['POST', 'GET'])
 def result_character():
@@ -59,10 +61,6 @@ def result_character():
         input_conditions=resutrctured_conditions,
         input_weights=restructured_weights)
 
-    # overwrite the input field and slider valies
-    startup_input_field_details['input_conditions'] = resutrctured_conditions
-    startup_input_field_details['input_values'] = restructured_values
-    startup_input_field_details['input_weights'] = restructured_weights
 
     # details = generated_character['Character_Details']
     max_level = server_functions.get_maximum_skill_level(generated_character)
@@ -76,18 +74,21 @@ def result_character():
         display_legal = True,
         version = VERSION_INFO,
         have_generated_character=HAVE_GENERATED_CHARACTER,
-        field_conditions = resutrctured_conditions,
-        field_values = restructured_values,
-        slider_values = restructured_weights,
+
+        field_conditions = resutrctured_conditions, # overwrite the input field and slider values
+        field_values = restructured_values, # overwrite the input field and slider values
+        slider_values = restructured_weights, # overwrite the input field and slider values
         default_input_weights = startup_input_field_details['input_weights'],
+
         clans = startup_input_field_details['input_clans'],
         generations = startup_input_field_details['input_generations'],
-        character = generated_character,
-        max_level = max_level,
         discipline_dict = discipline_dict,
         clan_list = clan_list,
         clan_discipline_dict = clan_discipline_dict,
-        generation_based_max_level_dict = generation_based_max_level_dict)
+        generation_based_max_level_dict = generation_based_max_level_dict,
+
+        character = generated_character,
+        max_level = max_level)
 
     return rendered_vampire
 

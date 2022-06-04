@@ -37,14 +37,14 @@ def start_values():
 
 def start_weights():
     start_weights = {
-        'Attributes': 20,
+        'Attributes': 30,
         'Skills': 70,
         'Disciplines': 50,
-        'Physical': 50,
-        'Social': 50,
-        'Mental': 50,
+        'Physical': 33,
+        'Social': 33,
+        'Mental': 33,
         'Clan_Disciplines': 100,
-        'Non-Clan_Disciplines': 10}
+        'Non-Clan_Disciplines': 5}
     return start_weights
 
 def age_modulated_weights():
