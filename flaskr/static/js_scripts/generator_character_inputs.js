@@ -123,18 +123,22 @@ function load_default_input_values(){
     // Sliders
     input_discipline = document.getElementById('slider_discipline_id')
     input_discipline.value = 5
+    document.getElementById('value_discipline_id').innerHTML = input_discipline.value
     input_discipline.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_physical = document.getElementById('slider_physical_id')
     input_physical.value = 50
+    document.getElementById('value_physical_id').innerHTML = input_physical.value
     input_physical.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_mental = document.getElementById('slider_mental_id')
     input_mental.value = 50
+    document.getElementById('value_mental_id').innerHTML = input_mental.value
     input_mental.dispatchEvent(new Event('change', { bubbles: true }))
 
     input_social = document.getElementById('slider_social_id')
     input_social.value = 50
+    document.getElementById('value_social_id').innerHTML = input_social.value
     input_social.dispatchEvent(new Event('change', { bubbles: true }))
 
 
