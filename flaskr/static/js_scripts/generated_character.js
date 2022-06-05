@@ -95,8 +95,8 @@ function create_cahracter_interactive_pdf() {
     // Size
     let pageMargin = 50
     let fontSizeTitle = 20
-    let fontSizeMain = 8
-    let xHeight = 16
+    let fontSizeMain = 10
+    let xHeight = 20
     let checkBoxSize = xHeight* 0.5
     let firstColumnWidth = 150
     let pageWidth = 500
@@ -119,7 +119,7 @@ function create_cahracter_interactive_pdf() {
     doc.text(pageWidth * 0.5, baseLine, ['Vampire', 'The Masquerade'], align='center'); // Title main
     
     doc.setFontSize(12)
-    baseLine += xHeight*2
+    baseLine += fontSizeTitle*2
     doc.text(pageWidth * 0.5, baseLine, 'Interactive Character Sheet Created by AutoFeed', align='center'); // Title sub
 
 
@@ -181,8 +181,11 @@ function create_cahracter_interactive_pdf() {
                 break;
         }
 
-        if (currentStatName.slice(-6) != "skills") {
+        if (currentStatName.slice(-6) != "skills") { // Nornmal stats
+
             doc.text(pageMargin, baseLine, currentStatName)
+
+            
         } // all discipline skills are 3 element list (e.g. ['fortitude skill', 'unswayable mind', 'mental strength']). We don't want to display 'fortitude skill' every time
 
         // Stat Value
@@ -264,10 +267,10 @@ function create_cahracter_interactive_pdf() {
     function createFieldText(positionX, positionY, text, fieldName, isMultiLine, fieldLength, fieldHeight){
         let currentTextField = new TextField();
         currentTextField.Rect = [positionX, positionY - 10, fieldLength, fieldHeight]
-        currentTextField.setFontSize = 4
         currentTextField.multiline = isMultiLine;
         currentTextField.value = text
         currentTextField.fieldName = fieldName;
+        currentTextField.maxFontSize = fontSizeMain
         doc.addField(currentTextField);
     }
 
