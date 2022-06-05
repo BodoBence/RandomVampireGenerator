@@ -94,12 +94,16 @@ function create_cahracter_interactive_pdf() {
         /* Setup values */
     // Size
     let pageMargin = 50
-    let xHeight = 24
+    let fontSizeTitle = 20
+    let fontSizeMain = 8
+    let xHeight = 16
+    let checkBoxSize = xHeight* 0.5
     let firstColumnWidth = 150
     let pageWidth = 500
     let columnGutter = 6
     let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
     let baseLine = 2*xHeight
+
 
     // Data
     let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
@@ -111,7 +115,7 @@ function create_cahracter_interactive_pdf() {
     /* Populating the empty PDF with Data */
 
     // Title
-    doc.setFontSize(20)
+    doc.setFontSize(fontSizeTitle)
     doc.text(pageWidth * 0.5, baseLine, ['Vampire', 'The Masquerade'], align='center'); // Title main
     
     doc.setFontSize(12)
@@ -121,7 +125,7 @@ function create_cahracter_interactive_pdf() {
 
     // Actual Sheet
     // Iteration
-    doc.setFontSize(12)
+    doc.setFontSize(fontSizeMain)
 
     let startedBasicInfo = false
     let startedAttributes = false
@@ -196,6 +200,25 @@ function create_cahracter_interactive_pdf() {
                     let currentDisciplineDescription = characterData[index][2]
                     createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=currentDisciplineDescription, fieldName=`text_field_${currentStatName}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
                     baseLine += xHeight // make space for the taller text fields
+
+                    // Add Empty discipline fields at the discipline skills' end
+                    if (index != characterData.length - 1) { // Check if NOT last element
+                        if (currentStatName != characterData[index + 1][0]) {
+                            for (let i = 0; i < 2; i++) {
+                                baseLine += xHeight // make space for the taller text fields
+                                createFieldText(positionX=pageMargin, positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=20)
+                                createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
+                                baseLine += xHeight // make space for the taller text fields
+                            }
+                        }
+                    } else { // Last item
+                        for (let i = 0; i < 2; i++) {
+                            baseLine += xHeight // make space for the taller text fields
+                            createFieldText(positionX=pageMargin, positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=20)
+                            createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
+                            baseLine += xHeight // make space for the taller text fields
+                        }
+                    }                 
                 }
 
                 break;
@@ -203,10 +226,10 @@ function create_cahracter_interactive_pdf() {
             case "number":
                 switch (currentStatName) {
                     case 'Health': case 'Willpower': case 'Blood Potency':
-                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=24)
+                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=24, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
                 
                     default:
-                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=24)
+                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=24, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
                 }
                 break;
         
@@ -219,7 +242,7 @@ function create_cahracter_interactive_pdf() {
     doc.save('Test.pdf');
 
     // Internal fucntions
-    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset){
+    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth){
         nFilled -= 1 // indexes later start with 0 not 1
         let boxes = []
         let box_baseline_correction = 10
@@ -227,7 +250,7 @@ function create_cahracter_interactive_pdf() {
         for (let index = 0; index < n; index++) {
             boxes[index] = new CheckBox()
             boxes[index].fieldName = "field" + String(index);
-            boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, 10, 10];
+            boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, boxHeight, boxWidth];
             if (index <= nFilled){
                 boxes[index].appearanceState = 'On' //checked
             } else {
