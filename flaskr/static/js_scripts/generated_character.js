@@ -140,6 +140,7 @@ function create_cahracter_interactive_pdf() {
     let startedSkills = false
     let startedDisciplines = false
     let currentColumn = 0
+    let disciplineSkillCounter = 0
 
     // Main loop
     for (let index = 0; index < characterData.length; index++) {
@@ -230,18 +231,19 @@ function create_cahracter_interactive_pdf() {
             case "string":
                 if (currentStatName.slice(-6) != "skills"){
                     // Normal Stats
-                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*0.75)
+                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`statValue${currentStatName}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*0.75)
                 
                 } else {
                     // Disicpline skills
                     // Discipline skill name
                     currentColumn = 0
+                    disciplineSkillCounter += 1
                     baseLine += xHeight // make space for the taller text fields
-                    createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                    createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=currentStatValue, fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
                     
                     // Discipline skill description
                     let currentDisciplineDescription = characterData[index][2]
-                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentDisciplineDescription, fieldName=`text_field_${currentStatName}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
+                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentDisciplineDescription, fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
                     baseLine += xHeight // make space for the taller text fields
 
                     // Add Empty discipline fields at the discipline skills' end
@@ -249,17 +251,23 @@ function create_cahracter_interactive_pdf() {
                         if (currentStatName != characterData[index + 1][0]) {
                             for (let i = 0; i < 2; i++) {
                                 baseLine += xHeight // make space for the taller text fields
-                                createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
-                                createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
+                                disciplineSkillCounter += 1
+                                createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                                disciplineSkillCounter += 1
+                                createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
                                 baseLine += xHeight // make space for the taller text fields
+                                disciplineSkillCounter = 0
                             }
                         }
                     } else { // Last item
                         for (let i = 0; i < 2; i++) {
                             baseLine += xHeight // make space for the taller text fields
-                            createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
-                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
+                            disciplineSkillCounter += 1
+                            createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                            disciplineSkillCounter += 1
+                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnWidth, fieldHeight=xHeight*1.5)
                             baseLine += xHeight // make space for the taller text fields
+                            disciplineSkillCounter = 0
                         }
                     }                 
                 }
@@ -270,10 +278,10 @@ function create_cahracter_interactive_pdf() {
                 switch (currentStatName) {
                     case 'Health': case 'Willpower': case 'Blood Potency':
 
-                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
+                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
                 
                     default:
-                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
+                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
                 }
                 break;
         
@@ -288,14 +296,14 @@ function create_cahracter_interactive_pdf() {
     doc.save('Test.pdf');
 
     // Internal fucntions
-    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth){
+    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth, boxName){
         nFilled -= 1 // indexes later start with 0 not 1
         let boxes = []
         let box_baseline_correction = 10
 
         for (let index = 0; index < n; index++) {
             boxes[index] = new CheckBox()
-            boxes[index].fieldName = "field" + String(index);
+            boxes[index].fieldName = `${boxName}${index}`;
             boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, boxHeight, boxWidth];
             if (index <= nFilled){
                 boxes[index].appearanceState = 'On' //checked
