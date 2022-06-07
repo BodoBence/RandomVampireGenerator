@@ -83,6 +83,7 @@ def result_character():
         clans = startup_input_field_details['input_clans'],
         generations = startup_input_field_details['input_generations'],
         discipline_dict = discipline_dict,
+        disciplines_list = default_data.default_disciplines_data(),
         clan_list = clan_list,
         clan_discipline_dict = clan_discipline_dict,
         generation_based_max_level_dict = generation_based_max_level_dict,

@@ -42,6 +42,7 @@
     position: absolute;
     z-index: 2;
     width: auto;
+    max-height: 80vh;
     top: 4em;
     left: 0;
     overflow: scroll;

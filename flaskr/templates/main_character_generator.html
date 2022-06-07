@@ -57,6 +57,7 @@
                 var character_sheet = JSON.parse('{{ character | tojson | safe}}')
                 var MAXLEVEL = JSON.parse('{{ max_level | tojson | safe}}')
                 var MAXLEVELDICT = JSON.parse('{{ generation_based_max_level_dict | tojson | safe}}')
+                var DISCIPLINES_LIST = JSON.parse('{{ disciplines_list | tojson | safe}}')
             </script>          
             <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
 

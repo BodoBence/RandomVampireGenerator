@@ -11,6 +11,7 @@ FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'restructured_discip
 FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
 FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
 FILE_CLANS = os.path.join(script_dir, 'static', 'clans.json')
+FILE_DISCIPLINES = os.path.join(script_dir, 'static', 'disciplines.json')
 
 MAX_AGE = 3000
 
@@ -199,6 +200,11 @@ def default_clans_data():
     with open(FILE_CLANS) as json_file:
         clans = json.load(json_file)
         return clans
+
+def default_disciplines_data():
+    with open(FILE_DISCIPLINES) as json_file:
+        disciplines = json.load(json_file)
+        return disciplines
 
 def default_generations_data():
     generations = range(3, 17)
