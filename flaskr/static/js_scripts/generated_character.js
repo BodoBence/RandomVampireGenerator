@@ -93,17 +93,25 @@ function create_cahracter_interactive_pdf() {
     function write_interactive_pdf(characterData) {
         /* Setup values */
     // Size
+    // User Input
     let pageMargin = 50
     let fontSizeTitle = 20
     let fontSizeMain = 10
     let xHeight = 20
     let checkBoxSize = xHeight* 0.5
-    let firstColumnWidth = 150
-    let pageWidth = 500
+    let pageWidth = 800
     let columnGutter = 6
+    let columnN = 6
+    let firstColumnWidth = (pageWidth - pageMargin * 2) / columnN
+
+    // Calcualted Inputs
     let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
     let baseLine = 2*xHeight
-
+    let columnStarts = []
+    
+    for (let index = 0; index < columnN; index++) {
+        columnStarts.push(((pageWidth - pageMargin * 2) / columnN) * index + pageMargin)
+    }
 
     // Data
     let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
@@ -131,8 +139,16 @@ function create_cahracter_interactive_pdf() {
     let startedAttributes = false
     let startedSkills = false
     let startedDisciplines = false
+    let currentColumn = 0
 
+    // Main loop
     for (let index = 0; index < characterData.length; index++) {
+
+        if (currentColumn >= 6) {
+            currentColumn = 0
+            baseLine += xHeight // Every other case
+
+        }
         let currentStatName =  characterData[index][0]
 
         // Set base line. Here we dinamically create  sections also
@@ -143,6 +159,7 @@ function create_cahracter_interactive_pdf() {
                     doc.text(pageWidth * 0.5, baseLine, 'Basic Info', align='center'); 
                     baseLine += xHeight
                     startedBasicInfo = true
+                    currentColumn = 0
                 }
                 break;
 
@@ -152,6 +169,7 @@ function create_cahracter_interactive_pdf() {
                     doc.text(pageWidth * 0.5, baseLine, 'Attributes', align='center');
                     baseLine += xHeight
                     startedAttributes = true
+                    currentColumn = 0
                 }
                 break;
 
@@ -161,6 +179,7 @@ function create_cahracter_interactive_pdf() {
                     doc.text(pageWidth * 0.5, baseLine, 'Skills', align='center');
                     baseLine += xHeight
                     startedSkills = true
+                    currentColumn = 0
                 }
                 break;
 
@@ -170,6 +189,7 @@ function create_cahracter_interactive_pdf() {
                     doc.text(pageWidth * 0.5, baseLine, 'Disciplines', align='center');
                     baseLine += xHeight
                     startedDisciplines = true
+                    currentColumn = 0
                 } else {
                     baseLine += xHeight
                 }
@@ -177,13 +197,12 @@ function create_cahracter_interactive_pdf() {
                 break;
 
             default:
-                baseLine += xHeight // Every other case
                 break;
         }
 
         if (currentStatName.slice(-6) != "skills") { // Nornmal stats
 
-            doc.text(pageMargin, baseLine, currentStatName)
+            doc.text(columnStarts[currentColumn], baseLine, currentStatName)
 
             
         } // all discipline skills are 3 element list (e.g. ['fortitude skill', 'unswayable mind', 'mental strength']). We don't want to display 'fortitude skill' every time
@@ -194,14 +213,14 @@ function create_cahracter_interactive_pdf() {
             case "string":
                 if (currentStatName.slice(-6) != "skills"){
                     // Normal Stats
-                    createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=firstColumnWidth, fieldHeight=xHeight*0.75)
+                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=firstColumnWidth, fieldHeight=xHeight*0.75)
                 } else {
                     // Disicpline skills
                     // Discipline skill name
-                    createFieldText(positionX=pageMargin, positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                    createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=currentStatValue, fieldName=`text_field_${currentStatName}`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
                     // Discipline skill description
                     let currentDisciplineDescription = characterData[index][2]
-                    createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=currentDisciplineDescription, fieldName=`text_field_${currentStatName}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
+                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentDisciplineDescription, fieldName=`text_field_${currentStatName}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
                     baseLine += xHeight // make space for the taller text fields
 
                     // Add Empty discipline fields at the discipline skills' end
@@ -209,16 +228,16 @@ function create_cahracter_interactive_pdf() {
                         if (currentStatName != characterData[index + 1][0]) {
                             for (let i = 0; i < 2; i++) {
                                 baseLine += xHeight // make space for the taller text fields
-                                createFieldText(positionX=pageMargin, positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
-                                createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
+                                createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                                createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
                                 baseLine += xHeight // make space for the taller text fields
                             }
                         }
                     } else { // Last item
                         for (let i = 0; i < 2; i++) {
                             baseLine += xHeight // make space for the taller text fields
-                            createFieldText(positionX=pageMargin, positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
-                            createFieldText(positionX=pageMargin + firstColumnWidth, positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
+                            createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`text_field_extra_1`, isMultiLine=false, fieldLength=firstColumnWidth-columnGutter, fieldHeight=xHeight*1.5)
+                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`text_field_extra_2`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-firstColumnWidth, fieldHeight=xHeight*1.5)
                             baseLine += xHeight // make space for the taller text fields
                         }
                     }                 
@@ -229,16 +248,19 @@ function create_cahracter_interactive_pdf() {
             case "number":
                 switch (currentStatName) {
                     case 'Health': case 'Willpower': case 'Blood Potency':
-                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
+
+                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
                 
                     default:
-                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=pageMargin + firstColumnWidth, positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
+                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize)
                 }
                 break;
         
             default:
                 break;
         }
+
+        currentColumn += 2
     }
 
     // End
