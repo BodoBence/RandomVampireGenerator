@@ -305,6 +305,7 @@ function create_cahracter_interactive_pdf() {
             boxes[index] = new CheckBox()
             boxes[index].fieldName = `${boxName}${index}`;
             boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, boxHeight, boxWidth];
+            boxes[index].maxFontSize = fontSizeMain
             if (index <= nFilled){
                 boxes[index].appearanceState = 'On' //checked
             } else {
