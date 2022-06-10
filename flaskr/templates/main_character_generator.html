@@ -46,18 +46,17 @@
 
             <!-- Foreign scripts -->
             <script src="{{ url_for('static', filename='js_scripts/external/jspdf/jspdf.debug.js') }}"></script>
-            <script src="{{ url_for('static', filename='js_scripts/external/jspdf/addhtml.js') }}"></script>
-            <script src="{{ url_for('static', filename='js_scripts/external/html2canvas/html2canvas.js') }}"></script>
 
             <!-- Own scripts -->
             <script>
-                var discipline_dict = JSON.parse('{{ discipline_dict | tojson | safe}}')
+                var DISCIPLINES_SKILLS_RITUALS = JSON.parse('{{ DISCIPLINES_SKILLS_RITUALS | tojson | safe}}')
                 var clan_discipline_dict = JSON.parse('{{ clan_discipline_dict | tojson | safe}}')
-                var clans = JSON.parse('{{ clan_list | tojson | safe}}')
-                var character_sheet = JSON.parse('{{ character | tojson | safe}}')
+                var CLANS = JSON.parse('{{ clan_list | tojson | safe}}')
+                var CHARACTER_SHEET = JSON.parse('{{ character | tojson | safe}}')
                 var MAXLEVEL = JSON.parse('{{ max_level | tojson | safe}}')
                 var MAXLEVELDICT = JSON.parse('{{ generation_based_max_level_dict | tojson | safe}}')
                 var DISCIPLINES_LIST = JSON.parse('{{ disciplines_list | tojson | safe}}')
+                var PREDATOR_TYPES = JSON.parse('{{ predator_types | tojson | safe}}')
             </script>          
             <script type="text/javascript" src="{{ url_for('static', filename='js_scripts/generated_character.js') }}"></script>
 

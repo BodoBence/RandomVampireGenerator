@@ -64,7 +64,7 @@ def result_character():
 
     # details = generated_character['Character_Details']
     max_level = server_functions.get_maximum_skill_level(generated_character)
-    discipline_dict = default_data.get_discipline_skills_and_rituals()
+    DISCIPLINES_SKILLS_RITUALS = default_data.get_discipline_skills_and_rituals()
     clan_discipline_dict = default_data.default_clan_disciplines_data()
     clan_list = default_data.default_clans_data()
     generation_based_max_level_dict = default_data.default_generation_based_point_data()
@@ -81,8 +81,9 @@ def result_character():
         default_input_weights = startup_input_field_details['input_weights'],
 
         clans = startup_input_field_details['input_clans'],
+        predator_types = default_data.get_predator_types(),
         generations = startup_input_field_details['input_generations'],
-        discipline_dict = discipline_dict,
+        DISCIPLINES_SKILLS_RITUALS = DISCIPLINES_SKILLS_RITUALS,
         disciplines_list = default_data.default_disciplines_data(),
         clan_list = clan_list,
         clan_discipline_dict = clan_discipline_dict,

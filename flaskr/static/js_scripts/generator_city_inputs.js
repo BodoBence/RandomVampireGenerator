@@ -53,7 +53,7 @@ function display_slider_value(current_slider){
     skill_keys.forEach(key => {
         if (owned_skills.includes(key) == false) {
             potential_skills.push(key)
-            potential_skill_descriptions.push(discipline_dict[current_discipline]['skill'][skill_level][key])
+            potential_skill_descriptions.push(DISCIPLINES_SKILLS_RITUALS[current_discipline]['skill'][skill_level][key])
         }
     });
     target_element.innerHTML = new_value

@@ -378,6 +378,9 @@ def generate(input_values, input_conditions, input_weights):
                     surnames=names_surname,
                     name_selection_critera=False,
                     manual_name='Random_Older_Vampire')
+    
+
+    predator_type = str(random.choice(list(default_data.get_predator_types().keys())))
 
     basic_info = {'Name': character_name,
                   'Sex': sex,
@@ -385,6 +388,7 @@ def generate(input_values, input_conditions, input_weights):
                   'Clan': clan,
                   'Sire': sire_name,
                   'Age': age,
+                  'Predator Type': predator_type,
                   'Derangement': 'N/A'}
 
     basic_info = derangement_check(basic_info)

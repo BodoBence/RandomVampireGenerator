@@ -1,7 +1,6 @@
 generated_character_page_initial()
 
 create_global_event_listener('click', 'button_discipline_skills', toggle_discipline_skills, 'class')
-create_global_event_listener('click', 'button_download_vampire_static_id', convert_character_to_pdf, 'id') // Convert to pdf
 create_global_event_listener('click', 'button_download_vampire_interactive_id', create_cahracter_interactive_pdf, 'id') // Create interactive pdf
 create_global_event_listener('click', 'button_download_vampire_csv_id', convert_character_to_csv, 'id') // Create CSV
 create_global_event_listener('click', 'dot', toggle_dot_filled_and_unfilled, 'class') // if the span elements are not selected with a different class, they trigger in a chain and first function always triggers teh second, so we cant put fill to unfill 
@@ -14,8 +13,8 @@ create_global_event_listener('input', 'inputGenerationID', updateMaxLevel, 'id')
 
 function generated_character_page_initial(){
     replace_underscores_inner_htmls()
-    var character_sheet = document.getElementById('generated_character_id')
-    character_sheet.scrollIntoView(alignToTop=true)
+    var CHARACTER_SHEET = document.getElementById('generated_character_id')
+    CHARACTER_SHEET.scrollIntoView(alignToTop=true)
 }
 
 function toggle_discipline_skills (pressed_button){
@@ -28,7 +27,6 @@ function toggle_discipline_skills (pressed_button){
 
 function create_cahracter_interactive_pdf() {
     let characterData = gather_characterData()
-    console.log(characterData)
     write_interactive_pdf(characterData)
 
     // Internal Functions
@@ -106,7 +104,6 @@ function create_cahracter_interactive_pdf() {
     let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
     let baseLine = 4*xHeight
     let columnValueWidth = MAXLEVEL*checkBoxSize*2
-    console.log(columnValueWidth)
     let pageWidth = pageMargin * 2 + columnStatWidth * 3 + columnValueWidth * 3 + columnGutter * 5 
     let columnStarts = [
         pageMargin, // Stat
@@ -116,8 +113,6 @@ function create_cahracter_interactive_pdf() {
         pageMargin + columnGutter * 4 + columnStatWidth * 2 + columnValueWidth * 2, // Stat
         pageMargin + columnGutter * 5 + columnStatWidth * 3 + columnValueWidth * 2, // Value
     ]
-
-    console.log(columnStarts)
 
     // Data
     let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
@@ -141,6 +136,8 @@ function create_cahracter_interactive_pdf() {
     // Iteration
     doc.setFontSize(fontSizeMain)
 
+    console.log(DISCIPLINES_SKILLS_RITUALS)
+
     let startedBasicInfo = false
     let startedAttributes = false
     let startedSkills = false
@@ -157,7 +154,8 @@ function create_cahracter_interactive_pdf() {
         }
         let currentStatName =  characterData[index][0]
 
-        // Set base line. Here we dinamically create  sections also
+        // Set base line. Here we dinamically create  sections also by setting the baseline
+        // WRiting of the actual stats happens below in the for loop, here we only mark sections of the pdf
         switch (currentStatName) {
             case 'Name':
                 if (startedBasicInfo == false){
@@ -223,10 +221,16 @@ function create_cahracter_interactive_pdf() {
         if (currentStatName.slice(-6) != "skills") { // Nornmal stats
 
             if (DISCIPLINES_LIST.includes(currentStatName)){
+                // Disciplines
                 currentColumn = 0
+                createComboBox(createdFieldName=`statName${currentStatName}`, posX=columnStarts[currentColumn], posY=baseLine-xHeight*0.5, width=columnStatWidth, height=xHeight*0.75, optionList=DISCIPLINES_LIST, defaultValue=currentStatName)
+
+            } else {
+                // Everything else
+                doc.text(columnStarts[currentColumn], baseLine, currentStatName)
             }
 
-            doc.text(columnStarts[currentColumn], baseLine, currentStatName)
+            
 
             
         } // all discipline skills are 3 element list (e.g. ['fortitude skill', 'unswayable mind', 'mental strength']). We don't want to display 'fortitude skill' every time
@@ -236,8 +240,26 @@ function create_cahracter_interactive_pdf() {
         switch (typeof currentStatValue) {
             case "string":
                 if (currentStatName.slice(-6) != "skills"){
-                    // Normal Stats
-                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`statValue${currentStatName}`, isMultiLine=false, fieldLength=columnStatWidth-columnGutter, fieldHeight=xHeight*0.75)
+                    switch (currentStatName) {
+                        case 'Clan':
+                            // Special case for clan value --> not simply displayed, but selected in a dropdown list
+                            // CLANS is defined in main_character_generator.html from a JSON file -- it's a list of the calns
+                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=CLANS, defaultValue=currentStatValue)
+                            break;
+                        
+                        case 'Predator Type':
+                            // Special case for predator types value --> not simply displayed, but selected in a dropdown list
+                            // PREDATOR_TYPES is defined in main_character_generator.html from a JSON file -- it's a dictionary with predator types as keys and descriptions with values 
+                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=Object.keys(PREDATOR_TYPES), defaultValue=currentStatValue)
+                            break;
+                    
+                        default:
+                            // Normal Stats
+
+                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`statValue${currentStatName}`, isMultiLine=false, fieldLength=columnValueWidth, fieldHeight=xHeight*0.75)
+                            break;
+                    }
+                    
                 
                 } else {
                     // Disicpline skills
@@ -332,18 +354,19 @@ function create_cahracter_interactive_pdf() {
         doc.addField(currentTextField);
     }
 
+    function createComboBox(createdFieldName, posX, posY, width, height, optionList, defaultValue) {
+        let createdField = new ComboBox();
+        createdField.Rect = [posX, posY, width, height]
+        createdField.fieldName = createdFieldName
+        createdField.maxFontSize = fontSizeMain
+        for (let index = 0; index < optionList.length; index++) {
+            createdField.addOption(optionList[index])
+        }
+        createdField.defaultValue = defaultValue
+        doc.addField(createdField);        
     }
-}
 
-function convert_character_to_pdf(){
-    var character_sheet = document.getElementById('generated_character_id')
-    character_sheet.scrollIntoView(alignToTop=true)
-    var character_sheet_width = character_sheet.offsetWidth
-    var character_sheet_height = character_sheet.offsetHeight
-    var pdf = new jsPDF('p', 'px', [character_sheet_width, character_sheet_height]);
-    pdf.addHTML(character_sheet, 0, 0, function () {
-        pdf.save('generated_vampire.pdf');
-    });
+    }
 }
 
 function convert_character_to_csv(){
@@ -470,10 +493,10 @@ function skill_add(trigger) {
     document.body.appendChild(skill_options_list)
 
     // Add to the list the potential skills
-    for (const skill_tpye in discipline_dict[current_discipline]) {
-        for (const skill_level in discipline_dict[current_discipline][skill_tpye]) {
+    for (const skill_tpye in DISCIPLINES_SKILLS_RITUALS[current_discipline]) {
+        for (const skill_level in DISCIPLINES_SKILLS_RITUALS[current_discipline][skill_tpye]) {
             if (skill_level <= current_discipline_level) {
-                let skill_keys = Object.keys(discipline_dict[current_discipline][skill_tpye][skill_level])
+                let skill_keys = Object.keys(DISCIPLINES_SKILLS_RITUALS[current_discipline][skill_tpye][skill_level])
                 skill_keys.forEach(key => {
                     if (owned_skills.includes(key) == false) {
                         let skill_options_list_item = document.createElement('li')
@@ -484,10 +507,9 @@ function skill_add(trigger) {
                         skill_options_list_item.appendChild(skil_options_list_item_p1)
                         skill_options_list_item.appendChild(skil_options_list_item_p2)
                         skill_options_list_item.appendChild(skil_options_list_item_p3)
-                        console.log(skill_tpye)
                         skil_options_list_item_p1.innerHTML = ((skill_tpye != 'blood_sorcery_ritual') ? ((skill_tpye != 'ceremony') ? 'Skill' : 'Ceremony') :'Ritual')
                         skil_options_list_item_p2.innerHTML =  key
-                        skil_options_list_item_p3.innerHTML =  discipline_dict[current_discipline][skill_tpye][skill_level][key]['Description']
+                        skil_options_list_item_p3.innerHTML =  DISCIPLINES_SKILLS_RITUALS[current_discipline][skill_tpye][skill_level][key]['Description']
                         skill_options_list.appendChild(skill_options_list_item)
                     }
                 });  
@@ -583,7 +605,7 @@ function discipline_add(trigger_event) {
     discipline_option_none_p1.style.gridColumn = '1/-1'
 
     //  Create discipline options li item for not-owned disciplins
-    for (const discipline in discipline_dict) {
+    for (const discipline in DISCIPLINES_SKILLS_RITUALS) {
         if (owned_discipline_names.includes(discipline) == false) {
             let discipline_option = document.createElement('li')
             let discipline_option_p1 = document.createElement('p')
@@ -663,5 +685,4 @@ function updateMaxLevel(trigger) {
     let newGeneration = parseInt(trigger.value)
     let newMaxLevel = MAXLEVELDICT[newGeneration]
     MAXLEVEL = newMaxLevel
-    console.log(MAXLEVEL)
 }

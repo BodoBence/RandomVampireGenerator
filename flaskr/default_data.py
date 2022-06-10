@@ -12,6 +12,7 @@ FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv
 FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
 FILE_CLANS = os.path.join(script_dir, 'static', 'clans.json')
 FILE_DISCIPLINES = os.path.join(script_dir, 'static', 'disciplines.json')
+FILE_PREDATOR_TYPES = os.path.join(script_dir, 'static', 'predator_types.json')
 
 MAX_AGE = 3000
 
@@ -226,6 +227,13 @@ def get_discipline_skills_and_rituals():
     with open(FILE_DISCIPLINE_SKILLS) as json_file:
         discipline_skills_and_rituals = json.load(json_file)
     return discipline_skills_and_rituals
+
+
+def get_predator_types():
+    with open(FILE_PREDATOR_TYPES) as json_file:
+        predator_types = json.load(json_file)
+    return predator_types
+
 
 def blood_potency_data():
     blood_potency_correspondencies = {
