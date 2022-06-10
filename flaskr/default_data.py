@@ -4,15 +4,15 @@ import os
 import random
 
 script_dir = os.path.dirname(__file__)
-FILE_NAMES_MALE = os.path.join(script_dir, 'static', 'names_male.txt')
-FILE_NAMES_FEMALE = os.path.join(script_dir, 'static', 'names_female.txt')
-FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'names_interesting.txt')
-FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'restructured_discipline_skills_rituals_ceremonies.json')
-FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'derengements_curated.csv')
-FILE_MAX_XPS = os.path.join(script_dir, 'static', 'max_xps.json')
-FILE_CLANS = os.path.join(script_dir, 'static', 'clans.json')
-FILE_DISCIPLINES = os.path.join(script_dir, 'static', 'disciplines.json')
-FILE_PREDATOR_TYPES = os.path.join(script_dir, 'static', 'predator_types.json')
+FILE_NAMES_MALE = os.path.join(script_dir, 'static', 'data', 'names_male.txt')
+FILE_NAMES_FEMALE = os.path.join(script_dir, 'static', 'data', 'names_female.txt')
+FILE_NAMES_INTERESTING = os.path.join(script_dir, 'static', 'data', 'names_interesting.txt')
+FILE_DISCIPLINE_SKILLS = os.path.join(script_dir, 'static', 'data', 'discipline_skills_rituals_ceremonies.json')
+FILE_DERANGEMENTS = os.path.join(script_dir, 'static', 'data', 'derengements_curated.csv')
+FILE_MAX_XPS = os.path.join(script_dir, 'static', 'data', 'max_xps.json')
+FILE_CLANS = os.path.join(script_dir, 'static', 'data', 'clans.json')
+FILE_DISCIPLINES = os.path.join(script_dir, 'static', 'data', 'disciplines.json')
+FILE_PREDATOR_TYPES = os.path.join(script_dir, 'static', 'data', 'predator_types.json')
 
 MAX_AGE = 3000
 
