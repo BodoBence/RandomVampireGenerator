@@ -7,6 +7,7 @@ from random_vampire_generator import generate as generate_character
 from random_city_generator import generate_random_city as generate_city
 import default_data
 import server_functions
+#Test
 
 # Creating flaks appp
 app = Flask(__name__)
