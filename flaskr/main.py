@@ -35,7 +35,7 @@ startup_city_input_field_details = {
 # Functions for the website pages
 
 # Page Behavior
-@app.route('/', )
+@app.route('/', methods = ['POST', 'GET'])
 def home():
     return render_template(
         'main_character_generator.html',
