@@ -25,350 +25,6 @@ function toggle_discipline_skills (pressed_button){
     target_element.classList.toggle('dont_show')
 }
 
-function create_cahracter_interactive_pdf() {
-    let characterData = gather_characterData()
-    write_interactive_pdf(characterData)
-
-    // Internal Functions
-    function gather_characterData(){
-        var characterData = []
-        let stats = document.getElementsByClassName("stat_name")
-    
-        // Stats
-        for (let i = 0; i < stats.length; i++) {
-            let item = []
-            // stat name
-            let statName = stats[i].innerHTML
-            item.push(statName)
-
-    
-            // stat value
-            let statValue = 0
-            switch (statName) {
-                case 'Generation': case 'Age':
-                    statValue = stats[i].nextElementSibling.value
-                    item.push(statValue)
-                    break;
-            
-                default:
-                    let statValueSource = stats[i].nextElementSibling
-                    if (statValueSource.children.length == 0) {
-                        // stat value is a text, or number, but is not indicated with dots
-                        statValue = statValueSource.innerHTML
-                    } else {
-                        // stat vlaie is indicated visually with dots, etc.
-                        if (statValueSource.firstElementChild.classList.contains('square')){
-                            statValue = statValueSource.getElementsByClassName('square_filled').length
-                        }
-                        if (statValueSource.firstElementChild.classList.contains('dot')){
-                            statValue = statValueSource.getElementsByClassName('dot_filled').length
-                        }
-                    }
-            
-                    item.push(statValue)
-                    break;
-            }
-            
-            characterData.push(item)
-    
-            // Gather discipline skills
-            if (stats[i].classList.contains("discipline_name")){
-                let discipline_skill_data = stats[i].parentElement.getElementsByClassName("discipline_skills")[0].getElementsByClassName("discipline_skill")
-    
-                for (let skill_counter = 0; skill_counter < discipline_skill_data.length; skill_counter++) {
-    
-                    let discipline_skills = [`${stats[i].innerHTML} skills`]
-                    discipline_skills.push(discipline_skill_data[skill_counter].children[0].innerHTML)
-                    discipline_skills.push(discipline_skill_data[skill_counter].children[1].innerHTML)
-                    characterData.push(discipline_skills)
-    
-                }           
-            }
-        }
-        return characterData
-    }
-
-    function write_interactive_pdf(characterData) {
-        /* Setup values */
-    // Size
-    // User Input
-    let pageMargin = 50
-    let fontSizeTitle = 20
-    let fontSizeMain = 10
-    let xHeight = 20
-    let checkBoxSize = xHeight* 0.5
-    let columnStatWidth = 100
-    let columnGutter = 6
-
-    // Calcualted Inputs
-    let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
-    let baseLine = 4*xHeight
-    let columnValueWidth = MAXLEVEL*checkBoxSize*2
-    let pageWidth = pageMargin * 2 + columnStatWidth * 3 + columnValueWidth * 3 + columnGutter * 5 
-    let columnStarts = [
-        pageMargin, // Stat
-        pageMargin + columnGutter + columnStatWidth, // Value
-        pageMargin + columnGutter * 2 + columnStatWidth + columnValueWidth, // Stat
-        pageMargin + columnGutter * 3 + columnStatWidth * 2 + columnValueWidth, // Value
-        pageMargin + columnGutter * 4 + columnStatWidth * 2 + columnValueWidth * 2, // Stat
-        pageMargin + columnGutter * 5 + columnStatWidth * 3 + columnValueWidth * 2, // Value
-    ]
-
-    // Data
-    let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
-    let maxTrackerLevel = 10
-
-    // PDF
-    var doc = new jsPDF('p', 'pt', [pageHeight, pageWidth]); // create pdf
-
-    /* Populating the empty PDF with Data */
-
-    // Title
-    doc.setFontSize(fontSizeTitle)
-    doc.text(pageWidth * 0.5, baseLine, ['Vampire', 'The Masquerade'], align='center'); // Title main
-    
-    doc.setFontSize(12)
-    baseLine += fontSizeTitle*2
-    doc.text(pageWidth * 0.5, baseLine, 'Interactive Character Sheet Created by AutoFeed', align='center'); // Title sub
-
-
-    // Actual Sheet
-    // Iteration
-    doc.setFontSize(fontSizeMain)
-
-    console.log(DISCIPLINES_SKILLS_RITUALS)
-
-    let startedBasicInfo = false
-    let startedAttributes = false
-    let startedSkills = false
-    let startedDisciplines = false
-    let currentColumn = 0
-    let disciplineSkillCounter = 0
-
-    // Main loop
-    for (let index = 0; index < characterData.length; index++) {
-
-        if (currentColumn >= 6) {
-            currentColumn = 0
-            baseLine += xHeight // Every other case
-        }
-        let currentStatName =  characterData[index][0]
-
-        // Set base line. Here we dinamically create  sections also by setting the baseline
-        // WRiting of the actual stats happens below in the for loop, here we only mark sections of the pdf
-        switch (currentStatName) {
-            case 'Name':
-                if (startedBasicInfo == false){
-                    baseLine += xHeight*2
-                    doc.text(pageWidth * 0.5, baseLine, 'Basic Info', align='center'); 
-                    baseLine += xHeight*2
-                    startedBasicInfo = true
-                    currentColumn = 0
-                }
-                break;
-
-            case 'Strength':
-                if (startedAttributes == false){
-                    baseLine += xHeight*2
-                    doc.text(pageWidth * 0.5, baseLine, 'Attributes', align='center');
-                    baseLine += xHeight*2
-                    startedAttributes = true
-                    currentColumn = 0
-                }
-                break;
-
-            case 'Athletics':
-                if (startedSkills == false){
-                    baseLine += xHeight*2
-                    doc.text(pageWidth * 0.5, baseLine, 'Skills', align='center');
-                    baseLine += xHeight*2
-                    startedSkills = true
-                    currentColumn = 0
-                }
-                break;
-            
-            case 'Health':
-                baseLine += xHeight*2
-                currentColumn = 0
-                break;
-            
-            case 'Blood Potency':
-                baseLine += xHeight
-                currentColumn = 0
-                break;
-
-            case 'Willpower':
-                currentColumn = 3
-                break;
-
-            case 'Celerity': case 'Fortitude': case 'Potence': case 'Dominate': case 'Obfuscate': case 'Presence': case 'Auspex': case 'Blood Sorcery': case 'Oblivion': case 'Animalism': case 'Protean': case 'Thin Blood Alchemy':
-                if (startedDisciplines == false){
-                    baseLine += xHeight
-                    doc.text(pageWidth * 0.5, baseLine, 'Disciplines', align='center');
-                    baseLine += xHeight
-                    startedDisciplines = true
-                    currentColumn = 0
-                } else {
-                    baseLine += xHeight
-                }
-
-                break;
-
-            default:
-                break;
-        }
-
-        if (currentStatName.slice(-6) != "skills") { // Nornmal stats
-
-            if (DISCIPLINES_LIST.includes(currentStatName)){
-                // Disciplines
-                currentColumn = 0
-                createComboBox(createdFieldName=`statName${currentStatName}`, posX=columnStarts[currentColumn], posY=baseLine-xHeight*0.5, width=columnStatWidth, height=xHeight*0.75, optionList=DISCIPLINES_LIST, defaultValue=currentStatName)
-
-            } else {
-                // Everything else
-                doc.text(columnStarts[currentColumn], baseLine, currentStatName)
-            }
-
-            
-
-            
-        } // all discipline skills are 3 element list (e.g. ['fortitude skill', 'unswayable mind', 'mental strength']). We don't want to display 'fortitude skill' every time
-
-        // Stat Value
-        let currentStatValue = characterData[index][1]
-        switch (typeof currentStatValue) {
-            case "string":
-                if (currentStatName.slice(-6) != "skills"){
-                    switch (currentStatName) {
-                        case 'Clan':
-                            // Special case for clan value --> not simply displayed, but selected in a dropdown list
-                            // CLANS is defined in main_character_generator.html from a JSON file -- it's a list of the calns
-                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=CLANS, defaultValue=currentStatValue)
-                            break;
-                        
-                        case 'Predator Type':
-                            // Special case for predator types value --> not simply displayed, but selected in a dropdown list
-                            // PREDATOR_TYPES is defined in main_character_generator.html from a JSON file -- it's a dictionary with predator types as keys and descriptions with values 
-                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=Object.keys(PREDATOR_TYPES), defaultValue=currentStatValue)
-                            break;
-                    
-                        default:
-                            // Normal Stats
-
-                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`statValue${currentStatName}`, isMultiLine=false, fieldLength=columnValueWidth, fieldHeight=xHeight*0.75)
-                            break;
-                    }
-                    
-                
-                } else {
-                    // Disicpline skills
-                    // Discipline skill name
-                    currentColumn = 0
-                    disciplineSkillCounter += 1
-                    baseLine += xHeight // make space for the taller text fields
-                    createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=currentStatValue, fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnStatWidth, fieldHeight=xHeight*1.5)
-                    
-                    // Discipline skill description
-                    let currentDisciplineDescription = characterData[index][2]
-                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentDisciplineDescription, fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnValueWidth, fieldHeight=xHeight*1.5)
-                    baseLine += xHeight // make space for the taller text fields
-
-                    // Add Empty discipline fields at the discipline skills' end
-                    if (index != characterData.length - 1) { // Check if NOT last element
-                        if (currentStatName != characterData[index + 1][0]) {
-                            for (let i = 0; i < 2; i++) {
-                                baseLine += xHeight // make space for the taller text fields
-                                disciplineSkillCounter += 1
-                                createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnValueWidth, fieldHeight=xHeight*1.5)
-                                disciplineSkillCounter += 1
-                                createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnValueWidth, fieldHeight=xHeight*1.5)
-                                baseLine += xHeight // make space for the taller text fields
-                                disciplineSkillCounter = 0
-                            }
-                        }
-                    } else { // Last item
-                        for (let i = 0; i < 2; i++) {
-                            baseLine += xHeight // make space for the taller text fields
-                            disciplineSkillCounter += 1
-                            createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnValueWidth, fieldHeight=xHeight*1.5)
-                            disciplineSkillCounter += 1
-                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnValueWidth, fieldHeight=xHeight*1.5)
-                            baseLine += xHeight // make space for the taller text fields
-                            disciplineSkillCounter = 0
-                        }
-                    }                 
-                }
-
-                break;
-
-            case "number":
-                switch (currentStatName) {
-                    case 'Health': case 'Willpower': case 'Blood Potency':
-
-                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
-                
-                    default:
-                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
-                }
-                break;
-        
-            default:
-                break;
-        }
-
-        currentColumn += 2
-    }
-
-    // End
-    doc.save('Test.pdf');
-
-    // Internal fucntions
-    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth, boxName){
-        nFilled -= 1 // indexes later start with 0 not 1
-        let boxes = []
-        let box_baseline_correction = 10
-
-        for (let index = 0; index < n; index++) {
-            boxes[index] = new CheckBox()
-            boxes[index].fieldName = `${boxName}${index}`;
-            boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, boxHeight, boxWidth];
-            boxes[index].maxFontSize = fontSizeMain
-            if (index <= nFilled){
-                boxes[index].appearanceState = 'On' //checked
-            } else {
-                boxes[index].appearanceState = 'Off' //unchecked
-            }
-            doc.addField(boxes[index])
-        }
-    }
-
-    
-    function createFieldText(positionX, positionY, text, fieldName, isMultiLine, fieldLength, fieldHeight){
-        let currentTextField = new TextField();
-        currentTextField.Rect = [positionX, positionY - 10, fieldLength, fieldHeight]
-        currentTextField.multiline = isMultiLine;
-        currentTextField.value = text
-        currentTextField.fieldName = fieldName;
-        currentTextField.maxFontSize = fontSizeMain
-        doc.addField(currentTextField);
-    }
-
-    function createComboBox(createdFieldName, posX, posY, width, height, optionList, defaultValue) {
-        let createdField = new ComboBox();
-        createdField.Rect = [posX, posY, width, height]
-        createdField.fieldName = createdFieldName
-        createdField.maxFontSize = fontSizeMain
-        for (let index = 0; index < optionList.length; index++) {
-            createdField.addOption(optionList[index])
-        }
-        createdField.defaultValue = defaultValue
-        doc.addField(createdField);        
-    }
-
-    }
-}
-
 function convert_character_to_csv(){
    
     //  create CSV file data in an array
@@ -685,4 +341,372 @@ function updateMaxLevel(trigger) {
     let newGeneration = parseInt(trigger.value)
     let newMaxLevel = MAXLEVELDICT[newGeneration]
     MAXLEVEL = newMaxLevel
+}
+
+function create_cahracter_interactive_pdf() {
+    let characterData = gather_characterData()
+    write_interactive_pdf(characterData)
+
+    // Internal Functions
+    function gather_characterData(){
+        var characterData = []
+        let stats = document.getElementsByClassName("stat_name")
+    
+        // Stats
+        for (let i = 0; i < stats.length; i++) {
+            let item = []
+            // stat name
+            let statName = stats[i].innerHTML
+            item.push(statName)
+
+    
+            // stat value
+            let statValue = 0
+            switch (statName) {
+                case 'Generation': case 'Age':
+                    statValue = stats[i].nextElementSibling.value
+                    item.push(statValue)
+                    break;
+            
+                default:
+                    let statValueSource = stats[i].nextElementSibling
+                    if (statValueSource.children.length == 0) {
+                        // stat value is a text, or number, but is not indicated with dots
+                        statValue = statValueSource.innerHTML
+                    } else {
+                        // stat vlaie is indicated visually with dots, etc.
+                        if (statValueSource.firstElementChild.classList.contains('square')){
+                            statValue = statValueSource.getElementsByClassName('square_filled').length
+                        }
+                        if (statValueSource.firstElementChild.classList.contains('dot')){
+                            statValue = statValueSource.getElementsByClassName('dot_filled').length
+                        }
+                    }
+            
+                    item.push(statValue)
+                    break;
+            }
+            
+            characterData.push(item)
+    
+            // Gather discipline skills
+            if (stats[i].classList.contains("discipline_name")){
+                let discipline_skill_data = stats[i].parentElement.getElementsByClassName("discipline_skills")[0].getElementsByClassName("discipline_skill")
+    
+                for (let skill_counter = 0; skill_counter < discipline_skill_data.length; skill_counter++) {
+    
+                    let discipline_skills = [`${stats[i].innerHTML} skills`]
+                    discipline_skills.push(discipline_skill_data[skill_counter].children[0].innerHTML)
+                    discipline_skills.push(discipline_skill_data[skill_counter].children[1].innerHTML)
+                    characterData.push(discipline_skills)
+    
+                }           
+            }
+        }
+        return characterData
+    }
+
+    function write_interactive_pdf(characterData) {
+        /* Setup values */
+    // Size
+    // User Input
+    let pageMargin = 50
+    let fontSizeTitle = 20
+    let fontSizeTitle2 = 12
+    let fontSizeMain = 10
+    let xHeight = 20
+    let checkBoxSize = xHeight* 0.5
+    let columnStatWidth = 100
+    let columnGutter = 6
+    let textColorMain = [0, 0, 0]
+    let textColorAccent = [255, 0, 0]
+
+    // Calcualted Inputs
+    let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
+    let baseLine = pageMargin + fontSizeTitle
+    let columnValueWidth = MAXLEVEL*checkBoxSize*2
+    let pageWidth = pageMargin * 2 + columnStatWidth * 3 + columnValueWidth * 3 + columnGutter * 5 
+    let columnStarts = [
+        pageMargin, // Stat
+        pageMargin + columnGutter + columnStatWidth, // Value
+        pageMargin + columnGutter * 2 + columnStatWidth + columnValueWidth, // Stat
+        pageMargin + columnGutter * 3 + columnStatWidth * 2 + columnValueWidth, // Value
+        pageMargin + columnGutter * 4 + columnStatWidth * 2 + columnValueWidth * 2, // Stat
+        pageMargin + columnGutter * 5 + columnStatWidth * 3 + columnValueWidth * 2, // Value
+    ]
+
+    // Data
+    let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
+    let maxTrackerLevel = 10
+
+    // PDF
+    var doc = new jsPDF('p', 'pt', [pageHeight, pageWidth]); // create pdf
+
+    /* Populating the empty PDF with Data */
+    // Title
+    doc.setTextColor(textColorAccent[0], textColorAccent[1], textColorAccent[2])
+    doc.setFontSize(fontSizeTitle)
+    doc.text(pageWidth * 0.5, baseLine, ['VAMPIRE', 'THE MASQUERADE'], align='center'); // Title main
+    doc.setTextColor(textColorMain[0], textColorMain[1], textColorMain[2])
+    
+    doc.setFontSize(fontSizeTitle2)
+    baseLine += fontSizeTitle*2
+    doc.text(pageWidth * 0.5, baseLine, 'Interactive Character Sheet Created by AutoFeed', align='center'); // Title sub
+
+    // Actual Sheet
+    // Iteration
+    doc.setFontSize(fontSizeMain)
+
+    // Pre-Loop variablesfor tracking the movemnt in the loop 
+    let startedBasicInfo = false
+    let startedAttributes = false
+    let startedSkills = false
+    let startedDisciplines = false
+    let currentColumn = 0
+    let disciplineSkillCounter = 0
+
+    /* MAIN LOOP */
+    for (let index = 0; index < characterData.length; index++) {
+
+        if (currentColumn >= 6) {
+            currentColumn = 0
+            baseLine += xHeight // Every other case
+        }
+        let currentStatName =  characterData[index][0]
+
+        // Set base line. Here we dinamically create  sections also by setting the baseline
+        // WRiting of the actual stats happens below in the for loop, here we only mark sections of the pdf
+        switch (currentStatName) {
+            case 'Name':
+                if (startedBasicInfo == false){
+                    writeTitle(titleText='BASIC INFORMATION', titleSize=fontSizeTitle2, colorMain=textColorMain, colorTitle=textColorAccent)
+                    startedBasicInfo = true
+                }
+                break;
+
+            case 'Strength':
+                if (startedAttributes == false){
+                    writeTitle(titleText='ATTRIBUTES', titleSize=fontSizeTitle2, colorMain=textColorMain, colorTitle=textColorAccent)
+                    startedAttributes = true
+                }
+                break;
+
+            case 'Athletics':
+                if (startedSkills == false){
+                    writeTitle(titleText='SKILLS', titleSize=fontSizeTitle2, colorMain=textColorMain, colorTitle=textColorAccent)
+                    startedSkills = true
+                }
+                break;
+            
+            case 'Health':
+                baseLine += xHeight*2
+                currentColumn = 0
+                break;
+            
+            case 'Blood Potency':
+                baseLine += xHeight
+                currentColumn = 0
+                break;
+
+            case 'Willpower':
+                currentColumn = 3
+                break;
+
+            case 'Celerity': case 'Fortitude': case 'Potence': case 'Dominate': case 'Obfuscate': case 'Presence': case 'Auspex': case 'Blood Sorcery': case 'Oblivion': case 'Animalism': case 'Protean': case 'Thin Blood Alchemy':
+                if (startedDisciplines == false){
+                    writeTitle(titleText='DISCIPLINES', titleSize=fontSizeTitle2, colorMain=textColorMain, colorTitle=textColorAccent)
+                    startedDisciplines = true
+                } else {
+                    baseLine += xHeight
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        // Internal Fucntion for making Titles in the context of the loop
+        function writeTitle(titleText, titleSize, colorMain, colorTitle) {
+            // Write title
+            baseLine += xHeight*2
+            doc.setTextColor(colorTitle[0], colorTitle[1], colorTitle[2])
+            doc.setFontSize(titleSize)
+            doc.text(pageWidth * 0.5, baseLine, titleText, align='center');
+
+            // Add Visual decoration
+            baseLine += xHeight*0.25
+            doc.setDrawColor(colorTitle[0], colorTitle[1], colorTitle[2])
+            doc.setLineWidth(0.5)
+            doc.line(x1=pageMargin, y1=baseLine, x2=pageWidth-pageMargin, y2=baseLine)
+            
+            // Set tarting point for continuation
+            doc.setTextColor(colorMain[0], colorMain[1], colorMain[2]) 
+            doc.setFontSize(fontSizeMain)
+            baseLine += xHeight
+            currentColumn = 0
+        }
+
+        if (currentStatName.slice(-6) != "skills") { // Nornmal stats
+
+            if (DISCIPLINES_LIST.includes(currentStatName)){
+                // Disciplines
+                currentColumn = 0
+                if (characterData[index-1][0].slice(-6) == "skills")  // Previous stat is a discipline skill = this is not the first discipline
+                    {baseLine += xHeight}   // create an empty line before every new discipline, but the first (the spacing there is handled at the creation of the discipline title)
+
+                createComboBox(createdFieldName=`statName${currentStatName}`, posX=columnStarts[currentColumn], posY=baseLine-xHeight*0.5, width=columnStatWidth, height=xHeight*0.75, optionList=DISCIPLINES_LIST, defaultValue=currentStatName)
+
+            } else {
+                // Everything else
+                doc.text(columnStarts[currentColumn], baseLine, currentStatName)
+            }
+
+            
+        } // all discipline skills are 3 element list (e.g. ['fortitude skill', 'unswayable mind', 'mental strength']). We don't want to display 'fortitude skill' every time
+
+        // Stat Value
+        let currentStatValue = characterData[index][1]
+        switch (typeof currentStatValue) {
+            case "string":
+                if (currentStatName.slice(-6) != "skills"){
+                    switch (currentStatName) {
+                        case 'Clan':
+                            // Special case for clan value --> not simply displayed, but selected in a dropdown list
+                            // CLANS is defined in main_character_generator.html from a JSON file -- it's a list of the calns
+                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=CLANS, defaultValue=currentStatValue)
+                            break;
+                        
+                        case 'Predator Type':
+                            // Special case for predator types value --> not simply displayed, but selected in a dropdown list
+                            // PREDATOR_TYPES is defined in main_character_generator.html from a JSON file -- it's a dictionary with predator types as keys and descriptions with values 
+                            createComboBox(createdFieldName=`statValue${currentStatName}`, posX=columnStarts[currentColumn+1], posY=baseLine-xHeight*0.5, width=columnValueWidth, height=xHeight*0.75, optionList=Object.keys(PREDATOR_TYPES), defaultValue=currentStatValue)
+                            break;
+                    
+                        default:
+                            // Normal Stats
+
+                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentStatValue, fieldName=`statValue${currentStatName}`, isMultiLine=false, fieldLength=columnValueWidth, fieldHeight=xHeight*0.75)
+                            break;
+                    }
+                    
+                
+                } else {
+                    // Disicpline skills
+                    // Discipline skill name
+                    currentColumn = 0
+                    disciplineSkillCounter += 1
+                    baseLine += xHeight // make space for the taller text fields
+                    createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=currentStatValue, fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnStatWidth, fieldHeight=xHeight*1.5)
+                    
+                    // Discipline skill description
+                    let currentDisciplineDescription = characterData[index][2]
+                    createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=currentDisciplineDescription, fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnStatWidth-columnGutter, fieldHeight=xHeight*1.5)
+                    baseLine += xHeight // make space for the taller text fields
+
+                    // Add Empty discipline fields at the discipline skills' end
+                    if (index != characterData.length - 1) { // Check if NOT last element
+                        if (currentStatName != characterData[index + 1][0]) {
+                            for (let i = 0; i < 2; i++) {
+                                baseLine += xHeight // make space for the taller text fields
+                                disciplineSkillCounter += 1
+                                createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnStatWidth, fieldHeight=xHeight*1.5)
+                                disciplineSkillCounter += 1
+                                createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnStatWidth-columnGutter, fieldHeight=xHeight*1.5)
+                                baseLine += xHeight // make space for the taller text fields
+                                disciplineSkillCounter = 0
+                            }
+                        }
+                    } else { // Last item
+                        for (let i = 0; i < 2; i++) {
+                            baseLine += xHeight // make space for the taller text fields
+                            disciplineSkillCounter += 1
+                            createFieldText(positionX=columnStarts[currentColumn], positionY=baseLine, text=' ', fieldName=`statName${currentStatName}${disciplineSkillCounter}`, isMultiLine=false, fieldLength=columnStatWidth, fieldHeight=xHeight*1.5)
+                            disciplineSkillCounter += 1
+                            createFieldText(positionX=columnStarts[currentColumn+1], positionY=baseLine, text=' ', fieldName=`statValue${currentStatName}${disciplineSkillCounter}`, isMultiLine=true, fieldLength=pageWidth-(2*pageMargin)-columnStatWidth-columnGutter, fieldHeight=xHeight*1.5)
+                            baseLine += xHeight // make space for the taller text fields
+                            disciplineSkillCounter = 0
+                        }
+                    }                 
+                }
+
+                break;
+
+            case "number":
+                switch (currentStatName) {
+                    case 'Health': case 'Willpower': case 'Blood Potency':
+
+                        createNCheckbox(n=maxTrackerLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
+                
+                    default:
+                        createNCheckbox(n=maxSkillLevel, nFilled=currentStatValue, positionX=columnStarts[currentColumn+1], positionY=baseLine, boxOffset=2*checkBoxSize, boxHeight=checkBoxSize, boxWidth=checkBoxSize, boxName=`checkBox${currentStatName}`)
+                }
+                break;
+        
+            default:
+                break;
+        }
+
+        currentColumn += 2
+    }
+
+
+    /* DECORATONs */
+    // Full page bounding rectangle
+    doc.setLineWidth(0.5)
+    doc.setDrawColor(textColorAccent[0], textColorAccent[1], textColorAccent[2])
+    let outlineOffset = 10
+    doc.roundedRect(pageMargin-outlineOffset, pageMargin-outlineOffset, pageWidth - 2 * pageMargin + 2*outlineOffset, pageHeight - 2 * pageMargin + 2*outlineOffset, rx=20, ry=20) // rounded rectangle, going around the page
+    outlineOffset += 3
+    doc.setLineWidth(1)
+    doc.roundedRect(pageMargin-outlineOffset, pageMargin-outlineOffset, pageWidth - 2 * pageMargin + 2*outlineOffset, pageHeight - 2 * pageMargin + 2*outlineOffset, rx=20, ry=20) // rounded rectangle, going around the page
+
+
+    // End
+    doc.save('Test.pdf');
+
+    // Internal fucntions
+    function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth, boxName){
+        nFilled -= 1 // indexes later start with 0 not 1
+        let boxes = []
+        let box_baseline_correction = 10
+
+        for (let index = 0; index < n; index++) {
+            boxes[index] = new CheckBox()
+            boxes[index].fieldName = `${boxName}${index}`;
+            boxes[index].Rect = [positionX + (boxOffset * index), positionY - box_baseline_correction, boxHeight, boxWidth];
+            boxes[index].maxFontSize = fontSizeMain
+            if (index <= nFilled){
+                boxes[index].appearanceState = 'On' //checked
+            } else {
+                boxes[index].appearanceState = 'Off' //unchecked
+            }
+            doc.addField(boxes[index])
+        }
+    }
+
+    
+    function createFieldText(positionX, positionY, text, fieldName, isMultiLine, fieldLength, fieldHeight){
+        let currentTextField = new TextField();
+        currentTextField.Rect = [positionX, positionY - 10, fieldLength, fieldHeight]
+        currentTextField.multiline = isMultiLine;
+        currentTextField.value = text
+        currentTextField.fieldName = fieldName;
+        currentTextField.maxFontSize = fontSizeMain
+        doc.addField(currentTextField);
+    }
+
+    function createComboBox(createdFieldName, posX, posY, width, height, optionList, defaultValue) {
+        let createdField = new ComboBox();
+        createdField.Rect = [posX, posY, width, height]
+        createdField.fieldName = createdFieldName
+        createdField.maxFontSize = fontSizeMain
+        for (let index = 0; index < optionList.length; index++) {
+            createdField.addOption(optionList[index])
+        }
+        createdField.defaultValue = defaultValue
+        doc.addField(createdField);        
+    }
+
+    }
 }
