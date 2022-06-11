@@ -1,6 +1,7 @@
 # Imports
 from flask import Flask, render_template, request
 import uuid
+import git
 
 from random_vampire_generator import generate as generate_character
 from random_city_generator import generate_random_city as generate_city
@@ -35,6 +36,18 @@ startup_city_input_field_details = {
 # Functions for the website pages
 
 # Page Behavior
+@app.route('/update_server', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('/home/autofeed')
+        origin = repo.remotes.origin
+
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
+
+
 @app.route('/', methods = ['POST', 'GET'])
 def home():
     return render_template(
