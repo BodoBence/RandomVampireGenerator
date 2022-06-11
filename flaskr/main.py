@@ -7,7 +7,7 @@ from random_vampire_generator import generate as generate_character
 from random_city_generator import generate_random_city as generate_city
 import default_data
 import server_functions
-#Test
+#Test 3
 
 # Creating flaks appp
 app = Flask(__name__)
@@ -42,7 +42,9 @@ def webhook():
     if request.method == 'POST':
         repo = git.Repo('/home/autofeed')
         origin = repo.remotes.origin
-
+        # git remote set-url origin https://BodoBence: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@github.com/BodoBence/RandomVampireGenerator.git
+        # HTTPS_REMOTE_URL = 'https://<access_token>:x-oauth-basic@github.com/username/your-project' in git config file
+        # /var/www/autofeed_pythonanywhere_com_wsgi.py
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
     else:
