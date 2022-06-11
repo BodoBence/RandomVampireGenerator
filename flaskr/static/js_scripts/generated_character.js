@@ -407,7 +407,7 @@ function create_cahracter_interactive_pdf() {
     }
 
     function write_interactive_pdf(characterData) {
-        /* Setup values */
+    /* Setup values */
     // Size
     // User Input
     let pageMargin = 50
@@ -418,14 +418,15 @@ function create_cahracter_interactive_pdf() {
     let checkBoxSize = xHeight* 0.5
     let columnStatWidth = 100
     let columnGutter = 6
-    let textColorMain = [0, 0, 0]
-    let textColorAccent = [255, 0, 0]
+    let textColorMain = [0, 0, 0] // Black
+    let textColorAccent = [255, 0, 0] // Red
 
     // Calcualted Inputs
-    let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
     let baseLine = pageMargin + fontSizeTitle
     let columnValueWidth = MAXLEVEL*checkBoxSize*2
-    let pageWidth = pageMargin * 2 + columnStatWidth * 3 + columnValueWidth * 3 + columnGutter * 5 
+    let pageWidth = pageMargin * 2 + columnStatWidth * 3 + columnValueWidth * 3 + columnGutter * 5
+    // let pageHeight = (46 + ((characterData.length-46)*2) + 50) * xHeight // BaseData 10 + Attributes 9 + Skills 27 = 46
+    let pageHeight = calculatePageHeight()
     let columnStarts = [
         pageMargin, // Stat
         pageMargin + columnGutter + columnStatWidth, // Value
@@ -434,6 +435,26 @@ function create_cahracter_interactive_pdf() {
         pageMargin + columnGutter * 4 + columnStatWidth * 2 + columnValueWidth * 2, // Stat
         pageMargin + columnGutter * 5 + columnStatWidth * 3 + columnValueWidth * 2, // Value
     ]
+
+    // Inner function
+    function calculatePageHeight() {
+        let disciplineSkillsN = characterData.filter(x => x[0].slice(-6) == "skills").length
+        let disciplineN = characterData.filter(x => DISCIPLINES_LIST.includes(x[0]) == true).length
+        let stats = characterData.length - disciplineSkillsN
+        let pageHeightOffest = pageMargin*2 + fontSizeTitle*2
+
+        let pageHeight = disciplineSkillsN * xHeight * 2.5 + 5 * xHeight // for a discipline skill the field takes 2.5 * xHeight + there are two empty fields in the end
+        pageHeight += disciplineN * (fontSizeTitle2 + xHeight)
+        pageHeight += (stats / 3) * xHeight*2
+        pageHeight += pageHeightOffest
+/* 
+        // For pageHeight troubleshooting and
+        console.log(`disciplineSkillsN ${disciplineSkillsN}`)
+        console.log(`stats ${stats}`)
+        console.log(`pageHeightOffest ${pageHeightOffest}`)
+        console.log(`pageHeight ${pageHeight}`) */
+        return pageHeight        
+    }
 
     // Data
     let maxSkillLevel = MAXLEVEL // gets the variable from 'main_character_generator.html'
@@ -468,13 +489,14 @@ function create_cahracter_interactive_pdf() {
     /* MAIN LOOP */
     for (let index = 0; index < characterData.length; index++) {
 
+        // Setting the current colum to go from 0->5
         if (currentColumn >= 6) {
             currentColumn = 0
             baseLine += xHeight // Every other case
         }
         let currentStatName =  characterData[index][0]
 
-        // Set base line. Here we dinamically create  sections also by setting the baseline
+        // Set baseline. Here we dinamically create  sections also by setting the baseline
         // WRiting of the actual stats happens below in the for loop, here we only mark sections of the pdf
         switch (currentStatName) {
             case 'Name':
@@ -661,8 +683,8 @@ function create_cahracter_interactive_pdf() {
     doc.setLineWidth(1)
     doc.roundedRect(pageMargin-outlineOffset, pageMargin-outlineOffset, pageWidth - 2 * pageMargin + 2*outlineOffset, pageHeight - 2 * pageMargin + 2*outlineOffset, rx=20, ry=20) // rounded rectangle, going around the page
 
-
     // End
+    console.log(`baseLine ${baseLine}`)
     doc.save('Test.pdf');
 
     // Internal fucntions
