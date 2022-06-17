@@ -4,7 +4,7 @@ import pprint
 import json
 
 script_dir = os.path.dirname(__file__)
-FILE_CITY_GENERATOR_DEFAULT_INPUTS = os.path.join(script_dir, 'static', 'city_generator_default_inputs.json')
+FILE_CITY_GENERATOR_DEFAULT_INPUTS = os.path.join(script_dir, 'static', 'data', 'city_generator_default_inputs.json')
 
 def get_maximum_skill_level(character_dictionary):
 
