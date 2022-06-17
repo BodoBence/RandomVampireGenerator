@@ -23,6 +23,7 @@
     margin-left: 0.5rem;
     margin-right: auto;
     grid-column: 1;
+    filter: hue-rotate(248deg) brightness(1.6); /* rotation pink --> blue, needs to be manually calcualted for main colro change*/
 }
 
 #container_footer_id p {

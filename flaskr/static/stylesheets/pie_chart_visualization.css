@@ -5,10 +5,18 @@
     --pie_Section_4_end: 100%;
     --pie_section_seperator: 0%;
     --pie_seperator_color: transparent;
-    --pie_section_1_color: hsla(313, 94%, 70%, 1);
+    /* Pink section */
+/*     --pie_section_1_color: hsla(313, 94%, 70%, 1);
     --pie_section_2_color: hsla(313, 94%, 35%, 1);
     --pie_section_3_color: hsla(313, 94%, 15%, 1);
-    --pie_section_4_color: hsla(313, 94%, 5%, 1);
+    --pie_section_4_color: hsla(313, 94%, 5%, 1); */
+
+    /* blue section */
+    --pie_section_1_color: hsla(205, 94%, 70%, 1);
+    --pie_section_2_color: hsla(205, 94%, 35%, 1);
+    --pie_section_3_color: hsla(205, 94%, 15%, 1);
+    --pie_section_4_color: hsla(205, 94%, 5%, 1);
+
 
     display: block;
     margin: auto;
