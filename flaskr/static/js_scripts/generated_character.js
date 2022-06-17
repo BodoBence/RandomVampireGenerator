@@ -685,7 +685,8 @@ function create_cahracter_interactive_pdf() {
 
     // End
     console.log(`baseLine ${baseLine}`)
-    doc.save('Test.pdf');
+    // doc.save('Test.pdf'); // Save the pdf
+    doc.output('dataurlnewwindow')
 
     // Internal fucntions
     function createNCheckbox(n, nFilled, positionX, positionY, boxOffset, boxHeight, boxWidth, boxName){
